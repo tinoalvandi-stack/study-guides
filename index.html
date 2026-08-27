@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Study Guides · Valentino</title>
+<meta name="description" content="Free study guides, flashcards, and practice quizzes for classmates. Made by a student.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2F2F7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+<meta property="og:title" content="Study Guides · Valentino">
+<meta property="og:description" content="Free study guides, flashcards, and practice quizzes for classmates.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinoguides.com/">
+<meta property="og:image" content="https://tinoguides.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23007AFF'/%3E%3Cpath d='M9 22.5c2-1.4 4.4-1.6 7-.5 2.6-1.1 5-.9 7 .5V9.8c-2-1.3-4.4-1.5-7-.4-2.6-1.1-5-.9-7 .4Zm7-13.1v12.4' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>
+/* Apply saved theme before first paint. localStorage may be unavailable
+   (private mode, sandboxed previews): fail silently to "auto". */
+(function () {
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  } catch (e) {}
+})();
+</script>
+<style>
+/* ---------- iOS system tokens ---------- */
+:root {
+  --spring: cubic-bezier(.32,.72,0,1);
+  --bg: #F2F2F7;                       /* systemGroupedBackground */
+  --card: #FFFFFF;                     /* secondarySystemGroupedBackground */
+  --card-press: #E5E5EA;
+  --label: #000000;
+  --label-2: rgba(60,60,67,.60);       /* secondaryLabel */
+  --label-3: rgba(60,60,67,.30);       /* tertiaryLabel */
+  --sep: rgba(60,60,67,.29);           /* separator */
+  --fill: rgba(120,120,128,.12);       /* systemFill quaternary */
+  --fill-2: rgba(120,120,128,.20);
+  --blue: #007AFF;
+  --chrome: rgba(242,242,247,.72);
+  --shadow: 0 1px 2px rgba(0,0,0,.04);
+  --tint: var(--blue);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000;
+    --card: #1C1C1E;
+    --card-press: #2C2C2E;
+    --label: #FFFFFF;
+    --label-2: rgba(235,235,245,.60);
+    --label-3: rgba(235,235,245,.30);
+    --sep: rgba(84,84,88,.60);
+    --fill: rgba(120,120,128,.24);
+    --fill-2: rgba(120,120,128,.32);
+    --blue: #0A84FF;
+    --chrome: rgba(0,0,0,.72);
+    --shadow: none;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --card: #1C1C1E;
+  --card-press: #2C2C2E;
+  --label: #FFFFFF;
+  --label-2: rgba(235,235,245,.60);
+  --label-3: rgba(235,235,245,.30);
+  --sep: rgba(84,84,88,.60);
+  --fill: rgba(120,120,128,.24);
+  --fill-2: rgba(120,120,128,.32);
+  --blue: #0A84FF;
+  --chrome: rgba(0,0,0,.72);
+  --shadow: none;
+}
+
+/* Per-class tints: [data-theme=dark] and OS-dark both flip to the vivid set. */
+.c-apush   { --tint:#FF3B30 } .c-lang  { --tint:#FF9500 } .c-phys { --tint:#30B0C7 }
+.c-psych   { --tint:#FF2D55 } .c-sem   { --tint:#5856D6 } .c-span { --tint:#D9A400 }
+.c-bus     { --tint:#34C759 } .c-mor   { --tint:#AF52DE } .c-pre  { --tint:#007AFF }
+.c-apwh    { --tint:#A2845E } .c-theo  { --tint:#00A79E } .c-span3{ --tint:#D9A400 }
+.c-apcsp   { --tint:#32ADE6 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .c-apush{--tint:#FF453A} :root:not([data-theme="light"]) .c-lang{--tint:#FF9F0A}
+  :root:not([data-theme="light"]) .c-phys{--tint:#40CBE0}  :root:not([data-theme="light"]) .c-psych{--tint:#FF375F}
+  :root:not([data-theme="light"]) .c-sem{--tint:#5E5CE6}   :root:not([data-theme="light"]) .c-span{--tint:#FFD60A}
+  :root:not([data-theme="light"]) .c-bus{--tint:#30D158}   :root:not([data-theme="light"]) .c-mor{--tint:#BF5AF2}
+  :root:not([data-theme="light"]) .c-pre{--tint:#0A84FF}   :root:not([data-theme="light"]) .c-apwh{--tint:#AC8E68}
+  :root:not([data-theme="light"]) .c-theo{--tint:#63E6E2}  :root:not([data-theme="light"]) .c-span3{--tint:#FFD60A}
+  :root:not([data-theme="light"]) .c-apcsp{--tint:#64D2FF}
+}
+:root[data-theme="dark"] .c-apush{--tint:#FF453A} :root[data-theme="dark"] .c-lang{--tint:#FF9F0A}
+:root[data-theme="dark"] .c-phys{--tint:#40CBE0}  :root[data-theme="dark"] .c-psych{--tint:#FF375F}
+:root[data-theme="dark"] .c-sem{--tint:#5E5CE6}   :root[data-theme="dark"] .c-span{--tint:#FFD60A}
+:root[data-theme="dark"] .c-bus{--tint:#30D158}   :root[data-theme="dark"] .c-mor{--tint:#BF5AF2}
+:root[data-theme="dark"] .c-pre{--tint:#0A84FF}   :root[data-theme="dark"] .c-apwh{--tint:#AC8E68}
+:root[data-theme="dark"] .c-theo{--tint:#63E6E2}  :root[data-theme="dark"] .c-span3{--tint:#FFD60A}
+:root[data-theme="dark"] .c-apcsp{--tint:#64D2FF}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0 }
+html { -webkit-text-size-adjust: 100% }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg); color: var(--label);
+  font-size: 17px; line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+a { color: inherit; text-decoration: none }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 8px }
+
+.wrap { max-width: 640px; margin: 0 auto; padding: 0 16px calc(24px + env(safe-area-inset-bottom)) }
+
+/* ---------- chrome (sticky header) ---------- */
+header {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--chrome);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: .5px solid var(--sep);
+}
+.bar { max-width: 640px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 10px }
+.bar h1 { font-size: 17px; font-weight: 600; letter-spacing: -.2px; margin-right: auto;
+          opacity: 0; transition: opacity .25s var(--spring) }
+.bar h1.show { opacity: 1 }
+
+/* segmented control */
+.seg { position: relative; display: flex; background: var(--fill); border-radius: 9px; padding: 2px }
+.seg button {
+  position: relative; z-index: 1; padding: 3px 10px; font-size: 13px; font-weight: 500;
+  color: var(--label-2); border-radius: 7px; transition: color .2s var(--spring);
+}
+.seg button[aria-pressed="true"] { color: var(--label) }
+.seg .thumb {
+  position: absolute; z-index: 0; top: 2px; bottom: 2px; border-radius: 7px;
+  background: var(--card); box-shadow: 0 1px 4px rgba(0,0,0,.12), 0 0 0 .5px rgba(0,0,0,.04);
+  transition: left .35s var(--spring), width .35s var(--spring);
+}
+.searchbtn {
+  display: flex; align-items: center; gap: 6px; padding: 5px 10px;
+  background: var(--fill); border-radius: 9px; color: var(--label-2); font-size: 13px; font-weight: 500;
+}
+.searchbtn svg { width: 13px; height: 13px }
+.searchbtn kbd {
+  font-family: inherit; font-size: 11px; color: var(--label-3);
+  border: .5px solid var(--sep); border-radius: 4px; padding: 0 4px;
+}
+@media (max-width: 480px) { .searchbtn kbd, .searchbtn .lbl { display: none } .searchbtn { padding: 6px 8px } }
+
+/* ---------- intro ---------- */
+.intro { padding: 26px 0 4px }
+.intro h2 { font-size: 32px; font-weight: 700; letter-spacing: -.6px }
+.intro p { color: var(--label-2); margin-top: 3px; font-size: 15px }
+
+/* ---------- section headers ---------- */
+.sechead {
+  margin: 26px 16px 7px; font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .4px; color: var(--label-2);
+  display: flex; align-items: baseline; gap: 8px;
+}
+.sechead small { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--label-3) }
+
+/* ---------- feature card ---------- */
+.feature {
+  display: block; position: relative; overflow: hidden;
+  background: var(--card); border-radius: 16px; box-shadow: var(--shadow);
+  padding: 18px 18px 16px; margin-top: 14px;
+  transition: transform .35s var(--spring), background .2s;
+}
+.feature::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--tint) 14%, transparent), transparent 55%);
+  pointer-events: none;
+}
+.feature:active { transform: scale(.985) }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--tint) }
+.feature h3 { font-size: 22px; font-weight: 700; letter-spacing: -.4px; margin: 6px 0 2px }
+.feature .cls { font-size: 14px; color: var(--label-2) }
+.feature .row2 { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap }
+.chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 13px; font-weight: 600; color: var(--tint);
+  background: color-mix(in srgb, var(--tint) 14%, transparent);
+  border-radius: 100px; padding: 4px 10px;
+}
+.chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--tint) }
+.open { margin-left: auto; font-size: 14px; font-weight: 600; color: var(--tint); display: flex; align-items: center; gap: 2px }
+
+/* ---------- inset grouped lists ---------- */
+.group { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden }
+.group + .group { margin-top: 18px }
+.ghead { display: flex; align-items: center; gap: 10px; padding: 11px 16px 10px }
+.ghead .name { font-weight: 600; font-size: 16px }
+.ghead .count { margin-left: auto; font-size: 13px; color: var(--label-3) }
+.glyph { width: 28px; height: 28px; flex: none; color: var(--tint) }
+.glyph svg { width: 100%; height: 100% }
+
+.row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 16px; position: relative;
+  transition: background .15s;
+}
+.row + .row::before, .ghead + .row::before {
+  content: ""; position: absolute; top: 0; left: 54px; right: 0; height: .5px; background: var(--sep);
+}
+.ghead + .row::before { left: 16px }
+a.row:active { background: var(--card-press) }
+@media (hover: hover) { a.row:hover { background: var(--fill) } .feature:hover { transform: translateY(-1px) } }
+.row .t { font-size: 16px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.row .spacer { flex: 1 }
+.tag {
+  flex: none; font-size: 12px; font-weight: 600; color: var(--label-2);
+  background: var(--fill); border-radius: 6px; padding: 2px 7px;
+}
+.chev { flex: none; width: 8px; height: 13px; color: var(--label-3) }
+.soon { color: var(--label-2) }
+.soon .t { color: inherit }
+.pill-soon {
+  flex: none; font-size: 12px; font-weight: 600; color: var(--label-2);
+  background: var(--fill); border-radius: 100px; padding: 3px 9px;
+}
+
+/* archive */
+details.archive > summary {
+  list-style: none; display: flex; align-items: center; gap: 8px;
+  margin: 26px 16px 7px; font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .4px; color: var(--label-2); cursor: pointer;
+  -webkit-user-select: none; user-select: none;
+}
+details.archive > summary::-webkit-details-marker { display: none }
+details.archive > summary .dis {
+  width: 11px; height: 11px; transition: transform .35s var(--spring); color: var(--label-3);
+}
+details.archive[open] > summary .dis { transform: rotate(90deg) }
+details.archive > summary small { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--label-3) }
+
+/* ---------- footer ---------- */
+footer { margin-top: 40px; text-align: center; color: var(--label-3); font-size: 12.5px; line-height: 1.6 }
+
+/* ---------- search overlay ---------- */
+dialog#search {
+  border: 0; padding: 0; background: transparent; width: min(560px, calc(100vw - 32px));
+  margin: clamp(16px, 12vh, 120px) auto auto;
+}
+dialog#search::backdrop {
+  background: rgba(0,0,0,.30);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.panel {
+  background: var(--card); border-radius: 14px; overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,.25), 0 0 0 .5px var(--sep);
+}
+.panel input {
+  width: 100%; border: 0; outline: 0; background: transparent; color: var(--label);
+  font: inherit; font-size: 17px; padding: 15px 16px;
+}
+.panel input::placeholder { color: var(--label-3) }
+#results { max-height: 46vh; overflow-y: auto; border-top: .5px solid var(--sep); padding: 6px }
+#results:empty { display: none }
+#results a {
+  display: flex; align-items: center; gap: 10px; padding: 10px 10px; border-radius: 9px;
+}
+#results a .glyph { width: 22px; height: 22px }
+#results a .m { min-width: 0 }
+#results a .m b { display: block; font-size: 15px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+#results a .m span { font-size: 12.5px; color: var(--label-2) }
+#results a[aria-selected="true"], #results a:hover { background: var(--fill) }
+#results .none { padding: 14px 12px; color: var(--label-2); font-size: 15px }
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(14px) scale(.99); animation: rise .6s var(--spring) forwards; animation-delay: var(--d, 0s) }
+  @keyframes rise { to { opacity: 1; transform: none } }
+  dialog#search[open] .panel { animation: pop .35s var(--spring) }
+  @keyframes pop { from { opacity: 0; transform: scale(.96) translateY(-6px) } }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important }
+}
+</style>
+</head>
+<body>
+
+<!-- hand-drawn class glyphs (stroked, slightly wobbly on purpose) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="g-flag"><path d="M7 25.2 6.8 4.4m.3.6c3.1-1.8 6.2-1.9 9.3-.3 2.6 1.4 5.2 1.4 7.9.1l-.4 8.9c-2.6 1.2-5.2 1.2-7.8-.2-3-1.6-6-1.5-9 .2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-quill"><path d="M23.4 5.2c-6.3.9-10.8 4.3-13.5 10.2-.9 2-1.6 4.6-2.1 7.8m2.5-5.4c4.7.6 8.5-1 11.4-4.8 1.3-1.8 2-4.3 1.7-7.8M11 18.2c3.5-.4 6.3-1.9 8.4-4.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-bubble"><path d="M6.2 6.8c5.1-2.3 12.6-2.4 18.4-.2 1.5 4 1.3 8-.4 11.9-3.8 1.6-7.7 2-11.8 1.2l-5.9 4.5 1.5-5.8c-2.4-3.7-2.9-7.6-1.8-11.6Zm5.6 5.9 8.1-.3m-8 4.2 5.3.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-psi"><path d="M9.1 6.4c.1 5.1 2 7.7 6.6 7.9 4.9.2 7-2.6 6.8-8.2M15.9 5.7l.4 20.1M11.3 26h9.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-atom"><ellipse cx="16" cy="16" rx="11.4" ry="4.6" transform="rotate(24 16 16)" fill="none" stroke="currentColor" stroke-width="1.7"/><ellipse cx="16" cy="16" rx="11.2" ry="4.7" transform="rotate(-26 16 16)" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="16.2" cy="15.8" r="2" fill="currentColor"/></g>
+    <g id="g-sun"><circle cx="16" cy="16.2" r="5.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M16 4.6v3.2M16 24.6v3M4.8 16.4h3.1M24.3 16h3.2M7.9 8.2l2.2 2.1M22 21.9l2.2 2.2M24.1 8l-2.2 2.3M8 24.2l2.2-2.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></g>
+    <g id="g-case"><path d="M5.6 11.2c7-.9 13.9-.9 20.8.1l-.6 12.9c-6.5.8-13 .8-19.6-.1ZM12 10.8c-.2-2.4.9-3.8 3.9-3.9 3.1-.1 4.3 1.2 4.1 3.8M5.9 16.9c6.8 1.6 13.5 1.6 20.2.1M16 15.5v3.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-cross"><path d="M15.8 5.3l.4 21M9.4 11.6c4.5-.5 9-.5 13.4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="g-sine"><path d="M4.8 25.4 4.6 6.2m.2 18.9 22-.3M7.6 20.6c2.4-8.9 4.8-12.1 7.2-6.1 2.2 5.6 4.4 6.6 7 .8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-globe"><circle cx="16" cy="16" r="10.6" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M16 5.6c-4.1 6.9-4.2 13.9-.2 20.9m.4-20.9c4.2 6.9 4.2 13.9.1 20.8M6 13.1c6.7-1.4 13.3-1.4 20 .1M6.2 19.6c6.5 1.3 13 1.3 19.6-.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></g>
+    <g id="g-book"><path d="M6.1 7.6c3.3-1.7 6.6-1.8 9.9-.2 3.3-1.6 6.6-1.5 9.9.1l-.3 16.9c-3.2-1.5-6.4-1.6-9.6-.1-3.2-1.5-6.4-1.4-9.6.1Zm9.9-.2.2 16.7M19.5 11.9v4.6m-2.2-2.4h4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-tilde"><path d="M6.3 7c5-2.2 12.3-2.3 18.2-.3 1.6 3.9 1.4 7.8-.3 11.7-3.9 1.5-7.8 1.8-11.9 1l-5.6 4.4 1.4-5.6C5.7 14.6 5.3 10.8 6.3 7Zm4.6 7.3c1.8-2.7 3.6-2.8 5.5-.4 1.8 2.3 3.6 2.1 5.2-.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-code"><path d="m11.3 9.4-6.1 6.4 6 6.6m9.4-13 6.2 6.5-6.1 6.4M18.2 7l-4.5 17.9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="g-chev"><path d="M1.5 1.5 6 6.5 1.5 11.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </defs>
+</svg>
+
+<header>
+  <div class="bar">
+    <h1>Study Guides</h1>
+    <div class="seg" role="group" aria-label="Theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">Auto</button>
+      <button type="button" data-set="light" aria-pressed="false">Light</button>
+      <button type="button" data-set="dark" aria-pressed="false">Dark</button>
+    </div>
+    <button type="button" class="searchbtn" id="searchOpen" aria-label="Search guides">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="4.6"/><path d="m10.6 10.7 3.4 3.3"/></svg>
+      <span class="lbl">Search</span><kbd>⌘K</kbd>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro reveal" style="--d:.02s">
+    <h2>Study Guides</h2>
+    <p>By Valentino. Free for classmates. New guides land here before every test.</p>
+  </div>
+
+  <div id="featureSlot"></div>
+
+  <section aria-labelledby="sh-now">
+    <div class="sechead reveal" id="sh-now" style="--d:.12s">This year</div>
+    <div id="thisYear"></div>
+  </section>
+
+  <details class="archive" id="archiveBox">
+    <summary class="reveal" style="--d:.2s">
+      <svg class="dis" viewBox="0 0 8 13" aria-hidden="true"><use href="#g-chev"/></svg>
+      Archive <small>· sophomore year</small>
+    </summary>
+    <div id="archive"></div>
+  </details>
+
+  <footer class="reveal" style="--d:.26s">
+    Made by a student, for students. Not affiliated with Bishop Gorman High School.<br>
+    Links open in a new tab. Google Doc guides need a school Google login.
+  </footer>
+</main>
+
+<dialog id="search" aria-label="Search guides">
+  <div class="panel">
+    <input id="q" type="search" placeholder="Search guides, classes, units…" autocomplete="off" spellcheck="false">
+    <div id="results" role="listbox"></div>
+  </div>
+</dialog>
+
+<script>
+"use strict";
+
+/* =====================================================================
+   DATA. Adding a guide = one entry in a class's `guides` array below,
+   then commit. Newest first within a class reads best.
+   Fields: t = title, tag = Guide | Flashcards | Quiz | Folder, url.
+   ===================================================================== */
+
+const FEATURE = {
+  classId: "apush",
+  title: "Unit 1/A study guide",
+  url: "https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc",
+  test: "2026-08-31"   /* YYYY-MM-DD. Chip hides itself the day after. */
+};
+
+const CLASSES = [
+  /* ---- junior year ---- */
+  { id: "apush", cls: "c-apush", glyph: "g-flag", year: "junior",
+    name: "AP US History", abbr: "APUSH",
+    guides: [
+      { t: "Unit 1/A study guide", tag: "Guide",
+        url: "https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc" }
+    ] },
+  { id: "lang",  cls: "c-lang",  glyph: "g-quill",  year: "junior", name: "AP English Language",   abbr: "AP Lang", guides: [] },
+  { id: "phys",  cls: "c-phys",  glyph: "g-atom",   year: "junior", name: "AP Physics 1",          guides: [] },
+  { id: "psych", cls: "c-psych", glyph: "g-psi",    year: "junior", name: "AP Psychology",         guides: [] },
+  { id: "sem",   cls: "c-sem",   glyph: "g-bubble", year: "junior", name: "AP Seminar",            guides: [] },
+  { id: "span",  cls: "c-span",  glyph: "g-sun",    year: "junior", name: "AP Spanish Language",   guides: [] },
+  { id: "bus",   cls: "c-bus",   glyph: "g-case",   year: "junior", name: "Business Principles",   guides: [] },
+  { id: "mor",   cls: "c-mor",   glyph: "g-cross",  year: "junior", name: "Catholic Morality",     guides: [] },
+  { id: "pre",   cls: "c-pre",   glyph: "g-sine",   year: "junior", name: "Honors Precalculus BC", guides: [] },
+
+  /* ---- sophomore year (archive) ---- */
+  { id: "apwh", cls: "c-apwh", glyph: "g-globe", year: "soph",
+    name: "AP World History", abbr: "APWH",
+    guides: [
+      { t: "LEQ pieces, by LEQ option",   tag: "Guide",      url: "https://claude.ai/public/artifacts/7e043d9c-afd6-47f4-9b15-becec95b6422" },
+      { t: "Final exam: Periods 1-4 context", tag: "Guide",  url: "https://claude.ai/public/artifacts/31c8d1f4-4c23-436a-b3fd-1b694d7c84ac" },
+      { t: "Units 7-9 exam",             tag: "Flashcards",  url: "https://claude.ai/public/artifacts/4eced0ca-da51-415c-8095-02e868c91458" },
+      { t: "Units 7-9 exam",             tag: "Guide",       url: "https://claude.ai/public/artifacts/2d59f8f6-1e74-40b0-9e95-0dbfe045d87d" },
+      { t: "Ch 13-14 vocab",             tag: "Quiz",        url: "https://claude.ai/public/artifacts/ab469f7e-9a5e-4bc5-80a6-6ee29247da37" },
+      { t: "Ch 13-14 vocab",             tag: "Flashcards",  url: "https://claude.ai/public/artifacts/b13ea079-6ccc-4945-9380-58801352a600" },
+      { t: "Ch 13-14 vocab",             tag: "Guide",       url: "https://claude.ai/public/artifacts/5c693095-1d35-46a7-a642-99528eefe3a1" },
+      { t: "Ch 12",                      tag: "Guide",       url: "https://docs.google.com/document/d/1tFvKG2RRIl9Ok0Hq_2xoAp8eCOHtHNRp/edit?usp=sharing&rtpof=true&sd=true" },
+      { t: "Ch 11",                      tag: "Flashcards",  url: "https://claude.ai/public/artifacts/e34fb1cb-d614-4b85-97b9-f3ecda2905d1" },
+      { t: "Ch 11",                      tag: "Guide",       url: "https://docs.google.com/document/d/1CUkXc03Cn4ZwXU7-Jn2Juya0juULb23H/edit?usp=sharing&rtpof=true&sd=true" },
+      { t: "DBQ cheat sheets",           tag: "Folder",      url: "https://drive.google.com/drive/folders/1mnqI_D1uZ-QQFELu41YCTIML-amLk3yR?usp=sharing" },
+      { t: "Unit 6",                     tag: "Guide",       url: "https://docs.google.com/document/d/18GH02m0eDOFCmGdAd9WZ6fqrDPXVL0wY_0ol6vAbTBM/edit?usp=sharing" },
+      { t: "Ch 10 vocab",                tag: "Guide",       url: "https://docs.google.com/document/d/1vNceh-jq9hf4l89BR8I14cB_T1WLglkURguF4DqkRDA/edit?usp=sharing" },
+      { t: "Ch 9 vocab",                 tag: "Guide",       url: "https://docs.google.com/document/d/1KNNuFNhHTpCNVcANaQ7UmwVQ2_3ns7uLONANOyXvOS0/edit?usp=sharing" },
+      { t: "Unit 5",                     tag: "Guide",       url: "https://docs.google.com/document/d/1GccQPhCTfA4od0ZK23OufrKMCl4eTBlgvUSo5jOG8do/edit?usp=sharing" }
+    ] },
+  { id: "theo", cls: "c-theo", glyph: "g-book", year: "soph",
+    name: "Theology",
+    guides: [
+      { t: "Holy Orders",                    tag: "Guide", url: "https://claude.ai/public/artifacts/18e496e3-03db-421d-a02f-a19d5d0516e4" },
+      { t: "Sacraments of Healing, Ch 6-7",  tag: "Guide", url: "https://claude.ai/public/artifacts/b5f57a5a-70a2-4948-8b74-5a61a8fb9050" },
+      { t: "Ch 3-5",                         tag: "Guide", url: "https://docs.google.com/document/d/13R3zbc5D86BlcyOljYuKVfV18Au4XiQP/edit" },
+      { t: "Ch 1-2",                         tag: "Guide", url: "https://docs.google.com/document/d/1zGyJWXtGKWbRh65K7MM6UOa0x5zgSN3H1McDAIhDBa0/edit?usp=sharing" }
+    ] },
+  { id: "span3", cls: "c-span3", glyph: "g-tilde", year: "soph",
+    name: "Honors Spanish 3",
+    guides: [
+      { t: "Lesson 2", tag: "Guide", url: "https://claude.ai/public/artifacts/938b8f91-7161-4e4f-bad3-18b519505a02" }
+    ] },
+  { id: "apcsp", cls: "c-apcsp", glyph: "g-code", year: "soph",
+    name: "AP Computer Science Principles", abbr: "APCSP",
+    guides: [
+      { t: "Unit 7", tag: "Guide", url: "https://docs.google.com/document/d/1NSiitDD6mZia8D0o81eLM7Cxf48A9jcp/edit?usp=sharing&rtpof=true&sd=true" }
+    ] }
+];
+
+/* ===================================================================== */
+
+const $ = (s, el) => (el || document).querySelector(s);
+const byId = id => CLASSES.find(c => c.id === id);
+
+/* Local-date-safe parse: "YYYY-MM-DD" as local midnight, not UTC. */
+function localDate(s) {
+  const [y, m, d] = s.split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+function daysUntil(dateStr, now) {
+  const n = now || new Date();
+  const today = new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  return Math.round((localDate(dateStr) - today) / 86400000);
+}
+function chipText(dateStr, now) {
+  const d = daysUntil(dateStr, now);
+  if (d < 0) return null;                       /* expired: chip hides itself */
+  if (d === 0) return "Test today";
+  if (d === 1) return "Test tomorrow";
+  const dt = localDate(dateStr);
+  const wd = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][dt.getDay()];
+  const mo = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][dt.getMonth()];
+  return `Test ${wd}, ${mo} ${dt.getDate()}`;
+}
+/* exposed for tests */
+window.__chipText = chipText;
+
+function el(tag, cls, html) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (html !== undefined) n.innerHTML = html;
+  return n;
+}
+function esc(s) { return s.replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m])); }
+function glyphSvg(id) { return `<span class="glyph" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#${id}"/></svg></span>`; }
+function chev() { return `<svg class="chev" viewBox="0 0 8 13" aria-hidden="true"><use href="#g-chev"/></svg>`; }
+
+function guideRow(g) {
+  const a = el("a", "row");
+  a.href = g.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+  a.innerHTML = `<span class="t">${esc(g.t)}</span><span class="spacer"></span>` +
+                (g.tag ? `<span class="tag">${esc(g.tag)}</span>` : "") + chev();
+  return a;
+}
+
+function classGroup(c, delay) {
+  const g = el("section", `group ${c.cls} reveal`);
+  g.style.setProperty("--d", delay + "s");
+  const head = el("div", "ghead",
+    glyphSvg(c.glyph) +
+    `<span class="name">${esc(c.name)}</span>` +
+    `<span class="count">${c.guides.length}</span>`);
+  g.append(head);
+  c.guides.forEach(x => g.append(guideRow(x)));
+  return g;
+}
+
+function render() {
+  /* Feature card */
+  const fc = byId(FEATURE.classId);
+  const chip = chipText(FEATURE.test);
+  const a = el("a", `feature ${fc.cls} reveal`);
+  a.style.setProperty("--d", ".06s");
+  a.href = FEATURE.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+  a.innerHTML =
+    `<span class="eyebrow">Up next</span>` +
+    `<h3>${esc(FEATURE.title)}</h3>` +
+    `<div class="cls">${esc(fc.name)}</div>` +
+    `<div class="row2">${chip ? `<span class="chip">${esc(chip)}</span>` : ""}` +
+    `<span class="open">Open guide ${chev()}</span></div>`;
+  $("#featureSlot").append(a);
+
+  /* This year */
+  const now = $("#thisYear");
+  const junior = CLASSES.filter(c => c.year === "junior");
+  let d = 0.12;
+  junior.filter(c => c.guides.length).forEach(c => { d += 0.04; now.append(classGroup(c, d)); });
+  const empty = junior.filter(c => !c.guides.length);
+  if (empty.length) {
+    d += 0.04;
+    const g = el("section", "group reveal");
+    g.style.setProperty("--d", d + "s");
+    empty.forEach(c => {
+      const r = el("div", `row soon ${c.cls}`,
+        glyphSvg(c.glyph) + `<span class="t">${esc(c.name)}</span><span class="spacer"></span><span class="pill-soon">Soon</span>`);
+      g.append(r);
+    });
+    now.append(g);
+  }
+
+  /* Archive */
+  const arc = $("#archive");
+  let d2 = 0;
+  CLASSES.filter(c => c.year === "soph").forEach(c => { arc.append(classGroup(c, d2)); d2 = 0; });
+}
+render();
+
+/* ---------- theme segmented control ---------- */
+const seg = $(".seg"), thumb = $(".seg .thumb"), segBtns = [...seg.querySelectorAll("button")];
+function moveThumb() {
+  const on = seg.querySelector('button[aria-pressed="true"]');
+  thumb.style.left = on.offsetLeft + "px";
+  thumb.style.width = on.offsetWidth + "px";
+}
+function setTheme(mode) {
+  const apply = () => { document.documentElement.dataset.theme = mode; };
+  if (document.startViewTransition && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    document.startViewTransition(apply);
+  } else apply();
+  segBtns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.set === mode)));
+  moveThumb();
+  try {
+    if (mode === "auto") localStorage.removeItem("theme");
+    else localStorage.setItem("theme", mode);
+  } catch (e) {}
+}
+segBtns.forEach(b => b.addEventListener("click", () => setTheme(b.dataset.set)));
+segBtns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.set === document.documentElement.dataset.theme)));
+moveThumb();
+addEventListener("resize", moveThumb);
+
+/* ---------- search ---------- */
+const dlg = $("#search"), q = $("#q"), results = $("#results");
+const INDEX = [];
+CLASSES.forEach(c => c.guides.forEach(g => INDEX.push({
+  cls: c.cls, glyph: c.glyph, title: g.t, tag: g.tag || "",
+  sub: (c.abbr || c.name) + (c.year === "soph" ? " · last year" : ""),
+  hay: (c.name + " " + (c.abbr || "") + " " + g.t + " " + (g.tag || "")).toLowerCase(),
+  url: g.url
+})));
+
+let sel = 0;
+function drawResults(list) {
+  results.innerHTML = "";
+  if (!list.length) { results.append(el("div", "none", "No guides match.")); return; }
+  list.slice(0, 12).forEach((it, i) => {
+    const a = el("a", it.cls);
+    a.href = it.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+    a.setAttribute("role", "option");
+    a.setAttribute("aria-selected", String(i === sel));
+    a.innerHTML = glyphSvg(it.glyph) +
+      `<span class="m"><b>${esc(it.title)}${it.tag ? " · " + esc(it.tag) : ""}</b><span>${esc(it.sub)}</span></span>`;
+    results.append(a);
+  });
+}
+function filter() {
+  sel = 0;
+  const terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const list = terms.length ? INDEX.filter(it => terms.every(t => it.hay.includes(t))) : INDEX;
+  drawResults(list);
+}
+function openSearch() { dlg.showModal(); q.value = ""; filter(); q.focus(); }
+$("#searchOpen").addEventListener("click", openSearch);
+q.addEventListener("input", filter);
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("keydown", e => {
+  if (e.key === "Escape") { e.preventDefault(); dlg.close(); return; }
+  const opts = [...results.querySelectorAll("a")];
+  if (!opts.length) return;
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    sel = (sel + (e.key === "ArrowDown" ? 1 : -1) + opts.length) % opts.length;
+    opts.forEach((o, i) => o.setAttribute("aria-selected", String(i === sel)));
+    opts[sel].scrollIntoView({ block: "nearest" });
+  } else if (e.key === "Enter") {
+    e.preventDefault();
+    opts[sel] && opts[sel].click();
+    dlg.close();
+  }
+});
+/* ---------- large-title collapse ---------- */
+new IntersectionObserver(([e]) => {
+  $(".bar h1").classList.toggle("show", !e.isIntersecting);
+}, { rootMargin: "-56px 0px 0px 0px" }).observe($(".intro h2"));
+
+addEventListener("keydown", e => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+    e.preventDefault();
+    dlg.open ? dlg.close() : openSearch();
+  }
+});
+</script>
+</body>
+</html>
