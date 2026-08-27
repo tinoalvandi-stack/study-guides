@@ -10,7 +10,7 @@ to breach because nothing runs server-side and nothing loads from anywhere else.
 - `vercel.json`: security headers plus clean URLs. Vercel serves the rest as-is.
 - `404.html`: served for any path that does not exist.
 - `og-image.png`: the preview card iMessage and social apps show when the link
-  is shared. Its URL in `index.html` is absolute and points at tinoguides.com;
+     is shared. Its URL in `index.html` is absolute and points at valentinoguides.com;
   if the site ends up on a different domain, update the two `og:` URLs in the
   head.
 - `apple-touch-icon.png`: the icon when someone saves the site to an iPhone
