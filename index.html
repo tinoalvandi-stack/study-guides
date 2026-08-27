@@ -366,12 +366,25 @@ dialog#search::backdrop {
    Fields: t = title, tag = Guide | Flashcards | Quiz | Folder, url.
    ===================================================================== */
 
-const FEATURE = {
-  classId: "apush",
-  title: "Unit 1/A study guide",
-  url: "https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc",
-  test: "2026-08-31"   /* YYYY-MM-DD. Chip hides itself the day after. */
-};
+const FEATURES = [
+  {
+    classId: "apush",
+    title: "Unit 1/A study guide",
+    url: "https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc",
+    test: "2026-08-31"   /* YYYY-MM-DD. Chip hides itself the day after. */
+  },
+  {
+    classId: "mor",
+    title: "Ch 1-2 study guide",
+    url: "https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755",
+    test: "2026-09-04"
+  }
+];
+/* Soonest test first. A test that has passed hands "Up next" to the one
+   after it; the last entry stays up once they have all passed. */
+function currentFeature(now) {
+  return FEATURES.find(f => daysUntil(f.test, now) >= 0) || FEATURES[FEATURES.length - 1];
+}
 
 const CLASSES = [
   /* ---- junior year ---- */
@@ -387,7 +400,10 @@ const CLASSES = [
   { id: "sem",   cls: "c-sem",   glyph: "g-bubble", year: "junior", name: "AP Seminar",            guides: [] },
   { id: "span",  cls: "c-span",  glyph: "g-sun",    year: "junior", name: "AP Spanish Language",   guides: [] },
   { id: "bus",   cls: "c-bus",   glyph: "g-case",   year: "junior", name: "Business Principles",   guides: [] },
-  { id: "mor",   cls: "c-mor",   glyph: "g-cross",  year: "junior", name: "Catholic Morality",     guides: [] },
+  { id: "mor",   cls: "c-mor",   glyph: "g-cross",  year: "junior", name: "Catholic Morality",
+    guides: [
+      { t: "Ch 1-2", tag: "Guide", url: "https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755" }
+    ] },
   { id: "pre",   cls: "c-pre",   glyph: "g-sine",   year: "junior", name: "Honors Precalculus BC", guides: [] },
 
   /* ---- sophomore year (archive) ---- */
@@ -490,6 +506,7 @@ function classGroup(c, delay) {
 
 function render() {
   /* Feature card */
+  const FEATURE = currentFeature();
   const fc = byId(FEATURE.classId);
   const chip = chipText(FEATURE.test);
   const a = el("a", `feature ${fc.cls} reveal`);
