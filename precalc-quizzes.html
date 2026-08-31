@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>vectors + dot product · practice quizzes</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+
+:root{
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
+
+  /* honors precalculus bc */
+  --accent:#007AFF;
+  /* palette: dusk */
+  --amb1:var(--accent); --amb2:#BF5AF2; --amb3:#5E5CE6; --amb4:#FF375F;
+
+  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1));
+  --ink:#08080D;
+  --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
+  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
+  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
+  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
+  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
+  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30;
+  --blur:22px; --sat:195%;
+  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --amb:.82; --amb-blur:66px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#0A84FF;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1));
+  --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}}
+:root[data-theme="dark"]{
+  --accent:#0A84FF; --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
+  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hidden{display:none !important}
+
+
+/* math keeps its capitals and stays out of the lowercase pass */
+.m{text-transform:none;font-variant-numeric:tabular-nums;letter-spacing:-.004em;
+  overflow-wrap:break-word}
+
+#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
+  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);
+  animation:hue 120s linear infinite}
+#amb i{position:absolute;display:block;border-radius:50%;
+  animation:drift 38s var(--ease) infinite alternate}
+#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;
+  background:radial-gradient(circle,var(--amb1),transparent 66%)}
+#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:4vh;
+  background:radial-gradient(circle,var(--amb2),transparent 66%);
+  animation-duration:45s;animation-delay:-10s}
+#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:44vh;
+  background:radial-gradient(circle,var(--amb3),transparent 66%);
+  animation-duration:41s;animation-delay:-20s}
+#amb i:nth-child(4){width:52vw;height:52vw;right:-8vw;bottom:-8vh;
+  background:radial-gradient(circle,var(--amb4),transparent 66%);
+  animation-duration:48s;animation-delay:-30s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
+@keyframes hue{
+  0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}
+  50%    {filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}
+}
+
+.g{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
+.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  pointer-events:none;z-index:3;
+
+  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude}
+.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
+.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
+  transition:opacity .4s var(--ease)}
+@media (hover:hover){.g:hover > .spec{opacity:1}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
+.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
+.glyph{width:40px;height:40px;border-radius:12px;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
+  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
+.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;
+  line-height:1.08;text-transform:lowercase}
+.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
+  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase;
+  font-variant-numeric:tabular-nums}
+
+/* segmented control */
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
+  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;
+  box-shadow:inset 0 .5px 0 0 var(--gloss)}
+
+.seg button{position:relative;z-index:1;padding:7px 4px;border-radius:9px;font-family:var(--round);
+  font-size:13.5px;font-weight:640;color:var(--ink2);text-transform:lowercase;
+  transition:color .25s var(--ease)}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
+  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
+  transition:transform .42s var(--spring),width .42s var(--spring)}
+
+main{padding-top:20px}
+.sh{display:flex;align-items:baseline;gap:8px;font-family:var(--round);font-size:13.5px;
+  font-weight:680;color:var(--ink3);margin:30px 4px 10px;text-transform:lowercase}
+.sh:first-child{margin-top:0}
+.sh h2{margin:0;font:inherit;letter-spacing:.008em}
+.sh .shx{margin-left:auto;font-size:12.5px;font-variant-numeric:tabular-nums}
+
+/* collapsible card */
+.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
+.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;
+  position:relative;z-index:1;transition:transform .34s var(--spring)}
+.chead:active{transform:scale(.99)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;
+  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
+.tag{font-family:var(--round);font-size:11px;font-weight:740;padding:3px 8px;border-radius:7px;
+  background:var(--fill2);color:var(--ink3);text-transform:lowercase;flex:none}
+.tag.calc{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+.tw{color:var(--ink3);transition:transform .34s var(--spring);flex:none}
+.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
+.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.cbody.on{grid-template-rows:1fr}
+.cbody > div{overflow:hidden}
+.pad{padding:0 16px 16px}
+
+
+.bp{font-size:15px;line-height:1.55;color:var(--ink2);text-transform:lowercase;margin:0 0 10px}
+.fig{display:block;width:100%;height:auto;margin:4px 0 12px;overflow:visible}
+.fig text{font-family:var(--round);font-size:11px;font-weight:680;fill:var(--ink2);
+  text-transform:none;letter-spacing:0}
+.fig .va{stroke:var(--accent);stroke-width:2.1;fill:none;stroke-linecap:round;marker-end:url(#mA)}
+.fig .vg{stroke:var(--ink2);stroke-width:1.9;fill:none;stroke-linecap:round;marker-end:url(#mG)}
+.fig .ln{stroke:var(--ink3);stroke-width:1.4;fill:none;stroke-linecap:round}
+.fig .dsh{stroke:var(--ink3);stroke-width:1.4;fill:none;stroke-dasharray:4 4}
+.fig .la{fill:var(--accent)}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);
+  text-transform:lowercase}
+.prob{font-size:15.5px;line-height:1.5;color:var(--ink);text-transform:lowercase;
+  padding:0 0 12px;margin:0}
+.step{display:flex;gap:10px;padding:9px 0;box-shadow:inset 0 .5px 0 var(--sep)}
+.sn{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--accent);
+  text-transform:lowercase;flex:none;width:74px;line-height:1.35;padding-top:2px}
+.sd{flex:1;font-size:14.5px;line-height:1.55;color:var(--ink2);text-transform:lowercase}
+.ans{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--fill2);
+  box-shadow:inset 0 .5px 0 0 var(--gloss);font-size:15px;line-height:1.5;
+  text-transform:lowercase}
+.ans b{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--ink3);
+  display:block;margin-bottom:2px}
+
+/* formula rows */
+.frow{display:flex;align-items:baseline;gap:12px;padding:10px 0;
+  box-shadow:inset 0 .5px 0 var(--sep)}
+.frow:first-child{box-shadow:none}
+.fk{font-family:var(--round);font-size:12.5px;font-weight:660;color:var(--ink3);
+  text-transform:lowercase;flex:none;width:104px;line-height:1.35}
+
+.fv{flex:1;font-size:15.5px;line-height:1.5;text-transform:lowercase}
+
+/* traps */
+.trap{border-radius:18px;padding:15px 16px;margin-bottom:10px}
+.tt{font-family:var(--round);font-size:15px;font-weight:700;letter-spacing:-.012em;
+  text-transform:lowercase;margin-bottom:5px;position:relative;z-index:1}
+.tp{font-size:14.5px;line-height:1.55;color:var(--ink2);text-transform:lowercase;
+  position:relative;z-index:1;margin:0}
+.tp + .tp{margin-top:6px}
+
+/* tests */
+/* ── printable quiz sheets: white paper, serif, her layout ─────────── */
+.ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-radius:16px;
+  padding:11px 14px;margin-bottom:14px}
+.ctl .tv{font-family:var(--round);font-size:22px;font-weight:760;
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em;position:relative;z-index:1}
+.ctl .tv.low{color:var(--bad)}
+.ctl .tlab{font-size:13px;color:var(--ink3);text-transform:lowercase;position:relative;z-index:1}
+.cbtn{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--blue);
+  padding:7px 12px;border-radius:10px;background:var(--fill2);text-transform:lowercase;
+  position:relative;z-index:1;transition:transform .3s var(--spring)}
+.cbtn:active{transform:scale(.97)}
+.cbtn.on{background:color-mix(in srgb,var(--accent) 20%,transparent);color:var(--accent)}
+.ctl .push{margin-left:auto}
+.pnote{flex-basis:100%;font-size:12.5px;line-height:1.4;color:var(--ink3);
+  text-transform:lowercase;position:relative;z-index:1;margin-top:2px}
+
+.page{background:#fff;color:#111;border-radius:8px;padding:26px 28px 30px;margin-bottom:14px;
+  font-family:ui-serif,Georgia,"Times New Roman",Times,serif;font-size:14px;line-height:1.34;
+  letter-spacing:0;text-transform:none;box-shadow:0 10px 30px -14px rgba(14,14,38,.5);
+  border:1px solid rgba(0,0,0,.12)}
+.page .m{text-transform:none;font-variant-numeric:normal}
+
+.qhead{display:flex;align-items:baseline;gap:10px;font-size:12.5px}
+.qhead .nm{flex:1;border-bottom:1px solid #111;min-width:70px;margin-right:16px}
+.qmode{text-align:center;font-style:italic;margin:7px 0 10px}
+.honor{font-weight:700;margin-bottom:16px}
+.hrule{border-top:1px solid #111;margin:0 0 17px}
+.sig{width:2.4in;margin:2px 0 14px auto;text-align:center;border-top:1px solid #111;
+  padding-top:2px;font-size:12px}
+.showall{font-weight:700;margin-bottom:12px}
+.memo{display:grid;grid-template-columns:1fr 1fr;gap:9px 13px;align-items:start}
+.mcard{border:1px solid #111;border-radius:2px;padding:8px 10px}
+.mcard h4{margin:0 0 4px;font-size:13.5px;font-weight:700}
+.mcard div{margin:2px 0;font-size:13px;line-height:1.35}
+.mcard table{border-collapse:collapse;font-size:13px;margin:2px 0 4px}
+.mcard th,.mcard td{padding:1px 10px 1px 0;text-align:left;font-weight:400}
+.mcard thead th{font-style:italic;border-bottom:1px solid #111;padding-bottom:2px}
+.mtitle{text-align:center;font-weight:700;font-size:16px;margin-bottom:2px}
+.msub{text-align:center;font-size:12.5px;margin-bottom:12px}
+@media (max-width:560px){.memo{grid-template-columns:1fr}}
+@media print{.memo{grid-template-columns:1fr 1fr}}
+.qitem{margin-bottom:13px}
+.qdir{margin:0 0 6px;font-size:13.5px}
+.qbox{border:1px solid #111;border-radius:2px;padding:9px 11px}
+.qnum{font-weight:700;margin-right:8px}
+.qsol{margin-top:9px}
+.qsol > div{margin:5px 0}
+.bx{border:1px solid #111;padding:0 5px;display:inline-block;line-height:1.5}
+.qsol{display:none}
+.kpage .qsol{display:block}
+.kpage .qbox{min-height:0 !important}
+
+@media print{
+  @page{size:letter;margin:0.62in 0.8in}
+
+  html,body{background:#fff !important;padding:0 !important;margin:0 !important}
+  #amb,header,.ctl,footer{display:none !important}
+  main{padding:0 !important}
+  .wrap{max-width:none !important;padding:0 !important}
+  #p-basics,#p-worked,#p-formulas,#p-traps{display:none !important}
+  #p-tests{display:block !important}
+  .page{border:0;border-radius:0;box-shadow:none;padding:0;margin:0;font-size:11pt;
+    break-after:page;page-break-after:always}
+  .sheet:last-child .page:last-child{break-after:auto;page-break-after:auto}
+  .qitem,.qbox{break-inside:avoid;page-break-inside:avoid}
+}
+
+.timer{display:flex;align-items:center;gap:10px;border-radius:16px;padding:11px 14px;margin-bottom:12px}
+.tv{font-family:var(--round);font-size:22px;font-weight:760;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em;position:relative;z-index:1}
+.tv.low{color:var(--bad)}
+.tlab{font-size:13px;color:var(--ink3);text-transform:lowercase;position:relative;z-index:1}
+.tbtn{margin-left:auto;font-family:var(--round);font-size:14px;font-weight:680;color:var(--blue);
+  padding:7px 12px;border-radius:10px;background:var(--fill2);text-transform:lowercase;
+  position:relative;z-index:1;transition:transform .3s var(--spring)}
+.tbtn:active{transform:scale(.97)}
+.paper{border-radius:18px;padding:15px 16px;margin-bottom:6px}
+.prow{display:flex;align-items:baseline;gap:14px;position:relative;z-index:1}
+.pt{font-size:14.5px;font-weight:580;letter-spacing:-.014em;text-transform:lowercase;
+  position:relative;z-index:1;margin-bottom:9px}
+.pname{flex:1;font-size:12.5px;color:var(--ink3);text-transform:lowercase;
+  box-shadow:inset 0 -1px 0 var(--sep);min-width:54px}
+.ppts{font-family:var(--round);font-size:13px;font-weight:740;color:var(--ink3);
+  font-variant-numeric:tabular-nums}
+.pshow{margin-top:9px;font-family:var(--round);font-size:12px;font-weight:740;
+  color:var(--accent);text-transform:lowercase;position:relative;z-index:1}
+.mode{font-style:italic;text-align:center;font-size:14.5px;color:var(--ink2);
+
+  text-transform:lowercase;margin:20px 0 10px}
+.cell{border:1px solid var(--sep);border-radius:10px;padding:12px 13px;
+  position:relative;z-index:1}
+.qcard{border-radius:18px;padding:16px;margin-bottom:10px}
+.qtop{display:flex;align-items:center;gap:9px;margin-bottom:8px;position:relative;z-index:1}
+.qn{font-family:var(--round);font-size:15.5px;font-weight:760;color:var(--ink);
+  font-variant-numeric:tabular-nums;margin-right:9px}
+.dir{font-style:italic;font-size:14px;line-height:1.45;color:var(--ink2);
+  text-transform:lowercase;margin-bottom:10px;position:relative;z-index:1}
+.src{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--ink3);
+  text-transform:lowercase;margin-bottom:7px}
+.qt{font-size:16px;font-weight:520;line-height:1.45;letter-spacing:-.014em;
+  text-transform:lowercase}
+.reveal{display:block;width:100%;margin-top:12px;padding:11px;border-radius:12px;
+  background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss);font-family:var(--round);
+  font-size:14px;font-weight:660;color:var(--blue);text-transform:lowercase;
+  position:relative;z-index:1;transition:transform .3s var(--spring)}
+.reveal:active{transform:scale(.988)}
+.sol{position:relative;z-index:1;margin-top:6px}
+
+.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);
+  animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+
+footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;
+  text-transform:lowercase}
+
+@media (prefers-reduced-motion:reduce){
+  #amb,#amb i{animation:none}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+
+</style>
+<style>
+:root{color-scheme:light}
+html,body{background:#fff !important;color:#111 !important;margin:0 !important;padding:0 !important}
+body{padding:16px !important;font-family:ui-serif,Georgia,"Times New Roman",Times,serif}
+#amb{display:none !important}
+.bar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #ddd;padding:10px 16px 11px;margin:-16px -16px 18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+.bar a,.bar button{font:inherit;font-size:14px;font-weight:600;color:#007AFF;background:#F2F2F7;border:0;border-radius:9px;padding:8px 13px;text-decoration:none;cursor:pointer;text-transform:none}
+.bar .t{flex-basis:100%;font-size:13px;color:#666;margin-top:1px;text-transform:none}
+.page{box-shadow:none !important;border:1px solid #ccc !important}
+@media print{
+ .bar{display:none !important}
+ body{padding:0 !important;margin:0 !important}
+ @page{size:letter;margin:0.62in 0.8in}
+ .page{border:0 !important;border-radius:0;box-shadow:none !important;padding:0 !important;margin:0 !important;font-size:11pt;break-after:page;page-break-after:always}
+ .sheet:last-child .page:last-child{break-after:auto;page-break-after:auto}
+ .qitem,.qbox{break-inside:avoid;page-break-inside:avoid}
+ *,*::before,*::after{backdrop-filter:none !important;-webkit-backdrop-filter:none !important;filter:none !important;box-shadow:none !important;text-shadow:none !important;animation:none !important;transition:none !important;mask:none !important;-webkit-mask:none !important;mix-blend-mode:normal !important}
+}
+</style>
+</head>
+<body>
+<div class="bar"><a href="/precalc-vectors">back to guide</a><button id="go" type="button">print</button><span class="t">on iPad: tap print, or use Share → Print. answer keys are the last page of each quiz.</span></div>
+<section class="sheet"><div class="page"><div class="mtitle">PCBC H Vectors &amp; Dot Product: Memorize Sheet</div><div class="msub">everything below is from memory on quiz day</div><div class="memo"><div class="mcard"><h4>Component form</h4><div><span class="m">PQ = ⟨x₂&nbsp;−&nbsp;x₁,&nbsp;y₂&nbsp;−&nbsp;y₁⟩</span> (terminal − initial)</div><div><span class="m">⟨a,&nbsp;b⟩ = ai + bj</span>,  <span class="m"><b>i</b> = ⟨1,&nbsp;0⟩</span>,  <span class="m"><b>j</b> = ⟨0,&nbsp;1⟩</span></div><div><span class="m">|⟨a,&nbsp;b⟩| = √(a²&nbsp;+&nbsp;b²)</span></div><div>unit vector: magnitude <span class="m">1</span></div></div><div class="mcard"><h4>Dot product</h4><div><span class="m"><b>u</b> · <b>v</b> = ac + bd</span> (a number, not a vector)</div><div><span class="m"><b>u</b> · <b>u</b> = |<b>u</b>|²</span></div><div><span class="m"><b>u</b> · <b>v</b> = <b>v</b> · <b>u</b></span></div><div><span class="m"><b>u</b> · (<b>v</b>&nbsp;+&nbsp;<b>w</b>) = <b>u</b> · <b>v</b> + <b>u</b> · <b>w</b></span></div><div><span class="m">(ku) · <b>v</b> = k(<b>u</b>&nbsp;·&nbsp;<b>v</b>) = <b>u</b> · (kv)</span></div></div><div class="mcard"><h4>Magnitude and direction</h4><div><span class="m">a = |<b>v</b>|cos θ</span> (horizontal)</div><div><span class="m">b = |<b>v</b>|sin θ</span> (vertical)</div><div><span class="m"><b>v</b> = ⟨|<b>v</b>|cos&nbsp;θ,&nbsp;|<b>v</b>|sin&nbsp;θ⟩</span></div><div><span class="m">tan θ = b/a</span>, <span class="m">a ≠ 0</span> (reference angle)</div><div>report <span class="m">θ</span> in <span class="m">[0, 2π)</span></div></div><div class="mcard"><h4>Angle between</h4><div><span class="m">cos θ = (<b>u</b>&nbsp;·&nbsp;<b>v</b>)/(|<b>u</b>||<b>v</b>|)</span>,  <span class="m">0° ≤ θ ≤ 180°</span></div><div>orthogonal ⟺ <span class="m"><b>u</b> · <b>v</b> = 0</span></div><div>dot <span class="m">&gt; 0</span>: acute</div><div>dot <span class="m">= 0</span>: right</div><div>dot <span class="m">&lt; 0</span>: obtuse</div></div><div class="mcard"><h4>Quadrant fix</h4><div><span class="m">tan⁻¹</span> only answers in QI or QIV. signs of <span class="m">⟨a,&nbsp;b⟩</span> give the quadrant:</div><div>QI <span class="m">(+,&nbsp;+)</span>: <span class="m">θ = ref</span></div><div>QII <span class="m">(−,&nbsp;+)</span>: <span class="m">θ = 180° − ref</span></div><div>QIII <span class="m">(−,&nbsp;−)</span>: <span class="m">θ = 180° + ref</span></div><div>QIV <span class="m">(+,&nbsp;−)</span>: <span class="m">θ = 360° − ref</span></div></div><div class="mcard"><h4>Two forces at a point</h4><div>angle <span class="m">θ</span> between them ⇒ use the supplement <span class="m">180° − θ</span> in the triangle</div><div><span class="m">x = √(a²&nbsp;+&nbsp;b²&nbsp;−&nbsp;2ab&nbsp;cos&nbsp;C)</span></div><div>one radical, round at the very end</div></div><div class="mcard"><h4>Operations</h4><div><span class="m">⟨a,&nbsp;b⟩ ± ⟨c,&nbsp;d⟩ = ⟨a&nbsp;±&nbsp;c,&nbsp;b&nbsp;±&nbsp;d⟩</span></div><div><span class="m">k⟨a,&nbsp;b⟩ = ⟨ka,&nbsp;kb⟩</span></div><div>resultant = the sum: tip to tail, or the diagonal of the parallelogram</div><div>addition commutes, subtraction does not</div></div><div class="mcard"><h4>Exact values</h4><table><thead><tr><th>θ</th><th>sin θ</th><th>cos θ</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>1</td></tr><tr><td>π/6 = 30°</td><td>1/2</td><td>√3/2</td></tr><tr><td>π/4 = 45°</td><td>√2/2</td><td>√2/2</td></tr><tr><td>π/3 = 60°</td><td>√3/2</td><td>1/2</td></tr><tr><td>π/2 = 90°</td><td>1</td><td>0</td></tr></tbody></table><div>signs by quadrant (ASTC): QI all <span class="m">+</span>; QII sin <span class="m">+</span>; QIII tan <span class="m">+</span>; QIV cos <span class="m">+</span></div></div></div></div></section>
+<section class="sheet"><div class="page"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice A)</span><span class="nm">Name</span><span>/25</span></div><div class="qmode" data-base="Non-Calculator">Non-Calculator</div><div class="honor">Honor Code (copy below &amp; sign): On my honor, before God, I have neither given, nor received any aid on this quiz.</div><div class="hrule"></div><div class="hrule"></div><div class="sig">Signature</div><div class="showall">SHOW ALL WORK FOR FULL CREDIT!</div><div class="qitem"><p class="qdir">Find <span class="m">2<b>u</b> + <b>v</b> − 6<b>v</b></span> and <span class="m">|<b>u</b> − <b>v</b>|</span> for the given vectors <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span>. Write <span class="m">2<b>u</b> + <b>v</b> − 6<b>v</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (4 points)</p><div class="qbox" style="min-height: 2.8in;"><span class="qnum">1.</span><span class="m"><b>u</b> = ⟨−3,&nbsp;4⟩</span>, <span class="m"><b>v</b> = ⟨2,&nbsp;−6⟩</span><div class="qsol"><div>combine the like vectors first: <span class="m"><b>v</b> − 6<b>v</b> = −5<b>v</b></span>, so the expression is <span class="m">2<b>u</b> − 5<b>v</b></span></div><div><span class="m">2<b>u</b> = ⟨−6,&nbsp;8⟩</span>, <span class="m">−5<b>v</b> = ⟨−10,&nbsp;30⟩</span></div><div><span class="m">2<b>u</b> + <b>v</b> − 6<b>v</b> = ⟨−6&nbsp;+&nbsp;(−10),&nbsp;8&nbsp;+&nbsp;30⟩ = <span class="bx">⟨−16,&nbsp;38⟩</span> = <span class="bx">−16<b>i</b> + 38<b>j</b></span></span></div><div><span class="m"><b>u</b> − <b>v</b> = ⟨−5,&nbsp;10⟩ ⇒ |<b>u</b> − <b>v</b>| = √(25&nbsp;+&nbsp;100) = √125 = <span class="bx">5√5</span></span></div></div></div></div><div class="qitem"><p class="qdir">Express the vector with initial point <span class="m">P</span> and terminal point <span class="m">Q</span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (2 points)</p><div class="qbox" style="min-height: 2in;"><span class="qnum">2.</span><span class="m">P(−3,&nbsp;5)</span>, <span class="m">Q(6,&nbsp;−7)</span><div class="qsol"><div>terminal minus initial: <span class="m">PQ = ⟨6&nbsp;−&nbsp;(−3),&nbsp;−7&nbsp;−&nbsp;5⟩</span></div><div><span class="m">PQ = <span class="bx">⟨9,&nbsp;−12⟩</span> = <span class="bx">9<b>i</b> − 12<b>j</b></span></span></div></div></div></div></div><div class="page"><div class="qitem"><p class="qdir">Find the horizontal and vertical components of each vector. Then write <span class="m"><b>u</b> + <b>v</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>, and find <span class="m">|<b>u</b> + <b>v</b>|</span>. (5 points)</p><div class="qbox" style="min-height: 3.1in;"><span class="qnum">3.</span><span class="m">|<b>u</b>| = 6</span>, <span class="m">θ = 150°</span>; <span class="m">|<b>v</b>| = 4</span>, <span class="m">θ = 30°</span><div class="qsol"><div><span class="m"><b>u</b> = ⟨6cos&nbsp;150°,&nbsp;6sin&nbsp;150°⟩</span>: QII, reference angle <span class="m">30°</span>, so <span class="m">cos = −√3/2</span>, <span class="m">sin = 1/2</span></div><div><span class="m"><b>u</b> = <span class="bx">⟨−3√3,&nbsp;3⟩</span></span> (horizontal <span class="m">−3√3</span>, vertical <span class="m">3</span>)</div><div><span class="m"><b>v</b> = ⟨4cos&nbsp;30°,&nbsp;4sin&nbsp;30°⟩ = <span class="bx">⟨2√3,&nbsp;2⟩</span></span></div><div><span class="m"><b>u</b> + <b>v</b> = ⟨−3√3&nbsp;+&nbsp;2√3,&nbsp;3&nbsp;+&nbsp;2⟩ = <span class="bx">⟨−√3,&nbsp;5⟩</span> = <span class="bx">−√3 <b>i</b> + 5<b>j</b></span></span></div><div><span class="m">|<b>u</b> + <b>v</b>| = √(3&nbsp;+&nbsp;25) = √28 = <span class="bx">2√7</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the magnitude and direction of the vector. Write your answer in radians. (3 points)</p><div class="qbox" style="min-height: 2.4in;"><span class="qnum">4.</span><span class="m"><b>u</b> = ⟨−6,&nbsp;−6√3⟩</span><div class="qsol"><div><span class="m">|<b>u</b>| = √((−6)²&nbsp;+&nbsp;(−6√3)²) = √(36&nbsp;+&nbsp;108) = √144 = <span class="bx">12</span></span></div><div><span class="m">tanθ = b/a = −6√3/−6 = √3 ⇒ reference angle = π/3</span></div><div><span class="m">a &lt; 0</span> and <span class="m">b &lt; 0 ⇒</span> QIII, so <span class="m">θ = π + π/3 = <span class="bx">4π/3</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the dot product of the given vectors. Then determine if <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span> are orthogonal. (4 points)</p><div class="qbox" style="min-height: 2.4in;"><span class="qnum">5.</span><span class="m"><b>u</b> = ⟨4,&nbsp;−2⟩</span>, <span class="m"><b>v</b> = ⟨−3,&nbsp;5⟩</span>. Find <span class="m">(−2<b>u</b>)·<b>v</b></span> and <span class="m"><b>u</b>·(<b>u</b>&nbsp;+&nbsp;<b>v</b>)</span>.<div class="qsol"><div><span class="m">−2<b>u</b> = ⟨−8,&nbsp;4⟩ ⇒ (−2<b>u</b>)·<b>v</b> = (−8)(−3) + (4)(5) = 24 + 20 = <span class="bx">44</span></span></div><div>check: <span class="m"><b>u</b>·<b>v</b> = (4)(−3) + (−2)(5) = −22</span>, and <span class="m">(ku)·<b>v</b> = k(<b>u</b>·<b>v</b>) = (−2)(−22) = 44</span> ✓</div><div><span class="m"><b>u</b> + <b>v</b> = ⟨1,&nbsp;3⟩ ⇒ <b>u</b>·(<b>u</b>&nbsp;+&nbsp;<b>v</b>) = (4)(1) + (−2)(3) = <span class="bx">−2</span></span></div><div><span class="m"><b>u</b>·<b>v</b> = −22 ≠ 0</span>, so not orthogonal (negative <span class="m">⇒</span> obtuse angle)</div></div></div></div></div><div class="page"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice A)</span><span class="nm">Name</span><span></span></div><div class="qmode" data-base="Calculator">Calculator</div><div class="qitem"><p class="qdir">Find the angle between the given vectors. Round to the nearest tenth of a degree. (3 points)</p><div class="qbox" style="min-height: 3.4in;"><span class="qnum">6.</span><span class="m"><b>u</b> = ⟨5,&nbsp;2⟩</span>, <span class="m"><b>v</b> = ⟨−1,&nbsp;4⟩</span><div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (5)(−1) + (2)(4) = 3</span></div><div><span class="m">|<b>u</b>| = √29</span>, <span class="m">|<b>v</b>| = √17</span></div><div><span class="m">cosθ = <b>u</b>·<b>v</b>/|<b>u</b>||<b>v</b>| = 3/√29√17 = 3/√493 ≈ 0.1351</span></div><div><span class="m">θ = cos⁻¹(0.1351) ≈ <span class="bx">82.2°</span></span> (positive dot product <span class="m">⇒</span> acute ✓)</div></div></div></div><div class="qitem"><p class="qdir">Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth. (4 points)</p><div class="qbox" style="min-height: 3.9in;"><span class="qnum">7.</span>forces of 180 lb and 320 lb, forming an angle of <span class="m">72°</span><div class="qsol"><div>the resultant is the diagonal of the parallelogram; the angle across from it is <span class="m">180° − 72° = 108°</span></div><div><span class="m">x = √(180²&nbsp;+&nbsp;320²&nbsp;−&nbsp;2(180)(320)cos&nbsp;108°)</span></div><div><span class="m">x ≈ <span class="bx">412.8 lb</span></span> (larger than either force, which fits a <span class="m">72°</span> spread)</div></div></div></div></div><div class="page kpage"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice A)</span><span class="nm">Name</span><span>/25</span></div><div class="qmode"><b>ANSWER KEY</b></div><div class="qitem"><p class="qdir">Find <span class="m">2<b>u</b> + <b>v</b> − 6<b>v</b></span> and <span class="m">|<b>u</b> − <b>v</b>|</span> for the given vectors <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span>. Write <span class="m">2<b>u</b> + <b>v</b> − 6<b>v</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (4 points)</p><div class="qbox"><span class="qnum">1.</span><span class="m"><b>u</b> = ⟨−3,&nbsp;4⟩</span>, <span class="m"><b>v</b> = ⟨2,&nbsp;−6⟩</span><div class="qsol"><div>combine the like vectors first: <span class="m"><b>v</b> − 6<b>v</b> = −5<b>v</b></span>, so the expression is <span class="m">2<b>u</b> − 5<b>v</b></span></div><div><span class="m">2<b>u</b> = ⟨−6,&nbsp;8⟩</span>, <span class="m">−5<b>v</b> = ⟨−10,&nbsp;30⟩</span></div><div><span class="m">2<b>u</b> + <b>v</b> − 6<b>v</b> = ⟨−6&nbsp;+&nbsp;(−10),&nbsp;8&nbsp;+&nbsp;30⟩ = <span class="bx">⟨−16,&nbsp;38⟩</span> = <span class="bx">−16<b>i</b> + 38<b>j</b></span></span></div><div><span class="m"><b>u</b> − <b>v</b> = ⟨−5,&nbsp;10⟩ ⇒ |<b>u</b> − <b>v</b>| = √(25&nbsp;+&nbsp;100) = √125 = <span class="bx">5√5</span></span></div></div></div></div><div class="qitem"><p class="qdir">Express the vector with initial point <span class="m">P</span> and terminal point <span class="m">Q</span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (2 points)</p><div class="qbox"><span class="qnum">2.</span><span class="m">P(−3,&nbsp;5)</span>, <span class="m">Q(6,&nbsp;−7)</span><div class="qsol"><div>terminal minus initial: <span class="m">PQ = ⟨6&nbsp;−&nbsp;(−3),&nbsp;−7&nbsp;−&nbsp;5⟩</span></div><div><span class="m">PQ = <span class="bx">⟨9,&nbsp;−12⟩</span> = <span class="bx">9<b>i</b> − 12<b>j</b></span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the horizontal and vertical components of each vector. Then write <span class="m"><b>u</b> + <b>v</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>, and find <span class="m">|<b>u</b> + <b>v</b>|</span>. (5 points)</p><div class="qbox"><span class="qnum">3.</span><span class="m">|<b>u</b>| = 6</span>, <span class="m">θ = 150°</span>; <span class="m">|<b>v</b>| = 4</span>, <span class="m">θ = 30°</span><div class="qsol"><div><span class="m"><b>u</b> = ⟨6cos&nbsp;150°,&nbsp;6sin&nbsp;150°⟩</span>: QII, reference angle <span class="m">30°</span>, so <span class="m">cos = −√3/2</span>, <span class="m">sin = 1/2</span></div><div><span class="m"><b>u</b> = <span class="bx">⟨−3√3,&nbsp;3⟩</span></span> (horizontal <span class="m">−3√3</span>, vertical <span class="m">3</span>)</div><div><span class="m"><b>v</b> = ⟨4cos&nbsp;30°,&nbsp;4sin&nbsp;30°⟩ = <span class="bx">⟨2√3,&nbsp;2⟩</span></span></div><div><span class="m"><b>u</b> + <b>v</b> = ⟨−3√3&nbsp;+&nbsp;2√3,&nbsp;3&nbsp;+&nbsp;2⟩ = <span class="bx">⟨−√3,&nbsp;5⟩</span> = <span class="bx">−√3 <b>i</b> + 5<b>j</b></span></span></div><div><span class="m">|<b>u</b> + <b>v</b>| = √(3&nbsp;+&nbsp;25) = √28 = <span class="bx">2√7</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the magnitude and direction of the vector. Write your answer in radians. (3 points)</p><div class="qbox"><span class="qnum">4.</span><span class="m"><b>u</b> = ⟨−6,&nbsp;−6√3⟩</span><div class="qsol"><div><span class="m">|<b>u</b>| = √((−6)²&nbsp;+&nbsp;(−6√3)²) = √(36&nbsp;+&nbsp;108) = √144 = <span class="bx">12</span></span></div><div><span class="m">tanθ = b/a = −6√3/−6 = √3 ⇒ reference angle = π/3</span></div><div><span class="m">a &lt; 0</span> and <span class="m">b &lt; 0 ⇒</span> QIII, so <span class="m">θ = π + π/3 = <span class="bx">4π/3</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the dot product of the given vectors. Then determine if <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span> are orthogonal. (4 points)</p><div class="qbox"><span class="qnum">5.</span><span class="m"><b>u</b> = ⟨4,&nbsp;−2⟩</span>, <span class="m"><b>v</b> = ⟨−3,&nbsp;5⟩</span>. Find <span class="m">(−2<b>u</b>)·<b>v</b></span> and <span class="m"><b>u</b>·(<b>u</b>&nbsp;+&nbsp;<b>v</b>)</span>.<div class="qsol"><div><span class="m">−2<b>u</b> = ⟨−8,&nbsp;4⟩ ⇒ (−2<b>u</b>)·<b>v</b> = (−8)(−3) + (4)(5) = 24 + 20 = <span class="bx">44</span></span></div><div>check: <span class="m"><b>u</b>·<b>v</b> = (4)(−3) + (−2)(5) = −22</span>, and <span class="m">(ku)·<b>v</b> = k(<b>u</b>·<b>v</b>) = (−2)(−22) = 44</span> ✓</div><div><span class="m"><b>u</b> + <b>v</b> = ⟨1,&nbsp;3⟩ ⇒ <b>u</b>·(<b>u</b>&nbsp;+&nbsp;<b>v</b>) = (4)(1) + (−2)(3) = <span class="bx">−2</span></span></div><div><span class="m"><b>u</b>·<b>v</b> = −22 ≠ 0</span>, so not orthogonal (negative <span class="m">⇒</span> obtuse angle)</div></div></div></div><div class="qitem"><p class="qdir">Find the angle between the given vectors. Round to the nearest tenth of a degree. (3 points)</p><div class="qbox"><span class="qnum">6.</span><span class="m"><b>u</b> = ⟨5,&nbsp;2⟩</span>, <span class="m"><b>v</b> = ⟨−1,&nbsp;4⟩</span><div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (5)(−1) + (2)(4) = 3</span></div><div><span class="m">|<b>u</b>| = √29</span>, <span class="m">|<b>v</b>| = √17</span></div><div><span class="m">cosθ = <b>u</b>·<b>v</b>/|<b>u</b>||<b>v</b>| = 3/√29√17 = 3/√493 ≈ 0.1351</span></div><div><span class="m">θ = cos⁻¹(0.1351) ≈ <span class="bx">82.2°</span></span> (positive dot product <span class="m">⇒</span> acute ✓)</div></div></div></div><div class="qitem"><p class="qdir">Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth. (4 points)</p><div class="qbox"><span class="qnum">7.</span>forces of 180 lb and 320 lb, forming an angle of <span class="m">72°</span><div class="qsol"><div>the resultant is the diagonal of the parallelogram; the angle across from it is <span class="m">180° − 72° = 108°</span></div><div><span class="m">x = √(180²&nbsp;+&nbsp;320²&nbsp;−&nbsp;2(180)(320)cos&nbsp;108°)</span></div><div><span class="m">x ≈ <span class="bx">412.8 lb</span></span> (larger than either force, which fits a <span class="m">72°</span> spread)</div></div></div></div></div></section>
+<section class="sheet"><div class="page"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice B)</span><span class="nm">Name</span><span>/25</span></div><div class="qmode" data-base="Non-Calculator">Non-Calculator</div><div class="honor">Honor Code (copy below &amp; sign): On my honor, before God, I have neither given, nor received any aid on this quiz.</div><div class="hrule"></div><div class="hrule"></div><div class="sig">Signature</div><div class="showall">SHOW ALL WORK FOR FULL CREDIT!</div><div class="qitem"><p class="qdir">Find <span class="m">3<b>v</b> + <b>u</b> − 4<b>u</b></span> and <span class="m">|<b>u</b> + <b>v</b>|</span> for the given vectors <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span>. Write <span class="m">3<b>v</b> + <b>u</b> − 4<b>u</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (4 points)</p><div class="qbox" style="min-height: 2.8in;"><span class="qnum">1.</span><span class="m"><b>u</b> = ⟨6,&nbsp;−1⟩</span>, <span class="m"><b>v</b> = ⟨−2,&nbsp;4⟩</span><div class="qsol"><div>combine first: <span class="m"><b>u</b> − 4<b>u</b> = −3<b>u</b></span>, so the expression is <span class="m">3<b>v</b> − 3<b>u</b></span></div><div><span class="m">3<b>v</b> = ⟨−6,&nbsp;12⟩</span>, <span class="m">3<b>u</b> = ⟨18,&nbsp;−3⟩</span></div><div><span class="m">3<b>v</b> + <b>u</b> − 4<b>u</b> = ⟨−6&nbsp;−&nbsp;18,&nbsp;12&nbsp;−&nbsp;(−3)⟩ = <span class="bx">⟨−24,&nbsp;15⟩</span> = <span class="bx">−24<b>i</b> + 15<b>j</b></span></span></div><div><span class="m"><b>u</b> + <b>v</b> = ⟨4,&nbsp;3⟩ ⇒ |<b>u</b> + <b>v</b>| = √(16&nbsp;+&nbsp;9) = √25 = <span class="bx">5</span></span></div></div></div></div><div class="qitem"><p class="qdir">Express the vector with initial point <span class="m">P</span> and terminal point <span class="m">Q</span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (2 points)</p><div class="qbox" style="min-height: 2in;"><span class="qnum">2.</span><span class="m">P(4,&nbsp;−1)</span>, <span class="m">Q(−4,&nbsp;5)</span><div class="qsol"><div>terminal minus initial: <span class="m">PQ = ⟨−4&nbsp;−&nbsp;4,&nbsp;5&nbsp;−&nbsp;(−1)⟩</span></div><div><span class="m">PQ = <span class="bx">⟨−8,&nbsp;6⟩</span> = <span class="bx">−8<b>i</b> + 6<b>j</b></span></span></div></div></div></div></div><div class="page"><div class="qitem"><p class="qdir">Find the horizontal and vertical components of each vector. Then write <span class="m"><b>u</b> + <b>v</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>, and find <span class="m">|<b>u</b> + <b>v</b>|</span>. (5 points)</p><div class="qbox" style="min-height: 3.1in;"><span class="qnum">3.</span><span class="m">|<b>u</b>| = 10</span>, <span class="m">θ = 225°</span>; <span class="m">|<b>v</b>| = 6</span>, <span class="m">θ = 315°</span><div class="qsol"><div><span class="m"><b>u</b> = ⟨10cos&nbsp;225°,&nbsp;10sin&nbsp;225°⟩</span>: QIII, reference angle <span class="m">45°</span>, both ratios <span class="m">−√2/2</span></div><div><span class="m"><b>u</b> = <span class="bx">⟨−5√2,&nbsp;−5√2⟩</span></span></div><div><span class="m"><b>v</b> = ⟨6cos&nbsp;315°,&nbsp;6sin&nbsp;315°⟩ = <span class="bx">⟨3√2,&nbsp;−3√2⟩</span></span> (QIV)</div><div><span class="m"><b>u</b> + <b>v</b> = ⟨−5√2&nbsp;+&nbsp;3√2,&nbsp;−5√2&nbsp;−&nbsp;3√2⟩ = <span class="bx">⟨−2√2,&nbsp;−8√2⟩</span> = <span class="bx">−2√2 <b>i</b> − 8√2 <b>j</b></span></span></div><div><span class="m">|<b>u</b> + <b>v</b>| = √(8&nbsp;+&nbsp;128) = √136 = <span class="bx">2√34</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the magnitude and direction of the vector. Write your answer in radians. (3 points)</p><div class="qbox" style="min-height: 2.4in;"><span class="qnum">4.</span><span class="m"><b>u</b> = −4<b>i</b> + 4√3 <b>j</b></span><div class="qsol"><div><span class="m"><b>u</b> = ⟨−4,&nbsp;4√3⟩</span></div><div><span class="m">|<b>u</b>| = √(16&nbsp;+&nbsp;48) = √64 = <span class="bx">8</span></span></div><div><span class="m">tanθ = 4√3/−4 = −√3 ⇒ reference angle = π/3</span></div><div><span class="m">a &lt; 0</span> and <span class="m">b &gt; 0 ⇒</span> QII, so <span class="m">θ = π − π/3 = <span class="bx">2π/3</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the dot product of the given vectors. Then determine if <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span> are orthogonal. (4 points)</p><div class="qbox" style="min-height: 2.4in;"><span class="qnum">5.</span><span class="m"><b>u</b> = ⟨−4,&nbsp;6⟩</span>, <span class="m"><b>v</b> = ⟨3,&nbsp;2⟩</span>. Find <span class="m">(3<b>u</b>)·<b>v</b></span> and <span class="m">(<b>u</b>&nbsp;−&nbsp;<b>v</b>)·<b>v</b></span>.<div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (−4)(3) + (6)(2) = −12 + 12 = 0</span>, so orthogonal</div><div><span class="m">(3<b>u</b>)·<b>v</b> = 3(<b>u</b>·<b>v</b>) = 3(0) = <span class="bx">0</span></span> (scaling cannot change a right angle)</div><div><span class="m"><b>u</b> − <b>v</b> = ⟨−7,&nbsp;4⟩ ⇒ (<b>u</b>&nbsp;−&nbsp;<b>v</b>)·<b>v</b> = (−7)(3) + (4)(2) = <span class="bx">−13</span></span></div><div>check: <span class="m">(<b>u</b>&nbsp;−&nbsp;<b>v</b>)·<b>v</b> = <b>u</b>·<b>v</b> − <b>v</b>·<b>v</b> = 0 − |<b>v</b>|² = −13</span> ✓</div></div></div></div></div><div class="page"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice B)</span><span class="nm">Name</span><span></span></div><div class="qmode" data-base="Calculator">Calculator</div><div class="qitem"><p class="qdir">Find the angle between the given vectors. Round to the nearest tenth of a degree. (3 points)</p><div class="qbox" style="min-height: 3.4in;"><span class="qnum">6.</span><span class="m"><b>u</b> = ⟨−2,&nbsp;6⟩</span>, <span class="m"><b>v</b> = ⟨5,&nbsp;1⟩</span><div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (−2)(5) + (6)(1) = −4</span></div><div><span class="m">|<b>u</b>| = √40 = 2√10</span>, <span class="m">|<b>v</b>| = √26</span></div><div><span class="m">cosθ = −4/2√10√26 = −4/2√260 ≈ −0.1240</span></div><div><span class="m">θ = cos⁻¹(−0.1240) ≈ <span class="bx">97.1°</span></span> (negative dot product <span class="m">⇒</span> obtuse ✓)</div></div></div></div><div class="qitem"><p class="qdir">Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth. (4 points)</p><div class="qbox" style="min-height: 3.9in;"><span class="qnum">7.</span>forces of 95 N and 140 N, forming an angle of <span class="m">38°</span><div class="qsol"><div>angle across from the diagonal: <span class="m">180° − 38° = 142°</span></div><div><span class="m">x = √(95²&nbsp;+&nbsp;140²&nbsp;−&nbsp;2(95)(140)cos&nbsp;142°)</span></div><div><span class="m">x ≈ <span class="bx">222.7 N</span></span> (a narrow <span class="m">38°</span> spread, so it lands near <span class="m">95 + 140 = 235</span> ✓)</div></div></div></div></div><div class="page kpage"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice B)</span><span class="nm">Name</span><span>/25</span></div><div class="qmode"><b>ANSWER KEY</b></div><div class="qitem"><p class="qdir">Find <span class="m">3<b>v</b> + <b>u</b> − 4<b>u</b></span> and <span class="m">|<b>u</b> + <b>v</b>|</span> for the given vectors <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span>. Write <span class="m">3<b>v</b> + <b>u</b> − 4<b>u</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (4 points)</p><div class="qbox"><span class="qnum">1.</span><span class="m"><b>u</b> = ⟨6,&nbsp;−1⟩</span>, <span class="m"><b>v</b> = ⟨−2,&nbsp;4⟩</span><div class="qsol"><div>combine first: <span class="m"><b>u</b> − 4<b>u</b> = −3<b>u</b></span>, so the expression is <span class="m">3<b>v</b> − 3<b>u</b></span></div><div><span class="m">3<b>v</b> = ⟨−6,&nbsp;12⟩</span>, <span class="m">3<b>u</b> = ⟨18,&nbsp;−3⟩</span></div><div><span class="m">3<b>v</b> + <b>u</b> − 4<b>u</b> = ⟨−6&nbsp;−&nbsp;18,&nbsp;12&nbsp;−&nbsp;(−3)⟩ = <span class="bx">⟨−24,&nbsp;15⟩</span> = <span class="bx">−24<b>i</b> + 15<b>j</b></span></span></div><div><span class="m"><b>u</b> + <b>v</b> = ⟨4,&nbsp;3⟩ ⇒ |<b>u</b> + <b>v</b>| = √(16&nbsp;+&nbsp;9) = √25 = <span class="bx">5</span></span></div></div></div></div><div class="qitem"><p class="qdir">Express the vector with initial point <span class="m">P</span> and terminal point <span class="m">Q</span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (2 points)</p><div class="qbox"><span class="qnum">2.</span><span class="m">P(4,&nbsp;−1)</span>, <span class="m">Q(−4,&nbsp;5)</span><div class="qsol"><div>terminal minus initial: <span class="m">PQ = ⟨−4&nbsp;−&nbsp;4,&nbsp;5&nbsp;−&nbsp;(−1)⟩</span></div><div><span class="m">PQ = <span class="bx">⟨−8,&nbsp;6⟩</span> = <span class="bx">−8<b>i</b> + 6<b>j</b></span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the horizontal and vertical components of each vector. Then write <span class="m"><b>u</b> + <b>v</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>, and find <span class="m">|<b>u</b> + <b>v</b>|</span>. (5 points)</p><div class="qbox"><span class="qnum">3.</span><span class="m">|<b>u</b>| = 10</span>, <span class="m">θ = 225°</span>; <span class="m">|<b>v</b>| = 6</span>, <span class="m">θ = 315°</span><div class="qsol"><div><span class="m"><b>u</b> = ⟨10cos&nbsp;225°,&nbsp;10sin&nbsp;225°⟩</span>: QIII, reference angle <span class="m">45°</span>, both ratios <span class="m">−√2/2</span></div><div><span class="m"><b>u</b> = <span class="bx">⟨−5√2,&nbsp;−5√2⟩</span></span></div><div><span class="m"><b>v</b> = ⟨6cos&nbsp;315°,&nbsp;6sin&nbsp;315°⟩ = <span class="bx">⟨3√2,&nbsp;−3√2⟩</span></span> (QIV)</div><div><span class="m"><b>u</b> + <b>v</b> = ⟨−5√2&nbsp;+&nbsp;3√2,&nbsp;−5√2&nbsp;−&nbsp;3√2⟩ = <span class="bx">⟨−2√2,&nbsp;−8√2⟩</span> = <span class="bx">−2√2 <b>i</b> − 8√2 <b>j</b></span></span></div><div><span class="m">|<b>u</b> + <b>v</b>| = √(8&nbsp;+&nbsp;128) = √136 = <span class="bx">2√34</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the magnitude and direction of the vector. Write your answer in radians. (3 points)</p><div class="qbox"><span class="qnum">4.</span><span class="m"><b>u</b> = −4<b>i</b> + 4√3 <b>j</b></span><div class="qsol"><div><span class="m"><b>u</b> = ⟨−4,&nbsp;4√3⟩</span></div><div><span class="m">|<b>u</b>| = √(16&nbsp;+&nbsp;48) = √64 = <span class="bx">8</span></span></div><div><span class="m">tanθ = 4√3/−4 = −√3 ⇒ reference angle = π/3</span></div><div><span class="m">a &lt; 0</span> and <span class="m">b &gt; 0 ⇒</span> QII, so <span class="m">θ = π − π/3 = <span class="bx">2π/3</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the dot product of the given vectors. Then determine if <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span> are orthogonal. (4 points)</p><div class="qbox"><span class="qnum">5.</span><span class="m"><b>u</b> = ⟨−4,&nbsp;6⟩</span>, <span class="m"><b>v</b> = ⟨3,&nbsp;2⟩</span>. Find <span class="m">(3<b>u</b>)·<b>v</b></span> and <span class="m">(<b>u</b>&nbsp;−&nbsp;<b>v</b>)·<b>v</b></span>.<div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (−4)(3) + (6)(2) = −12 + 12 = 0</span>, so orthogonal</div><div><span class="m">(3<b>u</b>)·<b>v</b> = 3(<b>u</b>·<b>v</b>) = 3(0) = <span class="bx">0</span></span> (scaling cannot change a right angle)</div><div><span class="m"><b>u</b> − <b>v</b> = ⟨−7,&nbsp;4⟩ ⇒ (<b>u</b>&nbsp;−&nbsp;<b>v</b>)·<b>v</b> = (−7)(3) + (4)(2) = <span class="bx">−13</span></span></div><div>check: <span class="m">(<b>u</b>&nbsp;−&nbsp;<b>v</b>)·<b>v</b> = <b>u</b>·<b>v</b> − <b>v</b>·<b>v</b> = 0 − |<b>v</b>|² = −13</span> ✓</div></div></div></div><div class="qitem"><p class="qdir">Find the angle between the given vectors. Round to the nearest tenth of a degree. (3 points)</p><div class="qbox"><span class="qnum">6.</span><span class="m"><b>u</b> = ⟨−2,&nbsp;6⟩</span>, <span class="m"><b>v</b> = ⟨5,&nbsp;1⟩</span><div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (−2)(5) + (6)(1) = −4</span></div><div><span class="m">|<b>u</b>| = √40 = 2√10</span>, <span class="m">|<b>v</b>| = √26</span></div><div><span class="m">cosθ = −4/2√10√26 = −4/2√260 ≈ −0.1240</span></div><div><span class="m">θ = cos⁻¹(−0.1240) ≈ <span class="bx">97.1°</span></span> (negative dot product <span class="m">⇒</span> obtuse ✓)</div></div></div></div><div class="qitem"><p class="qdir">Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth. (4 points)</p><div class="qbox"><span class="qnum">7.</span>forces of 95 N and 140 N, forming an angle of <span class="m">38°</span><div class="qsol"><div>angle across from the diagonal: <span class="m">180° − 38° = 142°</span></div><div><span class="m">x = √(95²&nbsp;+&nbsp;140²&nbsp;−&nbsp;2(95)(140)cos&nbsp;142°)</span></div><div><span class="m">x ≈ <span class="bx">222.7 N</span></span> (a narrow <span class="m">38°</span> spread, so it lands near <span class="m">95 + 140 = 235</span> ✓)</div></div></div></div></div></section>
+<section class="sheet"><div class="page"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice C)</span><span class="nm">Name</span><span>/25</span></div><div class="qmode" data-base="Non-Calculator">Non-Calculator</div><div class="honor">Honor Code (copy below &amp; sign): On my honor, before God, I have neither given, nor received any aid on this quiz.</div><div class="hrule"></div><div class="hrule"></div><div class="sig">Signature</div><div class="showall">SHOW ALL WORK FOR FULL CREDIT!</div><div class="qitem"><p class="qdir">Find <span class="m">5<b>u</b> + 2<b>v</b> − <b>u</b></span> and <span class="m">|<b>u</b> − <b>v</b>|</span> for the given vectors <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span>. Write <span class="m">5<b>u</b> + 2<b>v</b> − <b>u</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (4 points)</p><div class="qbox" style="min-height: 2.8in;"><span class="qnum">1.</span><span class="m"><b>u</b> = ⟨5,&nbsp;−3⟩</span>, <span class="m"><b>v</b> = ⟨−2,&nbsp;6⟩</span><div class="qsol"><div>combine first: <span class="m">5<b>u</b> − <b>u</b> = 4<b>u</b></span>, so the expression is <span class="m">4<b>u</b> + 2<b>v</b></span></div><div><span class="m">4<b>u</b> = ⟨20,&nbsp;−12⟩</span>, <span class="m">2<b>v</b> = ⟨−4,&nbsp;12⟩</span></div><div><span class="m">5<b>u</b> + 2<b>v</b> − <b>u</b> = ⟨20&nbsp;+&nbsp;(−4),&nbsp;−12&nbsp;+&nbsp;12⟩ = <span class="bx">⟨16,&nbsp;0⟩</span> = <span class="bx">16<b>i</b> + 0<b>j</b></span></span> (write the <span class="m">0<b>j</b></span>)</div><div><span class="m"><b>u</b> − <b>v</b> = ⟨7,&nbsp;−9⟩ ⇒ |<b>u</b> − <b>v</b>| = √(49&nbsp;+&nbsp;81) = <span class="bx">√130</span></span></div></div></div></div><div class="qitem"><p class="qdir">Express the vector with initial point <span class="m">P</span> and terminal point <span class="m">Q</span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (2 points)</p><div class="qbox" style="min-height: 2in;"><span class="qnum">2.</span><span class="m">P(−5,&nbsp;−2)</span>, <span class="m">Q(3,&nbsp;4)</span><div class="qsol"><div>terminal minus initial: <span class="m">PQ = ⟨3&nbsp;−&nbsp;(−5),&nbsp;4&nbsp;−&nbsp;(−2)⟩</span></div><div><span class="m">PQ = <span class="bx">⟨8,&nbsp;6⟩</span> = <span class="bx">8<b>i</b> + 6<b>j</b></span></span></div></div></div></div></div><div class="page"><div class="qitem"><p class="qdir">Find the horizontal and vertical components of each vector. Then write <span class="m"><b>u</b> + <b>v</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>, and find <span class="m">|<b>u</b> + <b>v</b>|</span>. (5 points)</p><div class="qbox" style="min-height: 3.1in;"><span class="qnum">3.</span><span class="m">|<b>u</b>| = 8</span>, <span class="m">θ = 2π/3</span>; <span class="m">|<b>v</b>| = 6</span>, <span class="m">θ = π/3</span><div class="qsol"><div><span class="m"><b>u</b> = ⟨8cos(2π/3),&nbsp;8sin(2π/3)⟩</span>: QII, reference angle <span class="m">π/3</span>, so <span class="m">cos = −1/2</span>, <span class="m">sin = √3/2</span></div><div><span class="m"><b>u</b> = <span class="bx">⟨−4,&nbsp;4√3⟩</span></span></div><div><span class="m"><b>v</b> = ⟨6cos(π/3),&nbsp;6sin(π/3)⟩ = <span class="bx">⟨3,&nbsp;3√3⟩</span></span></div><div><span class="m"><b>u</b> + <b>v</b> = ⟨−4&nbsp;+&nbsp;3,&nbsp;4√3&nbsp;+&nbsp;3√3⟩ = <span class="bx">⟨−1,&nbsp;7√3⟩</span> = <span class="bx">−<b>i</b> + 7√3 <b>j</b></span></span></div><div><span class="m">|<b>u</b> + <b>v</b>| = √(1&nbsp;+&nbsp;147) = √148 = <span class="bx">2√37</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the magnitude and direction of the vector. Write your answer in radians. (3 points)</p><div class="qbox" style="min-height: 2.4in;"><span class="qnum">4.</span><span class="m"><b>u</b> = ⟨5√3,&nbsp;−5⟩</span><div class="qsol"><div><span class="m">|<b>u</b>| = √(75&nbsp;+&nbsp;25) = √100 = <span class="bx">10</span></span></div><div><span class="m">tanθ = −5/5√3 = −1/√3 ⇒ reference angle = π/6</span></div><div><span class="m">a &gt; 0</span> and <span class="m">b &lt; 0 ⇒</span> QIV, so <span class="m">θ = 2π − π/6 = <span class="bx">11π/6</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the dot product of the given vectors. Then determine if <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span> are orthogonal. (4 points)</p><div class="qbox" style="min-height: 2.4in;"><span class="qnum">5.</span><span class="m"><b>u</b> = ⟨−6,&nbsp;2⟩</span>, <span class="m"><b>v</b> = ⟨1,&nbsp;3⟩</span>. Find <span class="m">(−3<b>u</b>)·<b>v</b></span> and <span class="m">(<b>u</b>&nbsp;+&nbsp;<b>v</b>)·<b>u</b></span>.<div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (−6)(1) + (2)(3) = −6 + 6 = 0</span>, so orthogonal</div><div><span class="m">(−3<b>u</b>)·<b>v</b> = −3(<b>u</b>·<b>v</b>) = <span class="bx">0</span></span></div><div><span class="m"><b>u</b> + <b>v</b> = ⟨−5,&nbsp;5⟩ ⇒ (<b>u</b>&nbsp;+&nbsp;<b>v</b>)·<b>u</b> = (−5)(−6) + (5)(2) = 30 + 10 = <span class="bx">40</span></span></div><div>check: <span class="m">(<b>u</b>&nbsp;+&nbsp;<b>v</b>)·<b>u</b> = <b>u</b>·<b>u</b> + <b>v</b>·<b>u</b> = |<b>u</b>|² + 0 = 40</span> ✓</div></div></div></div></div><div class="page"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice C)</span><span class="nm">Name</span><span></span></div><div class="qmode" data-base="Calculator">Calculator</div><div class="qitem"><p class="qdir">Find the angle between the given vectors. Round to the nearest tenth of a degree. (3 points)</p><div class="qbox" style="min-height: 3.4in;"><span class="qnum">6.</span><span class="m"><b>u</b> = ⟨4,&nbsp;−3⟩</span>, <span class="m"><b>v</b> = ⟨2,&nbsp;5⟩</span><div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (4)(2) + (−3)(5) = −7</span></div><div><span class="m">|<b>u</b>| = √(16&nbsp;+&nbsp;9) = 5</span>, <span class="m">|<b>v</b>| = √29</span></div><div><span class="m">cosθ = −7/5√29 ≈ −0.2600</span></div><div><span class="m">θ = cos⁻¹(−0.2600) ≈ <span class="bx">105.1°</span></span> (negative dot product <span class="m">⇒</span> obtuse ✓)</div></div></div></div><div class="qitem"><p class="qdir">Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth. (4 points)</p><div class="qbox" style="min-height: 3.9in;"><span class="qnum">7.</span>forces of 210 N and 145 N, forming an angle of <span class="m">55°</span><div class="qsol"><div>angle across from the diagonal: <span class="m">180° − 55° = 125°</span></div><div><span class="m">x = √(210²&nbsp;+&nbsp;145²&nbsp;−&nbsp;2(210)(145)cos&nbsp;125°)</span></div><div><span class="m">x ≈ <span class="bx">316.3 N</span></span></div></div></div></div></div><div class="page kpage"><div class="qhead"><span>PCBC H Vectors &amp; Dot Product Quiz (Practice C)</span><span class="nm">Name</span><span>/25</span></div><div class="qmode"><b>ANSWER KEY</b></div><div class="qitem"><p class="qdir">Find <span class="m">5<b>u</b> + 2<b>v</b> − <b>u</b></span> and <span class="m">|<b>u</b> − <b>v</b>|</span> for the given vectors <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span>. Write <span class="m">5<b>u</b> + 2<b>v</b> − <b>u</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (4 points)</p><div class="qbox"><span class="qnum">1.</span><span class="m"><b>u</b> = ⟨5,&nbsp;−3⟩</span>, <span class="m"><b>v</b> = ⟨−2,&nbsp;6⟩</span><div class="qsol"><div>combine first: <span class="m">5<b>u</b> − <b>u</b> = 4<b>u</b></span>, so the expression is <span class="m">4<b>u</b> + 2<b>v</b></span></div><div><span class="m">4<b>u</b> = ⟨20,&nbsp;−12⟩</span>, <span class="m">2<b>v</b> = ⟨−4,&nbsp;12⟩</span></div><div><span class="m">5<b>u</b> + 2<b>v</b> − <b>u</b> = ⟨20&nbsp;+&nbsp;(−4),&nbsp;−12&nbsp;+&nbsp;12⟩ = <span class="bx">⟨16,&nbsp;0⟩</span> = <span class="bx">16<b>i</b> + 0<b>j</b></span></span> (write the <span class="m">0<b>j</b></span>)</div><div><span class="m"><b>u</b> − <b>v</b> = ⟨7,&nbsp;−9⟩ ⇒ |<b>u</b> − <b>v</b>| = √(49&nbsp;+&nbsp;81) = <span class="bx">√130</span></span></div></div></div></div><div class="qitem"><p class="qdir">Express the vector with initial point <span class="m">P</span> and terminal point <span class="m">Q</span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>. (2 points)</p><div class="qbox"><span class="qnum">2.</span><span class="m">P(−5,&nbsp;−2)</span>, <span class="m">Q(3,&nbsp;4)</span><div class="qsol"><div>terminal minus initial: <span class="m">PQ = ⟨3&nbsp;−&nbsp;(−5),&nbsp;4&nbsp;−&nbsp;(−2)⟩</span></div><div><span class="m">PQ = <span class="bx">⟨8,&nbsp;6⟩</span> = <span class="bx">8<b>i</b> + 6<b>j</b></span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the horizontal and vertical components of each vector. Then write <span class="m"><b>u</b> + <b>v</b></span> in component form AND in terms of <span class="m"><b>i</b></span> and <span class="m"><b>j</b></span>, and find <span class="m">|<b>u</b> + <b>v</b>|</span>. (5 points)</p><div class="qbox"><span class="qnum">3.</span><span class="m">|<b>u</b>| = 8</span>, <span class="m">θ = 2π/3</span>; <span class="m">|<b>v</b>| = 6</span>, <span class="m">θ = π/3</span><div class="qsol"><div><span class="m"><b>u</b> = ⟨8cos(2π/3),&nbsp;8sin(2π/3)⟩</span>: QII, reference angle <span class="m">π/3</span>, so <span class="m">cos = −1/2</span>, <span class="m">sin = √3/2</span></div><div><span class="m"><b>u</b> = <span class="bx">⟨−4,&nbsp;4√3⟩</span></span></div><div><span class="m"><b>v</b> = ⟨6cos(π/3),&nbsp;6sin(π/3)⟩ = <span class="bx">⟨3,&nbsp;3√3⟩</span></span></div><div><span class="m"><b>u</b> + <b>v</b> = ⟨−4&nbsp;+&nbsp;3,&nbsp;4√3&nbsp;+&nbsp;3√3⟩ = <span class="bx">⟨−1,&nbsp;7√3⟩</span> = <span class="bx">−<b>i</b> + 7√3 <b>j</b></span></span></div><div><span class="m">|<b>u</b> + <b>v</b>| = √(1&nbsp;+&nbsp;147) = √148 = <span class="bx">2√37</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the magnitude and direction of the vector. Write your answer in radians. (3 points)</p><div class="qbox"><span class="qnum">4.</span><span class="m"><b>u</b> = ⟨5√3,&nbsp;−5⟩</span><div class="qsol"><div><span class="m">|<b>u</b>| = √(75&nbsp;+&nbsp;25) = √100 = <span class="bx">10</span></span></div><div><span class="m">tanθ = −5/5√3 = −1/√3 ⇒ reference angle = π/6</span></div><div><span class="m">a &gt; 0</span> and <span class="m">b &lt; 0 ⇒</span> QIV, so <span class="m">θ = 2π − π/6 = <span class="bx">11π/6</span></span></div></div></div></div><div class="qitem"><p class="qdir">Find the dot product of the given vectors. Then determine if <span class="m"><b>u</b></span> and <span class="m"><b>v</b></span> are orthogonal. (4 points)</p><div class="qbox"><span class="qnum">5.</span><span class="m"><b>u</b> = ⟨−6,&nbsp;2⟩</span>, <span class="m"><b>v</b> = ⟨1,&nbsp;3⟩</span>. Find <span class="m">(−3<b>u</b>)·<b>v</b></span> and <span class="m">(<b>u</b>&nbsp;+&nbsp;<b>v</b>)·<b>u</b></span>.<div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (−6)(1) + (2)(3) = −6 + 6 = 0</span>, so orthogonal</div><div><span class="m">(−3<b>u</b>)·<b>v</b> = −3(<b>u</b>·<b>v</b>) = <span class="bx">0</span></span></div><div><span class="m"><b>u</b> + <b>v</b> = ⟨−5,&nbsp;5⟩ ⇒ (<b>u</b>&nbsp;+&nbsp;<b>v</b>)·<b>u</b> = (−5)(−6) + (5)(2) = 30 + 10 = <span class="bx">40</span></span></div><div>check: <span class="m">(<b>u</b>&nbsp;+&nbsp;<b>v</b>)·<b>u</b> = <b>u</b>·<b>u</b> + <b>v</b>·<b>u</b> = |<b>u</b>|² + 0 = 40</span> ✓</div></div></div></div><div class="qitem"><p class="qdir">Find the angle between the given vectors. Round to the nearest tenth of a degree. (3 points)</p><div class="qbox"><span class="qnum">6.</span><span class="m"><b>u</b> = ⟨4,&nbsp;−3⟩</span>, <span class="m"><b>v</b> = ⟨2,&nbsp;5⟩</span><div class="qsol"><div><span class="m"><b>u</b>·<b>v</b> = (4)(2) + (−3)(5) = −7</span></div><div><span class="m">|<b>u</b>| = √(16&nbsp;+&nbsp;9) = 5</span>, <span class="m">|<b>v</b>| = √29</span></div><div><span class="m">cosθ = −7/5√29 ≈ −0.2600</span></div><div><span class="m">θ = cos⁻¹(−0.2600) ≈ <span class="bx">105.1°</span></span> (negative dot product <span class="m">⇒</span> obtuse ✓)</div></div></div></div><div class="qitem"><p class="qdir">Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth. (4 points)</p><div class="qbox"><span class="qnum">7.</span>forces of 210 N and 145 N, forming an angle of <span class="m">55°</span><div class="qsol"><div>angle across from the diagonal: <span class="m">180° − 55° = 125°</span></div><div><span class="m">x = √(210²&nbsp;+&nbsp;145²&nbsp;−&nbsp;2(210)(145)cos&nbsp;125°)</span></div><div><span class="m">x ≈ <span class="bx">316.3 N</span></span></div></div></div></div></div></section>
+<script>document.getElementById("go").addEventListener("click",function(){window.print()});<\/script>
+</body>
+</html>
