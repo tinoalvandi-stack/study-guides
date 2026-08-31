@@ -441,7 +441,7 @@ const FINE=matchMedia("(hover:hover)").matches;
 /* ═══════════ CONTENT ═══════════ */
 const FEATURES=[
   {classId:"apush", title:"Unit 1/A study guide",
-   url:"https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc", test:"2026-08-31"},
+   url:"https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc", test:"2026-08-31", end:"2026-09-01"},
   {classId:"pre",   title:"Vectors + dot product study guide",
    url:"https://claude.ai/public/artifacts/d25456c6-ce81-4bfa-a6d5-23e51ef6cff7", test:"2026-08-31"},
   {classId:"mor",   title:"Ch 1-2 study guide",
@@ -552,17 +552,20 @@ addEventListener("resize",moveThumb);
 
 /* ═══════════ UP NEXT ═══════════ */
 (function(){
-  const today=new Date().toISOString().slice(0,10);
-  const live=FEATURES.filter(f=>f.test>=today).sort((a,b)=>a.test.localeCompare(b.test));
+  const n0=new Date();
+  const today=new Date(n0.getTime()-n0.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+  const live=FEATURES.filter(f=>(f.end||f.test)>=today).sort((a,b)=>a.test.localeCompare(b.test));
   if(!live.length)return;
   $("#upnext").hidden=false;
   const wrap=$("#feat");
   live.forEach((f,i)=>{
     const c=byId(f.classId); if(!c)return;
+    const last=f.end||f.test;
     const d=new Date(f.test+"T12:00:00"), now=new Date(today+"T12:00:00");
     const days=Math.round((d-now)/86400000);
-    const when=days===0?"today":days===1?"tomorrow":"in "+days+" days";
-    const date=(d.getMonth()+1)+"/"+d.getDate();
+    const when=days<=0?"today":days===1?"tomorrow":"in "+days+" days";
+    const md=x=>(x.getMonth()+1)+"/"+x.getDate();
+    const date=last===f.test?md(d):md(d)+"\u2013"+md(new Date(last+"T12:00:00"));
     const a=el("a","hero g"); a.href=f.url; a.target="_blank"; a.rel="noopener noreferrer";
     a.style.setProperty("--accent",c.c);
     a.innerHTML='<span class="wash" aria-hidden="true"></span><span class="spec" aria-hidden="true"></span>'+
