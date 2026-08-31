@@ -1199,10 +1199,7 @@ function sheetText(str,node){
     if(!n){n=el("div","pnote");ctl.appendChild(n)}
     n.textContent=t};
 
-  ctl.querySelector("#prt").onclick=()=>{
-    try{print()}catch(e){}
-    note("if no print dialog opened, this frame is sandboxed. open the pdf and print from there.");
-  };
+  ctl.querySelector("#prt").onclick=()=>{ location.href="/precalc-quizzes.pdf"; };
 
   const HONOR="Honor Code (copy below & sign): On my honor, before God, I have neither given, "+
     "nor received any aid on this quiz.";
