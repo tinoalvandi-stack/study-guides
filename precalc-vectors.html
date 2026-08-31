@@ -619,11 +619,21 @@ const GUIDE = {
          "the reported direction angle has to live in `[0, 2π)`. `−π/4` is not an answer, `7π/4` is."] },
     { t:"|u − v| is not |u| − |v|",
       p:["subtract the components, then take the magnitude of what's left. `⟨−1, 4⟩ − ⟨3, −7⟩ = ⟨−4, 11⟩`, so `|u − v| = √137 ≈ 11.7`, not `√17 − √58`, which is negative."] },
+    { t:"a missing component is a zero",
+      p:["`u = 5i` means `u = ⟨5, 0⟩`, and `u = −6j` means `u = ⟨0, −6⟩`. the slot is still there, it just holds a zero.",
+         "this bites hardest in dot products: `⟨5, 0⟩ · ⟨−3, 2⟩ = −15 + 0`, not `−15 + 2`. and going the other way, an answer of `⟨16, 0⟩` still gets written `16i + 0j` when both forms are asked for."] },
+
+    { t:"scaling changes length by |k|",
+      p:["`|kv| = |k||v|`. so `|−2v| = 2|v|`, and a negative scalar never shortens a vector, it only turns it around.",
+         "you do not have to recompute components for this. find `|v|` once, then multiply.",
+         "different rule from adding: `|u + v|` is almost never `|u| + |v|`."] },
+
     { t:"the dot product is a number",
       p:["`u · v = ac + bd` collapses two vectors into one scalar. if your answer has angle brackets or an `i` in it, you did componentwise multiplication, which is not a thing."] },
     { t:"give both forms when asked",
       p:["the worksheet wants component form and `i`, `j` form. `⟨0, 4⟩` still has to be written as `0i + 4j`, not just `4j`, when both are asked for.",
          "same for magnitude and direction: two answers, two boxes."] },
+
     { t:"read the sign before you compute the angle",
       p:["the sign of `u · v` already tells you acute, right, or obtuse. it's a free check on the `cos⁻¹` answer: a positive dot product cannot give an angle above `90°`.",
          "`cos θ = −1` means `θ = 180°`, so one vector is a negative multiple of the other."] },
@@ -633,7 +643,6 @@ const GUIDE = {
   ],
 
   memo:[
-
     {t:"Component form", l:[
       "`PQ = ⟨x₂ − x₁, y₂ − y₁⟩` (terminal − initial)",
       "`⟨a, b⟩ = ai + bj`,  `i = ⟨1, 0⟩`,  `j = ⟨0, 1⟩`",
@@ -657,6 +666,7 @@ const GUIDE = {
       "dot `> 0`: acute",
       "dot `= 0`: right",
       "dot `< 0`: obtuse"]},
+
     {t:"Quadrant fix", l:[
       "`tan⁻¹` only answers in QI or QIV. signs of `⟨a, b⟩` give the quadrant:",
       "QI `(+, +)`: `θ = ref`",
@@ -666,11 +676,11 @@ const GUIDE = {
     {t:"Two forces at a point", l:[
       "angle `θ` between them ⇒ use the supplement `180° − θ` in the triangle",
       "`x = √(a² + b² − 2ab cos C)`",
-
       "one radical, round at the very end"]},
     {t:"Operations", l:[
       "`⟨a, b⟩ ± ⟨c, d⟩ = ⟨a ± c, b ± d⟩`",
       "`k⟨a, b⟩ = ⟨ka, kb⟩`",
+      "`|kv| = |k||v|` (the sign never shortens it)",
       "resultant = the sum: tip to tail, or the diagonal of the parallelogram",
       "addition commutes, subtraction does not"]},
     {t:"Exact values", table:[
@@ -689,72 +699,75 @@ const GUIDE = {
       "items": [
         {
           "n": 1,
-          "mode": "non",
-          "pts": "4 points",
-          "dir": "Find `2u + v - 6v` and `|u - v|` for the given vectors `u` and `v`. Write `2u + v - 6v` in component form AND in terms of `i` and `j`.",
-          "st": "`u = ⟨-3, 4⟩`, `v = ⟨2, -6⟩`",
-          "h": "2.8in",
-          "sol": [
-            "combine the like vectors first: `v - 6v = -5v`, so the expression is `2u - 5v`",
-            "`2u = ⟨-6, 8⟩`, `-5v = ⟨-10, 30⟩`",
-            "`2u + v - 6v = ⟨-6 + (-10), 8 + 30⟩ = [[⟨-16, 38⟩]] = [[-16i + 38j]]`",
-            "`u - v = ⟨-5, 10⟩ ⇒ |u - v| = √(25 + 100) = √125 = [[5√5]]`"
 
+          "mode": "non",
+          "pts": "3 points",
+          "dir": "Find `3u + v - 5v` and `|2u - v|` for the given vectors `u` and `v`. Write `3u + v - 5v` in component form AND in terms of `i` and `j`.",
+          "st": "`u = -3i + 2j`, `v = 4i - j`",
+          "h": "3.0in",
+          "sol": [
+            "collect first: `v - 5v = -4v`, so the expression is `3u - 4v`",
+            "`u = ⟨-3, 2⟩`, `v = ⟨4, -1⟩`; `3u = ⟨-9, 6⟩`, `4v = ⟨16, -4⟩`",
+            "`3u + v - 5v = ⟨-9 - 16, 6 - (-4)⟩ = [[⟨-25, 10⟩]] = [[-25i + 10j]]`",
+            "`2u - v = ⟨-6 - 4, 4 - (-1)⟩ = ⟨-10, 5⟩`",
+            "`|2u - v| = √(100 + 25) = √125 = [[5√5]]`"
           ]
         },
         {
           "n": 2,
           "mode": "non",
           "pts": "2 points",
-          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`.",
-          "st": "`P(-3, 5)`, `Q(6, -7)`",
-          "h": "2.0in",
+          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`. Then find `|-2PQ|`.",
+          "st": "`P(6, -2)`, `Q(-2, 4)`",
+          "h": "2.5in",
           "sol": [
-            "terminal minus initial: `PQ = ⟨6 - (-3), -7 - 5⟩`",
-            "`PQ = [[⟨9, -12⟩]] = [[9i - 12j]]`"
+            "`PQ = ⟨-2 - 6, 4 - (-2)⟩ = [[⟨-8, 6⟩]] = [[-8i + 6j]]`",
+            "`|PQ| = √(64 + 36) = 10`",
+            "scaling multiplies the length by `|k|`: `|-2PQ| = 2(10) = [[20]]` (the sign does not shorten it)"
           ]
         },
         {
           "n": 3,
           "mode": "non",
-          "pts": "5 points",
+          "pts": "3 points",
           "dir": "Find the horizontal and vertical components of each vector. Then write `u + v` in component form AND in terms of `i` and `j`, and find `|u + v|`.",
-          "st": "`|u| = 6`, `θ = 150°`; `|v| = 4`, `θ = 30°`",
-          "h": "3.1in",
+          "st": "`|u| = 8`, `θ = π`; `|v| = 4`, `θ = π/3`",
+
+          "h": "3.0in",
           "sol": [
-            "`u = ⟨6cos 150°, 6sin 150°⟩`: QII, reference angle `30°`, so `cos = -√3/2`, `sin = 1/2`",
-            "`u = [[⟨-3√3, 3⟩]]` (horizontal `-3√3`, vertical `3`)",
-            "`v = ⟨4cos 30°, 4sin 30°⟩ = [[⟨2√3, 2⟩]]`",
-            "`u + v = ⟨-3√3 + 2√3, 3 + 2⟩ = [[⟨-√3, 5⟩]] = [[-√3 i + 5j]]`",
-            "`|u + v| = √(3 + 25) = √28 = [[2√7]]`"
+            "`u = ⟨8cos π, 8sin π⟩ = ⟨8(-1), 8(0)⟩ = [[⟨-8, 0⟩]]` (horizontal `-8`, vertical `0`)",
+            "`v = ⟨4cos(π/3), 4sin(π/3)⟩ = [[⟨2, 2√3⟩]]`",
+            "`u + v = ⟨-8 + 2, 0 + 2√3⟩ = [[⟨-6, 2√3⟩]] = [[-6i + 2√3 j]]`",
+            "`|u + v| = √(36 + 12) = √48 = [[4√3]]`"
           ]
         },
         {
           "n": 4,
           "mode": "non",
-
           "pts": "3 points",
           "dir": "Find the magnitude and direction of the vector. Write your answer in radians.",
-          "st": "`u = ⟨-6, -6√3⟩`",
+          "st": "`u = -(√3/2)i + (1/2)j`",
           "h": "2.4in",
           "sol": [
-            "`|u| = √((-6)² + (-6√3)²) = √(36 + 108) = √144 = [[12]]`",
-            "`tanθ = b/a = -6√3/-6 = √3 ⇒ reference angle = π/3`",
-            "`a < 0` and `b < 0 ⇒` QIII, so `θ = π + π/3 = [[4π/3]]`"
+            "`|u| = √(3/4 + 1/4) = √1 = [[1]]` (a unit vector, the fractions are not a mistake)",
+            "`tan θ = (1/2)/(-√3/2) = -1/√3 ⇒ reference angle = π/6`",
+            "`a < 0`, `b > 0 ⇒` QII, so `θ = π - π/6 = [[5π/6]]`"
           ]
         },
         {
           "n": 5,
           "mode": "non",
-          "pts": "4 points",
-          "dir": "Find the dot product of the given vectors. Then determine if `u` and `v` are orthogonal.",
-          "st": "`u = ⟨4, -2⟩`, `v = ⟨-3, 5⟩`. Find `(-2u)·v` and `u·(u + v)`.",
-          "h": "2.4in",
+          "pts": "3 points",
+          "dir": "Find `(2u)·v` and `u·(u + v)` for the given vectors. Then determine if `u` and `v` are orthogonal and state whether the angle between them is acute, right, or obtuse.",
+          "st": "`u = 4i`, `v = -3i + 5j`",
+          "h": "2.6in",
           "sol": [
-            "`-2u = ⟨-8, 4⟩ ⇒ (-2u)·v = (-8)(-3) + (4)(5) = 24 + 20 = [[44]]`",
-            "check: `u·v = (4)(-3) + (-2)(5) = -22`, and `(ku)·v = k(u·v) = (-2)(-22) = 44` ✓",
-            "`u + v = ⟨1, 3⟩ ⇒ u·(u + v) = (4)(1) + (-2)(3) = [[-2]]`",
-            "`u·v = -22 ≠ 0`, so not orthogonal (negative `⇒` obtuse angle)"
+            "the missing component is a zero: `u = ⟨4, 0⟩`, `v = ⟨-3, 5⟩`",
+            "`u·v = (4)(-3) + (0)(5) = -12`",
+            "`(2u)·v = 2(u·v) = [[-24]]`",
+
+            "`u + v = ⟨1, 5⟩ ⇒ u·(u + v) = (4)(1) + (0)(5) = [[4]]`",
+            "`u·v = -12 ≠ 0`, so not orthogonal; negative `⇒` obtuse"
           ]
         },
         {
@@ -762,30 +775,30 @@ const GUIDE = {
           "mode": "calc",
           "pts": "3 points",
           "dir": "Find the angle between the given vectors. Round to the nearest tenth of a degree.",
-          "st": "`u = ⟨5, 2⟩`, `v = ⟨-1, 4⟩`",
-          "h": "3.4in",
+          "st": "`u = 3i + 4√2 j`, `v = √2 i - j`",
+          "h": "3.5in",
           "sol": [
-
-            "`u·v = (5)(-1) + (2)(4) = 3`",
-            "`|u| = √29`, `|v| = √17`",
-            "`cosθ = u·v/|u||v| = 3/√29√17 = 3/√493 ≈ 0.1351`",
-            "`θ = cos⁻¹(0.1351) ≈ [[82.2°]]` (positive dot product `⇒` acute ✓)"
+            "`u·v = (3)(√2) + (4√2)(-1) = 3√2 - 4√2 = -√2`",
+            "`|u| = √(9 + 32) = √41`, `|v| = √(2 + 1) = √3`",
+            "`cos θ = (-√2)/(√41√3) ≈ -0.1275`",
+            "`θ = cos⁻¹(-0.1275) ≈ [[97.3°]]` (negative dot product, so obtuse ✓)"
           ]
         },
         {
           "n": 7,
           "mode": "calc",
-          "pts": "4 points",
+          "pts": "3 points",
           "dir": "Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth.",
-          "st": "forces of 180 lb and 320 lb, forming an angle of `72°`",
-          "h": "3.9in",
+          "st": "forces of 240 N and 175 N, forming an angle of `63°`",
+          "h": "3.8in",
           "sol": [
-            "the resultant is the diagonal of the parallelogram; the angle across from it is `180° - 72° = 108°`",
-            "`x = √(180² + 320² - 2(180)(320)cos 108°)`",
-            "`x ≈ [[412.8 lb]]` (larger than either force, which fits a `72°` spread)"
+            "the resultant is the diagonal; the angle across from it is `180° - 63° = 117°`",
+            "`x = √(240² + 175² - 2(240)(175)cos 117°)`",
+            "`x ≈ [[355.5 N]]`"
           ]
         }
       ]
+
     },
     {
       "id": "B",
@@ -793,100 +806,101 @@ const GUIDE = {
         {
           "n": 1,
           "mode": "non",
-          "pts": "4 points",
-          "dir": "Find `3v + u - 4u` and `|u + v|` for the given vectors `u` and `v`. Write `3v + u - 4u` in component form AND in terms of `i` and `j`.",
-          "st": "`u = ⟨6, -1⟩`, `v = ⟨-2, 4⟩`",
-          "h": "2.8in",
+          "pts": "3 points",
+          "dir": "Find `4v + u - 3u` and `|u + 2v|` for the given vectors `u` and `v`. Write `4v + u - 3u` in component form AND in terms of `i` and `j`.",
+          "st": "`u = 5i - 2j`, `v = -i + 3j`",
+          "h": "3.0in",
           "sol": [
-
-            "combine first: `u - 4u = -3u`, so the expression is `3v - 3u`",
-            "`3v = ⟨-6, 12⟩`, `3u = ⟨18, -3⟩`",
-            "`3v + u - 4u = ⟨-6 - 18, 12 - (-3)⟩ = [[⟨-24, 15⟩]] = [[-24i + 15j]]`",
-            "`u + v = ⟨4, 3⟩ ⇒ |u + v| = √(16 + 9) = √25 = [[5]]`"
+            "collect first: `u - 3u = -2u`, so the expression is `4v - 2u`",
+            "`u = ⟨5, -2⟩`, `v = ⟨-1, 3⟩`; `4v = ⟨-4, 12⟩`, `2u = ⟨10, -4⟩`",
+            "`4v + u - 3u = ⟨-4 - 10, 12 - (-4)⟩ = [[⟨-14, 16⟩]] = [[-14i + 16j]]`",
+            "`u + 2v = ⟨5 + (-2), -2 + 6⟩ = ⟨3, 4⟩`",
+            "`|u + 2v| = √(9 + 16) = [[5]]`"
           ]
         },
         {
           "n": 2,
           "mode": "non",
           "pts": "2 points",
-          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`.",
-          "st": "`P(4, -1)`, `Q(-4, 5)`",
-          "h": "2.0in",
+          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`. Then find `|3PQ|`.",
+          "st": "`P(-5, 3)`, `Q(7, -2)`",
+          "h": "2.5in",
           "sol": [
-            "terminal minus initial: `PQ = ⟨-4 - 4, 5 - (-1)⟩`",
-            "`PQ = [[⟨-8, 6⟩]] = [[-8i + 6j]]`"
+            "`PQ = ⟨7 - (-5), -2 - 3⟩ = [[⟨12, -5⟩]] = [[12i - 5j]]`",
+            "`|PQ| = √(144 + 25) = √169 = 13`",
+            "`|3PQ| = 3(13) = [[39]]`"
           ]
         },
+
         {
           "n": 3,
           "mode": "non",
-          "pts": "5 points",
+          "pts": "3 points",
           "dir": "Find the horizontal and vertical components of each vector. Then write `u + v` in component form AND in terms of `i` and `j`, and find `|u + v|`.",
-          "st": "`|u| = 10`, `θ = 225°`; `|v| = 6`, `θ = 315°`",
-          "h": "3.1in",
+          "st": "`|u| = 6`, `θ = 3π/2`; `|v| = 10`, `θ = 5π/6`",
+          "h": "3.0in",
           "sol": [
-            "`u = ⟨10cos 225°, 10sin 225°⟩`: QIII, reference angle `45°`, both ratios `-√2/2`",
-            "`u = [[⟨-5√2, -5√2⟩]]`",
-            "`v = ⟨6cos 315°, 6sin 315°⟩ = [[⟨3√2, -3√2⟩]]` (QIV)",
-            "`u + v = ⟨-5√2 + 3√2, -5√2 - 3√2⟩ = [[⟨-2√2, -8√2⟩]] = [[-2√2 i - 8√2 j]]`",
-            "`|u + v| = √(8 + 128) = √136 = [[2√34]]`"
+            "`u = ⟨6cos(3π/2), 6sin(3π/2)⟩ = ⟨6(0), 6(-1)⟩ = [[⟨0, -6⟩]]` (horizontal `0`)",
+            "`v = ⟨10cos(5π/6), 10sin(5π/6)⟩ = [[⟨-5√3, 5⟩]]` (QII)",
+            "`u + v = ⟨0 + (-5√3), -6 + 5⟩ = [[⟨-5√3, -1⟩]] = [[-5√3 i - j]]`",
+            "`|u + v| = √(75 + 1) = √76 = [[2√19]]`"
           ]
-
         },
         {
           "n": 4,
           "mode": "non",
           "pts": "3 points",
           "dir": "Find the magnitude and direction of the vector. Write your answer in radians.",
-          "st": "`u = -4i + 4√3 j`",
+          "st": "`u = (1/2)i - (√3/2)j`",
           "h": "2.4in",
           "sol": [
-            "`u = ⟨-4, 4√3⟩`",
-            "`|u| = √(16 + 48) = √64 = [[8]]`",
-            "`tanθ = 4√3/-4 = -√3 ⇒ reference angle = π/3`",
-            "`a < 0` and `b > 0 ⇒` QII, so `θ = π - π/3 = [[2π/3]]`"
+            "`|u| = √(1/4 + 3/4) = [[1]]`",
+            "`tan θ = (-√3/2)/(1/2) = -√3 ⇒ reference angle = π/3`",
+            "`a > 0`, `b < 0 ⇒` QIV, so `θ = 2π - π/3 = [[5π/3]]`"
           ]
         },
         {
           "n": 5,
           "mode": "non",
-          "pts": "4 points",
-          "dir": "Find the dot product of the given vectors. Then determine if `u` and `v` are orthogonal.",
-          "st": "`u = ⟨-4, 6⟩`, `v = ⟨3, 2⟩`. Find `(3u)·v` and `(u - v)·v`.",
-          "h": "2.4in",
+          "pts": "3 points",
+          "dir": "Find `(-3u)·v` and `v·(u + v)` for the given vectors. Then determine if `u` and `v` are orthogonal and state whether the angle between them is acute, right, or obtuse.",
+
+          "st": "`u = -6j`, `v = 2i - 5j`",
+          "h": "2.6in",
           "sol": [
-            "`u·v = (-4)(3) + (6)(2) = -12 + 12 = 0`, so orthogonal",
-            "`(3u)·v = 3(u·v) = 3(0) = [[0]]` (scaling cannot change a right angle)",
-            "`u - v = ⟨-7, 4⟩ ⇒ (u - v)·v = (-7)(3) + (4)(2) = [[-13]]`",
-            "check: `(u - v)·v = u·v - v·v = 0 - |v|² = -13` ✓"
+            "`u = ⟨0, -6⟩`, `v = ⟨2, -5⟩`",
+            "`u·v = (0)(2) + (-6)(-5) = 30`",
+            "`(-3u)·v = -3(30) = [[-90]]`",
+            "`u + v = ⟨2, -11⟩ ⇒ v·(u + v) = (2)(2) + (-5)(-11) = [[59]]`",
+            "`u·v = 30 ≠ 0`, so not orthogonal; positive `⇒` acute"
           ]
         },
         {
           "n": 6,
           "mode": "calc",
-
           "pts": "3 points",
           "dir": "Find the angle between the given vectors. Round to the nearest tenth of a degree.",
-          "st": "`u = ⟨-2, 6⟩`, `v = ⟨5, 1⟩`",
-          "h": "3.4in",
+          "st": "`u = -2i + 5√2 j`, `v = 3√2 i + j`",
+          "h": "3.5in",
           "sol": [
-            "`u·v = (-2)(5) + (6)(1) = -4`",
-            "`|u| = √40 = 2√10`, `|v| = √26`",
-            "`cosθ = -4/2√10√26 = -4/2√260 ≈ -0.1240`",
-            "`θ = cos⁻¹(-0.1240) ≈ [[97.1°]]` (negative dot product `⇒` obtuse ✓)"
+            "`u·v = (-2)(3√2) + (5√2)(1) = -6√2 + 5√2 = -√2`",
+            "`|u| = √(4 + 50) = √54`, `|v| = √(18 + 1) = √19`",
+            "`cos θ = (-√2)/(√54√19) ≈ -0.0442`",
+            "`θ = cos⁻¹(-0.0442) ≈ [[92.5°]]` (just past a right angle, which the small negative dot product predicts)"
           ]
         },
         {
           "n": 7,
           "mode": "calc",
-          "pts": "4 points",
+          "pts": "3 points",
           "dir": "Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth.",
-          "st": "forces of 95 N and 140 N, forming an angle of `38°`",
-          "h": "3.9in",
+          "st": "forces of 310 lb and 145 lb, forming an angle of `48°`",
+          "h": "3.8in",
           "sol": [
-            "angle across from the diagonal: `180° - 38° = 142°`",
-            "`x = √(95² + 140² - 2(95)(140)cos 142°)`",
-            "`x ≈ [[222.7 N]]` (a narrow `38°` spread, so it lands near `95 + 140 = 235` ✓)"
+
+            "angle across from the diagonal: `180° - 48° = 132°`",
+            "`x = √(310² + 145² - 2(310)(145)cos 132°)`",
+            "`x ≈ [[421.0 lb]]`"
           ]
         }
       ]
@@ -897,44 +911,43 @@ const GUIDE = {
         {
           "n": 1,
           "mode": "non",
-
-          "pts": "4 points",
-          "dir": "Find `5u + 2v - u` and `|u - v|` for the given vectors `u` and `v`. Write `5u + 2v - u` in component form AND in terms of `i` and `j`.",
-          "st": "`u = ⟨5, -3⟩`, `v = ⟨-2, 6⟩`",
-          "h": "2.8in",
+          "pts": "3 points",
+          "dir": "Find `2u + 3v - 5v` and `|u + v|` for the given vectors `u` and `v`. Write `2u + 3v - 5v` in component form AND in terms of `i` and `j`.",
+          "st": "`u = 4i - 3j`, `v = -2i + 6j`",
+          "h": "3.0in",
           "sol": [
-            "combine first: `5u - u = 4u`, so the expression is `4u + 2v`",
-            "`4u = ⟨20, -12⟩`, `2v = ⟨-4, 12⟩`",
-            "`5u + 2v - u = ⟨20 + (-4), -12 + 12⟩ = [[⟨16, 0⟩]] = [[16i + 0j]]` (write the `0j`)",
-            "`u - v = ⟨7, -9⟩ ⇒ |u - v| = √(49 + 81) = [[√130]]`"
+            "collect first: `3v - 5v = -2v`, so the expression is `2u - 2v`",
+            "`u = ⟨4, -3⟩`, `v = ⟨-2, 6⟩`; `2u = ⟨8, -6⟩`, `2v = ⟨-4, 12⟩`",
+            "`2u + 3v - 5v = ⟨8 - (-4), -6 - 12⟩ = [[⟨12, -18⟩]] = [[12i - 18j]]`",
+            "`u + v = ⟨2, 3⟩ ⇒ |u + v| = √(4 + 9) = [[√13]]`"
           ]
         },
         {
           "n": 2,
           "mode": "non",
           "pts": "2 points",
-          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`.",
-          "st": "`P(-5, -2)`, `Q(3, 4)`",
-          "h": "2.0in",
+          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`. Then find `|-3PQ|`.",
+          "st": "`P(2, -6)`, `Q(-4, 2)`",
+          "h": "2.5in",
           "sol": [
-            "terminal minus initial: `PQ = ⟨3 - (-5), 4 - (-2)⟩`",
-            "`PQ = [[⟨8, 6⟩]] = [[8i + 6j]]`"
+
+            "`PQ = ⟨-4 - 2, 2 - (-6)⟩ = [[⟨-6, 8⟩]] = [[-6i + 8j]]`",
+            "`|PQ| = √(36 + 64) = 10`",
+            "`|-3PQ| = 3(10) = [[30]]` (length uses `|k|`, so the negative does not matter)"
           ]
         },
         {
           "n": 3,
           "mode": "non",
-          "pts": "5 points",
+          "pts": "3 points",
           "dir": "Find the horizontal and vertical components of each vector. Then write `u + v` in component form AND in terms of `i` and `j`, and find `|u + v|`.",
-          "st": "`|u| = 8`, `θ = 2π/3`; `|v| = 6`, `θ = π/3`",
-          "h": "3.1in",
+          "st": "`|u| = 10`, `θ = π/2`; `|v| = 8`, `θ = 7π/6`",
+          "h": "3.0in",
           "sol": [
-            "`u = ⟨8cos(2π/3), 8sin(2π/3)⟩`: QII, reference angle `π/3`, so `cos = -1/2`, `sin = √3/2`",
-
-            "`u = [[⟨-4, 4√3⟩]]`",
-            "`v = ⟨6cos(π/3), 6sin(π/3)⟩ = [[⟨3, 3√3⟩]]`",
-            "`u + v = ⟨-4 + 3, 4√3 + 3√3⟩ = [[⟨-1, 7√3⟩]] = [[-i + 7√3 j]]`",
-            "`|u + v| = √(1 + 147) = √148 = [[2√37]]`"
+            "`u = ⟨10cos(π/2), 10sin(π/2)⟩ = [[⟨0, 10⟩]]` (horizontal `0`, so write `0i + 10j`)",
+            "`v = ⟨8cos(7π/6), 8sin(7π/6)⟩ = [[⟨-4√3, -4⟩]]` (QIII)",
+            "`u + v = ⟨0 + (-4√3), 10 + (-4)⟩ = [[⟨-4√3, 6⟩]] = [[-4√3 i + 6j]]`",
+            "`|u + v| = √(48 + 36) = √84 = [[2√21]]`"
           ]
         },
         {
@@ -942,61 +955,62 @@ const GUIDE = {
           "mode": "non",
           "pts": "3 points",
           "dir": "Find the magnitude and direction of the vector. Write your answer in radians.",
-          "st": "`u = ⟨5√3, -5⟩`",
+          "st": "`u = -(1/2)i - (√3/2)j`",
           "h": "2.4in",
           "sol": [
-            "`|u| = √(75 + 25) = √100 = [[10]]`",
-            "`tanθ = -5/5√3 = -1/√3 ⇒ reference angle = π/6`",
-            "`a > 0` and `b < 0 ⇒` QIV, so `θ = 2π - π/6 = [[11π/6]]`"
+            "`|u| = √(1/4 + 3/4) = [[1]]`",
+            "`tan θ = (-√3/2)/(-1/2) = √3 ⇒ reference angle = π/3`",
+            "both components negative `⇒` QIII, so `θ = π + π/3 = [[4π/3]]`"
           ]
         },
+
         {
           "n": 5,
           "mode": "non",
-          "pts": "4 points",
-          "dir": "Find the dot product of the given vectors. Then determine if `u` and `v` are orthogonal.",
-          "st": "`u = ⟨-6, 2⟩`, `v = ⟨1, 3⟩`. Find `(-3u)·v` and `(u + v)·u`.",
-          "h": "2.4in",
+          "pts": "3 points",
+          "dir": "Find `(3u)·v` and `u·(u + v)` for the given vectors. Then determine if `u` and `v` are orthogonal and state whether the angle between them is acute, right, or obtuse.",
+          "st": "`u = -5i`, `v = 4i - 3j`",
+          "h": "2.6in",
           "sol": [
-            "`u·v = (-6)(1) + (2)(3) = -6 + 6 = 0`, so orthogonal",
-            "`(-3u)·v = -3(u·v) = [[0]]`",
-            "`u + v = ⟨-5, 5⟩ ⇒ (u + v)·u = (-5)(-6) + (5)(2) = 30 + 10 = [[40]]`",
-            "check: `(u + v)·u = u·u + v·u = |u|² + 0 = 40` ✓"
+            "`u = ⟨-5, 0⟩`, `v = ⟨4, -3⟩`",
+            "`u·v = (-5)(4) + (0)(-3) = -20`",
+            "`(3u)·v = 3(-20) = [[-60]]`",
+            "`u + v = ⟨-1, -3⟩ ⇒ u·(u + v) = (-5)(-1) + (0)(-3) = [[5]]`",
+            "`u·v = -20 ≠ 0`, so not orthogonal; negative `⇒` obtuse"
           ]
-
         },
         {
           "n": 6,
           "mode": "calc",
           "pts": "3 points",
           "dir": "Find the angle between the given vectors. Round to the nearest tenth of a degree.",
-          "st": "`u = ⟨4, -3⟩`, `v = ⟨2, 5⟩`",
-          "h": "3.4in",
+          "st": "`u = 4i - 3√2 j`, `v = √2 i + 5j`",
+          "h": "3.5in",
           "sol": [
-            "`u·v = (4)(2) + (-3)(5) = -7`",
-            "`|u| = √(16 + 9) = 5`, `|v| = √29`",
-            "`cosθ = -7/5√29 ≈ -0.2600`",
-            "`θ = cos⁻¹(-0.2600) ≈ [[105.1°]]` (negative dot product `⇒` obtuse ✓)"
+            "`u·v = (4)(√2) + (-3√2)(5) = 4√2 - 15√2 = -11√2`",
+            "`|u| = √(16 + 18) = √34`, `|v| = √(2 + 25) = √27`",
+            "`cos θ = (-11√2)/(√34√27) ≈ -0.5134`",
+            "`θ = cos⁻¹(-0.5134) ≈ [[120.9°]]`"
           ]
         },
         {
           "n": 7,
           "mode": "calc",
-          "pts": "4 points",
+
+          "pts": "3 points",
           "dir": "Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth.",
-          "st": "forces of 210 N and 145 N, forming an angle of `55°`",
-          "h": "3.9in",
+          "st": "forces of 88 N and 130 N, forming an angle of `71°`",
+          "h": "3.8in",
           "sol": [
-            "angle across from the diagonal: `180° - 55° = 125°`",
-            "`x = √(210² + 145² - 2(210)(145)cos 125°)`",
-            "`x ≈ [[316.3 N]]`"
+            "angle across from the diagonal: `180° - 71° = 109°`",
+            "`x = √(88² + 130² - 2(88)(130)cos 109°)`",
+            "`x ≈ [[179.1 N]]`"
           ]
         }
       ]
     }
   ]
 };
-
 /* ═══ below here is the machinery. you shouldn't need to touch it. ═══ */
 
 const $=s=>document.querySelector(s);
@@ -1015,6 +1029,7 @@ function tight(t){
   return o;
 }
 function mk(str,node){
+
   String(str).split("`").forEach((part,i)=>{
     if(!part)return;
     if(i%2){const s=el("span","m");s.textContent=tight(part);node.appendChild(s)}
@@ -1029,7 +1044,6 @@ const G={
 };
 
 $("#cls").textContent=GUIDE.cls;
-
 $("#ttl").textContent=GUIDE.title;
 $("#due").textContent=GUIDE.due;
 document.title=GUIDE.title.toLowerCase()+" study guide";
@@ -1048,6 +1062,7 @@ function stagger(sec){
   });
 }
 
+
 const CHEV='<svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" '+
   'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '+
   'aria-hidden="true"><path d="M1 1l6 6-6 6"/><\/svg>';
@@ -1062,7 +1077,6 @@ function solution(item){
     row.append(n,d);box.appendChild(row);
   });
   const a=el("div","ans");
-
   const lab=el("b");lab.textContent="answer";
   a.appendChild(lab);mk(item.a,a);
   box.appendChild(a);
@@ -1081,6 +1095,7 @@ GUIDE.basics.forEach(b=>{
   b.p.forEach(x=>{const p=el("p","bp");mk(x,p);pad.appendChild(p)});
   if(b.fig){const w=el("div");w.innerHTML=b.fig;pad.appendChild(w.firstChild)}
   if(b.terms){const box=el("div","terms");
+
     b.terms.forEach(t=>{const c=el("span","term");mk(t,c);box.appendChild(c)});
     pad.appendChild(box)}
   const head=card.querySelector(".chead"), body=card.querySelector(".cbody");
@@ -1095,7 +1110,6 @@ GUIDE.worked.forEach((w,i)=>{
   card.innerHTML='<span class="spec" aria-hidden="true"><\/span>'+
     '<button class="chead" aria-expanded="false"><span class="dot"><\/span>'+
     '<span class="ct"><\/span><span class="tag"><\/span>'+CHEV+'<\/button>'+
-
     '<div class="cbody"><div><div class="pad"><\/div><\/div><\/div>';
   card.querySelector(".ct").textContent=w.t;
   const tag=card.querySelector(".tag");
@@ -1114,6 +1128,7 @@ GUIDE.worked.forEach((w,i)=>{
 GUIDE.formulas.forEach((f,i)=>{
   const card=el("div","card g");
   card.innerHTML='<span class="spec" aria-hidden="true"><\/span>'+
+
     '<button class="chead" aria-expanded="false"><span class="dot"><\/span>'+
     '<span class="ct"><\/span>'+CHEV+'<\/button>'+
     '<div class="cbody"><div><div class="pad"><\/div><\/div><\/div>';
@@ -1128,7 +1143,6 @@ GUIDE.formulas.forEach((f,i)=>{
   const head=card.querySelector(".chead"), body=card.querySelector(".cbody");
   head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";
     head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
-
   if(i===0){head.setAttribute("aria-expanded","true");body.classList.add("on")}
   $("#p-formulas").appendChild(card);
 });
@@ -1147,6 +1161,7 @@ function esc(t){return t.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"
 function sheetText(str,node){
   String(str).split("`").forEach((part,i)=>{
     if(!part)return;
+
     if(i%2){
       const sp=el("span","m");
       let h=esc(tight(part)).replace(/-/g,"\u2212");
@@ -1160,7 +1175,6 @@ function sheetText(str,node){
 
 (function(){
   const host=$("#p-tests");
-
 
   const ctl=el("div","ctl g");
   ctl.innerHTML='<span class="spec" aria-hidden="true"><\/span>'+
@@ -1180,6 +1194,7 @@ function sheetText(str,node){
     id=setInterval(()=>{left--;paint();if(left<=0){clearInterval(id);id=null;tb.textContent="reset"}},1000);
   };
   paint();
+
   const note=t=>{let n=ctl.querySelector(".pnote");
     if(!n){n=el("div","pnote");ctl.appendChild(n)}
     n.textContent=t};
@@ -1194,7 +1209,6 @@ function sheetText(str,node){
 
   (function(){
     const sh=el("section","sheet"), pg=el("div","page");
-
     const ti=el("div","mtitle");ti.textContent="PCBC H Vectors & Dot Product: Memorize Sheet";
     const sb=el("div","msub");sb.textContent="everything below is from memory on quiz day";
     pg.append(ti,sb);
@@ -1213,13 +1227,14 @@ function sheetText(str,node){
       }
       (c.l||[]).forEach(x=>{const d=el("div");sheetText(x,d);card.appendChild(d)});
       grid.appendChild(card);
+
     });
     pg.appendChild(grid);sh.appendChild(pg);host.appendChild(sh);
   })();
 
   GUIDE.sheets.forEach(t=>{
     const sheet=el("section","sheet");
-    [[0,2,"Non-Calculator","/25",1],[2,5,"",""],[5,7,"Calculator",""]].forEach(spec=>{
+    [[0,2,"Non-Calculator","/20",1],[2,5,"",""],[5,7,"Calculator",""]].forEach(spec=>{
       const [a,b,mode,pts,honor]=spec;
       const pg=el("div","page");
       if(mode){
@@ -1227,7 +1242,6 @@ function sheetText(str,node){
         const l=el("span");l.textContent="PCBC H Vectors & Dot Product Quiz (Practice "+t.id+")";
         const nm=el("span","nm");nm.textContent="Name";
         const p=el("span");p.textContent=pts;
-
         hd.append(l,nm,p);pg.appendChild(hd);
         const md=el("div","qmode");md.dataset.base=mode;md.textContent=mode;pg.appendChild(md);
       }
@@ -1246,6 +1260,7 @@ function sheetText(str,node){
         box.appendChild(n);sheetText(q.st,box);
         const sol=el("div","qsol");
         q.sol.forEach(x=>{const r=el("div");sheetText(x,r);sol.appendChild(r)});
+
         box.appendChild(sol);
         item.appendChild(box);pg.appendChild(item);
       });
@@ -1256,11 +1271,10 @@ function sheetText(str,node){
     const kh=el("div","qhead");
     const kl=el("span");kl.textContent="PCBC H Vectors & Dot Product Quiz (Practice "+t.id+")";
     const knm=el("span","nm");knm.textContent="Name";
-    const kpt=el("span");kpt.textContent="/25";
+    const kpt=el("span");kpt.textContent="/20";
     kh.append(kl,knm,kpt);kp.appendChild(kh);
     const km=el("div","qmode");km.innerHTML="<b>ANSWER KEY<\/b>";kp.appendChild(km);
     t.items.forEach(q=>{
-
       const item=el("div","qitem");
       const d=el("p","qdir");sheetText(q.dir+" ("+q.pts+")",d);item.appendChild(d);
       const box=el("div","qbox");
@@ -1279,6 +1293,7 @@ function sheetText(str,node){
 /* segmented control */
 stagger($("#p-basics"));
 (function(){
+
   const tabs=[["basics","basics"],["worked","worked"],["formulas","formulas"],["traps","traps"],["tests","quizzes"]];
   const seg=$("#seg"), ind=seg.querySelector(".ind");
   tabs.forEach(([id,label],i)=>{
@@ -1293,7 +1308,6 @@ stagger($("#p-basics"));
     tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
     stagger($("#p-"+tabs[i][0]));
     move(); scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
-
   }
   function move(){
     const btns=[...seg.querySelectorAll("button")];
@@ -1312,6 +1326,7 @@ stagger($("#p-basics"));
     raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)}) },{passive:true});
   if(matchMedia("(hover:hover)").matches && !REDUCED){
     addEventListener("pointermove",e=>{
+
       const c=e.target.closest && e.target.closest(".g"); if(!c)return;
       const r=c.getBoundingClientRect();
       c.style.setProperty("--mx",(e.clientX-r.left)+"px");
@@ -1323,6 +1338,6 @@ stagger($("#p-basics"));
 
 <script>
 document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?t.closest("#prt"):null;if(b){e.preventDefault();location.href="/precalc-quizzes";}});
-</script>
+<\/script>
 </body>
 </html>
