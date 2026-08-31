@@ -308,6 +308,26 @@ dialog#search[open]{animation:pop .34s var(--spring)}
   animation-delay:calc(var(--i,0)*52ms + .18s)}
 @keyframes draw{to{stroke-dashoffset:0}}
 
+/* ═══ compat note ═══ */
+.compat{display:none;border-radius:18px;margin-top:26px}
+@media (max-width:760px),(hover:none){.compat{display:block}}
+.compat summary{display:flex;align-items:center;gap:9px;padding:13px 15px;border-radius:18px;
+  cursor:pointer;list-style:none;font-size:15px;font-weight:560;letter-spacing:-.016em;
+  text-transform:lowercase;transition:transform .34s var(--spring)}
+.compat summary::-webkit-details-marker{display:none}
+.compat summary::marker{content:""}
+.compat summary:active{transform:scale(.99)}
+.compat .ci{flex:none;color:var(--ink3)}
+.compat summary .tw{margin-left:auto}
+.compat[open] summary .tw{transform:rotate(90deg)}
+.cbody{padding:1px 15px 15px;font-size:13.5px;line-height:1.62;color:var(--ink2);
+  text-transform:lowercase}
+.cbody p{margin:0 0 11px}
+.cbody p:last-child{margin:0}
+.cbody b{font-weight:600;color:var(--ink)}
+.cbody kbd{font-family:var(--round);font-size:12.5px;font-weight:650;color:var(--ink);
+  background:var(--fill);border-radius:6px;padding:1.5px 6px;text-transform:none}
+
 footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:44px 8px 6px;
   text-transform:lowercase}
 
@@ -364,6 +384,21 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
     <svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg>
   </button>
   <div id="archwrap"><div><div class="group g" id="arch"><span class="spec" aria-hidden="true"></span></div></div></div>
+
+  <details class="compat g">
+    <span class="spec" aria-hidden="true"></span>
+    <summary>
+      <svg class="ci" width="17" height="15" viewBox="0 0 17 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="1" width="15" height="10.5" rx="2.2"/><path d="M5.6 14h5.8M8.5 11.5V14"/></svg>
+      page looking broken?
+      <svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg>
+    </summary>
+    <div class="cbody">
+      <p>if things are missing, cut off, or buttons don’t do anything on your phone, switch to the desktop site and the page will reload fixed.</p>
+      <p><b>safari (iphone or ipad)</b><br>tap <kbd>aA</kbd> at the left end of the address bar, then <b>request desktop website</b>.</p>
+      <p><b>chrome</b><br>tap the <kbd>⋮</kbd> three-dot menu, then <b>desktop site</b> on android or <b>request desktop site</b> on iphone.</p>
+      <p>still wrong? pull down to refresh; your phone may be holding an old copy of the page.</p>
+    </div>
+  </details>
 
   <footer>
     study guides for bishop gorman classes, written by a student and free to use.<br>
