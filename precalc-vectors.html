@@ -1,0 +1,1328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>vectors study guide</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>
+:root{
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
+
+  /* honors precalculus bc */
+  --accent:#007AFF;
+  /* palette: dusk */
+  --amb1:var(--accent); --amb2:#BF5AF2; --amb3:#5E5CE6; --amb4:#FF375F;
+
+  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1));
+  --ink:#08080D;
+  --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
+  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
+  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
+  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
+  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
+  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30;
+  --blur:22px; --sat:195%;
+  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --amb:.82; --amb-blur:66px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#0A84FF;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1));
+  --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}}
+:root[data-theme="dark"]{
+  --accent:#0A84FF; --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
+  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hidden{display:none !important}
+
+
+/* math keeps its capitals and stays out of the lowercase pass */
+.m{text-transform:none;font-variant-numeric:tabular-nums;letter-spacing:-.004em;
+  overflow-wrap:break-word}
+
+#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
+  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);
+  animation:hue 120s linear infinite}
+#amb i{position:absolute;display:block;border-radius:50%;
+  animation:drift 38s var(--ease) infinite alternate}
+#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;
+  background:radial-gradient(circle,var(--amb1),transparent 66%)}
+#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:4vh;
+  background:radial-gradient(circle,var(--amb2),transparent 66%);
+  animation-duration:45s;animation-delay:-10s}
+#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:44vh;
+  background:radial-gradient(circle,var(--amb3),transparent 66%);
+  animation-duration:41s;animation-delay:-20s}
+#amb i:nth-child(4){width:52vw;height:52vw;right:-8vw;bottom:-8vh;
+  background:radial-gradient(circle,var(--amb4),transparent 66%);
+  animation-duration:48s;animation-delay:-30s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
+@keyframes hue{
+  0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}
+  50%    {filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}
+}
+
+.g{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
+.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  pointer-events:none;z-index:3;
+
+  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude}
+.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
+.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
+  transition:opacity .4s var(--ease)}
+@media (hover:hover){.g:hover > .spec{opacity:1}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
+.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
+.glyph{width:40px;height:40px;border-radius:12px;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
+  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
+.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;
+  line-height:1.08;text-transform:lowercase}
+.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
+  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase;
+  font-variant-numeric:tabular-nums}
+
+/* segmented control */
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
+  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;
+  box-shadow:inset 0 .5px 0 0 var(--gloss)}
+
+.seg button{position:relative;z-index:1;padding:7px 4px;border-radius:9px;font-family:var(--round);
+  font-size:13.5px;font-weight:640;color:var(--ink2);text-transform:lowercase;
+  transition:color .25s var(--ease)}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
+  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
+  transition:transform .42s var(--spring),width .42s var(--spring)}
+
+main{padding-top:20px}
+.sh{display:flex;align-items:baseline;gap:8px;font-family:var(--round);font-size:13.5px;
+  font-weight:680;color:var(--ink3);margin:30px 4px 10px;text-transform:lowercase}
+.sh:first-child{margin-top:0}
+.sh h2{margin:0;font:inherit;letter-spacing:.008em}
+.sh .shx{margin-left:auto;font-size:12.5px;font-variant-numeric:tabular-nums}
+
+/* collapsible card */
+.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
+.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;
+  position:relative;z-index:1;transition:transform .34s var(--spring)}
+.chead:active{transform:scale(.99)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;
+  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
+.tag{font-family:var(--round);font-size:11px;font-weight:740;padding:3px 8px;border-radius:7px;
+  background:var(--fill2);color:var(--ink3);text-transform:lowercase;flex:none}
+.tag.calc{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+.tw{color:var(--ink3);transition:transform .34s var(--spring);flex:none}
+.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
+.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.cbody.on{grid-template-rows:1fr}
+.cbody > div{overflow:hidden}
+.pad{padding:0 16px 16px}
+
+
+.bp{font-size:15px;line-height:1.55;color:var(--ink2);text-transform:lowercase;margin:0 0 10px}
+.fig{display:block;width:100%;height:auto;margin:4px 0 12px;overflow:visible}
+.fig text{font-family:var(--round);font-size:11px;font-weight:680;fill:var(--ink2);
+  text-transform:none;letter-spacing:0}
+.fig .va{stroke:var(--accent);stroke-width:2.1;fill:none;stroke-linecap:round;marker-end:url(#mA)}
+.fig .vg{stroke:var(--ink2);stroke-width:1.9;fill:none;stroke-linecap:round;marker-end:url(#mG)}
+.fig .ln{stroke:var(--ink3);stroke-width:1.4;fill:none;stroke-linecap:round}
+.fig .dsh{stroke:var(--ink3);stroke-width:1.4;fill:none;stroke-dasharray:4 4}
+.fig .la{fill:var(--accent)}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);
+  text-transform:lowercase}
+.prob{font-size:15.5px;line-height:1.5;color:var(--ink);text-transform:lowercase;
+  padding:0 0 12px;margin:0}
+.step{display:flex;gap:10px;padding:9px 0;box-shadow:inset 0 .5px 0 var(--sep)}
+.sn{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--accent);
+  text-transform:lowercase;flex:none;width:74px;line-height:1.35;padding-top:2px}
+.sd{flex:1;font-size:14.5px;line-height:1.55;color:var(--ink2);text-transform:lowercase}
+.ans{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--fill2);
+  box-shadow:inset 0 .5px 0 0 var(--gloss);font-size:15px;line-height:1.5;
+  text-transform:lowercase}
+.ans b{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--ink3);
+  display:block;margin-bottom:2px}
+
+/* formula rows */
+.frow{display:flex;align-items:baseline;gap:12px;padding:10px 0;
+  box-shadow:inset 0 .5px 0 var(--sep)}
+.frow:first-child{box-shadow:none}
+.fk{font-family:var(--round);font-size:12.5px;font-weight:660;color:var(--ink3);
+  text-transform:lowercase;flex:none;width:104px;line-height:1.35}
+
+.fv{flex:1;font-size:15.5px;line-height:1.5;text-transform:lowercase}
+
+/* traps */
+.trap{border-radius:18px;padding:15px 16px;margin-bottom:10px}
+.tt{font-family:var(--round);font-size:15px;font-weight:700;letter-spacing:-.012em;
+  text-transform:lowercase;margin-bottom:5px;position:relative;z-index:1}
+.tp{font-size:14.5px;line-height:1.55;color:var(--ink2);text-transform:lowercase;
+  position:relative;z-index:1;margin:0}
+.tp + .tp{margin-top:6px}
+
+/* tests */
+/* ── printable quiz sheets: white paper, serif, her layout ─────────── */
+.ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-radius:16px;
+  padding:11px 14px;margin-bottom:14px}
+.ctl .tv{font-family:var(--round);font-size:22px;font-weight:760;
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em;position:relative;z-index:1}
+.ctl .tv.low{color:var(--bad)}
+.ctl .tlab{font-size:13px;color:var(--ink3);text-transform:lowercase;position:relative;z-index:1}
+.cbtn{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--blue);
+  padding:7px 12px;border-radius:10px;background:var(--fill2);text-transform:lowercase;
+  position:relative;z-index:1;transition:transform .3s var(--spring)}
+.cbtn:active{transform:scale(.97)}
+.cbtn.on{background:color-mix(in srgb,var(--accent) 20%,transparent);color:var(--accent)}
+.ctl .push{margin-left:auto}
+.pnote{flex-basis:100%;font-size:12.5px;line-height:1.4;color:var(--ink3);
+  text-transform:lowercase;position:relative;z-index:1;margin-top:2px}
+
+.page{background:#fff;color:#111;border-radius:8px;padding:26px 28px 30px;margin-bottom:14px;
+  font-family:ui-serif,Georgia,"Times New Roman",Times,serif;font-size:14px;line-height:1.34;
+  letter-spacing:0;text-transform:none;box-shadow:0 10px 30px -14px rgba(14,14,38,.5);
+  border:1px solid rgba(0,0,0,.12)}
+.page .m{text-transform:none;font-variant-numeric:normal}
+
+.qhead{display:flex;align-items:baseline;gap:10px;font-size:12.5px}
+.qhead .nm{flex:1;border-bottom:1px solid #111;min-width:70px;margin-right:16px}
+.qmode{text-align:center;font-style:italic;margin:7px 0 10px}
+.honor{font-weight:700;margin-bottom:16px}
+.hrule{border-top:1px solid #111;margin:0 0 17px}
+.sig{width:2.4in;margin:2px 0 14px auto;text-align:center;border-top:1px solid #111;
+  padding-top:2px;font-size:12px}
+.showall{font-weight:700;margin-bottom:12px}
+.memo{display:grid;grid-template-columns:1fr 1fr;gap:9px 13px;align-items:start}
+.mcard{border:1px solid #111;border-radius:2px;padding:8px 10px}
+.mcard h4{margin:0 0 4px;font-size:13.5px;font-weight:700}
+.mcard div{margin:2px 0;font-size:13px;line-height:1.35}
+.mcard table{border-collapse:collapse;font-size:13px;margin:2px 0 4px}
+.mcard th,.mcard td{padding:1px 10px 1px 0;text-align:left;font-weight:400}
+.mcard thead th{font-style:italic;border-bottom:1px solid #111;padding-bottom:2px}
+.mtitle{text-align:center;font-weight:700;font-size:16px;margin-bottom:2px}
+.msub{text-align:center;font-size:12.5px;margin-bottom:12px}
+@media (max-width:560px){.memo{grid-template-columns:1fr}}
+@media print{.memo{grid-template-columns:1fr 1fr}}
+.qitem{margin-bottom:13px}
+.qdir{margin:0 0 6px;font-size:13.5px}
+.qbox{border:1px solid #111;border-radius:2px;padding:9px 11px}
+.qnum{font-weight:700;margin-right:8px}
+.qsol{margin-top:9px}
+.qsol > div{margin:5px 0}
+.bx{border:1px solid #111;padding:0 5px;display:inline-block;line-height:1.5}
+.qsol{display:none}
+.kpage .qsol{display:block}
+.kpage .qbox{min-height:0 !important}
+
+@media print{
+  @page{size:letter;margin:0.62in 0.8in}
+
+  html,body{background:#fff !important;padding:0 !important;margin:0 !important}
+  #amb,header,.ctl,footer{display:none !important}
+  main{padding:0 !important}
+  .wrap{max-width:none !important;padding:0 !important}
+  #p-basics,#p-worked,#p-formulas,#p-traps{display:none !important}
+  #p-tests{display:block !important}
+  .page{border:0;border-radius:0;box-shadow:none;padding:0;margin:0;font-size:11pt;
+    break-after:page;page-break-after:always}
+  .sheet:last-child .page:last-child{break-after:auto;page-break-after:auto}
+  .qitem,.qbox{break-inside:avoid;page-break-inside:avoid}
+}
+
+.timer{display:flex;align-items:center;gap:10px;border-radius:16px;padding:11px 14px;margin-bottom:12px}
+.tv{font-family:var(--round);font-size:22px;font-weight:760;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em;position:relative;z-index:1}
+.tv.low{color:var(--bad)}
+.tlab{font-size:13px;color:var(--ink3);text-transform:lowercase;position:relative;z-index:1}
+.tbtn{margin-left:auto;font-family:var(--round);font-size:14px;font-weight:680;color:var(--blue);
+  padding:7px 12px;border-radius:10px;background:var(--fill2);text-transform:lowercase;
+  position:relative;z-index:1;transition:transform .3s var(--spring)}
+.tbtn:active{transform:scale(.97)}
+.paper{border-radius:18px;padding:15px 16px;margin-bottom:6px}
+.prow{display:flex;align-items:baseline;gap:14px;position:relative;z-index:1}
+.pt{font-size:14.5px;font-weight:580;letter-spacing:-.014em;text-transform:lowercase;
+  position:relative;z-index:1;margin-bottom:9px}
+.pname{flex:1;font-size:12.5px;color:var(--ink3);text-transform:lowercase;
+  box-shadow:inset 0 -1px 0 var(--sep);min-width:54px}
+.ppts{font-family:var(--round);font-size:13px;font-weight:740;color:var(--ink3);
+  font-variant-numeric:tabular-nums}
+.pshow{margin-top:9px;font-family:var(--round);font-size:12px;font-weight:740;
+  color:var(--accent);text-transform:lowercase;position:relative;z-index:1}
+.mode{font-style:italic;text-align:center;font-size:14.5px;color:var(--ink2);
+
+  text-transform:lowercase;margin:20px 0 10px}
+.cell{border:1px solid var(--sep);border-radius:10px;padding:12px 13px;
+  position:relative;z-index:1}
+.qcard{border-radius:18px;padding:16px;margin-bottom:10px}
+.qtop{display:flex;align-items:center;gap:9px;margin-bottom:8px;position:relative;z-index:1}
+.qn{font-family:var(--round);font-size:15.5px;font-weight:760;color:var(--ink);
+  font-variant-numeric:tabular-nums;margin-right:9px}
+.dir{font-style:italic;font-size:14px;line-height:1.45;color:var(--ink2);
+  text-transform:lowercase;margin-bottom:10px;position:relative;z-index:1}
+.src{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--ink3);
+  text-transform:lowercase;margin-bottom:7px}
+.qt{font-size:16px;font-weight:520;line-height:1.45;letter-spacing:-.014em;
+  text-transform:lowercase}
+.reveal{display:block;width:100%;margin-top:12px;padding:11px;border-radius:12px;
+  background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss);font-family:var(--round);
+  font-size:14px;font-weight:660;color:var(--blue);text-transform:lowercase;
+  position:relative;z-index:1;transition:transform .3s var(--spring)}
+.reveal:active{transform:scale(.988)}
+.sol{position:relative;z-index:1;margin-top:6px}
+
+.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);
+  animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+
+footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;
+  text-transform:lowercase}
+
+@media (prefers-reduced-motion:reduce){
+  #amb,#amb i{animation:none}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://valentinoguides.com/precalc-vectors">
+</head>
+<body>
+
+
+<div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="mA" markerWidth="4.6" markerHeight="4.6" refX="3.7" refY="2.3" orient="auto">
+    <path d="M0 .5L4.1 2.3 0 4.1z" fill="var(--accent)"/></marker>
+  <marker id="mG" markerWidth="4.6" markerHeight="4.6" refX="3.7" refY="2.3" orient="auto">
+    <path d="M0 .5L4.1 2.3 0 4.1z" fill="var(--ink2)"/></marker>
+</defs></svg>
+
+<header id="hdr"><div class="wrap">
+  <div class="hrow">
+    <span id="gly" class="glyph" aria-hidden="true"></span>
+    <div>
+      <div class="cls" id="cls"></div>
+      <h1 id="ttl"></h1>
+    </div>
+    <span class="chip" id="due"></span>
+  </div>
+  <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
+</div></header>
+
+<main class="wrap">
+  <section id="p-basics"></section>
+  <section id="p-worked" class="hidden"></section>
+  <section id="p-formulas" class="hidden"></section>
+  <section id="p-traps" class="hidden"></section>
+  <section id="p-tests" class="hidden"></section>
+  <footer>study guide written by a student. not affiliated with the school.<br>
+    check anything that matters against your own notes.</footer>
+</main>
+
+
+<script>
+/* ═══ everything you edit lives in this block ════════════════════════ */
+/* `backticks` mark math so it keeps its capitals and spacing */
+const GUIDE = {
+  cls:   "Honors Precalculus BC",
+  glyph: "curve",
+  title: "vectors + dot product",
+  due:   "7 q · 20 min",
+
+  basics:[
+    { t:"what a vector is",
+      p:["a vector is a directed line segment: it carries a magnitude (its length) and a direction. `101 lb at 30° from the horizontal` is a vector. `101 lb` on its own is not.",
+         "`OP` starts at O and ends at P. first letter is the initial point, second is the terminal point. `OP` and `PO` have the same magnitude and opposite directions.",
+         "two vectors are equal when they have the same magnitude and the same direction. where they sit on the page is irrelevant, so a vector can slide anywhere as long as its length and angle survive."],
+      terms:["initial point","terminal point","magnitude","equal vectors"] },
+
+    { t:"adding: tip to tail",
+      p:["for `u + v`, put the initial point of v at the terminal point of u. the resultant runs from where u starts to where v finishes.",
+         "parallelogram rule, same answer: draw both from one starting point, complete the parallelogram, and the diagonal is `u + v`.",
+         "addition is commutative, `u + v = v + u`, so it does not matter which one you draw first."],
+      fig:'<svg class="fig" viewBox="0 0 200 112" role="img" aria-label="tip to tail and parallelogram">'+
+          '<path class="dsh" d="M16 88 L56 26"/><path class="dsh" d="M56 26 L166 16"/>'+
+          '<path class="vg" d="M16 88 L120 79"/><path class="vg" d="M126 78 L163 25"/>'+
+          '<path class="va" d="M16 88 L163 22"/>'+
+          '<text x="62" y="101">u<\/text><text x="152" y="52">v<\/text>'+
+          '<text class="la" x="58" y="44">u + v<\/text><\/svg>',
+      terms:["resultant","parallelogram rule","commutative"] },
+
+    { t:"subtracting: order matters",
+      p:["`u − v` means `u + (−v)`: flip v around, then add it tip to tail.",
+         "drawn from a shared starting point, `u − v` is the arrow that runs from the tip of v to the tip of u. it is the other diagonal of the parallelogram.",
+
+         "`u − v` and `v − u` are opposites, so unlike addition, the order you subtract in changes the answer."],
+      fig:'<svg class="fig" viewBox="0 0 200 110" role="img" aria-label="u minus v as an arrow from the tip of v to the tip of u">'+
+          '<path class="vg" d="M16 98 L144 46"/><path class="vg" d="M16 98 L62 26"/>'+
+          '<path class="va" d="M64 22 L146 40"/>'+
+          '<text x="86" y="82">u<\/text><text x="20" y="52">v<\/text>'+
+          '<text class="la" x="92" y="20">u − v<\/text><\/svg>' },
+
+    { t:"opposite and zero vector",
+      p:["for every vector v there is exactly one `−v`, same magnitude, opposite direction.",
+         "`v + (−v)` has magnitude `0`. that is the zero vector: no length, no direction."] },
+
+    { t:"scalar multiples",
+      p:["a scalar is just a real number. `ku` stretches u by `|k|`, keeps the direction when `k > 0`, and reverses it when `k < 0`.",
+         "so `2u` is twice as long the same way, `½u` is half as long the same way, and `−2u` is twice as long the other way.",
+         "in components this is `k⟨a, b⟩ = ⟨ka, kb⟩`. every component gets multiplied."],
+      fig:'<svg class="fig" viewBox="0 0 300 100" role="img" aria-label="u, 2u, one half u, and negative 2u">'+
+          '<path class="vg" d="M20 84 L54 64"/><path class="vg" d="M84 88 L156 46"/>'+
+          '<path class="vg" d="M182 84 L198 75"/><path class="vg" d="M294 44 L222 86"/>'+
+          '<text x="24" y="56">u<\/text><text x="112" y="46">2u<\/text>'+
+          '<text x="178" y="66">½u<\/text><text x="248" y="44">−2u<\/text><\/svg>' },
+
+    { t:"position vector and direction angle",
+      p:["a position vector has its initial point at the origin. every vector in the plane matches one ordered pair `⟨a, b⟩`, where a is the horizontal component and b is the vertical component.",
+         "the direction angle θ is the positive angle from the positive x-axis around to the vector.",
+         "from the components: `|u| = √(a² + b²)` and `tan θ = b/a`, `a ≠ 0`. the angle has to be reported in `[0, 2π)`, so check the quadrant before you write it down."],
+      fig:'<svg class="fig" viewBox="0 0 200 128" role="img" aria-label="position vector with horizontal and vertical components">'+
+          '<path class="ln" d="M14 104 L190 104"/><path class="ln" d="M34 14 L34 120"/>'+
+          '<path class="va" d="M34 104 L142 39"/>'+
+          '<path class="dsh" d="M146 38 L146 104"/>'+
+          '<path class="ln" d="M50 104 A 16 16 0 0 0 43 92"/>'+
+          '<text x="70" y="60">|u|<\/text><text x="152" y="76">b<\/text>'+
+          '<text x="84" y="118">a<\/text><text x="148" y="30">(a, b)<\/text>'+
+
+          '<text x="55" y="100">θ<\/text><\/svg>',
+      terms:["position vector","horizontal component","vertical component","direction angle"] },
+
+    { t:"horizontal and vertical components",
+      p:["this is the trip in the other direction: magnitude and angle in, components out. drop a right triangle under the vector and the legs are the components.",
+         "`a = |v| cos θ` is the horizontal component, `b = |v| sin θ` is the vertical one, so `v = ⟨|v| cos θ, |v| sin θ⟩`. θ is measured from the horizontal, which is what angle of inclination means.",
+         "the components are never longer than the vector itself, since `cos θ` and `sin θ` are at most `1`. a quick check: if a component comes out bigger than `|v|`, something is wrong.",
+         "example: `|v| = 50` at `θ = 20°` gives `a = 50cos 20° ≈ 46.985` and `b = 50sin 20° ≈ 17.101`. `P►Rx(50, 20)` returns the same number if you want to check, but do the work with `cos` and `sin`."],
+      terms:["angle of inclination","a = |v|cos θ","b = |v|sin θ"] }
+  ],
+
+  worked:[
+    { t:"sketching the operations", src:"worksheet 1-5", tag:"non-calc",
+      q:"given two drawn vectors `g` and `h`, draw `−g`, `2g`, `h + g`, and `h − g`.",
+      steps:[
+        {n:"−g", d:"same length as `g`, arrow turned around `180°`."},
+        {n:"2g", d:"same direction, twice the length. a scalar only changes length, and only flips direction when it is negative."},
+        {n:"h + g", d:"slide `g` so its tail sits on the tip of `h`, then draw from `h`'s tail to `g`'s new tip. starting with `g` instead gives the same arrow, since addition is commutative."},
+        {n:"h − g", d:"draw `−g` first, then add it to the tip of `h`. here the order does matter: `g − h` is the same arrow pointing the other way."},
+        {n:"check", d:"parallelogram version: from a shared tail, `h + g` is one diagonal and `h − g` is the arrow from the tip of `g` to the tip of `h`."}
+      ],
+      a:"`−g` reversed, `2g` doubled, `h + g` tip to tail, `h − g` = `h + (−g)`" },
+
+    { t:"vector operations", src:"worksheet 8-11", tag:"non-calc",
+      q:"`u = ⟨−1, 4⟩`, `v = ⟨3, −7⟩`. find `−2u`, `u + v`, `2v − u`, `|u|`, `|v|`, `|u − v|`.",
+      steps:[
+        {n:"scale", d:"a scalar hits both components. `−2u = −2⟨−1, 4⟩ = ⟨2, −8⟩`."},
+        {n:"add", d:"add componentwise. `u + v = ⟨−1 + 3, 4 + (−7)⟩ = ⟨2, −3⟩`."},
+        {n:"scale, then subtract", d:"do the multiplying first. `2v = ⟨6, −14⟩`, then `2v − u = ⟨6 − (−1), −14 − 4⟩ = ⟨7, −18⟩`."},
+        {n:"magnitude", d:"pythagorean theorem on the components. `|u| = √((−1)² + 4²) = √17`, `|v| = √(3² + (−7)²) = √58`."},
+        {n:"subtract first", d:"`u − v = ⟨−4, 11⟩`, then `|u − v| = √(16 + 121) = √137`. never subtract the magnitudes."}
+      ],
+
+      a:"`⟨2, −8⟩`, `⟨2, −3⟩`, `⟨7, −18⟩`, `√17`, `√58`, `√137`" },
+
+    { t:"component form", src:"worksheet 6-7", tag:"non-calc",
+      q:"initial point `P(3, 2)`, terminal point `Q(10, 6)`. write the vector in component form.",
+      steps:[
+        {n:"terminal minus initial", d:"the first letter is where it starts. `v = ⟨10 − 3, 6 − 2⟩`."},
+        {n:"simplify", d:"`v = ⟨7, 4⟩`, which is the same as `7i + 4j`."}
+      ],
+      a:"`v = ⟨7, 4⟩ = 7i + 4j`" },
+
+    { t:"horizontal + vertical components", src:"worksheet 12-15", tag:"non-calc",
+      q:"`|v| = 5`, `θ = 2π/3`. find the horizontal and vertical components, then write `v` in component form and in terms of `i` and `j`.",
+      steps:[
+        {n:"the formulas", d:"horizontal component is `a = |v|cos θ`, vertical component is `b = |v|sin θ`. so `v = ⟨5cos(2π/3), 5sin(2π/3)⟩`."},
+        {n:"exact values", d:"`cos(2π/3) = −1/2` and `sin(2π/3) = √3/2`, so `v = ⟨−5/2, 5√3/2⟩`."},
+        {n:"both forms", d:"the second form is just the components glued to `i` and `j`: `−(5/2)i + (5√3/2)j`."},
+        {n:"sanity check", d:"neither component can exceed `|v| = 5`, and `5√3/2 ≈ 4.33`, `5/2 = 2.5`. fine."}
+      ],
+      a:"horizontal `−5/2`, vertical `5√3/2`, so `v = ⟨−5/2, 5√3/2⟩ = −(5/2)i + (5√3/2)j`" },
+
+    { t:"components, then add", src:"notes ex 3 + ex 6", tag:"non-calc",
+      q:"`|u| = 10` at `θ = 120°` and `|v| = 4` at `θ = 240°`. find the horizontal and vertical components of each, then `u + v` and `|u + v|`.",
+      steps:[
+        {n:"one at a time", d:"each vector converts on its own: `a = |v|cos θ`, `b = |v|sin θ`. nothing gets added until both are in components."},
+        {n:"u", d:"`120°` is quadrant `II`, reference angle `60°`, so `cos = −1/2` and `sin = √3/2`. `u = ⟨10(−1/2), 10(√3/2)⟩ = ⟨−5, 5√3⟩`."},
+        {n:"v", d:"`240°` is quadrant `III`, reference angle `60°`, so `cos = −1/2` and `sin = −√3/2`. `v = ⟨−2, −2√3⟩`."},
+        {n:"add", d:"`u + v = ⟨−5 + (−2), 5√3 + (−2√3)⟩ = ⟨−7, 3√3⟩ = −7i + 3√3 j`."},
+        {n:"magnitude last", d:"`|u + v| = √(49 + 27) = √76 = 2√19`. not `10 + 4`: magnitudes never add unless the vectors point the same way."}
+      ],
+      a:"`u = ⟨−5, 5√3⟩`, `v = ⟨−2, −2√3⟩`, `u + v = ⟨−7, 3√3⟩`, `|u + v| = 2√19`" },
+
+    { t:"components → magnitude + angle", src:"worksheet 16-19", tag:"non-calc",
+
+      q:"`u = −i − √3 j`. find `|u|` and the direction angle in radians.",
+      steps:[
+        {n:"back to components", d:"`u = ⟨−1, −√3⟩`."},
+        {n:"magnitude", d:"`|u| = √(1 + 3) = √4 = 2`."},
+        {n:"reference angle", d:"`tan θ = b/a = (−√3)/(−1) = √3`, so the reference angle is `π/3`."},
+        {n:"fix the quadrant", d:"both components are negative, so `u` is in quadrant `III`. add `π` to the reference angle: `θ = π + π/3 = 4π/3`."}
+      ],
+      a:"`|u| = 2`, `θ = 4π/3`" },
+
+    { t:"dot product", src:"worksheet 20-22", tag:"non-calc",
+      q:"`u = ⟨3, −1⟩`, `v = ⟨−1, 5⟩`. find `u · v`.",
+      steps:[
+        {n:"the rule", d:"multiply first components, multiply second components, add. `u · v = ac + bd`."},
+        {n:"substitute", d:"`u · v = (3)(−1) + (−1)(5) = −3 − 5 = −8`."},
+        {n:"read the sign", d:"negative, so the angle between them is obtuse. the answer is a number, not a vector."}
+      ],
+      a:"`u · v = −8`" },
+
+    { t:"angle between", src:"worksheet 23-25", tag:"non-calc",
+      q:"find the angle between `2i + j` and `j`.",
+      steps:[
+        {n:"components", d:"`u = ⟨2, 1⟩`, `v = ⟨0, 1⟩`."},
+        {n:"dot product on top", d:"`u · v = (2)(0) + (1)(1) = 1`."},
+        {n:"magnitudes on the bottom", d:"`|u| = √5`, `|v| = 1`, so `cos θ = 1/(√5 · 1) = √5/5`."},
+        {n:"solve", d:"`θ = cos⁻¹(√5/5) ≈ 1.11 rad ≈ 63.4°`. the range is always `0 ≤ θ ≤ 180°`."}
+      ],
+      a:"`θ = cos⁻¹(√5/5) ≈ 63.4°`" },
+
+    { t:"orthogonal check", src:"worksheet 26", tag:"non-calc",
+      q:"are `v = 5i + 4√2 j` and `w = 6√2 i − j` orthogonal?",
+      steps:[
+        {n:"only the dot matters", d:"orthogonal means `v · w = 0`. no magnitudes needed."},
+
+        {n:"compute", d:"`v · w = (5)(6√2) + (4√2)(−1) = 30√2 − 4√2 = 26√2`."},
+        {n:"decide", d:"`26√2 ≠ 0`, so they are not orthogonal. it is positive, so the angle is acute."}
+      ],
+      a:"not orthogonal, `v · w = 26√2`" },
+
+    { t:"resultant force", src:"notes ex 5", tag:"calculator",
+      q:"two forces of `250` and `450` newtons act at a point, forming an angle of `85°`. find the magnitude of the resultant force.",
+      steps:[
+        {n:"draw it", d:"put the two forces on the sides of a parallelogram. the resultant is the diagonal."},
+        {n:"use the supplement", d:"the angle inside the triangle, across from the diagonal, is `180° − 85° = 95°`. this is the step everyone loses."},
+        {n:"law of cosines", d:"`x = √(250² + 450² − 2(250)(450)cos 95°)`, written as one radical."},
+        {n:"evaluate", d:"`x ≈ 533.488` newtons. using `85°` gives `495.4`, which is the wrong triangle."}
+      ],
+      a:"`≈ 533.488 N`" },
+
+    { t:"components at an ugly angle", src:"notes ex 3", tag:"calculator",
+      q:"vector `v` has magnitude `50` and an angle of inclination of `20°` from the horizontal. find the magnitudes of the horizontal and vertical components.",
+      steps:[
+        {n:"same formulas", d:"`20°` is not a unit circle angle, so the only change is that `cos` and `sin` come out as decimals. `a = 50cos 20°`, `b = 50sin 20°`."},
+        {n:"horizontal", d:"`a = 50(0.9397) ≈ 46.985`."},
+        {n:"vertical", d:"`b = 50(0.3420) ≈ 17.101`."},
+        {n:"check", d:"both under `50`, and the horizontal one is larger because `20°` is a shallow angle. degree mode. `P►Rx(50, 20)` gives the same thing if you want to confirm it."}
+      ],
+      a:"horizontal `≈ 46.985`, vertical `≈ 17.101`" },
+
+    { t:"magnitude + angle at an ugly angle", src:"notes ex 2", tag:"calculator",
+      q:"find the magnitude and direction angle of `u = ⟨15, −8⟩`, to the nearest hundredth of a degree.",
+      steps:[
+        {n:"magnitude", d:"`|u| = √(225 + 64) = √289 = 17`. clean, even though nothing else here is."},
+        {n:"reference angle", d:"`|b/a| = 8/15`, so `ref = tan⁻¹(8/15) ≈ 28.07°`."},
+        {n:"quadrant", d:"positive a, negative b → quadrant `IV`, so `θ = 360° − 28.07° ≈ 331.93°`."},
+        {n:"mode check", d:"degree mode for degree problems, radian mode for radian problems. wrong mode is a wrong answer, not a rounding error."}
+
+      ],
+      a:"`|u| = 17`, `θ ≈ 331.93°`" }
+  ],
+
+  formulas:[
+    { t:"the basics",
+      rows:[
+        ["from 2 points","`PQ = ⟨x₂ − x₁, y₂ − y₁⟩` (terminal minus initial)"],
+        ["magnitude","`|⟨a, b⟩| = √(a² + b²)`"],
+        ["direction angle","`tan θ = b/a`, `a ≠ 0`, then fix by quadrant so `0 ≤ θ < 2π`"],
+        ["horizontal comp","`a = |v|cos θ`"],
+        ["vertical comp","`b = |v|sin θ`, so `v = ⟨|v|cos θ, |v|sin θ⟩`"],
+        ["i, j form","`⟨a, b⟩ = ai + bj`, where `i = ⟨1, 0⟩` and `j = ⟨0, 1⟩`"],
+        ["unit vector","any vector with magnitude `1`"]
+      ] },
+    { t:"operations",
+      rows:[
+        ["add / subtract","`⟨a, b⟩ ± ⟨c, d⟩ = ⟨a ± c, b ± d⟩`"],
+        ["scalar","`k⟨a, b⟩ = ⟨ka, kb⟩`"],
+        ["opposite","`−v` has the same magnitude, opposite direction; `v + (−v) = 0`"],
+        ["subtracting","`A − B` means `A + (−B)`. order matters"],
+        ["resultant","the sum of two vectors: tip-to-tail, or the diagonal of the parallelogram"]
+      ] },
+    { t:"dot product",
+      rows:[
+        ["definition","`u · v = ac + bd`. the answer is a scalar"],
+        ["with itself","`u · u = |u|²`"],
+        ["angle between","`cos θ = (u · v)/(|u||v|)`, with `0° ≤ θ ≤ 180°`"],
+        ["orthogonal","`u · v = 0` ⟺ `θ = 90°`"],
+        ["sign table","positive → acute · zero → right · negative → obtuse"],
+        ["properties","`u · v = v · u`, `u · (v + w) = u · v + u · w`, `(ku) · v = k(u · v)`"]
+      ] },
+
+    { t:"forces and the calculator",
+      rows:[
+        ["two forces","angle `θ` between them → use `180° − θ` in the law of cosines"],
+        ["law of cosines","`x = √(a² + b² − 2ab cos C)`, one radical, no rounding until the end"],
+        ["conversions","`R►P` and `P►R` are check tools only. do the components with `cos` and `sin`"],
+        ["mode","degree mode for degree problems, radian mode for radian problems"]
+      ] }
+  ],
+
+  traps:[
+    { t:"the force problem uses the supplement",
+      p:["two forces with `85°` between them go into the law of cosines as `cos 95°`. the resultant is the diagonal of the parallelogram, and the angle across from it is the supplement of the angle between the forces.",
+         "if the resultant comes out smaller than the larger force, you probably used the wrong angle."] },
+    { t:"tan⁻¹ does not know the quadrant",
+      p:["`tan⁻¹` only ever returns quadrant `I` or `IV`. plot the signs of `⟨a, b⟩` first, then add `π` (or `180°`) for quadrants `II` and `III`, and add `2π` (or `360°`) to a negative quadrant `IV` answer.",
+         "the reported direction angle has to live in `[0, 2π)`. `−π/4` is not an answer, `7π/4` is."] },
+    { t:"|u − v| is not |u| − |v|",
+      p:["subtract the components, then take the magnitude of what's left. `⟨−1, 4⟩ − ⟨3, −7⟩ = ⟨−4, 11⟩`, so `|u − v| = √137 ≈ 11.7`, not `√17 − √58`, which is negative."] },
+    { t:"the dot product is a number",
+      p:["`u · v = ac + bd` collapses two vectors into one scalar. if your answer has angle brackets or an `i` in it, you did componentwise multiplication, which is not a thing."] },
+    { t:"give both forms when asked",
+      p:["the worksheet wants component form and `i`, `j` form. `⟨0, 4⟩` still has to be written as `0i + 4j`, not just `4j`, when both are asked for.",
+         "same for magnitude and direction: two answers, two boxes."] },
+    { t:"read the sign before you compute the angle",
+      p:["the sign of `u · v` already tells you acute, right, or obtuse. it's a free check on the `cos⁻¹` answer: a positive dot product cannot give an angle above `90°`.",
+         "`cos θ = −1` means `θ = 180°`, so one vector is a negative multiple of the other."] },
+    { t:"exact unless told to round",
+      p:["non-calculator problems stay in radicals and `π`: `√137`, `5√3/2`, `4π/3`. calculator problems say to round, and that's where you check degree vs radian mode.",
+         "show the setup line even on calculator problems. method carries the points."] }
+  ],
+
+  memo:[
+
+    {t:"Component form", l:[
+      "`PQ = ⟨x₂ − x₁, y₂ − y₁⟩` (terminal − initial)",
+      "`⟨a, b⟩ = ai + bj`,  `i = ⟨1, 0⟩`,  `j = ⟨0, 1⟩`",
+      "`|⟨a, b⟩| = √(a² + b²)`",
+      "unit vector: magnitude `1`"]},
+    {t:"Dot product", l:[
+      "`u · v = ac + bd` (a number, not a vector)",
+      "`u · u = |u|²`",
+      "`u · v = v · u`",
+      "`u · (v + w) = u · v + u · w`",
+      "`(ku) · v = k(u · v) = u · (kv)`"]},
+    {t:"Magnitude and direction", l:[
+      "`a = |v|cos θ` (horizontal)",
+      "`b = |v|sin θ` (vertical)",
+      "`v = ⟨|v|cos θ, |v|sin θ⟩`",
+      "`tan θ = b/a`, `a ≠ 0` (reference angle)",
+      "report `θ` in `[0, 2π)`"]},
+    {t:"Angle between", l:[
+      "`cos θ = (u · v)/(|u||v|)`,  `0° ≤ θ ≤ 180°`",
+      "orthogonal ⟺ `u · v = 0`",
+      "dot `> 0`: acute",
+      "dot `= 0`: right",
+      "dot `< 0`: obtuse"]},
+    {t:"Quadrant fix", l:[
+      "`tan⁻¹` only answers in QI or QIV. signs of `⟨a, b⟩` give the quadrant:",
+      "QI `(+, +)`: `θ = ref`",
+      "QII `(−, +)`: `θ = 180° − ref`",
+      "QIII `(−, −)`: `θ = 180° + ref`",
+      "QIV `(+, −)`: `θ = 360° − ref`"]},
+    {t:"Two forces at a point", l:[
+      "angle `θ` between them ⇒ use the supplement `180° − θ` in the triangle",
+      "`x = √(a² + b² − 2ab cos C)`",
+
+      "one radical, round at the very end"]},
+    {t:"Operations", l:[
+      "`⟨a, b⟩ ± ⟨c, d⟩ = ⟨a ± c, b ± d⟩`",
+      "`k⟨a, b⟩ = ⟨ka, kb⟩`",
+      "resultant = the sum: tip to tail, or the diagonal of the parallelogram",
+      "addition commutes, subtraction does not"]},
+    {t:"Exact values", table:[
+      ["θ","sin θ","cos θ"],
+      ["0","0","1"],
+      ["π/6 = 30°","1/2","√3/2"],
+      ["π/4 = 45°","√2/2","√2/2"],
+      ["π/3 = 60°","√3/2","1/2"],
+      ["π/2 = 90°","1","0"]],
+     l:["signs by quadrant (ASTC): QI all `+`; QII sin `+`; QIII tan `+`; QIV cos `+`"]}
+  ],
+
+  sheets:[
+    {
+      "id": "A",
+      "items": [
+        {
+          "n": 1,
+          "mode": "non",
+          "pts": "4 points",
+          "dir": "Find `2u + v - 6v` and `|u - v|` for the given vectors `u` and `v`. Write `2u + v - 6v` in component form AND in terms of `i` and `j`.",
+          "st": "`u = ⟨-3, 4⟩`, `v = ⟨2, -6⟩`",
+          "h": "2.8in",
+          "sol": [
+            "combine the like vectors first: `v - 6v = -5v`, so the expression is `2u - 5v`",
+            "`2u = ⟨-6, 8⟩`, `-5v = ⟨-10, 30⟩`",
+            "`2u + v - 6v = ⟨-6 + (-10), 8 + 30⟩ = [[⟨-16, 38⟩]] = [[-16i + 38j]]`",
+            "`u - v = ⟨-5, 10⟩ ⇒ |u - v| = √(25 + 100) = √125 = [[5√5]]`"
+
+          ]
+        },
+        {
+          "n": 2,
+          "mode": "non",
+          "pts": "2 points",
+          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`.",
+          "st": "`P(-3, 5)`, `Q(6, -7)`",
+          "h": "2.0in",
+          "sol": [
+            "terminal minus initial: `PQ = ⟨6 - (-3), -7 - 5⟩`",
+            "`PQ = [[⟨9, -12⟩]] = [[9i - 12j]]`"
+          ]
+        },
+        {
+          "n": 3,
+          "mode": "non",
+          "pts": "5 points",
+          "dir": "Find the horizontal and vertical components of each vector. Then write `u + v` in component form AND in terms of `i` and `j`, and find `|u + v|`.",
+          "st": "`|u| = 6`, `θ = 150°`; `|v| = 4`, `θ = 30°`",
+          "h": "3.1in",
+          "sol": [
+            "`u = ⟨6cos 150°, 6sin 150°⟩`: QII, reference angle `30°`, so `cos = -√3/2`, `sin = 1/2`",
+            "`u = [[⟨-3√3, 3⟩]]` (horizontal `-3√3`, vertical `3`)",
+            "`v = ⟨4cos 30°, 4sin 30°⟩ = [[⟨2√3, 2⟩]]`",
+            "`u + v = ⟨-3√3 + 2√3, 3 + 2⟩ = [[⟨-√3, 5⟩]] = [[-√3 i + 5j]]`",
+            "`|u + v| = √(3 + 25) = √28 = [[2√7]]`"
+          ]
+        },
+        {
+          "n": 4,
+          "mode": "non",
+
+          "pts": "3 points",
+          "dir": "Find the magnitude and direction of the vector. Write your answer in radians.",
+          "st": "`u = ⟨-6, -6√3⟩`",
+          "h": "2.4in",
+          "sol": [
+            "`|u| = √((-6)² + (-6√3)²) = √(36 + 108) = √144 = [[12]]`",
+            "`tanθ = b/a = -6√3/-6 = √3 ⇒ reference angle = π/3`",
+            "`a < 0` and `b < 0 ⇒` QIII, so `θ = π + π/3 = [[4π/3]]`"
+          ]
+        },
+        {
+          "n": 5,
+          "mode": "non",
+          "pts": "4 points",
+          "dir": "Find the dot product of the given vectors. Then determine if `u` and `v` are orthogonal.",
+          "st": "`u = ⟨4, -2⟩`, `v = ⟨-3, 5⟩`. Find `(-2u)·v` and `u·(u + v)`.",
+          "h": "2.4in",
+          "sol": [
+            "`-2u = ⟨-8, 4⟩ ⇒ (-2u)·v = (-8)(-3) + (4)(5) = 24 + 20 = [[44]]`",
+            "check: `u·v = (4)(-3) + (-2)(5) = -22`, and `(ku)·v = k(u·v) = (-2)(-22) = 44` ✓",
+            "`u + v = ⟨1, 3⟩ ⇒ u·(u + v) = (4)(1) + (-2)(3) = [[-2]]`",
+            "`u·v = -22 ≠ 0`, so not orthogonal (negative `⇒` obtuse angle)"
+          ]
+        },
+        {
+          "n": 6,
+          "mode": "calc",
+          "pts": "3 points",
+          "dir": "Find the angle between the given vectors. Round to the nearest tenth of a degree.",
+          "st": "`u = ⟨5, 2⟩`, `v = ⟨-1, 4⟩`",
+          "h": "3.4in",
+          "sol": [
+
+            "`u·v = (5)(-1) + (2)(4) = 3`",
+            "`|u| = √29`, `|v| = √17`",
+            "`cosθ = u·v/|u||v| = 3/√29√17 = 3/√493 ≈ 0.1351`",
+            "`θ = cos⁻¹(0.1351) ≈ [[82.2°]]` (positive dot product `⇒` acute ✓)"
+          ]
+        },
+        {
+          "n": 7,
+          "mode": "calc",
+          "pts": "4 points",
+          "dir": "Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth.",
+          "st": "forces of 180 lb and 320 lb, forming an angle of `72°`",
+          "h": "3.9in",
+          "sol": [
+            "the resultant is the diagonal of the parallelogram; the angle across from it is `180° - 72° = 108°`",
+            "`x = √(180² + 320² - 2(180)(320)cos 108°)`",
+            "`x ≈ [[412.8 lb]]` (larger than either force, which fits a `72°` spread)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "items": [
+        {
+          "n": 1,
+          "mode": "non",
+          "pts": "4 points",
+          "dir": "Find `3v + u - 4u` and `|u + v|` for the given vectors `u` and `v`. Write `3v + u - 4u` in component form AND in terms of `i` and `j`.",
+          "st": "`u = ⟨6, -1⟩`, `v = ⟨-2, 4⟩`",
+          "h": "2.8in",
+          "sol": [
+
+            "combine first: `u - 4u = -3u`, so the expression is `3v - 3u`",
+            "`3v = ⟨-6, 12⟩`, `3u = ⟨18, -3⟩`",
+            "`3v + u - 4u = ⟨-6 - 18, 12 - (-3)⟩ = [[⟨-24, 15⟩]] = [[-24i + 15j]]`",
+            "`u + v = ⟨4, 3⟩ ⇒ |u + v| = √(16 + 9) = √25 = [[5]]`"
+          ]
+        },
+        {
+          "n": 2,
+          "mode": "non",
+          "pts": "2 points",
+          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`.",
+          "st": "`P(4, -1)`, `Q(-4, 5)`",
+          "h": "2.0in",
+          "sol": [
+            "terminal minus initial: `PQ = ⟨-4 - 4, 5 - (-1)⟩`",
+            "`PQ = [[⟨-8, 6⟩]] = [[-8i + 6j]]`"
+          ]
+        },
+        {
+          "n": 3,
+          "mode": "non",
+          "pts": "5 points",
+          "dir": "Find the horizontal and vertical components of each vector. Then write `u + v` in component form AND in terms of `i` and `j`, and find `|u + v|`.",
+          "st": "`|u| = 10`, `θ = 225°`; `|v| = 6`, `θ = 315°`",
+          "h": "3.1in",
+          "sol": [
+            "`u = ⟨10cos 225°, 10sin 225°⟩`: QIII, reference angle `45°`, both ratios `-√2/2`",
+            "`u = [[⟨-5√2, -5√2⟩]]`",
+            "`v = ⟨6cos 315°, 6sin 315°⟩ = [[⟨3√2, -3√2⟩]]` (QIV)",
+            "`u + v = ⟨-5√2 + 3√2, -5√2 - 3√2⟩ = [[⟨-2√2, -8√2⟩]] = [[-2√2 i - 8√2 j]]`",
+            "`|u + v| = √(8 + 128) = √136 = [[2√34]]`"
+          ]
+
+        },
+        {
+          "n": 4,
+          "mode": "non",
+          "pts": "3 points",
+          "dir": "Find the magnitude and direction of the vector. Write your answer in radians.",
+          "st": "`u = -4i + 4√3 j`",
+          "h": "2.4in",
+          "sol": [
+            "`u = ⟨-4, 4√3⟩`",
+            "`|u| = √(16 + 48) = √64 = [[8]]`",
+            "`tanθ = 4√3/-4 = -√3 ⇒ reference angle = π/3`",
+            "`a < 0` and `b > 0 ⇒` QII, so `θ = π - π/3 = [[2π/3]]`"
+          ]
+        },
+        {
+          "n": 5,
+          "mode": "non",
+          "pts": "4 points",
+          "dir": "Find the dot product of the given vectors. Then determine if `u` and `v` are orthogonal.",
+          "st": "`u = ⟨-4, 6⟩`, `v = ⟨3, 2⟩`. Find `(3u)·v` and `(u - v)·v`.",
+          "h": "2.4in",
+          "sol": [
+            "`u·v = (-4)(3) + (6)(2) = -12 + 12 = 0`, so orthogonal",
+            "`(3u)·v = 3(u·v) = 3(0) = [[0]]` (scaling cannot change a right angle)",
+            "`u - v = ⟨-7, 4⟩ ⇒ (u - v)·v = (-7)(3) + (4)(2) = [[-13]]`",
+            "check: `(u - v)·v = u·v - v·v = 0 - |v|² = -13` ✓"
+          ]
+        },
+        {
+          "n": 6,
+          "mode": "calc",
+
+          "pts": "3 points",
+          "dir": "Find the angle between the given vectors. Round to the nearest tenth of a degree.",
+          "st": "`u = ⟨-2, 6⟩`, `v = ⟨5, 1⟩`",
+          "h": "3.4in",
+          "sol": [
+            "`u·v = (-2)(5) + (6)(1) = -4`",
+            "`|u| = √40 = 2√10`, `|v| = √26`",
+            "`cosθ = -4/2√10√26 = -4/2√260 ≈ -0.1240`",
+            "`θ = cos⁻¹(-0.1240) ≈ [[97.1°]]` (negative dot product `⇒` obtuse ✓)"
+          ]
+        },
+        {
+          "n": 7,
+          "mode": "calc",
+          "pts": "4 points",
+          "dir": "Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth.",
+          "st": "forces of 95 N and 140 N, forming an angle of `38°`",
+          "h": "3.9in",
+          "sol": [
+            "angle across from the diagonal: `180° - 38° = 142°`",
+            "`x = √(95² + 140² - 2(95)(140)cos 142°)`",
+            "`x ≈ [[222.7 N]]` (a narrow `38°` spread, so it lands near `95 + 140 = 235` ✓)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "items": [
+        {
+          "n": 1,
+          "mode": "non",
+
+          "pts": "4 points",
+          "dir": "Find `5u + 2v - u` and `|u - v|` for the given vectors `u` and `v`. Write `5u + 2v - u` in component form AND in terms of `i` and `j`.",
+          "st": "`u = ⟨5, -3⟩`, `v = ⟨-2, 6⟩`",
+          "h": "2.8in",
+          "sol": [
+            "combine first: `5u - u = 4u`, so the expression is `4u + 2v`",
+            "`4u = ⟨20, -12⟩`, `2v = ⟨-4, 12⟩`",
+            "`5u + 2v - u = ⟨20 + (-4), -12 + 12⟩ = [[⟨16, 0⟩]] = [[16i + 0j]]` (write the `0j`)",
+            "`u - v = ⟨7, -9⟩ ⇒ |u - v| = √(49 + 81) = [[√130]]`"
+          ]
+        },
+        {
+          "n": 2,
+          "mode": "non",
+          "pts": "2 points",
+          "dir": "Express the vector with initial point `P` and terminal point `Q` in component form AND in terms of `i` and `j`.",
+          "st": "`P(-5, -2)`, `Q(3, 4)`",
+          "h": "2.0in",
+          "sol": [
+            "terminal minus initial: `PQ = ⟨3 - (-5), 4 - (-2)⟩`",
+            "`PQ = [[⟨8, 6⟩]] = [[8i + 6j]]`"
+          ]
+        },
+        {
+          "n": 3,
+          "mode": "non",
+          "pts": "5 points",
+          "dir": "Find the horizontal and vertical components of each vector. Then write `u + v` in component form AND in terms of `i` and `j`, and find `|u + v|`.",
+          "st": "`|u| = 8`, `θ = 2π/3`; `|v| = 6`, `θ = π/3`",
+          "h": "3.1in",
+          "sol": [
+            "`u = ⟨8cos(2π/3), 8sin(2π/3)⟩`: QII, reference angle `π/3`, so `cos = -1/2`, `sin = √3/2`",
+
+            "`u = [[⟨-4, 4√3⟩]]`",
+            "`v = ⟨6cos(π/3), 6sin(π/3)⟩ = [[⟨3, 3√3⟩]]`",
+            "`u + v = ⟨-4 + 3, 4√3 + 3√3⟩ = [[⟨-1, 7√3⟩]] = [[-i + 7√3 j]]`",
+            "`|u + v| = √(1 + 147) = √148 = [[2√37]]`"
+          ]
+        },
+        {
+          "n": 4,
+          "mode": "non",
+          "pts": "3 points",
+          "dir": "Find the magnitude and direction of the vector. Write your answer in radians.",
+          "st": "`u = ⟨5√3, -5⟩`",
+          "h": "2.4in",
+          "sol": [
+            "`|u| = √(75 + 25) = √100 = [[10]]`",
+            "`tanθ = -5/5√3 = -1/√3 ⇒ reference angle = π/6`",
+            "`a > 0` and `b < 0 ⇒` QIV, so `θ = 2π - π/6 = [[11π/6]]`"
+          ]
+        },
+        {
+          "n": 5,
+          "mode": "non",
+          "pts": "4 points",
+          "dir": "Find the dot product of the given vectors. Then determine if `u` and `v` are orthogonal.",
+          "st": "`u = ⟨-6, 2⟩`, `v = ⟨1, 3⟩`. Find `(-3u)·v` and `(u + v)·u`.",
+          "h": "2.4in",
+          "sol": [
+            "`u·v = (-6)(1) + (2)(3) = -6 + 6 = 0`, so orthogonal",
+            "`(-3u)·v = -3(u·v) = [[0]]`",
+            "`u + v = ⟨-5, 5⟩ ⇒ (u + v)·u = (-5)(-6) + (5)(2) = 30 + 10 = [[40]]`",
+            "check: `(u + v)·u = u·u + v·u = |u|² + 0 = 40` ✓"
+          ]
+
+        },
+        {
+          "n": 6,
+          "mode": "calc",
+          "pts": "3 points",
+          "dir": "Find the angle between the given vectors. Round to the nearest tenth of a degree.",
+          "st": "`u = ⟨4, -3⟩`, `v = ⟨2, 5⟩`",
+          "h": "3.4in",
+          "sol": [
+            "`u·v = (4)(2) + (-3)(5) = -7`",
+            "`|u| = √(16 + 9) = 5`, `|v| = √29`",
+            "`cosθ = -7/5√29 ≈ -0.2600`",
+            "`θ = cos⁻¹(-0.2600) ≈ [[105.1°]]` (negative dot product `⇒` obtuse ✓)"
+          ]
+        },
+        {
+          "n": 7,
+          "mode": "calc",
+          "pts": "4 points",
+          "dir": "Two forces act at a point in the plane. The angle between the two forces is given. Find the magnitude of the resultant force. Round to the nearest tenth.",
+          "st": "forces of 210 N and 145 N, forming an angle of `55°`",
+          "h": "3.9in",
+          "sol": [
+            "angle across from the diagonal: `180° - 55° = 125°`",
+            "`x = √(210² + 145² - 2(210)(145)cos 125°)`",
+            "`x ≈ [[316.3 N]]`"
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+/* ═══ below here is the machinery. you shouldn't need to touch it. ═══ */
+
+const $=s=>document.querySelector(s);
+const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* split on backticks: odd chunks are math and skip the lowercase pass */
+/* spaces inside ⟨ ⟩ or ( ) become non-breaking so a pair never splits across lines */
+function tight(t){
+  let d=0,o="";
+  for(const c of t){
+    if(c==="⟨"||c==="(")d++;
+    else if(c==="⟩"||c===")")d=Math.max(0,d-1);
+    o+=(c===" "&&d>0)?"\u00A0":c;
+  }
+  return o;
+}
+function mk(str,node){
+  String(str).split("`").forEach((part,i)=>{
+    if(!part)return;
+    if(i%2){const s=el("span","m");s.textContent=tight(part);node.appendChild(s)}
+    else node.appendChild(document.createTextNode(part));
+  });
+  return node;
+}
+
+const G={
+ flag:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ curve:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>'
+};
+
+$("#cls").textContent=GUIDE.cls;
+
+$("#ttl").textContent=GUIDE.title;
+$("#due").textContent=GUIDE.due;
+document.title=GUIDE.title.toLowerCase()+" study guide";
+$("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true">'+
+  '<g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" '+
+  'stroke-linecap="round" stroke-linejoin="round" opacity=".97">'+
+  (G[GUIDE.glyph]||G.flag)+'<\/g><\/svg>';
+
+/* the rise animation can't run inside a display:none pane, so stagger on first reveal */
+function stagger(sec){
+  if(REDUCED||sec.dataset.risen)return;
+  sec.dataset.risen="1";
+  [...sec.children].forEach((n,i)=>{
+    if(!n.matches(".card,.qcard,.trap,.ctl,.sheet"))return;
+    n.style.setProperty("--i",i);n.classList.add("rise");
+  });
+}
+
+const CHEV='<svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" '+
+  'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '+
+  'aria-hidden="true"><path d="M1 1l6 6-6 6"/><\/svg>';
+
+/* steps + answer block, shared by worked examples and the tests */
+function solution(item){
+  const box=el("div");
+  item.steps.forEach(s=>{
+    const row=el("div","step");
+    const n=el("div","sn");n.textContent=s.n;
+    const d=el("div","sd");mk(s.d,d);
+    row.append(n,d);box.appendChild(row);
+  });
+  const a=el("div","ans");
+
+  const lab=el("b");lab.textContent="answer";
+  a.appendChild(lab);mk(item.a,a);
+  box.appendChild(a);
+  return box;
+}
+
+/* basics */
+GUIDE.basics.forEach(b=>{
+  const card=el("div","card g");
+  card.innerHTML='<span class="spec" aria-hidden="true"><\/span>'+
+    '<button class="chead" aria-expanded="false"><span class="dot"><\/span>'+
+    '<span class="ct"><\/span>'+CHEV+'<\/button>'+
+    '<div class="cbody"><div><div class="pad"><\/div><\/div><\/div>';
+  card.querySelector(".ct").textContent=b.t;
+  const pad=card.querySelector(".pad");
+  b.p.forEach(x=>{const p=el("p","bp");mk(x,p);pad.appendChild(p)});
+  if(b.fig){const w=el("div");w.innerHTML=b.fig;pad.appendChild(w.firstChild)}
+  if(b.terms){const box=el("div","terms");
+    b.terms.forEach(t=>{const c=el("span","term");mk(t,c);box.appendChild(c)});
+    pad.appendChild(box)}
+  const head=card.querySelector(".chead"), body=card.querySelector(".cbody");
+  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";
+    head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+  $("#p-basics").appendChild(card);
+});
+
+/* worked examples */
+GUIDE.worked.forEach((w,i)=>{
+  const card=el("div","card g");
+  card.innerHTML='<span class="spec" aria-hidden="true"><\/span>'+
+    '<button class="chead" aria-expanded="false"><span class="dot"><\/span>'+
+    '<span class="ct"><\/span><span class="tag"><\/span>'+CHEV+'<\/button>'+
+
+    '<div class="cbody"><div><div class="pad"><\/div><\/div><\/div>';
+  card.querySelector(".ct").textContent=w.t;
+  const tag=card.querySelector(".tag");
+  tag.textContent=w.tag; if(w.tag==="calculator")tag.classList.add("calc");
+  const pad=card.querySelector(".pad");
+  if(w.src){const sv=el("div","src");sv.textContent=w.src;pad.appendChild(sv)}
+  const p=el("p","prob");mk(w.q,p);pad.appendChild(p);
+  pad.appendChild(solution(w));
+  const head=card.querySelector(".chead"), body=card.querySelector(".cbody");
+  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";
+    head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+  $("#p-worked").appendChild(card);
+});
+
+/* formula reference */
+GUIDE.formulas.forEach((f,i)=>{
+  const card=el("div","card g");
+  card.innerHTML='<span class="spec" aria-hidden="true"><\/span>'+
+    '<button class="chead" aria-expanded="false"><span class="dot"><\/span>'+
+    '<span class="ct"><\/span>'+CHEV+'<\/button>'+
+    '<div class="cbody"><div><div class="pad"><\/div><\/div><\/div>';
+  card.querySelector(".ct").textContent=f.t;
+  const pad=card.querySelector(".pad");
+  f.rows.forEach(([k,v])=>{
+    const row=el("div","frow");
+    const kk=el("div","fk");kk.textContent=k;
+    const vv=el("div","fv");mk(v,vv);
+    row.append(kk,vv);pad.appendChild(row);
+  });
+  const head=card.querySelector(".chead"), body=card.querySelector(".cbody");
+  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";
+    head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+
+  if(i===0){head.setAttribute("aria-expanded","true");body.classList.add("on")}
+  $("#p-formulas").appendChild(card);
+});
+
+/* traps */
+GUIDE.traps.forEach((t,i)=>{
+  const card=el("div","trap g");
+  card.innerHTML='<span class="spec" aria-hidden="true"><\/span>';
+  const h=el("div","tt");h.textContent=t.t;card.appendChild(h);
+  t.p.forEach(x=>{const p=el("p","tp");mk(x,p);card.appendChild(p)});
+  $("#p-traps").appendChild(card);
+});
+
+/* tests: printable quiz sheets */
+function esc(t){return t.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}
+function sheetText(str,node){
+  String(str).split("`").forEach((part,i)=>{
+    if(!part)return;
+    if(i%2){
+      const sp=el("span","m");
+      let h=esc(tight(part)).replace(/-/g,"\u2212");
+      h=h.replace(/\[\[(.+?)\]\]/g,'<span class="bx">$1<\/span>');
+      h=h.replace(/(^|[^A-Za-z])([uvijw])(?![A-Za-z])/g,"$1<b>$2<\/b>");
+      sp.innerHTML=h;node.appendChild(sp);
+    } else node.appendChild(document.createTextNode(part));
+  });
+  return node;
+}
+
+(function(){
+  const host=$("#p-tests");
+
+
+  const ctl=el("div","ctl g");
+  ctl.innerHTML='<span class="spec" aria-hidden="true"><\/span>'+
+    '<span class="tv">20:00<\/span><span class="tlab">quiz clock<\/span>'+
+    '<button class="cbtn push" id="clk">start<\/button>'+
+    '<button class="cbtn" id="prt">print / pdf<\/button>';
+  host.appendChild(ctl);
+
+  const tv=ctl.querySelector(".tv"), tb=ctl.querySelector("#clk");
+  let left=1200,id=null;
+  const paint=()=>{tv.textContent=String(Math.floor(left/60)).padStart(2,"0")+":"+
+    String(left%60).padStart(2,"0"); tv.classList.toggle("low",left<=120)};
+  tb.onclick=()=>{
+    if(id){clearInterval(id);id=null;tb.textContent="start";return}
+    if(left<=0)left=1200;
+    tb.textContent="pause";
+    id=setInterval(()=>{left--;paint();if(left<=0){clearInterval(id);id=null;tb.textContent="reset"}},1000);
+  };
+  paint();
+  const note=t=>{let n=ctl.querySelector(".pnote");
+    if(!n){n=el("div","pnote");ctl.appendChild(n)}
+    n.textContent=t};
+
+  ctl.querySelector("#prt").onclick=()=>{
+    try{print()}catch(e){}
+    note("if no print dialog opened, this frame is sandboxed. open the pdf and print from there.");
+  };
+
+  const HONOR="Honor Code (copy below & sign): On my honor, before God, I have neither given, "+
+    "nor received any aid on this quiz.";
+
+  (function(){
+    const sh=el("section","sheet"), pg=el("div","page");
+
+    const ti=el("div","mtitle");ti.textContent="PCBC H Vectors & Dot Product: Memorize Sheet";
+    const sb=el("div","msub");sb.textContent="everything below is from memory on quiz day";
+    pg.append(ti,sb);
+    const grid=el("div","memo");
+    GUIDE.memo.forEach(c=>{
+      const card=el("div","mcard");
+      const h=el("h4");h.textContent=c.t;card.appendChild(h);
+      if(c.table){
+        const tb=el("table"), th=el("thead"), tr=el("tr");
+        c.table[0].forEach(x=>{const e=el("th");e.textContent=x;tr.appendChild(e)});
+        th.appendChild(tr);tb.appendChild(th);
+        const bd=el("tbody");
+        c.table.slice(1).forEach(row=>{const r=el("tr");
+          row.forEach(x=>{const e=el("td");e.textContent=x;r.appendChild(e)});bd.appendChild(r)});
+        tb.appendChild(bd);card.appendChild(tb);
+      }
+      (c.l||[]).forEach(x=>{const d=el("div");sheetText(x,d);card.appendChild(d)});
+      grid.appendChild(card);
+    });
+    pg.appendChild(grid);sh.appendChild(pg);host.appendChild(sh);
+  })();
+
+  GUIDE.sheets.forEach(t=>{
+    const sheet=el("section","sheet");
+    [[0,2,"Non-Calculator","/25",1],[2,5,"",""],[5,7,"Calculator",""]].forEach(spec=>{
+      const [a,b,mode,pts,honor]=spec;
+      const pg=el("div","page");
+      if(mode){
+        const hd=el("div","qhead");
+        const l=el("span");l.textContent="PCBC H Vectors & Dot Product Quiz (Practice "+t.id+")";
+        const nm=el("span","nm");nm.textContent="Name";
+        const p=el("span");p.textContent=pts;
+
+        hd.append(l,nm,p);pg.appendChild(hd);
+        const md=el("div","qmode");md.dataset.base=mode;md.textContent=mode;pg.appendChild(md);
+      }
+      if(honor){
+        const h=el("div","honor");h.textContent=HONOR;pg.appendChild(h);
+        pg.appendChild(el("div","hrule"));pg.appendChild(el("div","hrule"));
+        const sg=el("div","sig");sg.textContent="Signature";pg.appendChild(sg);
+        const sa=el("div","showall");sa.textContent="SHOW ALL WORK FOR FULL CREDIT!";
+        pg.appendChild(sa);
+      }
+      t.items.slice(a,b).forEach(q=>{
+        const item=el("div","qitem");
+        const d=el("p","qdir");sheetText(q.dir+" ("+q.pts+")",d);item.appendChild(d);
+        const box=el("div","qbox");box.style.minHeight=q.h;
+        const n=el("span","qnum");n.textContent=q.n+".";
+        box.appendChild(n);sheetText(q.st,box);
+        const sol=el("div","qsol");
+        q.sol.forEach(x=>{const r=el("div");sheetText(x,r);sol.appendChild(r)});
+        box.appendChild(sol);
+        item.appendChild(box);pg.appendChild(item);
+      });
+      sheet.appendChild(pg);
+    });
+
+    const kp=el("div","page kpage");
+    const kh=el("div","qhead");
+    const kl=el("span");kl.textContent="PCBC H Vectors & Dot Product Quiz (Practice "+t.id+")";
+    const knm=el("span","nm");knm.textContent="Name";
+    const kpt=el("span");kpt.textContent="/25";
+    kh.append(kl,knm,kpt);kp.appendChild(kh);
+    const km=el("div","qmode");km.innerHTML="<b>ANSWER KEY<\/b>";kp.appendChild(km);
+    t.items.forEach(q=>{
+
+      const item=el("div","qitem");
+      const d=el("p","qdir");sheetText(q.dir+" ("+q.pts+")",d);item.appendChild(d);
+      const box=el("div","qbox");
+      const n=el("span","qnum");n.textContent=q.n+".";
+      box.appendChild(n);sheetText(q.st,box);
+      const sol=el("div","qsol");
+      q.sol.forEach(x=>{const r=el("div");sheetText(x,r);sol.appendChild(r)});
+      box.appendChild(sol);item.appendChild(box);kp.appendChild(item);
+    });
+    sheet.appendChild(kp);
+
+    host.appendChild(sheet);
+  });
+})();
+
+/* segmented control */
+stagger($("#p-basics"));
+(function(){
+  const tabs=[["basics","basics"],["worked","worked"],["formulas","formulas"],["traps","traps"],["tests","quizzes"]];
+  const seg=$("#seg"), ind=seg.querySelector(".ind");
+  tabs.forEach(([id,label],i)=>{
+    const b=el("button"); b.textContent=label; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",String(i===0));
+    b.onclick=()=>select(i);
+    seg.appendChild(b);
+  });
+  function select(i){
+    const btns=[...seg.querySelectorAll("button")];
+    btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
+    tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
+    stagger($("#p-"+tabs[i][0]));
+    move(); scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
+
+  }
+  function move(){
+    const btns=[...seg.querySelectorAll("button")];
+    const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
+    const b=btns[i]; if(!b)return;
+    ind.style.width=b.offsetWidth+"px";
+    ind.style.transform="translateX("+(b.offsetLeft-2)+"px)";
+  }
+  addEventListener("resize",move); requestAnimationFrame(move);
+})();
+
+/* header state + pointer specular */
+(function(){
+  const hdr=$("#hdr"); let raf=0;
+  addEventListener("scroll",()=>{ if(raf)return;
+    raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)}) },{passive:true});
+  if(matchMedia("(hover:hover)").matches && !REDUCED){
+    addEventListener("pointermove",e=>{
+      const c=e.target.closest && e.target.closest(".g"); if(!c)return;
+      const r=c.getBoundingClientRect();
+      c.style.setProperty("--mx",(e.clientX-r.left)+"px");
+      c.style.setProperty("--my",(e.clientY-r.top)+"px");
+    },{passive:true});
+  }
+})();
+</script>
+
+<script>
+document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?t.closest("#prt"):null;if(b){e.preventDefault();window.print();}});
+</script>
+</body>
+</html>
