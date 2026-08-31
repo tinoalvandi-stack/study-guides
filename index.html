@@ -392,6 +392,10 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
   <ul>
     <li><a href="https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755">Ch 1-2</a> &middot; Guide</li>
   </ul>
+  <h3>Honors Precalculus BC</h3>
+  <ul>
+    <li><a href="https://claude.ai/public/artifacts/320e5aff-e2ca-49de-8cf0-d9017f9736c4">Vectors + dot product</a> &middot; Guide</li>
+  </ul>
   <h3>AP World History</h3>
   <ul>
     <li><a href="https://claude.ai/public/artifacts/7e043d9c-afd6-47f4-9b15-becec95b6422">LEQ pieces, by LEQ option</a> &middot; Guide</li>
@@ -438,6 +442,8 @@ const FINE=matchMedia("(hover:hover)").matches;
 const FEATURES=[
   {classId:"apush", title:"Unit 1/A study guide",
    url:"https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc", test:"2026-08-31"},
+  {classId:"pre",   title:"Vectors + dot product study guide",
+   url:"https://claude.ai/public/artifacts/320e5aff-e2ca-49de-8cf0-d9017f9736c4", test:"2026-08-31"},
   {classId:"mor",   title:"Ch 1-2 study guide",
    url:"https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755", test:"2026-09-04"}
 ];
@@ -456,7 +462,9 @@ const CLASSES=[
   {id:"mor",   c:"var(--c-mor)",   glyph:"cross",   year:"junior", name:"Catholic Morality",
    guides:[{t:"Ch 1-2", tag:"Guide",
      url:"https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755"}]},
-  {id:"pre",   c:"var(--c-pre)",   glyph:"curve",   year:"junior", name:"Honors Precalculus BC", guides:[]},
+  {id:"pre",   c:"var(--c-pre)",   glyph:"curve",   year:"junior", name:"Honors Precalculus BC",
+   guides:[{t:"Vectors + dot product", tag:"Guide",
+     url:"https://claude.ai/public/artifacts/320e5aff-e2ca-49de-8cf0-d9017f9736c4"}]},
 
   /* ---- sophomore year (archive) ---- */
   {id:"apwh", c:"var(--c-apwh)", glyph:"globe", year:"soph", name:"AP World History", abbr:"APWH",
