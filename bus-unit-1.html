@@ -1,0 +1,1246 @@
+<title>business principles unit 1 · study guide</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+/* ── paste glass.css here, then these guide-only additions ───────────── */
+/* (the template ships with the shared tokens inlined below so it runs as-is) */
+:root{
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
+
+  /* business principles + dawn palette */
+  --accent:#C8890B;
+  --amb1:var(--accent); --amb2:#FF375F; --amb3:#BF5AF2; --amb4:#FF9F0A;
+
+  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1)); --ink:#08080D;
+  --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
+  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
+  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
+  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
+  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
+  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30;
+  --blur:22px; --sat:195%;
+  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --amb:.82; --amb-blur:66px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#F0B429;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}}
+:root[data-theme="dark"]{
+  --accent:#F0B429; --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
+  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hidden{display:none !important}
+
+#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
+  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);
+  animation:hue 120s linear infinite}
+@keyframes hue{
+  0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}
+  50%    {filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}
+}
+#amb i{position:absolute;display:block;border-radius:50%;animation:drift 38s var(--ease) infinite alternate}
+#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;
+  background:radial-gradient(circle,var(--amb1),transparent 66%)}
+#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:8vh;
+  background:radial-gradient(circle,var(--amb2),transparent 66%);
+  animation-duration:45s;animation-delay:-10s}
+#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:46vh;
+  background:radial-gradient(circle,var(--amb3),transparent 66%);
+  animation-duration:41s;animation-delay:-20s}
+#amb i:nth-child(4){width:54vw;height:54vw;right:-8vw;top:64vh;
+  background:radial-gradient(circle,var(--amb4),transparent 66%);
+  animation-duration:48s;animation-delay:-30s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
+
+.g{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
+.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  pointer-events:none;z-index:3;
+  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude}
+.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
+.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
+  transition:opacity .4s var(--ease)}
+@media (hover:hover){.g:hover > .spec{opacity:1}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
+.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
+.glyph{width:40px;height:40px;border-radius:12px;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
+  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
+.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;
+  line-height:1.08;text-transform:lowercase}
+.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
+  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase}
+
+/* segmented control */
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
+  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;
+  box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.seg button{position:relative;z-index:1;padding:7px 4px;border-radius:9px;font-family:var(--round);
+  font-size:13.5px;font-weight:640;color:var(--ink2);text-transform:lowercase;
+  transition:color .25s var(--ease)}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
+  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
+  transition:transform .42s var(--spring),width .42s var(--spring)}
+
+main{padding-top:20px}
+.sh{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--ink3);
+  margin:30px 4px 10px;text-transform:lowercase}
+.sh:first-child{margin-top:0}
+
+/* outline */
+.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
+.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;
+  position:relative;z-index:1;transition:transform .34s var(--spring)}
+.chead:active{transform:scale(.99)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;
+  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
+.tw{color:var(--ink3);transition:transform .34s var(--spring)}
+.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
+.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.cbody.on{grid-template-rows:1fr}
+.cbody > div{overflow:hidden}
+.cbody p{margin:0 0 10px;padding:0 16px;font-size:15.5px;line-height:1.5;color:var(--ink2);
+  text-transform:lowercase}
+.cbody p:last-child{padding-bottom:16px}
+.terms{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 16px}
+.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);
+  text-transform:lowercase}
+
+/* practice */
+.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
+.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase}
+.qt{margin:6px 0 14px;font-size:17px;font-weight:560;line-height:1.35;letter-spacing:-.02em;
+  text-transform:lowercase}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 13px;
+  border-radius:12px;background:var(--fill2);margin-bottom:7px;font-size:15.5px;
+  box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
+  transition:background .2s var(--ease),transform .3s var(--spring)}
+.opt:active{transform:scale(.988)}
+.opt .k{font-family:var(--round);font-weight:740;font-size:13px;color:var(--ink3);flex:none;
+  width:20px;text-transform:uppercase}
+.opt.right{background:color-mix(in srgb,var(--good) 20%,transparent);color:var(--good)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.opt.right .k,.opt.wrong .k{color:inherit}
+.why{margin:10px 2px 0;font-size:13.5px;line-height:1.5;color:var(--ink3);text-transform:lowercase}
+
+/* flashcards */
+.deck{perspective:1400px;margin-bottom:14px}
+.fc{position:relative;width:100%;min-height:210px;transform-style:preserve-3d;
+  transition:transform .62s var(--spring);cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:20px;display:grid;place-items:center;padding:26px;text-align:center}
+.face.back{transform:rotateY(180deg)}
+.face .fw{font-family:var(--display);font-size:24px;font-weight:760;letter-spacing:-.036em;
+  line-height:1.15;text-transform:lowercase;position:relative;z-index:1}
+.face.back .fw{font-family:var(--text);font-size:16.5px;font-weight:480;letter-spacing:-.014em;
+  line-height:1.45;color:var(--ink2)}
+.fbar{display:flex;align-items:center;gap:12px}
+.fbar button{font-family:var(--round);font-size:14px;font-weight:660;color:var(--blue);
+  padding:8px 12px;border-radius:10px;text-transform:lowercase}
+.fcount{margin-left:auto;font-family:var(--round);font-size:13px;color:var(--ink3);
+  font-variant-numeric:tabular-nums}
+
+.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);
+  animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+
+footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;
+  text-transform:lowercase}
+
+@media (prefers-reduced-motion:reduce){
+  #amb,#amb i{animation:none}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* review-sheet rows nested inside a lesson card */
+.item{border-top:.5px solid var(--sep)}
+.item:first-child{border-top:0}
+.ihead{display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;
+  padding:12px 15px;position:relative;z-index:1;transition:transform .3s var(--spring)}
+.ihead:active{transform:scale(.993)}
+.inum{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--accent);
+  flex:none;min-width:16px;padding-top:3px;font-variant-numeric:tabular-nums;
+  text-transform:lowercase}
+.iq{flex:1;font-size:15px;font-weight:520;line-height:1.35;letter-spacing:-.014em;
+  text-transform:lowercase}
+.itw{color:var(--ink3);flex:none;margin-top:4px;transition:transform .3s var(--spring)}
+.ihead[aria-expanded="true"] .itw{transform:rotate(90deg)}
+.ibody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--spring)}
+.ibody.on{grid-template-rows:1fr}
+.ibody > div{overflow:hidden}
+.ibody p{margin:0 0 9px;padding:0 15px 0 40px;font-size:14.5px;line-height:1.5;
+  color:var(--ink2);text-transform:lowercase}
+.ibody p:last-child{padding-bottom:13px}
+.ibody .terms{padding:0 15px 14px 40px}
+
+/* practice test */
+.pt{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);
+  text-transform:lowercase;margin:24px 4px 9px}
+.pt:first-child{margin-top:2px}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.mopt{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:12px;
+  background:var(--fill2);font-size:13.5px;line-height:1.35;
+  box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
+  transition:background .2s var(--ease),transform .3s var(--spring),color .2s var(--ease)}
+.mopt:active{transform:scale(.985)}
+.mopt.sel{background:color-mix(in srgb,var(--accent) 24%,transparent);color:var(--accent)}
+.mopt.right{background:color-mix(in srgb,var(--good) 20%,transparent);color:var(--good)}
+.mopt.wrong{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.mcount{font-family:var(--round);font-size:13px;color:var(--ink3);text-transform:lowercase;
+  font-variant-numeric:tabular-nums;margin:12px 2px 0}
+.stem{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:4px 0 2px;text-transform:lowercase}
+.sq{font-size:15.5px;font-weight:540;line-height:1.4;margin:15px 0 9px;text-transform:lowercase}
+.rv{font-family:var(--round);font-size:13.5px;font-weight:660;color:var(--blue);
+  padding:7px 12px;border-radius:10px;background:var(--fill2);text-transform:lowercase;
+  box-shadow:inset 0 .5px 0 0 var(--gloss);transition:transform .3s var(--spring)}
+.rv:active{transform:scale(.985)}
+</style>
+
+<div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<header id="hdr"><div class="wrap">
+  <div class="hrow">
+    <span id="gly" class="glyph" aria-hidden="true"></span>
+    <div>
+      <div class="cls" id="cls"></div>
+      <h1 id="ttl"></h1>
+    </div>
+    <span class="chip" id="due"></span>
+  </div>
+  <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
+</div></header>
+
+<main class="wrap">
+  <section id="p-outline"></section>
+  <section id="p-tests" class="hidden"></section>
+  <section id="p-cards" class="hidden"></section>
+  <footer>study guide written by a student. not affiliated with the school.<br>
+    check anything that matters against your own notes.</footer>
+</main>
+
+<script>
+/* ═══ everything you edit lives in this block ════════════════════════ */
+const GUIDE = {
+  cls:   "Business Principles",
+  glyph: "chart",
+  title: "Unit 1 study guide",
+  due:   "test 9/2",
+
+  outline:[
+  { t:"start here: off the review board", items:[
+    { n:"\u2605", q:"What he wrote and starred on the review board",
+      a:["The 6 C's, both directions. The definition of business and the three types of commerce. The right people: interests, skills, experience, so the employee is productive and fulfilled.",
+         "HR equals cultivate, plus the 12 HR responsibilities in order. What the EEOA blocks: age, country of origin, marital status, sex. The six employee benefits, marked VIP. The best places to work checklist.",
+         "Management plans, organizes, staffs, controls and leads. Chain of command and the three levels, compared for a school and for Apple. The effective manager list ending in leadership. 57 percent leave because of poor leadership. The five stages of the entrepreneurial process.",
+         "Strategy as a route or plan of action, informed by mission and vision. Mission is the why and the what, vision is the where, a tactic is the specific action. Goal versus objective. Business strategy versus marketing strategy. Habitat for Humanity, and this school's own mission and vision."] },
+    { n:"\u2605", q:"How the lesson quizzes are worded",
+      a:["He pulls test questions straight off them. All 50 are in the tests tab under quizzes, with the answers and why each wrong option is wrong.",
+         "Formats that showed up there: multiple choice multiple response, select THREE, select TWO, complete the outline, complete the sentence. Expect more than plain single-answer.",
+         "The 1-3 and 1-4 quizzes can be retried. The 1-1 one is locked."] }
+  ]},
+
+  { t:"unit 1-1: what is business?", items:[
+    { n:"", q:"What is a business?",
+      a:["A for-profit or non-profit organization involved in commercial, industrial, or professional commerce.",
+         "Commercial is the pursuit of a profit margin. Industrial is anything manufactured, from cars to software. Professional is customized, knowledge-based services provided for a fee.",
+         "His examples. Commercial: selling industrial goods, commercial loans from a bank, lawn service, babysitting. Industrial: manufactured items, cars, software, clothing. Professional: lawyers, accountants, doctors, tutors, financial advisors."],
+      terms:["commercial","industrial","professional","for-profit","non-profit"] },
+    { n:"", q:"What are the 6 business functions?",
+      a:["Human resources, strategy, information management, operations, marketing, finance and accounting."],
+      terms:["human resources","strategy","information management","operations","marketing","finance and accounting"] },
+    { n:"", q:"What are the 6 C's that relate to the 6 business functions?",
+      a:["Cultivate is human resources. Contemplate is strategy. Compile is information management. Control is operations. Connect is marketing. Calculate is finance and accounting.",
+         "He made these up for this class, so they are not findable anywhere. They are not the nursing 6Cs and not the general education 6Cs. Learn it both directions."],
+      terms:["cultivate","contemplate","compile","control","connect","calculate"] },
+    { n:"1", q:"Explain the nature of business and its contribution to society",
+      a:["A business takes inputs, converts them, and delivers goods or services people will pay for.",
+         "It supplies what people need and want, creates jobs and income, pays taxes that fund public services, and drives innovation that raises the standard of living. Marketing's own definition names this: delivery to targeted customers for their benefit and for the benefit of society as a whole."] },
+    { n:"2", q:"Explain the role of business in society",
+      a:["Business is how society gets its needs met and how most people earn a living. Business is about people managing business functions, so it also carries responsibility for how those people are treated.",
+         "Non-profits fill the needs the for-profit market leaves out."] },
+    { n:"3", q:"Describe factors that affect the business environment",
+      a:["The economy, competition, government and law, technology, social and cultural trends, workforce trends like remote work, and global markets and supply chains.",
+         "The notes single out two: technology changes rapidly, and virtual and remote work make it harder for managers to see and interact with their teams."] },
+    { n:"4", q:"Describe the types of business activities",
+      a:["Commercial, industrial, and professional. Plus the split that runs across all three, for-profit versus non-profit."] },
+    { n:"5", q:"Explain the organizational structure of business",
+      a:["By function it is the six. By level it runs front-line employees, then supervisory, then middle management, then officer or executive.",
+         "Strategy and human resources build the org chart together, including the levels of management and who reports to whom."],
+      terms:["org chart","levels of management","chain of command"] },
+    { n:"6", q:"Glossary terms",
+      a:["Accounting, business, finance, human resources, information management, information technology, management, marketing, mission, operations, return on equity, return on investment, strategy, tactic, vision.",
+         "All fifteen are in the flashcards tab with his exact wording. The pairs he tests hardest: mission versus vision, strategy versus tactic, accounting versus finance."],
+      terms:["mission vs vision","strategy vs tactic","accounting vs finance","ROI","ROE"] },
+    { n:"7", q:"Examine the organizational structure and functions of business",
+      a:["Same ground as 5. Departments by function, levels by authority, and an org chart whose reporting lines are the chain of command.",
+         "Structure exists so responsibility is clear, specialists can focus, decisions travel down and problems travel up."] },
+    { n:"8", q:"What are the characteristics of business?",
+      a:["It is for-profit or non-profit. It operates in commercial, industrial or professional commerce. It runs on six functions, all managed by people.",
+         "It is anchored in a mission, which informs everything else including strategy. It has a vision of where it ends up. It uses strategy and tactics to reach goals and objectives, and measures itself with KPIs and financial measures like ROI and ROE."] },
+    { n:"9", q:"What are the six primary business functions, and related activities?",
+      a:["Human resources recruits, hires, onboards, trains, evaluates and terminates. Strategy sets mission, vision, goals and objectives, and says no to the rest. Information management collects, organizes, stores and secures data for decisions.",
+         "Operations is daily functioning, inputs and outputs, manufacturing, purchasing and logistics. Marketing connects the business to its target market and has eight functions of its own. Accounting records, maintains and reports transactions, and finance manages assets, liabilities, equity and cash flow and plans growth."] },
+    { n:"10", q:"How do businesses operate?",
+      a:["All six functions run at once and depend on each other.",
+         "His candle example: you cultivate your teammates, contemplate a mission, then strategy, information management and marketing compile data to connect with the target market. Strategy picks selling online with same-day delivery. Operations controls quality in manufacturing and distribution. Accounting records the sales and finance calculates the cash to keep operating."] },
+    { n:"11", q:"What do businesses do?",
+      a:["Business is about people managing business functions. Use that sentence.",
+         "Everything else is a subset of one of the six. Manufacturing sits under operations. Promotion and product/service management sit under marketing."] },
+    { n:"12", q:"How do the business functions work together?",
+      a:["They are interdependent, and a weak one drags the others. Marketing sells 500 orders, human resources never hired the second producer, so operations cannot fill them and finance never sees the revenue.",
+         "On the 1-1 quiz: strategy, information management and marketing are the three that work together to compile information about the target market."] },
+    { n:"13", q:"Describe the importance of a mission for a business",
+      a:["It keeps the organization on the same page and focused on the journey. Great companies are anchored in their mission, and it informs everything else, including strategy.",
+         "Every employee action needs to connect back to it. Without one, strategy has nothing to aim at: if you do not know where you are going, any road will get you there."] },
+    { n:"", q:"For each of the 6 business functions, tell me at least ONE aspect of that area",
+      a:["Human resources: onboarding a new hire. Strategy: setting the mission and the goals. Information management: pulling last quarter's sales data.",
+         "Operations: quality control before anything ships. Marketing: choosing the target market and pricing. Finance and accounting: recording the sales, then deciding if there is cash for the next machine."] },
+    { n:"", q:"Review the 1-1 lesson quiz, 18 questions",
+      a:["All 18 are in the tests tab under quizzes, part a, with answers.",
+         "The traps there: customer service is one of marketing's eight functions, not a business function. Accounting records and reports, finance manages and plans. Both get asked back to back."] }
+  ]},
+
+  { t:"unit 1-2: management", items:[
+    { n:"", q:"What is management?",
+      a:["Planning, organizing, staffing, controlling and leading people, processes and assets in order to achieve a goal or task in the best way possible.",
+         "On the board it is five verbs: plans, organizes, staffs, controls, leads. Leads is the one he starred and tied to company culture."] },
+    { n:"", q:"What percent of employees left a job because of a manager or leader?",
+      a:["57 percent, from a 2019 study. Board wording: they leave because of poor leadership. People leave managers, not companies."] },
+    { n:"1", q:"Glossary terms",
+      a:["Chain of command, company culture, company values, emotional intelligence, leadership, management, people skills, problem-solving skills, procedural skills, staffing.",
+         "All ten are in the flashcards tab. Company values are the claim, company culture is whether it is true on a busy night."],
+      terms:["chain of command","company culture","company values","emotional intelligence","leadership","people skills","procedural skills","staffing"] },
+    { n:"2", q:"What do managers manage?",
+      a:["People, processes and assets, straight from the definition. And the six business functions, working with human resources plus operations, accounting and information management."] },
+    { n:"3", q:"What are the functions of management?",
+      a:["Planning maps the course of action and what people and resources are needed. Organizing arranges them. Staffing means recruit, interview, hire and orient. Controlling checks results against the goal, measures the metrics and corrects. Leading is communicating, motivating, guiding, coaching and reviewing.",
+         "The lesson graphic shows only four, dropping organizing, but the written definition and the review sheet both list five. Answer five."] },
+    { n:"4", q:"What business functions do managers manage?",
+      a:["All six: human resources, strategy, information management, operations, marketing, finance and accounting."] },
+    { n:"5", q:"What is the role of leadership in managing business functions and companies?",
+      a:["Leadership inspires, motivates, influences and maximizes the efforts of people toward a common purpose.",
+         "How managers treat others reveals their leadership and the true character of a company. Values put into practice build the culture, so how managers manage is what makes or breaks the company."] },
+    { n:"6", q:"What skills are required to be an effective manager?",
+      a:["Problem-solving: good trade-offs with limited resources. People skills: empathizing and understanding while still influencing, communicating and interacting. Procedural: learning and performing methods and sequences quickly.",
+         "On the board the fourth item is leadership, annotated inspire and motivate. The review sheet glossary lists emotional intelligence instead. Know both.",
+         "Which one you lean on depends on level. Supervisory leans procedural, middle blends all three, executives lean problem-solving."] },
+    { n:"7", q:"What is the chain of command?",
+      a:["An organizational structure that shows who each person reports to.",
+         "Front-line and entry-level employees report to supervisors, supervisors report to middle managers, middle managers report to executives. Big companies stack many layers inside the middle."] },
+    { n:"8", q:"What are levels of management, and why are they important?",
+      a:["Officer and executive handle vision, strategy and the big decisions. Middle management is the link between senior management and the lower levels. Supervisory runs the day to day, and front-line employees report to them.",
+         "He compared the levels at this school against Apple. School: president and principal, then deans and department chairs, then teachers and moderators, then students. Apple: CEO and CFO, then regional and store managers, then shift leads, then the floor.",
+         "They matter because they are what the chain of command is built from, and the skill mix changes at each level."] },
+    { n:"9", q:"What is the difference between management and leadership?",
+      a:["Management is doing things right, leadership is doing the right things. Another framing: leaders initiate a plan and managers execute it.",
+         "It is not that clean, because leaders also manage and managers also lead. The difference may have more to do with a focus on growth.",
+         "Colin Powell: leadership is the art of accomplishing more than the science of management says is possible."] },
+    { n:"10", q:"Does leadership quality affect employees? How? What percent leave?",
+      a:["Yes. We spend most of our productive years working, and managers are often the deciding factor in whether someone likes their work and whether they stay.",
+         "Managers have a big impact, good and bad, on the work environment and on work enjoyment. 57 percent of employees have left a job because of a manager or leader."] },
+    { n:"", q:"Review the 1-2 scenario: a friend gets promoted to coffee supervisor",
+      a:["The exact scenario text is not in the lesson notes, so this is the shape of the answer.",
+         "The friendship and the chain of command are now separate things: work decisions go by policy and performance. No favoritism, same rules and standards and discipline for everyone. Set expectations early, before there is a conflict.",
+         "Supervisory work leans on procedural skills, plus people skills to empathize while still directing. How you treat people as a manager shapes the culture. Being liked is not the job."] },
+    { n:"\u2605", q:"From the board: the 5 stages of the entrepreneurial process",
+      a:["Its own box on the review board, and it is not on the review sheet or in the lesson notes, so expect a question.",
+         "Discovery, business plan, resourcing, run business, harvesting. Discovery is finding the idea. The business plan is writing it down. Resourcing is getting the money, people and equipment. Run business is operating it. Harvesting is the payoff at the end, selling it or cashing out."],
+      terms:["discovery","business plan","resourcing","run business","harvesting"] }
+  ]},
+
+  { t:"unit 1-3: human resources", items:[
+    { n:"1", q:"Understand ethical and legal issues that impact business",
+      a:["Businesses follow employment law on discrimination, harassment, wages and safety, then act ethically on top of it, because plenty of things are legal and still wrong.",
+         "Getting it wrong costs lawsuits, fines, turnover and reputation, and most of it lands on human resources."] },
+    { n:"2", q:"Understand the role and function of human resources",
+      a:["Human resources is the people who work in an organization, and the group that staffs the organization, maintains personnel records, and administers benefits like medical insurance.",
+         "As a business function it recruits, hires, onboards, trains, evaluates and terminates. Its C word is cultivate."] },
+    { n:"3", q:"Explain the role of human resources in business operations",
+      a:["HR works with all five other functions to plan their staffing needs. Every other function needs staffed, trained, motivated people to work at all, so HR failure shows up as an operations failure or a lawsuit."] },
+    { n:"4", q:"Explain the role of human resources in business",
+      a:["Finding, cultivating and keeping key people is the primary determinant of whether a business succeeds or fails. When companies get it right it is usually the leading indicator of future success."] },
+    { n:"5", q:"Explain the role of ethics in human resources management",
+      a:["HR decides who gets hired, what they are paid, who gets promoted and who gets fired. All of that affects livelihoods and all of it is legally exposed.",
+         "Ethical HR means fair and consistent treatment, confidentiality of personnel records, no discrimination or favoritism, honest job descriptions, and walking the talk of the company values."] },
+    { n:"6", q:"Describe the hiring / firing process",
+      a:["Hiring: be clear about the job description and expectations, know the education, experience and skills wanted, recruit and screen, interview with more than one interviewer and share notes, use personality surveys and aptitude tests, then hire, orient, onboard and train.",
+         "Firing: document performance, run performance management, follow the law and company policy, terminate, then hold an exit interview.",
+         "Why be methodical: recruiting, interviewing, background checks, hiring, orienting and training is expensive, so a hire that fails in a few months wastes all of it. Retraining is usually cheaper than hiring again."] },
+    { n:"7", q:"Describe the hiring / firing process",
+      a:["Listed twice on his sheet. Same answer as 6."] },
+    { n:"8", q:"Business management",
+      a:["Human resources is one of the six functions managers manage. The manager runs day-to-day performance and discipline, HR owns the process, the records and the legal side."] },
+    { n:"9", q:"Understand ethical and legal issues that impact business",
+      a:["Repeat of 1."] },
+    { n:"10", q:"Explain the role of employment law as it relates to the national marketplace",
+      a:["Federal law sets rules that apply everywhere and states add their own on top, which is why HR has to know employee laws by state.",
+         "The one the lesson names is the Equal Employment Opportunity Act. Others worth knowing: the Americans with Disabilities Act, the Age Discrimination in Employment Act, the Fair Labor Standards Act, FMLA, and OSHA."] },
+    { n:"11", q:"Explain the different types of agents that govern employment",
+      a:["Federal agencies like the EEOC, OSHA and the Department of Labor. State labor agencies and state law. Courts, which decide discrimination and wrongful termination claims.",
+         "Plus the internal ones: employment contracts, company policy and the employee handbook, and unions."] },
+    { n:"12", q:"Understand the role and function of human resources",
+      a:["Repeat of 2."] },
+    { n:"13", q:"Explain the role of human resources in business operations",
+      a:["Repeat of 3."] },
+    { n:"14", q:"Explain the role of human resources in business",
+      a:["Repeat of 4."] },
+    { n:"15", q:"Explain the role of ethics in human resources management",
+      a:["Repeat of 5."] },
+    { n:"16", q:"Describe the hiring / firing process",
+      a:["Repeat of 6."] },
+    { n:"17", q:"Describe the hiring / firing process",
+      a:["Repeat of 6. Four of the twenty objectives on his sheet are this one question."] },
+    { n:"18", q:"Evaluate practices to manage and retain staff",
+      a:["Competitive compensation checked against the market rate, employee benefits, a culture that walks the talk of its values, training and professional development, good managers, clear job descriptions, fair appraisals, retraining instead of replacing, and exit interviews that actually change something.",
+         "Good managers matter most, since 57 percent leave because of a manager or leader."] },
+    { n:"19", q:"Examine strategies to assess employee performance",
+      a:["Performance management processes that HR makes sure exist and are complied with. Reviews and appraisals, in some companies twice per year, run primarily by the direct supervisor and sometimes including feedback from fellow employees.",
+         "Also checking that training was thoroughly given and understood before concluding someone is a bad fit."] },
+    { n:"20", q:"Explain the need for employee development, growth, and recognition",
+      a:["Training gives people the skills for the job they have. Professional development is the ongoing education that lets them excel in their career. Great companies cultivate, serve and develop their people, which is why cultivate is the C attached to HR.",
+         "Branson: train people well enough so they can leave, treat them well enough so they do not want to."] },
+    { n:"21", q:"Glossary terms",
+      a:["Company culture, company values, compensation, employee benefits, employee appraisal, employee relations, employee termination, exit interviews, human resources, job description, onboarding, orientation, performance management, professional development, recruiting, staffing, training.",
+         "All seventeen are in the flashcards tab in his wording. Orientation versus onboarding is the one that decides points."],
+      terms:["orientation","onboarding","compensation","recruiting","job description","performance management"] },
+    { n:"22", q:"What is the human resources business function?",
+      a:["Same as 2. The people function: get them, keep them, pay them, develop them, and stay legal doing it."] },
+    { n:"23", q:"Why is human resources so important?",
+      a:["Because business is about people. Every other function is only as good as the people running it, and HR is what makes them show up and stay.",
+         "HR is also what keeps the company out of court on hiring, firing and safety. It is a hard job because it deals with people at every stage of their careers."] },
+    { n:"24", q:"What activities does the human resources function perform?",
+      a:["The twelve from the notes, in order: recruiting, staffing, legal issues, job descriptions, orientation and onboarding, training and professional development, performance management, compensation, company culture, employee terminations, exit interviews, employee benefits.",
+         "Compensation is total cash and benefits. Training teaches the job you already have, professional development is career-wide."] },
+    { n:"25", q:"How are legal issues a major part of human resources?",
+      a:["HR needs the dos and don'ts of hiring. The Equal Employment Opportunity Act blocks questions that could create even the appearance of discrimination: age, country of origin, marital status, and sex on the board.",
+         "Terminations need the same care plus documented performance records, so a wrongful termination claim can be defended. Interviews and terminations are the two functions needing the most legal knowledge, and that pairing was a quiz answer."] },
+    { n:"26", q:"What is HR's involvement in company expansions and downsizings?",
+      a:["Expansion: planning staffing needs with the other five functions, writing job descriptions, recruiting and interviewing at volume, onboarding and training, and complying with employment law wherever the company grows.",
+         "Downsizing: handling terminations with legal care and documentation, running exit interviews, and protecting the morale and culture of everyone who stays."] },
+    { n:"27", q:"What trends create challenges for HR and require HR to adapt?",
+      a:["Forms of communication keep changing and technology changes rapidly. Virtual and remote work make it harder for managers to see and interact with their teams.",
+         "Competition for talent, since great companies are looking for rockstars to join their band. Employment law that varies by state. The cost of turnover and bad hires."] },
+    { n:"28", q:"What does \"business is about people\" mean?",
+      a:["In Good to Great, Jim Collins says first who, then what. Get the right people on the bus, and in the right seats, meaning roles matching their interests, skills and experience, before you figure out where to drive the bus.",
+         "His reasoning: with constant change, the right people adapt and solve whatever comes. Great vision does not matter without great people to respond when things get hard.",
+         "Know the author, the book, the phrase and the bus analogy."] },
+    { n:"", q:"Review the 1-3 lesson quiz, 12 questions",
+      a:["All 12 are in the tests tab under quizzes, part b, with answers. This one can be retried, so retake it.",
+         "Question 6 is orientation, not onboarding. Its stem is the orientation definition word for word. Question 7 is onboarding and question 8 is orientation."] },
+    { n:"", q:"Class assignment: best places to work",
+      a:["Name a company and say why in the course vocabulary, not your own words.",
+         "In-N-Out: above-market pay, which is compensation, and health coverage for part-timers, which is employee benefits. He names it in the notes himself. NVIDIA: culture and almost no layoffs. Bain: mentorship and promote from within, which is professional development. Crew Carwash: entry-level hiring with a promotion path plus tuition assistance."] },
+    { n:"\u2605", q:"From the board: the right people, and the 6 employee benefits",
+      a:["The right people means interests, skills and experience matched to the role, so the employee is productive and fulfilled. He starred that pairing.",
+         "The six benefits, circled and marked VIP: health meaning medical, dental and vision. Retirement, a 401k and stock options. PTO, paid time off, plus sick time. Life insurance plus long and short term disability. Maternity and paternity, bereavement, and mental health. Free childcare or reimbursement.",
+         "Professional development sits next to it with four: school reimbursement, continuing education, paid training, educational seminars. The best places to work checklist runs company culture, company values, compensation, employee benefits, professional development."],
+      terms:["health","retirement","PTO","life insurance","maternity","childcare"] }
+  ]},
+
+  { t:"unit 1-4: strategy", items:[
+    { n:"1", q:"Glossary terms",
+      a:["Business strategy, goal, marketing strategy, mission, objective, strategy, tactic, vision.",
+         "Timeframes are the giveaway. A goal is stated, observable and measurable within a timeframe, long term, even 3 to 5 years. An objective is more specific, achieved within a timeframe with available resources, usually one year."],
+      terms:["business strategy","marketing strategy","goal","objective","tactic","mission","vision"] },
+    { n:"2", q:"What is the strategy business function?",
+      a:["Strategy is a route or plan of action designed to achieve certain goals and objectives, and it is informed by the company's vision and mission.",
+         "It is not just a department by itself. Strategy is everywhere, and it affects, or should affect, every decision a company makes."] },
+    { n:"3", q:"Why is strategy important? What exactly is strategy?",
+      a:["It answers what a company should be doing and, more importantly, helps it say no to what it should not be doing. It provides a map, a route, a direction, a plan. The clearer the plan, the clearer the expectations for employees.",
+         "Picasso: goals can only be reached through the vehicle of a plan. Lee Bolman: a vision without a strategy remains an illusion."] },
+    { n:"4", q:"What is the difference between business strategy and marketing strategy?",
+      a:["Business strategy is a business's route or plan of action to achieve goals and objectives. It includes choosing what business to be in, is built around how the product is unique, and ensures the company earns a profit.",
+         "Marketing strategy is the game plan for reaching the target market and converting it to customers. It shines a light on that uniqueness, positions the brand through the 4Ps, and ensures the products earn a profit.",
+         "One-line version: business strategy means the company earns a profit, marketing strategy means the products do."] },
+    { n:"5", q:"What is the role of a leader or manager in developing strategy?",
+      a:["Begin with the end in mind. Contemplate the mission first, since mission informs everything else including strategy, then pick the route.",
+         "Decide what the company should be doing and say no to the rest. Set goals over 3 to 5 years and the objectives of about a year that ladder up to them, and work with human resources on the structure to deliver it."] },
+    { n:"6", q:"What is the role of a leader or manager in managing strategy?",
+      a:["Turn the strategy into tactics, the specific procedures and actions that support it. Make the plan clear enough that employees know exactly what is expected.",
+         "Track KPIs, since what gets measured gets done, and use the controlling function of management to check results against the goal and correct course. Every employee action needs to connect back to the mission and vision."] },
+    { n:"7", q:"How is the strategy function interrelated with the other business functions?",
+      a:["Eight places strategy is found: purpose, people, action, key performance indicators, then information management, operations, finance and accounting, and marketing. The last four are just the other business functions.",
+         "The quiz pairings, worth memorizing: with human resources it determines who reports to whom. With information management it ensures the proper data is mined and analyzed. With operations it ensures all actions and tactics are aligned to goals. With finance it influences capital structure and debt.",
+         "Strategy is carried out through tactics, goals and objectives. Mission and vision inspire, they are not the how."],
+      terms:["purpose","people","action","KPIs"] },
+    { n:"", q:"We know for profit, but what is non-profit?",
+      a:["Both count as business under the definition, which says a for-profit or non-profit organization.",
+         "A for-profit earns a profit for its owners. A non-profit serves a mission, and the money goes back into that mission rather than to owners. It is usually funded by donations and volunteers.",
+         "His angle: a charity's vision could amount to putting itself out of business. If everyone had a home, Habitat would have nothing left to build."] },
+    { n:"", q:"What is Habitat for Humanity? What is their mission and vision?",
+      a:["A non-profit that brings people together to build homes for people in need. Ask it his way: what do they do? Bring people together to build homes. Why? To build communities and to build hope.",
+         "Mission: seeking to put God's love into action, Habitat for Humanity brings people together to build homes, communities and hope. Vision: a world where everyone has a decent place to live.",
+         "On the 1-4 quiz the vision option is worded a world where everyone has a home."] },
+    { n:"", q:"What about IKEA, what is their mission and vision?",
+      a:["Mission: to offer a wide range of well-designed, functional home furnishing products at prices so low that as many people as possible will be able to afford them.",
+         "Vision: to create a better everyday life for the many people.",
+         "The mission is what they do. If they pull it off, the vision comes true. Flat-pack furniture exists because of that mission, since it cuts shipping and labor cost."] },
+    { n:"", q:"Review the 1-4 lesson quiz, 20 questions",
+      a:["All 20 are in the tests tab under quizzes, part c, with answers. This one can be retried, so retake it.",
+         "Four questions map strategy onto a function, and one is a select-THREE and one a select-TWO. Those are the ones to run twice."] },
+    { n:"", q:"Class assignment: mission and vision",
+      a:["Mission is the why you exist and the what you do. Vision is the where you end up if successful.",
+         "Other pairs from the notes. Southwest: warm, friendly, prideful, spirited high quality customer service, with a vision of the world's most loved, most flown and most profitable airline. Nike: expanding human potential through sustainable sports innovation, with a vision of bringing inspiration and innovation to every athlete in the world."] },
+    { n:"\u2605", q:"From the board: this school's mission and vision, and the student goal example",
+      a:["He starred this school next to mission, so know it. Mission: to teach students the Gospel of Jesus Christ, prepare students for higher education, and create a community where service is valued and celebrated. Vision: to be a national leader in college preparatory education in an environment distinguished by Catholic values.",
+         "His student example for goal versus objective: the goal is to graduate in four years. The objectives are to maintain a 3.0 GPA and complete AP courses. Accomplish the objectives and you accomplish the goal."],
+      terms:["mission","vision","goal","objective"] }
+  ]}
+  ],
+
+  tests:[
+  { name:"test 1",
+    matching:[
+      { t:"cultivate", d:"human resources" },
+      { t:"compile", d:"information management" },
+      { t:"tactic", d:"a specific action that supports the strategy" },
+      { t:"orientation", d:"a one-time event introducing new hires to the company and coworkers" },
+      { t:"chain of command", d:"the structure showing who each person reports to" },
+      { t:"compensation", d:"total cash and benefits received in exchange for work" },
+      { t:"objective", d:"a specific result within a timeframe, usually one year" },
+      { t:"accounting", d:"recording, maintaining and reporting financial transactions" }
+    ],
+    mc:[
+      { q:"In the definition of business, industrial means",
+        opts:["the pursuit of a profit margin","anything that is manufactured","services provided for a fee","money owed to the company"],
+        a:1, why:"cars and software both count. commercial is the profit margin, professional is the knowledge-based service." },
+      { q:"Which is NOT one of the six business functions?",
+        opts:["strategy","information management","advertising","operations"],
+        a:2, why:"advertising sits under marketing as promotion. marketing is the function." },
+      { q:"Recruit, interview, hire and orient the appropriate people describes",
+        opts:["staffing","controlling","onboarding","recruiting"],
+        a:0, why:"recruiting is only the searching part. staffing is the whole loop." },
+      { q:"Which function of management checks results against the goal and corrects course?",
+        opts:["planning","organizing","controlling","leading"],
+        a:2, why:"planning maps the course of action. controlling measures against it." },
+      { q:"A supervisory-level manager leans most on which skill?",
+        opts:["problem-solving","procedural","emotional intelligence","financial"],
+        a:1, why:"supervisory work repeats, so procedural skills matter most. executives lean on problem-solving." },
+      { q:"A company's purpose, its reason for being, the problem it is solving, is its",
+        opts:["vision","mission","strategy","objective"],
+        a:1, why:"vision is the aspirational where. mission is the why and the what." },
+      { q:"Which two HR functions require the most legal knowledge?",
+        opts:["compensation and training","interviews and terminations","benefits and onboarding","recruiting and culture"],
+        a:1, why:"both are where discrimination and wrongful termination claims come from." },
+      { q:"What percent of employees left a job because of a manager or leader?",
+        opts:["31 percent","44 percent","57 percent","72 percent"],
+        a:2, why:"from a 2019 study. people leave managers, not companies." },
+      { q:"Which is the correct order of the five stages of the entrepreneurial process?",
+        opts:["business plan, discovery, resourcing, run business, harvesting",
+              "discovery, business plan, resourcing, run business, harvesting",
+              "discovery, resourcing, business plan, harvesting, run business",
+              "resourcing, discovery, business plan, run business, harvesting"],
+        a:1, why:"find the idea, write the plan, gather the money and people, operate it, then cash out." },
+      { q:"Which of these is NOT off limits for an interviewer under the EEOA?",
+        opts:["age","country of origin","work history","marital status"],
+        a:2, why:"age, country of origin, marital status and sex are all blocked. work history is about the job." }
+    ],
+    scenarios:[
+      { stem:"A candle company owner tells her sales manager to grow sales 30 percent this quarter. He decides he needs more digital ads, one new sales rep, and more inventory. He works with another department to fill the rep role. Every week he checks website visits, ad impressions and engagement against the goal.",
+        qs:[
+          { q:"Deciding what people and resources the quarter needs is which function of management?",
+            a:"planning. it maps out the course of action and the resources needed." },
+          { q:"Working with another department to fill the rep role is which function, and which business function is he partnering with?",
+            a:"staffing, partnering with human resources. staffing means recruit, interview, hire and orient." },
+          { q:"Tracking visits, impressions and engagement against the goal is which function, and what are those measures called?",
+            a:"controlling, and they are key performance indicators. what gets measured gets done." }
+        ] },
+      { stem:"A new hire spends her first morning signing paperwork, meeting the team and touring the building. Over the next three months her department teaches her the company's mission, systems, goals and expectations until she is carrying her own shifts.",
+        qs:[
+          { q:"Name the first part and one detail that identifies it.",
+            a:"orientation. new hires are introduced to the company, their fellow employees and the work environment, and it is mostly a one-time event run by HR." },
+          { q:"Name the second part and one detail that identifies it.",
+            a:"onboarding. a strategic plan and process to learn culture, mission, vision, systems and expectations and become a contributing member. it runs for months and involves the department." },
+          { q:"Which business function owns both, and what is its C word?",
+            a:"human resources. cultivate." }
+        ] }
+    ],
+    frq:[
+      { q:"Explain what business is about people means. Name the book and author the idea comes from.",
+        pts:["the phrase is first who, then what, from Good to Great by Jim Collins.",
+             "get the right people on the bus, then get them in the right seats, roles matching their interests, skills and experience.",
+             "do that before deciding where to drive the bus, because with constant change the right people adapt and solve what comes.",
+             "tie it back: people manage the other five business functions, so no people means no business."] },
+      { q:"Explain the difference between a leader and a manager. Use at least one framing from class.",
+        pts:["management is planning, organizing, staffing, controlling and leading people, processes and assets to hit a goal the best way possible.",
+             "leadership is inspiring, motivating, influencing and maximizing the efforts of people toward a common purpose.",
+             "one framing: management is doing things right, leadership is doing the right things. another: leaders initiate a plan and managers execute it.",
+             "note that it is not clean, because leaders also manage and managers also lead. the difference may be a focus on growth."] },
+      { q:"Pick two of the six business functions and explain how they depend on each other.",
+        pts:["name both functions and define each in one line.",
+             "give the dependency in one direction, then the other.",
+             "example: marketing sells 500 orders but human resources never hired the second producer, so operations cannot fill them and finance never sees the revenue.",
+             "close with the point: the six are interdependent, and one weak function drags the rest."] },
+      { q:"State this school's mission and vision, and explain the difference between the two.",
+        pts:["mission: to teach students the Gospel of Jesus Christ, prepare students for higher education, and create a community where service is valued and celebrated.",
+             "vision: to be a national leader in college preparatory education in an environment distinguished by Catholic values.",
+             "the mission is the purpose, the why we exist and the what we do. the vision is aspirational, where we end up if the mission succeeds.",
+             "tie it to strategy: mission and vision inspire an organization, and then it uses strategy to reach its goals and objectives."] }
+    ] },
+
+
+  { name:"test 2",
+    matching:[
+      { t:"contemplate", d:"strategy" },
+      { t:"calculate", d:"finance and accounting" },
+      { t:"onboarding", d:"learning culture, mission and systems until you contribute" },
+      { t:"goal", d:"a measurable end result running 3 to 5 years" },
+      { t:"exit interview", d:"asking a departing employee why, in order to improve" },
+      { t:"company culture", d:"the shared beliefs, attitudes and behaviors of employees" },
+      { t:"professional", d:"customized, knowledge-based services provided for a fee" },
+      { t:"return on investment", d:"return measured against what the investment cost" }
+    ],
+    mc:[
+      { q:"A software company writes and ships a new app. That is which type of commerce?",
+        opts:["commercial","industrial","professional","non-profit"],
+        a:1, why:"industrial means anything manufactured, from cars to software." },
+      { q:"Which C goes with marketing?",
+        opts:["connect","compile","control","cultivate"],
+        a:0, why:"compile is information management, control is operations, cultivate is human resources." },
+      { q:"People, processes and systems that collect, organize, store and secure data describe",
+        opts:["operations","accounting","information management","marketing"],
+        a:2, why:"three parts and four verbs. its C is compile." },
+      { q:"Under the Equal Employment Opportunity Act, an interviewer may NOT ask",
+        opts:["how long you worked at your last job","how many employees you have managed","what country you are originally from","what your proudest achievement is"],
+        a:2, why:"country of origin, age and marital status create the appearance of discrimination. the rest are about the job." },
+      { q:"Grow online sales 20 percent this year is a",
+        opts:["goal","objective","vision","tactic"],
+        a:1, why:"objectives are specific and usually one year. goals are broader and run 3 to 5 years." },
+      { q:"Which one ensures the products earn a profit?",
+        opts:["business strategy","marketing strategy","operations","information management"],
+        a:1, why:"business strategy ensures the company earns a profit. marketing strategy ensures the products do." },
+      { q:"A world where everyone has a decent place to live is Habitat for Humanity's",
+        opts:["mission","vision","strategy","objective"],
+        a:1, why:"the mission is bringing people together to build homes, communities and hope. the vision is the aspirational future." },
+      { q:"The explanations and expectations of the duties and responsibilities of a job are a",
+        opts:["job description","performance appraisal","company value","chain of command"],
+        a:0, why:"clear job descriptions are also a retention practice, because expectations stop being a guess." },
+      { q:"A 401k and stock options fall under which of the six employee benefits?",
+        opts:["health","retirement","PTO","life insurance"],
+        a:1, why:"the six are health, retirement, PTO, life insurance and disability, maternity and bereavement and mental health, and free childcare." },
+      { q:"Interests, skills and experience matched to the role produce an employee who is",
+        opts:["cheaper to pay","productive and fulfilled","easier to terminate","exempt from training"],
+        a:1, why:"that pairing is the whole point of getting the right people in the right seats." },
+      { q:"Which management verb did he tie to company culture?",
+        opts:["plans","organizes","controls","leads"],
+        a:3, why:"how managers lead is what shapes and reveals the culture." }
+    ],
+    scenarios:[
+      { stem:"A friend is promoted to supervisor of the coffee shop where you both work. She now writes the schedule and handles discipline. Two weeks in, she gives you an easier closing shift than everyone else.",
+        qs:[
+          { q:"What changed between the two of you, in class terms?",
+            a:"the chain of command now runs through her. she has authority over you, so work decisions go by policy and performance, not friendship." },
+          { q:"What is wrong with the easier shift, and what should she do instead?",
+            a:"it is favoritism, which damages employee relations and the culture. same rules, same standards and same discipline for everyone, with expectations set early." },
+          { q:"Which manager skills does supervisory work lean on most?",
+            a:"procedural skills, because supervisory tasks repeat, plus people skills to empathize while still directing and communicating." }
+        ] },
+      { stem:"An employee keeps missing shifts. His supervisor writes him up three times and documents each one. Human resources then ends his employment and holds a conversation with him about why he is leaving.",
+        qs:[
+          { q:"Name the HR functions in play.",
+            a:"performance management, employee termination, and the exit interview. legal issues run through all three." },
+          { q:"Why does the documentation matter?",
+            a:"employees have many rights and protections, so records of performance are what lets the company defend a wrongful termination claim." },
+          { q:"What should the company do with what it learns in the last conversation?",
+            a:"use it for future improvement. that is the point of an exit interview, and it feeds retention." }
+        ] },
+      { stem:"Someone notices that no one near campus sells decent late-night food. She writes up what she would sell, what it costs and who would buy it. She raises money from family, leases a truck and hires two people. She runs it for four years, then sells the truck and the brand to a competitor.",
+        qs:[
+          { q:"Name the five stages of the entrepreneurial process in order.",
+            a:"discovery, business plan, resourcing, run business, harvesting." },
+          { q:"Which stage is raising the money, leasing the truck and hiring the two people?",
+            a:"resourcing, stage three. it is getting the money, people and equipment together." },
+          { q:"Which stage is selling the truck and the brand, and what does it mean?",
+            a:"harvesting, stage five. it is the payoff at the end, cashing out or selling the business." }
+        ] }
+    ],
+    frq:[
+      { q:"Explain the difference between mission and vision, then give one real company's mission and vision.",
+        pts:["mission is a company's purpose, its reason for being, the problem it is solving. the why you exist and the what you do.",
+             "vision is an aspirational view of the future, what the company or world looks like if the mission succeeds. the where.",
+             "IKEA: mission is a wide range of well-designed, functional home furnishing products at prices so low that as many people as possible can afford them. vision is to create a better everyday life for the many people.",
+             "or Habitat: mission is bringing people together to build homes, communities and hope. vision is a world where everyone has a decent place to live."] },
+      { q:"What is strategy and why does it matter? Include the difference between a strategy and a tactic.",
+        pts:["strategy is a route or plan of action designed to achieve certain goals and objectives, informed by mission and vision.",
+             "it matters because it says what the company should be doing and, more importantly, helps it say no to what it should not.",
+             "a tactic is a specific procedure or action that supports the strategy.",
+             "example: selling online with same-day delivery is the strategy, running ads on tuesdays and free shipping over 40 dollars are tactics."] },
+      { q:"Explain what human resources does and why it matters. Include at least three responsibilities.",
+        pts:["define it: the people of an organization, and the function that staffs it, keeps personnel records and administers benefits.",
+             "pick three from the list and define each, for example recruiting, performance management and compensation.",
+             "why it matters: HR works with the other five functions to plan their staffing, and finding, cultivating and keeping key people decides whether a business succeeds or fails.",
+             "add evidence: 57 percent of employees left a job because of a manager or leader, so the people side is what retention runs on."] }
+    ] },
+  { name:"quizzes",
+    matching:[], scenarios:[], frq:[],
+    mc:[
+      { part:"part a. the 1-1 lesson quiz, 18 questions",
+        q:"Complete the outline. The six functions of business: human resources, strategy, information management, ____, marketing, finance/accounting.",
+        opts:["operations","customer service","mission","vision"], a:0,
+        why:"customer service is one of marketing's eight functions, not its own business function." },
+      { q:"What is the definition of business?",
+        opts:["a route or plan of action designed to achieve certain goals and objectives",
+              "a for-profit or non-profit organization involved in commercial, industrial, or professional commerce",
+              "improving existing products and developing new ones to meet customer demands",
+              "collecting, organizing, storing and securing relevant data"],
+        a:1, why:"the other three are strategy, product/service management, and information management." },
+      { q:"Business is about ____ managing business functions.",
+        opts:["information","technology","people","markets"], a:2,
+        why:"his sentence, word for word. say it that way." },
+      { q:"In the definition of business, industrial means",
+        opts:["the pursuit of a profit margin","customized services provided for a fee","collecting, organizing and storing data","items that are manufactured"],
+        a:3, why:"anything manufactured, from cars to software." },
+      { q:"In the definition of business, commercial means",
+        opts:["the pursuit of a profit margin","services provided for a fee","the improvement of services","items that are manufactured"],
+        a:0, why:"selling goods, a bank loan, or cutting grass all count." },
+      { q:"In the definition of business, professional means",
+        opts:["the pursuit of a profit margin","customized services provided for a fee","recording financial transactions and records","items that are manufactured"],
+        a:1, why:"knowledge-based and customized. a lawyer, an accountant, a tutor." },
+      { q:"Which function is responsible for recruiting, hiring, onboarding, training, evaluating and terminating employees?",
+        opts:["finance/accounting","strategy","human resources","marketing"], a:2,
+        why:"that six-verb list is the definition of the HR function." },
+      { q:"A company's purpose, reason for being, and the problem it is solving is its",
+        opts:["strategy","target market","profit margin","mission"], a:3,
+        why:"mission informs strategy, not the other way around." },
+      { q:"Which function is a route or plan of action designed to achieve certain goals and objectives?",
+        opts:["strategy","finance/accounting","human resources","marketing"], a:0,
+        why:"same sentence as the definition of strategy itself." },
+      { q:"Which function collects, organizes, stores and secures relevant data to make informed decisions?",
+        opts:["human resources","information management","operations","strategy"], a:1,
+        why:"four verbs: collect, organize, store, secure." },
+      { q:"Which function is the daily functioning of an organization, managing inputs and outputs, including manufacturing, purchasing and logistics?",
+        opts:["marketing","finance/accounting","operations","information management"], a:2,
+        why:"three pieces: manufacturing, purchasing, logistics." },
+      { q:"Which function is the ideation, creation, communication and delivery of profitable products to targeted customers?",
+        opts:["information management","human resources","operations","marketing"], a:3,
+        why:"and for the benefit of society as a whole, which is the tail of that definition." },
+      { q:"What is the process of recording, maintaining and reporting an organization's financial transactions and records?",
+        opts:["accounting","finance","marketing","strategy"], a:0,
+        why:"accounting records. finance manages and plans. the quiz tests the split twice in a row." },
+      { q:"What focuses on assets, liabilities, cash flow, financial analysis like ROI and ROE, and planning future growth?",
+        opts:["accounting","finance","information management","human resources"], a:1,
+        why:"the other half of the split. finance looks forward, accounting looks back." },
+      { q:"Which function has its own eight functions, including the 4Ps?",
+        opts:["strategy","human resources","marketing","information management"], a:2,
+        why:"the 4Ps live at the heart of marketing strategy." },
+      { q:"Which function ensures quality control during manufacturing and distribution?",
+        opts:["strategy","finance/accounting","human resources","operations"], a:3,
+        why:"operations is the control center." },
+      { q:"A specific procedure or action used to support strategy, in order to achieve goals and objectives, is called",
+        opts:["a tactic","a mission","operations","a function"], a:0,
+        why:"strategy is the plan, a tactic is the move." },
+      { q:"Which THREE functions work together to compile information in order to better connect to a target market? On the real quiz this is multiple response.",
+        opts:["strategy, information management, marketing",
+              "operations, marketing, finance/accounting",
+              "human resources, strategy, operations",
+              "information management, operations, finance/accounting"],
+        a:0, why:"straight out of the candle example. operations handles quality, not the market read." },
+
+      { part:"part b. the 1-3 lesson quiz, 12 questions",
+        q:"Which best portrays a role the human resources department would take on?",
+        opts:["an employee orders all supplies for an upcoming product development",
+              "a manager schedules employees to cover shifts at a restaurant",
+              "an employee makes sure products are fully stocked in a retail space",
+              "a manager makes sure employees have up-to-date information on their health insurance"],
+        a:3, why:"administering benefits is HR. the other three are operations." },
+      { q:"Which area of HR focuses on searching for appropriate candidates to fill a position?",
+        opts:["recruiting","onboarding","professional development","performance management"], a:0,
+        why:"the active searching. staffing is the whole loop after it." },
+      { q:"In the definition of business, what is the meaning of professional?",
+        opts:["the pursuit of a profit margin","customized services provided for a fee","recording financial transactions and records","items that are manufactured"],
+        a:1, why:"1-1 material recycled onto the 1-3 quiz. he reuses questions across lessons." },
+      { q:"Based on the Equal Employment Opportunity Act, an interviewer is prohibited from asking",
+        opts:["what is your proudest achievement","how long did you work at your last job","what country are you originally from","how many employees have you managed"],
+        a:2, why:"country of origin, age, marital status and sex are all off limits. the rest are about the job." },
+      { q:"The explanations and expectations of duties and responsibilities are known as",
+        opts:["employee orientation","employee benefits","company culture","job descriptions"], a:3,
+        why:"word for word the job description definition." },
+      { q:"Which is a process in which new hires are introduced to a company, their fellow employees, and the work environment?",
+        opts:["employee orientation","employee termination","employee onboarding","employee benefits"],
+        a:0, why:"this stem is the orientation definition word for word. the trap is that both terms get called processes." },
+      { q:"A new employee in their first week is learning how their role contributes to the entire company. Which HR function is that?",
+        opts:["employee benefits","employee onboarding","employee orientation","employee termination"],
+        a:1, why:"learning the company and becoming a contributor is onboarding, and it runs for months." },
+      { q:"Which is most often a one-time event held by HR for new employees?",
+        opts:["performance management","professional development","training","orientation"], a:3,
+        why:"one-time event is the orientation tell." },
+      { q:"Which HR function deals with employee reviews and appraisals?",
+        opts:["performance management","job descriptions","professional development","company culture"], a:0,
+        why:"run by the direct supervisor, sometimes with peer feedback." },
+      { q:"Which combines employee feelings about their work with how it motivates them to serve the company's mission?",
+        opts:["job descriptions","compensation","company culture","terminations"], a:2,
+        why:"that clause is the second half of the company culture definition." },
+      { q:"HR departments need legal knowledge in order to complete which two employee functions?",
+        opts:["compensation and training","interviews and terminations","benefits and training","terminations and onboarding"],
+        a:1, why:"the two places discrimination and wrongful termination claims come from." },
+      { q:"Including which of the following in the hiring process helps an HR department hire a good employee?",
+        opts:["only one interviewer","personality surveys","vague job descriptions","removing background checks"],
+        a:1, why:"personality surveys and aptitude tests are helpful and commonly used. more than one interviewer, never fewer." },
+
+      { part:"part c. the 1-4 lesson quiz, 20 questions",
+        q:"A route or plan of action designed to achieve certain goals and objectives is known as",
+        opts:["strategy","function","department","mission"], a:0, why:"the definition, stated plainly." },
+      { q:"The reason why a company exists, its purpose, is best known as",
+        opts:["the company's vision","the company's strategy","the company's mission","the company's success"], a:2,
+        why:"mission is the why and the what. vision is the where." },
+      { q:"How does the strategy function affect each of the other five business functions?",
+        opts:["by assisting the operations of each function","it does not affect the other functions","by providing a plan of action for each function","it is the concrete purpose of the company"],
+        a:2, why:"strategy is everywhere. it hands each function its plan." },
+      { q:"Mission is a company's purpose, and strategy is the ____.",
+        opts:["who","what","why","how"], a:3,
+        why:"mission is the why and the what, vision is the where, strategy is the how." },
+      { q:"Habitat for Humanity's mission is to bring people together to build homes, communities and hope. Their vision is most likely",
+        opts:["a world where everyone has a home","building high-cost designer homes","a world where homes will always be built","building low-quality inexpensive homes"],
+        a:0, why:"the real wording is a world where everyone has a decent place to live." },
+      { q:"Which best demonstrates a company using strategy to live out its mission and vision?",
+        opts:["a company that believes everyone can be an athlete only sells to professional athletes",
+              "a company that wants to make affordable home furniture knows to say no to expensive materials",
+              "an airline set on being the most flown charges high prices for flights",
+              "a company working to end Alzheimer's invests in research for all types of diseases"],
+        a:1, why:"that is IKEA, and it is the saying-no half of strategy. the other three contradict their own mission." },
+      { q:"____ is informed by the company's vision and mission.",
+        opts:["tactic","performance","strategy","management"], a:2,
+        why:"mission and vision inspire, then strategy carries it out." },
+      { q:"Which best demonstrates how strategy and human resources work together?",
+        opts:["strategy helps determine who to hire and fire in a company",
+              "strategy helps a company determine its annual revenue",
+              "strategy helps determine benefits like health insurance and retirement",
+              "strategy helps a company determine who reports to whom"],
+        a:3, why:"strategy and HR set the org chart, the levels of management and the reporting lines." },
+      { q:"A specific procedure or action used to support strategy in order to achieve goals and objectives is",
+        opts:["tactic","KPI","goal","operation"], a:0, why:"same definition, second quiz in a row." },
+      { q:"A stated, observable and measurable end result to be achieved within a certain timeframe is",
+        opts:["KPI","goal","strategy","tactic"], a:1, why:"longer term, even 3 to 5 years." },
+      { q:"More specific than a goal, shorter term, achieved within a timeframe and with available resources:",
+        opts:["a tactic","a mission","an objective","a KPI"], a:2, why:"usually about one year." },
+      { q:"Strategy is carried out through a company's actions by use of which THREE elements? On the real quiz this is multiple response.",
+        opts:["tactics, goals, objectives","vision, goals, KPIs","tactics, vision, KPIs","mission, vision, tactics"],
+        a:0, why:"mission and vision inspire, they are not how it gets carried out." },
+      { q:"How does an objective differ from a goal?",
+        opts:["an objective usually happens within a shorter timeframe than a goal",
+              "an objective usually happens within a longer timeframe than a goal",
+              "a goal includes a clear end result where an objective does not",
+              "a goal includes a specific result where an objective has varied results"],
+        a:0, why:"objective about a year, goal 3 to 5. both are measurable." },
+      { q:"The key metrics and measures that highlight the health of a business are",
+        opts:["tactics","KPIs","goals","objectives"], a:1,
+        why:"measure what you treasure, because what gets measured gets done." },
+      { q:"How is strategy tied to information management?",
+        opts:["by influencing decisions around capital structure and debt","by ensuring all actions and tactics are aligned to goals","by ensuring the proper data is mined and analyzed","by measuring what the business treasures most"],
+        a:2, why:"three questions in a row map strategy onto a function. learn the pairings." },
+      { q:"How is strategy tied to operations?",
+        opts:["strategy determines what to measure to highlight business health","strategy influences decisions around capital structure and debt","strategy ensures proper data is mined and analyzed","strategy ensures all actions and tactics are aligned to company goals"],
+        a:3, why:"operations makes the daily work match the plan." },
+      { q:"How is strategy tied to finance?",
+        opts:["strategy determines what to measure to highlight business health","strategy influences decisions around capital structure and debt","strategy ensures proper data is mined and analyzed","strategy ensures all actions and tactics are aligned to company goals"],
+        a:1, why:"capital structure and debt. that exact phrase." },
+      { q:"A business's route or plan of action designed to achieve certain goals and objectives is",
+        opts:["operations strategy","marketing strategy","business strategy","measurement strategy"], a:2,
+        why:"it also includes picking what business to be in." },
+      { q:"A company's game plan for reaching its target market is",
+        opts:["measurement strategy","business strategy","operations strategy","marketing strategy"], a:3,
+        why:"reaching the target market and converting it to customers." },
+      { q:"Which TWO things does business strategy help with that marketing strategy does not? On the real quiz this is multiple response.",
+        opts:["picking a business to be in, and ensuring the company earns a profit",
+              "positioning a brand, and connecting a business to its target market",
+              "accentuating a product's uniqueness, and ensuring products earn a profit",
+              "messaging a brand, and picking a business to be in"],
+        a:0, why:"business strategy: the company earns a profit. marketing strategy: the products do." }
+    ] },
+  ],
+
+  cards:[
+    { f:"business", b:"a for-profit or non-profit organization involved in commercial, industrial, or professional commerce." },
+    { f:"commercial", b:"the pursuit of a profit margin. selling goods, a commercial loan, or cutting grass." },
+    { f:"industrial", b:"anything manufactured, from cars to software." },
+    { f:"professional", b:"customized, knowledge-based services provided for a fee. a tax accountant, a lawyer." },
+    { f:"cultivate", b:"the 6 C's word for human resources." },
+    { f:"contemplate", b:"the 6 C's word for strategy." },
+    { f:"compile", b:"the 6 C's word for information management." },
+    { f:"control", b:"the 6 C's word for operations." },
+    { f:"connect", b:"the 6 C's word for marketing." },
+    { f:"calculate", b:"the 6 C's word for finance and accounting." },
+    { f:"human resources", b:"the people assets of an organization, and the function that recruits, hires, onboards, trains, evaluates and terminates them." },
+    { f:"information management", b:"people, processes and systems that collect, organize, store and secure data and make it useful for decisions." },
+    { f:"operations", b:"the daily functioning of an organization, managing inputs and outputs. manufacturing, purchasing, logistics." },
+    { f:"marketing", b:"the ideation, creation, communication and delivery of profitable products and services to targeted customers, for their benefit and society's." },
+    { f:"accounting", b:"recording, maintaining and reporting an organization's financial transactions and records." },
+    { f:"finance", b:"managing assets, liabilities, equity and cash flow, plus analysis like ROI and ROE and planning for growth." },
+    { f:"management", b:"planning, organizing, staffing, controlling and leading people, processes and assets to achieve a goal in the best way possible." },
+    { f:"planning", b:"mapping out the course of action, and what people and resources are needed." },
+    { f:"controlling", b:"continuously checking results against the goal, measuring metrics, and correcting course." },
+    { f:"leading", b:"communicating, motivating, guiding, encouraging, directing, coaching and reviewing." },
+    { f:"staffing", b:"to recruit, interview, hire and orient the appropriate people to fill organizational roles." },
+    { f:"chain of command", b:"an organizational structure that shows who each person reports to." },
+    { f:"leadership", b:"inspiring, motivating, influencing and maximizing the efforts of people toward a common purpose." },
+    { f:"people skills", b:"empathizing with and understanding people while effectively influencing, communicating and interacting with them." },
+    { f:"procedural skills", b:"quickly learning and performing methods, sequences or procedures to accomplish a task." },
+    { f:"problem-solving skills", b:"making good trade-offs with limited resources and handling difficult or complex challenges." },
+    { f:"company values", b:"what a company believes: how teammates treat one another and how the company treats its customers." },
+    { f:"company culture", b:"the shared beliefs, values, goals, attitudes and behaviors of employees. combines how they feel about their work with how it motivates them to serve the mission." },
+    { f:"recruiting", b:"the active searching for appropriate candidates to fill open positions." },
+    { f:"job description", b:"explanations and expectations of the duties and responsibilities of a job." },
+    { f:"orientation", b:"a process in which new hires are introduced to a company, their fellow employees and the work environment. mostly a one-time event." },
+    { f:"onboarding", b:"a strategic plan and process for new employees to learn culture, mission, vision, systems, processes, goals and expectations, and become contributing members. runs for months." },
+    { f:"training", b:"teaching the skills and knowledge needed to succeed in a certain job role." },
+    { f:"professional development", b:"ongoing training and education taken to excel in a career or profession." },
+    { f:"performance management", b:"the processes, reviews and appraisals that hold employees accountable." },
+    { f:"compensation", b:"the total cash and benefits an employee receives in exchange for their work." },
+    { f:"employee benefits", b:"medical plans, 401k plans and other benefits and services the organization provides." },
+    { f:"exit interview", b:"a conversation with a departing employee to find the reason for leaving and use it to improve." },
+    { f:"employee termination", b:"ending employment. needs legal care and documented performance records." },
+    { f:"equal employment opportunity act", b:"blocks interview questions that create the appearance of discrimination, like age, country of origin or marital status." },
+    { f:"mission", b:"a company's purpose, its reason for being, the problem it is solving. the why and the what." },
+    { f:"vision", b:"an aspirational view of the future if the company succeeds at its mission. the where." },
+    { f:"strategy", b:"a route or plan of action designed to achieve certain goals and objectives." },
+    { f:"tactic", b:"a specific procedure or action used to support strategy." },
+    { f:"goal", b:"a stated, observable, measurable end result within a timeframe. long term, even 3 to 5 years." },
+    { f:"objective", b:"more specific than a goal. a result to achieve within a timeframe with available resources, usually one year." },
+    { f:"business strategy", b:"a business's route or plan of action to achieve goals and objectives. includes choosing what business to be in, and ensures the company earns a profit." },
+    { f:"marketing strategy", b:"the game plan for reaching the target market, converting it to customers, and meeting goals. ensures the products earn a profit." },
+    { f:"key performance indicators", b:"key metrics and measures that show the health of the business. what gets measured gets done." },
+    { f:"return on investment", b:"return measured against what the investment cost." },
+    { f:"return on equity", b:"return measured against the owners' or shareholders' equity." },
+    { f:"the 4Ps", b:"product, price, place, promotion. the last four of marketing's eight functions." },
+    { f:"the right people", b:"interests, skills and experience matched to the role, so the employee is productive and fulfilled." },
+    { f:"the 6 employee benefits", b:"health, retirement, PTO, life insurance and disability, maternity and bereavement and mental health, free childcare or reimbursement." },
+    { f:"the 5 stages of the entrepreneurial process", b:"discovery, business plan, resourcing, run business, harvesting." },
+    { f:"discovery", b:"stage one. finding the idea or the opportunity." },
+    { f:"resourcing", b:"stage three. getting the money, people and equipment together." },
+    { f:"harvesting", b:"stage five. the payoff at the end, selling the business or cashing out." },
+    { f:"what the EEOA blocks", b:"age, country of origin, marital status, sex." },
+    { f:"best places to work checklist", b:"company culture, company values, compensation, employee benefits, professional development." },
+    { f:"this school's mission", b:"to teach students the Gospel of Jesus Christ, prepare students for higher education, and create a community where service is valued and celebrated." },
+    { f:"this school's vision", b:"to be a national leader in college preparatory education in an environment distinguished by Catholic values." },
+    { f:"a student goal vs objective", b:"goal: graduate in four years. objective: maintain a 3.0 GPA and complete AP courses. accomplish the objectives and you accomplish the goal." }
+  ]
+};
+/* ═══ below here is the machinery. you shouldn't need to touch it. ═══ */
+
+const $=s=>document.querySelector(s);
+const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* one mark per subject, same stroke language as the site */
+const G={
+ flag:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ nib:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ head:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ atom:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ curve:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ bubbles:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ speech:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ globe:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ chart:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ cross:'<path d="M13 4.6v17"/><path d="M7.4 10.2h11.2"/>',
+ code:'<path d="M9.6 8.4 4.8 13.2l4.8 4.8"/><path d="M16.4 8.4l4.8 4.8-4.8 4.8"/><path d="M14.2 5.8l-2.4 14.4"/>'
+};
+
+$("#cls").textContent=GUIDE.cls;
+$("#ttl").textContent=GUIDE.title;
+$("#due").textContent=GUIDE.due;
+document.title=GUIDE.title.toLowerCase();
+$("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true">'+
+  '<g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" '+
+  'stroke-linecap="round" stroke-linejoin="round" opacity=".97">'+
+  (G[GUIDE.glyph]||G.flag)+'</g></svg>';
+
+/* outline: one card per unit, one dropdown per review-sheet item */
+GUIDE.outline.forEach((s,i)=>{
+  const card=el("div","card g");
+  card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+    '<button class="chead" aria-expanded="false"><span class="dot"></span>'+
+    '<span class="ct"></span><svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" '+
+    'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '+
+    'aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>'+
+    '<div class="cbody"><div class="cin"></div></div>';
+  card.querySelector(".ct").textContent=s.t;
+  const box=card.querySelector(".cin");
+  s.items.forEach(it=>{
+    const row=el("div","item");
+    row.innerHTML='<button class="ihead" aria-expanded="false"><span class="inum"></span>'+
+      '<span class="iq"></span><svg class="itw" width="7" height="12" viewBox="0 0 8 14" fill="none" '+
+      'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '+
+      'aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>'+
+      '<div class="ibody"><div></div></div>';
+    row.querySelector(".inum").textContent=it.n||"";
+    row.querySelector(".iq").textContent=it.q;
+    const bd=row.querySelector(".ibody > div");
+    it.a.forEach(t=>{const p=el("p");p.textContent=t;bd.appendChild(p)});
+    if(it.terms){
+      const tb=el("div","terms");
+      it.terms.forEach(t=>{const c=el("span","term");c.textContent=t;tb.appendChild(c)});
+      bd.appendChild(tb);
+    }
+    const ih=row.querySelector(".ihead"), ib=row.querySelector(".ibody");
+    ih.onclick=()=>{const o=ih.getAttribute("aria-expanded")==="true";
+      ih.setAttribute("aria-expanded",String(!o));ib.classList.toggle("on",!o)};
+    box.appendChild(row);
+  });
+  const head=card.querySelector(".chead"), body=card.querySelector(".cbody");
+  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";
+    head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+  if(!REDUCED){card.classList.add("rise");card.style.setProperty("--i",i)}
+  $("#p-outline").appendChild(card);
+});
+
+/* practice tests: matching, multiple choice, scenarios, free response */
+(function(){
+  const host=$("#p-tests");
+  const seg=el("div","seg"); seg.setAttribute("role","tablist");
+  const ind=el("span","ind"); seg.appendChild(ind); host.appendChild(seg);
+  const panels=[];
+
+  const shuffle=a=>{const b=a.slice();
+    for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}
+    return b};
+
+  const part=(txt)=>{const d=el("div","pt");d.textContent=txt;return d};
+
+  function matching(pairs){
+    const card=el("div","qcard g");
+    card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+      '<div class="qn">part a. matching</div>'+
+      '<div class="qt">tap a term, then tap its match.</div>';
+    const grid=el("div","mgrid");
+    const left=el("div"), right=el("div");
+    left.style.display=right.style.display="grid";
+    left.style.gap=right.style.gap="7px";
+    left.style.alignContent=right.style.alignContent="start";
+    const defs=shuffle(pairs.map((p,i)=>({d:p.d,i:i})));
+    let sel=null, done=0;
+    const count=el("div","mcount");
+    const tick=()=>count.textContent=done+" of "+pairs.length+" matched";
+    pairs.forEach((p,i)=>{
+      const b=el("button","mopt"); b.textContent=p.t; b.dataset.i=i;
+      b.onclick=()=>{ if(b.dataset.done)return;
+        left.querySelectorAll(".mopt").forEach(x=>x.classList.remove("sel"));
+        b.classList.add("sel"); sel=b; };
+      left.appendChild(b);
+    });
+    defs.forEach(o=>{
+      const b=el("button","mopt"); b.textContent=o.d; b.dataset.i=o.i;
+      b.onclick=()=>{ if(b.dataset.done||!sel)return;
+        if(b.dataset.i===sel.dataset.i){
+          b.classList.add("right"); sel.classList.remove("sel"); sel.classList.add("right");
+          b.dataset.done=sel.dataset.done="1"; sel=null; done++; tick();
+        }else{
+          b.classList.add("wrong");
+          setTimeout(()=>b.classList.remove("wrong"),520);
+        } };
+      right.appendChild(b);
+    });
+    grid.append(left,right); card.append(grid,count); tick();
+    return card;
+  }
+
+  function mcq(q,n){
+    const card=el("div","qcard g");
+    card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+      '<div class="qn">question '+n+'</div><div class="qt"></div>';
+    card.querySelector(".qt").textContent=q.q;
+    q.opts.forEach((o,j)=>{
+      const b=el("button","opt");
+      b.innerHTML='<span class="k">'+"abcd"[j]+'</span><span></span>';
+      b.lastChild.textContent=o;
+      b.onclick=()=>{
+        if(card.dataset.done)return; card.dataset.done="1";
+        card.querySelectorAll(".opt").forEach((x,k)=>{
+          if(k===q.a)x.classList.add("right"); else if(k===j)x.classList.add("wrong");
+        });
+        const w=el("p","why"); w.textContent=q.why; card.appendChild(w);
+      };
+      card.appendChild(b);
+    });
+    return card;
+  }
+
+  function reveal(card,answerLines){
+    const btn=el("button","rv"); btn.textContent="show answer";
+    const wrap=el("div"); wrap.className="hidden";
+    answerLines.forEach(t=>{const p=el("p","why");p.textContent=t;wrap.appendChild(p)});
+    btn.onclick=()=>{wrap.classList.remove("hidden");btn.remove()};
+    card.append(btn,wrap);
+  }
+
+  function scenario(sc,n){
+    const card=el("div","qcard g");
+    card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+      '<div class="qn">scenario '+n+'</div>';
+    const stem=el("p","stem"); stem.textContent=sc.stem; card.appendChild(stem);
+    sc.qs.forEach(x=>{
+      const q=el("div","sq"); q.textContent=x.q; card.appendChild(q);
+      reveal(card,[x.a]);
+    });
+    return card;
+  }
+
+  function frq(f,n){
+    const card=el("div","qcard g");
+    card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+      '<div class="qn">free response '+n+'</div><div class="qt"></div>';
+    card.querySelector(".qt").textContent=f.q;
+    reveal(card,f.pts);
+    return card;
+  }
+
+  GUIDE.tests.forEach((t,ti)=>{
+    const b=el("button"); b.textContent=t.name; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",String(ti===0)); b.onclick=()=>select(ti);
+    seg.appendChild(b);
+
+    const panel=el("section"); if(ti!==0)panel.classList.add("hidden");
+    if(t.matching && t.matching.length) panel.appendChild(matching(t.matching));
+    if(t.mc && t.mc.length){
+      if(!t.mc[0].part) panel.appendChild(part("part b. multiple choice"));
+      let n=0;
+      t.mc.forEach(q=>{ if(q.part){panel.appendChild(part(q.part));n=0} n++;
+        panel.appendChild(mcq(q,n)); });
+    }
+    if(t.scenarios && t.scenarios.length){
+      panel.appendChild(part("part c. scenarios"));
+      t.scenarios.forEach((s,i)=>panel.appendChild(scenario(s,i+1)));
+    }
+    if(t.frq && t.frq.length){
+      panel.appendChild(part("part d. free response"));
+      t.frq.forEach((f,i)=>panel.appendChild(frq(f,i+1)));
+    }
+    panels.push(panel); host.appendChild(panel);
+  });
+
+  function select(i){
+    [...seg.querySelectorAll("button")].forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
+    panels.forEach((p,j)=>p.classList.toggle("hidden",i!==j));
+    move(); scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
+  }
+  function move(){
+    const btns=[...seg.querySelectorAll("button")];
+    const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
+    const b=btns[i]; if(!b)return;
+    ind.style.width=b.offsetWidth+"px";
+    ind.style.transform="translateX("+(b.offsetLeft-2)+"px)";
+  }
+  addEventListener("resize",move); requestAnimationFrame(move);
+  host.__move=move;
+})();
+
+/* flashcards */
+(function(){
+  let n=0;
+  const deck=el("div","deck"), fc=el("div","fc g");
+  fc.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+    '<div class="face front"><div class="fw"></div></div>'+
+    '<div class="face back g"><div class="fw"></div></div>';
+  deck.appendChild(fc);
+  const bar=el("div","fbar");
+  bar.innerHTML='<button id="prev">back</button><button id="next">next</button>'+
+    '<span class="fcount"></span>';
+  const draw=()=>{
+    fc.classList.remove("flip");
+    fc.querySelector(".front .fw").textContent=GUIDE.cards[n].f;
+    fc.querySelector(".back .fw").textContent=GUIDE.cards[n].b;
+    bar.querySelector(".fcount").textContent=(n+1)+" of "+GUIDE.cards.length;
+  };
+  fc.onclick=()=>fc.classList.toggle("flip");
+  bar.querySelector("#prev").onclick=()=>{n=(n-1+GUIDE.cards.length)%GUIDE.cards.length;draw()};
+  bar.querySelector("#next").onclick=()=>{n=(n+1)%GUIDE.cards.length;draw()};
+  addEventListener("keydown",e=>{
+    if($("#p-cards").classList.contains("hidden"))return;
+    if(e.key==="ArrowRight")bar.querySelector("#next").click();
+    if(e.key==="ArrowLeft")bar.querySelector("#prev").click();
+    if(e.key===" "){e.preventDefault();fc.click()}
+  });
+  $("#p-cards").append(deck,bar); draw();
+})();
+
+/* segmented control */
+(function(){
+  const tabs=[["outline","outline"],["tests","tests"],["cards","flashcards"]];
+  const seg=$("#seg"), ind=seg.querySelector(".ind");
+  tabs.forEach(([id,label],i)=>{
+    const b=el("button"); b.textContent=label; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",String(i===0));
+    b.onclick=()=>select(i);
+    seg.appendChild(b);
+  });
+  function select(i){
+    const btns=[...seg.querySelectorAll("button")];
+    btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
+    tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
+    move();
+    const h=$("#p-tests"); if(h && h.__move) requestAnimationFrame(h.__move);
+  }
+  function move(){
+    const btns=[...seg.querySelectorAll("button")];
+    const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
+    const b=btns[i]; if(!b)return;
+    ind.style.width=b.offsetWidth+"px";
+    ind.style.transform="translateX("+(b.offsetLeft-2)+"px)";
+  }
+  addEventListener("resize",move); requestAnimationFrame(move);
+})();
+
+/* header state + pointer specular */
+(function(){
+  const hdr=$("#hdr"); let raf=0;
+  addEventListener("scroll",()=>{ if(raf)return;
+    raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)}) },{passive:true});
+  if(matchMedia("(hover:hover)").matches && !REDUCED){
+    addEventListener("pointermove",e=>{
+      const c=e.target.closest && e.target.closest(".g"); if(!c)return;
+      const r=c.getBoundingClientRect();
+      c.style.setProperty("--mx",(e.clientX-r.left)+"px");
+      c.style.setProperty("--my",(e.clientY-r.top)+"px");
+    },{passive:true});
+  }
+})();
+</script>
