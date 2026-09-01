@@ -423,6 +423,10 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
   <ul>
     <li><a href="https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc">Unit 1/A study guide</a> &middot; Guide</li>
   </ul>
+  <h3>Business Principles</h3>
+  <ul>
+    <li><a href="https://claude.ai/public/artifacts/8bd01225-3eb3-4be6-bf92-248fd37776d8">Unit 1</a> &middot; Guide</li>
+  </ul>
   <h3>Catholic Morality</h3>
   <ul>
     <li><a href="https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755">Ch 1-2</a> &middot; Guide</li>
@@ -480,7 +484,9 @@ const FEATURES=[
   {classId:"pre",   title:"Vectors + dot product study guide",
    url:"/precalc-vectors", test:"2026-08-31"},
   {classId:"mor",   title:"Ch 1-2 study guide",
-   url:"https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755", test:"2026-09-02", end:"2026-09-03"}
+   url:"https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755", test:"2026-09-02", end:"2026-09-03"},
+  {classId:"bus",   title:"Unit 1 study guide",
+   url:"https://claude.ai/public/artifacts/8bd01225-3eb3-4be6-bf92-248fd37776d8", test:"2026-09-02", end:"2026-09-03"}
 ];
 
 const CLASSES=[
@@ -493,7 +499,9 @@ const CLASSES=[
   {id:"psych", c:"var(--c-psych)", glyph:"head",    year:"junior", name:"AP Psychology",       guides:[]},
   {id:"sem",   c:"var(--c-sem)",   glyph:"bubbles", year:"junior", name:"AP Seminar",          guides:[]},
   {id:"span",  c:"var(--c-span)",  glyph:"speech",  year:"junior", name:"AP Spanish Language", guides:[]},
-  {id:"bus",   c:"var(--c-biz)",   glyph:"chart",   year:"junior", name:"Business Principles", guides:[]},
+  {id:"bus",   c:"var(--c-biz)",   glyph:"chart",   year:"junior", name:"Business Principles",
+   guides:[{t:"Unit 1", tag:"Guide",
+     url:"https://claude.ai/public/artifacts/8bd01225-3eb3-4be6-bf92-248fd37776d8"}]},
   {id:"mor",   c:"var(--c-mor)",   glyph:"cross",   year:"junior", name:"Catholic Morality",
    guides:[{t:"Ch 1-2", tag:"Guide",
      url:"https://claude.ai/public/artifacts/f7ea9085-3fba-4885-8a6c-886e537c1755"}]},
