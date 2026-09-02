@@ -1,0 +1,931 @@
+<title>ap psychology unit 0 · study guide</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
+
+  /* ap psychology + tide palette */
+  --accent:#FF2D55;
+  --amb1:var(--accent); --amb2:#0A84FF; --amb3:#40C8E0; --amb4:#5E5CE6;
+
+  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1)); --ink:#08080D;
+  --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
+  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
+  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
+  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
+  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
+  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30; --mint:#1FA97A;
+  --blur:22px; --sat:195%;
+  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --amb:.82; --amb-blur:66px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#FF375F;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A; --mint:#3DD598;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}}
+:root[data-theme="dark"]{
+  --accent:#FF375F;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A; --mint:#3DD598;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
+  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hidden{display:none !important}
+
+#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
+  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);animation:hue 120s linear infinite}
+#amb i{position:absolute;display:block;border-radius:50%;animation:drift 38s var(--ease) infinite alternate}
+#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;background:radial-gradient(circle,var(--amb1),transparent 66%)}
+#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:8vh;background:radial-gradient(circle,var(--amb2),transparent 66%);
+  animation-duration:45s;animation-delay:-10s}
+#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:46vh;background:radial-gradient(circle,var(--amb3),transparent 66%);
+  animation-duration:41s;animation-delay:-20s}
+#amb i:nth-child(4){width:52vw;height:52vw;right:-6vw;bottom:-8vh;background:radial-gradient(circle,var(--amb4),transparent 66%);
+  animation-duration:48s;animation-delay:-30s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
+@keyframes hue{
+  0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}
+  50%    {filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}
+}
+
+.g{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
+.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  pointer-events:none;z-index:3;
+  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude}
+.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
+.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
+  transition:opacity .4s var(--ease)}
+@media (hover:hover){.g:hover > .spec{opacity:1}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
+.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
+.glyph{width:40px;height:40px;border-radius:12px;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
+  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
+.glyph path,.glyph circle,.glyph ellipse{stroke-dasharray:1;stroke-dashoffset:1;animation:ink 1.1s var(--ease) .15s forwards}
+@keyframes ink{to{stroke-dashoffset:0}}
+.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;
+  line-height:1.08;text-transform:lowercase;text-wrap:balance}
+.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
+  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase}
+
+/* segmented control */
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
+  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;
+  box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.seg button{position:relative;z-index:1;padding:7px 4px;border-radius:9px;font-family:var(--round);
+  font-size:13.5px;font-weight:640;color:var(--ink2);text-transform:lowercase;
+  transition:color .25s var(--ease)}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
+  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
+  transition:transform .42s var(--spring),width .42s var(--spring)}
+
+main{padding-top:20px}
+.sh{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--ink3);
+  margin:30px 4px 10px;text-transform:lowercase}
+.sh:first-child{margin-top:0}
+.note{margin:0 4px 14px;font-size:14px;line-height:1.5;color:var(--ink2);text-transform:lowercase}
+
+/* outline */
+.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
+.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;
+  position:relative;z-index:1;transition:transform .34s var(--spring)}
+.chead:active{transform:scale(.99)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;
+  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.dot.m{background:var(--mint);box-shadow:0 0 10px color-mix(in srgb,var(--mint) 70%,transparent)}
+.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
+.tw{color:var(--ink3);transition:transform .34s var(--spring)}
+.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
+.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.cbody.on{grid-template-rows:1fr}
+.cbody > div{overflow:hidden}
+.cbody p{margin:0 0 10px;padding:0 16px;font-size:15.5px;line-height:1.5;color:var(--ink2);
+  text-transform:lowercase}
+.cbody p.lead{color:var(--ink);font-weight:520}
+.cbody p:last-child{padding-bottom:16px}
+.terms{display:flex;flex-wrap:wrap;gap:6px;padding:2px 16px 16px}
+.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);
+  text-transform:lowercase}
+
+/* nested rows inside a module card */
+.rows{padding:0 10px 10px}
+.row{border-radius:12px;background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss);margin-bottom:6px;overflow:hidden}
+.rq{display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;padding:11px 12px;
+  font-size:15px;font-weight:560;letter-spacing:-.016em;line-height:1.35;text-transform:lowercase}
+.rq .tw{margin-top:3px;flex:none}
+.rq .lt{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--accent);flex:none;
+  padding-top:2px;min-width:38px;font-variant-numeric:tabular-nums}
+.ra{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--spring)}
+.ra.on{grid-template-rows:1fr}
+.ra > div{overflow:hidden}
+.ra p{margin:0;padding:0 12px 10px 12px;font-size:14.5px;line-height:1.5;color:var(--ink2);text-transform:lowercase}
+.ra p:first-child{padding-top:2px}
+.ra p b{color:var(--ink);font-weight:600}
+
+/* practice */
+.score{display:flex;align-items:center;gap:12px;font-family:var(--round);font-size:13.5px;font-weight:660;
+  color:var(--ink2);margin:0 4px 14px;text-transform:lowercase;font-variant-numeric:tabular-nums}
+.score b{color:var(--ink);font-weight:740}
+.score button{margin-left:auto;color:var(--blue);padding:6px 10px;border-radius:9px}
+.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
+.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase;
+  display:flex;gap:8px;align-items:center}
+.tag{font-family:var(--round);font-size:11px;font-weight:740;padding:3px 8px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent);text-transform:lowercase}
+.tag.m{background:color-mix(in srgb,var(--mint) 18%,transparent);color:var(--mint)}
+.qt{margin:8px 0 14px;font-size:17px;font-weight:560;line-height:1.35;letter-spacing:-.02em;
+  text-transform:lowercase}
+.qt .pass{display:block;margin-bottom:8px;font-size:15px;font-weight:460;color:var(--ink2)}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 13px;
+  border-radius:12px;background:var(--fill2);margin-bottom:7px;font-size:15.5px;
+  box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
+  transition:background .2s var(--ease),transform .3s var(--spring)}
+.opt:active{transform:scale(.988)}
+.opt .k{font-family:var(--round);font-weight:740;font-size:13px;color:var(--ink3);flex:none;
+  width:20px;text-transform:uppercase}
+.opt.right{background:color-mix(in srgb,var(--good) 20%,transparent);color:var(--good)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.opt.right .k,.opt.wrong .k{color:inherit}
+.why{margin:10px 2px 0;font-size:13.5px;line-height:1.5;color:var(--ink3);text-transform:lowercase}
+
+/* compare tables */
+.tcard{border-radius:18px;padding:14px 4px 6px;margin-bottom:12px}
+.tt{font-family:var(--round);font-size:13px;font-weight:720;color:var(--accent);padding:0 12px 8px;text-transform:lowercase}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 6px 8px}
+table{border-collapse:collapse;width:100%;min-width:100%;font-size:14px;line-height:1.4;text-transform:lowercase}
+th,td{text-align:left;vertical-align:top;padding:8px 8px}
+th{font-family:var(--round);font-size:12px;font-weight:720;color:var(--ink3);border-bottom:.5px solid var(--sep)}
+td{color:var(--ink2);border-bottom:.5px solid var(--sep)}
+td:first-child{color:var(--ink);font-weight:580;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.tnote{padding:4px 12px 8px;font-size:13.5px;line-height:1.5;color:var(--ink3);text-transform:lowercase}
+.traps{padding:6px 12px 10px}
+.trap{display:flex;gap:10px;padding:9px 0;border-bottom:.5px solid var(--sep);font-size:14.5px;line-height:1.45;color:var(--ink2);text-transform:lowercase}
+.trap:last-child{border-bottom:0}
+.trap .x{font-family:var(--round);font-weight:800;color:var(--accent);flex:none}
+.trap b{color:var(--ink);font-weight:600}
+
+/* flashcards */
+.filt{display:flex;flex-wrap:wrap;gap:6px;margin:0 2px 14px}
+.filt button{font-family:var(--round);font-size:12.5px;font-weight:660;padding:6px 11px;border-radius:999px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
+  transition:background .2s var(--ease),color .2s var(--ease)}
+.filt button[aria-pressed="true"]{background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent)}
+.deck{perspective:1400px;margin-bottom:14px}
+.fc{position:relative;width:100%;min-height:230px;transform-style:preserve-3d;
+  transition:transform .62s var(--spring);cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:20px;display:grid;place-items:center;padding:26px;text-align:center}
+.face.back{transform:rotateY(180deg)}
+.face .fw{font-family:var(--display);font-size:24px;font-weight:760;letter-spacing:-.036em;
+  line-height:1.15;text-transform:lowercase;position:relative;z-index:1;text-wrap:balance}
+.face.back .fw{font-family:var(--text);font-size:16px;font-weight:480;letter-spacing:-.014em;
+  line-height:1.45;color:var(--ink2)}
+.face .fm{position:absolute;top:14px;left:16px;font-family:var(--round);font-size:11.5px;font-weight:720;color:var(--ink3);text-transform:lowercase;z-index:1}
+.fbar{display:flex;align-items:center;gap:12px}
+.fbar button{font-family:var(--round);font-size:14px;font-weight:660;color:var(--blue);
+  padding:8px 12px;border-radius:10px;text-transform:lowercase}
+.fcount{margin-left:auto;font-family:var(--round);font-size:13px;color:var(--ink3);
+  font-variant-numeric:tabular-nums}
+
+.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);
+  animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+
+footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;
+  text-transform:lowercase}
+.key{max-width:560px;margin:0 auto 14px;text-align:left;font-size:12.5px;line-height:1.6;color:var(--ink3)}
+.key b{color:var(--ink2);font-weight:640}
+
+@media (prefers-reduced-motion:reduce){
+  #amb{animation:none}
+  #amb i{animation:none}
+  .glyph path,.glyph circle,.glyph ellipse{animation:none;stroke-dashoffset:0}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+</style>
+
+<div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<header id="hdr"><div class="wrap">
+  <div class="hrow">
+    <span id="gly" class="glyph" aria-hidden="true"></span>
+    <div>
+      <div class="cls" id="cls"></div>
+      <h1 id="ttl"></h1>
+    </div>
+    <span class="chip" id="due"></span>
+  </div>
+  <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
+</div></header>
+
+<main class="wrap">
+  <section id="p-outline"></section>
+  <section id="p-compare" class="hidden"></section>
+  <section id="p-practice" class="hidden"></section>
+  <section id="p-cards" class="hidden"></section>
+  <footer>
+    <div class="key" id="key"></div>
+    study guide written by a student. not affiliated with the school. built from the unit 0 study guide, the slides, both quizzes and the textbook practice items.
+  </footer>
+</main>
+
+<script>
+/* ═══ everything you edit lives in this block ════════════════════════ */
+const GUIDE = {
+  cls:   "AP Psychology",
+  glyph: "head",
+  title: "Unit 0 study guide",
+  due:   "test thu 9/3",
+
+  outline:[
+  { t:"test day", open:true, mint:true,
+    p:["25 multiple choice, 2 points each, 50 points, on GradeCam. Three versions.",
+       "30 minutes of partner review first, then 50 minutes: mark the paper, transfer to GradeCam, check they match before submitting. Idle after finishing costs 10 points.",
+       "Both medium-level quizzes and the textbook AP practice items are the question pool. The five read aloud in class open the practice tab."] },
+
+  { t:"the five read aloud in class", mint:true,
+    items:[
+      { n:"1", q:"best illustrates a skeptical attitude?",
+        a:["<b>demanding empirical evidence and a clear operational definition before testing a claim.</b> accepting without review = gullible; assuming your prediction = overconfidence; 'knew it all along' = hindsight bias."] },
+      { n:"2", q:"caffeine pill vs. identical sugar pill, 20 words to recall. the sugar pill is the ___.",
+        a:["<b>placebo.</b> caffeine = independent variable, words recalled = dependent variable."] },
+      { n:"6", q:"why is an operational definition necessary?",
+        a:["<b>it allows others to replicate the study.</b>"] },
+      { n:"7", q:"research approach that involves asking 'why?'",
+        a:["<b>scientific</b> is the expected key (the class version of this answer set was keyed scientific; the class notes' method starts with 'ask a question: why does this happen?'). 'qualitative' is the textbook answer to a 'why' question. ask in the review window."] },
+      { n:"", q:"the scientific attitude = which three elements?",
+        a:["<b>curiosity, skepticism, humility.</b>"] }
+    ] },
+
+  { t:"0.1 scientific attitude and critical thinking",
+    items:[
+      { n:"0.1-1", q:"how is psychology a science?",
+        a:["<b>psychology</b> = the science of behavior (observable) and mental processes (thoughts, feelings). a science because it tests claims against data. goals: describe, explain, predict, control."] },
+      { n:"0.1-2", q:"the three elements of the scientific attitude",
+        a:["<b>curiosity:</b> does it work? <b>skepticism:</b> how do you know? <b>humility:</b> i might be wrong; follow the data. skeptical but not cynical, open-minded but not gullible."] },
+      { n:"0.1-3", q:"critical thinking",
+        a:["<b>critical thinking</b> = does not blindly accept arguments; examines assumptions, appraises the source, discerns hidden biases, evaluates evidence, assesses conclusions.",
+           "ask: how do they know? what's the agenda? anecdote or evidence? does it justify cause and effect? other explanations?"] }
+    ],
+    terms:["critical thinking","curiosity","skepticism","humility","behavior","mental processes"] },
+
+  { t:"0.2 the need for psychological science",
+    items:[
+      { n:"0.2-1", q:"why science beats common sense: three biases",
+        a:["<b>hindsight bias:</b> 'i knew it all along' after the outcome (the election you 'could have guessed').",
+           "<b>overconfidence:</b> more confident than correct. seeing the anagram's answer makes it look easy; experts 80% sure were right under 40% of the time.",
+           "<b>perceiving order in random events:</b> streaks feel meaningful. four c's in a row change nothing; random sequences don't look random.",
+           "repetition makes a claim feel true. science checks with evidence."] }
+    ],
+    terms:["hindsight bias","overconfidence","perceiving order in random events"] },
+
+  { t:"0.3 the scientific method",
+    items:[
+      { n:"0.3-1", q:"theories, hypotheses, operational definitions, replication",
+        a:["<b>scientific method:</b> self-correcting; observe, question, hypothesize, test, analyze, conclude, report.",
+           "<b>theory:</b> broad explanation that organizes observations and predicts. <b>hypothesis:</b> testable prediction from a theory. <b>falsifiable:</b> can be proven false.",
+           "<b>operational definition:</b> exact, measurable procedures (learning = score on the 20-item test) so others can <b>replicate</b>. replication is confirmation.",
+           "<b>peer reviewers</b> judge theory, originality and accuracy before publication."] },
+      { n:"0.3-2", q:"case study, naturalistic observation, survey, sampling",
+        a:["non-experimental methods describe and manipulate nothing.",
+           "<b>case study:</b> one person or group in depth (phineas gage); an atypical case misleads.",
+           "<b>naturalistic observation:</b> record natural behavior; describes, doesn't explain. <b>hawthorne effect</b> (watched people act differently), <b>observer bias</b> (seeing what you expect).",
+           "<b>survey:</b> many people, self-report. <b>social desirability bias</b> (answer to look good), <b>self-report bias</b> (misremember), <b>wording effects</b> ('welfare' vs 'aid to those in need').",
+           "<b>population</b> = whole group. <b>random sample</b> = everyone has an equal chance. <b>sampling bias</b> = unrepresentative sample (polling your friends). a representative 100 beats an unrepresentative 500."] }
+    ],
+    terms:["scientific method","theory","hypothesis","falsifiable","operational definition","replication","peer reviewers","case study","naturalistic observation","survey","hawthorne effect","observer bias","social desirability bias","self-report bias","wording effects","sampling bias","population","random sample"] },
+
+  { t:"0.4 correlation and experimentation",
+    items:[
+      { n:"0.4-1", q:"correlation, r, scatterplots, positive vs. negative",
+        a:["<b>correlation:</b> two variables vary together, so one predicts the other. <b>r</b> runs -1.00 to +1.00: sign = direction, size = strength (-.80 beats +.40).",
+           "<b>scatterplot:</b> slope = direction, scatter = strength (tight = strong).",
+           "<b>positive:</b> same direction, both up or both down. <b>negative:</b> opposite directions. <b>zero:</b> no relation.",
+           "correlation predicts, never proves cause: direction problem, third-variable problem."] },
+      { n:"0.4-2", q:"illusory correlation, regression toward the mean",
+        a:["<b>illusory correlation:</b> seeing a relationship that isn't there (lucky token, joint pain 'predicting' rain).",
+           "<b>regression toward the mean:</b> extreme scores drift back toward average on retest."] },
+      { n:"0.4-3", q:"what makes an experiment show cause and effect",
+        a:["<b>experiment:</b> manipulate the <b>independent variable</b> (what the researcher changes), measure the <b>dependent variable</b> (the outcome), hold everything else constant. the only method that shows cause and effect.",
+           "<b>experimental group</b> gets the treatment; <b>control group</b> doesn't and is the comparison. <b>random assignment</b> = groups by chance; it minimizes <b>confounding variables</b> (third factors).",
+           "<b>placebo:</b> inert treatment. <b>placebo effect:</b> results from expectation alone. <b>single-blind:</b> participants don't know (blocks social desirability). <b>double-blind:</b> staff don't either (blocks <b>experimenter bias</b>).",
+           "<b>validity:</b> measures what it claims. repeat 2 or more times to prove causation."] }
+    ],
+    terms:["correlation","correlation coefficient (r)","variable","scatterplot","illusory correlation","regression toward the mean","experiment","experimental group","control group","random assignment","single-blind","double-blind","placebo","placebo effect","independent variable (iv)","dependent variable (dv)","confounding variable","experimenter bias","validity"] },
+
+  { t:"0.5 research design and ethics",
+    items:[
+      { n:"0.5-1", q:"choosing a design",
+        a:["start from the question: describe (case study, naturalistic observation, survey), predict (correlational), explain cause (experiment). <b>quasi-experimental</b> = experiment without random assignment.",
+           "<b>quantitative</b> = numerical data. <b>qualitative</b> = narrative data. <b>cross-sectional</b> = different ages, one time. <b>longitudinal</b> = same people over time."] },
+      { n:"0.5-2", q:"why simplified lab conditions help",
+        a:["the lab re-creates psychological forces under controlled conditions to test general principles. it is not meant to copy everyday life."] },
+      { n:"0.5-3", q:"animals and the ethics rules",
+        a:["animals: fascinating, shared biology. apa: humane care, healthful conditions, minimize discomfort.",
+           "humans, five rules: <b>informed consent</b> (assent for minors), protection from greater-than-usual harm, <b>confidentiality</b>, <b>debriefing</b> (explain purpose and deception afterward), right to withdraw.",
+           "<b>irb:</b> at least 5 people incl. 1 scientist, 1 non-scientist, 1 community rep; approves before the study runs."] },
+      { n:"0.5-4", q:"values",
+        a:["values shape what gets studied, the labels used (firm vs. stubborn), and how results get applied."] }
+    ],
+    terms:["quantitative research","qualitative research","quasi-experimental","cross-sectional","longitudinal","informed consent","informed assent","debriefing","confidentiality","irb"] },
+
+  { t:"0.6 statistical reasoning",
+    items:[
+      { n:"0.6-1", q:"descriptive statistics",
+        a:["<b>descriptive statistics</b> describe a group's data: central tendency, variation, percentile rank. <b>histogram</b> = bar graph of a frequency distribution. doubt big, round, undocumented numbers."] },
+      { n:"0.6-2", q:"mode, mean, median, percentile rank, skew",
+        a:["<b>mode</b> = most frequent. <b>mean</b> = average; dragged by extremes. <b>median</b> = middle, 50th percentile; use it when data are skewed.",
+           "<b>percentile rank</b> = % of scores below yours (not % correct).",
+           "<b>positive skew:</b> tail right, mean above median (income). <b>negative skew:</b> tail left, mean below median."] },
+      { n:"0.6-3", q:"range vs. standard deviation, the normal curve",
+        a:["<b>range</b> = highest minus lowest; crude. <b>standard deviation</b> = how much scores vary around the mean, using every score; small = clustered, large = spread.",
+           "<b>normal curve:</b> bell, mean = median = mode. <b>68%</b> within 1 sd, <b>95%</b> within 2, <b>99.7%</b> within 3. iq mean 100, sd 15: 85 to 115 = 68%, 70 to 130 = 95%."] },
+      { n:"0.6-4", q:"inferential statistics",
+        a:["<b>inferential statistics</b> generalize from a sample to the population. <b>meta-analysis</b> = combine many studies into one conclusion."] },
+      { n:"0.6-5", q:"when a difference generalizes",
+        a:["reliable (representative sample, low variability, many cases) and significant.",
+           "<b>statistical significance</b> = unlikely to be chance; <b>p</b> < .05 is the threshold (the minimum standard, not 'highly' significant). reject the <b>null hypothesis</b> (no difference).",
+           "<b>effect size</b> = how big the difference is. significant is not the same as big."] }
+    ],
+    terms:["descriptive statistics","histogram","mode","mean","median","percentile rank","skewed distribution","range","standard deviation","normal curve","68-95-99.7","inferential statistics","meta-analysis","null hypothesis","statistical significance","p-value","effect size"] }
+  ],
+
+  compare:[
+  { t:"random sampling vs. random assignment",
+    cols:["","random sampling","random assignment"],
+    rows:[["answers","who gets into the study?","which group do they land in?"],
+          ["buys you","generalizability","cause and effect"],
+          ["prevents","sampling bias","confounding variables"],
+          ["used in","any method","experiments only"]] },
+  { t:"the bias cluster",
+    cols:["bias","what goes wrong","who moved"],
+    rows:[["social desirability","answers to look good","participant, knowingly"],
+          ["self-report","misremembers own behavior","participant, honestly"],
+          ["hawthorne effect","acts differently when watched","participant's behavior"],
+          ["observer bias","sees what they expect","researcher, observing"],
+          ["experimenter bias","nudges results toward their belief","researcher, experimenting"],
+          ["sampling bias","unrepresentative sample","the design"]] },
+  { t:"the blinds",
+    cols:["procedure","who is blind","blocks"],
+    rows:[["single-blind","participants","social desirability, expectation"],
+          ["double-blind","participants and staff","experimenter bias"]] },
+  { t:"methods side by side",
+    cols:["method","purpose","manipulates","weakness"],
+    rows:[["case study, naturalistic observation, survey","describe","nothing","no control; one case can mislead"],
+          ["correlational","predict","nothing","no cause and effect"],
+          ["experiment","explain cause","the iv","not always feasible or ethical"]] },
+  { t:"pairs that get confused",
+    cols:["this","vs. that"],
+    rows:[["theory: broad explanation","hypothesis: one testable prediction"],
+          ["population: everyone who could be studied","sample: the ones studied"],
+          ["independent variable: changed","dependent variable: measured"],
+          ["experimental group: gets treatment","control group: comparison"],
+          ["placebo: the inert pill","placebo effect: the change from expecting it"],
+          ["descriptive: summarize your data","inferential: generalize to the population"],
+          ["quantitative: numbers","qualitative: narrative"],
+          ["cross-sectional: different ages, same time","longitudinal: same people, over time"],
+          ["statistical significance: not chance","effect size: how big"],
+          ["hindsight bias: 'knew it' after","overconfidence: too sure before"]] },
+  { t:"center and spread",
+    cols:["measure","what it is","watch out"],
+    rows:[["mode","most frequent","none, one or several"],
+          ["mean","add, divide","dragged by extremes"],
+          ["median","middle, 50th percentile","even count: average the middle two"],
+          ["range","high minus low","crude"],
+          ["standard deviation","spread around the mean, every score","small = clustered"]] },
+  { t:"the normal curve",
+    cols:["within","scores","iq (100, sd 15)"],
+    rows:[["1 sd","68%","85 to 115"],["2 sd","95%","70 to 130"],["3 sd","99.7%","55 to 145"]] },
+  { t:"correlation quick read",
+    cols:["you see","it means"],
+    rows:[["both rise, or both fall","positive"],["one rises, one falls","negative"],["no pattern","zero"],["-.85 vs. +.40","-.85 is stronger"],["tight dots","strong"],["wide cloud","weak"]] }
+  ],
+
+  traps:[
+    "<b>both decreasing is still positive.</b> negative means opposite directions.",
+    "<b>the minus sign is direction, not weakness.</b>",
+    "<b>lower income with fewer hours of sleep is positive</b>; 'causes' is the trap answer.",
+    "<b>random assignment reduces confounds; random sampling lets you generalize.</b> 'equal chance to participate' is sampling.",
+    "<b>the control group is for cause and effect</b> by comparison.",
+    "<b>informed consent is before, debriefing is after.</b>",
+    "<b>an approvable animal study doesn't deprive, isolate or poison.</b> 'can dolphins learn language' passes.",
+    "<b>the lab re-creates forces under controlled conditions</b>, not everyday life.",
+    "<b>p = .05 is the minimum standard</b>, not highly significant.",
+    "<b>percentile rank is not percent correct.</b>",
+    "<b>lower standard deviation = more consistent</b>, not higher scores.",
+    "<b>within 1 sd is 68%, within 2 is 95%.</b>",
+    "<b>operational definition = replication.</b>",
+    "<b>a testable prediction is a hypothesis</b>, not a theory.",
+    "<b>past answers don't change the next one.</b> expecting a streak to break is perceiving order in random events."
+  ],
+
+  practice:[
+  { tag:"read aloud", q:"which of the following best illustrates a skeptical attitude in scientific inquiry?",
+    opts:["accepting a prominent professor's claim about memory without review","demanding empirical evidence and a clear operational definition before testing a claim","assuming that an experiment will turn out the way you predict it","believing you knew the results of an experiment all along"],
+    a:1, why:"skepticism asks how you know. a = gullible, c = overconfidence, d = hindsight bias." },
+  { tag:"read aloud", q:"a researcher wants to test if a new caffeine pill improves memory recall. group a receives the caffeine pill. group b receives a sugar pill that looks identical. both groups are given a list of 20 words to memorize and recall. in this study, the sugar pill serves as the ____.",
+    opts:["placebo","independent variable","dependent variable","confounding variable"],
+    a:0, why:"inert look-alike for the control group. caffeine = iv, words recalled = dv." },
+  { tag:"read aloud", q:"why is an operational definition necessary when reporting research findings?",
+    opts:["an operational definition allows others to replicate the study","an operational definition provides many examples of the concept","an operational definition employs more scientific language than a dictionary definition","an operational definition considers contextual elements that may affect the study's results"],
+    a:0, why:"exact procedures make replication possible." },
+  { tag:"read aloud", q:"what is the name of the research approach that involves asking the question 'why?'",
+    opts:["qualitative","quantitative","scientific","critical"],
+    a:2, why:"expected key: scientific (the class version of this answer set was keyed scientific). qualitative is the textbook answer to a 'why' question; confirm in the review window." },
+  { tag:"read aloud", q:"the scientific attitude in psychology is best described as a combination of which three elements?",
+    opts:["confidence, intuition, and certainty","curiosity, skepticism, and humility","doubt, arrogance, and logic","observation, theory, and proof"],
+    a:1, why:"the three attitude elements." },
+
+  { tag:"quiz 1", pass:"harrison observed that people who read fiction novels were also artists. whenever harrison shared his observation with his friends, they said that teenagers only do those activities to meet school requirements. harrison disagreed, instead he believed that personality explained an association between reading novels and being artistic. even when harrison learned that having access to books and art was the biggest predictor of participating in these activities, he continued to believe that his original idea was correct.",
+    q:"which element of the scientific attitude should harrison improve if he wanted to engage in scientific inquiry more effectively?",
+    opts:["curiosity","skepticism","humility","questioning"],
+    a:2, why:"he ignored evidence against his idea. questioning isn't one of the three." },
+  { tag:"quiz 1", q:"if harrison wanted to increase his use of critical thinking, which of the following questions might he ask?",
+    opts:["how can i share my results with more people?","how can i sell my ideas to make a profit?","how can i interpret this result?","how can i minimize the impact of this result?"],
+    a:2, why:"critical thinking evaluates evidence." },
+  { tag:"quiz 1", q:"after the student government election, a friend tells you that he could have guessed who would be elected president. which psychological phenomenon might this scenario best illustrate?",
+    opts:["common sense","hindsight bias","overconfidence","perceiving order in random events"],
+    a:1, why:"'knew it all along' after the outcome." },
+  { tag:"quiz 1", q:"while taking a standardized test with randomly scrambled answers john noticed that his last four answers have been 'c.' which of the following is true concerning the probability of the next answer being 'c'?",
+    opts:["it is higher because the previous answers have been 'c'","it is lower since prior answers have been 'c.' since the answers are distributed randomly, 'c' answers become less common","it is unaffected by the previous answers. it is as likely to be 'c' as any other answer","it is higher based on previous answers being 'c.' test constructors' default answer choice is 'c'"],
+    a:2, why:"random sequences have no memory." },
+  { tag:"quiz 1", q:"a testable prediction that drives research is known as a(n)",
+    opts:["theory","hypothesis","operational definition","random sample"],
+    a:1, why:"theory explains; hypothesis predicts." },
+  { tag:"quiz 1", q:"what is the name of the approach that involves observation and testing to draw conclusions?",
+    opts:["qualitative","quantitative","scientific","critical"],
+    a:2, why:"observation plus testing = the scientific approach." },
+  { tag:"quiz 1", q:"which of the following best describes the purpose of a control group in an experimental design?",
+    opts:["the control group allows researchers to reduce the effect of confounding variables on the dynamic between the independent variable and the dependent variable","the control group allows researchers to determine a cause-and-effect relationship between the independent variable and dependent variable","the control group allows researchers to better generalize their results to the population of interest","the control group allows researchers to replicate their results from past research"],
+    a:1, why:"the comparison that isolates the iv's effect. reducing confounds = random assignment; generalizing = random sampling." },
+
+  { tag:"quiz 2", q:"which of the following is an example of negative correlation?",
+    opts:["people who spend more time exercising tend to experience less depression","students with lower iq scores tend to have lower grades","as hours studying for a test decrease, so do grades on that test","student shoe sizes are not related to their grades"],
+    a:0, why:"opposite directions. b and c both move together (positive); d is zero." },
+  { tag:"quiz 2", q:"the purpose of random assignment is to",
+    opts:["give every member of the population an equal chance to participate in the research","eliminate the placebo effect","reduce potential confounding variables","generate operational definitions for the independent and dependent variables"],
+    a:2, why:"'equal chance to participate' describes random sampling." },
+  { tag:"quiz 2", q:"what must a researcher do to fulfill the ethical principle of informed consent?",
+    opts:["keep information about participants confidential","protect participants from potential harm and compensate them for participating in a study","provide participants with enough information about a study to enable them to make a rational decision about whether or not to participate","explain the purpose of the study and any deception in the study to participants after they participate"],
+    a:2, why:"a = confidentiality, d = debriefing." },
+  { tag:"quiz 2", q:"which of the following accurately illustrates the correct order of the scientific process in psychological research?",
+    opts:["first, researchers interpret their results, and then they measure their variables, after which they identify hypotheses that align with their research design","first, researchers choose the best design, and then they interpret their results, after which they measure their variables","first, researchers measure their variables, and then they identify their hypotheses, after which they choose the best design for their study","first, researchers create hypotheses, and then they design their study to measure their variables, after which they interpret their results"],
+    a:3, why:"hypothesis, design and measure, interpret." },
+  { tag:"quiz 2", q:"which of the following best describes the concept of standard deviation in psychological research?",
+    opts:["a computed measure of how much scores vary around the mean score","the most frequently occurring score in a distribution of research data","the arithmetic average of all the scores in a data set","the difference between the highest and lowest scores in a distribution"],
+    a:0, why:"b = mode, c = mean, d = range." },
+  { tag:"quiz 2", q:"a researcher finds that group a has a much lower standard deviation on a spatial reasoning test than group b. what does this indicate about the data?",
+    opts:["the participants in group a scored higher overall than those in group b","the scores in group a are more tightly clustered around the mean, indicating higher consistency","the scores in group b are less reliable and demonstrate a floor effect","group a has a greater range of individual differences compared to group b"],
+    a:1, why:"lower sd = less spread. says nothing about who scored higher." },
+  { tag:"quiz 2", q:"in a normally distributed set of intelligence scores, where the mean is 100 and the standard deviation is 15, approximately what percentage of the population will score between 85 and 115?",
+    opts:["34%","95%","68%","99.7%"],
+    a:2, why:"one sd each side: 34 + 34." },
+  { tag:"quiz 2", q:"a group of students took a memory test, and the scores formed a perfectly normal curve. according to the 68-95-99.7 rule, what percentage of scores fall within two standard deviations of the mean?",
+    opts:["68%","99.7%","35%","95%"],
+    a:3, why:"1 sd 68, 2 sd 95, 3 sd 99.7." },
+  { tag:"quiz 2", q:"which of the following best describes the standard deviation?",
+    opts:["the average distance of each data point from the mean","the difference between the highest and lowest values in a data set","the most frequently occurring value in a data set","the middle value when the data is ordered from least to greatest"],
+    a:0, why:"b = range, c = mode, d = median." },
+  { tag:"quiz 2", q:"dr. patel is analyzing the exam scores of two different psychology classes. class a has a mean score of 85 with a standard deviation of 2. class b has a mean score of 85 with a standard deviation of 10. which of the following statements is true?",
+    opts:["class a's scores are more spread out than class b's scores","class b's scores are more closely clustered around the mean than class a's","class a has a wider range of scores than class b","class b's scores show greater variability than class a's scores","class a has a higher average score than class b"],
+    a:3, why:"same mean, bigger sd, more variability." },
+  { tag:"quiz 2", q:"in an experiment to test the effects of room temperature on test performance, the independent variable is",
+    opts:["the scores on the test before the experiment begins","the scores on the test at the end of the experiment","the role of the teacher","the temperature of the room"],
+    a:3, why:"the iv is what the experimenter sets." },
+  { tag:"quiz 2", q:"which ethical principle requires that participants be told about the true purpose of the research at the end of the study?",
+    opts:["informed consent","informed assent","debriefing","protection from physical harm"],
+    a:2, why:"at the end = debriefing." },
+  { tag:"quiz 2", q:"which of the following animal studies is most likely to meet ethical principles and receive institutional review board approval?",
+    opts:["do monkeys that smoke get cancer?","will rats deprived of food for one week survive?","what are the effects of raising kittens in isolation?","can dolphins learn simple language?"],
+    a:3, why:"the others inflict harm or deprivation." },
+  { tag:"quiz 2", q:"researchers have discovered that individuals with lower income levels report having fewer hours of total sleep. therefore,",
+    opts:["income and sleep levels are positively correlated","income and sleep levels are negatively correlated","income and sleep levels are not correlated","lower income levels cause individuals to have lower levels of sleep"],
+    a:0, why:"lower with lower = same direction. d claims cause." },
+  { tag:"quiz 2", q:"in a drug study, neither participants nor the person distributing the pills knows who is receiving the new drug, and who is receiving the placebo. this type of research design is said to be a(n) __________.",
+    opts:["correlational study","confounding variable","double-blind study","single-blind study"],
+    a:2, why:"both sides blind." },
+  { tag:"quiz 2", q:"the laboratory environment is designed to",
+    opts:["exactly re-create the events of everyday life","re-create psychological forces under controlled conditions","re-create psychological forces under random conditions","provide the opportunity to do case study research"],
+    a:1, why:"control is the point." },
+
+  { tag:"slides", q:"which of the elements of a scientific attitude is most associated with the question, 'does it work?'",
+    opts:["humility","skepticism","argumentation","curiosity"],
+    a:3, why:"curiosity asks whether it works when tested." },
+  { tag:"slides", q:"the tendency to exaggerate the correctness or accuracy of our beliefs and predictions is called",
+    opts:["hindsight bias","overconfidence","critical thinking","skepticism"],
+    a:1, why:"more confident than correct." },
+  { tag:"slides", q:"while sitting at a stoplight, nancy believes that the next car she sees will be blue because the previous 3 cars have been blue. which psychological concept best explains her belief?",
+    opts:["hindsight bias","critical thinking","perceiving order in random events","overconfidence"],
+    a:2, why:"a streak in random traffic." },
+  { tag:"slides", q:"which of the following perspectives is most likely to address how the encoding, storing, and retrieval of information might alter our thoughts?",
+    opts:["evolutionary","psychodynamic","humanistic","cognitive"],
+    a:3, why:"mental processes = cognitive." },
+  { tag:"slides", q:"which of the following perspectives would be most likely to examine the unconscious motives of a person who is overly aggressive on the basketball court?",
+    opts:["psychodynamic","behavioral","cognitive","social-cultural"],
+    a:0, why:"unconscious motives = psychodynamic." },
+  { tag:"slides", q:"which of the following psychologists would be most likely to investigate biological, psychological, cognitive, and social changes over a lifetime?",
+    opts:["educational","psychometrician","personality","developmental"],
+    a:3, why:"changes across the lifespan = developmental." },
+
+  { tag:"book style", q:"for the data set 33, 40, 12, 25, 80, the mean is",
+    opts:["68","98","33","38"],
+    a:3, why:"190 divided by 5." },
+  { tag:"book style", q:"for the same data set, the median is",
+    opts:["33","68","38","80"],
+    a:0, why:"ordered: 12, 25, 33, 40, 80." },
+  { tag:"book style", q:"for the same data set, the mode is",
+    opts:["33","25","12","there is no mode"],
+    a:3, why:"nothing repeats." },
+  { tag:"book style", q:"which measure of central tendency is most influenced by skewed data or extreme scores?",
+    opts:["mean","median","mode","percentile rank"],
+    a:0, why:"only the mean gets dragged." },
+  { tag:"book style", q:"a researcher calculates statistical significance and finds a 5 percent possibility that the results are due to chance. which is an accurate interpretation?",
+    opts:["this result is highly statistically significant","this result reflects the minimum standard typically considered statistically significant","this result is not statistically significant","this result cannot be evaluated without replication of the study"],
+    a:1, why:".05 is the threshold itself." },
+  { tag:"book style", q:"descriptive statistics ___, while inferential statistics ___.",
+    opts:["describe data from experiments; describe data from surveys and case studies","are measures of central tendency; are measures of variance","determine whether data can be generalized to other populations; summarize data","summarize data; assess if data can be generalized"],
+    a:3, why:"describe first, generalize second." },
+  { tag:"book style", q:"in a normal distribution, what percentage of the scores falls within one standard deviation on either side of the mean?",
+    opts:["34 percent","50 percent","68 percent","95 percent"],
+    a:2, why:"34 on each side." },
+  { tag:"extra", q:"a researcher tests the memory of 6-year-olds, 10-year-olds and 14-year-olds on the same afternoon. this design is",
+    opts:["longitudinal","cross-sectional","a case study","an experiment"],
+    a:1, why:"different ages, one point in time." },
+  { tag:"extra", q:"a student scores in the 80th percentile on a standardized test. this means the student",
+    opts:["answered 80% of the questions correctly","scored higher than 80% of the people who took the test","scored 80 points above the mean","falls within one standard deviation of the mean"],
+    a:1, why:"percentile rank = % of scores below yours." },
+  { tag:"extra", q:"household income in a city includes a few extremely high earners. the distribution is most likely",
+    opts:["normal","negatively skewed","positively skewed","bimodal"],
+    a:2, why:"tail to the right; mean above median." },
+  { tag:"extra", q:"a study reports p = .02 for the difference between two groups. the best interpretation is",
+    opts:["the effect is large and important","there is about a 2% chance the difference is due to chance, so the result is statistically significant","there is a 98% chance the difference is due to chance","the result cannot be judged without a meta-analysis"],
+    a:1, why:"below .05; reject the null. says nothing about size." },
+  { tag:"extra", q:"a psychologist combines the results of 40 separate studies on sleep and memory to reach one overall conclusion. this is a(n)",
+    opts:["replication","meta-analysis","longitudinal study","case study"],
+    a:1, why:"many studies, one conclusion." },
+  { tag:"extra", q:"an institutional review board must include, at minimum,",
+    opts:["three scientists from the same department","five people, all employed by the institution","five people, including at least one scientist, one non-scientist and one community representative","ten people, including two physicians"],
+    a:2, why:"the non-scientist and community member keep it honest." },
+  { tag:"extra", q:"which correlation coefficient shows the strongest relationship?",
+    opts:["+.40","-.85","+.15","-.10"],
+    a:1, why:"distance from zero; the sign is only direction." },
+  { tag:"extra", q:"a coach benches his worst player after a terrible game. in the next game the player performs at his usual level, and the coach credits the benching. the coach has overlooked",
+    opts:["illusory correlation","regression toward the mean","the placebo effect","sampling bias"],
+    a:1, why:"extremes drift back to average on their own." },
+  { tag:"extra", q:"survey respondents report smoking fewer cigarettes than they actually smoke because they want to look healthy. this is",
+    opts:["social desirability bias","self-report bias from poor memory","the hawthorne effect","experimenter bias"],
+    a:0, why:"answering to look good." },
+  { tag:"extra", q:"to learn how the whole school feels about the dress code, a student surveys only her own friends. the main problem is",
+    opts:["a confounding variable","experimenter bias","sampling bias, so the results can't be generalized","lack of a control group"],
+    a:2, why:"convenience sample, not random." },
+  { tag:"extra", q:"which claim is falsifiable?",
+    opts:["faith can move mountains","students who sleep 8 hours score higher than students who sleep 5","dogs are better than cats","all angels have large wings"],
+    a:1, why:"only b could be shown false by observation." },
+  { tag:"extra", q:"'there are gender-related differences in emotional expression' and 'girls smile more than boys.' which statement is the hypothesis?",
+    opts:["the first; it is testable","the second; it is the specific, testable prediction","both are hypotheses","neither; both are operational definitions"],
+    a:1, why:"broad explanation = theory; specific prediction = hypothesis." },
+  { tag:"extra", q:"researchers observe playground behavior from a hidden spot so children don't change what they do. this guards against",
+    opts:["the hawthorne effect","sampling bias","regression toward the mean","the placebo effect"],
+    a:0, why:"watched people behave differently." },
+  { tag:"extra", q:"which statistic is descriptive rather than inferential?",
+    opts:["p-value","statistical significance","standard deviation","meta-analysis"],
+    a:2, why:"sd describes the data you have." },
+  { tag:"extra", q:"a study is set up like an experiment but participants cannot be randomly assigned to groups. this design is",
+    opts:["correlational","quasi-experimental","naturalistic observation","double-blind"],
+    a:1, why:"manipulation without random assignment." }
+  ],
+
+  cards:[
+  { m:"0.1", f:"critical thinking", b:"does not blindly accept arguments; examines assumptions, appraises the source, discerns hidden biases, evaluates evidence, assesses conclusions." },
+  { m:"0.1", f:"scientific attitude", b:"curiosity (does it work?), skepticism (how do you know?), humility (i might be wrong)." },
+  { m:"0.1", f:"psychology", b:"the science of behavior (observable) and mental processes (not directly observable)." },
+  { m:"0.2", f:"hindsight bias", b:"'i knew it all along': after the outcome, believing you would have predicted it." },
+  { m:"0.2", f:"overconfidence", b:"being more confident than correct." },
+  { m:"0.2", f:"perceiving order in random events", b:"seeing patterns or streaks in random data. random doesn't look random." },
+  { m:"0.3", f:"scientific method", b:"self-correcting process for evaluating ideas with observation and analysis." },
+  { m:"0.3", f:"theory", b:"broad explanation that organizes observations and predicts behavior." },
+  { m:"0.3", f:"hypothesis", b:"testable prediction generated by a theory." },
+  { m:"0.3", f:"falsifiable", b:"can be proven false by observation or experiment." },
+  { m:"0.3", f:"operational definition", b:"exact, measurable statement of the procedures used. lets others replicate." },
+  { m:"0.3", f:"replication", b:"repeating a study with different participants and situations to see if the finding holds. replication is confirmation." },
+  { m:"0.3", f:"peer reviewers", b:"expert scientists who evaluate a study's theory, originality and accuracy before publication." },
+  { m:"0.3", f:"case study", b:"one individual or group studied in depth. an atypical case can mislead." },
+  { m:"0.3", f:"naturalistic observation", b:"recording behavior in natural situations without manipulating anything. describes, doesn't explain." },
+  { m:"0.3", f:"hawthorne effect", b:"people or animals behave differently when they know they're watched." },
+  { m:"0.3", f:"observer bias", b:"the researcher sees what they expect or want to see." },
+  { m:"0.3", f:"survey", b:"self-reported attitudes or behaviors from many people, ideally a random sample." },
+  { m:"0.3", f:"social desirability bias", b:"answering the way that looks good or pleases the researcher." },
+  { m:"0.3", f:"self-report bias", b:"people inaccurately report or remember their own behavior." },
+  { m:"0.3", f:"wording effects", b:"question wording or order changes the results." },
+  { m:"0.3", f:"sampling bias", b:"a flawed sampling process gives an unrepresentative sample." },
+  { m:"0.3", f:"population", b:"the whole group being studied, from which samples are drawn." },
+  { m:"0.3", f:"random sample", b:"every member of the population has an equal chance of being included." },
+  { m:"0.4", f:"correlation", b:"how much two factors vary together, and so how well one predicts the other. does not prove cause." },
+  { m:"0.4", f:"correlation coefficient (r)", b:"-1.00 to +1.00. sign = direction, size = strength." },
+  { m:"0.4", f:"positive correlation", b:"both variables move the same direction (both up, or both down)." },
+  { m:"0.4", f:"negative correlation", b:"the variables move in opposite directions." },
+  { m:"0.4", f:"variable", b:"anything that can vary and is feasible and ethical to measure." },
+  { m:"0.4", f:"scatterplot", b:"dots for two variables' values. slope = direction, scatter = strength." },
+  { m:"0.4", f:"illusory correlation", b:"perceiving a relationship where none exists." },
+  { m:"0.4", f:"regression toward the mean", b:"extreme scores fall back toward the average on retest." },
+  { m:"0.4", f:"experiment", b:"manipulate the iv, measure the dv, hold the rest constant. shows cause and effect." },
+  { m:"0.4", f:"experimental group", b:"the group exposed to the treatment." },
+  { m:"0.4", f:"control group", b:"the group not exposed to the treatment; the comparison." },
+  { m:"0.4", f:"random assignment", b:"groups assigned by chance, minimizing preexisting differences and confounding variables." },
+  { m:"0.4", f:"single-blind procedure", b:"participants don't know whether they got the treatment or placebo." },
+  { m:"0.4", f:"double-blind procedure", b:"neither participants nor staff know. blocks experimenter bias." },
+  { m:"0.4", f:"placebo", b:"an inert substance or treatment." },
+  { m:"0.4", f:"placebo effect", b:"results caused by expectations alone." },
+  { m:"0.4", f:"independent variable (iv)", b:"the factor the experimenter manipulates." },
+  { m:"0.4", f:"dependent variable (dv)", b:"the outcome that is measured." },
+  { m:"0.4", f:"confounding variable", b:"a third factor that influences both iv and dv, creating a false association." },
+  { m:"0.4", f:"experimenter bias", b:"researchers unintentionally influence results toward their belief." },
+  { m:"0.4", f:"validity", b:"the test or experiment measures what it claims to." },
+  { m:"0.5", f:"quantitative research", b:"relies on numerical data." },
+  { m:"0.5", f:"qualitative research", b:"relies on in-depth narrative data not turned into numbers." },
+  { m:"0.5", f:"quasi-experimental", b:"like an experiment but without random assignment." },
+  { m:"0.5", f:"cross-sectional study", b:"compares people of different ages at one point in time." },
+  { m:"0.5", f:"longitudinal study", b:"follows and retests the same people over time." },
+  { m:"0.5", f:"informed consent", b:"enough information to decide whether to participate. minors give informed assent." },
+  { m:"0.5", f:"debriefing", b:"post-study explanation of the purpose and any deception." },
+  { m:"0.5", f:"institutional review board (irb)", b:"at least 5 people incl. 1 scientist, 1 non-scientist, 1 community rep. approves research before it runs." },
+  { m:"0.6", f:"descriptive statistics", b:"measure and describe a group's data: central tendency, variation, percentile rank." },
+  { m:"0.6", f:"histogram", b:"bar graph of a frequency distribution." },
+  { m:"0.6", f:"mode", b:"most frequently occurring score." },
+  { m:"0.6", f:"mean", b:"arithmetic average. sensitive to extremes." },
+  { m:"0.6", f:"median", b:"middle score, 50th percentile. use when skewed." },
+  { m:"0.6", f:"percentile rank", b:"percentage of scores lower than a given score." },
+  { m:"0.6", f:"skewed distribution", b:"lacks symmetry. positive skew: tail right, mean above median. negative: tail left." },
+  { m:"0.6", f:"range", b:"highest minus lowest. crude." },
+  { m:"0.6", f:"standard deviation", b:"how much scores vary around the mean, using every score." },
+  { m:"0.6", f:"normal curve", b:"symmetrical bell; mean = median = mode. 68% within 1 sd, 95% within 2, 99.7% within 3." },
+  { m:"0.6", f:"inferential statistics", b:"generalize from a sample to the probability that something is true of the population." },
+  { m:"0.6", f:"meta-analysis", b:"combines the results of many studies into one conclusion." },
+  { m:"0.6", f:"null hypothesis", b:"assumes no real difference exists. a significant result rejects it." },
+  { m:"0.6", f:"statistical significance", b:"how likely the result occurred by chance. threshold p < .05." },
+  { m:"0.6", f:"p-value", b:"probability the data occurred by chance. below .05 = significant." },
+  { m:"0.6", f:"effect size", b:"strength of the relationship; how big the difference is." },
+  { m:"names", f:"wilhelm wundt", b:"1879, first psychology lab. 'father of psychology.'" },
+  { m:"names", f:"g. stanley hall", b:"first american lab; founded the apa." },
+  { m:"names", f:"mary whiton calkins", b:"first female apa president; harvard denied her phd." },
+  { m:"names", f:"margaret floy washburn", b:"first woman with a psychology phd." },
+  { m:"names", f:"rogers and maslow", b:"humanistic psychology; client-centered therapy." },
+  { m:"names", f:"freud", b:"psychoanalysis: unconscious mind and childhood shape behavior." },
+  { m:"names", f:"watson, skinner, pavlov", b:"behaviorism: study observable behavior only." },
+  { m:"names", f:"darwin", b:"evolutionary perspective: adaptive traits survive." },
+  { m:"names", f:"seven perspectives", b:"biological, humanistic, behavioral, cognitive, psychodynamic, sociocultural, evolutionary." }
+  ],
+
+  key:[["apa","american psychological association"],["dv","dependent variable"],["iv","independent variable"],["irb","institutional review board"],["iq","intelligence quotient"],["p","p-value"],["r","correlation coefficient"],["sd","standard deviation"]]
+};
+/* ═══ below here is the machinery ═══════════════════════════════════ */
+
+const $=s=>document.querySelector(s);
+const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const TW='<svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg>';
+
+const G={
+ head:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>'
+};
+
+$("#cls").textContent=GUIDE.cls;
+$("#ttl").textContent=GUIDE.title;
+$("#due").textContent=GUIDE.due;
+document.title=GUIDE.title.toLowerCase();
+$("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true">'+
+  '<g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" '+
+  'stroke-linecap="round" stroke-linejoin="round" opacity=".97" pathLength="1">'+
+  (G[GUIDE.glyph]||G.head).replace(/<(path|circle|ellipse)/g,'<$1 pathLength="1"')+'</g></svg>';
+
+/* outline */
+GUIDE.outline.forEach((s,i)=>{
+  const card=el("div","card g");
+  card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+    '<button class="chead" aria-expanded="false"><span class="dot'+(s.mint?' m':'')+'"></span>'+
+    '<span class="ct"></span>'+TW+'</button>'+
+    '<div class="cbody"><div class="cin"></div></div>';
+  card.querySelector(".ct").textContent=s.t;
+  const cin=card.querySelector(".cin");
+  if(s.p){ s.p.forEach((t,j)=>{const p=el("p"); if(j===0&&s.open)p.className="lead"; p.innerHTML=t; cin.appendChild(p)}); }
+  if(s.items){
+    const rows=el("div","rows");
+    s.items.forEach(it=>{
+      const r=el("div","row");
+      const b=el("button","rq"); b.setAttribute("aria-expanded","false");
+      b.innerHTML=(it.n?'<span class="lt"></span>':'')+'<span class="rtext"></span>'+TW;
+      if(it.n)b.querySelector(".lt").textContent=it.n;
+      b.querySelector(".rtext").textContent=it.q;
+      const ra=el("div","ra"); const inner=el("div");
+      it.a.forEach(t=>{const p=el("p"); p.innerHTML=t; inner.appendChild(p)});
+      ra.appendChild(inner);
+      b.onclick=()=>{const o=b.getAttribute("aria-expanded")==="true"; b.setAttribute("aria-expanded",String(!o)); ra.classList.toggle("on",!o)};
+      r.append(b,ra); rows.appendChild(r);
+    });
+    cin.appendChild(rows);
+  }
+  if(s.terms){const box=el("div","terms"); s.terms.forEach(t=>{const c=el("span","term");c.textContent=t;box.appendChild(c)}); cin.appendChild(box)}
+  const head=card.querySelector(".chead"), body=card.querySelector(".cbody");
+  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";
+    head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+  if(s.open){head.setAttribute("aria-expanded","true");body.classList.add("on")}
+  if(!REDUCED){card.classList.add("rise");card.style.setProperty("--i",i)}
+  $("#p-outline").appendChild(card);
+});
+
+/* compare */
+(function(){
+  const host=$("#p-compare");
+  GUIDE.compare.forEach((tb,i)=>{
+    const card=el("div","tcard g");
+    card.innerHTML='<span class="spec" aria-hidden="true"></span><div class="tt"></div><div class="tscroll"><table><thead><tr></tr></thead><tbody></tbody></table></div>';
+    card.querySelector(".tt").textContent=tb.t;
+    const hr=card.querySelector("thead tr"); tb.cols.forEach(c=>{const th=el("th");th.textContent=c;hr.appendChild(th)});
+    const tbd=card.querySelector("tbody");
+    tb.rows.forEach(r=>{const tr=el("tr"); r.forEach(c=>{const td=el("td");td.textContent=c;tr.appendChild(td)}); tbd.appendChild(tr)});
+    if(tb.note){const n=el("div","tnote");n.textContent=tb.note;card.appendChild(n)}
+    if(!REDUCED){card.classList.add("rise");card.style.setProperty("--i",i)}
+    host.appendChild(card);
+  });
+  const sh=el("div","sh"); sh.textContent="traps the questions are built on"; host.appendChild(sh);
+  const tc=el("div","tcard g"); tc.innerHTML='<span class="spec" aria-hidden="true"></span><div class="traps"></div>';
+  const tl=tc.querySelector(".traps");
+  GUIDE.traps.forEach(t=>{const d=el("div","trap"); d.innerHTML='<span class="x">!</span><span></span>'; d.lastChild.innerHTML=t; tl.appendChild(d)});
+  if(!REDUCED){tc.classList.add("rise");tc.style.setProperty("--i",GUIDE.compare.length)}
+  host.appendChild(tc);
+})();
+
+/* practice */
+(function(){
+  const host=$("#p-practice");
+  let done=0, right=0;
+  const bar=el("div","score");
+  bar.innerHTML='<span><b id="sr">0</b> right of <b id="sd">0</b> answered · '+GUIDE.practice.length+' questions</span><button id="reset">reset</button>';
+  host.appendChild(bar);
+  const cards=[];
+  const upd=()=>{$("#sr").textContent=right;$("#sd").textContent=done};
+  GUIDE.practice.forEach((q,i)=>{
+    const card=el("div","qcard g");
+    card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+      '<div class="qn">question '+(i+1)+(q.tag?' <span class="tag'+(q.tag==='read aloud'?' m':'')+'"></span>':'')+'</div><div class="qt"></div>';
+    if(q.tag)card.querySelector(".tag").textContent=q.tag;
+    const qt=card.querySelector(".qt");
+    if(q.pass){const ps=el("span","pass");ps.textContent=q.pass;qt.appendChild(ps)}
+    qt.appendChild(document.createTextNode(q.q));
+    q.opts.forEach((o,j)=>{
+      const b=el("button","opt");
+      b.innerHTML='<span class="k">'+"abcde"[j]+'</span><span></span>';
+      b.lastChild.textContent=o;
+      b.onclick=()=>{
+        if(card.dataset.done)return;
+        card.dataset.done="1"; done++; if(j===q.a)right++; upd();
+        card.querySelectorAll(".opt").forEach((x,k)=>{
+          if(k===q.a)x.classList.add("right");
+          else if(k===j)x.classList.add("wrong");
+        });
+        const w=el("p","why"); w.textContent=q.why; card.appendChild(w);
+      };
+      card.appendChild(b);
+    });
+    if(!REDUCED){card.classList.add("rise");card.style.setProperty("--i",Math.min(i,12))}
+    host.appendChild(card); cards.push(card);
+  });
+  $("#reset").onclick=()=>{
+    done=0;right=0;upd();
+    cards.forEach(c=>{delete c.dataset.done;c.querySelectorAll(".opt").forEach(x=>x.classList.remove("right","wrong"));c.querySelector(".why")?.remove()});
+    host.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});
+  };
+})();
+
+/* flashcards */
+(function(){
+  const mods=["all",...new Set(GUIDE.cards.map(c=>c.m))];
+  let filt="all", pool=GUIDE.cards.slice(), n=0;
+  const host=$("#p-cards");
+  const fr=el("div","filt");
+  mods.forEach(m=>{const b=el("button");b.textContent=m;b.setAttribute("aria-pressed",String(m==="all"));
+    b.onclick=()=>{filt=m;pool=m==="all"?GUIDE.cards.slice():GUIDE.cards.filter(c=>c.m===m);n=0;
+      fr.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));draw()};
+    fr.appendChild(b)});
+  const deck=el("div","deck"), fc=el("div","fc g");
+  fc.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+    '<div class="face front"><span class="fm"></span><div class="fw"></div></div>'+
+    '<div class="face back g"><span class="fm">tap to flip back</span><div class="fw"></div></div>';
+  deck.appendChild(fc);
+  const bar=el("div","fbar");
+  bar.innerHTML='<button id="prev">back</button><button id="next">next</button><button id="shuf">shuffle</button><span class="fcount"></span>';
+  const draw=()=>{
+    fc.classList.remove("flip");
+    const c=pool[n];
+    fc.querySelector(".front .fm").textContent=c.m;
+    fc.querySelector(".front .fw").textContent=c.f;
+    fc.querySelector(".back .fw").textContent=c.b;
+    bar.querySelector(".fcount").textContent=(n+1)+" of "+pool.length;
+  };
+  fc.onclick=()=>fc.classList.toggle("flip");
+  bar.querySelector("#prev").onclick=()=>{n=(n-1+pool.length)%pool.length;draw()};
+  bar.querySelector("#next").onclick=()=>{n=(n+1)%pool.length;draw()};
+  bar.querySelector("#shuf").onclick=()=>{for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}n=0;draw()};
+  addEventListener("keydown",e=>{
+    if(host.classList.contains("hidden"))return;
+    if(e.key==="ArrowRight")bar.querySelector("#next").click();
+    if(e.key==="ArrowLeft")bar.querySelector("#prev").click();
+    if(e.key===" "){e.preventDefault();fc.click()}
+  });
+  let sx=0; fc.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});
+  fc.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>48)(dx<0?bar.querySelector("#next"):bar.querySelector("#prev")).click()},{passive:true});
+  host.append(fr,deck,bar); draw();
+})();
+
+/* abbreviation key */
+$("#key").innerHTML='<b>key:</b> '+GUIDE.key.map(([k,v])=>'<b>'+k+'</b> '+v).join(' · ');
+
+/* segmented control */
+(function(){
+  const tabs=[["outline","outline"],["compare","compare"],["practice","practice"],["cards","flashcards"]];
+  const seg=$("#seg"), ind=seg.querySelector(".ind");
+  tabs.forEach(([id,label],i)=>{
+    const b=el("button"); b.textContent=label; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",String(i===0));
+    b.onclick=()=>select(i);
+    seg.appendChild(b);
+  });
+  function select(i){
+    const btns=[...seg.querySelectorAll("button")];
+    btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
+    tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
+    move();
+  }
+  function move(){
+    const btns=[...seg.querySelectorAll("button")];
+    const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
+    const b=btns[i]; if(!b)return;
+    ind.style.width=b.offsetWidth+"px";
+    ind.style.transform="translateX("+(b.offsetLeft-2)+"px)";
+  }
+  addEventListener("resize",move); requestAnimationFrame(move);
+})();
+
+/* header state + pointer specular */
+(function(){
+  const hdr=$("#hdr"); let raf=0;
+  addEventListener("scroll",()=>{ if(raf)return;
+    raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)}) },{passive:true});
+  if(matchMedia("(hover:hover)").matches && !REDUCED){
+    addEventListener("pointermove",e=>{
+      const c=e.target.closest && e.target.closest(".g"); if(!c)return;
+      const r=c.getBoundingClientRect();
+      c.style.setProperty("--mx",(e.clientX-r.left)+"px");
+      c.style.setProperty("--my",(e.clientY-r.top)+"px");
+    },{passive:true});
+  }
+})();
+</script>
