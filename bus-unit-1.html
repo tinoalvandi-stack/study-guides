@@ -33,6 +33,7 @@
   --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
   --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
   --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+
   --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
   --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
   --blur:26px; --sat:175%;
@@ -65,6 +66,7 @@ button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:poin
 #amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
   filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);
   animation:hue 120s linear infinite}
+
 @keyframes hue{
   0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}
   50%    {filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}
@@ -97,6 +99,7 @@ button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:poin
 .spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
   background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
   transition:opacity .4s var(--ease)}
+
 @media (hover:hover){.g:hover > .spec{opacity:1}}
 
 /* header */
@@ -129,6 +132,7 @@ h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spa
 
 main{padding-top:20px}
 .sh{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--ink3);
+
   margin:30px 4px 10px;text-transform:lowercase}
 .sh:first-child{margin-top:0}
 
@@ -161,6 +165,7 @@ main{padding-top:20px}
 .opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 13px;
   border-radius:12px;background:var(--fill2);margin-bottom:7px;font-size:15.5px;
   box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
+
   transition:background .2s var(--ease),transform .3s var(--spring)}
 .opt:active{transform:scale(.988)}
 .opt .k{font-family:var(--round);font-weight:740;font-size:13px;color:var(--ink3);flex:none;
@@ -193,6 +198,7 @@ main{padding-top:20px}
 @keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
 
 footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;
+
   text-transform:lowercase}
 
 @media (prefers-reduced-motion:reduce){
@@ -225,6 +231,7 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
 /* practice test */
 .pt{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);
   text-transform:lowercase;margin:24px 4px 9px}
+
 .pt:first-child{margin-top:2px}
 .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .mopt{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:12px;
@@ -257,6 +264,7 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
     <span class="chip" id="due"></span>
   </div>
   <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
+
 </div></header>
 
 <main class="wrap">
@@ -289,6 +297,7 @@ const GUIDE = {
   ]},
 
   { t:"unit 1-1: what is business?", items:[
+
     { n:"", q:"What is a business?",
       a:["A for-profit or non-profit organization involved in commercial, industrial, or professional commerce.",
          "Commercial is the pursuit of a profit margin. Industrial is anything manufactured, from cars to software. Professional is customized, knowledge-based services provided for a fee.",
@@ -321,6 +330,7 @@ const GUIDE = {
          "All fifteen are in the flashcards tab with his exact wording. The pairs he tests hardest: mission versus vision, strategy versus tactic, accounting versus finance."],
       terms:["mission vs vision","strategy vs tactic","accounting vs finance","ROI","ROE"] },
     { n:"7", q:"Examine the organizational structure and functions of business",
+
       a:["Same ground as 5. Departments by function, levels by authority, and an org chart whose reporting lines are the chain of command.",
          "Structure exists so responsibility is clear, specialists can focus, decisions travel down and problems travel up."] },
     { n:"8", q:"What are the characteristics of business?",
@@ -353,6 +363,7 @@ const GUIDE = {
     { n:"", q:"What is management?",
       a:["Planning, organizing, staffing, controlling and leading people, processes and assets in order to achieve a goal or task in the best way possible.",
          "On the board it is five verbs: plans, organizes, staffs, controls, leads. Leads is the one he starred and tied to company culture."] },
+
     { n:"", q:"What percent of employees left a job because of a manager or leader?",
       a:["57 percent, from a 2019 study. Board wording: they leave because of poor leadership. People leave managers, not companies."] },
     { n:"1", q:"Glossary terms",
@@ -371,8 +382,7 @@ const GUIDE = {
          "How managers treat others reveals their leadership and the true character of a company. Values put into practice build the culture, so how managers manage is what makes or breaks the company."] },
     { n:"6", q:"What skills are required to be an effective manager?",
       a:["Problem-solving: good trade-offs with limited resources. People skills: empathizing and understanding while still influencing, communicating and interacting. Procedural: learning and performing methods and sequences quickly.",
-         "On the board the fourth item is leadership, annotated inspire and motivate. The review sheet glossary lists emotional intelligence instead. Know both.",
-         "Which one you lean on depends on level. Supervisory leans procedural, middle blends all three, executives lean problem-solving."] },
+         "On the board the fourth item is leadership, annotated inspire and motivate. The review sheet glossary lists emotional intelligence instead. Know both."] },
     { n:"7", q:"What is the chain of command?",
       a:["An organizational structure that shows who each person reports to.",
          "Front-line and entry-level employees report to supervisors, supervisors report to middle managers, middle managers report to executives. Big companies stack many layers inside the middle."] },
@@ -386,6 +396,7 @@ const GUIDE = {
          "Colin Powell: leadership is the art of accomplishing more than the science of management says is possible."] },
     { n:"10", q:"Does leadership quality affect employees? How? What percent leave?",
       a:["Yes. We spend most of our productive years working, and managers are often the deciding factor in whether someone likes their work and whether they stay.",
+
          "Managers have a big impact, good and bad, on the work environment and on work enjoyment. 57 percent of employees have left a job because of a manager or leader."] },
     { n:"", q:"Review the 1-2 scenario: a friend gets promoted to coffee supervisor",
       a:["The exact scenario text is not in the lesson notes, so this is the shape of the answer.",
@@ -418,6 +429,7 @@ const GUIDE = {
     { n:"7", q:"Describe the hiring / firing process",
       a:["Listed twice on his sheet. Same answer as 6."] },
     { n:"8", q:"Business management",
+
       a:["Human resources is one of the six functions managers manage. The manager runs day-to-day performance and discipline, HR owns the process, the records and the legal side."] },
     { n:"9", q:"Understand ethical and legal issues that impact business",
       a:["Repeat of 1."] },
@@ -450,6 +462,7 @@ const GUIDE = {
          "Branson: train people well enough so they can leave, treat them well enough so they do not want to."] },
     { n:"21", q:"Glossary terms",
       a:["Company culture, company values, compensation, employee benefits, employee appraisal, employee relations, employee termination, exit interviews, human resources, job description, onboarding, orientation, performance management, professional development, recruiting, staffing, training.",
+
          "All seventeen are in the flashcards tab in his wording. Orientation versus onboarding is the one that decides points."],
       terms:["orientation","onboarding","compensation","recruiting","job description","performance management"] },
     { n:"22", q:"What is the human resources business function?",
@@ -482,6 +495,7 @@ const GUIDE = {
     { n:"\u2605", q:"From the board: the right people, and the 6 employee benefits",
       a:["The right people means interests, skills and experience matched to the role, so the employee is productive and fulfilled. He starred that pairing.",
          "The six benefits, circled and marked VIP: health meaning medical, dental and vision. Retirement, a 401k and stock options. PTO, paid time off, plus sick time. Life insurance plus long and short term disability. Maternity and paternity, bereavement, and mental health. Free childcare or reimbursement.",
+
          "Professional development sits next to it with four: school reimbursement, continuing education, paid training, educational seminars. The best places to work checklist runs company culture, company values, compensation, employee benefits, professional development."],
       terms:["health","retirement","PTO","life insurance","maternity","childcare"] }
   ]},
@@ -514,6 +528,7 @@ const GUIDE = {
       terms:["purpose","people","action","KPIs"] },
     { n:"", q:"We know for profit, but what is non-profit?",
       a:["Both count as business under the definition, which says a for-profit or non-profit organization.",
+
          "A for-profit earns a profit for its owners. A non-profit serves a mission, and the money goes back into that mission rather than to owners. It is usually funded by donations and volunteers.",
          "His angle: a charity's vision could amount to putting itself out of business. If everyone had a home, Habitat would have nothing left to build."] },
     { n:"", q:"What is Habitat for Humanity? What is their mission and vision?",
@@ -541,185 +556,163 @@ const GUIDE = {
   { name:"test 1",
     matching:[
       { t:"cultivate", d:"human resources" },
+      { t:"contemplate", d:"strategy" },
       { t:"compile", d:"information management" },
-      { t:"tactic", d:"a specific action that supports the strategy" },
-      { t:"orientation", d:"a one-time event introducing new hires to the company and coworkers" },
-      { t:"chain of command", d:"the structure showing who each person reports to" },
-      { t:"compensation", d:"total cash and benefits received in exchange for work" },
-      { t:"objective", d:"a specific result within a timeframe, usually one year" },
-      { t:"accounting", d:"recording, maintaining and reporting financial transactions" }
+      { t:"control", d:"operations" },
+      { t:"connect", d:"marketing" },
+      { t:"calculate", d:"finance and accounting" },
+
+      { t:"mission", d:"a company's purpose, its reason for being" },
+      { t:"vision", d:"an aspirational view of the future" }
     ],
     mc:[
-      { q:"In the definition of business, industrial means",
-        opts:["the pursuit of a profit margin","anything that is manufactured","services provided for a fee","money owed to the company"],
-        a:1, why:"cars and software both count. commercial is the profit margin, professional is the knowledge-based service." },
-      { q:"Which is NOT one of the six business functions?",
-        opts:["strategy","information management","advertising","operations"],
-        a:2, why:"advertising sits under marketing as promotion. marketing is the function." },
-      { q:"Recruit, interview, hire and orient the appropriate people describes",
-        opts:["staffing","controlling","onboarding","recruiting"],
-        a:0, why:"recruiting is only the searching part. staffing is the whole loop." },
-      { q:"Which function of management checks results against the goal and corrects course?",
-        opts:["planning","organizing","controlling","leading"],
-        a:2, why:"planning maps the course of action. controlling measures against it." },
-      { q:"A supervisory-level manager leans most on which skill?",
-        opts:["problem-solving","procedural","emotional intelligence","financial"],
-        a:1, why:"supervisory work repeats, so procedural skills matter most. executives lean on problem-solving." },
-      { q:"A company's purpose, its reason for being, the problem it is solving, is its",
-        opts:["vision","mission","strategy","objective"],
-        a:1, why:"vision is the aspirational where. mission is the why and the what." },
-      { q:"Which two HR functions require the most legal knowledge?",
-        opts:["compensation and training","interviews and terminations","benefits and onboarding","recruiting and culture"],
-        a:1, why:"both are where discrimination and wrongful termination claims come from." },
+      { q:"What is the definition of business?",
+        opts:["a route or plan of action to achieve goals","a for-profit or non-profit organization involved in commercial, industrial, or professional commerce","the daily functioning of an organization","the people who work for an organization"],
+        a:1, why:"the other three are strategy, operations, and human resources." },
+      { q:"Business is about ____ managing business functions.",
+        opts:["technology","information","people","money"], a:2,
+        why:"his exact sentence. business is about people." },
+      { q:"Which business function is responsible for recruiting, hiring, onboarding, training, evaluating, and terminating employees?",
+        opts:["marketing","strategy","human resources","operations"], a:2,
+        why:"that list is the HR function. its C word is cultivate." },
+      { q:"Which business function is a route or plan of action designed to achieve certain goals and objectives?",
+        opts:["strategy","finance/accounting","information management","marketing"], a:0,
+        why:"strategy. contemplate." },
+      { q:"Which business function includes manufacturing, purchasing, and logistics?",
+        opts:["marketing","operations","human resources","strategy"], a:1,
+        why:"operations is the daily functioning of an organization. control." },
+      { q:"Management refers to planning, organizing, staffing, controlling, and ____.",
+        opts:["selling","leading","recruiting","calculating"], a:1,
+        why:"the five functions of management. leads is the one he starred on the board." },
       { q:"What percent of employees left a job because of a manager or leader?",
-        opts:["31 percent","44 percent","57 percent","72 percent"],
-        a:2, why:"from a 2019 study. people leave managers, not companies." },
-      { q:"Which is the correct order of the five stages of the entrepreneurial process?",
-        opts:["business plan, discovery, resourcing, run business, harvesting",
-              "discovery, business plan, resourcing, run business, harvesting",
-              "discovery, resourcing, business plan, harvesting, run business",
-              "resourcing, discovery, business plan, run business, harvesting"],
-        a:1, why:"find the idea, write the plan, gather the money and people, operate it, then cash out." },
-      { q:"Which of these is NOT off limits for an interviewer under the EEOA?",
-        opts:["age","country of origin","work history","marital status"],
-        a:2, why:"age, country of origin, marital status and sex are all blocked. work history is about the job." }
+        opts:["25 percent","40 percent","57 percent","80 percent"], a:2,
+        why:"57 percent, from a 2019 study." },
+      { q:"Which of the following is most often a one-time event held by HR for new employees?",
+        opts:["orientation","onboarding","training","performance management"], a:0,
+        why:"orientation is the one-time event. onboarding runs for months." },
+      { q:"Under the Equal Employment Opportunity Act, an interviewer may not ask about which of the following?",
+        opts:["work history","country of origin","proudest achievement","number of employees managed"], a:1,
+        why:"the four blocked topics are age, country of origin, marital status, and sex." },
+      { q:"The key metrics and measures that highlight the health of a business are called",
+
+        opts:["tactics","goals","KPIs","missions"], a:2,
+        why:"key performance indicators. what gets measured gets done." }
     ],
     scenarios:[
-      { stem:"A candle company owner tells her sales manager to grow sales 30 percent this quarter. He decides he needs more digital ads, one new sales rep, and more inventory. He works with another department to fill the rep role. Every week he checks website visits, ad impressions and engagement against the goal.",
+      { stem:"A manager at a restaurant makes sure every employee has up-to-date information on their health insurance, and keeps each employee's paperwork on file.",
         qs:[
-          { q:"Deciding what people and resources the quarter needs is which function of management?",
-            a:"planning. it maps out the course of action and the resources needed." },
-          { q:"Working with another department to fill the rep role is which function, and which business function is he partnering with?",
-            a:"staffing, partnering with human resources. staffing means recruit, interview, hire and orient." },
-          { q:"Tracking visits, impressions and engagement against the goal is which function, and what are those measures called?",
-            a:"controlling, and they are key performance indicators. what gets measured gets done." }
+          { q:"Which business function is this manager performing?",
+            a:"human resources. the C word is cultivate." },
+          { q:"Which HR responsibility is the health insurance part?",
+            a:"employee benefits. HR administers the medical plan, 401k, and other benefits." },
+          { q:"Name two other things the HR department does.",
+            a:"any two: recruiting, staffing, job descriptions, orientation and onboarding, training, performance management, compensation, terminations, exit interviews." }
         ] },
-      { stem:"A new hire spends her first morning signing paperwork, meeting the team and touring the building. Over the next three months her department teaches her the company's mission, systems, goals and expectations until she is carrying her own shifts.",
+      { stem:"A candle company's mission is to provide clean scents for the senses, one candle at a time. Its plan is to sell candles online with same-day delivery. To support that plan, it runs Instagram ads every Tuesday.",
         qs:[
-          { q:"Name the first part and one detail that identifies it.",
-            a:"orientation. new hires are introduced to the company, their fellow employees and the work environment, and it is mostly a one-time event run by HR." },
-          { q:"Name the second part and one detail that identifies it.",
-            a:"onboarding. a strategic plan and process to learn culture, mission, vision, systems and expectations and become a contributing member. it runs for months and involves the department." },
-          { q:"Which business function owns both, and what is its C word?",
-            a:"human resources. cultivate." }
+          { q:"Which part is the mission, which is the strategy, and which is the tactic?",
+            a:"mission: clean scents for the senses. strategy: sell online with same-day delivery. tactic: the tuesday instagram ads." },
+          { q:"What is a tactic?",
+            a:"a specific procedure or action used to support strategy in order to achieve goals and objectives." },
+          { q:"What is strategy informed by?",
+            a:"the company's mission and vision." }
         ] }
     ],
     frq:[
-      { q:"Explain what business is about people means. Name the book and author the idea comes from.",
-        pts:["the phrase is first who, then what, from Good to Great by Jim Collins.",
-             "get the right people on the bus, then get them in the right seats, roles matching their interests, skills and experience.",
-             "do that before deciding where to drive the bus, because with constant change the right people adapt and solve what comes.",
-             "tie it back: people manage the other five business functions, so no people means no business."] },
-      { q:"Explain the difference between a leader and a manager. Use at least one framing from class.",
-        pts:["management is planning, organizing, staffing, controlling and leading people, processes and assets to hit a goal the best way possible.",
-             "leadership is inspiring, motivating, influencing and maximizing the efforts of people toward a common purpose.",
-             "one framing: management is doing things right, leadership is doing the right things. another: leaders initiate a plan and managers execute it.",
-             "note that it is not clean, because leaders also manage and managers also lead. the difference may be a focus on growth."] },
-      { q:"Pick two of the six business functions and explain how they depend on each other.",
-        pts:["name both functions and define each in one line.",
-             "give the dependency in one direction, then the other.",
-             "example: marketing sells 500 orders but human resources never hired the second producer, so operations cannot fill them and finance never sees the revenue.",
-             "close with the point: the six are interdependent, and one weak function drags the rest."] },
-      { q:"State this school's mission and vision, and explain the difference between the two.",
-        pts:["mission: to teach students the Gospel of Jesus Christ, prepare students for higher education, and create a community where service is valued and celebrated.",
-             "vision: to be a national leader in college preparatory education in an environment distinguished by Catholic values.",
-             "the mission is the purpose, the why we exist and the what we do. the vision is aspirational, where we end up if the mission succeeds.",
-             "tie it to strategy: mission and vision inspire an organization, and then it uses strategy to reach its goals and objectives."] }
-    ] },
+      { q:"List the 6 C's and the business function each one stands for.",
+        pts:["cultivate is human resources.","contemplate is strategy.","compile is information management.","control is operations.","connect is marketing.","calculate is finance and accounting."] },
+      { q:"What is the difference between a mission and a vision? Give an example of each from a real company.",
+        pts:["mission is a company's purpose, its reason for being, the problem it is solving. the why and the what.",
+             "vision is an aspirational view of the future, what things look like if the mission succeeds. the where.",
+             "example: IKEA's mission is well-designed, functional furniture at prices so low that as many people as possible can afford it. its vision is to create a better everyday life for the many people.",
+             "or Habitat for Humanity: mission is bringing people together to build homes, communities and hope. vision is a world where everyone has a decent place to live."] },
+      { q:"What does business is about people mean? Who said first who, then what?",
 
+        pts:["people are the ones who manage the other five business functions. no people, no business.",
+             "jim collins, in his book good to great, said first who, then what.",
+             "get the right people on the bus, then in the right seats, before deciding where to drive the bus.",
+             "the right people means matching interests, skills, and experience to the role, so they are productive and fulfilled."] }
+    ] },
 
   { name:"test 2",
     matching:[
-      { t:"contemplate", d:"strategy" },
-      { t:"calculate", d:"finance and accounting" },
-      { t:"onboarding", d:"learning culture, mission and systems until you contribute" },
-      { t:"goal", d:"a measurable end result running 3 to 5 years" },
-      { t:"exit interview", d:"asking a departing employee why, in order to improve" },
-      { t:"company culture", d:"the shared beliefs, attitudes and behaviors of employees" },
-      { t:"professional", d:"customized, knowledge-based services provided for a fee" },
-      { t:"return on investment", d:"return measured against what the investment cost" }
+      { t:"recruiting", d:"searching for candidates to fill a position" },
+      { t:"job description", d:"the explanations and expectations of a job's duties" },
+      { t:"orientation", d:"a one-time event introducing new hires to the company" },
+      { t:"onboarding", d:"the longer process of learning the culture, mission, and systems" },
+      { t:"performance management", d:"employee reviews and appraisals" },
+      { t:"compensation", d:"total cash and benefits received for work" },
+      { t:"exit interview", d:"a conversation with an employee who is leaving" },
+      { t:"tactic", d:"a specific action that supports the strategy" }
     ],
     mc:[
-      { q:"A software company writes and ships a new app. That is which type of commerce?",
-        opts:["commercial","industrial","professional","non-profit"],
-        a:1, why:"industrial means anything manufactured, from cars to software." },
+      { q:"In the definition of business, what is the meaning of industrial?",
+        opts:["the pursuit of a profit margin","customized services provided for a fee","items that are manufactured","collecting and storing data"], a:2,
+        why:"industrial means anything manufactured, cars to software." },
       { q:"Which C goes with marketing?",
-        opts:["connect","compile","control","cultivate"],
-        a:0, why:"compile is information management, control is operations, cultivate is human resources." },
-      { q:"People, processes and systems that collect, organize, store and secure data describe",
-        opts:["operations","accounting","information management","marketing"],
-        a:2, why:"three parts and four verbs. its C is compile." },
-      { q:"Under the Equal Employment Opportunity Act, an interviewer may NOT ask",
-        opts:["how long you worked at your last job","how many employees you have managed","what country you are originally from","what your proudest achievement is"],
-        a:2, why:"country of origin, age and marital status create the appearance of discrimination. the rest are about the job." },
-      { q:"Grow online sales 20 percent this year is a",
-        opts:["goal","objective","vision","tactic"],
-        a:1, why:"objectives are specific and usually one year. goals are broader and run 3 to 5 years." },
-      { q:"Which one ensures the products earn a profit?",
-        opts:["business strategy","marketing strategy","operations","information management"],
-        a:1, why:"business strategy ensures the company earns a profit. marketing strategy ensures the products do." },
-      { q:"A world where everyone has a decent place to live is Habitat for Humanity's",
-        opts:["mission","vision","strategy","objective"],
-        a:1, why:"the mission is bringing people together to build homes, communities and hope. the vision is the aspirational future." },
-      { q:"The explanations and expectations of the duties and responsibilities of a job are a",
-        opts:["job description","performance appraisal","company value","chain of command"],
-        a:0, why:"clear job descriptions are also a retention practice, because expectations stop being a guess." },
-      { q:"A 401k and stock options fall under which of the six employee benefits?",
-        opts:["health","retirement","PTO","life insurance"],
-        a:1, why:"the six are health, retirement, PTO, life insurance and disability, maternity and bereavement and mental health, and free childcare." },
-      { q:"Interests, skills and experience matched to the role produce an employee who is",
-        opts:["cheaper to pay","productive and fulfilled","easier to terminate","exempt from training"],
-        a:1, why:"that pairing is the whole point of getting the right people in the right seats." },
-      { q:"Which management verb did he tie to company culture?",
-        opts:["plans","organizes","controls","leads"],
-        a:3, why:"how managers lead is what shapes and reveals the culture." }
+        opts:["compile","connect","control","cultivate"], a:1,
+        why:"connect. marketing connects the business to its target market." },
+      { q:"Which of the following is NOT one of the six business functions?",
+        opts:["strategy","operations","customer service","marketing"], a:2,
+        why:"customer service is one of marketing's eight functions, not a business function. same trick as the 1-1 quiz." },
+      { q:"The chain of command shows",
+        opts:["how much each employee is paid","who each person reports to","what products a company sells","the company's mission"], a:1,
+        why:"an organized structure showing who reports to whom." },
+      { q:"Which of the following is one of the three levels of management?",
+        opts:["customer service","middle management","accounting","marketing"], a:1,
+
+        why:"the three levels are officer/executive, middle management, and supervisory." },
+      { q:"The ability to empathize with people and understand them, while influencing and communicating with them, is called",
+        opts:["procedural skills","problem-solving skills","people skills","chain of command"], a:2,
+        why:"people skills. the board note next to it says empathy." },
+      { q:"Which of the following combines employee feelings about their work with how it motivates them to serve the company's mission?",
+        opts:["job descriptions","company culture","compensation","exit interviews"], a:1,
+        why:"the second half of the company culture definition. same question as the 1-3 quiz." },
+      { q:"Which of the following is an employee benefit?",
+        opts:["a job description","a 401k retirement plan","a chain of command","a mission statement"], a:1,
+        why:"retirement is one of the six benefits he marked VIP: health, retirement, PTO, life insurance, maternity and bereavement, childcare." },
+      { q:"A goal is usually achieved within what timeframe?",
+        opts:["one day","one week","one year","3 to 5 years"], a:3,
+        why:"goals are 3 to 5 years. objectives are usually one year." },
+      { q:"A company's game plan for reaching its target market is called",
+        opts:["business strategy","marketing strategy","operations","a KPI"], a:1,
+        why:"marketing strategy reaches the target market. business strategy picks what business to be in." }
     ],
     scenarios:[
-      { stem:"A friend is promoted to supervisor of the coffee shop where you both work. She now writes the schedule and handles discipline. Two weeks in, she gives you an easier closing shift than everyone else.",
+      { stem:"A new employee's first day is a tour of the building, meeting her coworkers, and filling out paperwork. Over the next few months, her department teaches her the company's mission, its systems, and what is expected of her.",
         qs:[
-          { q:"What changed between the two of you, in class terms?",
-            a:"the chain of command now runs through her. she has authority over you, so work decisions go by policy and performance, not friendship." },
-          { q:"What is wrong with the easier shift, and what should she do instead?",
-            a:"it is favoritism, which damages employee relations and the culture. same rules, same standards and same discipline for everyone, with expectations set early." },
-          { q:"Which manager skills does supervisory work lean on most?",
-            a:"procedural skills, because supervisory tasks repeat, plus people skills to empathize while still directing and communicating." }
+          { q:"What is the first day called?",
+            a:"orientation. new hires are introduced to the company, their fellow employees, and the work environment. mostly a one-time event." },
+          { q:"What are the next few months called?",
+            a:"onboarding. a process for new employees to learn the company's culture, mission, vision, systems, and expectations, and become contributing members." },
+          { q:"Which business function is in charge of both?",
+            a:"human resources." }
         ] },
-      { stem:"An employee keeps missing shifts. His supervisor writes him up three times and documents each one. Human resources then ends his employment and holds a conversation with him about why he is leaving.",
+      { stem:"A student sets out to graduate in four years. To get there, she plans to keep a 3.0 GPA and complete her AP courses.",
         qs:[
-          { q:"Name the HR functions in play.",
-            a:"performance management, employee termination, and the exit interview. legal issues run through all three." },
-          { q:"Why does the documentation matter?",
-            a:"employees have many rights and protections, so records of performance are what lets the company defend a wrongful termination claim." },
-          { q:"What should the company do with what it learns in the last conversation?",
-            a:"use it for future improvement. that is the point of an exit interview, and it feeds retention." }
-        ] },
-      { stem:"Someone notices that no one near campus sells decent late-night food. She writes up what she would sell, what it costs and who would buy it. She raises money from family, leases a truck and hires two people. She runs it for four years, then sells the truck and the brand to a competitor.",
-        qs:[
-          { q:"Name the five stages of the entrepreneurial process in order.",
-            a:"discovery, business plan, resourcing, run business, harvesting." },
-          { q:"Which stage is raising the money, leasing the truck and hiring the two people?",
-            a:"resourcing, stage three. it is getting the money, people and equipment together." },
-          { q:"Which stage is selling the truck and the brand, and what does it mean?",
-            a:"harvesting, stage five. it is the payoff at the end, cashing out or selling the business." }
+          { q:"Which part is the goal?",
+            a:"graduate in four years. a goal is a measurable end result, 3 to 5 years out." },
+          { q:"Which parts are the objectives?",
+
+            a:"keep a 3.0 GPA and complete AP courses. objectives are more specific and shorter term, usually one year." },
+          { q:"How do objectives relate to goals?",
+            a:"accomplishing your objectives accomplishes your goals." }
         ] }
     ],
     frq:[
-      { q:"Explain the difference between mission and vision, then give one real company's mission and vision.",
-        pts:["mission is a company's purpose, its reason for being, the problem it is solving. the why you exist and the what you do.",
-             "vision is an aspirational view of the future, what the company or world looks like if the mission succeeds. the where.",
-             "IKEA: mission is a wide range of well-designed, functional home furnishing products at prices so low that as many people as possible can afford them. vision is to create a better everyday life for the many people.",
-             "or Habitat: mission is bringing people together to build homes, communities and hope. vision is a world where everyone has a decent place to live."] },
-      { q:"What is strategy and why does it matter? Include the difference between a strategy and a tactic.",
-        pts:["strategy is a route or plan of action designed to achieve certain goals and objectives, informed by mission and vision.",
-             "it matters because it says what the company should be doing and, more importantly, helps it say no to what it should not.",
-             "a tactic is a specific procedure or action that supports the strategy.",
-             "example: selling online with same-day delivery is the strategy, running ads on tuesdays and free shipping over 40 dollars are tactics."] },
-      { q:"Explain what human resources does and why it matters. Include at least three responsibilities.",
-        pts:["define it: the people of an organization, and the function that staffs it, keeps personnel records and administers benefits.",
-             "pick three from the list and define each, for example recruiting, performance management and compensation.",
-             "why it matters: HR works with the other five functions to plan their staffing, and finding, cultivating and keeping key people decides whether a business succeeds or fails.",
-             "add evidence: 57 percent of employees left a job because of a manager or leader, so the people side is what retention runs on."] }
+      { q:"List the six business functions.",
+        pts:["human resources.","strategy.","information management.","operations.","marketing.","finance and accounting."] },
+      { q:"List the five stages of the entrepreneurial process in order.",
+        pts:["discovery.","business plan.","resourcing.","run business.","harvesting."] },
+      { q:"What are the four things the EEOA blocks an interviewer from asking about? Which two HR functions need the most legal knowledge?",
+        pts:["age, country of origin, marital status, and sex.","interviews and terminations."] },
+      { q:"What is Habitat for Humanity's mission and vision? What is this school's mission?",
+        pts:["habitat mission: bringing people together to build homes, communities, and hope.",
+             "habitat vision: a world where everyone has a decent place to live.",
+             "this school's mission: to teach students the gospel of jesus christ, prepare students for higher education, and create a community where service is valued and celebrated.",
+             "its vision: to be a national leader in college preparatory education in an environment distinguished by catholic values."] }
     ] },
+
   { name:"quizzes",
     matching:[], scenarios:[], frq:[],
     mc:[
@@ -733,6 +726,7 @@ const GUIDE = {
               "improving existing products and developing new ones to meet customer demands",
               "collecting, organizing, storing and securing relevant data"],
         a:1, why:"the other three are strategy, product/service management, and information management." },
+
       { q:"Business is about ____ managing business functions.",
         opts:["information","technology","people","markets"], a:2,
         why:"his sentence, word for word. say it that way." },
@@ -765,6 +759,7 @@ const GUIDE = {
         why:"and for the benefit of society as a whole, which is the tail of that definition." },
       { q:"What is the process of recording, maintaining and reporting an organization's financial transactions and records?",
         opts:["accounting","finance","marketing","strategy"], a:0,
+
         why:"accounting records. finance manages and plans. the quiz tests the split twice in a row." },
       { q:"What focuses on assets, liabilities, cash flow, financial analysis like ROI and ROE, and planning future growth?",
         opts:["accounting","finance","information management","human resources"], a:1,
@@ -797,6 +792,7 @@ const GUIDE = {
         why:"the active searching. staffing is the whole loop after it." },
       { q:"In the definition of business, what is the meaning of professional?",
         opts:["the pursuit of a profit margin","customized services provided for a fee","recording financial transactions and records","items that are manufactured"],
+
         a:1, why:"1-1 material recycled onto the 1-3 quiz. he reuses questions across lessons." },
       { q:"Based on the Equal Employment Opportunity Act, an interviewer is prohibited from asking",
         opts:["what is your proudest achievement","how long did you work at your last job","what country are you originally from","how many employees have you managed"],
@@ -829,6 +825,7 @@ const GUIDE = {
       { part:"part c. the 1-4 lesson quiz, 20 questions",
         q:"A route or plan of action designed to achieve certain goals and objectives is known as",
         opts:["strategy","function","department","mission"], a:0, why:"the definition, stated plainly." },
+
       { q:"The reason why a company exists, its purpose, is best known as",
         opts:["the company's vision","the company's strategy","the company's mission","the company's success"], a:2,
         why:"mission is the why and the what. vision is the where." },
@@ -861,6 +858,7 @@ const GUIDE = {
       { q:"A stated, observable and measurable end result to be achieved within a certain timeframe is",
         opts:["KPI","goal","strategy","tactic"], a:1, why:"longer term, even 3 to 5 years." },
       { q:"More specific than a goal, shorter term, achieved within a timeframe and with available resources:",
+
         opts:["a tactic","a mission","an objective","a KPI"], a:2, why:"usually about one year." },
       { q:"Strategy is carried out through a company's actions by use of which THREE elements? On the real quiz this is multiple response.",
         opts:["tactics, goals, objectives","vision, goals, KPIs","tactics, vision, KPIs","mission, vision, tactics"],
@@ -893,6 +891,7 @@ const GUIDE = {
         opts:["picking a business to be in, and ensuring the company earns a profit",
               "positioning a brand, and connecting a business to its target market",
               "accentuating a product's uniqueness, and ensuring products earn a profit",
+
               "messaging a brand, and picking a business to be in"],
         a:0, why:"business strategy: the company earns a profit. marketing strategy: the products do." }
     ] },
@@ -925,6 +924,7 @@ const GUIDE = {
     { f:"people skills", b:"empathizing with and understanding people while effectively influencing, communicating and interacting with them." },
     { f:"procedural skills", b:"quickly learning and performing methods, sequences or procedures to accomplish a task." },
     { f:"problem-solving skills", b:"making good trade-offs with limited resources and handling difficult or complex challenges." },
+
     { f:"company values", b:"what a company believes: how teammates treat one another and how the company treats its customers." },
     { f:"company culture", b:"the shared beliefs, values, goals, attitudes and behaviors of employees. combines how they feel about their work with how it motivates them to serve the mission." },
     { f:"recruiting", b:"the active searching for appropriate candidates to fill open positions." },
@@ -957,6 +957,7 @@ const GUIDE = {
     { f:"discovery", b:"stage one. finding the idea or the opportunity." },
     { f:"resourcing", b:"stage three. getting the money, people and equipment together." },
     { f:"harvesting", b:"stage five. the payoff at the end, selling the business or cashing out." },
+
     { f:"what the EEOA blocks", b:"age, country of origin, marital status, sex." },
     { f:"best places to work checklist", b:"company culture, company values, compensation, employee benefits, professional development." },
     { f:"this school's mission", b:"to teach students the Gospel of Jesus Christ, prepare students for higher education, and create a community where service is valued and celebrated." },
@@ -989,6 +990,7 @@ $("#cls").textContent=GUIDE.cls;
 $("#ttl").textContent=GUIDE.title;
 $("#due").textContent=GUIDE.due;
 document.title=GUIDE.title.toLowerCase();
+
 $("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true">'+
   '<g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" '+
   'stroke-linecap="round" stroke-linejoin="round" opacity=".97">'+
@@ -1021,6 +1023,7 @@ GUIDE.outline.forEach((s,i)=>{
       it.terms.forEach(t=>{const c=el("span","term");c.textContent=t;tb.appendChild(c)});
       bd.appendChild(tb);
     }
+
     const ih=row.querySelector(".ihead"), ib=row.querySelector(".ibody");
     ih.onclick=()=>{const o=ih.getAttribute("aria-expanded")==="true";
       ih.setAttribute("aria-expanded",String(!o));ib.classList.toggle("on",!o)};
@@ -1053,6 +1056,7 @@ GUIDE.outline.forEach((s,i)=>{
       '<div class="qt">tap a term, then tap its match.</div>';
     const grid=el("div","mgrid");
     const left=el("div"), right=el("div");
+
     left.style.display=right.style.display="grid";
     left.style.gap=right.style.gap="7px";
     left.style.alignContent=right.style.alignContent="start";
@@ -1085,6 +1089,7 @@ GUIDE.outline.forEach((s,i)=>{
 
   function mcq(q,n){
     const card=el("div","qcard g");
+
     card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
       '<div class="qn">question '+n+'</div><div class="qt"></div>';
     card.querySelector(".qt").textContent=q.q;
@@ -1117,6 +1122,7 @@ GUIDE.outline.forEach((s,i)=>{
     card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
       '<div class="qn">scenario '+n+'</div>';
     const stem=el("p","stem"); stem.textContent=sc.stem; card.appendChild(stem);
+
     sc.qs.forEach(x=>{
       const q=el("div","sq"); q.textContent=x.q; card.appendChild(q);
       reveal(card,[x.a]);
@@ -1149,6 +1155,7 @@ GUIDE.outline.forEach((s,i)=>{
     if(t.scenarios && t.scenarios.length){
       panel.appendChild(part("part c. scenarios"));
       t.scenarios.forEach((s,i)=>panel.appendChild(scenario(s,i+1)));
+
     }
     if(t.frq && t.frq.length){
       panel.appendChild(part("part d. free response"));
@@ -1181,6 +1188,7 @@ GUIDE.outline.forEach((s,i)=>{
     '<div class="face front"><div class="fw"></div></div>'+
     '<div class="face back g"><div class="fw"></div></div>';
   deck.appendChild(fc);
+
   const bar=el("div","fbar");
   bar.innerHTML='<button id="prev">back</button><button id="next">next</button>'+
     '<span class="fcount"></span>';
@@ -1213,6 +1221,7 @@ GUIDE.outline.forEach((s,i)=>{
     seg.appendChild(b);
   });
   function select(i){
+
     const btns=[...seg.querySelectorAll("button")];
     btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
     tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
