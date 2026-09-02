@@ -427,6 +427,10 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
   <ul>
     <li><a href="https://claude.ai/public/artifacts/918fa6de-1140-46f1-a0a7-f770fd90655e">Intro kinematics</a> &middot; Guide</li>
   </ul>
+  <h3>AP Psychology</h3>
+  <ul>
+    <li><a href="/psych-unit-0">Unit 0</a> &middot; Guide</li>
+  </ul>
   <h3>Business Principles</h3>
   <ul>
     <li><a href="/bus-unit-1">Unit 1</a> &middot; Guide</li>
@@ -493,7 +497,9 @@ const FEATURES=[
   {classId:"bus",   title:"Unit 1 study guide",
    url:"/bus-unit-1", test:"2026-09-02", end:"2026-09-03"},
   {classId:"phys",  title:"Intro kinematics study guide",
-   url:"https://claude.ai/public/artifacts/918fa6de-1140-46f1-a0a7-f770fd90655e", test:"2026-09-02", end:"2026-09-03"}
+   url:"https://claude.ai/public/artifacts/918fa6de-1140-46f1-a0a7-f770fd90655e", test:"2026-09-02", end:"2026-09-03"},
+  {classId:"psych", title:"Unit 0 study guide",
+   url:"/psych-unit-0", test:"2026-09-02", end:"2026-09-03"}
 ];
 
 const CLASSES=[
@@ -505,7 +511,9 @@ const CLASSES=[
   {id:"phys",  c:"var(--c-phys)",  glyph:"atom",    year:"junior", name:"AP Physics 1",
    guides:[{t:"Intro kinematics", tag:"Guide",
      url:"https://claude.ai/public/artifacts/918fa6de-1140-46f1-a0a7-f770fd90655e"}]},
-  {id:"psych", c:"var(--c-psych)", glyph:"head",    year:"junior", name:"AP Psychology",       guides:[]},
+  {id:"psych", c:"var(--c-psych)", glyph:"head",    year:"junior", name:"AP Psychology",
+   guides:[{t:"Unit 0", tag:"Guide",
+     url:"/psych-unit-0"}]},
   {id:"sem",   c:"var(--c-sem)",   glyph:"bubbles", year:"junior", name:"AP Seminar",          guides:[]},
   {id:"span",  c:"var(--c-span)",  glyph:"speech",  year:"junior", name:"AP Spanish Language", guides:[]},
   {id:"bus",   c:"var(--c-biz)",   glyph:"chart",   year:"junior", name:"Business Principles",
