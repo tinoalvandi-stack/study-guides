@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>vectors, icf & trig equations</title>
+<style>
+:root{
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
+
+  /* class color: honors precalculus bc */
+  --accent:#007AFF;
+  /* palette: field. blob 1 is always the class color */
+  --amb1:var(--accent); --amb2:#30D158; --amb3:#40C8E0; --amb4:#F0B429;
+  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1));
+
+  --ink:#08080D;
+  --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
+  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
+  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
+  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
+  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
+  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30;
+  --blur:22px; --sat:195%;
+  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --amb:.82; --amb-blur:66px;
+  --hlmix:22%;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#0A84FF;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+  --hlmix:30%;
+}}
+:root[data-theme="dark"]{
+  --accent:#0A84FF;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+  --hlmix:30%;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--ground)}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
+  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+a{color:var(--blue)}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hidden{display:none !important}
+
+/* ambient layer: four blobs from the palette, slow drift, tiny hue swing */
+#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
+  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);animation:hue 120s linear infinite}
+#amb i{position:absolute;display:block;border-radius:50%;animation:drift 38s var(--ease) infinite alternate}
+#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;background:radial-gradient(circle,var(--amb1),transparent 66%)}
+#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:8vh;background:radial-gradient(circle,var(--amb2),transparent 66%);animation-duration:45s;animation-delay:-10s}
+#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:46vh;background:radial-gradient(circle,var(--amb3),transparent 66%);animation-duration:41s;animation-delay:-20s}
+#amb i:nth-child(4){width:52vw;height:52vw;right:-8vw;bottom:-14vh;background:radial-gradient(circle,var(--amb4),transparent 66%);animation-duration:48s;animation-delay:-30s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
+@keyframes hue{0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}50%{filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}}
+
+/* glass: fill + rim + gloss + specular */
+.g{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
+.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
+  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
+.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
+  transition:opacity .4s var(--ease)}
+@media (hover:hover){.g:hover > .spec{opacity:1}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
+.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
+.glyph{width:40px;height:40px;border-radius:12px;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
+  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
+.glyph svg path,.glyph svg circle,.glyph svg ellipse{stroke-dasharray:1;stroke-dashoffset:1;animation:ink 1.2s var(--ease) .2s forwards}
+@keyframes ink{to{stroke-dashoffset:0}}
+.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;line-height:1.08;text-transform:lowercase}
+.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
+  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase;font-variant-numeric:tabular-nums}
+
+/* segmented control */
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
+  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.seg button{position:relative;z-index:1;padding:7px 4px;border-radius:9px;font-family:var(--round);
+  font-size:13.5px;font-weight:640;color:var(--ink2);text-transform:lowercase;transition:color .25s var(--ease)}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
+  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
+  transition:transform .42s var(--spring),width .42s var(--spring)}
+
+main{padding-top:20px}
+.sh{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--ink3);margin:30px 4px 10px;text-transform:lowercase}
+.sh:first-child{margin-top:0}
+
+/* cards */
+.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
+.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;position:relative;z-index:1;
+  transition:transform .34s var(--spring)}
+.chead:active{transform:scale(.99)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
+.tw{color:var(--ink3);transition:transform .34s var(--spring);flex:none}
+.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
+.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.cbody.on{grid-template-rows:1fr}
+.cbody > div{overflow:hidden}
+.cbody p{margin:0 0 10px;padding:0 16px;font-size:15.5px;line-height:1.5;color:var(--ink)}
+.cbody > div > :last-child{padding-bottom:16px}
+.top .cbody{grid-template-rows:1fr}
+.top .chead{cursor:default}
+.top p{color:var(--ink);font-size:15.5px}
+.terms{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 16px}
+.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
+  background:color-mix(in srgb,var(--accent) 14%,transparent);color:color-mix(in srgb,var(--accent) 72%,var(--ink));
+  box-shadow:inset 0 .5px 0 0 var(--gloss)}
+
+/* emphasis: key term, must-know line, trap */
+.kw{font-weight:720;color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);
+  text-decoration-thickness:2px;text-underline-offset:3px}
+.hl{background:color-mix(in srgb,var(--accent) var(--hlmix),transparent);color:var(--ink);
+  border-radius:5px;padding:1px 5px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.trap{color:var(--bad);font-weight:640}
+.vec{font-weight:760}
+
+/* weight badge */
+.w{margin-left:auto;flex:none;font-family:var(--round);font-size:11.5px;font-weight:740;padding:4px 9px;border-radius:999px;
+  text-transform:lowercase;letter-spacing:-.01em}
+.w3{background:var(--accent);color:#fff}
+.w2{background:color-mix(in srgb,var(--accent) 20%,transparent);color:var(--accent)}
+
+/* callouts */
+.callout{margin:0 16px 12px;padding:10px 13px 10px 14px;border-radius:12px;font-size:15px;line-height:1.45;
+  background:var(--fill2);border-left:3px solid var(--accent);color:var(--ink)}
+.callout.warn{border-color:var(--bad)} .callout.ex{border-color:var(--blue)} .callout.ok{border-color:var(--good)}
+.callout .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--ink3);display:block;margin-bottom:2px}
+
+/* shapes: step strip, compare grid */
+.steps{list-style:none;margin:0 16px 14px;padding:0;counter-reset:s;display:grid;gap:6px}
+.steps li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;color:var(--ink);
+  padding:8px 11px;border-radius:12px;background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.steps li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--round);font-size:12px;font-weight:760;background:var(--accent);color:#fff;margin-top:1px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 12px}
+.cmp .callout{margin:0}
+@media (max-width:480px){.cmp{grid-template-columns:1fr}}
+
+/* worked examples */
+.ex-prob{margin:0 16px 10px;padding:11px 14px;border-radius:12px;background:color-mix(in srgb,var(--accent) 10%,transparent);
+  font-size:15.5px;line-height:1.5;color:var(--ink)}
+.ex-prob .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--accent);display:block;margin-bottom:2px}
+.ans{margin:0 16px 14px;padding:10px 14px;border-radius:12px;font-size:15.5px;line-height:1.5;color:var(--ink);
+  background:color-mix(in srgb,var(--good) 16%,transparent);border-left:3px solid var(--good)}
+.ans .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--good);display:block;margin-bottom:2px}
+.m{font-variant-numeric:tabular-nums;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.05;font-size:.92em;margin:0 2px}
+.frac > span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
+.frac > span:last-child{padding:0 3px}
+
+/* formula reference */
+.frow{display:grid;grid-template-columns:minmax(110px,38%) 1fr;gap:10px;padding:8px 16px;font-size:15px;line-height:1.45;color:var(--ink);align-items:baseline}
+.frow + .frow{box-shadow:inset 0 .5px 0 0 var(--sep)}
+.frow .fl{font-family:var(--round);font-size:12.5px;font-weight:700;color:color-mix(in srgb,var(--accent) 72%,var(--ink));text-transform:lowercase}
+.ftable{margin:0 16px 14px;border-radius:12px;overflow:hidden;background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.ftable .frow{padding:8px 12px}
+.ftable .frow.h{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase}
+.ftable .frow.h .fl{color:var(--ink3)}
+
+/* practice */
+.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
+.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase;display:flex;gap:8px;align-items:center}
+.qn .tag{margin-left:auto;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 14%,transparent);
+  color:color-mix(in srgb,var(--accent) 72%,var(--ink));font-weight:700}
+.qt{margin:8px 0 14px;font-size:17px;font-weight:560;line-height:1.4;letter-spacing:-.02em;color:var(--ink)}
+.reveal{display:inline-flex;align-items:center;gap:8px;font-family:var(--round);font-size:14px;font-weight:680;color:var(--accent);
+  padding:9px 14px;border-radius:11px;background:color-mix(in srgb,var(--accent) 14%,transparent);text-transform:lowercase;
+  transition:transform .3s var(--spring),background .25s var(--ease)}
+.reveal:active{transform:scale(.987)}
+.sol{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.sol.on{grid-template-rows:1fr}
+.sol > div{overflow:hidden}
+.sol .steps{margin:12px 0 10px}
+.sol .ans{margin:0 0 4px}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 4px}
+.pdfs a{font-family:var(--round);font-size:13.5px;font-weight:680;text-decoration:none;padding:9px 13px;border-radius:11px;
+  background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);text-transform:lowercase}
+
+.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+
+footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;text-transform:lowercase}
+
+@media (prefers-reduced-motion:reduce){
+  #amb{animation:none}
+  #amb i{animation:none}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+  .glyph svg *{animation:none;stroke-dashoffset:0}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+<div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<header id="hdr"><div class="wrap">
+  <div class="hrow">
+    <span id="gly" class="glyph" aria-hidden="true"></span>
+    <div>
+      <div class="cls" id="cls"></div>
+      <h1 id="ttl"></h1>
+    </div>
+    <span class="chip" id="due"></span>
+  </div>
+  <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
+</div></header>
+
+<main class="wrap">
+  <section id="p-outline"></section>
+  <section id="p-worked" class="hidden"></section>
+  <section id="p-formulas" class="hidden"></section>
+  <section id="p-practice" class="hidden"></section>
+  <footer>study guide written by a student. not affiliated with the school.<br>
+    check anything that matters against your own notes.</footer>
+</main>
+
+<script>
+/* ═══ content ═══════════════════════════════════════════════════════════ */
+const GUIDE = {
+  cls:   "Honors Precalculus BC",
+  glyph: "curve",
+  title: "vectors, ICF & trig equations",
+  due:   "calc part first",
+
+  top:[
+    "**Calculator part first**: 5 questions, one trig equation, one vector calculation, then one each of **forces**, **incline**, **navigation**. ==Show the setup, round to the thousandth.== Then 15 non-calculator.",
+    "==Never divide both sides by a trig function.== Set one side to 0 and factor; dividing out sin x lost x = 0 and π on the quiz.",
+    "Inverse answers live in a **range**: sin⁻¹, csc⁻¹, tan⁻¹ give ==QI or QIV==; cos⁻¹, sec⁻¹, cot⁻¹ give ==QI or QII==. A vector's **direction angle** comes from its quadrant, !!not tan⁻¹ alone!!.",
+    "Applications are triangles: **Law of Cosines** for a side, **Law of Sines** for an angle, ==a + w = g== for planes. Wind \"from 215°\" blows toward 35°. !!The resultant does not bisect the angle.!!",
+    "==i, j in means i, j out==; ⟨a, b⟩ in means ⟨a, b⟩ out. Word problems end in a sentence with units."
+  ],
+
+  outline:[
+    { w:3, t:"Vector operations (non-calculator)",
+      p:[ "Five of the fifteen non-calculator questions come straight off the vector operations quiz: a **sketch**, **i, j operations**, **magnitude and direction angle**, a **dot product**, and an **orthogonal** check. Around ==19 points==, the biggest single block on the test.",
+          "Sketching is **tip to tail**: slide the second vector so its tail sits on the tip of the first, then draw the **resultant** from the first tail to the last tip. For @@2u − v@@, double @@u@@ first, then hang @@−v@@ (same length as @@v@@, flipped) off its tip.",
+          "Answer in the form the problem gave you. ==i, j in means i, j out==; ⟨a, b⟩ in means ⟨a, b⟩ out. The dot product is a **scalar**, a plain number, never a vector." ],
+      steps:[ "|u| = √(a² + b²)",
+              "tan θ = b/a gives the **reference angle** only",
+              "The quadrant of ⟨a, b⟩ places θ: QII is 180° − ref, QIII is 180° + ref, QIV is 360° − ref",
+              "u · v = a₁a₂ + b₁b₂. Zero means **orthogonal**; positive means acute, negative means obtuse" ],
+      notes:[ {k:"warn", t:"!!tan⁻¹(b/a) alone is not the direction angle.!! For ⟨−2√3, 2⟩ the calculator says −30°; the vector sits in QII, so θ = 150° (5π/6)."},
+              {k:"ok", t:"Components from a magnitude and an angle: ⟨|v| cos θ, |v| sin θ⟩. Exact angles like 210° or 5π/6 show up without a calculator; DMS angles like 124°40′ are the calculator version."} ],
+      terms:["sketch","tip to tail","resultant","scalar","magnitude","direction angle","reference angle","dot product","orthogonal","i, j operations"] },
+
+    { w:3, t:"Vector applications (calculator)",
+      p:[ "Three of the five calculator questions, one of each type: **forces on a point**, **incline**, **navigation**. Four points each. Every one is a triangle. Draw it, label what you know, then **Law of Cosines** for a missing side and **Law of Sines** for a missing angle.",
+          "**Forces on a point**: complete the parallelogram. The angle across from the **resultant** is ==180° minus the angle between the forces==. Resultant given, angle missing: solve for cos B, then 180° − B. The **equilibrant** is the resultant flipped. **Incline**: the weight is the hypotenuse, pointing straight down, so ==sin α = force ÷ weight==.",
+          "**Navigation**: ==a + w = g==, **airspeed** plus wind equals **groundspeed**, all as vectors. **Bearings** run clockwise from north. The **drift angle** sits between @@a@@ and @@g@@, across from @@w@@ in the triangle." ],
+      cmp:[ {h:"heading given, course wanted", t:"@@a@@ and @@w@@ are known. Interior angle at the join = 180° − (difference in headings). Law of Cosines gives |@@g@@|, Law of Sines gives the **drift angle**, bearing = heading ± drift, toward the side the wind blows."},
+            {h:"course given, heading wanted", t:"The direction of @@g@@ and all of @@w@@ are known. The angle across from @@a@@ sits at the tip of @@g@@ (alternate interior angles with the north line). Law of Sines for the drift, heading = course ± drift, then |@@g@@|."} ],
+      notes:[ {k:"warn", t:"!!Do not assume the resultant bisects the angle.!! It only does when the two forces are equal. Use the Law of Sines for the angle the resultant makes with a force."},
+              {k:"warn", t:"A wind \"from\" a direction points the opposite way: ==from 215° means toward 35°==, from the south means due north. \"Out of the northeast (bearing 225°)\" already gives the direction it blows toward."},
+              {k:"ok", t:"==a + w = g==: airspeed plus wind equals groundspeed, all as vectors. Finish with a sentence and units: \"The groundspeed is about 110.081 km/h on a bearing of about 91.556°.\""} ],
+      terms:["resultant","equilibrant","Law of Cosines","Law of Sines","bearing","airspeed","groundspeed","drift angle","a + w = g","incline"] },
+
+    { w:3, t:"Solving trig equations",
+      p:[ "Four non-calculator equations (two on [0, 2π), two on [0°, 360°)) plus one calculator solve: about ==16 points==. Quiz scores dropped here more than anywhere else, so this is the section to drill.",
+          "Decide the type first. One function: isolate it, or factor a **quadratic in form**. Two functions: get one side to 0 and **factor the GCF**, or use a **Pythagorean identity** so one function is left, or rewrite everything in **sin and cos**. If you square both sides, ==check every answer for extraneous ones==.",
+          "**Multiple angles**: solve for the whole argument first. Write the **general solution** ==2θ = angle + 2πk==, divide everything by 2 (the k term too), then list the values that land inside the interval. Expect twice as many answers." ],
+      steps:[ "Set = 0 with a positive leading term",
+              "Factor, or quadratic formula if it will not factor",
+              "Solve each factor for the trig value; cross out impossible ones (|sin|, |cos| ≤ 1, |sec|, |csc| ≥ 1)",
+              "**Reference angle** from the unit circle, then the two quadrants from **ASTC**",
+              "Check the interval and the units: radians for [0, 2π), degrees for [0°, 360°)" ],
+      notes:[ {k:"warn", t:"!!Never divide both sides by a trig function.!! √3 sin x = 2 sin x cos x becomes sin x (√3 − 2 cos x) = 0. Dividing by sin x throws away x = 0 and x = π."},
+              {k:"warn", t:"sec θ = −½ has ==no solution== since |sec θ| ≥ 1. Cross the factor out instead of forcing an angle onto it."},
+              {k:"ex", t:"2 sin 2x = −√2: sin 2x = −√2/2, so 2x = 5π/4 + 2πk or 7π/4 + 2πk. Divide by 2: x = 5π/8 + πk or 7π/8 + πk, which gives 5π/8, 7π/8, 13π/8, 15π/8."} ],
+      terms:["quadratic in form","factor the GCF","Pythagorean identity","sin and cos","extraneous","general solution","2πk","ASTC","reference angle","multiple angles"] },
+
+    { w:2, t:"Inverse circular functions",
+      p:[ "Four short exact-value questions worth 1 to 2 points each, plus two 3-point compositions with identities: about ==12 points==. Every answer lives in a **range**. sin⁻¹, csc⁻¹ and tan⁻¹ answer in ==QI or QIV== (a negative input gives a negative angle). cos⁻¹, sec⁻¹ and cot⁻¹ answer in ==QI or QII== (a negative input gives an angle past π/2).",
+          "**Inverse of a function**, like cos⁻¹(cos 7π/6): work inside first. ==7π/6 is outside [0, π], so it is not the answer.== cos 7π/6 = −√3/2, and cos⁻¹(−√3/2) = 5π/6. Show that step; it is the whole question.",
+          "**Function of an inverse**, like csc(2 sin⁻¹ ¼): name the inside angle u, draw the **reference triangle** in the quadrant the range allows, read off sin u and cos u, then use the **double-angle** or **sum identity**. ==Rationalize the denominator== at the end." ],
+      cmp:[ {h:"QI or QIV answers", t:"sin⁻¹, csc⁻¹, tan⁻¹ (range −π/2 to π/2). sin⁻¹(−√3/2) = −π/3, csc⁻¹(−2) = −π/6, tan⁻¹(−1) = −π/4."},
+            {h:"QI or QII answers", t:"cos⁻¹, sec⁻¹, cot⁻¹ (range 0 to π). cos⁻¹(−½) = 2π/3, cot⁻¹(−√3) = 5π/6, sec⁻¹(−2) = 2π/3."} ],
+      notes:[ {k:"warn", t:"sin⁻¹(3) is !!undefined!!. The **domain** of sin⁻¹ and cos⁻¹ is [−1, 1]. Say undefined; do not invent an angle."},
+              {k:"ok", t:"Reciprocal inverses: csc⁻¹(−2) means csc θ = −2, so sin θ = −½. Rewrite first, then place the angle in the sin⁻¹ range."} ],
+      terms:["range","domain [−1, 1]","reference triangle","double-angle","sum identity","rationalize","undefined"] },
+
+    { w:1, t:"Calculator section habits",
+      p:[ "The calculator part comes **first** and is collected before the non-calculator part starts. ==Show the setup== (what went into the calculator) and ==round to the thousandth==. A bare answer earns almost nothing.",
+          "\"Do not use solve\" means the **quadratic formula** on paper, then sin⁻¹ or cos⁻¹ for the reference angle, then place it in the right quadrants. A negative sine value needs both ==π + ref== and ==2π − ref==.",
+          "Graphing-calculator equations: move everything to one side, graph Y₁ on [0, 2π), **Analyze Graph → Zero**, and check all the way to the right end of the window for extra crossings. **Degree mode** for vectors and bearings, **radian mode** for [0, 2π)." ],
+      terms:["setup","thousandth","quadratic formula","Analyze Graph → Zero","degree mode","radian mode"] }
+  ],
+
+  /* one fully worked instance per problem type. numbers come from the class review sheet and worksheets. */
+  worked:[
+    { t:"magnitude and direction angle", tag:"vector ops",
+      prob:"Find the magnitude and the positive direction angle for u = ⟨12, −5⟩.",
+      steps:[ "Magnitude: |u| = √(12² + (−5)²) = √(144 + 25) = √169 = 13.",
+              "Reference angle: tan θ = b/a = −5/12, so the reference angle is tan⁻¹(5/12) ≈ 22.6°.",
+              "Quadrant: a > 0 and b < 0 puts u in QIV, so θ = 360° − 22.6°." ],
+      ans:"|u| = 13, θ ≈ 337.4°" },
+    { t:"i, j operations", tag:"vector ops",
+      prob:"u = 3i, v = 9i + 2j. Find 2u, 2u + 4v, and v − 4u.",
+      steps:[ "Scalar multiply first: 2u = 6i, 4v = 36i + 8j.",
+              "Combine like components: 2u + 4v = 6i + 36i + 8j = 42i + 8j.",
+              "v − 4u = (9i + 2j) − 12i = −3i + 2j. Given in i, j form, so the answers stay in i, j form." ],
+      ans:"2u = 6i, 2u + 4v = 42i + 8j, v − 4u = −3i + 2j" },
+    { t:"dot product and orthogonal check", tag:"vector ops",
+      prob:"u = 2i, v = −3i + 4j. Find u · v and decide whether u and v are orthogonal.",
+      steps:[ "Write both in component form: u = ⟨2, 0⟩, v = ⟨−3, 4⟩.",
+              "u · v = (2)(−3) + (0)(4) = −6.",
+              "Orthogonal means u · v = 0. Here it is −6, so no; the negative sign means the angle between them is obtuse." ],
+      ans:"u · v = −6, not orthogonal" },
+    { t:"angle between two vectors", tag:"vector ops · calc",
+      prob:"Find the angle between u = ⟨4, −5⟩ and v = ⟨−1, 2⟩ to the nearest tenth of a degree.",
+      steps:[ "u · v = (4)(−1) + (−5)(2) = −14.",
+              "|u| = √(16 + 25) = √41, |v| = √(1 + 4) = √5.",
+              "cos θ = u · v / (|u||v|) = −14 / (√41 · √5) = −14/√205 ≈ −0.9778.",
+              "θ = cos⁻¹(−14/√205) in degree mode. Negative dot product, so obtuse checks." ],
+      ans:"θ ≈ 167.9°" },
+    { t:"components from magnitude and angle", tag:"vector ops · calc",
+      prob:"θ = 40°20′, |v| = 13.4. Find the horizontal and vertical components of v.",
+      steps:[ "Convert DMS: 40°20′ = 40 + 20/60 = 40.333…° (or type the DMS straight in).",
+              "Horizontal: a = |v| cos θ = 13.4 cos(40°20′) ≈ 10.215.",
+              "Vertical: b = |v| sin θ = 13.4 sin(40°20′) ≈ 8.673. QI, so both positive checks." ],
+      ans:"v ≈ ⟨10.215, 8.673⟩" },
+    { t:"forces on a point", tag:"application",
+      prob:"Forces of 277 and 306 newtons act on a point at an angle of 60°. Find the magnitude of the resultant.",
+      steps:[ "Complete the parallelogram. The resultant is the diagonal from the shared point.",
+              "The angle across from the resultant is the supplement: 180° − 60° = 120°.",
+              "Law of Cosines: |R| = √(277² + 306² − 2(277)(306) cos 120°) = √255127.",
+              "For the angle R makes with one force, follow with the Law of Sines: sin α / 306 = sin 120° / 505.101." ],
+      ans:"|R| ≈ 505.101 newtons" },
+    { t:"incline", tag:"application",
+      prob:"A force of 5 lb holds a 14-lb crate on a hill. What angle does the hill make with the horizontal?",
+      steps:[ "The 14-lb weight points straight down and is the hypotenuse of the force triangle.",
+              "The 5-lb force balances the component of the weight parallel to the hill, which is the leg across from the hill angle α.",
+              "SOH: sin α = 5/14, so α = sin⁻¹(5/14). Force wanted instead? Multiply: force = weight · sin α." ],
+      ans:"α ≈ 20.925°" },
+    { t:"navigation: heading given, course wanted", tag:"application",
+      prob:"A plane has an airspeed of 127 km/h on a bearing of 84°. A 23 km/h wind blows out of the northeast (bearing 225°). Find the groundspeed and bearing.",
+      steps:[ "a + w = g. Draw a at bearing 84°, then w toward 225° from its tip.",
+              "Interior angle at the join: the headings differ by 225° − 84° = 141°, so the angle inside the triangle is 180° − 141° = 39°.",
+              "Law of Cosines: |g| = √(127² + 23² − 2(127)(23) cos 39°) ≈ 110.081.",
+              "Law of Sines for the drift angle: sin α / 23 = sin 39° / 110.081, so α ≈ 7.556°.",
+              "The wind blows toward the southwest, which swings the plane clockwise, so add: 84° + 7.556°." ],
+      ans:"groundspeed ≈ 110.081 km/h, bearing ≈ 91.556°" },
+    { t:"navigation: course given, heading wanted", tag:"application",
+      prob:"A pilot flies at 247.7 mph and wants a flight path on a bearing of 54°30′. The wind blows from the south at 27.6 mph. Find the bearing to fly and the groundspeed.",
+      steps:[ "Wind from the south points due north, so w is vertical with its tip on the tip of g. Draw g at 54°30′ first.",
+              "At the tip of g, the north line and g make 54°30′ (alternate interior angles). That angle is across from a = 247.7.",
+              "Law of Sines for the drift: sin α / 27.6 = sin 54.5° / 247.7, so α ≈ 5.205°.",
+              "The wind pushes north (counterclockwise off the course), so aim clockwise: heading = 54°30′ + 5.205° ≈ 59.705°.",
+              "Third angle = 180° − 54.5° − 5.205° = 120.295°, across from g: |g| = 247.7 sin 120.295° / sin 54.5°." ],
+      ans:"heading ≈ 59.705° (about 60°), groundspeed ≈ 262.706 mph" },
+    { t:"trig equation: factor, never divide", tag:"trig equations",
+      prob:"Solve 2 sin²θ cos θ + sin²θ = 0 on [0°, 360°).",
+      steps:[ "Both terms share sin²θ. Factor it out instead of dividing by it: sin²θ (2 cos θ + 1) = 0.",
+              "sin²θ = 0 gives sin θ = 0, so θ = 0°, 180°.",
+              "2 cos θ + 1 = 0 gives cos θ = −½. Cosine is negative in QII and QIII, reference angle 60°: θ = 120°, 240°." ],
+      ans:"θ = 0°, 120°, 180°, 240°" },
+    { t:"trig equation: Pythagorean identity", tag:"trig equations",
+      prob:"Solve cot²θ − 4 csc θ = −5 on [0°, 360°).",
+      steps:[ "Two functions, one squared. Use 1 + cot²θ = csc²θ, so cot²θ = csc²θ − 1.",
+              "(csc²θ − 1) − 4 csc θ + 5 = 0, which is csc²θ − 4 csc θ + 4 = 0.",
+              "Factor: (csc θ − 2)² = 0, so csc θ = 2 and sin θ = ½.",
+              "Sine positive in QI and QII, reference angle 30°." ],
+      ans:"θ = 30°, 150°" },
+    { t:"trig equation: multiple angle", tag:"trig equations",
+      prob:"Solve 2 sin 2θ = −1 on [0°, 360°).",
+      steps:[ "sin 2θ = −½. Sine is negative in QIII and QIV with reference angle 30°, so 2θ = 210° or 330°.",
+              "General solution on the whole argument: 2θ = 210° + 360°k or 2θ = 330° + 360°k.",
+              "Divide everything by 2, k term included: θ = 105° + 180°k or θ = 165° + 180°k.",
+              "k = 0: 105°, 165°. k = 1: 285°, 345°. k = 2 leaves the interval." ],
+      ans:"θ = 105°, 165°, 285°, 345°" },
+    { t:"trig equation: double angle, then factor", tag:"trig equations",
+      prob:"Solve 2 cos 2x − 2 cos x = 0 on [0, 2π).",
+      steps:[ "Two different arguments, 2x and x. Rewrite cos 2x as 2 cos²x − 1 so everything uses x.",
+              "2(2 cos²x − 1) − 2 cos x = 0 becomes 4 cos²x − 2 cos x − 2 = 0, then 2 cos²x − cos x − 1 = 0.",
+              "Factor: (2 cos x + 1)(cos x − 1) = 0.",
+              "cos x = −½ gives 2π/3, 4π/3. cos x = 1 gives 0." ],
+      ans:"x = 0, 2π/3, 4π/3" },
+    { t:"trig equation: quadratic formula, calculator", tag:"trig equations · calc",
+      prob:"Solve tan²θ + 4 tan θ + 2 = 0 on [0°, 360°). Do not use solve.",
+      steps:[ "It does not factor. Quadratic formula on tan θ: tan θ = (−4 ± √(16 − 8)) / 2 = −2 ± √2.",
+              "Both values are negative, so both angles land in QII and QIV. Take the reference angle from the absolute value.",
+              "tan θ ≈ −0.586: ref = tan⁻¹(0.586) ≈ 30.4°, so θ ≈ 149.6°, 329.6°.",
+              "tan θ ≈ −3.414: ref = tan⁻¹(3.414) ≈ 73.7°, so θ ≈ 106.3°, 286.3°." ],
+      ans:"θ ≈ 106.3°, 149.6°, 286.3°, 329.6°" },
+    { t:"exact values of inverses", tag:"icf",
+      prob:"Find the exact value of csc⁻¹(−2), tan(arccos(−½)), and cos⁻¹(cos(−3π/5)).",
+      steps:[ "csc⁻¹(−2): csc θ = −2 means sin θ = −½. Range of csc⁻¹ is QI or QIV, so θ = −π/6.",
+              "tan(arccos(−½)): inside first. arccos lands in [0, π] and the input is negative, so the angle is 2π/3. tan(2π/3) = −√3.",
+              "cos⁻¹(cos(−3π/5)): −3π/5 is not in [0, π]. Cosine is even, so cos(−3π/5) = cos(3π/5), and 3π/5 is in range. Answer 3π/5, and the reasoning has to be on the page." ],
+      ans:"−π/6, −√3, 3π/5" },
+    { t:"composition with a double angle", tag:"icf",
+      prob:"Give the exact value of sin(2 tan⁻¹(−8/15)).",
+      steps:[ "Let θ = tan⁻¹(−8/15), so tan θ = −8/15. The range of tan⁻¹ puts a negative input in QIV: x = 15, y = −8.",
+              "r = √(15² + 8²) = 17, so sin θ = −8/17 and cos θ = 15/17.",
+              "sin 2θ = 2 sin θ cos θ = 2(−8/17)(15/17) = −240/289." ],
+      ans:"−240/289" },
+    { t:"composition with a sum identity", tag:"icf",
+      prob:"Give the exact value of sin(sin⁻¹(½) + tan⁻¹(−3)). Rationalize the denominator.",
+      steps:[ "A = sin⁻¹(½) = π/6: sin A = ½, cos A = √3/2.",
+              "B = tan⁻¹(−3), QIV: x = 1, y = −3, r = √10. sin B = −3/√10, cos B = 1/√10.",
+              "sin(A + B) = sin A cos B + cos A sin B = (½)(1/√10) + (√3/2)(−3/√10) = (1 − 3√3) / (2√10).",
+              "Rationalize: multiply by √10/√10 to get (√10 − 3√30) / 20." ],
+      ans:"(√10 − 3√30) / 20" },
+    { t:"algebraic expression in u", tag:"icf",
+      prob:"Write sin(2 sec⁻¹(u/5)) as an algebraic expression in u, u > 0.",
+      steps:[ "Let θ = sec⁻¹(u/5), so sec θ = u/5: r = u, x = 5, and u > 0 puts θ in QI.",
+              "y = √(u² − 25), so sin θ = √(u² − 25)/u and cos θ = 5/u.",
+              "sin 2θ = 2 sin θ cos θ = 2 · √(u² − 25)/u · 5/u." ],
+      ans:"10√(u² − 25) / u²" }
+  ],
+
+  formulas:[
+    { t:"vectors", rows:[
+      ["magnitude","|u| = √(a² + b²)"],
+      ["direction angle","tan θ = b/a for the reference angle, then place θ by the quadrant of ⟨a, b⟩ (0° ≤ θ < 360°)"],
+      ["components","⟨|v| cos θ, |v| sin θ⟩ = |v| cos θ i + |v| sin θ j"],
+      ["operations","⟨a, b⟩ + ⟨c, d⟩ = ⟨a + c, b + d⟩ ;; k⟨a, b⟩ = ⟨ka, kb⟩ ;; ⟨a, b⟩ = a i + b j"],
+      ["dot product","u · v = a₁a₂ + b₁b₂ (a number). u · u = |u|²"],
+      ["angle between","cos θ = u · v / (|u||v|), 0° ≤ θ ≤ 180°"],
+      ["orthogonal","u · v = 0. Positive dot product: acute. Negative: obtuse"] ]},
+    { t:"applications", rows:[
+      ["law of cosines","c² = a² + b² − 2ab cos C (missing side, or solve for cos C)"],
+      ["law of sines","sin A / a = sin B / b (missing angle once a side pair is known)"],
+      ["parallelogram","angle across from the resultant = 180° − angle between the forces. Equilibrant = −resultant"],
+      ["incline","sin α = (force along the hill) / (weight). Weight is the hypotenuse"],
+      ["planes","a + w = g: airspeed + wind = groundspeed. Wind from φ blows toward φ ± 180°"],
+      ["bearing","measured clockwise from north. N 63°12′ E means 63°12′ east of north"] ]},
+    { t:"inverse function ranges", table:[
+      ["function","range","quadrants"],
+      ["sin⁻¹ x","[−π/2, π/2]","I, IV"],
+      ["cos⁻¹ x","[0, π]","I, II"],
+      ["tan⁻¹ x","(−π/2, π/2)","I, IV"],
+      ["cot⁻¹ x","(0, π)","I, II"],
+      ["sec⁻¹ x","[0, π], not π/2","I, II"],
+      ["csc⁻¹ x","[−π/2, π/2], not 0","I, IV"] ],
+      note:"sin⁻¹ and cos⁻¹ take inputs in [−1, 1] only; sec⁻¹ and csc⁻¹ take |x| ≥ 1 only. Anything else is undefined." },
+    { t:"identities", rows:[
+      ["pythagorean","sin²θ + cos²θ = 1 ;; 1 + cot²θ = csc²θ ;; tan²θ + 1 = sec²θ"],
+      ["reciprocal","csc θ = 1/sin θ ;; sec θ = 1/cos θ ;; cot θ = 1/tan θ = cos θ / sin θ"],
+      ["double angle","sin 2θ = 2 sin θ cos θ ;; cos 2θ = cos²θ − sin²θ = 2 cos²θ − 1 = 1 − 2 sin²θ ;; tan 2θ = 2 tan θ / (1 − tan²θ)"],
+      ["sum, difference","sin(A ± B) = sin A cos B ± cos A sin B ;; cos(A ± B) = cos A cos B ∓ sin A sin B"],
+      ["even, odd","cos(−θ) = cos θ, sec(−θ) = sec θ; sin, csc, tan, cot flip sign"] ]},
+    { t:"unit circle values", table:[
+      ["angle","(cos, sin)","tan"],
+      ["30°, π/6","(√3/2, ½)","1/√3"],
+      ["45°, π/4","(√2/2, √2/2)","1"],
+      ["60°, π/3","(½, √3/2)","√3"],
+      ["0°, 90°, 180°, 270°","(1,0) (0,1) (−1,0) (0,−1)","0, undef, 0, undef"] ],
+      note:"ASTC: All positive in QI, Sine in QII, Tangent in QIII, Cosine in QIV." }
+  ],
+
+  /* a problem, a reveal, then the steps. mostly w:3 material. */
+  practice:[
+    { tag:"vector ops", q:"u = ⟨−1, 4⟩, v = ⟨3, −7⟩. Find 2v − u and |u − v|.",
+      steps:["2v = ⟨6, −14⟩, so 2v − u = ⟨6 − (−1), −14 − 4⟩ = ⟨7, −18⟩.","u − v = ⟨−4, 11⟩, so |u − v| = √(16 + 121) = √137."],
+      a:"2v − u = ⟨7, −18⟩, |u − v| = √137" },
+    { tag:"vector ops", q:"|v| = 12 and θ = 210°. Write v in component form and in i, j form.",
+      steps:["a = 12 cos 210° = 12(−√3/2) = −6√3.","b = 12 sin 210° = 12(−½) = −6. QIII, both negative."],
+      a:"v = ⟨−6√3, −6⟩ = −6√3 i − 6 j" },
+    { tag:"vector ops", q:"Find the magnitude and positive direction angle of ⟨−3√3, 3⟩.",
+      steps:["|v| = √(27 + 9) = √36 = 6.","tan θ = 3/(−3√3) = −1/√3, reference angle 30°. a < 0, b > 0 is QII, so θ = 180° − 30°."],
+      a:"|v| = 6, θ = 150° (5π/6)" },
+    { tag:"vector ops", q:"Are v = 5i + 4√2 j and w = 6√2 i − j orthogonal?",
+      steps:["v · w = (5)(6√2) + (4√2)(−1) = 30√2 − 4√2 = 26√2.","26√2 ≠ 0, so no."],
+      a:"Not orthogonal; v · w = 26√2" },
+    { tag:"forces", q:"Forces of 1220 lb and 1540 lb act on a point at 60° to each other. Find the magnitude of the equilibrant and the angle it makes with the 1220-lb force.",
+      steps:["Resultant: angle across from it is 120°. |R| = √(1220² + 1540² − 2(1220)(1540) cos 120°) ≈ 2395.579 lb. The equilibrant has the same magnitude.",
+             "Angle between R and the 1220-lb force: sin α / 1540 = sin 120° / 2395.579, so α ≈ 33.830°.",
+             "The equilibrant points the opposite way, so its angle with the 1220-lb force is 180° − 33.830°."],
+      a:"|equilibrant| ≈ 2395.579 lb, at about 146.170° from the 1220-lb force" },
+    { tag:"forces", q:"Two forces of 536 N and 552 N act on a point. The resultant is 1082 N. Find the angle between the two forces.",
+      steps:["1082² = 536² + 552² − 2(536)(552) cos B, so cos B = (536² + 552² − 1082²) / (2 · 536 · 552) ≈ −0.9780 and B ≈ 167.959°.",
+             "The angle between the forces is the supplement: 180° − 167.959°."],
+      a:"≈ 12.041°" },
+    { tag:"incline", q:"A force of 15 lb is required to hold a 61-lb crate on a hill. What angle does the hill make with the horizontal?",
+      steps:["Weight 61 is the hypotenuse; the 15-lb force is the leg across from the hill angle.","sin α = 15/61, α = sin⁻¹(15/61)."],
+      a:"α ≈ 14.235°" },
+    { tag:"incline", q:"A 77-ton monolith sits on a causeway with a slope of 4.5°. How much force parallel to the incline holds it there?",
+      steps:["sin 4.5° = x / 77.","x = 77 sin 4.5°."],
+      a:"≈ 6.041 tons" },
+    { tag:"navigation", q:"A ship leaves port on a bearing of 35° and travels 11.8 mi, then turns due east and travels 3.5 mi. How far is it from port, and what is its bearing from port?",
+      steps:["At the turn, the angle between the reversed first leg and due east is 180° − (90° − 35°) = 125°.",
+             "Law of Cosines: d = √(11.8² + 3.5² − 2(11.8)(3.5) cos 125°) ≈ 14.102 mi.",
+             "Law of Sines for the angle at port: sin a / 3.5 = sin 125° / 14.102, so a ≈ 11.730°. Bearing = 35° + 11.730°."],
+      a:"≈ 14.102 mi on a bearing of about 46.730°" },
+    { tag:"navigation", q:"A plane has an airspeed of 109 km/h on a bearing of 79°. A 20 km/h wind blows out of the northeast (bearing 225°). Find the groundspeed and bearing.",
+      steps:["a + w = g. Headings differ by 225° − 79° = 146°, so the interior angle is 34°.",
+             "|g| = √(109² + 20² − 2(109)(20) cos 34°) ≈ 93.093 km/h.",
+             "sin α / 20 = sin 34° / 93.093, so α ≈ 6.900°. Wind toward the southwest swings the plane clockwise: 79° + 6.900°."],
+      a:"≈ 93.093 km/h on a bearing of about 85.900°" },
+    { tag:"navigation", q:"What bearing and airspeed let a plane fly 440 miles due north in 2.0 hours if the wind blows from 335° at 16 mph?",
+      steps:["Groundspeed is fixed: 440/2.0 = 220 mph due north. Wind from 335° blows toward 155°.",
+             "The known sides are g = 220 and w = 16; the included angle at their shared tip is 180° − (180° − 155°) = 155°… work it as |a| = √(220² + 16² − 2(220)(16) cos 155°) ≈ 234.598 mph.",
+             "Drift: sin α / 16 = sin 155° / 234.598, so α ≈ 1.652°. The wind pushes southeast, so aim west of north: 360° − 1.652°."],
+      a:"airspeed ≈ 234.598 mph on a bearing of about 358.348°" },
+    { tag:"trig equations", q:"Solve 3 cot²x − 3 cot x − 1 = 0 on [0, 2π). Round to the thousandth.",
+      steps:["Does not factor: cot x = (3 ± √21) / 6, so cot x ≈ 1.264 or cot x ≈ −0.264.",
+             "cot x ≈ 1.264 means tan x ≈ 0.791: x ≈ 0.669 (QI) and π + 0.669 ≈ 3.811 (QIII).",
+             "cot x ≈ −0.264 means tan x ≈ −3.791, reference 1.313: π − 1.313 ≈ 1.829 (QII) and 2π − 1.313 ≈ 4.970 (QIV)."],
+      a:"x ≈ 0.669, 1.829, 3.811, 4.970" },
+    { tag:"trig equations", q:"Solve cos x = cos(x/2) on [0, 2π).",
+      steps:["Different arguments. cos x = 2 cos²(x/2) − 1, so 2 cos²(x/2) − cos(x/2) − 1 = 0.",
+             "(2 cos(x/2) + 1)(cos(x/2) − 1) = 0, so cos(x/2) = −½ or cos(x/2) = 1.",
+             "x/2 lives in [0, π): cos(x/2) = −½ gives x/2 = 2π/3, so x = 4π/3. cos(x/2) = 1 gives x/2 = 0, so x = 0."],
+      a:"x = 0, 4π/3" },
+    { tag:"trig equations", q:"Solve 3 tan 3x = √3 on [0, 2π).",
+      steps:["tan 3x = √3/3 = 1/√3, so 3x = π/6 + πk (tangent repeats every π).",
+             "x = π/18 + πk/3. Run k = 0 to 5 before leaving the interval."],
+      a:"x = π/18, 7π/18, 13π/18, 19π/18, 25π/18, 31π/18" },
+    { tag:"trig equations", q:"Solve 4 cos²θ + 4 sin θ = 5 on [0°, 360°).",
+      steps:["cos²θ = 1 − sin²θ: 4 − 4 sin²θ + 4 sin θ − 5 = 0, so 4 sin²θ − 4 sin θ + 1 = 0.",
+             "(2 sin θ − 1)² = 0, so sin θ = ½. QI and QII, reference 30°."],
+      a:"θ = 30°, 150°" },
+    { tag:"trig equations", q:"Solve sec θ · csc θ − 2 csc θ = 0 on [0°, 360°).",
+      steps:["Factor the GCF: csc θ (sec θ − 2) = 0. Do not divide by csc θ.",
+             "csc θ = 0 never happens (|csc θ| ≥ 1). sec θ = 2 means cos θ = ½."],
+      a:"θ = 60°, 300°" },
+    { tag:"icf", q:"Give the exact value of sin(2 tan⁻¹(−12/5)).",
+      steps:["u = tan⁻¹(−12/5) is in QIV: x = 5, y = −12, r = 13. sin u = −12/13, cos u = 5/13.",
+             "sin 2u = 2 sin u cos u = 2(−12/13)(5/13)."],
+      a:"−120/169" },
+    { tag:"icf", q:"Give the exact value of sin(sin⁻¹(1/5) + tan⁻¹(−4)). Rationalize the denominator.",
+      steps:["A: sin A = 1/5, cos A = √24/5 = 2√6/5. B = tan⁻¹(−4), QIV: x = 1, y = −4, r = √17, so sin B = −4/√17, cos B = 1/√17.",
+             "sin(A + B) = (1/5)(1/√17) + (2√6/5)(−4/√17) = (1 − 8√6) / (5√17).",
+             "Multiply by √17/√17: (√17 − 8√102) / 85."],
+      a:"(√17 − 8√102) / 85" },
+    { tag:"icf", q:"Find the exact value of cos⁻¹(cos(−9π/11)) and cot⁻¹(tan(−π/6)).",
+      steps:["cos is even, so cos(−9π/11) = cos(9π/11), and 9π/11 is inside [0, π]. Answer 9π/11.",
+             "tan(−π/6) = −1/√3. cot⁻¹(−1/√3) means cot θ = −1/√3, tan θ = −√3, and the range (0, π) forces QII: θ = 2π/3."],
+      a:"9π/11 and 2π/3" }
+  ]
+};
+
+/* ═══ machinery ═════════════════════════════════════════════════════════ */
+const $=s=>document.querySelector(s);
+const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=s=>esc(s)
+  .replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>')
+  .replace(/==(.+?)==/g,'<mark class="hl">$1</mark>')
+  .replace(/!!(.+?)!!/g,'<span class="trap">$1</span>')
+  .replace(/@@(.+?)@@/g,'<b class="vec">$1</b>');
+
+const G={
+ curve:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>'
+};
+$("#cls").textContent=GUIDE.cls;
+$("#ttl").textContent=GUIDE.title;
+$("#due").textContent=GUIDE.due;
+document.title=GUIDE.title.toLowerCase();
+$("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true">'+
+  '<g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" '+
+  'stroke-linecap="round" stroke-linejoin="round" opacity=".97" pathLength="1">'+(G[GUIDE.glyph]||G.curve)+'</g></svg>';
+$("#gly").querySelectorAll("path").forEach(p=>p.setAttribute("pathLength","1"));
+
+let riseN=0;
+const riseReset=()=>{riseN=0};
+const rise=n=>{if(!REDUCED){n.classList.add("rise");n.style.setProperty("--i",Math.min(riseN++,9))}};
+
+/* collapsible card shell */
+function cardShell(title,badge){
+  const card=el("div","card g");
+  card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+    '<button class="chead" aria-expanded="false"><span class="dot"></span><span class="ct"></span>'+
+    '<svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" '+
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>'+
+    '<div class="cbody"><div></div></div>';
+  card.querySelector(".ct").textContent=title;
+  const head=card.querySelector(".chead"),body=card.querySelector(".cbody");
+  if(badge){const b=el("span","w w"+badge);b.textContent=badge===3?"tested most":"tested";head.insertBefore(b,head.querySelector(".tw"))}
+  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+  return {card,head,body,inner:body.firstElementChild};
+}
+const callout=n=>{const c=el("div","callout "+n.k);
+  c.innerHTML='<span class="cl">'+({warn:"watch out",ex:"example",ok:"rule"}[n.k]||n.k)+'</span>'+fmt(n.t);return c};
+const stepList=arr=>{const ol=el("ol","steps");arr.forEach(s=>{const li=el("li");li.innerHTML='<span>'+fmt(s)+'</span>';ol.appendChild(li)});return ol};
+
+/* test map (outline) */
+(function(){
+  const host=$("#p-outline");
+  const h=el("div","sh");h.textContent="what the test rewards, heaviest first";host.appendChild(h);
+  if(GUIDE.top?.length){
+    const t=el("div","card g top");
+    t.innerHTML='<span class="spec" aria-hidden="true"></span><div class="chead"><span class="dot"></span>'+
+      '<span class="ct">start here</span></div><div class="cbody on"><div>'+
+      GUIDE.top.map(x=>'<p>'+fmt(x)+'</p>').join("")+'</div></div>';
+    rise(t);host.appendChild(t);
+  }
+  GUIDE.outline.slice().sort((a,b)=>b.w-a.w).forEach(s=>{
+    const {card,head,body,inner}=cardShell(s.t,s.w>=2?s.w:0);
+    s.p.forEach(x=>{const p=el("p");p.innerHTML=fmt(x);inner.appendChild(p)});
+    if(s.steps)inner.appendChild(stepList(s.steps));
+    if(s.cmp){const g=el("div","cmp");s.cmp.forEach(c=>{const d=el("div","callout ex");d.innerHTML='<span class="cl">'+esc(c.h)+'</span>'+fmt(c.t);g.appendChild(d)});inner.appendChild(g)}
+    if(s.notes)s.notes.forEach(n=>inner.appendChild(callout(n)));
+    if(s.terms){const box=el("div","terms");s.terms.forEach(t=>{const c=el("span","term");c.textContent=t;box.appendChild(c)});inner.appendChild(box)}
+    if(s.w===3){head.setAttribute("aria-expanded","true");body.classList.add("on")}
+    rise(card);host.appendChild(card);
+  });
+})();
+
+/* worked examples */
+(function(){
+  riseReset();
+  const host=$("#p-worked");
+  const h=el("div","sh");h.textContent="one worked instance of each problem type";host.appendChild(h);
+  GUIDE.worked.forEach((w,i)=>{
+    const {card,head,body,inner}=cardShell(w.t,0);
+    const tag=el("span","w w2");tag.textContent=w.tag;head.insertBefore(tag,head.querySelector(".tw"));
+    const pr=el("div","ex-prob");pr.innerHTML='<span class="cl">problem</span>'+esc(w.prob);inner.appendChild(pr);
+    inner.appendChild(stepList(w.steps));
+    const a=el("div","ans");a.innerHTML='<span class="cl">answer</span>'+esc(w.ans);inner.appendChild(a);
+    if(i===0){head.setAttribute("aria-expanded","true");body.classList.add("on")}
+    rise(card);host.appendChild(card);
+  });
+})();
+
+/* formula reference */
+(function(){
+  riseReset();
+  const host=$("#p-formulas");
+  const h=el("div","sh");h.textContent="what you are allowed to know cold";host.appendChild(h);
+  GUIDE.formulas.forEach((f,i)=>{
+    const {card,head,body,inner}=cardShell(f.t,0);
+    if(f.rows){f.rows.forEach(([l,r])=>{const d=el("div","frow");d.innerHTML='<span class="fl">'+esc(l)+'</span><span class="m2">'+esc(r).replace(/ ;; /g,'<br>')+'</span>';inner.appendChild(d)})}
+    if(f.table){const t=el("div","ftable");f.table.forEach((row,j)=>{const d=el("div","frow"+(j===0?" h":""));
+      d.style.gridTemplateColumns="1fr 1fr .7fr";d.innerHTML=row.map((c,k)=>'<span class="'+(k===0?"fl":"")+'">'+esc(c)+'</span>').join("");t.appendChild(d)});inner.appendChild(t)}
+    if(f.note){const p=el("p");p.innerHTML=fmt(f.note);inner.appendChild(p)}
+    head.setAttribute("aria-expanded","true");body.classList.add("on");
+    rise(card);host.appendChild(card);
+  });
+})();
+
+/* practice */
+(function(){
+  riseReset();
+  const host=$("#p-practice");
+  const h=el("div","sh");h.textContent="try it, then reveal";host.appendChild(h);
+  const intro=el("div","qcard g");
+  intro.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">two full practice tests, in the class quiz layout</div>'+
+    '<div class="qt">Calculator part first (5 questions), then 15 non-calculator. Worked answer keys at the end of each PDF. Print them and time yourself at 85 minutes.</div>'+
+    '<div class="pdfs"><a data-pdf="a" href="precalc-vectors-icf-trig-eq-practice-a.pdf">practice test a (pdf)</a><a data-pdf="b" href="precalc-vectors-icf-trig-eq-practice-b.pdf">practice test b (pdf)</a></div>';
+  rise(intro);host.appendChild(intro);
+  GUIDE.practice.forEach((q,i)=>{
+    const card=el("div","qcard g");
+    card.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">problem '+(i+1)+'<span class="tag"></span></div><div class="qt"></div>'+
+      '<button class="reveal" aria-expanded="false">reveal the steps</button><div class="sol"><div></div></div>';
+    card.querySelector(".tag").textContent=q.tag;
+    card.querySelector(".qt").textContent=q.q;
+    const sol=card.querySelector(".sol"),inner=sol.firstElementChild,btn=card.querySelector(".reveal");
+    inner.appendChild(stepList(q.steps));
+    const a=el("div","ans");a.innerHTML='<span class="cl">answer</span>'+esc(q.a);inner.appendChild(a);
+    btn.onclick=()=>{const o=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!o));sol.classList.toggle("on",!o);btn.textContent=o?"reveal the steps":"hide the steps"};
+    rise(card);host.appendChild(card);
+  });
+})();
+
+/* segmented control */
+(function(){
+  const tabs=[["outline","test map"],["worked","worked"],["formulas","formulas"],["practice","practice"]];
+  const seg=$("#seg"),ind=seg.querySelector(".ind");
+  tabs.forEach(([id,label],i)=>{const b=el("button");b.textContent=label;b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",String(i===0));b.onclick=()=>select(i);seg.appendChild(b)});
+  function select(i){
+    const btns=[...seg.querySelectorAll("button")];
+    btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
+    tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
+    move();scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
+  }
+  function move(){
+    const btns=[...seg.querySelectorAll("button")];
+    const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
+    const b=btns[i];if(!b)return;
+    ind.style.width=b.offsetWidth+"px";ind.style.transform="translateX("+(b.offsetLeft-2)+"px)";
+  }
+  addEventListener("resize",move);requestAnimationFrame(move);
+})();
+
+/* header state + pointer specular */
+(function(){
+  const hdr=$("#hdr");let raf=0;
+  addEventListener("scroll",()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)})},{passive:true});
+  if(matchMedia("(hover:hover)").matches&&!REDUCED){
+    addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".g");if(!c)return;
+      const r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")},{passive:true});
+  }
+})();
+</script>
+</body>
+</html>
