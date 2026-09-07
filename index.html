@@ -505,6 +505,7 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
   <h2>every guide</h2>
   <h3>AP US History</h3>
   <ul>
+    <li><a href="/apush-unit-1b">Unit 1/B</a> &middot; Guide</li>
     <li><a href="https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc">Unit 1/A study guide</a> &middot; Guide</li>
   </ul>
   <h3>AP Physics 1</h3>
@@ -587,13 +588,16 @@ const FEATURES=[
   {classId:"psych", title:"Unit 0 study guide",
    url:"/psych-unit-0", test:"2026-09-02", end:"2026-09-03"},
   {classId:"pre",   title:"Vectors, ICF & trig equations study guide",
-   url:"/precalc-vectors-icf-trig-eq", test:"2026-09-04"}
+   url:"/precalc-vectors-icf-trig-eq", test:"2026-09-04"},
+  {classId:"apush", title:"Unit 1/B study guide",
+   url:"/apush-unit-1b", test:"2026-09-08", end:"2026-09-09"}
 ];
 
 const CLASSES=[
   /* ---- junior year ---- */
   {id:"apush", c:"var(--c-apush)", glyph:"flag", year:"junior", name:"AP US History", abbr:"APUSH",
-   guides:[{t:"Unit 1/A study guide", tag:"Guide",
+   guides:[{t:"Unit 1/B", tag:"Guide", url:"/apush-unit-1b"},
+     {t:"Unit 1/A study guide", tag:"Guide",
      url:"https://claude.ai/code/artifact/a71f05ad-6856-46a5-acd9-a252c5f3d3fc"}]},
   {id:"lang",  c:"var(--c-lang)",  glyph:"nib",     year:"junior", name:"AP English Language", abbr:"AP Lang", guides:[]},
   {id:"phys",  c:"var(--c-phys)",  glyph:"atom",    year:"junior", name:"AP Physics 1",

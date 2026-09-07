@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="AP US History Unit 1/B study guide: the Stuarts, Restoration colonies, slavery, mercantilism and the Navigation Acts. Two timed practice tests.">
+<title>apush unit 1/b study guide</title>
+<style>
+:root{
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
+
+  /* class color: ap us history */
+  --accent:#FF9500;
+  /* palette: dawn. blob 1 is always the class color */
+  --amb1:var(--accent); --amb2:#FF375F; --amb3:#BF5AF2; --amb4:#FF9F0A;
+  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1));
+
+  --ink:#08080D;
+  --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
+  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
+  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
+  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
+  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
+  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30;
+  --blur:22px; --sat:195%;
+  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --amb:.82; --amb-blur:66px;
+  --hlmix:22%;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#FF9F0A;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+  --hlmix:30%;
+}}
+:root[data-theme="dark"]{
+  --accent:#FF9F0A;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+  --hlmix:30%;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--ground)}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
+  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+a{color:var(--blue)}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hidden{display:none !important}
+
+/* ambient layer: four blobs from the palette, slow drift, tiny hue swing */
+#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
+  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);animation:hue 120s linear infinite}
+#amb i{position:absolute;display:block;border-radius:50%;animation:drift 38s var(--ease) infinite alternate}
+#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;background:radial-gradient(circle,var(--amb1),transparent 66%)}
+#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:8vh;background:radial-gradient(circle,var(--amb2),transparent 66%);animation-duration:45s;animation-delay:-10s}
+#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:46vh;background:radial-gradient(circle,var(--amb3),transparent 66%);animation-duration:41s;animation-delay:-20s}
+#amb i:nth-child(4){width:52vw;height:52vw;right:-8vw;bottom:-14vh;background:radial-gradient(circle,var(--amb4),transparent 66%);animation-duration:48s;animation-delay:-30s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
+@keyframes hue{0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}50%{filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}}
+
+/* glass: fill + rim + gloss + specular */
+.g{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
+.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
+  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
+.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
+  transition:opacity .4s var(--ease)}
+@media (hover:hover){.g:hover > .spec{opacity:1}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
+.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
+.glyph{width:40px;height:40px;border-radius:12px;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
+  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
+.glyph svg path,.glyph svg circle,.glyph svg ellipse{stroke-dasharray:1;stroke-dashoffset:1;animation:ink 1.2s var(--ease) .2s forwards}
+@keyframes ink{to{stroke-dashoffset:0}}
+.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;line-height:1.08;text-transform:lowercase}
+.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
+  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase;font-variant-numeric:tabular-nums}
+
+/* segmented control */
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
+  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.seg button{position:relative;z-index:1;padding:7px 4px;border-radius:9px;font-family:var(--round);
+  font-size:13.5px;font-weight:640;color:var(--ink2);text-transform:lowercase;transition:color .25s var(--ease)}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
+  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
+  transition:transform .42s var(--spring),width .42s var(--spring)}
+
+main{padding-top:20px}
+.sh{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--ink3);margin:30px 4px 10px;text-transform:lowercase}
+.sh:first-child{margin-top:0}
+
+/* cards */
+.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
+.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;position:relative;z-index:1;
+  transition:transform .34s var(--spring)}
+.chead:active{transform:scale(.99)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
+.tw{color:var(--ink3);transition:transform .34s var(--spring);flex:none}
+.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
+.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.cbody.on{grid-template-rows:1fr}
+.cbody > div{overflow:hidden}
+.cbody p{margin:0 0 10px;padding:0 16px;font-size:15.5px;line-height:1.5;color:var(--ink)}
+.cbody > div > :last-child{padding-bottom:16px}
+.top .cbody{grid-template-rows:1fr}
+.top .chead{cursor:default}
+.top p{color:var(--ink);font-size:15.5px}
+.terms{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 16px}
+.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
+  background:color-mix(in srgb,var(--accent) 14%,transparent);color:color-mix(in srgb,var(--accent) 72%,var(--ink));
+  box-shadow:inset 0 .5px 0 0 var(--gloss)}
+
+/* emphasis: key term, must-know line, trap */
+.kw{font-weight:720;color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);
+  text-decoration-thickness:2px;text-underline-offset:3px}
+.hl{background:color-mix(in srgb,var(--accent) var(--hlmix),transparent);color:var(--ink);
+  border-radius:5px;padding:1px 5px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.trap{color:var(--bad);font-weight:640}
+.vec{font-weight:760}
+
+/* weight badge */
+.w{margin-left:auto;flex:none;font-family:var(--round);font-size:11.5px;font-weight:740;padding:4px 9px;border-radius:999px;
+  text-transform:lowercase;letter-spacing:-.01em}
+.w3{background:var(--accent);color:#fff}
+.w2{background:color-mix(in srgb,var(--accent) 20%,transparent);color:var(--accent)}
+
+/* callouts */
+.callout{margin:0 16px 12px;padding:10px 13px 10px 14px;border-radius:12px;font-size:15px;line-height:1.45;
+  background:var(--fill2);border-left:3px solid var(--accent);color:var(--ink)}
+.callout.warn{border-color:var(--bad)} .callout.ex{border-color:var(--blue)} .callout.ok{border-color:var(--good)}
+.callout .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--ink3);display:block;margin-bottom:2px}
+
+/* shapes: step strip, compare grid */
+.steps{list-style:none;margin:0 16px 14px;padding:0;counter-reset:s;display:grid;gap:6px}
+.steps li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;color:var(--ink);
+  padding:8px 11px;border-radius:12px;background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.steps li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--round);font-size:12px;font-weight:760;background:var(--accent);color:#fff;margin-top:1px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 12px}
+.cmp .callout{margin:0}
+@media (max-width:480px){.cmp{grid-template-columns:1fr}}
+
+/* worked examples */
+.ex-prob{margin:0 16px 10px;padding:11px 14px;border-radius:12px;background:color-mix(in srgb,var(--accent) 10%,transparent);
+  font-size:15.5px;line-height:1.5;color:var(--ink)}
+.ex-prob .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--accent);display:block;margin-bottom:2px}
+.ans{margin:0 16px 14px;padding:10px 14px;border-radius:12px;font-size:15.5px;line-height:1.5;color:var(--ink);
+  background:color-mix(in srgb,var(--good) 16%,transparent);border-left:3px solid var(--good)}
+.ans .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--good);display:block;margin-bottom:2px}
+.m{font-variant-numeric:tabular-nums;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.05;font-size:.92em;margin:0 2px}
+.frac > span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
+.frac > span:last-child{padding:0 3px}
+
+/* formula reference */
+.frow{display:grid;grid-template-columns:minmax(110px,38%) 1fr;gap:10px;padding:8px 16px;font-size:15px;line-height:1.45;color:var(--ink);align-items:baseline}
+.frow + .frow{box-shadow:inset 0 .5px 0 0 var(--sep)}
+.frow .fl{font-family:var(--round);font-size:12.5px;font-weight:700;color:color-mix(in srgb,var(--accent) 72%,var(--ink));text-transform:lowercase}
+.ftable{margin:0 16px 14px;border-radius:12px;overflow:hidden;background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.ftable .frow{padding:8px 12px}
+.ftable .frow.h{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase}
+.ftable .frow.h .fl{color:var(--ink3)}
+
+/* practice */
+.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
+.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase;display:flex;gap:8px;align-items:center}
+.qn .tag{margin-left:auto;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 14%,transparent);
+  color:color-mix(in srgb,var(--accent) 72%,var(--ink));font-weight:700}
+.qt{margin:8px 0 14px;font-size:17px;font-weight:560;line-height:1.4;letter-spacing:-.02em;color:var(--ink)}
+.reveal{display:inline-flex;align-items:center;gap:8px;font-family:var(--round);font-size:14px;font-weight:680;color:var(--accent);
+  padding:9px 14px;border-radius:11px;background:color-mix(in srgb,var(--accent) 14%,transparent);text-transform:lowercase;
+  transition:transform .3s var(--spring),background .25s var(--ease)}
+.reveal:active{transform:scale(.987)}
+.sol{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.sol.on{grid-template-rows:1fr}
+.sol > div{overflow:hidden}
+.sol .steps{margin:12px 0 10px}
+.sol .ans{margin:0 0 4px}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 4px}
+.pdfs a{font-family:var(--round);font-size:13.5px;font-weight:680;text-decoration:none;padding:9px 13px;border-radius:11px;
+  background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);text-transform:lowercase}
+
+.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+
+footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;text-transform:lowercase}
+
+@media (prefers-reduced-motion:reduce){
+  #amb{animation:none}
+  #amb i{animation:none}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+  .glyph svg *{animation:none;stroke-dashoffset:0}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* timeline */
+.tlbar{display:flex;flex-wrap:wrap;gap:6px;margin:0 2px 14px}
+.tlbar button{font-family:var(--round);font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:999px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
+  display:inline-flex;align-items:center;gap:7px;transition:background .25s var(--ease),color .25s var(--ease),transform .3s var(--spring)}
+.tlbar button:active{transform:scale(.97)}
+.tlbar button[aria-pressed="true"]{background:var(--glass-hi);color:var(--ink)}
+.tlbar .ed{width:8px;height:8px;border-radius:50%;background:var(--ec)}
+.tl{position:relative;border-radius:18px;padding:6px 16px 6px 16px}
+.tl::after{content:"";position:absolute;left:46px;top:18px;bottom:18px;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,transparent,var(--sep) 6%,var(--sep) 94%,transparent);z-index:1}
+.tr{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative;z-index:2;
+  transition:opacity .3s var(--ease)}
+.tr.off{display:none}
+.tr .ty{font-family:var(--round);font-size:13px;font-weight:780;font-variant-numeric:tabular-nums;color:var(--ec);
+  letter-spacing:-.01em;padding-top:2px;position:relative}
+.tr .ty::after{content:"";position:absolute;right:-16px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--ec);
+  box-shadow:0 0 0 3px var(--ground),0 0 10px color-mix(in srgb,var(--ec) 60%,transparent)}
+.tr .tt{font-size:15px;line-height:1.45;color:var(--ink);padding-left:10px}
+.tr .tt .ec{font-family:var(--round);font-size:11px;font-weight:760;color:var(--ec);text-transform:lowercase;margin-left:6px;
+  padding:2px 7px;border-radius:999px;background:color-mix(in srgb,var(--ec) 14%,transparent);vertical-align:1px;white-space:nowrap}
+.e-crown{--ec:var(--accent)} .e-colonies{--ec:var(--good)} .e-trade{--ec:var(--blue)} .e-wars{--ec:var(--bad)} .e-slavery{--ec:#BF5AF2}
+
+/* practice */
+.picker{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:2px 0 2px}
+.picker button{font-family:var(--round);font-size:14.5px;font-weight:700;padding:12px 10px;border-radius:13px;text-transform:lowercase;
+  background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);box-shadow:inset 0 .5px 0 0 var(--gloss);
+  transition:transform .3s var(--spring),background .25s var(--ease),color .25s var(--ease)}
+.picker button:active{transform:scale(.98)}
+.picker button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.sbar{position:sticky;top:calc(var(--hh,112px) + 8px);z-index:30;border-radius:16px;padding:11px 14px;margin-bottom:12px;display:flex;align-items:center;gap:12px;
+  font-family:var(--round);font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.sbar .cl{color:var(--ink3);font-size:12px;font-weight:740;text-transform:lowercase}
+.sbar .clock{margin-left:auto;font-size:16px;letter-spacing:-.01em}
+.sbar .clock.low{color:var(--bad)}
+.sbar button{font-size:13px;color:var(--blue);padding:6px 10px;border-radius:9px;text-transform:lowercase}
+.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
+.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase;display:flex;gap:8px;align-items:center}
+.qn .tag{margin-left:auto;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 14%,transparent);
+  color:color-mix(in srgb,var(--accent) 72%,var(--ink));font-weight:700}
+.qt{margin:8px 0 14px;font-size:17px;font-weight:560;line-height:1.4;letter-spacing:-.02em;color:var(--ink)}
+.opt{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;padding:12px 13px;border-radius:12px;background:var(--fill2);
+  margin-bottom:7px;font-size:15.5px;line-height:1.35;color:var(--ink);box-shadow:inset 0 .5px 0 0 var(--gloss);
+  transition:background .2s var(--ease),transform .3s var(--spring)}
+.opt:active{transform:scale(.988)}
+.opt .k{font-family:var(--round);font-weight:740;font-size:13px;color:var(--ink3);flex:none;width:20px;text-transform:uppercase;padding-top:2px}
+.opt.right{background:color-mix(in srgb,var(--good) 20%,transparent);color:var(--good)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.opt.right .k,.opt.wrong .k{color:inherit}
+.qcard.done .opt{cursor:default}
+.why{margin:10px 2px 0;font-size:14px;line-height:1.5;color:var(--ink);padding:10px 13px;border-radius:12px;background:var(--fill2);
+  border-left:3px solid var(--good)}
+.why.miss{border-color:var(--bad)}
+.why .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--ink3);display:block;margin-bottom:2px}
+.result{border-radius:18px;padding:20px 18px;margin-bottom:12px}
+.result .big{font-family:var(--display);font-size:34px;font-weight:780;letter-spacing:-.042em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.result .sub{font-size:15px;color:var(--ink);margin:8px 0 12px;line-height:1.45}
+.result .miss{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.result .miss button{font-family:var(--round);font-size:13px;font-weight:740;padding:6px 11px;border-radius:999px;font-variant-numeric:tabular-nums;
+  background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
+.result .again{font-family:var(--round);font-size:14px;font-weight:700;padding:10px 14px;border-radius:11px;text-transform:lowercase;
+  background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+
+/* key */
+.keyrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 14px;padding:0 16px 16px;font-size:14px;color:var(--ink)}
+.keyrow b{font-family:var(--round);font-weight:740;color:var(--accent)}
+</style>
+</head>
+<body>
+<div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<header id="hdr"><div class="wrap">
+  <div class="hrow">
+    <span id="gly" class="glyph" aria-hidden="true"></span>
+    <div>
+      <div class="cls" id="cls"></div>
+      <h1 id="ttl"></h1>
+    </div>
+    <span class="chip" id="due"></span>
+  </div>
+  <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
+</div></header>
+
+<main class="wrap">
+  <section id="p-outline"></section>
+  <section id="p-timeline" class="hidden"></section>
+  <section id="p-practice" class="hidden"></section>
+  <footer>study guide written by a student. not affiliated with the school.<br>
+    check anything that matters against your own notes.</footer>
+</main>
+
+<script>
+/* ═══ content ═══════════════════════════════════════════════════════════ */
+const GUIDE = {
+  cls:   "AP US History",
+  glyph: "flag",
+  title: "Unit 1/B study guide",
+  due:   "test tue 9/8",
+
+  /* the whole guide for someone with ten minutes */
+  top:[
+    "**Slave society**: slavery *is* the labor system (Chesapeake, Lower South, Spanish America). **Society with slaves**: enslaved people exist, the economy runs on other labor (New England, Middle Colonies, New France). ==By 1710 one in five people in the Chesapeake was African.==",
+    "Stuart chain: ==Charles I executed 1649 → Cromwell's Interregnum → Charles II restored 1660 → James II 1685 → Glorious Revolution 1688 → William and Mary → Anne → Hanoverians 1714.== !!Charles II is 1660 to 1685 in class; some charts say 1649.!!",
+    "**Restoration colonies** (New York, New Jersey, Carolina, Pennsylvania) were **proprietorships** that paid off Stuart debts from exile. !!Georgia is not one!!: 1732, a buffer against Spanish Florida, settled by debtors.",
+    "Indentured servants gave way to enslaved Africans for ==economic reasons, not ideological==: England's economy improved, Chesapeake land was claimed, labor demand held. ==First arrival 1619; large-scale importation from the 1670s through Charles Town, from Barbados.==",
+    "**Mercantilism** is the theory; the **Navigation Acts** are the law. The Wool, Hat and Iron Acts share one principle: ==manufacturing stays in the mother country==."
+  ],
+
+  outline:[
+    { w:3, t:"Slavery: from indentures to a slave society",
+      p:["The frame for everything: a **slave society** is one where slavery *is* the labor system and shapes everything else. A **society with slaves** has enslaved people without the society depending on them. Chesapeake and Lower South are the first; New England and the Middle Colonies are the second. ==New France was never a slave society; Spanish America was.==",
+         "==August 1619==: about **20 Africans** land at Fort Monroe (Point Comfort), Hampton, Virginia, taken off the Portuguese ship **San Juan Bautista** by two English privateers (the White Lion and the Treasurer) and traded for supplies. They were placed in **indentured servitude**, not lifetime slavery, so many were eventually free. The difference from English indentures: !!it was forced, not voluntary!!.",
+         "==Large-scale importation only starts in the 1670s==, arriving through **Charles Town, South Carolina** from **Barbados**. ==By 1700 the Chesapeake and South Carolina are slave societies; by 1710, 20% of the Chesapeake population is African.=="],
+      steps:["==The labor shortage starts in the 1650s==, as fewer indentured servants arrive in the Chesapeake. Why, and it is money, not ideas: English economic conditions improve, so fewer people volunteer to emigrate.",
+             "Chesapeake land is already claimed, so **freedom dues** in land cannot be paid to finished servants.",
+             "Labor demand does not drop, so the labor system shifts to slavery. Europeans had practiced slavery for a long time (England was the exception) and Christians of the era found it justifiable."],
+      notes:[{k:"ok",t:"Slavery was an **expensive up-front investment** with a good long-term return: a planter who bought men and women and encouraged families ==grew his own labor force==, because children were born enslaved."},
+             {k:"warn",t:"That entry cost is why wealth concentrated. A small planter with land, no labor and a mortgage had to sell, and the buyer was a large planter. ==Big plantations grew at the expense of small ones.==" }],
+      terms:["slave society","society with slaves","1619","San Juan Bautista","Charles Town","Barbados","freedom dues"] },
+
+    { w:3, t:"South Carolina: rice first, indigo second",
+      p:["On **Barbados**, a sugar island rich on enslaved labor, **primogeniture** produced two surpluses: sons with no inheritance and enslaved people beyond what the island needed. Both were shipped to South Carolina around **Charles Town** (later Charleston). ==This is the first major introduction of slavery into the mainland South.==",
+         "Those enslaved **West Africans already knew how to grow rice**; nobody in England did. Rice became the cash crop, ==sold back into the Caribbean as food for enslaved people there==."],
+      cmp:[{h:"rice",t:"The top crop. Grows in flooded low ground. !!Not sugar: South Carolina grew a little sugar, not much.!!"},
+           {h:"indigo",t:"The second crop, complementary because it grows on higher ground, grown from ==knowledge brought by West Indian slaves==. Processed into a deep blue dye that ==British textile mills bought heavily==."}],
+      notes:[{k:"warn",t:"Order matters on a test: ==rice, then indigo==. The unit outline says South Carolina built a \"sugar/rice economy\" on skills brought by enslaved Africans; in class that was corrected to !!rice first, and very little sugar!!. If a stem says \"sugar/rice economy based on enslaved Africans' skills,\" it is quoting the outline and is still South Carolina."}],
+      terms:["primogeniture","rice","indigo","Charleston"] },
+
+    { w:3, t:"The Stuarts: Civil War, Interregnum, Restoration",
+      p:["The Stuarts (James I, Charles I) believed in **divine right**: God gives the monarch the power to reign, so he does not share it with Parliament. **Charles I** (1625) spends recklessly, empties the treasury, and taxes without Parliament in session. **Magna Carta** is the obstacle: ==the nobility must consent to taxation, and consent runs through Parliament==.",
+         "Charles calls Parliament, where many **Puritans** hold seats. Parliament offers taxes in exchange for limits on royal power; Charles refuses and dismisses them (the defiant **Rump Parliament**). Both sides raise armies, Charles loses, and he is ==executed in 1649==."],
+      cmp:[{h:"cavaliers",t:"The **Cavaliers** are the king's army."},
+           {h:"roundheads",t:"The **Roundheads** are Parliament's army, led by the Puritan **Oliver Cromwell**."}],
+      steps:["**Interregnum, 1649 to 1660**, Latin for *between the reigns*. Cromwell refuses the title king and takes **Lord Protector**.",
+             "Cromwell dies, his son cannot hold power, and Parliament and the public feel guilty about killing their king.",
+             "==1660, the Restoration==: Parliament asks Charles I's son to return. **Charles II** reigns 1660 to 1685."],
+      notes:[{k:"warn",t:"Chart trap: some sources date Charles II from ==1649==. !!The king is dead, long live the king!!: the royal line has no gap, so he was king the moment his father died, even though he held no power until 1660."}],
+      terms:["divine right","Magna Carta","Rump Parliament","Cavaliers","Roundheads","Oliver Cromwell","Interregnum","Lord Protector","Restoration"] },
+
+    { w:3, t:"James II and the Glorious Revolution",
+      p:["Charles II dies 1685 and his brother **James II** (formerly the **Duke of York**, proprietor of New York) takes over. With his first wife **Anne Hyde** he had two Protestant daughters, **Mary** and **Anne**. He then married **Mary of Modena**, a Catholic, and converted himself. Parliament waited, because ==Protestant Mary would inherit==.",
+         "Then Mary of Modena bore a son, **James Francis Edward**, who would be raised Catholic. !!That birth, not the marriage or the conversion, is what turned Parliament.!! James considers raising an army, thinks better of his father's fate, and flees to France: the ==Glorious Revolution, 1688==, the bloodless revolution."],
+      steps:["**Mary II** and **William of Orange** rule as **joint sovereigns**. William is Dutch and could never be king in his own right; Mary holds the claim.",
+             "Mary dies 1694, William rules alone to 1702, then **Anne**.",
+             "==Anne dies 1714 without heirs. The Stuart line ends== and the crown passes to the **Hanoverians**: George I, George II, and George III, king during the Revolution."],
+      terms:["James II","Anne Hyde","Mary of Modena","James Francis Edward","Glorious Revolution","joint sovereigns","William of Orange","Hanoverians"] },
+
+    { w:3, t:"Restoration colonies: New York, New Jersey, Carolina",
+      p:["Exiled in France during the Civil War, the Stuarts ran up enormous debts. Charles II and James paid them back with **land in America**. A **proprietor** owns a colony because the Crown gave it to him. The Restoration colonies are ==New York, New Jersey, Carolina and Pennsylvania==, all under Charles II."],
+      steps:["**New York, 1664.** Dutch **New Netherland** (New Amsterdam on Manhattan) is handed to **James, Duke of York**, who takes it with little fighting. His method: destroy every Dutch land title and reissue an identical English one. ==Nobody loses land; the only change is that property taxes now flow to England.== Dutch law and religion stay (the **Duke's Laws**). !!He did not encourage immigration, so New York stayed a backwater.!!",
+             "**New Jersey, 1664.** The Duke of York ==owed money to Sir George Carteret==, so he split New Jersey off and gave it to him (with Berkeley). They aggressively recruited settlers, and it worked, because the farmland is excellent. The Garden State.",
+             "**Carolina, 1663.** Its constitution was written by the philosopher **John Locke**. It splits in ==1729==: North Carolina is **tobacco** country tied to Virginia; South Carolina is **rice**."],
+      notes:[{k:"ok",t:"The **Middle Colonies** are New York, New Jersey, Pennsylvania and eventually Delaware, coming together around 1664."}],
+      terms:["proprietor","New Netherland","Duke of York","Duke's Laws","George Carteret","John Locke","1729","Middle Colonies"] },
+
+    { w:3, t:"Pennsylvania, Delaware, and Georgia (not a Restoration colony)",
+      p:["**William Penn** the Elder backed Parliament, switched to the monarchy, and became unwelcome in England, so the family moved to France. There Penn the Younger and the future Charles II were drinking companions.",
+         "**Quakers** were despised in England for **egalitarianism**: everyone equal before God, men and women, Africans and Native Americans, nobles and commoners. In a rigidly hierarchical England that was intolerable. They dressed plainly and called each other brother and sister."],
+      steps:["No church, a **meeting house**. No altar, no crucifix, ==no formal clergy==. The closest thing is a **fellow traveler**, a discussion leader who moves between meeting houses, still equal to everyone else.",
+             "Penn the Younger finds God and quits drinking. The Penn family had lent the Stuarts enormous sums, so when he asks for a colony, ==Charles II grants the land and squares the debt==. **Pennsylvania, 1681**.",
+             "Penn learned Native languages, wrote fair treaties, and ==purchased land rather than seizing it==. Quakers are **pacifists**. Religious diversity flourished, immigration surged, and Native tribes moved in because they were treated better.",
+             "!!Success undermined the Quakers!!: non-Quakers poured in and the Quakers lost political control of their own colony. Non-Quakers would fight; Quakers would not.",
+             "**Pennsylvania Dutch** are German, from *Deutsch*. German language and culture dominated the region until the anti-German waves of the two world wars."],
+      cmp:[{h:"delaware",t:"**Delaware** was part of Pennsylvania ==until 1704==. Broke away because ==it grows tobacco== and has more in common with the Chesapeake. Geographically Middle Colonies, economically Chesapeake."},
+           {h:"georgia, 1732",t:"**Georgia** is !!not a Restoration colony!!. A **buffer** between South Carolina and Spanish Florida, settled by **debtors** from prison on two conditions: ==never return to England, and join the militia==. First leader **James Oglethorpe**, a British Army officer."}],
+      terms:["William Penn","Quakers","egalitarianism","meeting house","fellow traveler","pacifists","Pennsylvania Dutch","Delaware","Georgia","James Oglethorpe"] },
+
+    { w:3, t:"Mercantilism",
+      p:["**Mercantilism** is an economic theory in which European governments **control trade**. Four parts, and the exam likes the second and fourth."],
+      steps:["Acquire **gold and silver** (**specie**).",
+             "**Finite wealth**: there is a fixed amount of gold in the world, so ==one country's gain is automatically another's loss==.",
+             "A **favorable balance of trade**: ==sell more in money terms than you buy==, so specie flows into your treasury rather than out.",
+             "==Colonies exist to enrich the mother country and to provide captive markets.=="],
+      p2:["The loop: colonies supply raw materials → the mother country manufactures → goods sell at home, then to the colonies, then the surplus overseas. A **captive market** (a closed market) means ==no other nation may trade directly with your colonies==, and colonies may not trade with another empire's colonies. Everything routes through the mother country."],
+      cmp:[{h:"revenue tariff",t:"A **revenue tariff** charges foreigners for access and keeps the market competitive. A $2 tax lifts the $8 British good to $10, level with the American one."},
+           {h:"protectionist tariff",t:"A **protectionist tariff** drives the foreign product out entirely. A $3 tax puts the British good at $11, so buyers choose American. ==The difference is the goal, not the mechanism.=="}],
+      notes:[{k:"ex",t:"**Command economy**: government decides what is produced, how much, at what price and wage (China, North Korea, the USSR). **Market economy**: markets decide; the US, even with a larger federal role over time. High supply and low demand drop prices; high demand and low supply raise them."}],
+      terms:["mercantilism","specie","finite wealth","favorable balance of trade","captive market","revenue tariff","protectionist tariff","command economy","market economy"] },
+
+    { w:3, t:"The Navigation Acts",
+      p:["Mercantilism is theory; the Navigation Acts are the law that enforces it. The pattern to hold: ==ships, then goods, then ports, then enforcement, then manufacturing==."],
+      steps:["**1651**: all trade to and from England or the colonies moves on ==English ships==. Aimed squarely at the **Dutch**, who dominated Atlantic commerce.",
+             "**1660**: **enumerated goods** (tobacco, sugar, cotton, later rice, indigo, and naval stores like tar and pitch) ==may only be exported to England or another English colony==.",
+             "**1663, the Staple Act**: all European goods bound for the colonies ==pass through English ports first==, get taxed, then cross the Atlantic.",
+             "**1673**: duties on goods traded ==between colonies==, plus customs regulations against smuggling.",
+             "**1696**: royal customs officials in the colonies and **vice-admiralty courts** to try smugglers ==without juries==.",
+             "**Wool Act 1699, Hat Act 1732, Iron Act 1750**: one principle, ==manufacturing happens in the mother country==. The Iron Act lets colonies ship raw iron to England but !!not build ironworks!!."],
+      notes:[{k:"warn",t:"Why juryless courts: **jury nullification**. A smuggler tried at home faced a jury of fellow smugglers, so no matter the evidence, not guilty. Trials moved to **Halifax, Nova Scotia** before naval officers. ==The record shows fair trials, not kangaroo courts== (a kangaroo court is one where the verdict is decided in advance). Colonists still saw it as losing an Englishman's right to a jury."},
+             {k:"ok",t:"Impact. England: stronger shipbuilding, a larger Royal Navy, guaranteed markets. Colonists: restricted trade, discouraged manufacturing, widespread smuggling, resentment at being a source of raw materials. ==The acts did not cause the Revolution; they planted the seed.== Perfect mercantilism never existed: if England did not want a commodity, nobody cared where it went."}],
+      terms:["Navigation Acts","enumerated goods","Staple Act","vice-admiralty courts","jury nullification","Wool Act","Hat Act","Iron Act","smuggling"] },
+
+    { w:2, t:"The Atlantic trade and the Middle Passage",
+      p:["!!\"Triangular trade\" is mostly a misnomer.!! Most Atlantic trade was **shuttle trade**: raw materials out, manufactured goods back. ==Only the slave trade is genuinely triangular==, and it is a **rum trade**: slave coast → Caribbean (enslaved people) → American colonies (molasses and sugar) → distilled into rum → rum and goods back to the slave coast. Colonists drank far more per person than people do today.",
+         "**Middle Passage: six to eight weeks.** Captains ==budgeted for losing at least 20% of their human cargo==. Shackled below deck, poor food, no medical care. ==Disease was colorblind: crews died at about the same rate as the enslaved.== Men were brought up in groups and forced to dance at gunpoint as exercise; women and children were kept on deck and abused; the sick were thrown overboard; suicide was common."],
+      notes:[{k:"warn",t:"On arrival in the Caribbean conditions improve sharply: cleaning, clothing, shelter, medicine, decent rations. Not mercy. ==Fattening up for sale.== Then sale, and a lifetime in the Chesapeake or South Carolina."},
+             {k:"ok",t:"Two myths. English slavers did not march inland and kidnap people; the trade ran through **African coastal kings** who consolidated power on its profits. And the trade did not run from the American colonies to Britain. Most enslaved Africans went to ==Brazil and the Caribbean==, not British North America."},
+             {k:"ex",t:"Later landmarks: ==1781== the trade to North America stops (Revolutionary War, British blockade). ==1808== the United States ends the international trade, a date set by compromise at the Constitutional Convention. !!That does not end slavery!!, because the domestic slave market was already self-sustaining."}],
+      terms:["shuttle trade","triangular trade","rum trade","Middle Passage","coastal kings","1808"] },
+
+    { w:2, t:"Instability, 1675 to 1676",
+      p:["Two crises in back-to-back years, one north and one south. Both end with English control consolidated."],
+      cmp:[{h:"king philip's war, new england",t:"A coalition of tribes (**Pokanokets, Narragansetts, Nipmucks**) under **King Philip** (**Metacom**) attacks New England settlements, 1675 to 1676. ==About 10% of the able-bodied white male population of New England was killed or wounded.== The English win; after this there is no question they are in New England to stay."},
+           {h:"bacon's rebellion, virginia",t:"**Nathaniel Bacon**, 1676. Frontier settlers in the west are under Native attack and want militia. **Governor William Berkeley** and the eastern planters refuse, ==because it costs money==. Bacon raises his own army; Berkeley declares him an enemy of the colony; Bacon marches on **Jamestown**, fighting Natives to the west and colonial forces to the east. It ends because ==Bacon dies of dysentery==."}],
+      notes:[{k:"ok",t:"The outline's takeaway on Bacon: a settler-Native conflict that turned into ==a political struggle between dissatisfied colonists and the governor==. It exposed tensions between rich and poor colonists and ==pushed planters toward enslaved labor== instead of restless ex-servants."}],
+      terms:["King Philip","Metacom","Pokanokets","Nathaniel Bacon","William Berkeley","dysentery"] },
+
+    { w:2, t:"From the colonial wars to 1763",
+      p:["**King William's War** (==1689 to 1697==), **Queen Anne's War** and **King George's War** were all attempts to settle who controls North America, Britain or France. ==All three were inconclusive.== Britain's only real gain from King William's War was **Acadia** and the port of **Port Royal**. The **French and Indian War** (Seven Years' War) is conclusive: ==France is thrown out of North America==. A global conflict, mostly fought in North America; arguably the real World War I."],
+      steps:["Two things arrive together in **1763**: the French are no longer a threat, so ==colonists neither want nor need the British army==, while Britain wants it there to control them.",
+             "Britain won a huge war and is **broke**. From about 1689 to 1763 it could not enforce the Navigation Acts (**salutary neglect**), so the colonies did as they pleased.",
+             "Britain announces enforcement and that the colonies will pay their share. Colonial answer: ==no taxation without representation==. What they really wanted was **limited local self-government**, more power to colonial legislatures, not seats in Parliament."],
+      notes:[{k:"ex",t:"Where it leads: the **Townshend duties** taxed British paint, glass, lead and tea. Enumerated goods, so colonists could only buy them from England, which then taxed them. Britain repealed all but the tea duty, deliberately, to keep the principle. Cheap legal East India tea then undercut the smuggled tea the colonial elite profited from, and Boston answered in December 1773. Nobody believed the men in feathers were Mohawks."}],
+      terms:["King William's War","Acadia","Port Royal","French and Indian War","salutary neglect","no taxation without representation"] },
+
+    { w:2, t:"Imperial reorganization: the Dominion of New England",
+      p:["The push for royal control does not start in 1763; it goes back to **James II**, who believed the colonies had far too much autonomy. In ==1686== he revoked the New England charters and merged the region into the **Dominion of New England** under governor **Edmund Andros**. The Puritans hated him.",
+         "The instant New England heard of the Glorious Revolution, the Puritans ==overthrew Andros, dissolved the Dominion== and swore allegiance to William and Mary. !!William and Mary did not restore the Dominion!!, but they still thought the colonies too independent, so they restored the charters while ==steadily increasing royal authority== over time. Proprietary colonies keep drifting into **royal colonies**."],
+      terms:["Dominion of New England","Edmund Andros","1686","royal colonies"] },
+
+    { w:2, t:"Colonial political structures",
+      p:["A straight mapping from the English system, and every colony had a legislative assembly."],
+      cmp:[{h:"king → governor",t:"The **governor** is the king's voice in the colony."},
+           {h:"house of lords → royal council",t:"The **Royal Council** advises the governor."},
+           {h:"house of commons → legislative assembly",t:"The **legislative assembly** is the elected house."}],
+      notes:[{k:"ok",t:"The point of the section: today we expect government to *do* things (schools, roads, police). Colonial assemblies mostly existed to ==stop the governor and council from doing things to the colonists==. They acted negatively. And the average colonist rarely touched that top layer; ==politics was local==. Over time **proprietary colonies** drifted into royal colonies as the Crown reasserted control."}],
+      terms:["governor","Royal Council","legislative assembly","proprietary colonies"] },
+
+    { w:2, t:"New France and New Spain",
+      p:["Both empires held enormous claims with few people in them. What differs is the unit of settlement."],
+      cmp:[{h:"new france",t:"Claimed the **Great Lakes** and the **Mississippi Valley**, fought the **Iroquois Confederacy**, and founded ==New Orleans in 1718==. Clustered on the St. Lawrence, almost nobody down the Mississippi. Held together by **trading outposts** (a fort, a small garrison, trade in **furs**); ==forts along the Mississippi were the glue of empire==. ==No sprawling farm frontier pushing onto Native land, so relations with Native people stayed comparatively good.== Trappers got European goods; the French got pelts."},
+           {h:"new spain",t:"The Southwest: Mexico, Texas, Arizona, New Mexico, into Colorado and Utah, southern California and southern Nevada. The unit is the **mission**, three things at once: ==a trading post, a military fortification, and a church==. Spreading Catholicism was a real driver, not cover. The famous one is the **Alamo**."}],
+      steps:["**New Orleans** is the key: whoever controls it controls America's ability to expand west, because everything on the river passes through it.",
+             "**Treaty of Paris, 1763**: Spain takes Louisiana and New Orleans after the French and Indian War.",
+             "**Treaty of San Ildefonso**: Napoleon forces Spain to hand Louisiana back to France.",
+             "Livingston and Monroe are sent to buy a strip around New Orleans; Napoleon offers all of Louisiana. They had no authority to double the country and did it anyway."],
+      notes:[{k:"ok",t:"Slavery in the other empires: Africans and Native Americans were enslaved in New France, but ==Louisiana stayed a society with slaves, never a slave society==. Spanish America was a slave society, and Spanish authorities in Florida ==offered freedom to runaway slaves who converted to Catholicism== (1693)."}],
+      terms:["Great Lakes","Iroquois Confederacy","trading outpost","furs","New Orleans","mission","Alamo","Treaty of Paris, 1763","San Ildefonso"] },
+
+    { w:1, t:"Church and state, the long view",
+      p:["The Puritan job of government and the job of the church were the same job, building heaven on earth, so they could not be separated. \"Separation of church and state\" is !!not in the Constitution!!; the phrase is from a **Jefferson** letter. What is in it is the **First Amendment**: the **Establishment Clause** (no national or state church) and the **Free Exercise Clause** (government cannot stop your practice unless it breaks the law).",
+         "The Declaration reads religiously: rights come from the Creator, not from kings, and government draws its power from the consent of the governed. \"Pursuit of happiness\" is **Locke's** property with the word swapped."],
+      terms:["Establishment Clause","Free Exercise Clause","consent of the governed"] }
+  ],
+
+  timeline:[
+    {y:"1619",e:"slavery",t:"About 20 Africans traded for supplies at Fort Monroe, Hampton, Virginia. Indentured, by force, not enslaved for life."},
+    {y:"1625",e:"crown",t:"Charles I takes the throne. Reckless spending, empty treasury, taxes without Parliament."},
+    {y:"1642",e:"crown",t:"Civil war. Cavaliers for the king, Roundheads for Parliament under Cromwell."},
+    {y:"1649",e:"crown",t:"Charles I executed. Interregnum begins; Cromwell rules as Lord Protector, not king."},
+    {y:"1650s",e:"slavery",t:"Labor shortage in the Chesapeake as fewer indentured servants arrive. The switch to slavery begins here."},
+    {y:"1651",e:"trade",t:"First Navigation Act: all trade on English ships. Aimed at the Dutch."},
+    {y:"1660",e:"crown",t:"Restoration. Charles II reigns to 1685. Same year: enumerated goods may go only to England or an English colony."},
+    {y:"1663",e:"colonies",t:"Carolina chartered, constitution by John Locke. Staple Act: European goods pass through English ports first."},
+    {y:"1664",e:"colonies",t:"Duke of York takes New Netherland. New Jersey split off for Carteret. The Middle Colonies come together."},
+    {y:"1670s",e:"slavery",t:"Large-scale importation of enslaved Africans begins, through Charles Town from Barbados."},
+    {y:"1673",e:"trade",t:"Duties on goods traded between colonies, plus new customs rules against smuggling."},
+    {y:"1675",e:"wars",t:"King Philip's (Metacom's) War in New England, to 1676. One in ten able-bodied white men killed or wounded."},
+    {y:"1676",e:"wars",t:"Bacon's Rebellion in Virginia. Bacon marches on Jamestown, then dies of dysentery."},
+    {y:"1681",e:"colonies",t:"Pennsylvania granted to William Penn, squaring the Penn family's loans to the Stuarts."},
+    {y:"1685",e:"crown",t:"James II, the former Duke of York."},
+    {y:"1686",e:"crown",t:"Dominion of New England under Edmund Andros; the charters revoked."},
+    {y:"1688",e:"crown",t:"Glorious Revolution. James flees to France; William and Mary joint sovereigns. Puritans overthrow Andros."},
+    {y:"1689",e:"wars",t:"King William's War, to 1697. Inconclusive; Britain gains Acadia and Port Royal. Salutary neglect runs from here to 1763."},
+    {y:"1696",e:"trade",t:"Royal customs officials in the colonies; vice-admiralty courts try smugglers without juries."},
+    {y:"1699",e:"trade",t:"Wool Act. No export of colonial wool."},
+    {y:"1702",e:"crown",t:"Anne takes the throne."},
+    {y:"1704",e:"colonies",t:"Delaware separates from Pennsylvania. Tobacco country, Chesapeake economy."},
+    {y:"1710",e:"slavery",t:"One in five people in the Chesapeake is African. Chesapeake and South Carolina are slave societies."},
+    {y:"1714",e:"crown",t:"Anne dies without heirs. Stuart line ends; the Hanoverians (George I, II, III) begin."},
+    {y:"1718",e:"colonies",t:"France founds New Orleans. Whoever holds it controls the river and the way west."},
+    {y:"1729",e:"colonies",t:"Carolina splits. North Carolina is tobacco, South Carolina is rice."},
+    {y:"1732",e:"colonies",t:"Georgia founded under Oglethorpe as a buffer against Spanish Florida. Not a Restoration colony. Hat Act the same year."},
+    {y:"1750",e:"trade",t:"Iron Act. Raw iron to England, no colonial ironworks."},
+    {y:"1763",e:"wars",t:"French and Indian War ends. France out of North America; Spain takes Louisiana. Britain is broke and starts enforcing."}
+  ],
+
+  tests:[
+    { id:"a", name:"test a", qs:[
+      { q:"During the Interregnum, Oliver Cromwell governed England under the title",
+        opts:["King of England","Lord Protector","Prime Minister","Speaker of the House of Commons"], a:1,
+        why:"He refused the crown, which is the whole point of the Interregnum: between the reigns, no king. \"Lord Protector\" is the exact title." },
+      { q:"Why do some charts date Charles II's reign from 1649 rather than 1660?",
+        opts:["Charles I abdicated in his favor in 1649","The royal line has no gap, so he was king the moment his father died","Parliament secretly recognized him in 1649","Cromwell governed in his name"], a:1,
+        why:"\"The king is dead, long live the king.\" He held no power until the 1660 Restoration, which is why the class dates are 1660 to 1685. Cromwell governed against him, not for him." },
+      { q:"Parliament put up with James II's Catholicism until",
+        opts:["he married Mary of Modena","he converted to Catholicism himself","his son James Francis Edward was born","he dissolved Parliament"], a:2,
+        why:"The marriage and the conversion both came first and were tolerated because Protestant Mary would inherit. A Catholic male heir who would be raised Catholic ended the waiting." },
+      { q:"The Stuarts created proprietary colonies mainly to",
+        opts:["reward loyal Puritan allies","pay off debts run up in exile during the Civil War","relieve overcrowding in London","block French expansion inland"], a:1,
+        why:"Charles II and James paid their French-exile debts with land in America. Puritans were the other side of the Civil War, so rewarding them is backwards." },
+      { q:"When the Duke of York took New Netherland, Dutch landholders",
+        opts:["lost their land to English settlers","kept their land under reissued English titles, with property taxes now going to England","were deported to Holland","paid a doubled tax as a penalty"], a:1,
+        why:"Every Dutch title was destroyed and an identical English one issued for the same acreage. Nobody lost land; only the tax destination changed. Dutch law and religion stayed under the Duke's Laws." },
+      { q:"Compared with New Jersey, New York grew slowly because",
+        opts:["its soil was poor","the Dutch population resisted English rule","the Duke of York did not encourage immigration","it lacked a usable port"], a:2,
+        why:"Carteret and Berkeley recruited settlers hard for New Jersey's excellent farmland (the Garden State). The Duke did not, so New York stayed a backwater. The Dutch gave up without much fighting, so resistance is wrong." },
+      { q:"Barbados sent both younger sons and enslaved people to South Carolina because",
+        opts:["sugar prices had collapsed","a slave revolt had broken out","primogeniture left sons without land, and the island held more enslaved people than it needed","Spain threatened the island"], a:2,
+        why:"Fathers would not split holdings, so the island produced two surpluses: sons with no inheritance and enslaved people beyond its needs. Sugar was still hugely profitable, so a price collapse is wrong." },
+      { q:"Charles II granted William Penn land in America chiefly because",
+        opts:["the Penn family had lent the Stuarts large sums","Parliament demanded a home for Quakers","Penn's father had commanded royalist troops","Penn agreed to convert to the Church of England"], a:0,
+        why:"The grant squared the family's loans, helped by the drinking-buddy friendship in Paris. Penn's father actually backed Parliament first, so a royalist father is the trap." },
+      { q:"Which statement about Georgia is correct?",
+        opts:["It was the last of the Restoration colonies","It was founded in 1732 as a buffer against Spanish Florida and settled with debtors","Its first leader was a freed indentured servant","Settlers could return to England after seven years"], a:1,
+        why:"Georgia is not a Restoration colony; it is 1732, decades after Charles II. Oglethorpe was a British Army officer, and settlers had to promise never to return to England and to join the militia." },
+      { q:"Colonial legislative assemblies mostly existed to",
+        opts:["build roads, schools and defenses","stop the governor and Royal Council from acting against the colonists","advise the king on colonial policy","collect the Crown's taxes"], a:1,
+        why:"They acted negatively. Advising the governor was the Royal Council's job (the House of Lords equivalent), which is why advising the king is close but wrong." },
+      { q:"A \"slave society\" differs from a \"society with slaves\" in that",
+        opts:["it has a larger number of enslaved people","slavery is the basis of its labor system","slavery is written into its law code","its enslaved people are African rather than Native"], a:1,
+        why:"The test is whether the society runs on slavery. Numbers alone do not decide it; New England had enslaved people and stayed a society with slaves." },
+      { q:"The Africans who arrived in Virginia in August 1619 were",
+        opts:["sold as slaves for life","placed in indentured servitude, forced rather than voluntary","freed on landing","held by the Portuguese until ransomed"], a:1,
+        why:"They were taken off the Portuguese San Juan Bautista by two English privateers, traded for supplies, and indentured. Many were eventually free. The difference from English indentures was that it was forced." },
+      { q:"The Chesapeake shifted from indentured servants to enslaved Africans because",
+        opts:["planters decided Africans were better suited to tobacco","conditions in England improved and Chesapeake land was claimed, while labor demand held","Parliament outlawed new indentures","freed servants refused to work for wages"], a:1,
+        why:"Economic, not ideological: fewer volunteers to emigrate, no free land to pay freedom dues, and the same demand for labor. Nothing was outlawed." },
+      { q:"South Carolina's cash crops, in order of importance, were",
+        opts:["sugar, then rice","rice, then indigo","indigo, then tobacco","tobacco, then rice"], a:1,
+        why:"Rice first, because the enslaved West Africans knew how to grow it. Indigo second, on the higher ground rice could not use. South Carolina grew a little sugar, not much; sugar is the Barbados crop." },
+      { q:"Most Atlantic trade in the colonial period was",
+        opts:["triangular","shuttle trade: raw materials out, manufactured goods back","smuggling outside the Navigation Acts","run directly between the colonies and other empires"], a:1,
+        why:"\"Triangular trade\" is mostly a misnomer. Only the slave trade was genuinely triangular; everything else went out and back." },
+      { q:"During the Middle Passage, ship crews",
+        opts:["were largely spared the diseases that killed the enslaved","died at about the same rate as the enslaved people","were mostly African sailors","rarely lost more than a few men per voyage"], a:1,
+        why:"Disease was colorblind. Captains budgeted for losing at least 20% of their human cargo, and the crews died at roughly that rate too." },
+      { q:"Under mercantilism, \"one country's gain is another country's loss\" follows from the belief that",
+        opts:["colonies always resent the mother country","the world's wealth in gold and silver is finite","tariffs always reduce trade","manufacturing is more valuable than farming"], a:1,
+        why:"A fixed amount of gold in the world makes trade zero-sum. That is why a favorable balance of trade, selling more than you buy, matters so much." },
+      { q:"A protectionist tariff differs from a revenue tariff in its",
+        opts:["legal authority","goal: driving the foreign good out rather than charging for access","size, since revenue tariffs are always larger","target, since revenue tariffs apply only to colonies"], a:1,
+        why:"Same mechanism, different goal. A revenue tariff lifts the foreign price to level and keeps the market competitive; a protectionist one prices the foreign good out entirely." },
+      { q:"The Navigation Act of 1651 required that",
+        opts:["enumerated goods be sold only to England","all trade with England or its colonies move on English ships","European goods pass through English ports first","colonial hats not be exported"], a:1,
+        why:"1651 is ships, aimed at Dutch traders. Enumerated goods is 1660, the Staple Act (ports) is 1663, hats are 1732." },
+      { q:"England moved smuggling trials to juryless vice-admiralty courts because",
+        opts:["colonial courts were too slow","colonial juries of fellow smugglers acquitted no matter the evidence","the Crown wanted the fines for itself","colonial judges refused to apply the Navigation Acts"], a:1,
+        why:"Jury nullification. Trials moved to Halifax before naval officers, and the record shows they were fair trials, not kangaroo courts. Colonists still counted it as losing an Englishman's right to a jury." },
+      { q:"Bacon's Rebellion collapsed because",
+        opts:["Governor Berkeley's militia defeated Bacon outside Jamestown","Bacon died of dysentery","the Crown sent regular troops","Bacon's men were paid off with land"], a:1,
+        why:"Nothing military ended it. Bacon died of dysentery in 1676 and the rebellion fell apart with him." },
+      { q:"King Philip's War is remembered for",
+        opts:["ending Dutch power in New Netherland","killing or wounding about one in ten able-bodied white men in New England","forcing Virginia to raise a frontier militia","the first alliance between the Pequots and the English"], a:1,
+        why:"The number to know: about 10% of New England's able-bodied white male population, against a coalition of Pokanokets, Narragansetts and Nipmucks. King Philip is Metacom. Virginia and the militia question belong to Bacon's Rebellion." },
+      { q:"A Spanish mission in the Southwest was, at the same time,",
+        opts:["a trading post, a military fort and a church","a plantation, a court and a school","a fur post, a garrison and a Native village","a port, a customs house and a church"], a:0,
+        why:"Three things at once, and the church was a real driver, not cover for trade. The Alamo is the famous one. Fur posts and garrisons describe New France." },
+      { q:"Why did winning the French and Indian War push Britain and the colonies toward conflict?",
+        opts:["France stirred up colonial resentment","the French threat was gone so colonists no longer needed Britain's army, and Britain was broke","Britain gave the colonists seats in Parliament","the colonies were forced to pay for Louisiana"], a:1,
+        why:"Two things arrive together in 1763. Britain announces it will enforce the Navigation Acts it had ignored since 1689, and the colonies answer no taxation without representation." },
+      { q:"When news of the Glorious Revolution reached New England, the Puritans",
+        opts:["petitioned William and Mary to keep the Dominion","overthrew Edmund Andros and dissolved the Dominion of New England","declared independence from the Crown","asked James II to restore their charters"], a:1,
+        why:"They removed Andros at once and swore allegiance to William and Mary, who did not restore the Dominion but restored the charters while increasing royal authority over time." }
+    ]},
+
+    { id:"b", name:"test b", qs:[
+      { q:"In the English Civil War, the Roundheads were",
+        opts:["the king's army","Parliament's army, led by the Puritan Oliver Cromwell","Scottish troops fighting for Charles I","Irish Catholics allied with the Crown"], a:1,
+        why:"Cavaliers fought for the king; Roundheads for Parliament under Cromwell. Puritans held many Commons seats, which is why Parliament's side was the Puritan side." },
+      { q:"Parliament invited Charles II back in 1660 because",
+        opts:["Cromwell named him his successor","Cromwell's son could not hold power, and Parliament and the public felt guilty about killing their king","the army mutinied and demanded a king","France threatened to invade unless the Stuarts returned"], a:1,
+        why:"The Interregnum failed on succession and on conscience. Cromwell never named a Stuart heir." },
+      { q:"After Queen Anne died in 1714,",
+        opts:["the Stuart line ended and the crown passed to the Hanoverians","William of Orange ruled alone","James Francis Edward took the throne as James III","Parliament abolished the monarchy again"], a:0,
+        why:"Anne died without heirs, so the crown went to George I, then George II and George III, the king during the Revolution. William had died in 1702; James Francis Edward never reigned." },
+      { q:"New Jersey became a colony separate from New York because",
+        opts:["its Dutch settlers demanded self-rule","the Duke of York owed money to Sir George Carteret","Parliament ordered New York divided","its farmland was too valuable to leave under the Duke"], a:1,
+        why:"A debt, settled with land, exactly like the proprietorships themselves. The good farmland is why Carteret's colony grew, not why it was created." },
+      { q:"Carolina's founding constitution was written by",
+        opts:["William Penn","John Locke","Thomas Hobbes","George Carteret"], a:1,
+        why:"Locke, the political philosopher; the colony itself was chartered in 1663. Carteret is the New Jersey proprietor; Penn is Pennsylvania." },
+      { q:"South Carolina's rice was mainly sold",
+        opts:["to English textile mills","back into the Caribbean as food for enslaved people","to New England ports","to Spanish Florida"], a:1,
+        why:"Rice fed the Caribbean sugar islands' enslaved workforce. British textile mills bought the indigo, not the rice." },
+      { q:"In Quaker practice, a \"fellow traveler\" was",
+        opts:["an ordained minister","a discussion leader who moved between meeting houses, still equal to everyone else","a missionary sent to Native tribes","the elected head of a meeting"], a:1,
+        why:"Quakers had no formal clergy. God gave some people a talent for leading discussion, so they traveled between meetings, but egalitarianism meant no one outranked anyone." },
+      { q:"Delaware broke away from Pennsylvania because",
+        opts:["its settlers were not Quakers","it grew tobacco and had more in common with the Chesapeake","the Duke of York claimed it","Swedish settlers rejected English rule"], a:1,
+        why:"Geographically Middle Colonies, economically Chesapeake; it stayed part of Pennsylvania until 1704. Religion was not the split." },
+      { q:"Debtors settled in Georgia had to agree to",
+        opts:["convert to the Church of England","never return to England and serve in the militia","grow rice for the Crown","pay back their debts within ten years"], a:1,
+        why:"Georgia emptied the debtors' prisons and put a built-in military presence between South Carolina and Spanish Florida. Oglethorpe, an Army officer, led it." },
+      { q:"In a colony, the body that corresponded to the House of Lords was",
+        opts:["the governor","the Royal Council","the legislative assembly","the town meeting"], a:1,
+        why:"King → governor, House of Lords → Royal Council, House of Commons → legislative assembly. The council advised the governor." },
+      { q:"Large-scale importation of enslaved Africans into the mainland colonies began",
+        opts:["in 1619 at Jamestown","in the 1670s through Charles Town, from Barbados","in 1660 with the Navigation Acts","in 1710 in the Chesapeake"], a:1,
+        why:"1619 is the first recorded arrival, about 20 people. The volume comes half a century later, via South Carolina and the Caribbean. 1710 is when the Chesapeake reached one in five." },
+      { q:"Slavery concentrated Chesapeake wealth in fewer hands because",
+        opts:["enslaved labor was cheap to buy","the entry cost was high, so small planters had to sell to large ones","the Crown taxed small farms more heavily","tobacco could only be grown on large tracts"], a:1,
+        why:"Slavery was an expensive investment with a good long-term return. Small planters with a mortgage and no labor sold out, and the buyers were the big plantations." },
+      { q:"The United States ended the international slave trade in 1808, and slavery continued because",
+        opts:["the ban was never enforced","the domestic slave market was already self-sustaining","Southern states ignored federal law","smuggling replaced the legal trade"], a:1,
+        why:"Enslaved children were born into slavery, so the labor force grew without imports. The 1808 date came from a compromise at the Constitutional Convention." },
+      { q:"The overwhelming majority of enslaved Africans carried across the Atlantic went to",
+        opts:["British North America","Brazil and the Caribbean","New France","Spanish Florida"], a:1,
+        why:"The mainland numbers stayed small by comparison the whole time. The trade also never ran from the American colonies to Britain." },
+      { q:"In the one genuinely triangular leg of Atlantic trade, the American colonies contributed",
+        opts:["tobacco","rum distilled from Caribbean molasses","enslaved people","manufactured goods"], a:1,
+        why:"Slave coast to Caribbean (people), Caribbean to the colonies (molasses and sugar), distilled into rum, rum back to the slave coast. It is a rum trade." },
+      { q:"Enslaved Africans were cleaned, clothed, treated and fed on arrival in the Caribbean because",
+        opts:["island law required it","they were being fattened up for sale","the church demanded it","the crew had died and could no longer guard them"], a:1,
+        why:"Not mercy. The sharp improvement after the six-to-eight-week passage was about the price at auction." },
+      { q:"A \"favorable balance of trade\" means",
+        opts:["trading only with friendly nations","selling more in money terms than you buy, so specie flows in","buying raw materials cheaply","keeping tariffs low"], a:1,
+        why:"Sell more than you buy and gold flows into your treasury. The word to watch is money terms, not volume." },
+      { q:"Under mercantile theory a colony is a \"captive market\" because",
+        opts:["its people cannot leave","no other nation may trade with it directly; everything routes through the mother country","it must buy only manufactured goods","it pays a fixed annual tribute"], a:1,
+        why:"Colonies exist to enrich the mother country and to give it a closed market. Colonies could not trade with another empire's colonies either." },
+      { q:"The Staple Act of 1663 required that",
+        opts:["colonial staples be grown only for England","European goods bound for the colonies pass through English ports and be taxed first","all trade move on English ships","colonies stop trading with each other"], a:1,
+        why:"Ports. Ships is 1651, enumerated goods is 1660, duties between colonies is 1673." },
+      { q:"The Wool Act, Hat Act and Iron Act share which principle?",
+        opts:["raw materials must be shipped on English ships","manufacturing happens in the mother country, never in a colony that could compete","colonies pay for their own defense","luxury goods are taxed to fund the navy"], a:1,
+        why:"You never let a colony build a manufacturing base. The Iron Act says it exactly: ship raw iron to England, build no ironworks." },
+      { q:"Under the 1660 act, enumerated goods such as tobacco and sugar could be exported",
+        opts:["only to England or another English colony","only through Halifax","to any nation paying the duty","only on Dutch ships under license"], a:0,
+        why:"Named goods stay inside the empire. Halifax is where smuggling trials went after 1696, not a trade route." },
+      { q:"Bacon's Rebellion began because",
+        opts:["Bacon wanted to end indentured servitude","the governor refused to send militia against Native attacks on the frontier, since it cost money","Jamestown planters raised tobacco taxes","the Crown revoked Virginia's charter"], a:1,
+        why:"Frontier settlers in the west were under attack; Berkeley and the eastern planters would not pay for militia. Bacon raised his own army and was declared an enemy of the colony." },
+      { q:"French relations with Native peoples stayed comparatively good because",
+        opts:["the French paid for all land they used","New France had no sprawling farm frontier pushing onto Native land; it ran on fur trading outposts","the French converted whole tribes to Catholicism","French settlers outnumbered Native peoples"], a:1,
+        why:"Tiny population, trading posts instead of plantations. Trappers got European goods; the French got pelts. Purchasing land was Penn's approach, not the French one." },
+      { q:"After the French and Indian War, New Orleans and the Louisiana territory went to",
+        opts:["Britain","Spain, under the Treaty of Paris of 1763","the American colonies","France, under the Treaty of San Ildefonso"], a:1,
+        why:"Paris 1763 gives Louisiana to Spain. San Ildefonso is later, when Napoleon forces Spain to hand it back to France, before the Louisiana Purchase." },
+      { q:"King William's War, Queen Anne's War and King George's War were",
+        opts:["all decisive British victories","all inconclusive, though Britain gained Acadia and Port Royal in the first","fought mainly in the Caribbean","won by France until 1763"], a:1,
+        why:"Only the French and Indian War settled who controlled North America. King William's War ran 1689 to 1697, and Acadia plus Port Royal were its only real gain." }
+    ]}
+  ],
+};
+
+/* ═══ machinery ═════════════════════════════════════════════════════════ */
+const $=s=>document.querySelector(s);
+const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=s=>esc(s)
+  .replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>')
+  .replace(/==(.+?)==/g,'<mark class="hl">$1</mark>')
+  .replace(/!!(.+?)!!/g,'<span class="trap">$1</span>')
+  .replace(/\*(.+?)\*/g,'<i>$1</i>');
+
+const G={
+ flag:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>'
+};
+$("#cls").textContent=GUIDE.cls;
+$("#ttl").textContent=GUIDE.title;
+$("#due").textContent=GUIDE.due;
+document.title=GUIDE.title.toLowerCase();
+$("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true">'+
+  '<g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" '+
+  'stroke-linecap="round" stroke-linejoin="round" opacity=".97">'+(G[GUIDE.glyph]||G.flag)+'</g></svg>';
+$("#gly").querySelectorAll("path").forEach(p=>p.setAttribute("pathLength","1"));
+
+let riseN=0;
+const riseReset=()=>{riseN=0};
+const rise=n=>{if(!REDUCED){n.classList.add("rise");n.style.setProperty("--i",Math.min(riseN++,9))}};
+
+/* collapsible card shell */
+function cardShell(title,badge){
+  const card=el("div","card g");
+  card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+    '<button class="chead" aria-expanded="false"><span class="dot"></span><span class="ct"></span>'+
+    '<svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" '+
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>'+
+    '<div class="cbody"><div></div></div>';
+  card.querySelector(".ct").textContent=title;
+  const head=card.querySelector(".chead"),body=card.querySelector(".cbody");
+  if(badge){const b=el("span","w w"+badge);b.textContent=badge===3?"tested most":"tested";head.insertBefore(b,head.querySelector(".tw"))}
+  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+  return {card,head,body,inner:body.firstElementChild};
+}
+const callout=n=>{const c=el("div","callout "+n.k);
+  c.innerHTML='<span class="cl">'+({warn:"watch out",ex:"example",ok:"rule"}[n.k]||n.k)+'</span>'+fmt(n.t);return c};
+const stepList=arr=>{const ol=el("ol","steps");arr.forEach(s=>{const li=el("li");li.innerHTML='<span>'+fmt(s)+'</span>';ol.appendChild(li)});return ol};
+
+/* test map (outline) */
+(function(){
+  const host=$("#p-outline");
+  const h=el("div","sh");h.textContent="what the test rewards, heaviest first";host.appendChild(h);
+  if(GUIDE.top?.length){
+    const t=el("div","card g top");
+    t.innerHTML='<span class="spec" aria-hidden="true"></span><div class="chead"><span class="dot"></span>'+
+      '<span class="ct">start here</span></div><div class="cbody on"><div>'+
+      GUIDE.top.map(x=>'<p>'+fmt(x)+'</p>').join("")+'</div></div>';
+    rise(t);host.appendChild(t);
+  }
+  GUIDE.outline.slice().sort((a,b)=>b.w-a.w).forEach(s=>{
+    const {card,head,body,inner}=cardShell(s.t,s.w>=2?s.w:0);
+    s.p.forEach(x=>{const p=el("p");p.innerHTML=fmt(x);inner.appendChild(p)});
+    if(s.steps)inner.appendChild(stepList(s.steps));
+    if(s.p2)s.p2.forEach(x=>{const p=el("p");p.innerHTML=fmt(x);inner.appendChild(p)});
+    if(s.cmp){const g=el("div","cmp");if(s.cmp.length===3)g.style.gridTemplateColumns="1fr";
+      s.cmp.forEach(c=>{const d=el("div","callout ex");d.innerHTML='<span class="cl">'+esc(c.h)+'</span>'+fmt(c.t);g.appendChild(d)});inner.appendChild(g)}
+    if(s.notes)s.notes.forEach(n=>inner.appendChild(callout(n)));
+    if(s.terms){const box=el("div","terms");s.terms.forEach(t=>{const c=el("span","term");c.textContent=t;box.appendChild(c)});inner.appendChild(box)}
+    if(s.w===3){head.setAttribute("aria-expanded","true");body.classList.add("on")}
+    rise(card);host.appendChild(card);
+  });
+  if(GUIDE.key?.length){
+    const {card,head,body,inner}=cardShell("key to abbreviations",0);
+    const k=el("div","keyrow");GUIDE.key.forEach(([a,b])=>{const d=el("div");d.innerHTML='<b>'+esc(a)+'</b> '+esc(b);k.appendChild(d)});
+    inner.appendChild(k);rise(card);host.appendChild(card);
+  }
+})();
+
+/* timeline */
+(function(){
+  const host=$("#p-timeline");
+  const h=el("div","sh");h.textContent="in order. tap an era to filter";host.appendChild(h);
+  const eras=[["all","everything"],["crown","the crown"],["colonies","colonies"],["trade","trade law"],["wars","wars"],["slavery","slavery"]];
+  const bar=el("div","tlbar");
+  eras.forEach(([id,label],i)=>{const b=el("button","e-"+id);b.setAttribute("aria-pressed",String(i===0));
+    b.innerHTML=(id==="all"?"":'<span class="ed"></span>')+esc(label);b.onclick=()=>pick(id);bar.appendChild(b)});
+  host.appendChild(bar);
+  const card=el("div","tl g");card.innerHTML='<span class="spec" aria-hidden="true"></span>';
+  GUIDE.timeline.forEach(e=>{
+    const r=el("div","tr e-"+e.e);
+    r.innerHTML='<div class="ty">'+esc(e.y)+'</div><div class="tt">'+fmt(e.t)+'<span class="ec">'+esc(eras.find(x=>x[0]===e.e)[1])+'</span></div>';
+    card.appendChild(r);
+  });
+  rise(card);host.appendChild(card);
+  function pick(id){
+    bar.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.classList.contains("e-"+id))));
+    card.querySelectorAll(".tr").forEach(r=>r.classList.toggle("off",id!=="all"&&!r.classList.contains("e-"+id)));
+  }
+})();
+
+/* practice: two timed tests */
+(function(){
+  const host=$("#p-practice");
+  const h=el("div","sh");h.textContent="two tests. no stimulus, just the question";host.appendChild(h);
+  const intro=el("div","qcard g");
+  intro.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">how the real one runs</div>'+
+    '<div class="qt">25 questions, 17 minutes, no documents. Most questions come down to two close answers, and the explanation after each tells you which detail splits them. The clock starts on your first answer.</div>'+
+    '<div class="picker"></div>';
+  const picker=intro.querySelector(".picker");
+  GUIDE.tests.forEach((t,i)=>{const b=el("button");b.textContent=t.name+" · "+t.qs.length;b.setAttribute("aria-pressed","false");b.onclick=()=>start(i);picker.appendChild(b)});
+  rise(intro);host.appendChild(intro);
+  const stage=el("div");host.appendChild(stage);
+  const LIMIT=17*60; let timer=0,left=LIMIT,started=false,cur=-1;
+  const mmss=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+  const rot=(i,n)=>(i*3+1)%n;   /* deterministic option order, so the key never moves */
+  function stopClock(){clearInterval(timer);timer=0}
+  function start(i){
+    cur=i;stopClock();left=LIMIT;started=false;stage.innerHTML="";riseReset();
+    picker.querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-pressed",String(j===i)));
+    const T=GUIDE.tests[i];let score=0,done=0;const missed=[];
+    const bar=el("div","sbar g");bar.innerHTML='<span class="spec" aria-hidden="true"></span><span class="cl">'+esc(T.name)+'</span>'+
+      '<span class="sc">0 of '+T.qs.length+'</span><span class="clock">'+mmss(LIMIT)+'</span><button type="button">reset</button>';
+    const clock=bar.querySelector(".clock"),sc=bar.querySelector(".sc");
+    bar.querySelector("button").onclick=()=>start(i);
+    stage.appendChild(bar);
+    const tick=()=>{left--;clock.textContent=left<=0?"0:00":mmss(left);if(left<=60)clock.classList.add("low");if(left<=0)stopClock()};
+    const cards=[];
+    T.qs.forEach((q,n)=>{
+      const card=el("div","qcard g");cards.push(card);
+      card.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">question '+(n+1)+' of '+T.qs.length+'</div><div class="qt"></div>';
+      card.querySelector(".qt").textContent=q.q;
+      const k=rot(n,q.opts.length);
+      const order=q.opts.map((_,j)=>(j+k)%q.opts.length);   /* order[pos] = original index */
+      order.forEach((oi,pos)=>{
+        const b=el("button","opt");b.type="button";
+        b.innerHTML='<span class="k">'+"abcd"[pos]+'</span><span></span>';b.lastChild.textContent=q.opts[oi];
+        b.onclick=()=>{
+          if(card.classList.contains("done"))return;
+          card.classList.add("done");
+          if(!started){started=true;timer=setInterval(tick,1000)}
+          const hit=oi===q.a;if(hit)score++;else missed.push(n);done++;
+          card.querySelectorAll(".opt").forEach((x,p)=>{if(order[p]===q.a)x.classList.add("right");else if(p===pos)x.classList.add("wrong")});
+          const w=el("div","why"+(hit?"":" miss"));w.innerHTML='<span class="cl">'+(hit?"right, because":"the split")+'</span>'+esc(q.why);card.appendChild(w);
+          sc.textContent=score+" of "+T.qs.length;
+          if(done===T.qs.length)finish();
+        };
+        card.appendChild(b);
+      });
+      rise(card);stage.appendChild(card);
+    });
+    function finish(){
+      stopClock();
+      const r=el("div","result g");
+      const pct=Math.round(score/T.qs.length*100);
+      r.innerHTML='<span class="spec" aria-hidden="true"></span><div class="big">'+score+' of '+T.qs.length+'</div>'+
+        '<div class="sub">'+pct+'%. '+(missed.length?'Missed questions below; tap one to jump back to its explanation.':'Clean sheet.')+
+        ' Time used: '+mmss(Math.min(LIMIT,LIMIT-Math.max(left,0)))+' of 17:00.</div>'+
+        '<div class="miss"></div><button class="again" type="button">take it again</button>';
+      const m=r.querySelector(".miss");missed.forEach(n=>{const b=el("button");b.type="button";b.textContent="q"+(n+1);
+        b.onclick=()=>cards[n].scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"center"});m.appendChild(b)});
+      r.querySelector(".again").onclick=()=>start(i);
+      stage.appendChild(r);
+      r.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"center"});
+    }
+    bar.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});
+  }
+})();
+
+/* segmented control */
+(function(){
+  const tabs=[["outline","test map"],["timeline","timeline"],["practice","practice"]];
+  const seg=$("#seg"),ind=seg.querySelector(".ind");
+  tabs.forEach(([id,label],i)=>{const b=el("button");b.textContent=label;b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",String(i===0));b.onclick=()=>select(i);seg.appendChild(b)});
+  function select(i){
+    const btns=[...seg.querySelectorAll("button")];
+    btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
+    tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
+    move();scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
+  }
+  function move(){
+    const btns=[...seg.querySelectorAll("button")];
+    const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
+    const b=btns[i];if(!b)return;
+    ind.style.width=b.offsetWidth+"px";ind.style.transform="translateX("+(b.offsetLeft-2)+"px)";
+    document.documentElement.style.setProperty("--hh",$("#hdr").offsetHeight+"px");
+  }
+  addEventListener("resize",move);requestAnimationFrame(move);
+})();
+
+/* header state + pointer specular */
+(function(){
+  const hdr=$("#hdr");let raf=0;
+  addEventListener("scroll",()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)})},{passive:true});
+  if(matchMedia("(hover:hover)").matches&&!REDUCED){
+    addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".g");if(!c)return;
+      const r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")},{passive:true});
+  }
+})();
+</script>
+</body>
+</html>
