@@ -87,6 +87,29 @@ Plain `python3 -m http.server` does not honor `cleanUrls`, so extensionless
 links 404 locally while working fine in production. Either open the `.html`
 files directly, or run `vercel dev` to match production routing.
 
+## Before saying it is done
+
+Never report a guide as published on the strength of having written and pushed
+it. Verify, then say in one clause what was checked:
+
+- Fetch the deployed URL and confirm it returns 200 with the guide's actual
+  content, not the local file. Vercel takes about a minute, so wait and retry
+  rather than reporting success early.
+- For a practice-test PDF, confirm the page count and that the first page
+  renders.
+- Confirm the guide appears in both the `CLASSES` array and the `<noscript>`
+  list, since the site looks correct when only one of them is updated.
+
+If a check is not possible, say so plainly instead of implying it passed.
+
+## Before handing anything over
+
+Re-read the finished guide, page, or copy as a hostile critic. Name what is
+actually weak: buried lead, unmarked vocabulary, a wall of text where a
+timeline belongs, dim body text, anything a classmate landing cold would
+stumble on. Fix those things, then deliver the fixed version. Do not deliver
+the critique unless asked for it.
+
 ## History note
 
 Older commits read "Add files via upload" because guides were added through
