@@ -231,11 +231,50 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
   .glyph svg *{animation:none;stroke-dashoffset:0}
   *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
 }
+
+/* ═══════════ reading aids: skip link, scroll progress, print ═══════════ */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:12px;
+  background:var(--accent);color:#fff;font-weight:700;font-size:14px;letter-spacing:-.01em;
+  box-shadow:0 10px 28px rgba(0,0,0,.32);transition:top .24s cubic-bezier(.32,.72,0,1)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;border-radius:0 3px 3px 0;background:var(--accent);
+  box-shadow:0 0 12px color-mix(in srgb,var(--accent) 55%,transparent)}
+.upd{display:block;margin-top:6px;font-size:12px;opacity:.75}
+@media (prefers-reduced-motion:no-preference){#prog i{transition:width .09s linear}}
+@media print{
+  @page{margin:.6in}
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    --ink:#000!important;--ink2:#26262b!important;--ink3:#45454d!important;
+    --ground:#fff!important;--fill:rgba(0,0,0,.055)!important;--fill2:rgba(0,0,0,.03)!important;
+    --gloss:transparent!important;--rim:rgba(0,0,0,.2)!important}
+  #amb,#prog,.skipl,.seg,#seg,.ind{display:none!important}
+  html,body{background:#fff!important;color:#000!important;font-size:12pt}
+  *,*::before,*::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    box-shadow:none!important;text-shadow:none!important;filter:none!important;
+    animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+  .spec,.gloss,.rim{display:none!important}
+  header,#hdr{position:static!important;background:none!important;border:0!important;
+    padding:0 0 10px!important;margin-bottom:10px!important;border-bottom:1px solid #999!important}
+  .g,.card,.tl,.row,.ftable,section{background:#fff!important;border:1px solid #ccc!important;
+    color:#000!important}
+  .cbody,.ra,.sol>div,.cbody>div{grid-template-rows:1fr!important;height:auto!important;
+    max-height:none!important;overflow:visible!important}
+  .card,.row,.tl,.qitem,.ftable{break-inside:avoid;page-break-inside:avoid}
+  h1,h2,h3{break-after:avoid;page-break-after:avoid}
+  main,main *{color:#111!important}
+  .trap,.warn,.bad,.no{color:#b3261e!important}
+  .good,.yes{color:#14622a!important}
+  a{color:#000!important;text-decoration:none}
+  footer,footer *{color:#444!important}
+}
 </style>
 </head>
 <body>
 <div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
+<a class="skipl" href="#gmain">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
 <header id="hdr"><div class="wrap">
   <div class="hrow">
     <span id="gly" class="glyph" aria-hidden="true"></span>
@@ -248,13 +287,13 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
   <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
 </div></header>
 
-<main class="wrap">
+<main class="wrap" id="gmain" tabindex="-1">
   <section id="p-outline"></section>
   <section id="p-worked" class="hidden"></section>
   <section id="p-formulas" class="hidden"></section>
   <section id="p-practice" class="hidden"></section>
   <footer>study guide written by a student. not affiliated with the school.<br>
-    check anything that matters against your own notes.</footer>
+    check anything that matters against your own notes.<span class="upd">last updated sept 3, 2026</span></footer>
 </main>
 
 <script>
@@ -727,6 +766,14 @@ const stepList=arr=>{const ol=el("ol","steps");arr.forEach(s=>{const li=el("li")
       const r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")},{passive:true});
   }
 })();
+</script>
+<script>
+(function(){var b=document.querySelector("#prog i");if(!b)return;
+ var t=0;function u(){var d=document.scrollingElement||document.documentElement,
+ h=d.scrollHeight-d.clientHeight;
+ b.style.width=(h>4?Math.max(0,Math.min(100,d.scrollTop/h*100)):0)+"%";}
+ addEventListener("scroll",function(){if(t)return;t=requestAnimationFrame(function(){t=0;u()})},{passive:true});
+ addEventListener("resize",u);u();})();
 </script>
 </body>
 </html>
