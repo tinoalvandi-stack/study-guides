@@ -336,7 +336,6 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
 
 <main class="wrap">
   <section id="p-outline"></section>
-  <section id="p-timeline" class="hidden"></section>
   <section id="p-practice" class="hidden"></section>
   <footer>study guide written by a student. not affiliated with the school.<br>
     check anything that matters against your own notes.</footer>
@@ -351,33 +350,33 @@ const GUIDE = {
   due:   "test tue 9/8",
 
   top:[
-    "==\"A society with slaves\" vs. \"a slave society.\"== By 1700 the Chesapeake and South Carolina ran on slavery.",
-    "==Civil War 1642–1646 → Interregnum 1649–1660 (no king) → Charles II 1660–1685 → James II → Glorious Revolution 1688.==",
-    "**Restoration colonies** under Charles II: New York 1664, New Jersey 1664, Carolina 1663, Pennsylvania 1681. !!Georgia (1732) is not one.!!",
+    "==\"A society with slaves\" vs. \"a slave society.\"== The Chesapeake and South Carolina became slave societies.",
+    "==Civil War → Interregnum (no king) → Restoration (Charles II) → James II → Glorious Revolution.==",
+    "**Restoration colonies** under Charles II: New York, New Jersey, Carolina, Pennsylvania. !!Georgia is not one.!!",
     "**Mercantilism** = colonies exist to benefit the mother country. **Navigation Acts** = the laws that enforce it.",
     "Sections follow the unit outline. Anything marked * was said in class but is not on the outline. Still fair game on the test."
   ],
 
   outline:[
-    { w:3, t:"I. The English Civil War 1642–1646 and the Interregnum 1649–1660",
+    { w:3, t:"I. The English Civil War and the Interregnum",
       sum:"England's king and Parliament went to war. * Over taxes and limits on the king's power. Parliament won and ran the country with no king for 11 years.",
       story:["* King **Charles I** believes in **divine right**: God made him king, so he answers to nobody.",
              "* He needs money. **Magna Carta** says taxes need Parliament's consent, and Parliament (full of Puritans) says: ==limit your power first==.",
              "* Charles refuses and dismisses Parliament (nicknamed the **Rump Parliament**).",
-             "**Civil War, 1642–1646**: conflict between Parliament and King Charles I. * King's side = **Cavaliers**. Parliament's side = **Roundheads**, led by the Puritan **Oliver Cromwell**.",
-             "* Charles loses. ==Executed, 1649.==",
-             "**Interregnum, 1649–1660**: ==England governed without a king==. * Cromwell runs it as **Lord Protector**, not king.",
-             "* Cromwell dies, his son can't hold it, and Parliament feels guilty about killing the king. 1660: they invite Charles' son back.",
-             "==Charles II, 1660–1685: the Restoration.=="],
+             "**Civil War**: conflict between Parliament and King Charles I. * King's side = **Cavaliers**. Parliament's side = **Roundheads**, led by the Puritan **Oliver Cromwell**.",
+             "* Charles loses and is ==executed==.",
+             "**Interregnum** (between the reigns): ==England governed without a king== for eleven years. * Cromwell runs it as **Lord Protector**, not king.",
+             "* Cromwell dies, his son can't hold it, and Parliament feels guilty about killing the king. They invite Charles' son back.",
+             "==Charles II takes the throne: the Restoration.=="],
       why:"* Charles II comes home owing money to everyone who helped him, and he pays them with American land. That is where the Restoration colonies come from.",
       terms:["Interregnum","divine right","Magna Carta","Rump Parliament","Cavaliers","Roundheads","Oliver Cromwell","Lord Protector","Restoration"] },
 
-    { w:3, t:"II. The Glorious Revolution of 1688",
+    { w:3, t:"II. The Glorious Revolution",
       sum:"Parliament threw out King James II. * He was Catholic; his Protestant daughter and her husband took the throne without a fight.",
-      story:["* Charles II dies. His brother **James II** (formerly the Duke of York, who took New York in 1664) becomes king. His daughters **Mary** and **Anne** are Protestant.",
+      story:["* Charles II dies. His brother **James II** (formerly the Duke of York, who took New York) becomes king. His daughters **Mary** and **Anne** are Protestant.",
              "* James marries a Catholic, **Mary of Modena**, and becomes Catholic himself. Parliament is angry but waits, because Mary is next in line.",
              "* Then James has a son, **James Francis Edward**, who will be raised Catholic. That's the breaking point.",
-             "Parliament deposes James. ==Glorious Revolution, 1688: overthrew King James II, strengthened parliamentary power.== * He sails away and gives up the throne.",
+             "Parliament deposes James. ==Glorious Revolution: overthrew King James II, strengthened parliamentary power.== * He sails away and gives up the throne.",
              "* **Mary II** and her husband **William III** (Dutch, her cousin) rule together: ==joint sovereigns==.",
              "* After Anne, no more Stuart monarchs. The Georges (George III during the Revolution)."],
       why:"James II had just clamped down on the colonies with the Dominion of New England. When he fell, New Englanders threw out his governor too (see XIII).",
@@ -385,24 +384,24 @@ const GUIDE = {
 
     { w:3, t:"III. The growth of Anglo-American settlements",
       sum:"A proprietorship is a colony owned by a person or group the king gave it to. * Charles II used them to pay his debts.",
-      story:["**Restoration colonies**, under Charles II (1660–1685). Each is a **proprietorship**: proprietor = owner. * Charles and James ran up debts in exile during the Civil War and paid them with American land.",
-             "**New York, Duke of York (1664).** * The Duke is Charles' brother. He takes Dutch New Netherland. **Duke's Laws**: the Dutch keep their land, but ==the taxes now go to England==. He doesn't encourage immigration.",
-             "**New Jersey, Sir George Carteret (1664).** * The Duke owes Carteret money, so he hands him New Jersey. Carteret recruits settlers; ==great farmland==, so it grows.",
-             "**Carolina (1663)** later splits in two (1729): North Carolina and South Carolina. * Constitution by **John Locke**. ==North = tobacco, tied to the Chesapeake; South = rice.==",
-             "**Pennsylvania, William Penn (Quakers), 1681.** Next card.",
-             "**Delaware**: part of Pennsylvania ==until 1704==. * It grows tobacco and fits the Chesapeake, so it splits off.",
-             "**Georgia, James Oglethorpe (1732).** !!Not a Restoration colony.!! Next card.",
+      story:["**Restoration colonies**, under Charles II. Each is a **proprietorship**: proprietor = owner. * Charles and James ran up debts in exile during the Civil War and paid them with American land.",
+             "**New York, Duke of York.** * The Duke is Charles' brother. He takes Dutch New Netherland. **Duke's Laws**: the Dutch keep their land, but ==the taxes now go to England==. He doesn't encourage immigration.",
+             "**New Jersey, Sir George Carteret.** * The Duke owes Carteret money, so he hands him New Jersey. Carteret recruits settlers; ==great farmland==, so it grows.",
+             "**Carolina** later splits in two: North Carolina and South Carolina. * Constitution by **John Locke**. ==North = tobacco, tied to the Chesapeake; South = rice.==",
+             "**Pennsylvania, William Penn (Quakers).** Next card.",
+             "**Delaware**: ==part of Pennsylvania at first==, then its own colony. * It grows tobacco and fits the Chesapeake, so it splits off.",
+             "**Georgia, James Oglethorpe.** !!Not a Restoration colony.!! Next card.",
              "* New York, New Jersey, Pennsylvania, Delaware together = the **Middle Colonies**."],
       terms:["proprietorship","Restoration colonies","Duke of York","Duke's Laws","George Carteret","John Locke","Delaware","Middle Colonies"] },
 
-    { w:3, t:"III.A.1.iv and III.C. Pennsylvania (1681) and Georgia (1732)",
+    { w:3, t:"III.A.1.iv and III.C. Pennsylvania and Georgia",
       sum:"Pennsylvania: a colony for Quakers. * Handed over to settle a debt. Georgia: founded fifty years after Pennsylvania. * A buffer against Spanish Florida.",
       story:["* **Quakers** are hated in England. **Egalitarians**: everyone equal in the eyes of God. Plain dress, \"Brother\" and \"Sister,\" no priests. A **fellow traveler** leads discussion but is still equal.",
              "* **William Penn**'s family lent the Stuarts a lot of money. Penn asks Charles II for a colony for Quakers; ==Charles gives him the land and the debt is settled==.",
              "* Penn learns Native languages, makes treaties, stays nonviolent. Religious diversity; even some Native Americans move in.",
              "* It works too well. !!Non-Quakers pour in and take over politics.!! Germans arrive: **Pennsylvania Dutch** = German.",
-             "**Georgia, James Oglethorpe (1732).** * A ==buffer between Spanish Florida and the English colonies==. Britain empties the debtors' prisons: land to farm in Georgia, but you ==promise never to return to England and you join the militia==. Oglethorpe was an ex-army officer."],
-      why:"Georgia is not a Restoration colony: 1732, decades after Charles II.",
+             "**Georgia, James Oglethorpe.** * A ==buffer between Spanish Florida and the English colonies==. Britain empties the debtors' prisons: land to farm in Georgia, but you ==promise never to return to England and you join the militia==. Oglethorpe was an ex-army officer."],
+      why:"Georgia is not a Restoration colony: it came decades after Charles II, under the Georges.",
       terms:["Quakers","egalitarians","fellow traveler","William Penn","Pennsylvania Dutch","Georgia","James Oglethorpe"] },
 
     { w:2, t:"IV. Colonial political structures",
@@ -419,9 +418,9 @@ const GUIDE = {
       story:["France claims the **Great Lakes** and the **Mississippi Valley**. * Huge land, tiny population.",
              "* Few farms. **Trading outposts**: a fort, a few soldiers, fur trade with Native trappers.",
              "Conflict with the **Iroquois Confederacy**.",
-             "French expansion: ==New Orleans, 1718==. * Everything on the river flows out through it. Whoever holds New Orleans controls expansion west.",
+             "French expansion: ==New Orleans==. * Everything on the river flows out through it. Whoever holds New Orleans controls expansion west.",
              "==Forts along the Mississippi became the glue of empire.==",
-             "* They lose it all in the French and Indian War. Treaty of Paris (1763): Spain gets Louisiana. Later Napoleon takes it back (San Ildefonso), then sells it to the U.S."],
+             "* They lose it all in the French and Indian War. Treaty of Paris: Spain gets Louisiana. Later Napoleon takes it back (San Ildefonso), then sells it to the U.S."],
       terms:["Great Lakes","Mississippi Valley","trading outposts","Iroquois Confederacy","New Orleans"] },
 
     { w:2, t:"VI. Spain's North American possessions",
@@ -432,7 +431,7 @@ const GUIDE = {
              "* The **Alamo** is a mission."],
       terms:["missions","Alamo"] },
 
-    { w:2, t:"VII. King Philip's War 1675–1676",
+    { w:2, t:"VII. King Philip's War",
       sum:"Native resistance to colonial expansion turned into war. New England won, at a heavy cost.",
       story:["* **King Philip** leads a coalition of tribes against New England settlements.",
              "==New England colonists were victorious over the **Pokanokets, Narragansett, and Nipmucks**.==",
@@ -440,7 +439,7 @@ const GUIDE = {
              "* After this, New England is in full control."],
       terms:["King Philip","Pokanokets"] },
 
-    { w:2, t:"VIII. Bacon's Rebellion (1676)",
+    { w:2, t:"VIII. Bacon's Rebellion",
       sum:"A frontier fight with Native Americans turned into a revolt against Virginia's governor.",
       story:["* **Nathaniel Bacon** lives on the western frontier. Native Americans are attacking farms there.",
              "* He asks **Governor William Berkeley** for militia. Berkeley and the rich eastern planters say no; it costs money.",
@@ -450,17 +449,17 @@ const GUIDE = {
       terms:["Nathaniel Bacon","William Berkeley","dysentery"] },
 
     { w:3, t:"IX. African slavery on the mainland",
-      sum:"The Chesapeake ran out of indentured servants and switched to enslaved Africans. By 1700 the Chesapeake and South Carolina ran on slavery.",
-      story:["==Labor shortage starting in the 1650s: fewer indentured servants (Chesapeake).== * The good land was gone and life in England had improved, so fewer people came over to work.",
+      sum:"The Chesapeake ran out of indentured servants and switched to enslaved Africans. The Chesapeake and South Carolina became slave societies.",
+      story:["==Labor shortage: fewer indentured servants (Chesapeake).== * The good land was gone and life in England had improved, so fewer people came over to work.",
              "Planters still needed workers. Slavery had been practiced in Europe (not England) for centuries, and ==European Christians believed enslaving heathen peoples was justifiable==.",
-             "* **1619**: the first 20 Africans arrive in the Chesapeake, taken off a Portuguese ship by pirates and traded for supplies. **Indentured servants** (forced), not slaves for life.",
+             "* The first 20 Africans arrive in the Chesapeake, taken off a Portuguese ship by pirates and traded for supplies. **Indentured servants** (forced), not slaves for life.",
              "==\"A society with slaves\"==: slavery exists but the economy doesn't depend on it. ==\"A slave society\"==: the economy runs on slave labor.",
-             "==Large-scale English importation of Africans: 1670s==, through the **Barbados** (Caribbean) slave trade. * Barbados was a rich sugar island with more slaves than it needed. Younger sons who got no land moved to South Carolina (**Charles Town**) and brought slaves with them.",
-             "==By 1700 Chesapeake and South Carolina = slave societies. By 1710 Africans = 20% of the Chesapeake population.==",
+             "==Large-scale English importation of Africans== begins, through the **Barbados** (Caribbean) slave trade. * Barbados was a rich sugar island with more slaves than it needed. Younger sons who got no land moved to South Carolina (**Charles Town**) and brought slaves with them.",
+             "==The Chesapeake and South Carolina become slave societies. Africans reach about a fifth (20%) of the Chesapeake population.==",
              "The rich got richer: the transition from indentured to enslaved labor ==increased the distance between richer and poorer planters==. * A slave cost a lot up front but paid off, because the children were born slaves. Small planters couldn't afford it and sold out to the big plantations.",
              "South Carolina developed a ==sugar/rice economy based mostly on skills brought in by enslaved Africans==. * The slaves knew how to grow **rice**; rice sold to the Caribbean as slave food. Rice first, indigo second, very little sugar.",
              "==Indigo flourished because of knowledge brought by West Indian slaves.== * A deep blue dye British textile makers bought."],
-      terms:["society with slaves","slave society","indentured servants","1670s","Barbados","rice","indigo"] },
+      terms:["society with slaves","slave society","indentured servants","Barbados","rice","indigo"] },
 
     { w:2, t:"X. Atlantic slave trade",
       sum:"Goods to Africa, people to the Americas, raw materials to Europe. The crossing is the Middle Passage.",
@@ -479,67 +478,41 @@ const GUIDE = {
              "* Example: colonial lumber → furniture made in England → sold in England, then the colonies, then overseas. England gets richer at every step.",
              "* Tariffs. **Protectionist**: price the foreign good above ours to drive it out. **Revenue**: price it equal and charge for access.",
              "* **Command economy** (government runs it: China, North Korea, USSR) vs. **market economy** (free markets: U.S.).",
-             "**Navigation Acts**: ==controlled colonial trade, benefited England==. * The rules: colonial goods ship on English ships (1651); the key crops, called **enumerated goods** (tobacco, sugar, later rice and indigo), sell only to England or English colonies (1660); anything from Europe stops in England first (1663); smugglers get tried in **vice-admiralty courts** with no jury (1696); no colonial wool exports (1699), no colonial hat making (1732), no ironworks (1750)."],
+             "**Navigation Acts**: ==controlled colonial trade, benefited England==. * The rules: colonial goods ship on English ships; the key crops, called **enumerated goods** (tobacco, sugar, later rice and indigo), sell only to England or English colonies; anything from Europe stops in England first; smugglers get tried in **vice-admiralty courts** with no jury; no colonial wool exports, hat making, or ironworks."],
       terms:["mercantilism","favorable balance of trade","trapped markets","Navigation Acts","enumerated goods","vice-admiralty courts"] },
 
     { w:2, t:"XII. Slaves in Spanish and French North America",
       sum:"Spain and France had slaves too. * Only Spain was a slave society.",
-      story:["==Spanish authorities in Florida in 1693 offered freedom to runaway slaves who would convert to Catholicism.==",
+      story:["==**Spanish Florida** offered freedom to runaway slaves who would convert to Catholicism.==",
              "Africans and Indians were held as slaves in New France, but ==Louisiana remained a society with slaves rather than a slave society==.",
              "* Spain was a slave society. New France never was."],
-      terms:["1693","Louisiana"] },
+      terms:["Spanish Florida","Louisiana"] },
 
     { w:2, t:"XIII. Imperial reorganization and war",
       sum:"The Crown tried to take back control of the colonies, and England and France started fighting over North America.",
       story:["==James II and his successors attempted to tighten the reins of government by reducing the colonies' political autonomy.==",
-             "**Dominion of New England (1686)**: James II merges the New England colonies under one governor, **Edmund Andros**. * The Puritans hate him.",
+             "**Dominion of New England**: James II merges the New England colonies under one governor, **Edmund Andros**. * The Puritans hate him.",
              "==The Glorious Revolution encouraged New Englanders to overthrow Governor Edmund Andros.== * William and Mary don't bring the Dominion back, but they keep pushing for more royal authority over time.",
-             "**King William's War (1689–1697)**: colonial conflict between England and France. * Three wars in a row (King William's, Queen Anne's, King George's), ==all inconclusive==. Britain gains **Acadia and Port Royal**.",
+             "**King William's War**: colonial conflict between England and France. * Three wars in a row (King William's, Queen Anne's, King George's), ==all inconclusive==. Britain gains **Acadia and Port Royal**.",
              "* The **French and Indian War** (Seven Years' War) settles it: ==France is kicked out of North America==. No French threat, so Americans no longer need England.",
              "* Britain is broke and had not been enforcing the Navigation Acts. After the war it says it will. ==Colonists say no.=="],
       terms:["Dominion of New England","Edmund Andros","King William's War","Acadia","Port Royal","French and Indian War"] }
   ],
 
-  timeline:[
-    {y:"1619",e:"slavery",x:1,t:"First 20 Africans in the Chesapeake, traded for supplies. Forced indentured servants, not slaves for life."},
-    {y:"1642",e:"crown",t:"English Civil War, to 1646. Parliament vs. King Charles I."},
-    {y:"1649",e:"crown",t:"Interregnum begins, to 1660: England without a king."},
-    {y:"1650s",e:"slavery",t:"Labor shortage: fewer indentured servants."},
-    {y:"1660",e:"crown",t:"Charles II, 1660–1685. Restoration colonies follow."},
-    {y:"1663",e:"colonies",t:"Carolina."},
-    {y:"1664",e:"colonies",t:"New York (Duke of York) and New Jersey (Sir George Carteret)."},
-    {y:"1670s",e:"slavery",t:"Large-scale English importation of Africans. Barbados slave trade."},
-    {y:"1675",e:"wars",t:"King Philip's War, to 1676. 10% of New England's able-bodied white men killed or wounded."},
-    {y:"1676",e:"wars",t:"Bacon's Rebellion. Bacon vs. Governor William Berkeley."},
-    {y:"1681",e:"colonies",t:"Pennsylvania, William Penn, Quakers."},
-    {y:"1686",e:"crown",t:"Dominion of New England."},
-    {y:"1688",e:"crown",t:"Glorious Revolution. James II overthrown."},
-    {y:"1689",e:"crown",x:1,t:"New Englanders overthrow Governor Andros; the Dominion ends."},
-    {y:"1689",e:"wars",t:"King William's War, to 1697. England vs. France."},
-    {y:"1693",e:"slavery",t:"Spanish Florida offers freedom to runaway slaves who convert to Catholicism."},
-    {y:"1700",e:"slavery",t:"Chesapeake and South Carolina = slave societies."},
-    {y:"1704",e:"colonies",t:"Delaware no longer part of Pennsylvania."},
-    {y:"1710",e:"slavery",t:"Africans = 20% of the Chesapeake population."},
-    {y:"1718",e:"colonies",t:"New Orleans founded."},
-    {y:"1729",e:"colonies",t:"South Carolina separate from North Carolina."},
-    {y:"1732",e:"colonies",t:"Georgia, James Oglethorpe."},
-    {y:"1763",e:"wars",x:1,t:"French and Indian War ends. French out; Spain takes Louisiana. Britain announces it will now enforce the Navigation Acts; colonists refuse."}
-  ],
-
   tests:[
     { id:"a", name:"test a", qs:[
-      { k:2, q:"Which pairing of colony, proprietor, and year is correct?",
-        opts:["New Jersey, William Penn, 1664","New York, Sir George Carteret, 1664","Carolina, proprietors, 1663","Pennsylvania, William Penn, 1664"], a:2,
-        why:"New York = Duke of York, 1664. New Jersey = Carteret, 1664. Pennsylvania = Penn, 1681. Only the Carolina line has every part right." },
-      { k:0, q:"The Interregnum is best described as",
-        opts:["1642–1646, Parliament at war with Charles I","1649–1660, England governed without a king","1660–1685, the reign of Charles II","1649–1660, Cromwell reigning as king"], a:1,
-        why:"Same dates as the last option, but Cromwell was Lord Protector, never king. 1642–1646 is the Civil War; 1660–1685 is the Restoration." },
+      { k:2, q:"Which pairing of colony and owner is correct?",
+        opts:["New Jersey: the Duke of York","New York: Sir George Carteret","Carolina: a group of proprietors","Pennsylvania: James Oglethorpe"], a:2,
+        why:"New York = Duke of York. New Jersey = Carteret. Pennsylvania = Penn. Carolina went to a group of proprietors." },
+      { k:0, q:"The Interregnum is best described as the period when",
+        opts:["Parliament was at war with Charles I","England was governed without a king","Charles II reigned after his return","Cromwell reigned as king"], a:1,
+        why:"Between the reigns: no king. Cromwell ran England as Lord Protector, never king. The war came before; Charles II's reign came after." },
       { k:0, x:1, q:"All of the following describe Georgia EXCEPT",
-        opts:["founded in 1732","led by James Oglethorpe","a Restoration colony under Charles II","settled partly with debtors who had to join the militia"], a:2,
-        why:"Charles II died in 1685. Georgia is 1732, so it is not a Restoration colony; the outline lists it outside the Restoration group even though the study guide's table lumps it in. The other three are true." },
+        opts:["led by James Oglethorpe","a buffer between Spanish Florida and the English colonies","a Restoration colony under Charles II","settled partly with debtors who had to join the militia"], a:2,
+        why:"Georgia came decades after Charles II, under the Georges. The outline lists it outside the Restoration group even though the study guide's table lumps it in. The other three are true." },
       { k:2, q:"Which statement about Delaware is accurate?",
-        opts:["part of New York until 1704","part of Pennsylvania until 1704","part of Maryland until 1729","a separate colony from its founding in 1664"], a:1,
-        why:"Delaware was part of Pennsylvania until 1704. 1729 is the Carolina split; 1664 is New York and New Jersey." },
+        opts:["part of New York before becoming its own colony","part of Pennsylvania before becoming its own colony","part of Maryland before becoming its own colony","a separate colony from the start"], a:1,
+        why:"Delaware started as part of Pennsylvania, then split off because its tobacco economy fit the Chesapeake." },
       { x:1, k:1, q:"The Duke's Laws in New York meant that",
         opts:["Dutch landholders lost their land to English settlers","Dutch landholders kept their land, but property taxes now went to England","Dutch law was replaced by English common law","Dutch settlers received seats in a new assembly"], a:1,
         why:"People kept their land; only the taxes changed direction. Nobody was dispossessed and no assembly was created." },
@@ -549,33 +522,33 @@ const GUIDE = {
       { k:3, q:"Louisiana under France is classified as",
         opts:["a slave society, like Spanish Florida","a society with slaves","a slave society, like the Chesapeake","neither, because slavery was illegal there"], a:1,
         why:"Africans and Indians were held as slaves in New France, but Louisiana remained a society with slaves rather than a slave society. Spain was the slave society." },
-      { k:2, q:"By 1710 Africans made up about what share of the Chesapeake population, and by what year had the Chesapeake and South Carolina become slave societies?",
-        opts:["10%; 1700","20%; 1700","20%; 1670","50%; 1710"], a:1,
-        why:"Twenty percent by 1710; slave societies by 1700. The 1670s is when large-scale importation began, not when the societies formed." },
-      { k:0, q:"Large-scale English importation of Africans began in the 1670s through which slave trade?",
+      { k:2, q:"Once the Chesapeake became a slave society, Africans made up about what share of its population?",
+        opts:["about one in ten","about one in five","about half","about three quarters"], a:1,
+        why:"Twenty percent, one in five. Still a minority of the population, but the economy ran on their labor: that is what makes it a slave society." },
+      { k:0, q:"Large-scale English importation of Africans into the mainland came through which slave trade?",
         opts:["the Barbados (Caribbean) slave trade","the Jamaica slave trade","the Brazilian slave trade","direct shipments from West Africa to Virginia"], a:0,
-        why:"Barbados. The outline names it specifically; the 1670s surge came via Barbados and Charles Town, not straight from Africa." },
+        why:"Barbados. The outline names it specifically; the surge came via Barbados and Charles Town, not straight from Africa." },
       { k:3, q:"Which combination for King Philip's War is correct?",
-        opts:["1675–1676; Pokanokets, Narragansett, Nipmucks; 10% of New England's able-bodied white men killed or wounded","1676; the Powhatan; 10% of New England's able-bodied white men killed or wounded","1675–1676; the Iroquois Confederacy; 20% killed or wounded","1689–1697; Pokanokets, Narragansett, Nipmucks; 10% killed or wounded"], a:0,
-        why:"Dates, tribes, and number all have to match. The Iroquois fought the French; the Powhatan are Virginia; 1689–1697 is King William's War." },
+        opts:["Pokanokets, Narragansett, Nipmucks; 10% of New England's able-bodied white men killed or wounded","the Powhatan; 10% of Virginia's able-bodied white men killed or wounded","the Iroquois Confederacy; 20% of New England's able-bodied white men killed or wounded","Pokanokets, Narragansett, Nipmucks; 10% of New England's enslaved population killed"], a:0,
+        why:"Tribes, place, and number all have to match. The Iroquois fought the French; the Powhatan are Virginia; the 10% is white men, not the enslaved." },
       { k:3, q:"According to the study guide, one significance of Bacon's Rebellion was that it",
         opts:["ended indentured servitude in Virginia","encouraged greater reliance on enslaved labor","forced Berkeley to cut tobacco taxes","led to the Dominion of New England"], a:1,
         why:"It exposed rich-poor tensions and encouraged greater reliance on enslaved labor. It did not end indentured servitude outright." },
       { x:1, k:3, q:"What ended Bacon's Rebellion?",
         opts:["Berkeley's militia defeated Bacon outside Jamestown","royal troops arrived from England","Bacon died of dysentery","Bacon was captured and hanged"], a:2,
-        why:"Nothing military ended it. Bacon died of dysentery in 1676 and the rebellion fell apart." },
-      { k:1, q:"Which of these happened between the Restoration (1660) and the Glorious Revolution (1688)?",
-        opts:["King William's War","the Dominion of New England","the English Civil War","the founding of Georgia"], a:1,
-        why:"Dominion of New England, 1686. King William's War starts 1689, the Civil War is 1642, Georgia is 1732." },
+        why:"Nothing military ended it. Bacon died of dysentery and the rebellion fell apart." },
+      { k:1, q:"Which of these happened while James II was king?",
+        opts:["King William's War","the creation of the Dominion of New England","the English Civil War","the founding of Georgia"], a:1,
+        why:"James II created the Dominion of New England. King William's War came after he fell; the Civil War was his father's; Georgia came under the Georges." },
       { k:0, q:"In New England, the Glorious Revolution led directly to",
         opts:["the creation of the Dominion of New England","the overthrow of Governor Edmund Andros","King Philip's War","the granting of Pennsylvania's charter"], a:1,
         why:"News of the revolution encouraged New Englanders to overthrow Andros. The Dominion came before the revolution, not after." },
       { x:1, k:2, q:"Why did Parliament wait to act against James II after he became Catholic?",
         opts:["his Protestant daughter Mary was next in line","Cromwell still controlled the army","William of Orange forbade it","James promised to convert back"], a:0,
         why:"Mary would inherit, so Parliament could wait him out. The Catholic son ended the waiting." },
-      { k:2, q:"New Orleans was",
-        opts:["founded in 1718 by Spain","founded in 1718 by France","founded in 1663 by France","founded in 1763 by Spain"], a:1,
-        why:"French expansion: New Orleans in 1718. Spain only takes Louisiana in 1763." },
+      { k:2, q:"New Orleans was founded by",
+        opts:["Spain, as part of its mission system","France, as part of its expansion down the Mississippi","England, after King William's War","the Dutch, as a trading post"], a:1,
+        why:"French expansion: New Orleans. Spain only gets Louisiana after the French and Indian War." },
       { k:1, q:"\"Forts along the Mississippi became the glue of empire\" describes",
         opts:["Spanish missions in Texas","French control of the Mississippi Valley","English forts built after King William's War","Dutch trading posts on the Hudson"], a:1,
         why:"That is the outline's line on French expansion. Spain used forts and missions in the Southwest, not the Mississippi." },
@@ -596,31 +569,31 @@ const GUIDE = {
         why:"Protectionist: price the foreign good above ours to drive it out. Raising it only to equal is the revenue tariff." },
       { x:1, k:3, q:"Under the Navigation Acts, enumerated goods such as tobacco and sugar",
         opts:["could be sold to any nation as long as English ships carried them","could be sold only to England or another English colony","were exempt from all duties","had to be manufactured in the colonies before export"], a:1,
-        why:"Named goods stayed inside the empire. English ships (1651) and enumerated goods (1660) are two separate rules." },
-      { k:2, q:"In 1693 Spanish authorities in Florida offered freedom to runaway slaves who would",
+        why:"Named goods stayed inside the empire. English ships and enumerated goods are two separate rules." },
+      { k:2, q:"Spanish authorities in Florida offered freedom to runaway slaves who would",
         opts:["join the militia and never return to English territory","convert to Catholicism","work seven years in the missions","return to Africa"], a:1,
         why:"Conversion to Catholicism was the condition. Militia service and never returning are Georgia's rules for debtors." },
-      { k:1, q:"King William's War (1689–1697) is best described as",
+      { k:1, q:"King William's War is best described as",
         opts:["a decisive English victory that removed France from North America","a colonial conflict between England and France","a war between New England and a Native coalition","the war in which Bacon marched on Jamestown"], a:1,
         why:"England vs. France in the colonies, and inconclusive. The decisive one is the French and Indian War; the Native coalition war is King Philip's." }
     ]},
 
     { id:"b", name:"test b", qs:[
-      { k:0, q:"Which Restoration colony was founded LAST?",
-        opts:["Pennsylvania","Carolina","New Jersey","New York"], a:0,
-        why:"Carolina 1663, New York and New Jersey 1664, Pennsylvania 1681." },
-      { k:3, q:"The English Civil War (1642–1646) was fought between",
+      { k:0, q:"Which Restoration colony was handed to a GROUP of proprietors rather than one person?",
+        opts:["Pennsylvania","Carolina","New Jersey","New York"], a:1,
+        why:"Carolina went to a group of proprietors. New York = the Duke of York, New Jersey = Carteret, Pennsylvania = Penn." },
+      { k:3, q:"The English Civil War was fought between",
         opts:["Parliament and King Charles I","Parliament and King James II","Cromwell and Charles II","Parliament and King Charles II"], a:0,
         why:"Charles I. James II is the Glorious Revolution; Charles II is the son Parliament brought back." },
       { x:1, k:3, q:"Which title did Oliver Cromwell hold during the Interregnum?",
         opts:["King","Lord Protector","Prime Minister","Duke of York"], a:1,
-        why:"Lord Protector, never king. The Interregnum itself is 1649–1660. Duke of York was James, Charles II's brother." },
-      { k:2, q:"The Glorious Revolution of 1688",
+        why:"Lord Protector, never king. The Interregnum is the gap between kings. Duke of York was James, Charles II's brother." },
+      { k:2, q:"The Glorious Revolution",
         opts:["overthrew Charles I and weakened Parliament","overthrew James II and strengthened Parliament","restored Charles II and strengthened the monarchy","overthrew James II and abolished the monarchy"], a:1,
         why:"James II out, Parliament stronger. The monarchy continued under William and Mary." },
       { x:1, k:0, q:"Which is true of New Jersey's origin?",
-        opts:["the Duke of York gave it to Sir George Carteret to settle a debt","Charles II gave it to William Penn to settle a debt","Carteret bought it from the Dutch","Parliament split it from New York in 1704"], a:0,
-        why:"The Duke owed Carteret money and handed him New Jersey. The Penn debt story is Pennsylvania; 1704 is Delaware." },
+        opts:["the Duke of York gave it to Sir George Carteret to settle a debt","Charles II gave it to William Penn to settle a debt","Carteret bought it from the Dutch","Parliament split it off from New York"], a:0,
+        why:"The Duke owed Carteret money and handed him New Jersey. The Penn debt story is Pennsylvania." },
       { x:1, k:0, q:"Carolina's constitution was written by",
         opts:["Sir George Carteret","John Locke","William Penn","James Oglethorpe"], a:1,
         why:"Locke. Carteret is New Jersey, Penn is Pennsylvania, Oglethorpe is Georgia." },
@@ -649,38 +622,38 @@ const GUIDE = {
         opts:["larger and farm-based","small trading outposts with a military presence, fur trade, and little agriculture","missions run by friars","sugar plantations"], a:1,
         why:"Low population, trading outposts and forts, pelts and fur trappers. Missions are Spain; sugar is the Caribbean." },
       { k:3, q:"Which statement about slavery in the French and Spanish colonies is accurate?",
-        opts:["New France was a slave society; Spanish Florida freed no slaves","Louisiana was a society with slaves; Spanish Florida in 1693 offered freedom to runaways who converted to Catholicism","neither held Africans or Indians as slaves","Spanish Florida offered freedom to runaways who joined its militia"], a:1,
+        opts:["New France was a slave society; Spanish Florida freed no slaves","Louisiana was a society with slaves; Spanish Florida offered freedom to runaways who converted to Catholicism","neither held Africans or Indians as slaves","Spanish Florida offered freedom to runaways who joined its militia"], a:1,
         why:"Both halves have to be right: Louisiana = society with slaves; Florida = freedom for converts. New France did hold Africans and Indians as slaves." },
       { x:1, k:2, q:"On the Middle Passage,",
         opts:["about 20% died and the crews were mostly spared","about 20% died and disease killed crew at a similar rate","about half died and the voyage took six months","deaths were rare because the enslaved were valuable cargo"], a:1,
         why:"Six to eight weeks, about 20% lost, and disease hit the crew too." },
       { k:1, q:"As a result of the slave trade, some African kings",
-        opts:["lost power as Europeans seized the coast","consolidated their political power from its profits","banned the trade after 1670","moved their capitals inland to escape it"], a:1,
+        opts:["lost power as Europeans seized the coast","consolidated their political power from its profits","banned the trade once they grew rich","moved their capitals inland to escape it"], a:1,
         why:"Outline wording: some African kings consolidated their political power as a result of the profits from the slave trade." },
       { x:1, k:0, q:"Enslaved people were cleaned, fed and clothed on arrival in the Caribbean because",
         opts:["Spanish law required it","they were being fattened up for sale","missionaries insisted on it","the crews had died on the voyage"], a:1,
         why:"Fattened up for sale. Not mercy, not law." },
-      { x:1, k:0, q:"Which act-and-year pairing is correct?",
-        opts:["1651: enumerated goods","1660: all trade on English ships","1663: European goods pass through English ports first","1696: the Wool Act"], a:2,
-        why:"1651 ships, 1660 enumerated goods, 1663 ports, 1696 vice-admiralty courts. Wool Act is 1699." },
+      { x:1, k:0, q:"Which Navigation Act rule is described correctly?",
+        opts:["enumerated goods could be sold to any nation that paid a duty","all colonial trade had to move on Dutch ships","European goods bound for the colonies had to stop in England first","smugglers were tried by colonial juries"], a:2,
+        why:"European goods stop in England first. Enumerated goods stayed inside the empire, ships had to be English, and smugglers went to juryless vice-admiralty courts." },
       { x:1, k:1, q:"A revenue tariff, as opposed to a protectionist one,",
         opts:["raises the foreign price to match the domestic price and charges for access","prices the foreign good out of the market","bans foreign goods outright","taxes colonial exports"], a:0,
         why:"Revenue: charge for the privilege of being in our market, price to equal. Protectionist: price it above ours." },
       { k:1, q:"Which correctly pairs the ruler with the colonial policy?",
-        opts:["Charles II: the Dominion of New England","James II: the Dominion of New England (1686)","William and Mary: the Dominion of New England","Charles I: the Navigation Acts"], a:1,
-        why:"James II created the Dominion in 1686 to reduce the colonies' political autonomy. William and Mary let it fall." },
+        opts:["Charles II: the Dominion of New England","James II: the Dominion of New England","William and Mary: the Dominion of New England","Charles I: the Navigation Acts"], a:1,
+        why:"James II created the Dominion to reduce the colonies' political autonomy. William and Mary let it fall." },
       { k:0, q:"Edmund Andros was",
         opts:["the proprietor of New Jersey","governor of the Dominion of New England, overthrown after the Glorious Revolution","the leader of Bacon's Rebellion","governor of Virginia during King Philip's War"], a:1,
-        why:"Andros ran the Dominion; New Englanders overthrew him in 1689. Berkeley is Virginia; Carteret is New Jersey." },
+        why:"Andros ran the Dominion; New Englanders overthrew him once news of the Glorious Revolution arrived. Berkeley is Virginia; Carteret is New Jersey." },
       { x:1, k:2, q:"Which of the following was inconclusive?",
         opts:["King William's War","the French and Indian War","King Philip's War","Bacon's Rebellion"], a:0,
         why:"King William's War (and the next two) settled nothing. The French and Indian War was conclusive; King Philip's War was a New England victory." },
       { x:1, k:2, q:"After the French and Indian War, Britain",
         opts:["stopped enforcing the Navigation Acts","announced it would enforce the Navigation Acts, and the colonists refused","handed Louisiana to the colonies","abolished the Dominion of New England"], a:1,
         why:"Britain was broke and had not been enforcing; now it would. Colonists said no. Louisiana went to Spain." },
-      { x:1, k:0, q:"Put these in order: large-scale importation of Africans, the Chesapeake labor shortage, the first Africans arriving in the Chesapeake.",
-        opts:["first Africans (1619) → labor shortage (1650s) → large-scale importation (1670s)","labor shortage (1650s) → first Africans (1619) → large-scale importation (1670s)","large-scale importation (1670s) → first Africans (1619) → labor shortage (1650s)","first Africans (1619) → large-scale importation (1670s) → labor shortage (1650s)"], a:0,
-        why:"1619, 1650s, 1670s. The shortage came before the big imports, and the first 20 Africans came before either." }
+      { x:1, k:0, q:"The first Africans brought to the Chesapeake were",
+        opts:["sold as slaves for life","placed in forced indentured servitude for a set number of years","freed on arrival","held by the Portuguese until ransomed"], a:1,
+        why:"Taken off a Portuguese ship, traded for supplies, and put in indentured servitude, forced but for a set term. Slavery for life came later with large-scale importation." }
     ]}
   ]
 };
@@ -767,28 +740,6 @@ const stepList=arr=>{const ol=el("ol","steps");arr.forEach(s=>{const li=el("li")
   }
 })();
 
-/* timeline */
-(function(){
-  const host=$("#p-timeline");
-  const h=el("div","sh");h.textContent="in order. tap an era to filter";host.appendChild(h);
-  const eras=[["all","everything"],["crown","the crown"],["colonies","colonies"],["trade","trade law"],["wars","wars"],["slavery","slavery"]];
-  const bar=el("div","tlbar");
-  eras.forEach(([id,label],i)=>{const b=el("button","e-"+id);b.setAttribute("aria-pressed",String(i===0));
-    b.innerHTML=(id==="all"?"":'<span class="ed"></span>')+esc(label);b.onclick=()=>pick(id);bar.appendChild(b)});
-  host.appendChild(bar);
-  const card=el("div","tl g");card.innerHTML='<span class="spec" aria-hidden="true"></span>';
-  GUIDE.timeline.forEach(e=>{
-    const r=el("div","tr e-"+e.e);
-    r.innerHTML='<div class="ty">'+esc(e.y)+'</div><div class="tt">'+(e.x?'<span class="ast" title="said in class, not on the unit outline">*</span> ':'')+fmt(e.t)+'<span class="ec">'+esc(eras.find(x=>x[0]===e.e)[1])+'</span></div>';
-    card.appendChild(r);
-  });
-  rise(card);host.appendChild(card);
-  function pick(id){
-    bar.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.classList.contains("e-"+id))));
-    card.querySelectorAll(".tr").forEach(r=>r.classList.toggle("off",id!=="all"&&!r.classList.contains("e-"+id)));
-  }
-})();
-
 /* practice: two timed tests */
 (function(){
   const host=$("#p-practice");
@@ -859,7 +810,7 @@ const stepList=arr=>{const ol=el("ol","steps");arr.forEach(s=>{const li=el("li")
 
 /* segmented control */
 (function(){
-  const tabs=[["outline","test map"],["timeline","timeline"],["practice","practice"]];
+  const tabs=[["outline","test map"],["practice","practice"]];
   const seg=$("#seg"),ind=seg.querySelector(".ind");
   tabs.forEach(([id,label],i)=>{const b=el("button");b.textContent=label;b.setAttribute("role","tab");
     b.setAttribute("aria-selected",String(i===0));b.onclick=()=>select(i);seg.appendChild(b)});
