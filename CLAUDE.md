@@ -53,6 +53,20 @@ The "up next" card shows the soonest test that has not passed and advances on
 its own the day after. Several can sit queued. The date chip hides itself the
 same way. Leave the surrounding markup alone.
 
+## Colors
+
+The palette is "crisp" (September 2026). Every token lives in the three
+blocks at the top of `index.html`: light, dark by system setting, and dark by
+the toggle. Change all three together.
+
+Each class color `--c-<id>` has two companions: `--c-<id>-ink` is its label
+text on a card and `--c-<id>-cta` is its "open the guide" button fill. Both are
+checked at 4.5:1 or better against what they actually sit on. Gold also has
+`--c-biz-on`, dark button text, because white text would force a muddy fill.
+A new class needs its color, ink and cta in all three blocks; without them its
+card falls back to plain ink and brand blue. Guide pages keep their own
+accents.
+
 ## Guide pages themselves
 
 Each guide is a standalone self-contained HTML file. Conventions that must
