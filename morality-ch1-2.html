@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>catholic morality ch 1-2 · study guide</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<style>
+:root{
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
+
+  --accent:#A2845E;                       /* catholic morality */
+  --amb1:var(--accent);                   /* blob 1 is always the class color */
+  --amb2:#30D158; --amb3:#40C8E0; --amb4:#F0B429;   /* palette: field */
+  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1));
+
+  --ink:#08080D; --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
+  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
+  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
+  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
+  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
+  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30;
+  --blur:22px; --sat:195%;
+  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --amb:.82; --amb-blur:66px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#B4966F; --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}}
+:root[data-theme="dark"]{
+  --accent:#B4966F; --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
+  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+input{font:inherit;color:inherit}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hidden{display:none !important}
+
+/* ambient */
+#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
+  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);animation:hue 120s linear infinite}
+#amb i{position:absolute;display:block;border-radius:50%;animation:drift 34s var(--ease) infinite alternate}
+#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;
+  background:radial-gradient(circle,var(--amb1),transparent 66%);animation-duration:36s}
+#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:4vh;
+  background:radial-gradient(circle,var(--amb2),transparent 66%);animation-duration:44s;animation-delay:-9s}
+#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:44vh;
+  background:radial-gradient(circle,var(--amb3),transparent 66%);animation-duration:39s;animation-delay:-18s}
+#amb i:nth-child(4){width:52vw;height:52vw;right:-8vw;bottom:-8vh;
+  background:radial-gradient(circle,var(--amb4),transparent 66%);animation-duration:48s;animation-delay:-27s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
+@keyframes hue{
+  0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}
+  50%{filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}}
+
+/* glass, four layers */
+.g{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
+.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
+  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude}
+.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
+.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
+  transition:opacity .4s var(--ease)}
+@media (hover:hover){.g:hover > .spec{opacity:1}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
+.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
+.glyph{width:40px;height:40px;border-radius:12px;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
+  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
+.glyph path,.glyph circle,.glyph ellipse{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s var(--ease) .15s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;line-height:1.08;text-transform:lowercase}
+.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
+  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase}
+
+/* segmented control */
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
+  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.seg button{position:relative;z-index:1;padding:7px 2px;border-radius:9px;font-family:var(--round);
+  font-size:13px;font-weight:640;color:var(--ink2);text-transform:lowercase;transition:color .25s var(--ease)}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
+  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
+  transition:transform .42s var(--spring),width .42s var(--spring)}
+
+main{padding-top:20px}
+.sh{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--ink3);margin:30px 4px 10px;text-transform:lowercase}
+.sh:first-child{margin-top:0}
+
+/* intro */
+.intro{border-radius:18px;padding:16px;margin-bottom:14px}
+.intro p{margin:0;font-size:15.5px;line-height:1.5;color:var(--ink2);text-transform:lowercase;position:relative;z-index:1}
+.intro p + p{margin-top:8px}
+.fmt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0;position:relative;z-index:1}
+.fmt > div{background:var(--fill2);border-radius:12px;padding:9px 10px;box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.fmt .n{font-family:var(--round);font-size:11px;font-weight:740;color:var(--ink3);text-transform:lowercase}
+.fmt .v{font-size:13.5px;font-weight:580;line-height:1.3;margin-top:2px;text-transform:lowercase}
+
+/* outline */
+.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
+.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;
+  position:relative;z-index:1;transition:transform .34s var(--spring)}
+.chead:active{transform:scale(.99)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;
+  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.dot.hot{background:var(--good);box-shadow:0 0 10px color-mix(in srgb,var(--good) 70%,transparent)}
+.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
+.tw{color:var(--ink3);transition:transform .34s var(--spring)}
+.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
+.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.cbody.on{grid-template-rows:1fr}
+.cbody > div{overflow:hidden}
+.cbody p{margin:0 0 10px;padding:0 16px;font-size:15.5px;line-height:1.5;color:var(--ink2);text-transform:lowercase}
+.cbody p:last-child{padding-bottom:16px}
+.cbody p b{color:var(--ink);font-weight:640}
+.terms{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 16px}
+.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase}
+
+/* glossary */
+.search{display:block;width:100%;border:0;background:var(--fill);border-radius:12px;padding:11px 14px;
+  font-size:16px;margin-bottom:12px;box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase}
+.search::placeholder{color:var(--ink3)}
+.gl{border-radius:18px;margin-bottom:12px;overflow:hidden}
+.gl .gh{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);padding:13px 16px 4px;text-transform:lowercase;position:relative;z-index:1}
+.grow{padding:10px 16px 11px;border-top:.5px solid var(--sep);position:relative;z-index:1}
+.grow:first-of-type{border-top:0}
+.grow .gt{font-family:var(--round);font-size:15px;font-weight:700;letter-spacing:-.01em;text-transform:lowercase;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.grow .src{font-family:var(--round);font-size:10.5px;font-weight:740;color:var(--ink3);padding:2px 7px;border-radius:6px;background:var(--fill2);text-transform:lowercase}
+.grow .gd{font-size:14.5px;line-height:1.45;color:var(--ink2);margin-top:3px;text-transform:lowercase}
+.empty{font-size:14.5px;color:var(--ink3);text-align:center;padding:24px 0;text-transform:lowercase}
+
+/* drill */
+.picks{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.pick{font-family:var(--round);font-size:12.5px;font-weight:660;padding:7px 12px;border-radius:999px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
+  transition:background .2s var(--ease),color .2s var(--ease),transform .3s var(--spring)}
+.pick:active{transform:scale(.96)}
+.pick[aria-pressed="true"]{background:color-mix(in srgb,var(--accent) 24%,transparent);color:var(--accent)}
+.scorebar{display:flex;justify-content:space-between;align-items:center;font-family:var(--round);font-size:13px;
+  color:var(--ink3);margin:0 4px 10px;font-variant-numeric:tabular-nums;text-transform:lowercase}
+.scorebar button{color:var(--blue);font-weight:660}
+.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
+.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase;position:relative;z-index:1}
+.qt{margin:6px 0 14px;font-size:17px;font-weight:560;line-height:1.35;letter-spacing:-.02em;text-transform:lowercase;position:relative;z-index:1}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 13px;border-radius:12px;
+  background:var(--fill2);margin-bottom:7px;font-size:15.5px;box-shadow:inset 0 .5px 0 0 var(--gloss);
+  text-transform:lowercase;position:relative;z-index:1;
+  transition:background .2s var(--ease),transform .3s var(--spring),opacity .3s var(--ease)}
+.opt:active{transform:scale(.988)}
+.opt .k{font-family:var(--round);font-weight:740;font-size:13px;color:var(--ink3);flex:none;width:20px;text-transform:uppercase}
+.opt.right{background:color-mix(in srgb,var(--good) 20%,transparent);color:var(--good)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.opt.right .k,.opt.wrong .k{color:inherit}
+.why{margin:10px 2px 0;font-size:13.5px;line-height:1.5;color:var(--ink3);text-transform:lowercase;position:relative;z-index:1}
+.why b{color:var(--ink2);font-weight:640}
+/* matching */
+.mgrid{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;position:relative;z-index:1}
+.mcol{display:grid;gap:7px;align-content:start}
+.mcol .lab{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--ink3);margin:0 0 -1px 2px;text-transform:lowercase}
+.mi{text-align:left;width:100%;padding:11px 12px;border-radius:12px;background:var(--fill2);font-size:14.5px;line-height:1.35;
+  box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
+  transition:background .2s var(--ease),transform .3s var(--spring),opacity .3s var(--ease)}
+.mi .t{font-family:var(--round);font-weight:700}
+.mi.sel{background:color-mix(in srgb,var(--blue) 18%,transparent);color:var(--blue)}
+.mi.done{opacity:.4;background:color-mix(in srgb,var(--good) 16%,transparent);cursor:default}
+.mi.miss{background:color-mix(in srgb,var(--bad) 18%,transparent);animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@media (max-width:440px){.mgrid{grid-template-columns:1fr}.fmt{grid-template-columns:1fr}.fmt > div{display:flex;gap:10px;align-items:baseline}.fmt .v{margin:0}}
+
+/* short answers */
+.acard{border-radius:18px;padding:16px;margin-bottom:12px}
+.acard .an{font-family:var(--round);font-size:12px;font-weight:740;color:var(--accent);text-transform:lowercase;position:relative;z-index:1}
+.acard .ap{margin:5px 0 12px;font-size:17px;font-weight:580;line-height:1.32;letter-spacing:-.02em;text-transform:lowercase;position:relative;z-index:1}
+.beats{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:6px;position:relative;z-index:1}
+.beats li{display:flex;gap:9px;font-size:14.5px;line-height:1.4;color:var(--ink2);text-transform:lowercase}
+.beats .b{flex:none;width:19px;height:19px;border-radius:50%;background:var(--fill);color:var(--ink3);
+  font-family:var(--round);font-size:11px;font-weight:740;display:grid;place-items:center;margin-top:2px;font-variant-numeric:tabular-nums}
+.model{border-top:.5px solid var(--sep);padding-top:11px;position:relative;z-index:1}
+.model .mh{font-family:var(--round);font-size:11.5px;font-weight:740;color:var(--ink3);margin-bottom:6px;text-transform:lowercase}
+.model p{margin:0;font-size:15px;line-height:1.5;text-transform:lowercase}
+
+/* flashcards */
+.deck{perspective:1400px;margin-bottom:14px}
+.fc{position:relative;width:100%;min-height:220px;transform-style:preserve-3d;transition:transform .62s var(--spring);cursor:pointer;will-change:transform}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute !important;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;
+  display:grid;place-items:center;padding:26px;text-align:center}
+.face.back{transform:rotateY(180deg)}
+.face .fw{font-family:var(--display);font-size:24px;font-weight:760;letter-spacing:-.036em;line-height:1.15;text-transform:lowercase;position:relative;z-index:1}
+.face.back .fw{font-family:var(--text);font-size:16px;font-weight:480;letter-spacing:-.014em;line-height:1.45;color:var(--ink2)}
+.fbar{display:flex;align-items:center;gap:12px}
+.fbar button{font-family:var(--round);font-size:14px;font-weight:660;color:var(--blue);padding:8px 12px;border-radius:10px;text-transform:lowercase}
+.fcount{margin-left:auto;font-family:var(--round);font-size:13px;color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+
+.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;text-transform:lowercase}
+
+@media (prefers-reduced-motion:reduce){
+  #amb{animation:none}
+  #amb i{animation:none}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+  .glyph path,.glyph circle,.glyph ellipse{animation:none;stroke-dashoffset:0}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* ═══════════ reading aids: skip link, scroll progress, print ═══════════ */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:12px;
+  background:var(--accent);color:#fff;font-weight:700;font-size:14px;letter-spacing:-.01em;
+  box-shadow:0 10px 28px rgba(0,0,0,.32);transition:top .24s cubic-bezier(.32,.72,0,1)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;border-radius:0 3px 3px 0;background:var(--accent);
+  box-shadow:0 0 12px color-mix(in srgb,var(--accent) 55%,transparent)}
+.upd{display:block;margin-top:6px;font-size:12px;opacity:.75}
+@media (prefers-reduced-motion:no-preference){#prog i{transition:width .09s linear}}
+@media print{
+  @page{margin:.6in}
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    --ink:#000!important;--ink2:#26262b!important;--ink3:#45454d!important;
+    --ground:#fff!important;--fill:rgba(0,0,0,.055)!important;--fill2:rgba(0,0,0,.03)!important;
+    --gloss:transparent!important;--rim:rgba(0,0,0,.2)!important}
+  #amb,#prog,.skipl,.seg,#seg,.ind{display:none!important}
+  html,body{background:#fff!important;color:#000!important;font-size:12pt}
+  *,*::before,*::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    box-shadow:none!important;text-shadow:none!important;filter:none!important;
+    animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+  .spec,.gloss,.rim{display:none!important}
+  header,#hdr{position:static!important;background:none!important;border:0!important;
+    padding:0 0 10px!important;margin-bottom:10px!important;border-bottom:1px solid #999!important}
+  .g,.card,.tl,.row,.ftable,section{background:#fff!important;border:1px solid #ccc!important;
+    color:#000!important}
+  .pane{display:block!important}
+  .cbody,.ra,.sol>div,.cbody>div,.body{grid-template-rows:1fr!important;height:auto!important;
+    max-height:none!important;overflow:visible!important;display:block!important}
+  .card,.row,.tl,.qitem,.ftable{break-inside:avoid;page-break-inside:avoid}
+  h1,h2,h3{break-after:avoid;page-break-after:avoid}
+  main,main *{color:#111!important}
+  .trap,.warn,.bad,.no{color:#b3261e!important}
+  .good,.yes{color:#14622a!important}
+  a{color:#000!important;text-decoration:none}
+  footer,footer *{color:#444!important}
+}
+</style>
+
+<div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<a class="skipl" href="#gmain">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+
+<header id="hdr"><div class="wrap">
+  <div class="hrow">
+    <span id="gly" class="glyph" aria-hidden="true"></span>
+    <div><div class="cls" id="cls"></div><h1 id="ttl"></h1></div>
+    <span class="chip" id="due"></span>
+  </div>
+  <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
+</div></header>
+
+<main id="gmain" class="wrap">
+  <section id="p-outline"></section>
+  <section id="p-glossary" class="hidden"></section>
+  <section id="p-drill" class="hidden"></section>
+  <section id="p-answers" class="hidden"></section>
+  <section id="p-cards" class="hidden"></section>
+  <footer>study guide written by a student. not affiliated with the school.<br>check anything that matters against your own notes.<span class="upd">last updated sept 1, 2026</span></footer>
+</main>
+
+<script>
+/* ═══ content ══════════════════════════════════════════════════════════ */
+const GUIDE = {
+  cls:"Catholic Morality", glyph:"cross", title:"Chapters 1–2 study guide", due:"test fri 9/4",
+
+  intro:[
+    "chapters 1 and 2: the gift of being human, and how to make moral decisions. three parts.",
+    "almost everything is graded word for word against the assignments, so the glossary tab is the bank. drill from it, then use the answers tab for the two short paragraphs."
+  ],
+  format:[["part 1","multiple choice"],["part 2","matching"],["part 3","two short answers, about 5 sentences each"]],
+
+  /* named in class as on the test = hot. everything else supports it. */
+  outline:[
+    { hot:true, t:"the anatomy of a moral act",
+      p:["every moral decision has three elements, and to judge an action you must weigh all three. <b>moral object</b> answers <b>what</b> will you do. it is the decisive element in morality.",
+         "<b>intention</b> answers <b>why</b>. it is the subjective dimension, meaning it is up to the person acting. a bad intention contaminates a good act: helping someone across the street with a bad intention toward them is no longer a good act.",
+         "<b>circumstances</b> are the w questions, who, what, when, where, how. they are a modifier. they can increase, diminish, or shift responsibility, but cannot change the moral quality of the act.",
+         "the question asked three times on the chart: can it make an evil act good? object, no. intention, no. circumstances, no. adultery and murder stay evil no matter what."],
+      terms:["moral object","intention","circumstances","subjective","modifier","decisive element"] },
+    { hot:true, t:"prudence, according to aquinas",
+      p:["<b>right reason in action.</b> three words, and aquinas gets the credit.",
+         "the moral virtue that inclines you to discern a good, ethical, and moral life and to choose the means to accomplish it. class shorthand: the virtue that helps make the right choice, knowing and choosing the right thing to do.",
+         "not the same as discernment. discernment is the process of thinking what to do. prudence is the virtue that makes you good at it."],
+      terms:["prudence","right reason in action","aquinas","discernment"] },
+    { hot:true, t:"the acts that are always wrong",
+      p:["<b>perjury, rape, blasphemy, murder.</b> always bad. no intention and no circumstance can justify them.",
+         "abortion is named with murder: the deliberate killing of unborn human life by means of medical or surgical procedures."],
+      terms:["perjury","rape","blasphemy","murder","abortion"] },
+    { hot:true, t:"created in the image of god",
+      p:["genesis says god created humans in his own image, <b>created out of love</b>, and everything he made was <b>good</b>. creation was good.",
+         "what being in god's image gives you: <b>intellect, free will, capacity for love, inherent dignity, relationship and community.</b> the shorter version from chapter 1: to think, to choose, to love, to relate to others in community.",
+         "we are <b>both body and soul</b>. the soul is the innermost spiritual principle of human beings; soul and body together form one unique human nature. humans are the only creatures that know that they know."],
+      terms:["image of god","created out of love","good","body and soul","intellect","free will","dignity"] },
+    { hot:true, t:"conscience",
+      p:["because you are made in god's image and likeness with a body and soul, you can hear the voice of god urging you to do good and avoid evil. that is conscience.",
+         "you are responsible for following god's law, which you know through your conscience and fulfill through love of god and neighbor. sin is a fault against reason, truth, and right conscience.",
+         "prudence helps your conscience make correct judgments about right and wrong."],
+      terms:["conscience","right conscience","image and likeness"] },
+    { hot:true, t:"the ultimate question",
+      p:["the ultimate question all humans seek to answer: <b>what is the meaning of life</b>, my purpose. the full set: what am i here for, why do i exist, what happens to me after i die, what is the meaning of life.",
+         "it comes from the soul, which will not settle for a merely physical existence. augustine: our hearts are restless until they rest in god. christianity answers that we were created with intention and life has meaning; nihilism says there is no ultimate meaning and no purpose."],
+      terms:["ultimate question","meaning of life","purpose","augustine","nihilism"] },
+    { hot:true, t:"prayer, defined",
+      p:["<b>conversation with god.</b> the catechism: the living relationship of the children of god with their father, with his son jesus christ, and with the holy spirit. prayer is communion, sharing in the presence of god.",
+         "a conversation has two parts, <b>talking and listening</b>. to listen you must slow down and seek <b>silence</b> so that you can hear god speaking to you. talking and listening, including to advice from others, is itself a prayer.",
+         "two ways of listening: <b>meditation</b>, focusing the mind to see and understand what god is saying, and <b>contemplation</b>, mental prayer. jesus taught to pray together, with faith, with childlike simplicity, without becoming weary. the <b>our father</b> is the summary of the whole gospel."],
+      terms:["prayer","talking and listening","silence","meditation","contemplation","our father"] },
+    { hot:true, t:"salvation",
+      p:["the forgiveness of sins and restoration of friendship with god, which can be done by <b>god alone</b>.",
+         "humanity was and remains in need of a <b>savior</b>. jesus christ is god incarnate, and he saves through the paschal mystery: his passion, death, resurrection, and ascension."],
+      terms:["salvation","savior","incarnate","paschal mystery"] },
+    { hot:true, t:"respect",
+      p:["respect for god: acknowledging him, praising him, worshipping him alone. respect for creation: being a good steward of the earth, because to damage creation is to stop it from proclaiming god's glory.",
+         "respect for your body: creation is sacred because it belongs to god, and that includes your body. respect for others: everyone possesses a god-given dignity, and justice means giving god and others the respect they deserve."],
+      terms:["respect","stewardship","dignity","sacred"] },
+    { hot:true, t:"male and female, complementarity",
+      p:["god created humans as <b>complementary</b> beings, male and female. complementary means things that combine to <b>bring out the best in one another</b>. male and female complete each other.",
+         "neither is superior. each needs and completes the other. only through the committed union of husband and wife in <b>marriage</b> can the procreation and education of children take place as god intends."],
+      terms:["complementarity","complete","marriage"] },
+    { t:"stop",
+      p:["<b>s</b>earch out the facts, take out the emotion. <b>t</b>hink about the alternatives and consequences, imagine living with each choice. <b>o</b>thers can help you make good decisions: parents, friends, mentors, coaches, the magisterium, the sacrament of penance. <b>p</b>ray for guidance.",
+         "the means are the course of action, or how something is accomplished. good intentions cannot justify <b>evil</b> means."],
+      terms:["search","thinking","others","pray","means"] },
+    { t:"the cardinal virtues",
+      p:["the four pivotal virtues that support moral living. <b>prudence</b>: knowing and choosing the right thing to do. <b>justice</b>: giving god and others the respect they deserve, each person his or her due by right. <b>fortitude</b>: courage and perseverance to persist in living a christian life. <b>temperance</b>: being able to control wants, especially desires for physical pleasure.",
+         "not the theological virtues. those are faith (belief in and personal knowledge of god), hope (trust in god's salvation), and charity."],
+      terms:["cardinal","prudence","justice","fortitude","temperance","faith","hope"] },
+    { t:"original holiness, original justice, and what was lost",
+      p:["<b>original holiness</b>: direct relationship with god, shared in the divine life. <b>original justice</b>: direct relationship with all creation, harmony between the first man and woman and with all creation.",
+         "the <b>pride</b> of adam and eve led to their downfall and expulsion from eden. that is original sin. what remains after baptism is <b>concupiscence</b>, the disordered desires that incline you to sin."],
+      terms:["original holiness","original justice","pride","original sin","concupiscence"] },
+    { t:"habit and virtue",
+      p:["<b>habit</b>: something that becomes second nature. both good and bad actions are habit forming. sow an act, reap a habit; sow a habit, reap a character; sow a character, reap a destiny.",
+         "<b>virtue</b>: a habitual and firm disposition to do the good."],
+      terms:["habit","second nature","virtue","sow"] },
+    { t:"solidarity, common good, subsidiarity",
+      p:["<b>solidarity</b>: the christian virtue of social charity and friendship. we are responsible for each other. <b>common good</b>: the sum total of social conditions that allow people, either as groups or as individuals, to reach their fulfillment more fully and more easily.",
+         "<b>subsidiarity</b>: handled at the smallest level. a higher unit of society should not do what a lower unit can do as well or better."],
+      terms:["solidarity","common good","subsidiarity","social beings"] },
+    { t:"the church helps you decide",
+      p:["<b>magisterium</b>: the bishops in union with the pope, the living and teaching office of the church. in practice, a priest or deacon you can talk to.",
+         "<b>infallibility</b>: a gift of the holy spirit whereby the pope and bishops in union with him can definitively proclaim a doctrine of faith or morals for the belief of the faithful.",
+         "<b>penance</b>: the sacrament intended above all for catholics who have fallen into grave sin since baptism. catholics are obliged to confess <b>mortal</b> sins at least once a year or before receiving holy communion."],
+      terms:["magisterium","infallibility","penance","mortal sin"] },
+    { t:"sin and the passion",
+      p:["<b>sin</b>: an offense against god as well as a fault against reason, truth, and right conscience. the basic cause of sin is love for <b>self</b> over love for god.",
+         "sin was most intense at christ's <b>passion</b>, as witnessed by the hatred of jesus' enemies for the son of god."],
+      terms:["sin","self","passion"] },
+    { t:"theology of the body",
+      p:["pope john paul ii's integrated vision of the human person: body, soul, and spirit. 129 wednesday audiences, 1979 to 1984.",
+         "he described the human body in terms of a <b>sacrament</b>, using the word's origin from the greek mysterion, <b>mystery</b>. the body is a true gift, and sexuality is meant for self-giving love."],
+      terms:["theology of the body","sacrament","mystery","john paul ii"] }
+  ],
+
+  /* src: cw = crossword answer, rv = review sheet, cl = class review */
+  glossary:[
+    {ch:1,t:"soul",d:"the name for the innermost spiritual principle of human beings. the soul and body together form one unique human nature. it is created immediately by god and is immortal.",s:"rv"},
+    {ch:1,t:"angels",d:"spiritual creatures, created by god with intelligence and will, who surpass humans in perfection. personal and immortal.",s:"cw"},
+    {ch:1,t:"theology of the body",d:"pope john paul ii's integrated vision of the human person: body, soul, and spirit. 129 wednesday audiences, 1979 to 1984.",s:"cw"},
+    {ch:1,t:"sacrament",d:"in theology of the body, john paul ii described the human body in terms of a sacrament.",s:"cw"},
+    {ch:1,t:"mystery",d:"john paul ii's use of sacrament refers to the word's origin from the greek word mysterion.",s:"cw"},
+    {ch:1,t:"nihilism",d:"a philosophy that denies there is any meaning in existence or religious beliefs. no ultimate meaning, no purpose. after life comes nothingness, annihilation.",s:"rv"},
+    {ch:1,t:"original holiness",d:"the state of adam and eve in which they shared in the divine life. a direct relationship with god.",s:"rv"},
+    {ch:1,t:"original justice",d:"the state of inner harmony between the first man and woman, as well as the first couple and all creation. a direct relationship with all creation.",s:"rv"},
+    {ch:1,t:"pride",d:"the pride of adam and eve led to their own downfall and expulsion from the garden of eden.",s:"cw"},
+    {ch:1,t:"original sin",d:"the personal sin of adam and eve, by which they disobeyed god's commandment and chose their own will over god's will. they lost original holiness and original justice, became subject to death, and sin entered the world.",s:"rv"},
+    {ch:1,t:"concupiscence",d:"disordered human desires resulting from original sin that produce an inclination to sin, also expressed as the rebellion of the flesh against the spirit. it remains after baptism.",s:"rv"},
+    {ch:1,t:"inherent",d:"human dignity is an essential characteristic of being human.",s:"rv"},
+    {ch:1,t:"inviolable",d:"no one has the right to violate or profane human dignity.",s:"rv"},
+    {ch:1,t:"inalienable",d:"dignity cannot be taken away by anyone. even a person's own sinfulness cannot cause his or her dignity to be lost.",s:"rv"},
+    {ch:1,t:"image of god",d:"created in god's image means intellect, free will, capacity for love, inherent dignity, relationship and community. created out of love, in his image, good.",s:"cl"},
+    {ch:1,t:"humans",d:"the only creatures that know that they know.",s:"cw"},
+    {ch:1,t:"social",d:"created in the divine image, humans are social beings.",s:"cw"},
+    {ch:1,t:"free will",d:"the power, rooted in reason and will, to act or not to act, to do this or that, and so to perform deliberate actions on one's own responsibility.",s:"rv"},
+    {ch:1,t:"habit",d:"something that becomes second nature. habits are often called second nature.",s:"cl"},
+    {ch:1,t:"virtue",d:"a habitual and firm disposition to do the good.",s:"cw"},
+    {ch:1,t:"faith",d:"belief in and personal knowledge of god.",s:"cw"},
+    {ch:1,t:"hope",d:"trust in god's salvation.",s:"cw"},
+    {ch:1,t:"love",d:"choosing to do good for other people, even to the point of personal sacrifice.",s:"cw"},
+    {ch:1,t:"theological virtues",d:"faith, hope, and charity. bestowed at baptism, they help the person relate to god.",s:"rv"},
+    {ch:1,t:"covenant",d:"human beings are endowed with the capacity to enter into a covenant relationship with god.",s:"cw"},
+    {ch:1,t:"creation",d:"through your creation as a human being, you are endowed with the capacity to enter into a covenant relationship with god. creation was good.",s:"cw"},
+    {ch:1,t:"vocation",d:"the vocation of every human being is to express the love of the communion of divine persons in your own relationships.",s:"cw"},
+    {ch:1,t:"holy",d:"everything in god's creation comes from god, reveals god, and is meant to lead you back to god.",s:"cw"},
+    {ch:1,t:"marriage",d:"only through the committed union of a husband and wife in marriage can the natural procreation and education of children take place in a setting that is secure, nurturing, and consistent with what god intends.",s:"cw"},
+    {ch:1,t:"complementarity",d:"male and female complete each other. complementary means things that combine to bring out the best in one another. neither is superior.",s:"cl"},
+    {ch:1,t:"solidarity",d:"the christian virtue of social charity and friendship. we are responsible for each other.",s:"rv"},
+    {ch:1,t:"common good",d:"the sum total of social conditions that allow people, either as groups or as individuals, to reach their fulfillment more fully and more easily.",s:"rv"},
+    {ch:1,t:"subsidiarity",d:"a higher unit of society should not do what a lower unit can do as well or better. handled at the smallest level.",s:"rv"},
+    {ch:1,t:"sponsor",d:"the church has a long tradition of having one catholic sponsor for membership in the church, especially the sacraments of initiation.",s:"cw"},
+    {ch:1,t:"sin",d:"an offense against god as well as a fault against reason, truth, and right conscience.",s:"rv"},
+    {ch:1,t:"self",d:"the basic cause of sin is love for self over love for god.",s:"cw"},
+    {ch:1,t:"passion",d:"sin was most intense at christ's passion, as witnessed by the hatred of jesus' enemies for the son of god.",s:"cw"},
+    {ch:1,t:"savior",d:"humanity was and remains in need of a savior to rescue all people from the hopeless situation we live in.",s:"cw"},
+    {ch:1,t:"salvation",d:"the forgiveness of sins and restoration of friendship with god, which can be done by god alone.",s:"cl"},
+    {ch:1,t:"god incarnate",d:"jesus christ is god incarnate.",s:"cw"},
+    {ch:1,t:"paschal mystery",d:"the saving love of god most fully revealed in the life and especially the passion, death, resurrection, and glorious ascension of his son, jesus christ.",s:"rv"},
+    {ch:1,t:"baltimore catechism",d:"the standard textbook used in catholic schools in the united states for generations.",s:"cw"},
+    {ch:1,t:"conscience",d:"how you know god's law, which you are responsible for following and fulfill through love of god and neighbor. the voice of god urging you to do good and avoid evil.",s:"cl"},
+    {ch:1,t:"ultimate question",d:"what is the meaning of life, my purpose. also: what am i here for, why do i exist, what happens to me after i die.",s:"cl"},
+    {ch:1,t:"respect",d:"respect for god, for creation as its steward, for your body, and for every person's god-given dignity.",s:"cl"},
+
+    {ch:2,t:"discernment",d:"a decision-making process that attends to the implications and consequences of an action or choice. the process of thinking what to do.",s:"rv"},
+    {ch:2,t:"prudence",d:"the moral virtue that inclines you to discern a good, ethical, and moral life and to choose the means to accomplish it. the virtue that helps make the right choice.",s:"rv"},
+    {ch:2,t:"right reason in action",d:"how aquinas described prudence.",s:"cw"},
+    {ch:2,t:"cardinal virtues",d:"the four pivotal virtues that support moral living: prudence, justice, fortitude, temperance.",s:"rv"},
+    {ch:2,t:"justice",d:"the cardinal virtue whereby one gives god and each person his or her due by right. giving god and others the respect they deserve.",s:"cw"},
+    {ch:2,t:"fortitude",d:"the cardinal virtue which provides one the courage to persist in living a christian life. courage and perseverance.",s:"cw"},
+    {ch:2,t:"temperance",d:"the cardinal virtue whereby one controls their desires for physical pleasures. being able to control wants.",s:"cw"},
+    {ch:2,t:"stop",d:"search out the facts. think about the alternatives and consequences. others can help you make good decisions. pray always for guidance.",s:"rv"},
+    {ch:2,t:"search",d:"the s in stop. involves ascertaining the facts.",s:"cw"},
+    {ch:2,t:"thinking",d:"the t in stop. involves the consideration of the alternatives and consequences.",s:"cw"},
+    {ch:2,t:"others",d:"the o in stop. involves soliciting advice.",s:"cw"},
+    {ch:2,t:"pray",d:"the p in stop. involves asking god for help.",s:"cw"},
+    {ch:2,t:"means",d:"the means are the course of action or how something is accomplished. good intentions cannot justify evil means.",s:"cw"},
+    {ch:2,t:"moral object",d:"what you will do. for an action to be morally good, both the moral object (what you do) and your intention (why you do it) must be good. the decisive element.",s:"cw"},
+    {ch:2,t:"intention",d:"indicates what good (or evil) you want to happen. why you do it. the subjective dimension of morality. a why question helps uncover the motive or intention.",s:"cw"},
+    {ch:2,t:"circumstances",d:"the circumstances of an action, answers to the questions that begin with who, when, where, and how, cannot make an action that is evil good or right.",s:"cw"},
+    {ch:2,t:"objective norms",d:"the ten commandments are good examples of objective norms of morality.",s:"cw"},
+    {ch:2,t:"what question",d:"a what question involves what you will do. is what you will do good or bad?",s:"cw"},
+    {ch:2,t:"why question",d:"a why question helps uncover the motive or intention for performing an action.",s:"cw"},
+    {ch:2,t:"alternatives",d:"the different possible ways you could act. rarely just one way out of a moral dilemma.",s:"rv"},
+    {ch:2,t:"consequences",d:"the possible effects or results of a proposed action, which you are responsible for.",s:"rv"},
+    {ch:2,t:"reason",d:"human reason helps us recognize and judge which actions correspond to the true good.",s:"cw"},
+    {ch:2,t:"habit forming",d:"both good and bad actions are habit forming.",s:"cw"},
+    {ch:2,t:"sow",d:"sow an act, reap a habit; sow a habit, reap a character; sow a character, reap a destiny.",s:"cw"},
+    {ch:2,t:"magisterium",d:"the bishops, in union with the pope, who are the living and teaching office of the church.",s:"rv"},
+    {ch:2,t:"infallibility",d:"a gift of the holy spirit whereby the pope and bishops in union with him can definitively proclaim a doctrine of faith or morals for the belief of the faithful.",s:"rv"},
+    {ch:2,t:"penance",d:"the sacrament intended above all for catholics who have fallen into grave sin since their baptism.",s:"cw"},
+    {ch:2,t:"mortal sins",d:"catholics are obliged to confess their mortal sins at least once a year or before receiving holy communion.",s:"cw"},
+    {ch:2,t:"prayer",d:"conversation with god. the living relationship of the children of god with their father, his son jesus christ, and the holy spirit. an essential step in making good and moral choices.",s:"cl"},
+    {ch:2,t:"listening",d:"one of the two parts of prayer. the other is talking.",s:"cw"},
+    {ch:2,t:"silence",d:"we must slow down and seek silence so that we can hear god speaking to us.",s:"cw"},
+    {ch:2,t:"meditation",d:"a type of prayer when you focus the mind to see and understand what god is saying.",s:"cw"},
+    {ch:2,t:"contemplation",d:"mental prayer.",s:"cw"},
+    {ch:2,t:"presence",d:"prayer is communion and is best understood as abiding, as sharing in the presence of god.",s:"cw"},
+    {ch:2,t:"together",d:"jesus encouraged people to pray together.",s:"cw"},
+    {ch:2,t:"faith (in prayer)",d:"jesus emphasized that we must pray with faith.",s:"cw"},
+    {ch:2,t:"our father",d:"the summary of the whole gospel.",s:"cw"},
+    {ch:2,t:"perjury, rape, blasphemy, murder",d:"the acts that are always wrong. no intention or circumstance can justify them.",s:"cl"},
+    {ch:2,t:"abortion",d:"the deliberate killing of unborn human life by means of medical or surgical procedures.",s:"cw"}
+  ],
+
+  mc:[
+    {name:"set 1 · chapter 1",qs:[
+      {q:"which is the correct list of what being made in god's image gives you?",opts:["intellect, free will, capacity for love, inherent dignity, relationship and community","reason, emotion, memory, and imagination","body, soul, and spirit","faith, hope, and charity"],a:0,why:"b is the psychology of prayer, c is theology of the body, d is the theological virtues. the class list is a."},
+      {q:"the name for the innermost spiritual principle of human beings",opts:["spirit","conscience","soul","angel"],a:2,why:"spirit is part of theology of the body. angels are separate creatures who surpass us. the crossword answer is soul."},
+      {q:"original holiness was the state in which adam and eve",opts:["lived in harmony with all creation","shared in the divine life","were free from death","had no free will"],a:1,why:"a is original justice. these two get swapped constantly. holiness is the direct relationship with god."},
+      {q:"what led to adam and eve's downfall and expulsion from eden?",opts:["their curiosity","their pride","their ignorance","their fear"],a:1,why:"pride, five letters, is the crossword answer. the sin was choosing their own will over god's."},
+      {q:"nihilism is the philosophy that",opts:["only material things exist","god does not intervene in the world","there is no ultimate meaning and no purpose","morality depends on culture"],a:2,why:"a is materialism, b is deism, d is relativism. nihilism denies meaning in existence altogether."},
+      {q:"the only creatures that know that they know",opts:["angels","humans","saints","souls"],a:1,why:"angels know, but the phrase is about human self-awareness. humans is the crossword answer."},
+      {q:"choosing to do good for other people, even to the point of personal sacrifice",opts:["hope","love","faith","justice"],a:1,why:"the four-letter crossword answer is love. faith is belief in god, hope is trust in his salvation."},
+      {q:"a habitual and firm disposition to do the good",opts:["habit","virtue","prudence","conscience"],a:1,why:"habit is something that becomes second nature. virtue is the disposition to do good specifically."},
+      {q:"the basic cause of sin is love for ___ over love for god",opts:["self","pleasure","power","the world"],a:0,why:"self, four letters, crossword. sin is putting yourself above god."},
+      {q:"sin was most intense at christ's",opts:["birth","baptism","passion","ascension"],a:2,why:"passion. witnessed by the hatred of jesus' enemies for the son of god."}
+    ]},
+    {name:"set 2 · chapter 2",qs:[
+      {q:"the s in the stop process stands for",opts:["seek silence","search out the facts","stop and pray","solicit advice"],a:1,why:"seek silence is about listening in prayer. soliciting advice is o, others. s is search."},
+      {q:"which question does the moral object answer?",opts:["why","what","who","how"],a:1,why:"what will you do. why is intention. who and how are circumstances."},
+      {q:"intention is called the subjective dimension because",opts:["it is up to the person acting","it is a matter of opinion","no one else can see it","it changes with the situation"],a:0,why:"subjective means it is up to you; another person in the same situation may act differently. not opinion, not invisible."},
+      {q:"circumstances are best described as",opts:["the decisive element","a modifier that can increase or diminish responsibility","the reason you act","something that can make an evil act good"],a:1,why:"a is the moral object. c is intention. d is the answer the chart says no to three times."},
+      {q:"which cannot make an evil act good?",opts:["a good intention","good circumstances","a good outcome","all of these"],a:3,why:"the chart asks the question for each element and the answer is no every time."},
+      {q:"aquinas described prudence as",opts:["the queen of the virtues","right reason in action","the voice of god","moderation in all things"],a:1,why:"right reason in action. guaranteed to appear. c is conscience, d is closer to temperance."},
+      {q:"the cardinal virtue that provides the courage to persist in living a christian life",opts:["justice","prudence","fortitude","temperance"],a:2,why:"fortitude, nine letters, crossword. temperance controls wants; justice gives each their due."},
+      {q:"one of the two parts of prayer",opts:["kneeling","listening","fasting","reading"],a:1,why:"talking and listening. listening is the nine-letter crossword answer."},
+      {q:"mental prayer is called",opts:["meditation","contemplation","vocal prayer","petition"],a:1,why:"contemplation, thirteen letters. meditation is focusing the mind to see what god is saying."},
+      {q:"jesus encouraged people to pray",opts:["alone","together","silently","daily"],a:1,why:"together, eight letters. he promised to be present where two or three are gathered."}
+    ]},
+    {name:"set 3 · mixed",qs:[
+      {q:"the ultimate question all humans seek to answer",opts:["does god exist","what is the meaning of life","how should i pray","what is sin"],a:1,why:"meaning of life, purpose. the soul will not settle for a merely physical existence."},
+      {q:"the definition of prayer",opts:["asking god for things","conversation with god","reading scripture","attending mass"],a:1,why:"conversation with god, which has two parts, talking and listening. a is only one kind of talking."},
+      {q:"male and female complete each other. the word for this is",opts:["equality","complementarity","unity","partnership"],a:1,why:"complementary means things that combine to bring out the best in one another. neither is superior."},
+      {q:"salvation can be done by",opts:["the church","a priest","god alone","the person who sins"],a:2,why:"god alone. that is why humanity was and remains in need of a savior."},
+      {q:"which is not on the list of acts that are always wrong?",opts:["perjury","blasphemy","gossip","rape"],a:2,why:"the list is perjury, rape, blasphemy, murder. gossip is wrong but not on it."},
+      {q:"stealing a car to drive someone to the hospital is",opts:["moral, because the intention is good","immoral, because the means are evil","moral if the person was dying","neutral"],a:1,why:"the intention is good, the means are evil. good intentions cannot justify evil means. the class example."},
+      {q:"helping someone across the street with a bad intention toward them",opts:["is still a good act","is contaminated by the bad intention","depends on the circumstances","is a mortal sin"],a:1,why:"a bad intention contaminates a good act. the class example for why intention matters."},
+      {q:"the bishops in union with the pope, the living and teaching office of the church",opts:["the vatican","the magisterium","the papacy","the college of cardinals"],a:1,why:"magisterium, eleven letters. in practice, a priest or deacon you can talk to."},
+      {q:"the summary of the whole gospel",opts:["the beatitudes","the our father","the creed","the ten commandments"],a:1,why:"our father, 3 and 6 letters on the crossword."},
+      {q:"the sum total of social conditions that allow people to reach their fulfillment more fully and more easily",opts:["solidarity","subsidiarity","the common good","social justice"],a:2,why:"common good, 6 and 4 letters. solidarity is a virtue, subsidiarity is about the smallest level."}
+    ]}
+  ],
+
+  match:[
+    {name:"match 1 · chapter 1",pairs:[
+      ["soul","innermost spiritual principle of human beings"],
+      ["angels","spiritual creatures who surpass humans in perfection"],
+      ["nihilism","denies there is any meaning in existence"],
+      ["original holiness","shared in the divine life"],
+      ["original justice","harmony with the first couple and all creation"],
+      ["pride","led adam and eve to their downfall"],
+      ["virtue","a habitual and firm disposition to do the good"],
+      ["solidarity","the christian virtue of social charity and friendship"],
+      ["common good","sum total of social conditions for fulfillment"]
+    ]},
+    {name:"match 2 · chapter 2",pairs:[
+      ["moral object","what will you do"],
+      ["intention","why you do it, the subjective dimension"],
+      ["circumstances","who, when, where, how; a modifier"],
+      ["prudence","right reason in action"],
+      ["discernment","the process of thinking what to do"],
+      ["fortitude","courage to persist in living a christian life"],
+      ["temperance","controls desires for physical pleasures"],
+      ["magisterium","bishops in union with the pope"],
+      ["infallibility","definitively proclaim doctrine for the belief of the faithful"]
+    ]},
+    {name:"match 3 · the named topics",pairs:[
+      ["salvation","forgiveness of sins, done by god alone"],
+      ["prayer","conversation with god; talking and listening"],
+      ["contemplation","mental prayer"],
+      ["meditation","focus the mind to see what god is saying"],
+      ["complementarity","male and female bring out the best in one another"],
+      ["conscience","how you know god's law and the voice urging you to do good"],
+      ["ultimate question","what is the meaning of life"],
+      ["our father","the summary of the whole gospel"],
+      ["abortion","deliberate killing of unborn human life"]
+    ]}
+  ],
+
+  answers:[
+    {p:"name and explain the three major aspects of every moral action. which is most important?",
+     b:["name all three: moral object, intention, circumstances.","define each with its question: what, why, and who when where how.","state the rule: all three must be good.","say the moral object is decisive and why.","close with the chart's question: can it make an evil act good? no, three times."],
+     m:"every moral action has three elements: the moral object, the intention, and the circumstances. the moral object answers what you will do, the intention answers why you do it, and the circumstances are the w questions of who, when, where, and how. to judge an action you must weigh all three, and all three have to be good for the action to be good. the moral object is the most important because it is the decisive element; if what you do is evil in itself, like murder or adultery, no intention and no circumstance can make it good. intention can contaminate a good act and circumstances can increase or diminish responsibility, but neither can change the moral quality of the act."},
+    {p:"what does it mean to be created in the image of god?",
+     b:["start with genesis: created out of love, in his image, and good.","name what it gives you: intellect, free will, capacity for love, inherent dignity, relationship and community.","add that we are both body and soul.","note the limit: we are creatures, not god.","close with why he did it."],
+     m:"genesis teaches that god created humans in his own image, that he created us out of love, and that everything he made was good. being made in god's image gives us intellect, free will, the capacity for love, inherent dignity, and the ability to live in relationship and community. we are both body and soul, and the soul is what makes us the only creatures that know that they know. this does not mean we are god; he is the creator and we are creatures. he made us this way so we could receive his love, share in it, and return it to him."},
+    {p:"what is prayer, and why is it an essential step in making good moral choices?",
+     b:["define it: conversation with god, a living relationship.","name the two parts: talking and listening.","say what listening requires: slow down, seek silence.","name meditation and contemplation.","close on why it matters for decisions."],
+     m:"prayer is conversation with god, the living relationship of the children of god with the father, the son, and the holy spirit. like any conversation it has two parts, talking and listening. in the talking part we praise god, thank him, express sorrow, and ask for help; in the listening part we must slow down and seek silence so that we can hear god speaking to us. two ways of listening are meditation, where you focus the mind to see and understand what god is saying, and contemplation, which is mental prayer. prayer is the p in stop and is essential because it gives us guidance, and even talking and listening to the advice of others can be a prayer."},
+    {p:"what is prudence according to aquinas, and how does it help you make good decisions?",
+     b:["quote aquinas: right reason in action.","give the fuller definition.","separate it from discernment.","say what it does: helps conscience judge, sets rule and measure, gives foresight.","use the alaska photographer or your own example."],
+     m:"aquinas described prudence as right reason in action. it is the moral virtue that inclines you to discern a good, ethical, and moral life and to choose the means to accomplish it, or more simply, the virtue that helps you make the right choice. it is different from discernment, which is the process of thinking what to do; prudence is the virtue that makes you good at that process. prudence helps your conscience make correct judgments about right and wrong and shows you how to act with foresight. the photographer in alaska planned his whole trip but never arranged for a pilot to pick him up, and that lack of foresight is exactly what prudence would have supplied."},
+    {p:"explain what it means that god created humans male and female as complementary.",
+     b:["define complementary.","state that neither is superior.","say what each does for the other.","connect to marriage.","close on god's plan."],
+     m:"god created humans as complementary beings, male and female. complementary means things that combine to bring out the best in one another, so male and female complete each other. neither is superior to the other; each needs and completes the other. this is why the church teaches that only through the committed union of a husband and wife in marriage can the procreation and education of children take place in a setting that is secure, nurturing, and consistent with what god intends. the union of male and female is part of god's plan for creation, written into human nature itself."},
+    {p:"explain st. augustine's words: you have made us for yourself, o god, and so our hearts are restless until they rest in you.",
+     b:["start from the soul.","say what it refuses to settle for.","name the ultimate question.","state the thirst only god satisfies.","close on the restlessness ending in god."],
+     m:"god created every person with a body and an immortal soul, and the soul gives us a share in his life. because of that soul we are never satisfied with a merely physical existence, and we are pushed to ask the ultimate question of what the meaning of life is. in the depths of the soul every person thirsts for an eternal happiness that only god can provide. augustine is naming that longing when he says our hearts are restless. since god made us for himself, anything less than god leaves the heart unsettled, and the restlessness ends only when we rest in him."},
+    {p:"explain how others can help you make good moral decisions.",
+     b:["name the o in stop.","list who: parents, friends, mentors, coaches, godparents, alumni.","say why someone outside the situation helps.","add the magisterium and the sacrament of penance.","close on jesus and the gospels."],
+     m:"the o in the stop process stands for others, because others can help you make good decisions. parents, friends, mentors, coaches, godparents, and people who have been through the situation before are trusted sources of advice, and someone outside the situation can look at it objectively without the emotion attached. the church also helps through the magisterium, the bishops in union with the pope, which in practice means a priest or deacon you can talk to, and through the sacrament of penance where you can ask for practical advice. above all, jesus gives guidance through his moral teaching in the gospels. no one has all the wisdom they need alone, so asking for help is itself part of acting prudently."}
+  ]
+};
+/* ═══ machinery ═══════════════════════════════════════════════════════ */
+const $=s=>document.querySelector(s);
+const $$=(s,r)=>[...(r||document).querySelectorAll(s)];
+const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const spec='<span class="spec" aria-hidden="true"></span>';
+const G={cross:'<path d="M13 4.6v17"/><path d="M7.4 10.2h11.2"/>'};
+
+$("#cls").textContent=GUIDE.cls; $("#ttl").textContent=GUIDE.title; $("#due").textContent=GUIDE.due;
+document.title=GUIDE.title.toLowerCase();
+$("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true"><g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" opacity=".97" pathLength="1">'+G[GUIDE.glyph]+'</g></svg>';
+$$("#gly path").forEach(p=>p.setAttribute("pathLength","1"));
+
+function rise(node,i){ if(!REDUCED){node.classList.add("rise");node.style.setProperty("--i",i);} }
+
+/* outline */
+(function(){
+  const host=$("#p-outline");
+  const intro=el("div","intro g"); intro.innerHTML=spec+
+    '<p>'+GUIDE.intro[0]+'</p><div class="fmt">'+GUIDE.format.map(f=>'<div><div class="n">'+f[0]+'</div><div class="v">'+f[1]+'</div></div>').join("")+'</div><p>'+GUIDE.intro[1]+'</p>';
+  rise(intro,0); host.appendChild(intro);
+  const sh1=el("div","sh"); sh1.textContent="named in class as on the test"; host.appendChild(sh1);
+  let insertedRest=false;
+  GUIDE.outline.forEach((s,i)=>{
+    if(!s.hot && !insertedRest){ const sh=el("div","sh"); sh.textContent="everything else the assignments covered"; host.appendChild(sh); insertedRest=true; }
+    const card=el("div","card g");
+    card.innerHTML=spec+'<button class="chead" aria-expanded="false"><span class="dot'+(s.hot?' hot':'')+'"></span><span class="ct"></span>'+
+      '<svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>'+
+      '<div class="cbody"><div>'+s.p.map(p=>'<p>'+p+'</p>').join("")+(s.terms?'<div class="terms"></div>':"")+'</div></div>';
+    card.querySelector(".ct").textContent=s.t;
+    if(s.terms){const box=card.querySelector(".terms");s.terms.forEach(t=>{const c=el("span","term");c.textContent=t;box.appendChild(c)})}
+    const head=card.querySelector(".chead"),body=card.querySelector(".cbody");
+    head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+    rise(card,i+1); host.appendChild(card);
+  });
+})();
+
+/* glossary */
+(function(){
+  const host=$("#p-glossary");
+  const inp=el("input","search"); inp.type="search"; inp.placeholder="search the glossary"; inp.setAttribute("aria-label","search glossary");
+  host.appendChild(inp);
+  const picks=el("div","picks"); picks.setAttribute("role","group");
+  const srcs=[["all","all"],["cw","crossword"],["rv","review sheet"],["cl","class review"]];
+  let src="all",q="";
+  srcs.forEach(([k,l],i)=>{const b=el("button","pick");b.textContent=l;b.setAttribute("aria-pressed",String(i===0));
+    b.onclick=()=>{src=k;$$(".pick",picks).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));draw()};picks.appendChild(b)});
+  host.appendChild(picks);
+  const out=el("div"); host.appendChild(out);
+  const SRC={cw:"crossword",rv:"review",cl:"class"};
+  function draw(){
+    out.innerHTML="";
+    [1,2].forEach(ch=>{
+      const rows=GUIDE.glossary.filter(g=>g.ch===ch && (src==="all"||g.s===src) && (!q || (g.t+" "+g.d).toLowerCase().includes(q)));
+      if(!rows.length) return;
+      const card=el("div","gl g"); card.innerHTML=spec+'<div class="gh">chapter '+ch+' · '+rows.length+'</div>';
+      rows.forEach(g=>{const r=el("div","grow");
+        r.innerHTML='<div class="gt"><span></span><span class="src">'+SRC[g.s]+'</span></div><div class="gd"></div>';
+        r.querySelector(".gt span").textContent=g.t; r.querySelector(".gd").textContent=g.d; card.appendChild(r)});
+      out.appendChild(card);
+    });
+    if(!out.children.length){const e=el("div","empty");e.textContent="nothing matches. try a shorter word.";out.appendChild(e)}
+  }
+  inp.oninput=()=>{q=inp.value.trim().toLowerCase();draw()};
+  draw();
+})();
+
+/* drill: mc sets + matching sets */
+(function(){
+  const host=$("#p-drill");
+  const picks=el("div","picks"); host.appendChild(picks);
+  const out=el("div"); host.appendChild(out);
+  const items=[...GUIDE.mc.map((s,i)=>({k:"mc",i,label:s.name})),...GUIDE.match.map((s,i)=>({k:"ma",i,label:s.name}))];
+  items.forEach((it,n)=>{const b=el("button","pick");b.textContent=it.label;b.setAttribute("aria-pressed",String(n===0));
+    b.onclick=()=>{$$(".pick",picks).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));it.k==="mc"?drawMC(it.i):drawMatch(it.i)};picks.appendChild(b)});
+
+  function drawMC(i){
+    out.innerHTML=""; const set=GUIDE.mc[i]; let score=0,done=0;
+    const bar=el("div","scorebar"); bar.innerHTML='<span></span><button>restart</button>';
+    const upd=()=>bar.firstChild.textContent=set.name+" · "+score+" of "+done+" right";
+    bar.querySelector("button").onclick=()=>drawMC(i); upd(); out.appendChild(bar);
+    set.qs.forEach((q,n)=>{
+      const card=el("div","qcard g"); card.innerHTML=spec+'<div class="qn">question '+(n+1)+'</div><div class="qt"></div>';
+      card.querySelector(".qt").textContent=q.q;
+      q.opts.forEach((o,j)=>{const b=el("button","opt");b.innerHTML='<span class="k">'+"abcd"[j]+'</span><span></span>';b.lastChild.textContent=o;
+        b.onclick=()=>{if(card.dataset.done)return;card.dataset.done="1";done++;if(j===q.a)score++;upd();
+          $$(".opt",card).forEach((x,k)=>{if(k===q.a)x.classList.add("right");else if(k===j)x.classList.add("wrong")});
+          const w=el("p","why");w.innerHTML=(j===q.a?"<b>right.</b> ":"<b>not quite.</b> ")+q.why;card.appendChild(w)};
+        card.appendChild(b)});
+      rise(card,n); out.appendChild(card);
+    });
+  }
+  function drawMatch(i){
+    out.innerHTML=""; const set=GUIDE.match[i]; let sel=null,matched=0,tries=0;
+    const bar=el("div","scorebar"); bar.innerHTML='<span></span><button>reset</button>';
+    const upd=()=>{bar.firstChild.textContent=set.name+" · "+matched+" of "+set.pairs.length+" matched"+(tries?" · "+tries+(tries===1?" try":" tries"):"")};
+    bar.querySelector("button").onclick=()=>drawMatch(i); upd(); out.appendChild(bar);
+    const card=el("div","qcard g"); card.innerHTML=spec+'<div class="mgrid"><div class="mcol"><div class="lab">term</div></div><div class="mcol"><div class="lab">definition</div></div></div>';
+    const [L,R]=$$(".mcol",card);
+    const order=set.pairs.map((_,k)=>k).sort(()=>Math.random()-.5);
+    set.pairs.forEach((p,k)=>{const b=el("button","mi");b.innerHTML='<span class="t"></span>';b.firstChild.textContent=p[0];b.dataset.i=k;
+      b.onclick=()=>{if(b.classList.contains("done"))return;$$(".mi",L).forEach(x=>x.classList.remove("sel"));b.classList.add("sel");sel=k};L.appendChild(b)});
+    order.forEach(k=>{const b=el("button","mi");b.textContent=set.pairs[k][1];b.dataset.i=k;
+      b.onclick=()=>{if(b.classList.contains("done")||sel===null)return;tries++;
+        const lb=$$(".mi",L).find(x=>+x.dataset.i===sel);
+        if(k===sel){b.classList.add("done");lb.classList.remove("sel");lb.classList.add("done");matched++;sel=null}
+        else{b.classList.add("miss");setTimeout(()=>b.classList.remove("miss"),400)}
+        upd()};R.appendChild(b)});
+    rise(card,0); out.appendChild(card);
+  }
+  drawMC(0);
+})();
+
+/* short answers */
+(function(){
+  const host=$("#p-answers");
+  const intro=el("div","intro g"); intro.innerHTML=spec+'<p>two short answers, about five sentences each. sentence one defines the term, two through four give the parts or reasons, five applies it. the models below show the shape and the words to hit. write your own version or it reads as memorized.</p>';
+  rise(intro,0); host.appendChild(intro);
+  GUIDE.answers.forEach((a,i)=>{
+    const card=el("div","acard g"); card.innerHTML=spec+'<div class="an">prompt '+(i+1)+'</div><div class="ap"></div><ol class="beats">'+
+      a.b.map((b,j)=>'<li><span class="b">'+(j+1)+'</span><span></span></li>').join("")+'</ol><div class="model"><div class="mh">model, five sentences</div><p></p></div>';
+    card.querySelector(".ap").textContent=a.p; $$(".beats li span:last-child",card).forEach((s,j)=>s.textContent=a.b[j]); card.querySelector(".model p").textContent=a.m;
+    rise(card,i+1); host.appendChild(card);
+  });
+})();
+
+/* flashcards, built from the glossary */
+(function(){
+  const host=$("#p-cards"); let deckSrc=GUIDE.glossary.slice(),n=0;
+  const picks=el("div","picks"); const opts=[["all","all"],[1,"chapter 1"],[2,"chapter 2"],["shuffle","shuffle"]];
+  opts.forEach(([k,l],i)=>{const b=el("button","pick");b.textContent=l;b.setAttribute("aria-pressed",String(i===0));
+    b.onclick=()=>{if(k==="shuffle"){deckSrc=deckSrc.slice().sort(()=>Math.random()-.5)}else{deckSrc=GUIDE.glossary.filter(g=>k==="all"||g.ch===k);$$(".pick",picks).forEach(x=>x.setAttribute("aria-pressed",String(x===b)))}n=0;draw()};picks.appendChild(b)});
+  host.appendChild(picks);
+  const deck=el("div","deck"),fc=el("div","fc");
+  fc.innerHTML='<div class="face front g">'+spec+'<div class="fw"></div></div><div class="face back g">'+spec+'<div class="fw"></div></div>';
+  deck.appendChild(fc);
+  const bar=el("div","fbar"); bar.innerHTML='<button id="prev">back</button><button id="next">next</button><span class="fcount"></span>';
+  const draw=()=>{fc.classList.remove("flip");fc.querySelector(".front .fw").textContent=deckSrc[n].t;fc.querySelector(".back .fw").textContent=deckSrc[n].d;bar.querySelector(".fcount").textContent=(n+1)+" of "+deckSrc.length};
+  fc.onclick=()=>fc.classList.toggle("flip");
+  bar.querySelector("#prev").onclick=()=>{n=(n-1+deckSrc.length)%deckSrc.length;draw()};
+  bar.querySelector("#next").onclick=()=>{n=(n+1)%deckSrc.length;draw()};
+  addEventListener("keydown",e=>{if($("#p-cards").classList.contains("hidden"))return;
+    if(e.key==="ArrowRight")bar.querySelector("#next").click();if(e.key==="ArrowLeft")bar.querySelector("#prev").click();
+    if(e.key===" "){e.preventDefault();fc.click()}});
+  host.append(deck,bar); draw();
+})();
+
+/* segmented control */
+(function(){
+  const tabs=[["outline","outline"],["glossary","glossary"],["drill","drill"],["answers","answers"],["cards","cards"]];
+  const seg=$("#seg"),ind=seg.querySelector(".ind");
+  tabs.forEach(([id,label],i)=>{const b=el("button");b.textContent=label;b.setAttribute("role","tab");b.setAttribute("aria-selected",String(i===0));b.onclick=()=>select(i);seg.appendChild(b)});
+  function select(i){const btns=$$("button",seg);btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));move()}
+  function move(){const btns=$$("button",seg);const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");const b=btns[i];if(!b)return;ind.style.width=b.offsetWidth+"px";ind.style.transform="translateX("+(b.offsetLeft-2)+"px)"}
+  seg.addEventListener("keydown",e=>{const btns=$$("button",seg);const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
+    const d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();const n=(i+d+btns.length)%btns.length;btns[n].focus();select(n)});
+  addEventListener("resize",move); requestAnimationFrame(move); addEventListener("load",move);
+})();
+
+/* header state + pointer specular */
+(function(){
+  const hdr=$("#hdr"); let raf=0;
+  addEventListener("scroll",()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)})},{passive:true});
+  if(matchMedia("(hover:hover)").matches && !REDUCED){
+    addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".g");if(!c)return;const r=c.getBoundingClientRect();
+      c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")},{passive:true});
+  }
+})();
+</script>
+<script>
+(function(){var b=document.querySelector("#prog i");if(!b)return;
+ var t=0;function u(){var d=document.scrollingElement||document.documentElement,
+ h=d.scrollHeight-d.clientHeight;
+ b.style.width=(h>4?Math.max(0,Math.min(100,d.scrollTop/h*100)):0)+"%";}
+ addEventListener("scroll",function(){if(t)return;t=requestAnimationFrame(function(){t=0;u()})},{passive:true});
+ addEventListener("resize",u);u();})();
+</script>
+</body>
+</html>

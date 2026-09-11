@@ -15,20 +15,24 @@ to breach because nothing runs server-side and nothing loads from anywhere else.
   head.
 - `apple-touch-icon.png`: the icon when someone saves the site to an iPhone
   home screen.
+- One `.html` file per guide at the repo root (`psych-unit-0.html`,
+  `morality-ch1-2.html`, ...). The filename is the URL: `/psych-unit-0`.
+  Practice-test PDFs sit beside them.
 
 ## Adding a guide
 
-1. Open `index.html` on github.com and hit the pencil (edit).
-2. Find the `CLASSES` array (marked `DATA` in a comment). Add one entry to the
-   right class, newest first:
+1. Drop the guide's HTML file at the repo root, named `<class>-<topic>.html`.
+2. In `index.html`, find the `CLASSES` array (marked `DATA` in a comment) and
+   add one entry to the right class, newest first:
 
    ```js
-   { t: "Unit 2 study guide", tag: "Guide", url: "https://..." }
+   { t: "Unit 2", tag: "Guide", url: "/precalc-unit-2" }
    ```
 
-   `tag` is one of `Guide`, `Flashcards`, `Quiz`, `Folder`. Empty classes show
-   "Soon" automatically once their array has an entry, so nothing else changes.
-3. Commit. Vercel redeploys on its own in under a minute.
+   `tag` is one of `Guide`, `Flashcards`, `Quiz`, `Cram sheet`. Empty classes
+   show "Soon" automatically once their array has an entry.
+3. Add the same link to the `<noscript>` list near the bottom of `index.html`.
+4. Commit. Vercel redeploys on its own in under a minute.
 
 ## New test coming up
 
@@ -41,10 +45,9 @@ way. Leave the rest alone.
 ## Rules baked in
 
 - Course names only. No teacher names, no period numbers, anywhere.
-- Every outbound link opens in a new tab with `rel="noopener noreferrer"`.
-- Claude links must be shared (Share menu) before they go in, or classmates
-  get a login wall. Google Doc links currently need a school Google login;
-  set them to "Anyone with the link, Viewer" to open them up.
+- Every guide is a file in this repo. Nothing links out to Claude, Google
+  Docs, or any other host, so no guide can expire, move, or hit a login wall.
+- Guide links open in a new tab with `rel="noopener noreferrer"`.
 
 ## Local preview
 

@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ap physics 1 intro kinematics · study guide</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light dark">
+</head>
+<body>
+<style>
+:root{
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
+
+  --accent:#2AA5BC;               /* ap physics 1 */
+  --amb1:var(--accent);           /* blob 1 is always the class color */
+  --amb2:#FF375F; --amb3:#BF5AF2; --amb4:#FF9F0A;   /* palette: dawn */
+  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1));
+  --ink:#08080D;
+  --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
+  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
+  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
+  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
+  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
+  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30; --pink:#FF2D55;
+  --blur:22px; --sat:195%;
+  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --amb:.82; --amb-blur:66px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#40C8E0;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A; --pink:#FF375F;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}}
+:root[data-theme="dark"]{
+  --accent:#40C8E0;
+  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
+  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
+  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
+  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
+  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
+  --blue:#0A84FF; --good:#30D158; --bad:#FF453A; --pink:#FF375F;
+  --blur:26px; --sat:175%;
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
+  --amb:.62; --amb-blur:82px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
+  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hidden{display:none !important}
+
+/* ambient light: four blobs from the palette, slow hue drift */
+#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
+  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);animation:hue 120s linear infinite}
+#amb i{position:absolute;display:block;border-radius:50%;animation:drift 38s var(--ease) infinite alternate}
+#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;
+  background:radial-gradient(circle,var(--amb1),transparent 66%);animation-duration:36s}
+#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:4vh;
+  background:radial-gradient(circle,var(--amb2),transparent 66%);animation-duration:45s;animation-delay:-10s}
+#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:44vh;
+  background:radial-gradient(circle,var(--amb3),transparent 66%);animation-duration:41s;animation-delay:-20s}
+#amb i:nth-child(4){width:52vw;height:52vw;right:-8vw;bottom:-8vh;
+  background:radial-gradient(circle,var(--amb4),transparent 66%);animation-duration:48s;animation-delay:-30s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
+@keyframes hue{
+  0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}
+  50%    {filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}
+}
+
+/* glass: four layers */
+.g{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
+.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  pointer-events:none;z-index:3;
+  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude}
+.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
+.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
+  transition:opacity .4s var(--ease)}
+@media (hover:hover){.g:hover > .spec{opacity:1}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
+.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
+.glyph{width:40px;height:40px;border-radius:12px;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
+  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
+.glyph path,.glyph circle,.glyph ellipse{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s var(--ease) .2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;
+  line-height:1.08;text-transform:lowercase}
+.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
+  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase}
+
+/* segmented control */
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
+  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;
+  box-shadow:inset 0 .5px 0 0 var(--gloss)}
+.seg button{position:relative;z-index:1;padding:7px 4px;border-radius:9px;font-family:var(--round);
+  font-size:13.5px;font-weight:640;color:var(--ink2);text-transform:lowercase;
+  transition:color .25s var(--ease)}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
+  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
+  transition:transform .42s var(--spring),width .42s var(--spring)}
+
+main{padding-top:20px}
+.sh{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--ink3);
+  margin:30px 4px 10px;text-transform:lowercase}
+.sh:first-child{margin-top:0}
+
+/* outline / notes */
+.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
+.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;
+  position:relative;z-index:1;transition:transform .34s var(--spring)}
+.chead:active{transform:scale(.99)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;
+  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
+.tw{color:var(--ink3);transition:transform .34s var(--spring)}
+.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
+.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
+.cbody.on{grid-template-rows:1fr}
+.cbody > div{overflow:hidden}
+.cbody p{margin:0 0 10px;padding:0 16px;font-size:15.5px;line-height:1.5;color:var(--ink2);
+  text-transform:lowercase}
+.cbody p:last-child{padding-bottom:16px}
+.cbody .terms:last-child{padding-bottom:16px}
+.terms{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 16px}
+.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
+  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);
+  text-transform:lowercase}
+
+/* notes notation: the bits that must keep their case */
+.m,.f,.box,.v,.fr,.parts .m,sub{text-transform:none}
+.m{font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.f .m,.kv .m,.why .m,.parts .m,.qt .m,.sol p .m{white-space:normal}
+.f{display:block;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1.85;
+  padding-left:14px;margin:2px 0}
+.f + .f{margin-top:-2px}
+sub{font-size:.68em;vertical-align:-.28em;line-height:0}
+.v{position:relative;display:inline-block;font-style:italic;padding:0 .04em}
+.v::before{content:"→";position:absolute;left:50%;top:-.5em;transform:translateX(-50%);
+  font-size:.58em;font-style:normal;line-height:1;letter-spacing:0}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;
+  line-height:1.2;margin:0 3px;font-size:.94em}
+.fr > span:last-child{border-top:1.3px solid currentColor;padding-top:4px;margin-top:2px}
+.fr > span{padding:0 3px}
+.box{display:inline-block;padding:1px 9px;border:1.6px solid currentColor;border-radius:9px;
+  color:var(--ink);font-weight:600;margin:1px 0}
+.rule{margin:4px 16px 12px;padding:8px 12px;border:1.6px solid var(--good);border-radius:11px;
+  color:var(--good);font-family:var(--round);font-weight:720;font-size:14px;text-transform:lowercase}
+.rule .m,.rule .v,.term .m{color:inherit;font:inherit}
+.pen{color:var(--pink);font-family:var(--round);font-weight:660;font-size:14px}
+.cbody p.side{color:var(--ink3);font-size:14px}
+i.var{font-style:italic}
+
+
+/* worked examples inside notes */
+.exs{padding:2px 0 6px}
+.exq{font-family:var(--round);font-weight:720;color:var(--ink);font-size:13.5px;margin:12px 16px 4px;text-transform:lowercase}
+.exq .m{font-weight:640}
+.exw{padding:0 16px 4px}
+.exw .f{padding-left:12px}
+.exw p{padding:0;margin:2px 0 6px;font-size:15px;color:var(--ink2);text-transform:lowercase}
+.exw p.side{color:var(--ink3);font-size:13.5px}
+.cbody .exw p{padding:0}
+
+/* cram sheet */
+.cram{border-radius:18px;padding:16px 16px 14px;margin-bottom:10px}
+.cram h3{margin:0 0 8px;font-family:var(--round);font-size:13px;font-weight:740;color:var(--accent);text-transform:lowercase}
+.cram p{margin:0 0 8px;font-size:15px;line-height:1.5;color:var(--ink2);text-transform:lowercase}
+.cram p:last-child{margin-bottom:0}
+.cram .f{font-size:15.5px;line-height:1.9}
+.cram .rule{margin:6px 0 10px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:15px;color:var(--ink2);text-transform:lowercase}
+.kv b{font-family:var(--round);font-weight:700;color:var(--ink);font-weight:660}
+.kv > span{line-height:1.45}
+
+/* practice tests */
+.tcard{border-radius:18px;padding:14px 16px;margin-bottom:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tcard .tt{font-family:var(--round);font-weight:720;font-size:14px;text-transform:lowercase}
+.tcard .ts{font-size:13.5px;color:var(--ink3);text-transform:lowercase;flex:1 1 100%}
+.timer{margin-left:auto;font-family:var(--round);font-weight:700;font-size:14px;color:var(--blue);
+  font-variant-numeric:tabular-nums;padding:6px 12px;border-radius:10px;background:var(--fill2);
+  box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;transition:transform .3s var(--spring)}
+.timer:active{transform:scale(.987)}
+.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
+.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase}
+.qn .pts{color:var(--accent);margin-left:6px}
+.qt{margin:6px 0 12px;font-size:16px;font-weight:540;line-height:1.4;letter-spacing:-.02em;
+  text-transform:lowercase}
+.qt .m{font-weight:600}
+.parts{margin:0 0 6px;padding:0 0 0 24px;font-size:15.5px;line-height:1.5;color:var(--ink2);text-transform:lowercase}
+.parts li{margin:0 0 5px;padding-left:2px}
+.parts li::marker{font-family:var(--round);font-weight:700;color:var(--ink3)}
+.rv{display:inline-flex;align-items:center;gap:6px;font-family:var(--round);font-size:14px;font-weight:680;
+  color:var(--blue);padding:8px 12px;border-radius:10px;margin:6px 0 0 -4px;text-transform:lowercase;
+  transition:transform .3s var(--spring)}
+.rv:active{transform:scale(.97)}
+.rv svg{transition:transform .34s var(--spring)}
+.rv[aria-expanded="true"] svg{transform:rotate(90deg)}
+.sol{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--spring)}
+.sol.on{grid-template-rows:1fr}
+.sol > div{overflow:hidden}
+.sol .in{padding:10px 0 2px;border-top:.5px solid var(--sep);margin-top:10px}
+.sol p{margin:0 0 9px;font-size:15px;line-height:1.5;color:var(--ink2);text-transform:lowercase}
+.sol p.lbl{font-family:var(--round);font-weight:720;color:var(--ink);font-size:13.5px;margin:10px 0 4px}
+.sol p.lbl:first-child{margin-top:0}
+.sol .f{padding-left:12px}
+.sol .why{margin:8px 0 0;padding:9px 12px;border-radius:11px;background:var(--fill2);
+  box-shadow:inset 0 .5px 0 0 var(--gloss);font-size:14px;color:var(--ink3);line-height:1.5}
+.sol .why b{color:var(--ink2);font-family:var(--round);font-weight:700}
+
+/* figures */
+.fig{width:100%;height:auto;display:block;margin:8px 0 4px;font-family:var(--round);overflow:visible}
+.fig .grid{stroke:var(--sep);stroke-width:1}
+.fig .ax{stroke:var(--ink2);stroke-width:1.6;stroke-linecap:round}
+.fig .tk{fill:var(--ink3);font-size:13px;font-variant-numeric:tabular-nums;font-weight:600}
+.fig .lab{fill:var(--ink2);font-size:14px;font-weight:660}
+.fig .ln{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fig .dsh{stroke-dasharray:6 6;stroke-width:2.2}
+.fig .pt{fill:var(--accent)}
+.fig .sl{fill:var(--accent);font-size:15px;font-weight:760}
+.fig .nl{stroke:var(--ink2);stroke-width:1.6;stroke-linecap:round}
+.fig .dt{fill:var(--ink)}
+.fig .arr{stroke:var(--pink);stroke-width:2.2;fill:none;stroke-linecap:round}
+.fig .ahd{fill:var(--pink)}
+.fig .tl{fill:var(--ink3);font-size:12.5px;font-weight:600}
+.fig .note{fill:var(--ink2);font-size:13px;font-weight:640}
+.fig .vec{stroke:var(--blue);stroke-width:2.6;fill:none;stroke-linecap:round}
+.fig .vhd{fill:var(--blue)}
+.fig .res{stroke:var(--good);stroke-width:2.6;fill:none;stroke-linecap:round}
+.fig .rhd{fill:var(--good)}
+
+.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);
+  animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+
+footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;
+  text-transform:lowercase}
+
+@media (prefers-reduced-motion:reduce){
+  #amb{animation:none}
+  #amb i{animation:none}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+  .glyph path,.glyph circle,.glyph ellipse{animation:none;stroke-dashoffset:0}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+@media print{
+  #amb,.seg,.rv,.timer{display:none !important}
+  .hidden{display:block !important}
+  .cbody,.sol{grid-template-rows:1fr}
+  .g{background:#fff;box-shadow:none;border:.5px solid #ccc}
+  header{position:static}
+  body{background:#fff;color:#000}
+  .rise{opacity:1;transform:none;filter:none;animation:none}
+}
+
+/* ═══════════ reading aids: skip link, scroll progress, print ═══════════ */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:12px;
+  background:var(--accent);color:#fff;font-weight:700;font-size:14px;letter-spacing:-.01em;
+  box-shadow:0 10px 28px rgba(0,0,0,.32);transition:top .24s cubic-bezier(.32,.72,0,1)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;border-radius:0 3px 3px 0;background:var(--accent);
+  box-shadow:0 0 12px color-mix(in srgb,var(--accent) 55%,transparent)}
+.upd{display:block;margin-top:6px;font-size:12px;opacity:.75}
+@media (prefers-reduced-motion:no-preference){#prog i{transition:width .09s linear}}
+@media print{
+  @page{margin:.6in}
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    --ink:#000!important;--ink2:#26262b!important;--ink3:#45454d!important;
+    --ground:#fff!important;--fill:rgba(0,0,0,.055)!important;--fill2:rgba(0,0,0,.03)!important;
+    --gloss:transparent!important;--rim:rgba(0,0,0,.2)!important}
+  #amb,#prog,.skipl,.seg,#seg,.ind{display:none!important}
+  html,body{background:#fff!important;color:#000!important;font-size:12pt}
+  *,*::before,*::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    box-shadow:none!important;text-shadow:none!important;filter:none!important;
+    animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+  .spec,.gloss,.rim{display:none!important}
+  header,#hdr{position:static!important;background:none!important;border:0!important;
+    padding:0 0 10px!important;margin-bottom:10px!important;border-bottom:1px solid #999!important}
+  .g,.card,.tl,.row,.ftable,section{background:#fff!important;border:1px solid #ccc!important;
+    color:#000!important}
+  .pane{display:block!important}
+  .cbody,.ra,.sol>div,.cbody>div,.body{grid-template-rows:1fr!important;height:auto!important;
+    max-height:none!important;overflow:visible!important;display:block!important}
+  .card,.row,.tl,.qitem,.ftable{break-inside:avoid;page-break-inside:avoid}
+  h1,h2,h3{break-after:avoid;page-break-after:avoid}
+  main,main *{color:#111!important}
+  .trap,.warn,.bad,.no{color:#b3261e!important}
+  .good,.yes{color:#14622a!important}
+  a{color:#000!important;text-decoration:none}
+  footer,footer *{color:#444!important}
+}
+</style>
+
+<div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<a class="skipl" href="#gmain">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+
+<header id="hdr"><div class="wrap">
+  <div class="hrow">
+    <span id="gly" class="glyph" aria-hidden="true"></span>
+    <div>
+      <div class="cls" id="cls"></div>
+      <h1 id="ttl"></h1>
+    </div>
+    <span class="chip" id="due"></span>
+  </div>
+  <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
+</div></header>
+
+<main id="gmain" class="wrap">
+  <section id="p-notes"></section>
+  <section id="p-cram" class="hidden"></section>
+  <section id="p-practice" class="hidden"></section>
+  <footer>study guide written by a student. not affiliated with the school.<br>
+    check anything that matters against your own notes.<span class="upd">last updated sept 2, 2026</span></footer>
+</main>
+
+<script>
+/* ═══ notation helpers ═══════════════════════════════════════════ */
+const V=s=>'<i class="v">'+s+'</i>';                 // vector: arrow on top
+const X=V('x'), Vv=V('v'), DX='Δ'+X, DT='Δ<i class="var">t</i>';
+const XF=X+'<sub>f</sub>', XI=X+'<sub>i</sub>', TF='<i class="var">t</i><sub>f</sub>', TI='<i class="var">t</i><sub>i</sub>';
+const VA=Vv+'<sub>avg</sub>';
+const m=s=>'<span class="m">'+s+'</span>';
+const F=s=>'<span class="f">'+s+'</span>';
+const fr=(a,b)=>'<span class="fr"><span>'+a+'</span><span>'+b+'</span></span>';
+const box=s=>'<span class="box">'+s+'</span>';
+const pen=s=>'<span class="pen">'+s+'</span>';
+const A=s=>'<b class="m">'+s+'</b>';                 // segment letters that must stay capital
+
+/* ═══ everything you edit lives in this block ════════════════════ */
+const GUIDE = {
+  cls:   "AP Physics 1",
+  glyph: "atom",
+  title: "intro kinematics study guide",
+  due:   "thu sep 3",
+
+  notes:[
+    { t:"measurements",
+      p:[ "number + unit. "+pen("no naked numbers.")+" unit on every line.",
+          "read every certain digit, estimate one more. ruler in mm → "+m("4.13 cm")+".",
+          "+ −: fewest decimal places. × ÷: fewest sig figs. counts and conversions: exact.",
+          m("10. cm")+" → 2 sig figs. "+m("10 cm")+" → 1. round once, at the end." ],
+      ex:[ { q:"two masses, "+m("7.6 g")+" and "+m("5.17 g")+". sum?",
+             w:()=>F(m("7.6 g + 5.17 g = 12.77 g → ")+box("12.8 g")) },
+           { q:"cube, "+m("10. cm")+" on a side. volume?",
+             w:()=>F(m("V = lwh = (10. cm)(10. cm)(10. cm) = ")+box("1.0 × 10³ cm³")) } ],
+      terms:["no naked numbers","certain + 1 estimate","round at the end"] },
+
+    { t:"position and origin",
+      p:[ "position = where, relative to an origin. you pick the origin and the + direction. "+pen("position is relative."),
+          "position vector "+m(X)+": tail at origin, tip at object. left of origin → negative.",
+          "motion diagram: dots at equal "+m(DT)+". spacing = speed. order = direction." ],
+      ex:[ { q:"dog "+m("2 m")+" right of the tree, "+m("3 m")+" left of the car, "+m("5 m")+" right of the hydrant. position?",
+             w:()=>F(m("origin at tree: ")+X+m(" = +2 m"))+F(m("origin at car: ")+X+m(" = −3 m"))+F(m("origin at hydrant: ")+X+m(" = +5 m"))+
+                 '<p class="side">one dog, three numbers. same place.</p>' },
+           { q:"skydiver drops "+m("200 m")+". set up two coordinate systems.",
+             w:()=>F(m("origin at helicopter, down negative: ground at ")+X+m(" = −200 m"))+F(m("origin at ground, up positive: helicopter at ")+X+m(" = +200 m")) } ],
+      terms:["origin","+ direction","position vector","motion diagram"] },
+
+    { t:"vectors vs scalars",
+      p:[ "vector: size + direction. arrow on top. "+m(X)+", "+m(Vv)+", "+m(DX)+", force, acceleration, momentum.",
+          "scalar: size only. distance, speed, time, mass, temperature, pressure.",
+          "1-d: the sign is the direction. "+m("−3 m")+" = 3 m left.",
+          "resultant = vector sum. tip to tail. tail of first → tip of last." ],
+      ex:[ { q:"plane "+m("500. mph")+" into a "+m("50. mph")+" headwind. ground speed?",
+             w:()=>chain({unit:"forward →",vecs:[{v:5,l:"500. mph"},{v:-.5,l:"−50. mph"}],res:{v:4.5,l:"resultant 450 mph"}})+
+                 F(Vv+m(" = (+500. mph) + (−50. mph) = ")+box("450 mph")) },
+           { q:"tug of war: "+m("2500 N")+" right, "+m("2200 N")+" left. net?",
+             w:()=>F(V("F")+m(" = (+2500 N) + (−2200 N) = ")+box("300 N")+m(" right")) } ],
+      terms:["magnitude","direction","tip to tail","resultant"] },
+
+    { t:"displacement vs distance",
+      p:[ F(DX+" = "+XF+" − "+XI)+"vector. "+pen("path doesn't matter.")+" sign = direction.",
+          "distance = |leg| + |leg|. scalar. "+pen("path matters.")+" never negative.",
+          F(DT+" = "+TF+" − "+TI),
+          m("Δ")+" = final − initial. always." ],
+      ex:[ { q:"from "+m("−2 m")+" to "+m("3 m")+". displacement?",
+             w:()=>F(DX+" = "+XF+" − "+XI+m(" = (3 m) − (−2 m) = ")+box("5 m")) },
+           { q:"dog at "+m("−2 m")+" goes right 5, then left 2. displacement? distance?",
+             w:()=>F(DX+m(" = (1 m) − (−2 m) = ")+box("3 m"))+F(m("distance = |5 m| + |−2 m| = ")+box("7 m")) },
+           { q:"same trip, two different origins. displacement?",
+             w:()=>F(DX+m(" = (0 mi) − (2 mi) = ")+box("−2 mi"))+F(DX+m(" = (−5 mi) − (−3 mi) = ")+box("−2 mi"))+'<p class="side">origin changes '+m(X)+', never '+m(DX)+'.</p>' },
+           { q:"starts at "+m("23 m")+", displacement "+m("−45 m")+". final position?",
+             w:()=>F(XF+" = "+XI+" + "+DX+m(" = (23 m) + (−45 m) = ")+box("−22 m")) } ],
+      terms:[m("Δ")+" = final − initial","path doesn't matter","path matters","|leg| + |leg|"] },
+
+    { t:"velocity vs speed",
+      p:[ F(VA+" = "+fr(DX,DT))+"vector. slope of x-t.",
+          F(m("avg speed")+" = "+fr("distance",DT))+"scalar. speed = |v|.",
+          "average: two points, secant line. instantaneous: tangent at one instant (calculus).",
+          "negative v = moving −x. speed never negative.",
+          "order: formula → substitute with units → boxed answer with unit." ],
+      ex:[ { q:"jogger, one "+m("400 m")+" lap in "+m("100 s")+".",
+             w:()=>F(VA+m(" = (0 m) / (100 s) = ")+box("0 m/s"))+F(m("avg speed = (400 m) / (100 s) = ")+box("4 m/s")) },
+           { q:"train averages "+m("130. mi/h")+" over "+m("185 mi")+". time?",
+             w:()=>F(m("t = ")+fr("d","v")+m(" = (185 mi) / (130. mi/h) = ")+box("1.42 h")) },
+           { q:"guard walks "+m("110 m")+" in "+m("240 s")+". speed?",
+             w:()=>F(m("v = ")+fr("d","t")+m(" = (110 m) / (240 s) = ")+box("0.46 m/s")) },
+           { q:m("100 km/h")+" in m/s?",
+             w:()=>F(m("v = (100 km/h)")+fr("1000 m","1 km")+fr("1 h","3600 s")+m(" = ")+box("27.8 m/s")) },
+           { q:"horse at "+m("600 m")+" at 0 s, "+m("500 m")+" at 10 s. velocity?",
+             w:()=>F(m("v = ")+fr(DX,DT)+m(" = (500 m − 600 m) / (10 s − 0 s) = ")+box("−10 m/s")) } ],
+      terms:[m("v")+" avg = "+m("Δx/Δt"),"speed = distance/"+m("Δt"),"secant = average","tangent = instantaneous"] },
+
+    { t:"motion diagrams with vectors",
+      p:[ "displacement vectors: dot to dot. equal arrows = constant v.",
+          "velocity vectors: one per dot. length = speed. flips at a turnaround.",
+          "speeding up: spacing grows. slowing: spacing shrinks. rest: dots pile up.",
+          "turnaround: v = 0 for one instant only.",
+          "his diagram questions: velocity +, −, or 0? change in speed? change in velocity? make up numbers from the arrow lengths (1, 2, 3, 4), negative if left, then subtract." ],
+      ex:[ { q:"softball player, from rest, speeds up toward first base.",
+             w:()=>md({min:0,max:9,step:1,unit:"x (m)",rows:[{pos:[0,0.5,2,4.5,8],t:["0 s","1 s","2 s","3 s","4 s"],vel:[0,1,2,3,4]}]})+
+                 '<p class="side">dots spread out, arrows grow, all point the same way.</p>' },
+           { q:"sled on smooth snow, then a rocky patch, stops.",
+             w:()=>md({min:0,max:15,step:1,scale:6,unit:"x (m)",rows:[{pos:[0,3,6,9,11.5,13,14],t:["0","1","2","3","4","5","6 s"],vel:[3,3,3,3,2,1,0]}]})+
+                 '<p class="side">equal spacing, then bunching, then no arrow.</p>' },
+           { q:"walking left, arrows getting longer. velocity? change in speed? change in velocity?",
+             w:()=>md({min:0,max:9,step:1,unit:"x (m)",rows:[{pos:[8,7,5,2],t:["0 s","1 s","2 s","3 s"],vel:[-1,-2,-3,-4]}]})+
+                 F(m("velocities: −1, −2, −3, −4 m/s → ")+box("negative"))+
+                 F(m("speeds 1, 2, 3, 4 → change in speed ")+box("+"))+
+                 F(m("−1 → −4, more negative → change in velocity ")+box("−"))+
+                 '<p class="side">speeding up left = velocity going down. that is the trap.</p>' } ],
+      terms:["spacing = speed","arrow length = speed","flip = reversed","pile = at rest"] },
+
+    { t:"position-time graphs",
+      p:[ pen("slope = velocity.")+" steeper = faster. flat = at rest. up = +x, down = −x.",
+          "y-intercept = start. crosses t-axis = at the origin (not stopped).",
+          "straight = constant v. curve = changing v. tangent = instantaneous v.",
+          F(m("v = ")+fr(DX,DT)+" = "+fr(XF+" − "+XI,TF+" − "+TI)) ],
+      ex:[ { q:"read the graph: start? at origin when? position at 5 s? velocity?",
+             w:()=>graph({xmin:0,xmax:5,xstep:1,ymin:-10,ymax:20,ystep:5,xlab:"t (s)",ylab:"x (m)",segs:[{pts:[[0,20],[5,-5]]}]})+
+                 F(m("start: ")+box("20 m")+m("   origin: ")+box("4 s")+m("   at 5 s: ")+box("−5 m"))+
+                 F(m("v = (0 m − 20 m) / (4 s − 0 s) = (−20 m) / (4 s) = ")+box("−5 m/s")) },
+           { q:"tortoise and hare, same origin, opposite ways. which line is the hare?",
+             w:()=>'<p>the steeper one. bigger |slope| = faster. it slopes down if the hare runs −x.</p>' },
+           { q:"segments "+A("C")+" and "+A("E")+": "+A("C")+" drops 2 m in 1 s, "+A("E")+" drops 2 m in 4 s. compare speeds.",
+             w:()=>F(m("v")+"<sub>C</sub>"+m(" = (−2 m) / (1 s) = −2.0 m/s"))+F(m("v")+"<sub>E</sub>"+m(" = (−2 m) / (4 s) = −0.5 m/s"))+'<p>'+box("C, 4× faster")+'</p>' } ],
+      terms:["slope = velocity","steeper = faster","flat = rest","intercept = start"] },
+
+    { t:"velocity-time graphs",
+      p:[ "height = v. sign = direction. flat = constant v (still moving). on the axis = rest.",
+          pen("area = displacement.")+" below the axis → negative. |areas| added = distance.",
+          "away from the axis = speeding up. toward it = slowing down. crosses it = turned around." ],
+      ex:[ { q:"area under the line, 0 to 5 s?",
+             w:()=>graph({xmin:0,xmax:5,xstep:1,ymin:0,ymax:25,ystep:5,xlab:"t (s)",ylab:"v (m/s)",segs:[{pts:[[0,5],[5,25]]}]})+
+                 F(m("a = ½(5 m/s + 25 m/s)(5 s) = (15 m/s)(5 s) = ")+box("75 m"))+
+                 F(m("or: rectangle (5 m/s)(5 s) = 25 m, triangle ½(5 s)(20 m/s) = 50 m, total 75 m"))+
+                 '<p class="side">units come out in m. that is displacement.</p>' },
+           { q:"displacement 0 to 8 s? velocity increasing or decreasing? speed?",
+             w:()=>graph({xmin:0,xmax:8,xstep:1,ymin:-5,ymax:1,ystep:1,xlab:"t (s)",ylab:"v (m/s)",segs:[{pts:[[0,-4],[8,-2]]}]})+
+                 F(m("rectangle: (−2 m/s)(8 s) = −16 m"))+F(m("triangle: ½(8 s)(−2 m/s) = −8 m"))+F(DX+m(" = −16 m + (−8 m) = ")+box("−24 m"))+
+                 '<p>velocity '+box("increasing")+' (−4 → −2, toward +). speed '+box("decreasing")+' (4 → 2).</p>' },
+           { q:"three racers, v-t curves. who went farthest by 5.0 s?",
+             w:()=>'<p>biggest area under the curve. compare areas, not heights at 5.0 s.</p>' } ],
+      terms:["area = displacement","below = negative","away from axis = speeding up"] },
+
+    { t:"sketching one graph from the other",
+      p:[ "x-t → v-t: each slope → a horizontal line at that value. flat → zero. vertical jumps between.",
+          "v-t → x-t: add up areas. start at the given x. constant v → straight. rising v → curves up. v below axis → x goes down.",
+          "number both axes. label with units." ],
+      ex:[ { q:"x-t: straight line 0 to 50 m in 5 s. sketch v-t.",
+             w:()=>F(m("slope = (50 m − 0 m) / (5 s − 0 s) = 10 m/s"))+'<p>v-t: flat line at '+m("10 m/s")+', 0 to 5 s.</p>' },
+           { q:"v-t: "+m("v = 10t")+". sketch displacement-time.",
+             w:()=>graph({xmin:0,xmax:5,xstep:1,ymin:0,ymax:125,ystep:25,xlab:"t (s)",ylab:"Δx (m)",segs:[{pts:[[0,0],[0.5,1.25],[1,5],[1.5,11.25],[2,20],[2.5,31.25],[3,45],[3.5,61.25],[4,80],[4.5,101.25],[5,125]]},{pts:[[0,0],[1,5],[2,20],[3,45],[4,80],[5,125]],dots:true,nol:true}]})+
+                 F(m("areas: 5, 15, 25, 35, 45 m → running total 0, 5, 20, 45, 80, 125 m"))+'<p class="side">curve bends up. steeper every second.</p>' },
+           { q:"mail carrier: "+m("+3 m/s")+" 0 to 6 s, "+m("0")+" 6 to 8 s, "+m("−2 m/s")+" 8 to 10 s. sketch x-t. mailbox?",
+             w:()=>graph({xmin:0,xmax:10,xstep:1,ymin:0,ymax:20,ystep:5,xlab:"t (s)",ylab:"x (m)",segs:[{pts:[[0,0],[6,18],[8,18],[10,14]]},{pts:[[0,0],[6,18],[8,18],[10,14]],dots:true,nol:true}]})+
+                 F(m("(3 m/s)(6 s) = 18 m   ·   0   ·   (−2 m/s)(2 s) = −4 m"))+F(m("x: 0 → 18 m → 18 m → 14 m"))+'<p>mailbox at '+box("14 m")+'. the stop at 18 m is the overshoot. he backs up after.</p>' } ],
+      terms:["slope → height","area → rise","label units"] }
+  ],
+
+  cram:[
+    { h:"formulas",
+      body:F(DX+" = "+XF+" − "+XI+m("  → m"))+
+           F(DT+" = "+TF+" − "+TI+m("  → s"))+
+           F(VA+" = "+fr(DX,DT)+m("  → m/s, vector"))+
+           F(m("avg speed = ")+fr("distance",DT)+m("  → m/s, scalar"))+
+           F(m("distance = |leg 1| + |leg 2| + …"))+
+           F(XF+" = "+XI+" + "+DX+m("   ·   d = v t   ·   t = d / v"))+
+           F(m("x-t slope = v   ·   v-t area = ")+DX)+
+           F(m("area: bh, ½bh, ½(b₁ + b₂)h"))+
+           F(m("resultant: tip to tail"))+
+           F(m("1 km = 1000 m · 1 h = 3600 s · 1 mi = 1609 m · 1 ms = 10⁻³ s"))+
+           '<div class="rule">formula → substitute with units → boxed answer with unit.</div>' },
+
+    { h:"vector vs scalar",
+      body:'<div class="kv">'+
+        '<b>vector</b><span>size + direction. arrow on top. '+m(X)+', <span style="white-space:nowrap">'+DX+'</span>, '+m(Vv)+'. sign is the direction.</span>'+
+        '<b>scalar</b><span>size only. distance, speed, time.</span>'+
+        '<b>add vectors</b><span>tip to tail. resultant: tail of first → tip of last.</span>'+
+        '</div>' },
+
+    { h:"every graph",
+      body:'<div class="kv">'+
+        '<b>motion diagram</b><span>spacing = speed. growing = speeding up. piled = rest. order = direction. arrows: displacement dot to dot, velocity on each dot.</span>'+
+        '<b>position vs time</b><span>slope = v. steeper = faster. flat = rest. intercept = start. crosses axis = at origin. curve = changing v, tangent = instantaneous.</span>'+
+        '<b>velocity vs time</b><span>height = v. flat = constant v. on axis = rest. area = '+m(DX)+', negative below. |areas| = distance. away from axis = speeding up. crosses axis = turnaround.</span>'+
+        '<b>displacement vs time</b><span>read like x-t. starts at 0.</span>'+
+        '</div>' },
+
+    { h:"test day",
+      body:'<p>50 min. 50 pts. own calculator, own ruler. equation sheet given.</p>'+
+           '<p>vector diagram 20%. two problems 20% each. graph questions 20%. sketch a graph 20%.</p>'+
+           '<p>every operation written. units on every measurement. algebra first, numbers last. cross out what you don\'t want graded.</p>'+
+           '<p>equation sheet: only the prefixes are useful. know the formulas. sig figs: one off is fine. final answers as one decimal number with a unit, no fractions.</p>'+
+           '<p>acceleration: not on this test.</p>' },
+
+    { h:"traps",
+      body:'<p>'+m("−4 → −2 m/s")+': velocity up, speed down. '+m("−1 → −4 m/s")+': speed up, velocity down.</p>'+
+           '<p>full lap: '+m(DX)+' = 0, speed ≠ 0.</p>'+
+           '<p>move the origin: '+m(X)+' changes, '+m(DX)+' doesn\'t.</p>'+
+           '<p>flat x-t = rest. flat v-t = moving.</p>'+
+           '<p>x-t crosses zero = at origin. v-t crosses zero = turned around.</p>'+
+           '<p>piled-up dots = a v = 0 stretch, not a ramp through zero.</p>'+
+           '<p>mailbox = where the trip ends, not the overshoot stop.</p>' }
+  ],
+
+  tests:[
+    { name:"practice test a",
+      qs:[
+        { k:"vector diagram", q:"dog starts at "+m("x = −3 m")+". right at "+m("3.5 m/s")+" for "+m("2.0 s")+", still for "+m("1.0 s")+", left at "+m("2.0 m/s")+" for "+m("2.0 s")+". right is positive.",
+          parts:["draw the particle diagram, a dot every "+m("1.0 s")+", displacement vector for each interval.","displacement and distance, whole trip.","average velocity and average speed, whole trip."],
+          sol:()=>'<p class="lbl">(a)</p>'+md({min:-4,max:5,step:1,unit:"x (m)",rows:[{pos:[-3,0.5,4,4,2,0],t:["t = 0 s","1.0 s","2.0 s","3.0 s","4.0 s","5.0 s"],disp:true}]})+
+              '<p>positions: '+m("−3, 0.5, 4, 4, 2, 0 m")+'. equal arrows on each constant-speed leg. no arrow for the stop, dot stacks. return arrows flipped.</p>'+
+              '<p class="lbl">(b)</p>'+F(DX+" = "+XF+" − "+XI+m(" = (0 m) − (−3 m) = ")+box("+3 m"))+F(m("distance = |7 m| + |−4 m| = ")+box("11 m"))+
+              '<p class="lbl">(c)</p>'+F(VA+" = "+fr(DX,DT)+m(" = (3 m) / (5.0 s) = ")+box("0.6 m/s")+m(" right"))+F(m("avg speed = ")+fr("distance",DT)+m(" = (11 m) / (5.0 s) = ")+box("2.2 m/s"))+
+              '<p class="why"><b>why</b> legs: '+m("(3.5 m/s)(2.0 s) = 7 m")+' right, '+m("(2.0 m/s)(2.0 s) = 4 m")+' left. displacement nets, distance adds. time is all '+m("5.0 s")+', stop included.</p>' },
+        { k:"problem", q:"cyclist: "+m("24.0 km")+" east in "+m("0.75 h")+", then "+m("6.0 km")+" west in "+m("0.25 h")+". east positive.",
+          parts:["average velocity, km/h.","average speed, km/h.","convert (a) to m/s."],
+          sol:()=>'<p class="lbl">(a)</p>'+F(DX+m(" = (+24.0 km) + (−6.0 km) = +18.0 km"))+F(DT+m(" = 0.75 h + 0.25 h = 1.00 h"))+
+              F(VA+" = "+fr(DX,DT)+m(" = (18.0 km) / (1.00 h) = ")+box("18.0 km/h east"))+
+              '<p class="lbl">(b)</p>'+F(m("distance = |24.0 km| + |−6.0 km| = 30.0 km"))+F(m("avg speed = (30.0 km) / (1.00 h) = ")+box("30.0 km/h"))+
+              '<p class="lbl">(c)</p>'+F(m("v = (18.0 km/h)")+fr("1000 m","1 km")+fr("1 h","3600 s")+m(" = ")+box("5.00 m/s"))+
+              '<p class="why"><b>why</b> west leg subtracts from '+m(DX)+', adds to distance. chain the conversions so km and h cancel.</p>' },
+        { k:"problem", q:"sprinter: "+m("100. m")+" in "+m("9.80 s")+". constant speed.",
+          parts:["speed, m/s.","distance in "+m("3.00 s")+" at that speed.","speed in mi/h. "+m("1 mi = 1609 m")+"."],
+          sol:()=>'<p class="lbl">(a)</p>'+F(m("v = ")+fr("d",DT)+m(" = (100. m) / (9.80 s) = ")+box("10.2 m/s"))+
+              '<p class="lbl">(b)</p>'+F(m("d = v ")+DT+m(" = (10.2 m/s)(3.00 s) = ")+box("30.6 m"))+
+              '<p class="lbl">(c)</p>'+F(m("v = (10.2 m/s)")+fr("1 mi","1609 m")+fr("3600 s","1 h")+m(" = ")+box("22.8 mi/h"))+
+              '<p class="why"><b>why</b> formula first, then numbers. m cancels m, s cancels s, mi/h is left.</p>' },
+        { k:"graph questions", q:"graph below. right positive.",
+          fig:()=>graph({xmin:0,xmax:10,xstep:1,ymin:-6,ymax:6,ystep:2,xlab:"t (s)",ylab:"x (m)",
+                  segs:[{pts:[[0,-4],[2,4],[5,4],[8,-2],[10,-2]]}],
+                  labels:[{x:0.7,y:1.2,t:"A"},{x:3.5,y:5,t:"B"},{x:6.9,y:2.2,t:"C"},{x:9,y:-1,t:"D"}]}),
+          parts:["starting position?","when is it at the origin?","which segments at rest?","velocity during "+A("C")+", work shown.","displacement 0 to 10 s.","distance 0 to 10 s.","fastest segment? how do you know?"],
+          sol:()=>'<p>(a) intercept: '+box("−4 m")+'</p>'+
+              '<p>(b) line crosses the t-axis: '+box("1 s and 7 s")+'</p>'+
+              '<p>(c) slope zero: '+box("B, D")+'</p>'+
+              '<p class="lbl">(d)</p>'+F(m("v = ")+fr(DX,DT)+" = "+fr(XF+" − "+XI,TF+" − "+TI))+
+              F(m("v = (−2 m − 4 m) / (8 s − 5 s) = (−6 m) / (3 s) = ")+box("−2 m/s"))+
+              '<p class="lbl">(e)</p>'+F(DX+" = "+XF+" − "+XI+m(" = (−2 m) − (−4 m) = ")+box("+2 m"))+
+              '<p class="lbl">(f)</p>'+F(m("distance = |8 m| + |−6 m| = ")+box("14 m"))+
+              '<p class="lbl">(g)</p>'+F(m("v")+"<sub>A</sub>"+m(" = (4 m − (−4 m)) / (2 s − 0 s) = ")+box("4 m/s"))+'<p>'+A("A")+', steepest. '+m("|4| > |−2|")+'.</p>'+
+              '<p class="why"><b>why</b> crossing the axis = passing the origin, stopped = flat. '+m(DX)+' is endpoints only; distance adds the 8 m up and 6 m down.</p>' },
+        { k:"sketch a graph", q:"sketch the v-t graph for question 4. numbers on both axes.",
+          sol:()=>graph({xmin:0,xmax:10,xstep:1,ymin:-4,ymax:6,ystep:2,xlab:"t (s)",ylab:"v (m/s)",
+                  segs:[{pts:[[0,4],[2,4]]},{pts:[[2,4],[2,0]],dash:true},{pts:[[2,0],[5,0]]},{pts:[[5,0],[5,-2]],dash:true},{pts:[[5,-2],[8,-2]]},{pts:[[8,-2],[8,0]],dash:true},{pts:[[8,0],[10,0]]}],
+                  labels:[{x:1,y:5,t:"A"},{x:3.5,y:1,t:"B"},{x:6.5,y:-3,t:"C"},{x:9,y:1,t:"D"}]})+
+              '<p>'+m("+4 m/s")+' 0 to 2 s. '+m("0")+' 2 to 5 s. '+m("−2 m/s")+' 5 to 8 s. '+m("0")+' 8 to 10 s.</p>'+
+              '<p class="why"><b>why</b> each slope → horizontal line. check: areas '+m("(4)(2) + 0 + (−2)(3) + 0 = +2 m")+', matches 4(e).</p>' }
+      ]},
+
+    { name:"practice test b",
+      qs:[
+        { k:"vector diagram", q:"ball rolls up a ramp, slows, stops for an instant, rolls back down speeding up. up is positive.",
+          parts:["draw the motion diagram with velocity vectors, equal time intervals, return dots offset.","sign of v going up? down?","at the top: v? speed? how long?","dots closest where?","going down: change in speed? change in velocity?"],
+          sol:()=>'<p class="lbl">(a)</p>'+md({min:0,max:12,step:1,unit:"x (m), up the ramp →",rows:[
+                {pos:[11,10,8,5,1],t:["4 s","5 s","6 s","7 s","8 s"],vel:[0,-1,-2,-3,-4],tag:"down"},
+                {pos:[1,5,8,10,11],t:["0 s","1 s","2 s","3 s","4 s"],vel:[4,3,2,1,0],tag:"up"}]})+
+              '<p>up: dots bunch, arrows shrink. top: no arrow. down: dots spread, arrows grow, flipped.</p>'+
+              '<p>(b) up '+box("+")+', down '+box("−")+'.</p>'+
+              '<p>(c) '+m(Vv+" = 0")+', speed 0, for '+box("one instant")+'. it turns, it doesn\'t sit.</p>'+
+              '<p>(d) '+box("near the top")+'. slowest there, least distance per interval.</p>'+
+              '<p>(e) speeds 0, 1, 2, 3 → change in speed '+box("+")+'. velocities 0, −1, −2, −3 → change in velocity '+box("−")+'.</p>'+
+              '<p class="why"><b>why</b> going up: speed down, velocity down (+ → 0). going down: speed up, velocity still down. make up numbers, then subtract.</p>' },
+        { k:"problem", q:"kayaker paddles "+m("3.0 m/s")+" relative to the water. river flows "+m("1.0 m/s")+". downstream positive.",
+          parts:["draw tip to tail and find the resultant velocity downstream, then upstream.","dock is "+m("600. m")+" downstream. time to get there?","time back?"],
+          sol:()=>'<p class="lbl">(a)</p>'+chain({unit:"downstream →",vecs:[{v:3,l:"paddle +3.0"},{v:1,l:"river +1.0"}],res:{v:4,l:"resultant +4.0 m/s"}})+
+              chain({unit:"downstream →",vecs:[{v:-3,l:"paddle −3.0"},{v:1,l:"river +1.0"}],res:{v:-2,l:"resultant −2.0 m/s"}})+
+              F(Vv+m(" = ")+Vv+"<sub>paddle</sub>"+m(" + ")+Vv+"<sub>river</sub>")+
+              F(m("down: (+3.0 m/s) + (+1.0 m/s) = ")+box("+4.0 m/s"))+F(m("up: (−3.0 m/s) + (+1.0 m/s) = ")+box("−2.0 m/s"))+
+              '<p class="lbl">(b)</p>'+F(DT+m(" = ")+fr(DX,Vv)+m(" = (600. m) / (4.0 m/s) = ")+box("150 s"))+
+              '<p class="lbl">(c)</p>'+F(DT+m(" = ")+fr(DX,Vv)+m(" = (−600. m) / (−2.0 m/s) = ")+box("300 s"))+
+              '<p class="why"><b>why</b> tail of first → tip of last. upstream the paddle flips, river still adds. back: displacement and velocity both negative, time positive.</p>' },
+        { k:"problem", q:"toy car: "+m("1.50 m")+" right in "+m("2.3 s")+", then "+m("0.60 m")+" left in "+m("1.2 s")+". right positive.",
+          parts:["displacement and distance, whole run.","average velocity, whole run.","average speed, whole run.","speed during the second leg."],
+          sol:()=>'<p class="lbl">(a)</p>'+F(DX+m(" = (+1.50 m) + (−0.60 m) = ")+box("+0.90 m"))+F(m("distance = |1.50 m| + |−0.60 m| = ")+box("2.10 m"))+
+              '<p class="lbl">(b)</p>'+F(DT+m(" = 2.3 s + 1.2 s = 3.5 s"))+F(VA+" = "+fr(DX,DT)+m(" = (0.90 m) / (3.5 s) = ")+box("0.26 m/s")+m(" right"))+
+              '<p class="lbl">(c)</p>'+F(m("avg speed = ")+fr("distance",DT)+m(" = (2.10 m) / (3.5 s) = ")+box("0.60 m/s"))+
+              '<p class="lbl">(d)</p>'+F(m("speed = (0.60 m) / (1.2 s) = ")+box("0.50 m/s"))+
+              '<p class="why"><b>why</b> left leg undoes part of the displacement, distance keeps it. one leg\'s speed = its own distance over its own time.</p>' },
+        { k:"graph questions", q:"graph below. right positive.",
+          fig:()=>graph({xmin:0,xmax:10,xstep:1,ymin:-4,ymax:4,ystep:1,xlab:"t (s)",ylab:"v (m/s)",
+                  segs:[{pts:[[0,3],[4,3],[6,0],[7,0]]},{pts:[[7,0],[7,-2]],dash:true},{pts:[[7,-2],[10,-2]]}],
+                  labels:[{x:2,y:3.6,t:"A"},{x:5.4,y:2,t:"B"},{x:6.5,y:.7,t:"C"},{x:8.5,y:-1.3,t:"D"}]}),
+          parts:["constant velocity where?","slowing down where?","standing still where?","moving left where?","displacement 0 to 10 s, areas shown.","distance 0 to 10 s.","average velocity, whole 10 s."],
+          sol:()=>'<p>(a) flat lines: '+box("A, C, D")+' ('+A("C")+' is constant at zero).</p>'+
+              '<p>(b) toward the axis: '+box("B")+'</p><p>(c) on the axis: '+box("C")+'</p><p>(d) below the axis: '+box("D")+'</p>'+
+              '<p class="lbl">(e)</p>'+F(A("A")+m(": (3 m/s)(4 s) = 12 m"))+F(A("B")+m(": ½(2 s)(3 m/s) = 3 m"))+F(A("C")+m(": 0 m"))+F(A("D")+m(": (−2 m/s)(3 s) = −6 m"))+
+              F(DX+m(" = 12 m + 3 m + 0 m + (−6 m) = ")+box("+9 m"))+
+              '<p class="lbl">(f)</p>'+F(m("distance = |12 m| + |3 m| + |0 m| + |−6 m| = ")+box("21 m"))+
+              '<p class="lbl">(g)</p>'+F(VA+" = "+fr(DX,DT)+m(" = (9 m) / (10 s) = ")+box("0.9 m/s"))+
+              '<p class="why"><b>why</b> on v-t, height is velocity: flat = constant, even off zero. below the axis = negative area; distance flips it. (g) is net '+m(DX)+' over all 10 s.</p>' },
+        { k:"sketch a graph", q:"sketch the x-t graph for question 4. "+m("x = 0 m")+" at "+m("t = 0 s")+". numbers on both axes.",
+          sol:()=>{ const c=[]; for(let t=4;t<=6;t+=0.25){ const u=t-4; c.push([t,12+3*u-0.75*u*u]); }
+              return graph({xmin:0,xmax:10,xstep:1,ymin:0,ymax:18,ystep:3,xlab:"t (s)",ylab:"x (m)",
+                  segs:[{pts:[[0,0],[4,12]]},{pts:c},{pts:[[6,15],[7,15]]},{pts:[[7,15],[10,9]]},{pts:[[0,0],[4,12],[6,15],[7,15],[10,9]],dots:true,nol:true}],
+                  labels:[{x:1.6,y:8,t:"A"},{x:5.3,y:16.6,t:"B"},{x:6.5,y:16.6,t:"C"},{x:9,y:13,t:"D"}]})+
+              F(m("x: 0 m → 12 m (4 s) → 15 m (6 s) → 15 m (7 s) → 9 m (10 s)"))+
+              '<p class="why"><b>why</b> add areas. constant v = straight. shrinking v = curve flattening. v = 0 = flat. v < 0 = down. ends at '+m("+9 m")+', matches 4(e).</p>'; } }
+      ]},
+
+    { name:"practice test c",
+      qs:[
+        { k:"vector diagram", q:"car cruises right at "+m("4 m/s")+" for 3 s, then brakes to a stop in 3 s. right positive.",
+          parts:["draw the motion diagram with velocity vectors.","while braking: velocity sign? change in speed? change in velocity?","where are the dots closest? why?"],
+          sol:()=>'<p class="lbl">(a)</p>'+md({min:0,max:19,step:1,scale:6,unit:"x (m)",rows:[{pos:[0,4,8,12,15,17,18],t:["0","1","2","3","4","5","6 s"],vel:[4,4,4,4,2.7,1.3,0]}]})+
+              '<p>equal spacing and equal arrows for 3 s. then spacing shrinks, arrows shrink, last dot no arrow.</p>'+
+              '<p>(b) velocity '+box("+")+' (still moving right). speed 4 → 0, change '+box("−")+'. velocity 4 → 0, change '+box("−")+'.</p>'+
+              '<p>(c) '+box("at the end")+'. slowest there, least distance per interval.</p>'+
+              '<p class="why"><b>why</b> moving right and slowing: speed and velocity both drop. only leftward motion splits them.</p>' },
+        { k:"problem", q:"car passes the "+m("100 m")+" sign at "+m("0 s")+" and the "+m("140 m")+" sign at "+m("2.5 s")+".",
+          parts:["speed in m/s.","speed in km/h.","speed in mi/h. "+m("1 mi = 1609 m")+"."],
+          sol:()=>'<p class="lbl">(a)</p>'+F(m("v = ")+fr(DX,DT)+m(" = (140 m − 100 m) / (2.5 s − 0 s) = ")+box("16 m/s"))+
+              '<p class="lbl">(b)</p>'+F(m("(16 m/s)")+fr("1 km","1000 m")+fr("3600 s","1 h")+m(" = ")+box("58 km/h"))+
+              '<p class="lbl">(c)</p>'+F(m("(16 m/s)")+fr("1 mi","1609 m")+fr("3600 s","1 h")+m(" = ")+box("36 mi/h"))+
+              '<p class="why"><b>why</b> slope formula first. every conversion is exact, so it never limits the answer.</p>' },
+        { k:"problem", q:"skateboard starts at "+m("x = +2 m")+", moves toward −x at a constant "+m("1.5 m/s")+" for "+m("4 s")+".",
+          parts:["displacement.","final position.","closer to or farther from the origin at the end? why?"],
+          sol:()=>'<p class="lbl">(a)</p>'+F(DX+m(" = ")+Vv+DT+m(" = (−1.5 m/s)(4 s) = ")+box("−6 m"))+
+              '<p class="lbl">(b)</p>'+F(XF+" = "+XI+" + "+DX+m(" = (2 m) + (−6 m) = ")+box("−4 m"))+
+              '<p>(c) '+box("farther")+'. |2 m| → |−4 m|. it passed the origin and kept going.</p>'+
+              '<p class="why"><b>why</b> distance from the origin is |x|. negative position, growing magnitude = farther.</p>' },
+        { k:"graph questions", q:"graph below. right positive.",
+          fig:()=>graph({xmin:0,xmax:10,xstep:1,ymin:-4,ymax:8,ystep:2,xlab:"t (s)",ylab:"x (m)",
+                  segs:[{pts:[[0,2],[2,6],[4,6],[8,-2],[10,0]]}],
+                  labels:[{x:1,y:6.5,t:"A"},{x:3,y:7.3,t:"B"},{x:6.6,y:3,t:"C"},{x:9,y:0.8,t:"D"}]}),
+          parts:["starting position?","at rest where?","moving left where?","when does it pass the origin?","velocity during "+A("D")+", work shown.","displacement 0 to 10 s.","distance 0 to 10 s."],
+          sol:()=>'<p>(a) '+box("+2 m")+'</p><p>(b) '+box("B")+'</p><p>(c) '+box("C")+', slope down.</p>'+
+              '<p>(d) '+box("7 s")+' (and back to 0 at 10 s). '+A("C")+': '+m("6 m − (2 m/s)(t − 4 s) = 0 → t = 7 s")+'.</p>'+
+              '<p class="lbl">(e)</p>'+F(m("v = ")+fr(XF+" − "+XI,TF+" − "+TI)+m(" = (0 m − (−2 m)) / (10 s − 8 s) = (2 m) / (2 s) = ")+box("+1 m/s"))+
+              '<p class="lbl">(f)</p>'+F(DX+m(" = (0 m) − (2 m) = ")+box("−2 m"))+
+              '<p class="lbl">(g)</p>'+F(m("distance = |4 m| + |−8 m| + |2 m| = ")+box("14 m"))+
+              '<p class="why"><b>why</b> ends left of the start → negative '+m(DX)+'. distance adds every leg.</p>' },
+        { k:"sketch a graph", q:"sketch the v-t graph for question 4. numbers on both axes.",
+          sol:()=>graph({xmin:0,xmax:10,xstep:1,ymin:-4,ymax:4,ystep:1,xlab:"t (s)",ylab:"v (m/s)",
+                  segs:[{pts:[[0,2],[2,2]]},{pts:[[2,2],[2,0]],dash:true},{pts:[[2,0],[4,0]]},{pts:[[4,0],[4,-2]],dash:true},{pts:[[4,-2],[8,-2]]},{pts:[[8,-2],[8,1]],dash:true},{pts:[[8,1],[10,1]]}],
+                  labels:[{x:1,y:2.8,t:"A"},{x:3,y:.8,t:"B"},{x:6,y:-2.9,t:"C"},{x:9,y:1.8,t:"D"}]})+
+              '<p>'+m("+2 m/s")+', '+m("0")+', '+m("−2 m/s")+', '+m("+1 m/s")+'. jumps at 2, 4, 8 s.</p>'+
+              '<p class="why"><b>why</b> '+A("A")+' rises 4 m in 2 s. '+A("C")+' drops 8 m in 4 s. '+A("D")+' rises 2 m in 2 s.</p>' }
+      ]},
+
+    { name:"practice test d",
+      qs:[
+        { k:"vector diagram", q:"runner starts from rest and speeds up toward the finish, to the right. right positive.",
+          parts:["draw the motion diagram with velocity vectors.","velocity sign? change in speed? change in velocity?","how would the diagram change if she ran left instead?"],
+          sol:()=>'<p class="lbl">(a)</p>'+md({min:0,max:9,step:1,unit:"x (m)",rows:[{pos:[0,0.5,2,4.5,8],t:["0 s","1 s","2 s","3 s","4 s"],vel:[0,1,2,3,4]}]})+
+              '<p>first dot no arrow. spacing grows. arrows grow. all point the same way.</p>'+
+              '<p>(b) velocity '+box("+")+'. speeds 0, 1, 2, 3, 4 → change in speed '+box("+")+'. velocities 0, +1, +2, +3, +4 → change in velocity '+box("+")+'.</p>'+
+              '<p>(c) arrows point left, velocities 0, −1, −2, −3, −4. change in speed still '+box("+")+', change in velocity '+box("−")+'.</p>'+
+              '<p class="why"><b>why</b> speed ignores the sign, velocity keeps it. same diagram mirrored flips the velocity answer only.</p>' },
+        { k:"problem", q:"hiker goes "+m("6 km")+" north, then "+m("2 km")+" south, "+m("4.0 h")+" total. north positive.",
+          parts:["draw the displacement vectors tip to tail and the resultant.","displacement and distance.","average velocity and average speed."],
+          sol:()=>'<p class="lbl">(a)</p>'+chain({unit:"north →",vecs:[{v:6,l:"+6 km"},{v:-2,l:"−2 km"}],res:{v:4,l:"resultant +4 km"}})+
+              '<p class="lbl">(b)</p>'+F(DX+m(" = (+6 km) + (−2 km) = ")+box("+4 km north"))+F(m("distance = |6 km| + |−2 km| = ")+box("8 km"))+
+              '<p class="lbl">(c)</p>'+F(VA+" = "+fr(DX,DT)+m(" = (4 km) / (4.0 h) = ")+box("1.0 km/h north"))+F(m("avg speed = (8 km) / (4.0 h) = ")+box("2.0 km/h"))+
+              '<p class="why"><b>why</b> second arrow starts at the tip of the first. resultant runs tail of first → tip of second. same time, two different answers.</p>' },
+        { k:"problem", q:"security guard walks one "+m("110 m")+" loop around a building in "+m("240 s")+".",
+          parts:["speed.","displacement.","average velocity.","time for the loop in minutes."],
+          sol:()=>'<p class="lbl">(a)</p>'+F(m("speed = ")+fr("distance",DT)+m(" = (110 m) / (240 s) = ")+box("0.46 m/s"))+
+              '<p class="lbl">(b)</p>'+F(DX+m(" = ")+box("0 m")+m(", ends where he started"))+
+              '<p class="lbl">(c)</p>'+F(VA+m(" = (0 m) / (240 s) = ")+box("0 m/s"))+
+              '<p class="lbl">(d)</p>'+F(m("(240 s)")+fr("1 min","60 s")+m(" = ")+box("4.0 min"))+
+              '<p class="why"><b>why</b> a loop has path length but no displacement. speed counts the path, velocity doesn\'t.</p>' },
+        { k:"graph questions", q:"graph below. right positive.",
+          fig:()=>graph({xmin:0,xmax:8,xstep:1,ymin:-4,ymax:4,ystep:1,xlab:"t (s)",ylab:"v (m/s)",
+                  segs:[{pts:[[0,-3],[6,3],[8,3]]}],labels:[{x:3.9,y:-1,t:"A"},{x:7,y:3.7,t:"B"}]}),
+          parts:["when at rest?","moving left when?","0 to 3 s: speed increasing or decreasing? velocity?","3 to 6 s: speed? velocity?","displacement 0 to 8 s, areas shown.","distance 0 to 8 s."],
+          sol:()=>'<p>(a) crosses the axis: '+box("t = 3 s")+'. one instant.</p>'+
+              '<p>(b) below the axis: '+box("0 to 3 s")+'</p>'+
+              '<p>(c) speed '+box("decreasing")+' (3 → 0). velocity '+box("increasing")+' (−3 → 0).</p>'+
+              '<p>(d) speed '+box("increasing")+', velocity '+box("increasing")+'.</p>'+
+              '<p class="lbl">(e)</p>'+F(m("0 to 3 s: ½(3 s)(−3 m/s) = −4.5 m"))+F(m("3 to 6 s: ½(3 s)(3 m/s) = +4.5 m"))+F(m("6 to 8 s: (3 m/s)(2 s) = +6 m"))+
+              F(DX+m(" = −4.5 m + 4.5 m + 6 m = ")+box("+6 m"))+
+              '<p class="lbl">(f)</p>'+F(m("distance = 4.5 m + 4.5 m + 6 m = ")+box("15 m"))+
+              '<p class="why"><b>why</b> one straight line = velocity rising the whole time. speed is distance from the axis. the two triangles cancel in '+m(DX)+', add in distance.</p>' },
+        { k:"sketch a graph", q:"sketch the x-t graph for question 4. "+m("x = 0 m")+" at "+m("t = 0 s")+". numbers on both axes.",
+          sol:()=>{ const c=[]; for(let t=0;t<=6;t+=0.25){ c.push([t,-3*t+0.5*t*t]); }
+              return graph({xmin:0,xmax:8,xstep:1,ymin:-6,ymax:8,ystep:2,xlab:"t (s)",ylab:"x (m)",
+                  segs:[{pts:c},{pts:[[6,0],[8,6]]},{pts:[[0,0],[3,-4.5],[6,0],[8,6]],dots:true,nol:true}]})+
+              F(m("x: 0 m → −4.5 m (3 s) → 0 m (6 s) → +6 m (8 s)"))+
+              '<p class="why"><b>why</b> x drops while v is negative, bottoms out where v = 0, comes back up. curve flattens at 3 s, straight after 6 s.</p>'; } }
+      ]}
+  ]
+};
+/* ═══ below here is the machinery ═══════════════════════════════ */
+
+const $=s=>document.querySelector(s);
+const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+let uid=0;
+
+/* ── figure helpers ── */
+function fmt(n){ n=Math.round(n*100)/100; if(Object.is(n,-0))n=0; return n; }
+function graph(o){
+  const W=440,H=290,L=48,R=14,T=20,B=44, pw=W-L-R, ph=H-T-B;
+  const X=x=>L+(x-o.xmin)/(o.xmax-o.xmin)*pw, Y=y=>T+(o.ymax-y)/(o.ymax-o.ymin)*ph;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" class="fig" role="img" aria-label="graph">';
+  for(let x=o.xmin;x<=o.xmax+1e-9;x+=o.xstep){ s+='<line x1="'+X(x)+'" y1="'+T+'" x2="'+X(x)+'" y2="'+(T+ph)+'" class="grid"/>'+
+    '<text x="'+X(x)+'" y="'+(T+ph+16)+'" class="tk" text-anchor="middle">'+fmt(x)+'</text>'; }
+  for(let y=o.ymin;y<=o.ymax+1e-9;y+=o.ystep){ s+='<line x1="'+L+'" y1="'+Y(y)+'" x2="'+(L+pw)+'" y2="'+Y(y)+'" class="grid"/>'+
+    '<text x="'+(L-8)+'" y="'+(Y(y)+4)+'" class="tk" text-anchor="end">'+fmt(y)+'</text>'; }
+  const y0=(o.ymin<=0&&o.ymax>=0)?Y(0):Y(o.ymin);
+  s+='<line x1="'+L+'" y1="'+y0+'" x2="'+(L+pw)+'" y2="'+y0+'" class="ax"/><line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+(T+ph)+'" class="ax"/>';
+  s+='<text x="'+(L+pw/2)+'" y="'+(H-6)+'" class="lab" text-anchor="middle">'+o.xlab+'</text>';
+  s+='<text transform="translate(12 '+(T+ph/2)+') rotate(-90)" class="lab" text-anchor="middle">'+o.ylab+'</text>';
+  (o.segs||[]).forEach(sg=>{
+    if(!sg.nol){ const d=sg.pts.map((p,i)=>(i?"L":"M")+X(p[0])+" "+Y(p[1])).join(" ");
+      s+='<path d="'+d+'" class="ln'+(sg.dash?' dsh':'')+'"/>'; }
+    if(sg.dots) sg.pts.forEach(p=>s+='<circle cx="'+X(p[0])+'" cy="'+Y(p[1])+'" r="4.2" class="pt"/>');
+  });
+  (o.labels||[]).forEach(l=>s+='<text x="'+X(l.x)+'" y="'+Y(l.y)+'" class="sl" text-anchor="middle">'+l.t+'</text>');
+  return s+'</svg>';
+}
+function arrow(x1,y1,x2,y2,cls,hd){
+  const id="a"+(++uid);
+  return '<defs><marker id="'+id+'" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="'+hd+'"/></marker></defs>'+
+    '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" class="'+cls+'" marker-end="url(#'+id+')"/>';
+}
+function md(o){ /* particle / motion diagram on a number line */
+  const W=440,L=38,R=24,pw=W-L-R, rows=o.rows, H=104+rows.length*76;
+  const X=x=>L+(x-o.min)/(o.max-o.min)*pw, ay=H-34, sc=o.scale||11;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" class="fig" role="img" aria-label="motion diagram">';
+  s+='<line x1="'+(L-12)+'" y1="'+ay+'" x2="'+(L+pw+12)+'" y2="'+ay+'" class="nl"/>';
+  for(let x=o.min;x<=o.max+1e-9;x+=o.step){ s+='<line x1="'+X(x)+'" y1="'+(ay-6)+'" x2="'+X(x)+'" y2="'+(ay+6)+'" class="nl"/>'+
+    '<text x="'+X(x)+'" y="'+(ay+20)+'" class="tk" text-anchor="middle">'+fmt(x)+'</text>'; }
+  s+='<text x="'+(L+pw+12)+'" y="'+(ay+34)+'" class="lab" text-anchor="end">'+o.unit+'</text>';
+  rows.forEach((r,ri)=>{
+    const y=ay-58-ri*76;
+    if(r.tag) s+='<text x="'+(L-34)+'" y="'+(y-24)+'" class="note">'+r.tag+'</text>';
+    r.pos.forEach((p,i)=>{
+      const cx=X(p), stacked=r.pos.slice(0,i).some(q=>q===p), willStack=r.pos.slice(i+1).some(q=>q===p), cy=y-(stacked?13:0);
+      const near=r.pos.slice(0,i).filter(q=>q!==p&&Math.abs(X(q)-cx)<36).length, close=!stacked&&(near%2===1);
+      s+='<circle cx="'+cx+'" cy="'+cy+'" r="5" class="dt"/>';
+      if(stacked) s+='<text x="'+(cx+10)+'" y="'+(cy+4)+'" class="tl" text-anchor="start">'+r.t[i]+'</text>';
+      else s+='<text x="'+cx+'" y="'+(cy-14-(close?13:0)-(willStack?14:0))+'" class="tl" text-anchor="middle">'+r.t[i]+'</text>';
+      if(r.disp && i<r.pos.length-1 && r.pos[i+1]!==p){ const nx=X(r.pos[i+1]), dir=Math.sign(nx-cx), ly=y+(dir>0?18:36);
+        s+=arrow(cx+dir*7,ly,nx-dir*7,ly,"arr","ahd"); }
+      if(r.vel){ const v=r.vel[i]; if(v){ const len=v*sc, dir=Math.sign(v);
+        s+=arrow(cx+dir*7,y,cx+dir*7+len,y,"vec","vhd"); } }
+    });
+  });
+  return s+'</svg>';
+}
+function chain(o){ /* tip-to-tail arrows on one axis, plus resultant */
+  const W=440,H=124; let s='<svg viewBox="0 0 '+W+' '+H+'" class="fig" role="img" aria-label="tip to tail">';
+  const pos=[0]; o.vecs.forEach(v=>pos.push(pos[pos.length-1]+v.v)); pos.push(o.res.v);
+  const mn=Math.min(...pos), mx=Math.max(...pos);
+  const sc=Math.min(o.scale||60,(W-48)/(mx-mn)), x0=24-mn*sc;
+  let x=x0, y=26;
+  o.vecs.forEach((v,i)=>{ const x2=x+v.v*sc; s+=arrow(x,y,x2,y,"vec","vhd");
+    s+='<text x="'+((x+x2)/2)+'" y="'+(i?y+18:y-10)+'" class="tl" text-anchor="middle">'+v.l+'</text>'; x=x2; y+=22; });
+  const rx=x0+o.res.v*sc, ry=y+14;
+  s+=arrow(x0,ry,rx,ry,"res","rhd")+'<text x="'+((x0+rx)/2)+'" y="'+(ry+18)+'" class="tl" text-anchor="middle">'+o.res.l+'</text>';
+  s+='<text x="'+(W-8)+'" y="'+(H-6)+'" class="note" text-anchor="end">'+o.unit+'</text>';
+  return s+'</svg>';
+}
+/* ── glyph ── */
+const G={
+ atom:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ flag:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>'
+};
+$("#cls").textContent=GUIDE.cls;
+$("#ttl").textContent=GUIDE.title;
+$("#due").textContent=GUIDE.due;
+document.title=GUIDE.title.toLowerCase();
+$("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true">'+
+  '<g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" '+
+  'stroke-linecap="round" stroke-linejoin="round" opacity=".97" pathLength="1">'+
+  (G[GUIDE.glyph]||G.flag).replace(/<(path|circle|ellipse)/g,'<$1 pathLength="1"')+'</g></svg>';
+
+/* ── notes ── */
+GUIDE.notes.forEach((s,i)=>{
+  const card=el("div","card g");
+  card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+    '<button class="chead" aria-expanded="false"><span class="dot"></span>'+
+    '<span class="ct"></span><svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" '+
+    'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '+
+    'aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>'+
+    '<div class="cbody"><div>'+s.p.map(x=>'<p>'+x+'</p>').join("")+
+    (s.rule?'<div class="rule">'+s.rule+'</div>':"")+
+    (s.ex?'<div class="exs"></div>':"")+
+    (s.terms?'<div class="terms">'+s.terms.map(t=>'<span class="term">'+t+'</span>').join("")+'</div>':"")+'</div></div>';
+  card.querySelector(".ct").textContent=s.t;
+  const head=card.querySelector(".chead"), body=card.querySelector(".cbody");
+  let built=false;
+  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";
+    if(!o&&!built&&s.ex){ built=true;
+      card.querySelector(".exs").innerHTML=s.ex.map((e,k)=>'<p class="exq">ex '+(k+1)+' · '+e.q+'</p><div class="exw">'+e.w()+'</div>').join(""); }
+    head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
+  if(!REDUCED){card.classList.add("rise");card.style.setProperty("--i",i)}
+  $("#p-notes").appendChild(card);
+});
+
+/* ── cram sheet ── */
+GUIDE.cram.forEach((c,i)=>{
+  const card=el("div","cram g");
+  card.innerHTML='<span class="spec" aria-hidden="true"></span><h3></h3>'+c.body;
+  card.querySelector("h3").textContent=c.h;
+  if(!REDUCED){card.classList.add("rise");card.style.setProperty("--i",i)}
+  $("#p-cram").appendChild(card);
+});
+
+/* ── practice tests ── */
+(function(){
+  let i=0;
+  GUIDE.tests.forEach(t=>{
+    const lab=el("div","sh"); lab.textContent=t.name; $("#p-practice").appendChild(lab);
+    const head=el("div","tcard g");
+    head.innerHTML='<span class="spec" aria-hidden="true"></span><span class="tt"></span>'+
+      '<button class="timer">start 50:00</button>'+
+      '<span class="ts">5 questions, 10 pts each. calculator, ruler, equation sheet. every operation written, unit on everything.</span>';
+    head.querySelector(".tt").textContent=t.name+" · 50 min";
+    const tm=head.querySelector(".timer"); let iv=null, left=3000;
+    const show=()=>{const mm=String(Math.floor(left/60)).padStart(2,"0"), ss=String(left%60).padStart(2,"0"); tm.textContent=(iv?"":"start ")+mm+":"+ss};
+    tm.onclick=()=>{ if(iv){clearInterval(iv);iv=null;left=3000;show();return}
+      iv=setInterval(()=>{left--; if(left<=0){clearInterval(iv);iv=null;left=0;tm.textContent="time";return} show()},1000); show(); };
+    if(!REDUCED){head.classList.add("rise");head.style.setProperty("--i",i++)}
+    $("#p-practice").appendChild(head);
+    t.qs.forEach((q,j)=>{
+      const card=el("div","qcard g");
+      card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
+        '<div class="qn">question '+(j+1)+' · '+q.k+'<span class="pts">10 pts</span></div>'+
+        '<div class="qt">'+q.q+'</div>'+(q.fig?q.fig():"")+
+        (q.parts?'<ol class="parts" type="a">'+q.parts.map(x=>'<li>'+x+'</li>').join("")+'</ol>':"")+
+        '<button class="rv" aria-expanded="false">show the work <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>'+
+        '<div class="sol"><div><div class="in"></div></div></div>';
+      const b=card.querySelector(".rv"), sol=card.querySelector(".sol"), inn=card.querySelector(".in");
+      let built=false;
+      b.onclick=()=>{ if(!built){inn.innerHTML=q.sol();built=true}
+        const o=b.getAttribute("aria-expanded")==="true"; b.setAttribute("aria-expanded",String(!o));
+        b.firstChild.textContent=(o?"show the work ":"hide the work "); sol.classList.toggle("on",!o); };
+      if(!REDUCED){card.classList.add("rise");card.style.setProperty("--i",i++)}
+      $("#p-practice").appendChild(card);
+    });
+  });
+})();
+
+/* ── segmented control ── */
+(function(){
+  const tabs=[["notes","notes"],["cram","cram sheet"],["practice","practice tests"]];
+  const seg=$("#seg"), ind=seg.querySelector(".ind");
+  tabs.forEach(([id,label],i)=>{
+    const b=el("button"); b.textContent=label; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",String(i===0));
+    b.onclick=()=>select(i);
+    seg.appendChild(b);
+  });
+  function select(i){
+    const btns=[...seg.querySelectorAll("button")];
+    btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
+    tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
+    move(); scrollTo({top:0});
+  }
+  function move(){
+    const btns=[...seg.querySelectorAll("button")];
+    const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
+    const b=btns[i]; if(!b)return;
+    ind.style.width=b.offsetWidth+"px";
+    ind.style.transform="translateX("+(b.offsetLeft-2)+"px)";
+  }
+  addEventListener("resize",move); requestAnimationFrame(move);
+})();
+
+/* ── header state + pointer specular ── */
+(function(){
+  const hdr=$("#hdr"); let raf=0;
+  addEventListener("scroll",()=>{ if(raf)return;
+    raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)}) },{passive:true});
+  if(matchMedia("(hover:hover)").matches && !REDUCED){
+    addEventListener("pointermove",e=>{
+      const c=e.target.closest && e.target.closest(".g"); if(!c)return;
+      const r=c.getBoundingClientRect();
+      c.style.setProperty("--mx",(e.clientX-r.left)+"px");
+      c.style.setProperty("--my",(e.clientY-r.top)+"px");
+    },{passive:true});
+  }
+})();
+</script>
+<script>
+(function(){var b=document.querySelector("#prog i");if(!b)return;
+ var t=0;function u(){var d=document.scrollingElement||document.documentElement,
+ h=d.scrollHeight-d.clientHeight;
+ b.style.width=(h>4?Math.max(0,Math.min(100,d.scrollTop/h*100)):0)+"%";}
+ addEventListener("scroll",function(){if(t)return;t=requestAnimationFrame(function(){t=0;u()})},{passive:true});
+ addEventListener("resize",u);u();})();
+</script>
+</body>
+</html>
