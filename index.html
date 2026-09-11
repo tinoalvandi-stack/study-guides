@@ -571,7 +571,8 @@ const FEATURES=[
 
 const CLASSES=[
   /* ---- junior year ---- */
-  /* a class with year:"soph" goes to the collapsed archive; the archive hides itself while there are none */
+  /* a class with year:"soph" goes to the collapsed archive; the archive hides itself while there are none.
+     a class with guides:[] is kept here for its color and glyph but does not show on the page. */
   {id:"apush", c:"var(--c-apush)", glyph:"flag", year:"junior", name:"AP US History", abbr:"APUSH",
    guides:[{t:"Unit 1/B", tag:"Guide", url:"/apush-unit-1b"},
      {t:"Unit 1/A", tag:"Guide", url:"/apush-unit-1a"}]},
@@ -582,7 +583,6 @@ const CLASSES=[
    guides:[{t:"Unit 0", tag:"Guide",
      url:"/psych-unit-0"}]},
   {id:"sem",   c:"var(--c-sem)",   glyph:"bubbles", year:"junior", name:"AP Seminar",          guides:[]},
-  {id:"span",  c:"var(--c-span)",  glyph:"speech",  year:"junior", name:"AP Spanish Language", guides:[]},
   {id:"bus",   c:"var(--c-biz)",   glyph:"chart",   year:"junior", name:"Business Principles",
    guides:[{t:"Unit 1", tag:"Guide",
      url:"/bus-unit-1"},
@@ -722,10 +722,10 @@ function toggleClass(c,row){
   box.appendChild(inner);
   row.after(box);
 }
-const junior=CLASSES.filter(c=>c.year==="junior"), soph=CLASSES.filter(c=>c.year==="soph");
+const junior=CLASSES.filter(c=>c.year==="junior"&&c.guides.length), soph=CLASSES.filter(c=>c.year==="soph"&&c.guides.length);
 junior.forEach(c=>$("#year").appendChild(rowFor(c)));
 soph.forEach(c=>$("#arch").appendChild(rowFor(c)));
-$("#cty").textContent=junior.filter(c=>c.guides.length).length+" of "+junior.length+" have guides";
+$("#cty").textContent=junior.length+" classes · "+junior.reduce((n,c)=>n+c.guides.length,0)+" guides";
 $("#archsub").textContent=soph.length+" classes · "+soph.reduce((n,c)=>n+c.guides.length,0)+" guides";
 (function(){let i=1;
   document.querySelectorAll("#year > .row").forEach(r=>{
