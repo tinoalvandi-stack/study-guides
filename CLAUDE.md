@@ -83,7 +83,18 @@ drop off on their own; leave them in the array.
 
 ## Homepage features
 
-- Search is the field under the intro. It filters in place; `/` or ⌘K focus it.
+- The page opens on "what are you studying?" and the search field (Fast Find).
+  Typing replaces the page with one **top match** card (class, serif title,
+  chips for extras, an open button) and compact **other matches**. Enter or the
+  iPhone keyboard's Search key opens the top match; arrow keys move the
+  selection. Ranking is a small weighted score in `rank()`: exact title 100,
+  class-only query 60, title prefix 45, every word 30, a kind word (cram,
+  practice, quiz) that the unit actually has 20, recently opened 8, up next 6.
+  `ALIAS` holds the shorthand students type (`apush`, `rinaldo`, `math`,
+  `trig`); add to it when a new class arrives. `norm()` folds `u1b`, `unit1`
+  and `1/b` together. A partial-only result is labelled "closest match"; no
+  result shows class chips and a "request a guide" link into the feedback card.
+- `/` or ⌘K focus the field.
 - "Recently opened" and remembered open classes live in the viewer's
   localStorage. Nothing leaves the browser.
 - Share on every unit uses the native share sheet, or copies the link.

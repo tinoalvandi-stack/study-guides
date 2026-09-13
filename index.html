@@ -372,6 +372,48 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
 .unit .kinds{margin-top:3px}
 @media (max-width:559px){.sbtn{display:none}}
 
+/* ═══ fast find ═══ */
+.intro{margin:0 0 26px}
+.intro h2{font-size:34px}
+@media (min-width:560px){.intro h2{font-size:44px}}
+.intro h2 label{cursor:text}
+.find{margin-top:14px;min-height:52px;padding:0 6px 0 14px;gap:10px}
+.find input{font-size:17px;padding:14px 0}
+.find .clr{width:40px;height:40px;border-radius:8px}
+.find .clr svg{width:12px;height:12px}
+.hint{margin:10px 2px 0;font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
+.hint[hidden]{display:none}
+.eg{font:inherit;font-size:var(--t12);font-weight:500;color:var(--ink2);padding:3px 8px;border:1px solid var(--line);border-radius:var(--r-chip);
+  background:var(--surface);text-transform:lowercase;transition:border-color .16s var(--ease),color .16s var(--ease)}
+.eg:active,.eg:hover{border-color:var(--line2);color:var(--ink)}
+body.searching .intro{margin-bottom:6px}
+.topm{display:flex;flex-direction:column;gap:6px;position:relative;padding:16px 16px 14px 19px;border-radius:var(--r-card);
+  background:var(--surface);border:1px solid var(--line);overflow:hidden;
+  box-shadow:0 8px 24px -10px color-mix(in srgb,var(--ink) 18%,transparent);transition:border-color .2s var(--ease)}
+.topm::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,var(--accent))}
+.topm .eyebrow{font-size:var(--t12);font-weight:600;letter-spacing:.06em;text-transform:lowercase}
+.topm .tt{font-family:var(--serif);font-size:24px;line-height:1.15;letter-spacing:-.01em;word-spacing:.08em;text-transform:lowercase;text-wrap:balance}
+.topm .kinds{margin:2px 0 4px}
+.topm .go{margin-top:6px}
+.topm.sel,.unit.sel{border-color:var(--ink)}
+@media (hover:hover){.topm:hover{border-color:var(--line2)}}
+#inlinelist[hidden],#tophd[hidden],#otherhd[hidden]{display:none}
+.unit.cmp{min-height:52px;padding:8px 12px 8px 14px}
+.unit.cmp .rt{gap:1px}
+.unit.cmp .lt{font-size:var(--t15)}
+.nores{padding:4px 2px 0}
+.nores p{margin:0 0 10px;font-size:var(--t15);color:var(--ink2);text-transform:lowercase}
+.nores .sl{display:block;font-size:var(--t12);color:var(--ink3);margin-bottom:6px;text-transform:lowercase}
+.sugs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.sugs .eg{padding:7px 11px;font-size:var(--t13)}
+.reqg{font:inherit;font-size:var(--t13);font-weight:500;color:var(--accent-text,var(--accent));text-transform:lowercase;text-decoration:underline;text-underline-offset:3px}
+.kind{min-height:30px;padding:5px 10px}
+.shr{width:40px;height:40px}
+.bar h1{opacity:1;transform:none;pointer-events:auto}
+body.searching #upnext,body.searching #recent,body.searching #yearhd,body.searching #year,body.searching .compat,body.searching footer{display:none}
+#find::-webkit-search-cancel-button,#find::-webkit-search-decoration{-webkit-appearance:none;display:none}
+.topm .go{--b:var(--ink);color:var(--paper)}
+
 :root{--paper:#F1F0EC;--surface:#FFFFFF;--surface2:#EDECE7;--line:#DEDBD3;--line2:#C6C2B8;--ink:#1A1A18;--ink2:rgba(58,58,54,0.88);--ink3:rgba(58,58,54,0.76);--accent:#2C3B4D;--on-accent:#F7F6F3;--hi:#B0692C;--c-apush:#9A5A2C;--c-psych:#8E3F4C;--c-phys:#2C6062;--c-pre:#33526F;--c-sem:#4C6A48;--c-biz:#836B26;--c-mor:#6E5945;--c-lang:#4A4767}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#16171A;--surface:#1F2126;--surface2:#1A1C20;--line:#31343B;--line2:#454951;--ink:#F0EEE9;--ink2:rgba(216,213,206,0.77);--ink3:rgba(216,213,206,0.62);--accent:#E0A45E;--on-accent:#16171A;--hi:#E0A45E;--c-apush:#DB9760;--c-psych:#DF8592;--c-phys:#6EB3B2;--c-pre:#84A9D2;--c-sem:#9BBC8A;--c-biz:#D6B463;--c-mor:#BE9B7C;--c-lang:#9C99CE}}
 :root[data-theme="dark"]{--paper:#16171A;--surface:#1F2126;--surface2:#1A1C20;--line:#31343B;--line2:#454951;--ink:#F0EEE9;--ink2:rgba(216,213,206,0.77);--ink3:rgba(216,213,206,0.62);--accent:#E0A45E;--on-accent:#16171A;--hi:#E0A45E;--c-apush:#DB9760;--c-psych:#DF8592;--c-phys:#6EB3B2;--c-pre:#84A9D2;--c-sem:#9BBC8A;--c-biz:#D6B463;--c-mor:#BE9B7C;--c-lang:#9C99CE}
@@ -398,14 +440,17 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
 
 <main class="wrap" id="main" tabindex="-1">
   <div class="intro">
-    <h2>study guides</h2>
-    <p>bishop gorman · made by a student, not the school. free, and yours to share.</p>
-    <label class="find" id="findw"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.7"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg><input id="find" type="search" placeholder="search a class, unit, or topic" autocomplete="off" spellcheck="false" aria-label="search guides"><span class="kbd">⌘K</span><button type="button" class="clr" id="findclr" aria-label="clear search"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"/></svg></button></label>
+    <h2><label for="find">what are you studying?</label></h2>
+    <form class="find" id="findw" role="search" autocomplete="off"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.7"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg><input id="find" type="search" placeholder="class, unit, or topic" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="search guides" aria-controls="inline"><span class="kbd">⌘K</span><button type="button" class="clr" id="findclr" aria-label="clear search"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"/></svg></button></form>
+    <p class="hint" id="hint">try <button type="button" class="eg" data-q="psych unit 0">psych unit 0</button> or <button type="button" class="eg" data-q="vectors">vectors</button></p>
   </div>
 
   <section id="inline" aria-live="polite">
-    <div class="sh"><h3>results</h3><span class="shx" id="inlinen"></span></div>
+    <div class="sh" id="tophd"><h3>top match</h3><span class="shx" id="inlinen"></span></div>
+    <div id="top"></div>
+    <div class="sh" id="otherhd"><h3>other matches</h3></div>
     <div class="group" id="inlinelist"></div>
+    <div id="empty"></div>
   </section>
 
   <section id="upnext" hidden>
@@ -579,7 +624,7 @@ function guideLink(c,u,opts){
   const lt=el("span","lt",u.t); ut.append(lt);
   if(isNew(u.added)&&!(opts&&opts.noNew))ut.append(el("span","new","new"));
   rt.append(ut);
-  if(u.extras&&u.extras.length){
+  if(u.extras&&u.extras.length&&!(opts&&opts.compact)){
     const kinds=el("span","kinds");
     const mk=(kind,label,url,main)=>{const k=el("a","kind"+(main?" main":""));k.href=abs(url);k.target="_blank";k.rel="noopener noreferrer";
       k.innerHTML=ICON[kind]+esc(label);k.addEventListener("click",e=>{e.stopPropagation();recordOpen(c,u)});return k};
@@ -587,10 +632,11 @@ function guideLink(c,u,opts){
     u.extras.forEach(x=>kinds.append(mk(x.kind,x.t,x.url,false)));
     rt.append(kinds);
   }
-  const sh=el("button","shr"); sh.type="button"; sh.innerHTML=ICON.share; sh.setAttribute("aria-label","share "+u.t);
-  sh.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();share(u.url,c.name+" · "+u.t)});
   a.addEventListener("click",()=>recordOpen(c,u));
   const chev=el("span"); chev.innerHTML=ICON.chev;
+  if(opts&&opts.compact){a.classList.add("cmp");a.append(opts.glyph?glyphSvgWrap(c):"",rt,chev.firstChild);return a}
+  const sh=el("button","shr"); sh.type="button"; sh.innerHTML=ICON.share; sh.setAttribute("aria-label","share "+u.t);
+  sh.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();share(u.url,c.name+" · "+u.t)});
   a.append(opts&&opts.glyph?glyphSvgWrap(c):"",rt,sh,chev.firstChild);
   return a;
 }
@@ -663,23 +709,97 @@ const shown=CLASSES.filter(c=>c.units.length);
 shown.forEach(c=>{const r=rowFor(c);$("#year").append(r);if(OPEN.has(c.id))toggleClass(c,r,true)});
 $("#cty").textContent=shown.length+" classes · "+shown.reduce((n,c)=>n+c.units.length,0)+" guides";
 
-/* ═══════════ SEARCH (inline) ═══════════ */
+/* ═══════════ FAST FIND ═══════════ */
+const ALIAS={apush:["apush","ush","history","us history","american history","hist"],phys:["physics","phys","kinematics","science"],
+  psych:["psych","psychology"],bus:["business","bus","biz","principles"],mor:["morality","religion","rinaldo","theology","catholic","church"],
+  pre:["precalc","precal","pre calc","math","precalculus","trig","vectors","calc","trigonometry"],lang:["lang","english"],sem:["seminar","sem"]};
+const KINDW={cram:["cram","cheat sheet","cheat","one pager","sheet","summary"],pdf:["practice","worksheet","pdf","problems","homework"],quiz:["quiz","quizzes","questions"]};
+const norm=x=>String(x).toLowerCase().replace(/[’']/g,"").replace(/[–—]/g,"-").replace(/[^a-z0-9/&\s-]/g," ")
+  .replace(/(\d)\s*\/\s*([a-z])\b/g,"$1$2").replace(/\bu\s?(\d)/g,"unit $1").replace(/\bunit(\d)/g,"unit $1").replace(/\bch(?:apters?)?\.?\s?(\d)/g,"ch $1").replace(/\s+/g," ").trim();
 const INDEX=[];
-CLASSES.forEach(c=>c.units.forEach(u=>INDEX.push({c:c,u:u,hay:(c.name+" "+(c.abbr||"")+" "+u.t+" "+(u.extras||[]).map(x=>x.t).join(" ")).toLowerCase()})));
-const find=$("#find"), findw=$("#findw");
-function runSearch(){
-  const q=find.value.trim().toLowerCase(), terms=q.split(/\s+/).filter(Boolean);
-  findw.classList.toggle("has",!!q); document.body.classList.toggle("searching",!!q);
-  if(!q)return;
-  const hits=INDEX.filter(it=>terms.every(t=>it.hay.includes(t)));
-  const box=$("#inlinelist"); box.innerHTML="";
-  $("#inlinen").textContent=hits.length+(hits.length===1?" guide":" guides");
-  if(!hits.length){box.append(el("div","none","nothing matches that. try the class name, like “psych” or “precalc”."));return}
-  hits.forEach(h=>box.append(guideLink(h.c,h.u,{glyph:true,cls:true})));
+CLASSES.forEach(c=>c.units.forEach(u=>INDEX.push({c:c,u:u,title:norm(u.t),cls:norm(c.name),abbr:norm(c.abbr||""),al:ALIAS[c.id]||[],
+  ex:(u.extras||[]).map(x=>({x:x,t:norm(x.t)})),added:u.added||""})));
+function rank(query){
+  const q=norm(query); if(!q)return {hits:[],q:q};
+  const words=q.split(" ");
+  const recent=store.get("recent",[]).map(r=>r.u);
+  const live=FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>a.test.localeCompare(b.test)).map(f=>f.url);
+  const classOnly=CLASSES.find(c=>norm(c.name)===q||norm(c.abbr||"")===q||(ALIAS[c.id]||[]).includes(q));
+  let kind=null; for(const k in KINDW)if(KINDW[k].some(w=>q===w||q.includes(w)))kind=k;
+  const hits=[];
+  INDEX.forEach(it=>{
+    let s=0;
+    const hasKind=kind&&it.ex.some(e=>e.x.kind===kind);
+    const hay=[it.title,it.cls,it.abbr,...it.al,...it.ex.map(e=>e.t),...(hasKind?KINDW[kind]:[])].join(" ");
+    if(it.title===q||it.cls+" "+it.title===q)s+=100;
+    if(classOnly&&it.c===classOnly)s+=60;
+    if(it.title.startsWith(q)||(it.abbr&&(it.abbr+" "+it.title).startsWith(q)))s+=45;
+    const hit=words.filter(w=>hay.includes(w)||it.al.some(a=>a.startsWith(w))||it.cls.split(" ").some(cw=>cw.startsWith(w))).length;
+    if(hit===words.length)s+=30; else if(hit)s+=8*hit; else return;
+    let pick=null;
+    if(kind){const e=it.ex.find(e=>e.x.kind===kind); if(e){s+=20;pick=e.x}}
+    if(recent.includes(it.u.url))s+=8;
+    if(live.includes(it.u.url))s+=6;
+    hits.push({it:it,s:s,pick:pick});
+  });
+  hits.sort((a,b)=>b.s-a.s||(b.it.added>a.it.added?1:b.it.added<a.it.added?-1:0)||(recent.indexOf(a.it.u.url)+1||99)-(recent.indexOf(b.it.u.url)+1||99));
+  return {hits:hits,q:q,classOnly:classOnly,kind:kind};
 }
+const find=$("#find"), findw=$("#findw"), hint=$("#hint");
+let SEL=0, LAST=[];
+function topCard(h){
+  const c=h.it.c,u=h.it.u,pick=h.pick;
+  const a=el("a","topm"); a.href=(pick||u).url; a.target="_blank"; a.rel="noopener noreferrer";
+  a.style.setProperty("--c",c.c);
+  const eyebrow=el("span","eyebrow",c.name); eyebrow.style.color=c.c;
+  const t=el("span","tt",u.t);
+  a.append(eyebrow,t);
+  if(u.extras&&u.extras.length){
+    const kinds=el("span","kinds");
+    const mk=(kind,label,url,main)=>{const k=el("a","kind"+(main?" main":""));k.href=url;k.target="_blank";k.rel="noopener noreferrer";
+      k.innerHTML=ICON[kind]+esc(label);k.addEventListener("click",e=>{e.stopPropagation();recordOpen(c,u)});return k};
+    kinds.append(mk("guide","guide",u.url,!pick));
+    u.extras.forEach(x=>kinds.append(mk(x.kind,x.t,x.url,pick===x)));
+    a.append(kinds);
+  }
+  const go=el("span","go"); go.innerHTML=(pick?"open "+esc(pick.t):"open the study guide")+' <svg width="7" height="12" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg>';
+  a.append(go);
+  a.addEventListener("click",()=>recordOpen(c,u));
+  return a;
+}
+function runSearch(){
+  const raw=find.value.trim();
+  findw.classList.toggle("has",!!raw); document.body.classList.toggle("searching",!!raw); hint.hidden=!!raw;
+  if(!raw){LAST=[];return}
+  const r=rank(raw); LAST=r.hits; SEL=0;
+  const top=$("#top"), box=$("#inlinelist"), empty=$("#empty");
+  top.innerHTML=""; box.innerHTML=""; empty.innerHTML="";
+  $("#tophd").hidden=!r.hits.length; $("#otherhd").hidden=r.hits.length<2; box.hidden=r.hits.length<2;
+  $("#tophd h3").textContent=r.hits.length&&r.hits[0].s<30?"closest match":"top match";
+  if(!r.hits.length){
+    const d=el("div","nores");
+    const p=el("p"); p.append("no guide found for “"+raw+"”."); d.append(p);
+    const sug=el("div","sugs");
+    CLASSES.filter(c=>c.units.length).forEach(c=>{const b=el("button","eg",(c.abbr||c.name).toLowerCase());b.type="button";b.dataset.q=(c.abbr||c.name).toLowerCase();sug.append(b)});
+    d.append(el("span","sl","try a class:"),sug);
+    const req=el("button","reqg","can’t find it? request a guide"); req.type="button"; req.addEventListener("click",()=>{if(window.openFeedback)window.openFeedback()});
+    d.append(req); empty.append(d); $("#inlinen").textContent=""; return;
+  }
+  $("#inlinen").textContent=r.hits.length+(r.hits.length===1?" guide":" guides");
+  top.append(topCard(r.hits[0]));
+  r.hits.slice(1,8).forEach(h=>box.append(guideLink(h.it.c,h.it.u,{glyph:true,cls:true,compact:true})));
+}
+function openTop(){const h=LAST[SEL]; if(!h)return; recordOpen(h.it.c,h.it.u); window.open((h.pick||h.it.u).url,"_blank","noopener")}
 find.addEventListener("input",runSearch);
+findw.addEventListener("submit",e=>{e.preventDefault();openTop()});
 $("#findclr").addEventListener("click",()=>{find.value="";runSearch();find.focus()});
-find.addEventListener("keydown",e=>{if(e.key==="Escape"){find.value="";runSearch();find.blur()}});
+find.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){find.value="";runSearch();find.blur();return}
+  if(!LAST.length)return;
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();SEL=(SEL+(e.key==="ArrowDown"?1:-1)+LAST.length)%LAST.length;
+    const rows=[$("#top .topm"),...$("#inlinelist").querySelectorAll(".unit")];rows.forEach((r,i)=>r&&r.classList.toggle("sel",i===SEL));}
+});
+document.addEventListener("click",e=>{const b=e.target.closest(".eg"); if(!b)return; find.value=b.dataset.q; runSearch(); find.focus()});
 function focusFind(){find.scrollIntoView({block:"center",behavior:REDUCED?"auto":"smooth"});find.focus({preventScroll:true})}
 $("#searchOpen").addEventListener("click",focusFind);
 addEventListener("keydown",e=>{
@@ -727,7 +847,7 @@ addEventListener("keydown",e=>{
     fb.classList.remove("on"); pill.setAttribute("aria-expanded","false"); card.setAttribute("aria-hidden","true");
     pill.focus({preventScroll:true});
   }
-  pill.onclick=open;
+  pill.onclick=open; window.openFeedback=open;
   $("#fbclose").onclick=close;
   if(location.hash==="#feedback"||new URLSearchParams(location.search).has("feedback"))setTimeout(open,900);
   addEventListener("keydown",e=>{ if(e.key==="Escape"&&fb.classList.contains("on"))close() });
@@ -757,7 +877,7 @@ addEventListener("keydown",e=>{
 
 
 /* ═══════════ SCROLL ═══════════ */
-new IntersectionObserver(([e])=>{$(".bar h1").classList.toggle("show",!e.isIntersecting)},{rootMargin:"-52px 0px 0px 0px"}).observe($(".intro h2"));
+$(".bar h1").classList.add("show");
 (function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};
   addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
 
