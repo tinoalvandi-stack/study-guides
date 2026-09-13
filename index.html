@@ -538,7 +538,8 @@ const FEATURES=[
   {classId:"phys",  title:"Intro kinematics study guide", url:"/physics-intro-kinematics", test:"2026-09-02", end:"2026-09-03"},
   {classId:"psych", title:"Unit 0 study guide", url:"/psych-unit-0", test:"2026-09-02", end:"2026-09-03"},
   {classId:"pre",   title:"Vectors, ICF & trig equations study guide", url:"/precalc-vectors-icf-trig-eq", test:"2026-09-04"},
-  {classId:"apush", title:"Unit 1/B study guide", url:"/apush-unit-1b", test:"2026-09-08", end:"2026-09-09"}
+  {classId:"apush", title:"Unit 1/B study guide", url:"/apush-unit-1b", test:"2026-09-08", end:"2026-09-09"},
+  {classId:"apush", title:"Unit 1 LEQ study guide", url:"/apush-unit-1-leq", test:"2026-09-15", end:"2026-09-16", note:"In-class LEQ, 40 minutes. English colonization through King William's War."}
 ];
 /* CLASSES: one entry per unit, newest first. A unit is the guide plus optional extras
    (kind: "cram" | "pdf" | "quiz"). added = the day it went up; "new" shows for 7 days.
@@ -546,6 +547,7 @@ const FEATURES=[
    guides to the <noscript> list at the bottom. */
 const CLASSES=[
   {id:"apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", units:[
+     {t:"Unit 1 LEQ", url:"/apush-unit-1-leq", added:"2026-09-13"},
      {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
      {t:"Unit 1/A", url:"/apush-unit-1a", added:"2026-08-29"}]},
   {id:"lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language", abbr:"AP Lang", units:[]},
@@ -887,6 +889,7 @@ $(".bar h1").classList.add("show");
   <h2>every guide</h2>
   <h3>AP US History</h3>
   <ul>
+    <li><a href="/apush-unit-1-leq">Unit 1 LEQ</a> &middot; Guide</li>
     <li><a href="/apush-unit-1b">Unit 1/B</a> &middot; Guide</li>
     <li><a href="/apush-unit-1a">Unit 1/A</a> &middot; Guide</li>
   </ul>
