@@ -559,6 +559,7 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
         <select name="cls" class="ph" aria-label="class" required>
           <option value="" disabled selected>class</option>
         </select>
+        <input type="text" name="clsname" id="rqclsname" placeholder="which class?" autocomplete="off" hidden>
         <div class="rq2">
           <input type="text" name="teacher" placeholder="teacher" required>
           <input type="text" name="lesson" placeholder="unit / chapter" required>
@@ -975,6 +976,8 @@ addEventListener("keydown",e=>{
     wantEl.append(b);
   });
   function mine(){return cls.value&&cls.value!=="other"}
+  const clsname=$("#rqclsname");
+  function clsLabel(){return mine()?cls.value:rq.clsname.value.trim()+" (not my class)"}
   function odds(){
     if(!cls.value){rqodds.textContent="";rqodds.classList.remove("no");return}
     rqodds.classList.toggle("no",!mine());
@@ -984,9 +987,9 @@ addEventListener("keydown",e=>{
     if(!mine()&&want.has("full guide")){want.delete("full guide");[...wantEl.children].forEach(b=>{if(b.textContent==="full guide")b.setAttribute("aria-pressed","false")})}
     [...wantEl.children].forEach(b=>{if(b.textContent==="full guide")b.disabled=!mine()});
   }
-  cls.addEventListener("change",()=>{cls.classList.toggle("ph",!cls.value);odds();rcheck()});
+  cls.addEventListener("change",()=>{cls.classList.toggle("ph",!cls.value);clsname.hidden=cls.value!=="other";if(!clsname.hidden)clsname.focus();odds();rcheck()});
   function rcheck(){
-    const ok=rq.name.value.trim()&&rq.ig.value.trim()&&cls.value&&rq.teacher.value.trim()&&rq.lesson.value.trim()&&want.size;
+    const ok=rq.name.value.trim()&&rq.ig.value.trim()&&cls.value&&(mine()||rq.clsname.value.trim())&&rq.teacher.value.trim()&&rq.lesson.value.trim()&&want.size;
     rqsend.disabled=rbusy||!ok;
   }
   rq.addEventListener("input",rcheck);
@@ -996,8 +999,8 @@ addEventListener("keydown",e=>{
     rbusy=true; rqsend.textContent="sending…"; rcheck();
     const data=new URLSearchParams();
     data.set("entry.576362932","request");
-    data.set("entry.1638729526","guide request · "+cls.value);
-    data.set("entry.1486272230",["name: "+rq.name.value.trim(),"ig: @"+rq.ig.value.trim().replace(/^@/,""),"class: "+cls.value,
+    data.set("entry.1638729526","guide request · "+clsLabel());
+    data.set("entry.1486272230",["name: "+rq.name.value.trim(),"ig: @"+rq.ig.value.trim().replace(/^@/,""),"class: "+clsLabel(),
       "teacher: "+rq.teacher.value.trim(),"unit: "+rq.lesson.value.trim(),"wants: "+[...want].join(", "),"page: "+location.pathname].join("\n"));
     try{
       await fetch(FORM,{method:"POST",mode:"no-cors",body:data});
@@ -1011,7 +1014,7 @@ addEventListener("keydown",e=>{
   close=function(){
     _close();
     if(fb.classList.contains("sent")&&fb.classList.contains("rq")){
-      setTimeout(()=>{fb.classList.remove("sent"); rq.reset(); cls.classList.add("ph"); want.clear();
+      setTimeout(()=>{fb.classList.remove("sent"); rq.reset(); cls.classList.add("ph"); clsname.hidden=true; want.clear();
         [...wantEl.children].forEach(b=>b.setAttribute("aria-pressed","false")); odds(); rbusy=false; rqsend.textContent="next: send files"; rcheck(); setTab("fb")},400);
     }
   };
