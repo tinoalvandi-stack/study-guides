@@ -112,7 +112,7 @@ header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),
   background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
   box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
 .cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
-h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;
+h1{margin:0;font-family:var(--display);font-size:25.8px;font-weight:400;letter-spacing:-.012em;word-spacing:.08em;
   line-height:1.08;text-transform:lowercase}
 .chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
   background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
@@ -183,7 +183,7 @@ main{padding-top:20px}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
   border-radius:20px;display:grid;place-items:center;padding:26px;text-align:center}
 .face.back{transform:rotateY(180deg)}
-.face .fw{font-family:var(--display);font-size:24px;font-weight:760;letter-spacing:-.036em;
+.face .fw{font-family:var(--display);font-size:26.9px;font-weight:400;letter-spacing:-.012em;word-spacing:.08em;
   line-height:1.15;text-transform:lowercase;position:relative;z-index:1}
 .face.back .fw{font-family:var(--text);font-size:16.5px;font-weight:480;letter-spacing:-.014em;
   line-height:1.45;color:var(--ink2)}
@@ -288,6 +288,57 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
   footer,footer *{color:#444!important}
 }
 </style>
+<style id="stone">
+/* stone re-theme (2026-09-13): fonts, colors, no glow, no glass. layout untouched. */
+@font-face{font-family:"Instrument Serif";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/instrument-serif.woff2) format("woff2")}
+@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/instrument-serif-italic.woff2) format("woff2")}
+@font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/instrument-sans.woff2) format("woff2")}
+@font-face{font-family:"Instrument Sans";font-style:italic;font-weight:400 700;font-display:swap;src:url(/fonts/instrument-sans-italic.woff2) format("woff2")}
+:root{
+  --text:"Instrument Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --display:"Instrument Serif",ui-serif,Georgia,serif;
+  --round:"Instrument Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --accent:#836B26;
+  --ground:#F1F0EC; --ink:#1A1A18;
+  --ink2:rgba(58,58,54,.88); --ink3:rgba(58,58,54,.76);
+  --glass:#FFFFFF; --glass-hi:#EDECE7;
+  --rim-a:transparent; --rim-b:transparent; --rim-c:transparent; --gloss:transparent; --spec:transparent;
+  --sep:#DEDBD3; --line:#DEDBD3; --fill:#EDECE7; --fill2:#EDECE7;
+  --blue:#2C3B4D; --good:#4C6A48; --bad:#8E3F4C;
+  --blur:0px; --sat:100%; --shadow:none; --amb:0;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --text:"Instrument Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --display:"Instrument Serif",ui-serif,Georgia,serif;
+  --round:"Instrument Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --accent:#D6B463;
+  --ground:#16171A; --ink:#F0EEE9;
+  --ink2:rgba(216,213,206,.72); --ink3:rgba(216,213,206,.6);
+  --glass:#1F2126; --glass-hi:#1A1C20;
+  --rim-a:transparent; --rim-b:transparent; --rim-c:transparent; --gloss:transparent; --spec:transparent;
+  --sep:#31343B; --line:#31343B; --fill:#1A1C20; --fill2:#1A1C20;
+  --blue:#E0A45E; --good:#9BBC8A; --bad:#DF8592;
+  --blur:0px; --sat:100%; --shadow:none; --amb:0;
+}}
+:root[data-theme="dark"]{
+  --text:"Instrument Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --display:"Instrument Serif",ui-serif,Georgia,serif;
+  --round:"Instrument Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --accent:#D6B463;
+  --ground:#16171A; --ink:#F0EEE9;
+  --ink2:rgba(216,213,206,.72); --ink3:rgba(216,213,206,.6);
+  --glass:#1F2126; --glass-hi:#1A1C20;
+  --rim-a:transparent; --rim-b:transparent; --rim-c:transparent; --gloss:transparent; --spec:transparent;
+  --sep:#31343B; --line:#31343B; --fill:#1A1C20; --fill2:#1A1C20;
+  --blue:#E0A45E; --good:#9BBC8A; --bad:#DF8592;
+  --blur:0px; --sat:100%; --shadow:none; --amb:0;
+}
+#amb{display:none !important}
+.g{border:1px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
+.g::before,.g::after,.spec{display:none !important}
+body{word-spacing:.05em}
+</style>
+
 
 <div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 

@@ -15,7 +15,11 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 - `404.html` — any path that does not exist.
 - `og-image.png` — link preview card. Its URL in `index.html` is absolute and
   points at valentinoguides.com.
-- `apple-touch-icon.png`, `favicon.svg` — home screen and tab icons.
+- `apple-touch-icon.png`, `favicon.svg` — home screen and tab icons. The mark is a
+  serif "v" with an amber full stop; the "v" is an outline traced from Instrument
+  Serif, so it needs no font to render.
+- `fonts/` — Instrument Serif and Instrument Sans, self-hosted woff2 (latin
+  subset). The CSP allows `font-src 'self'` only; never link Google Fonts.
 - Individual guides: one `.html` file per guide at the repo root
   (`psych-unit-0.html`, `precalc-vectors.html`, …). Practice tests ship as
   `.pdf` beside them.
@@ -26,15 +30,18 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 1. Drop the guide's HTML file at the repo root. Name it
    `<class>-<topic>.html`, lowercase, hyphens only. That filename becomes the
    URL: `precalc-vectors.html` → `/precalc-vectors`.
-2. Add an entry to the `CLASSES` array in `index.html` (marked `DATA` in a
-   comment), newest first within its class:
+2. Add a unit to the class's `units` array in `CLASSES` in `index.html`,
+   newest first:
 
    ```js
-   { t: "Unit 2 study guide", tag: "Guide", url: "/precalc-vectors" }
+   { t: "Unit 2", url: "/precalc-unit-2", added: "2026-09-20",
+     extras: [ { kind: "cram", t: "cram sheet", url: "/precalc-unit-2-cram" },
+               { kind: "pdf",  t: "practice a", url: "/precalc-unit-2-practice-a.pdf" } ] }
    ```
 
-   `tag` is one of `Guide`, `Flashcards`, `Quiz`, `Folder`. A class showing
-   "Soon" flips automatically once its array has an entry.
+   One unit = one row. `extras` are optional chips on that row; `kind` is
+   `cram`, `pdf` or `quiz`. `added` drives the "new" tag for seven days. A class
+   with no units is kept for its color and glyph but does not show.
 3. **Add the same link to the `<noscript>` block near the bottom of
    `index.html`.** That list is hand-maintained, not generated from `CLASSES`.
    Forgetting it is the easy mistake: the site looks fine, but the no-JS and
@@ -46,26 +53,43 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 Add to the `FEATURES` array at the top of the script, in test-date order:
 
 ```js
-{ classId: "precalc", title: "Vectors & trig equations", url: "/precalc-vectors-icf-trig-eq", test: "2026-09-04" }
+{ classId: "pre", title: "Vectors & trig equations study guide", url: "/precalc-vectors-icf-trig-eq",
+  test: "2026-09-04", note: "the test covers sections 6.1 to 6.3 and the unit circle" }
 ```
 
-The "up next" card shows the soonest test that has not passed and advances on
-its own the day after. Several can sit queued. The date chip hides itself the
-same way. Leave the surrounding markup alone.
+The "up next" card shows the soonest test that has not passed; the others list
+under it as "also coming up". `note` (optional) is one line on what the test
+covers. `end` (optional) is the last day of a multi-day test. Expired entries
+drop off on their own; leave them in the array.
 
-## Colors
+## Design system: "stone" (September 2026)
 
-The palette is "crisp" (September 2026). Every token lives in the three
-blocks at the top of `index.html`: light, dark by system setting, and dark by
-the toggle. Change all three together.
+- Type: Instrument Serif for display (one weight, 400, so never ask it for bold)
+  and Instrument Sans for everything else. One scale: 12 / 13 / 15 / 16 / 20 /
+  26 / 42. Instrument Sans has a narrow space, so body text carries
+  `word-spacing: .05em` and serif headings `.08em`.
+- Color tokens live in the three blocks at the top of `index.html`: `--paper`
+  (page), `--surface` / `--surface2` (cards, nested rows), `--line` / `--line2`
+  (hairlines), `--ink` / `--ink2` / `--ink3` (text), `--accent` (navy in light,
+  amber in dark: the mark and focus rings), `--hi` (amber highlights), and one
+  muted `--c-<id>` per class. Every text token is checked at 4.5:1 or better on
+  the surface it sits on. Change all three blocks together.
+- Corners: cards 14px, buttons 10px, chips 8px. No ambient glow, no backdrop
+  blur, no gloss. Surfaces are flat with a 1px line; shadows only on the search
+  results and the feedback card.
+- Class marks are line icons in the class color, no tiles.
+- Buttons are ink on paper (and paper on ink in dark mode). The class color only
+  appears in labels, icons and the date chip.
 
-Each class color `--c-<id>` has two companions: `--c-<id>-ink` is its label
-text on a card and `--c-<id>-cta` is its "open the guide" button fill. Both are
-checked at 4.5:1 or better against what they actually sit on. Gold also has
-`--c-biz-on`, dark button text, because white text would force a muddy fill.
-A new class needs its color, ink and cta in all three blocks; without them its
-card falls back to plain ink and brand blue. Guide pages keep their own
-accents.
+## Homepage features
+
+- Search is the field under the intro. It filters in place; `/` or ⌘K focus it.
+- "Recently opened" and remembered open classes live in the viewer's
+  localStorage. Nothing leaves the browser.
+- Share on every unit uses the native share sheet, or copies the link.
+- Class names may carry the teacher's surname in parentheses when a class has
+  several sections at school, e.g. `Catholic Morality (Rinaldo)`. That is the
+  only place a teacher is named.
 
 ## Guide pages themselves
 
@@ -82,10 +106,21 @@ hold, because they are what the site's readers rely on:
 - Universal for classmates: nothing that assumes a resource only Valentino
   has, no artifacts of his own process. Someone landing cold should think
   "this is all I need to study."
-- No teacher named, and no third-person attribution ("he said", "his
-  outline"). State the facts directly.
+- Inside a guide, no teacher is named and there is no third-person attribution
+  ("he said", "his outline"). State the facts directly. (The homepage may carry
+  a surname next to the class name to tell sections apart; see above.)
 - Any abbreviation used gets a key at the bottom listing every one.
 - No statistics presented as something to memorize; give the idea in words.
+
+## Guide re-theme
+
+Every guide carries a `<style id="stone">` block right after its first
+`</style>`: the four `@font-face` rules, the stone tokens mapped onto the old
+glass token names (`--ground`, `--glass`, `--rim-*`, `--amb: 0`, and so on),
+`#amb` hidden, `.g` flattened to a 1px line. The guide's own layout is
+untouched. A new guide built from the old glass template gets the same block;
+`retheme.py` in the project notes generates it. `precalc-quizzes.html` is a
+print sheet and is left alone.
 
 ## Content Security Policy
 
