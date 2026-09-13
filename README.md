@@ -18,6 +18,9 @@ to breach because nothing runs server-side and nothing loads from anywhere else.
 - One `.html` file per guide at the repo root (`psych-unit-0.html`,
   `morality-ch1-2.html`, ...). The filename is the URL: `/psych-unit-0`.
   Practice-test PDFs sit beside them.
+- `template/guide-template.html`: the starting file for a new guide. Copy it,
+  fill in the `GUIDE` object at the top of the script, save at the root. It is
+  listed in `.vercelignore`, so it is not served.
 
 ## Adding a guide
 

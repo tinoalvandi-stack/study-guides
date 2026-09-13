@@ -27,6 +27,11 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 - Individual guides: one `.html` file per guide at the repo root
   (`psych-unit-0.html`, `precalc-vectors.html`, …). Practice tests ship as
   `.pdf` beside them.
+- `template/guide-template.html` — the guide template on the current design
+  system (same tokens, type and components as the homepage). Copy it, edit
+  the `GUIDE` object, save as `<class>-<topic>.html` at the root. Listed in
+  `.vercelignore`, so it is in the repo but not on the site. The `glass-guides`
+  skill (its name is historical) is the how-to.
 - `_staging/` — untracked scratch. Never commit it.
 
 ## Adding a guide
@@ -139,7 +144,22 @@ hold, because they are what the site's readers rely on:
 - Any abbreviation used gets a key at the bottom listing every one.
 - No statistics presented as something to memorize; give the idea in words.
 
-## Guide re-theme
+## Guide template (new guides)
+
+New guides start from `template/guide-template.html`. Everything renders from
+one `GUIDE` object: `id` (class token: apush psych phys pre sem biz mor lang
+span apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`,
+`updated`, `panes` (tab order; a pane only shows when its data exists), `top`
+(start-here lines), `outline` (`w:3/2/1`, `t`, `p[]`, `terms[]`, optional
+`notes[]`, `cmp`, `steps[]`, `d`), `practice` (`q`, `opts[]`, `a`, `why`),
+`problems` (`q`, `steps[]`, `ans`), `formulas` (`n`, `f`, `note`), `cards`
+(`f`, `b`), `timeline` (`y`, `t`, `d`), `checklist` (`t`, `d`), `abbr` (map).
+Prose accepts `**term**`, `==fact==`, `!!trap!!`. The class color is `--cls`
+(set from `id`); site indigo `--accent` stays on buttons. The header bar links
+home and shares the theme choice with the homepage (`localStorage` "theme").
+Nothing in the CSS or machinery needs editing per guide.
+
+## Guide re-theme (guides built before the template, September 2026)
 
 Every guide carries a `<style id="stone">` block right after its first
 `</style>`: the three `@font-face` rules, the kinari tokens mapped onto the old
@@ -150,7 +170,11 @@ in place to weight 650 and `letter-spacing: -.02em` (sizes as the glass
 template had them). A new guide built from the old glass template gets the
 same block; `retheme.py` in the project notes generates it and does the
 retune (it strips an existing block first, so it is safe to rerun).
-`precalc-quizzes.html` is a print sheet and is left alone.
+The same block also injects the homepage bar (mark, wordmark, "all guides"),
+turns the gradient glyph tile into a line icon, and restyles chips, tabs,
+corners and badges to the homepage's components, so old guides read as the
+same site without their content being touched. `precalc-quizzes.html` is a
+print sheet and is left alone.
 
 ## Content Security Policy
 
