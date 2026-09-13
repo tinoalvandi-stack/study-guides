@@ -62,24 +62,29 @@ under it as "also coming up". `note` (optional) is one line on what the test
 covers. `end` (optional) is the last day of a multi-day test. Expired entries
 drop off on their own; leave them in the array.
 
-## Design system: "stone" (September 2026)
+## Design system: "indigo & kinari" (September 2026)
 
 - Type: Instrument Serif for display (one weight, 400, so never ask it for bold)
   and Instrument Sans for everything else. One scale: 12 / 13 / 15 / 16 / 20 /
   26 / 42. Instrument Sans has a narrow space, so body text carries
   `word-spacing: .05em` and serif headings `.08em`.
 - Color tokens live in the three blocks at the top of `index.html`: `--paper`
-  (page), `--surface` / `--surface2` (cards, nested rows), `--line` / `--line2`
-  (hairlines), `--ink` / `--ink2` / `--ink3` (text), `--accent` (navy in light,
-  amber in dark: the mark and focus rings), `--hi` (amber highlights), and one
-  muted `--c-<id>` per class. Every text token is checked at 4.5:1 or better on
-  the surface it sits on. Change all three blocks together.
+  (page, warm unbleached `#EEE8DC` / `#151B20`), `--surface` / `--surface2`
+  (cards `#FBF8F1` / `#1D252A`, nested rows), `--line` / `--line2` (hairlines),
+  `--ink` / `--ink2` / `--ink3` (text `#20272B` / `#F2ECDF`, secondary
+  `#5E5A52` / `#B9B2A7`), `--accent` (indigo `#294A5E` light, `#8FB7CA` dark:
+  buttons, the mark, focus rings, selected states) with `--on-accent` (the card
+  color) as its label, `--hi` (terracotta `#944B34` / `#E18A67`: "new", the date
+  chip, the logo dot, nothing else), and one muted `--c-<id>` per class. Every
+  text token is checked at 4.5:1 or better on the surface it sits on. Change all
+  three blocks together. The source values are the "Indigo & Kinari" palette in
+  `claude/perplexity-ui-research-2026-09-13.md` in the Claude project.
 - Corners: cards 14px, buttons 10px, chips 8px. No ambient glow, no backdrop
   blur, no gloss. Surfaces are flat with a 1px line; shadows only on the search
   results and the feedback card.
 - Class marks are line icons in the class color, no tiles.
-- Buttons are ink on paper (and paper on ink in dark mode). The class color only
-  appears in labels, icons and the date chip.
+- Buttons are the accent with a card-colored label. The class color only appears
+  in labels, icons, the date chip and the top-match rail.
 
 ## Homepage features
 
@@ -126,7 +131,7 @@ hold, because they are what the site's readers rely on:
 ## Guide re-theme
 
 Every guide carries a `<style id="stone">` block right after its first
-`</style>`: the four `@font-face` rules, the stone tokens mapped onto the old
+`</style>`: the four `@font-face` rules, the kinari tokens mapped onto the old
 glass token names (`--ground`, `--glass`, `--rim-*`, `--amb: 0`, and so on),
 `#amb` hidden, `.g` flattened to a 1px line. The guide's own layout is
 untouched. A new guide built from the old glass template gets the same block;
