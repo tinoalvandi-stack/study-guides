@@ -16,10 +16,14 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 - `og-image.png` — link preview card. Its URL in `index.html` is absolute and
   points at valentinoguides.com.
 - `apple-touch-icon.png`, `favicon.svg` — home screen and tab icons. The mark is a
-  serif "v" with an amber full stop; the "v" is an outline traced from Instrument
-  Serif, so it needs no font to render.
-- `fonts/` — Instrument Serif and Instrument Sans, self-hosted woff2 (latin
-  subset). The CSP allows `font-src 'self'` only; never link Google Fonts.
+  bold "v" with a terracotta full stop; the "v" is an outline traced from
+  Bricolage Grotesque (weight 700), so it needs no font to render. Icons and
+  fonts are cached for a week, so when one changes, bump the `?v=` on its
+  `<link>` / `og:image` URL in `index.html` or browsers keep the old one.
+- `fonts/` — Bricolage Grotesque (display, variable 200–800 with an optical
+  size axis) and Figtree (text, variable 300–900, plus italic), self-hosted
+  woff2 (latin subset from Google Fonts). The CSP allows `font-src 'self'`
+  only; never link Google Fonts.
 - Individual guides: one `.html` file per guide at the repo root
   (`psych-unit-0.html`, `precalc-vectors.html`, …). Practice tests ship as
   `.pdf` beside them.
@@ -64,10 +68,14 @@ drop off on their own; leave them in the array.
 
 ## Design system: "indigo & kinari" (September 2026)
 
-- Type: Instrument Serif for display (one weight, 400, so never ask it for bold)
-  and Instrument Sans for everything else. One scale: 12 / 13 / 15 / 16 / 20 /
-  26 / 42. Instrument Sans has a narrow space, so body text carries
-  `word-spacing: .05em` and serif headings `.08em`.
+- Type: Bricolage Grotesque for display (`--display`, weight `--w-d` 600,
+  tracking `--ls-d` -.025em, optical sizing on) and Figtree for everything else
+  (`--sans`; 400 body, 500 row names, 600 buttons and labels). One scale: 12 /
+  13 / 15 / 16 / 20 / 26 / 42; the hero heading is `clamp(26px, 8.6vw, 34px)`
+  on phones so "what are you studying?" stays on one line down to 360px, and
+  44px from 560px up. No word-spacing hacks; Figtree spaces normally.
+  (Instrument Serif / Sans, September 11–13, was replaced the same week: too
+  thin at display size, and its kerning showed gaps in the wordmark.)
 - Color tokens live in the three blocks at the top of `index.html`: `--paper`
   (page, warm unbleached `#EEE8DC` / `#151B20`), `--surface` / `--surface2`
   (cards `#FBF8F1` / `#1D252A`, nested rows), `--line` / `--line2` (hairlines),
@@ -88,8 +96,11 @@ drop off on their own; leave them in the array.
 
 ## Homepage features
 
+- Wordmark: the header reads "valentino guides" (lowercase chrome) next to the
+  mark; the tab title and `og:title` are "Valentino guides". Matches the
+  domain; keep them in sync if it is ever renamed.
 - The page opens on "what are you studying?" and the search field (Fast Find).
-  Typing replaces the page with one **top match** card (class, serif title,
+  Typing replaces the page with one **top match** card (class, display title,
   chips for extras, an open button) and compact **other matches**. Enter or the
   iPhone keyboard's Search key opens the top match; arrow keys move the
   selection. Ranking is a small weighted score in `rank()`: exact title 100,
@@ -131,12 +142,15 @@ hold, because they are what the site's readers rely on:
 ## Guide re-theme
 
 Every guide carries a `<style id="stone">` block right after its first
-`</style>`: the four `@font-face` rules, the kinari tokens mapped onto the old
+`</style>`: the three `@font-face` rules, the kinari tokens mapped onto the old
 glass token names (`--ground`, `--glass`, `--rim-*`, `--amb: 0`, and so on),
 `#amb` hidden, `.g` flattened to a 1px line. The guide's own layout is
-untouched. A new guide built from the old glass template gets the same block;
-`retheme.py` in the project notes generates it. `precalc-quizzes.html` is a
-print sheet and is left alone.
+untouched, but every declaration block that uses `var(--display)` was retuned
+in place to weight 650 and `letter-spacing: -.02em` (sizes as the glass
+template had them). A new guide built from the old glass template gets the
+same block; `retheme.py` in the project notes generates it and does the
+retune (it strips an existing block first, so it is safe to rerun).
+`precalc-quizzes.html` is a print sheet and is left alone.
 
 ## Content Security Policy
 

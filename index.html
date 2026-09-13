@@ -3,38 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>study guides · valentino</title>
+<title>Valentino guides</title>
 <meta name="description" content="Free study guides, cram sheets, and practice for Bishop Gorman classes. Made by a student.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F1F0EC">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16171A">
 <link rel="canonical" href="https://valentinoguides.com/">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="study guides">
-<meta property="og:title" content="study guides · valentino">
+<meta property="og:site_name" content="Valentino guides">
+<meta property="og:title" content="Valentino guides">
 <meta property="og:description" content="Free study guides, cram sheets, and practice for Bishop Gorman classes.">
 <meta property="og:url" content="https://valentinoguides.com/">
-<meta property="og:image" content="https://valentinoguides.com/og-image.png">
+<meta property="og:image" content="https://valentinoguides.com/og-image.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://valentinoguides.com/og-image.png">
+<meta name="twitter:image" content="https://valentinoguides.com/og-image.png?v=3">
 <style>
-@font-face{font-family:"Instrument Serif";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/instrument-serif.woff2) format("woff2")}
-@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/instrument-serif-italic.woff2) format("woff2")}
-@font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/instrument-sans.woff2) format("woff2")}
-@font-face{font-family:"Instrument Sans";font-style:italic;font-weight:400 700;font-display:swap;src:url(/fonts/instrument-sans-italic.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
 
 
 /* ═══ type ═══ */
 :root{
-  --serif:"Instrument Serif",ui-serif,Georgia,"Times New Roman",serif;
-  --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
-  --display:var(--serif); --text:var(--sans); --round:var(--sans);
+  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --serif:var(--display); --text:var(--sans); --round:var(--sans);
+  --w-d:600; --ls-d:-.025em;
   /* one scale */
   --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px; --t42:42px;
   --r-card:14px; --r-btn:10px; --r-chip:8px; --r-tile:8px;
@@ -43,9 +43,10 @@
   --gap:16px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+.bar h1,.intro h2,.hero .htitle,.topm .tt,.fbh b,#fbdone{font-optical-sizing:auto}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--sans);font-size:var(--t16);line-height:1.5;letter-spacing:-.004em;word-spacing:.05em;
+  font-family:var(--sans);font-size:var(--t16);line-height:1.5;letter-spacing:0;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;min-height:100vh;
   padding-bottom:calc(48px + env(safe-area-inset-bottom))}
@@ -66,8 +67,8 @@ a{color:inherit;text-decoration:none}
 .bar .wrap{display:flex;align-items:center;gap:10px}
 .mark{width:26px;height:26px;border-radius:5px;flex:none;display:grid;place-items:center;
   background:var(--accent);color:var(--on-accent);
-  font-family:var(--serif);font-size:18px;line-height:1;padding-bottom:2px}
-.bar h1{margin:0;font-family:var(--serif);font-size:var(--t20);font-weight:400;letter-spacing:-.01em;
+  font-family:var(--display);font-size:18px;line-height:1;padding-bottom:2px}
+.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);
   text-transform:lowercase;white-space:nowrap;
   opacity:0;transform:translateY(4px);pointer-events:none;
   transition:opacity .3s var(--ease),transform .3s var(--spring)}
@@ -91,15 +92,15 @@ a{color:inherit;text-decoration:none}
 /* ═══ intro ═══ */
 main{padding-top:30px}
 .intro{margin:0 0 34px}
-.intro h2{margin:0 0 8px;font-family:var(--serif);font-size:38px;font-weight:400;
-  letter-spacing:-.015em;word-spacing:.08em;line-height:1.02;text-transform:lowercase}
+.intro h2{margin:0 0 8px;font-family:var(--display);font-size:38px;font-weight:var(--w-d);
+  letter-spacing:var(--ls-d);line-height:1.02;text-transform:lowercase}
 @media (min-width:560px){.intro h2{font-size:52px}}
 .intro p{margin:0;font-size:var(--t15);line-height:1.55;color:var(--ink2);max-width:44ch;
   text-transform:lowercase}
 
 /* section head: label + rule */
 .sh{display:flex;align-items:center;gap:10px;margin:30px 0 10px}
-.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.08em;
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;
   color:var(--ink3);text-transform:lowercase}
 .sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
 .shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;
@@ -112,15 +113,15 @@ main{padding-top:30px}
 @media (hover:hover){.hero:hover{border-color:var(--line2)}}
 .hrow{display:flex;align-items:center;gap:9px;margin-bottom:10px}
 .hmeta{min-width:0;flex:1;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-.hk{font-size:var(--t12);font-weight:600;letter-spacing:.06em;text-transform:lowercase;
+.hk{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;
   color:var(--accent-ink,var(--ink))}
 .hc{font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
 .chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;
   border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;
   font-variant-numeric:tabular-nums;border:1px solid var(--line)}
 .chip.due{color:var(--accent-ink,var(--ink));border-color:var(--accent-ink,var(--line));background:transparent}
-.hero .htitle{display:block;font-family:var(--serif);font-size:var(--t26);font-weight:400;
-  letter-spacing:-.01em;word-spacing:.08em;line-height:1.12;margin-bottom:14px;text-transform:lowercase;
+.hero .htitle{display:block;font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);
+  letter-spacing:var(--ls-d);line-height:1.12;margin-bottom:14px;text-transform:lowercase;
   text-wrap:balance}
 .go{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
   padding:11px;border-radius:var(--r-btn);color:var(--on-accent);
@@ -253,7 +254,7 @@ footer{margin-top:34px;padding:18px 0 6px;border-top:1px solid var(--line);
   box-shadow:0 18px 48px -18px color-mix(in srgb,var(--ink) 45%,transparent)}
 #fb.on #fbcard{display:block;animation:pop .28s var(--spring)}
 .fbh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.fbh b{font-family:var(--serif);font-size:var(--t20);font-weight:400;text-transform:lowercase}
+.fbh b{font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase}
 .fbx{width:24px;height:24px;border-radius:6px;border:1px solid var(--line);color:var(--ink3);
   display:flex;align-items:center;justify-content:center}
 .stars{display:flex;gap:3px;margin:0 0 10px -2px}
@@ -277,8 +278,8 @@ footer{margin-top:34px;padding:18px 0 6px;border-top:1px solid var(--line);
   font-size:var(--t13);font-weight:600;text-transform:lowercase;background:var(--accent);
   transition:opacity .18s var(--ease)}
 #fbsend:disabled{opacity:.4;cursor:default}
-#fbdone{display:none;text-align:center;padding:8px 0 4px;font-family:var(--serif);font-size:var(--t20);
-  font-weight:400;text-transform:lowercase}
+#fbdone{display:none;text-align:center;padding:8px 0 4px;font-family:var(--display);font-size:var(--t20);
+  font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase}
 #fbdone span{display:block;font-family:var(--sans);font-size:var(--t12);font-weight:500;color:var(--ink3);margin-top:2px}
 #fb.sent #fbform{display:none}
 #fb.sent #fbdone{display:block}
@@ -361,7 +362,7 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
 .mark{background:none;color:var(--accent);width:28px;height:28px;border-radius:0;padding:0;display:grid;place-items:center}
 .mark svg{display:block;width:28px;height:28px}
 .mark .mono{width:26px;height:26px;border-radius:5px;background:var(--accent);color:var(--on-accent);
-  display:grid;place-items:center;font-family:var(--serif);font-size:19px;line-height:1;padding-bottom:2px}
+  display:grid;place-items:center;font-family:var(--display);font-size:19px;line-height:1;padding-bottom:2px}
 .mark .mono i{font-style:italic}
 .mark .mono em{font-style:normal;display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--hi);margin-left:1px;transform:translateY(5px)}
 
@@ -374,16 +375,16 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
 
 /* ═══ fast find ═══ */
 .intro{margin:0 0 26px}
-.intro h2{font-size:34px}
+.intro h2{font-size:clamp(26px,8.6vw,34px)}
 @media (min-width:560px){.intro h2{font-size:44px}}
 .intro h2 label{cursor:text}
 .find{margin-top:14px;min-height:52px;padding:0 6px 0 14px;gap:10px}
 .find input{font-size:17px;padding:14px 0}
 .find .clr{width:40px;height:40px;border-radius:8px}
 .find .clr svg{width:12px;height:12px}
-.hint{margin:10px 2px 0;font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
+.hint{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:14px 2px 0;font-size:var(--t12);line-height:1.3;color:var(--ink3);text-transform:lowercase}
 .hint[hidden]{display:none}
-.eg{font:inherit;font-size:var(--t12);font-weight:500;color:var(--ink2);padding:3px 8px;border:1px solid var(--line);border-radius:var(--r-chip);
+.eg{font:inherit;font-size:var(--t12);font-weight:500;color:var(--ink2);padding:4px 10px;border:1px solid var(--line);border-radius:var(--r-chip);
   background:var(--surface);text-transform:lowercase;transition:border-color .16s var(--ease),color .16s var(--ease)}
 .eg:active,.eg:hover{border-color:var(--line2);color:var(--ink)}
 body.searching .intro{margin-bottom:6px}
@@ -392,7 +393,7 @@ body.searching .intro{margin-bottom:6px}
   box-shadow:0 8px 24px -10px color-mix(in srgb,var(--ink) 18%,transparent);transition:border-color .2s var(--ease)}
 .topm::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,var(--accent))}
 .topm .eyebrow{font-size:var(--t12);font-weight:600;letter-spacing:.06em;text-transform:lowercase}
-.topm .tt{font-family:var(--serif);font-size:24px;line-height:1.15;letter-spacing:-.01em;word-spacing:.08em;text-transform:lowercase;text-wrap:balance}
+.topm .tt{font-family:var(--display);font-size:24px;font-weight:var(--w-d);line-height:1.12;letter-spacing:var(--ls-d);text-transform:lowercase;text-wrap:balance}
 .topm .kinds{margin:2px 0 4px}
 .topm .go{margin-top:6px}
 .topm.sel,.unit.sel{border-color:var(--ink)}
@@ -426,8 +427,8 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
 <a class="skipl" href="#main">skip to the guides</a>
 <header class="bar" id="bar">
   <div class="wrap">
-    <span class="mark" aria-hidden="true"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M12.414450867052023 21.5Q12.154335260115607 21.5 12.038728323699424 21.18208092485549L8.194797687861271 8.436416184971097Q7.992485549132948 7.742774566473988 7.804624277456648 7.540462427745664Q7.6167630057803475 7.3381502890173405 7.2121387283236995 7.251445086705202L6.778612716763006 7.164739884393063Q6.402890173410405 7.078034682080924 6.402890173410405 6.789017341040463Q6.402890173410405 6.5 6.807514450867052 6.5H11.576300578034683Q11.980924855491331 6.5 11.980924855491331 6.789017341040463Q11.980924855491331 7.10693641618497 11.60520231213873 7.164739884393063L11.142774566473989 7.222543352601155Q10.449132947976878 7.309248554913294 10.2757225433526 7.554913294797688Q10.102312138728324 7.800578034682081 10.275722543352602 8.436416184971097L12.674566473988438 16.789017341040463Q12.761271676300577 17.106936416184972 12.963583815028901 17.106936416184972Q13.165895953757225 17.106936416184972 13.252601156069364 16.789017341040463L15.59364161849711 8.95664739884393Q15.82485549132948 8.176300578034683 15.723699421965318 7.786127167630058Q15.622543352601156 7.395953757225433 14.899999999999999 7.280346820809248L14.29306358381503 7.164739884393063Q13.917341040462428 7.078034682080924 13.917341040462428 6.789017341040463Q13.917341040462428 6.5 14.321965317919076 6.5H17.992485549132947Q18.397109826589595 6.5 18.397109826589595 6.817919075144509Q18.397109826589595 7.10693641618497 18.05028901734104 7.222543352601155L17.790173410404623 7.309248554913294Q17.35664739884393 7.453757225433526 17.053179190751443 7.829479768786127Q16.74971098265896 8.205202312138729 16.460693641618498 9.130057803468208L12.790173410404623 21.18208092485549Q12.674566473988438 21.5 12.414450867052023 21.5Z" fill="var(--on-accent)"/><circle cx="20.80" cy="19.60" r="1.9" fill="var(--hi)"/></svg></span>
-    <h1>study guides</h1>
+    <span class="mark" aria-hidden="true"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg></span>
+    <h1>valentino guides</h1>
     <div class="seg" role="group" aria-label="theme">
       <span class="thumb" aria-hidden="true"></span>
       <button type="button" data-set="auto" aria-pressed="true">auto</button>
