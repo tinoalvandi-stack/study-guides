@@ -109,7 +109,7 @@ header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),
 .glyph svg path,.glyph svg circle,.glyph svg ellipse{stroke-dasharray:1;stroke-dashoffset:1;animation:ink 1.2s var(--ease) .2s forwards}
 @keyframes ink{to{stroke-dashoffset:0}}
 .cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
-h1{margin:0;font-family:var(--display);font-size:23px;font-weight:650;letter-spacing:-.02em;line-height:1.08;text-transform:lowercase}
+h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;line-height:1.08;text-transform:lowercase}
 .chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
   background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
   white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase;font-variant-numeric:tabular-nums}
@@ -288,7 +288,7 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
 .why.miss{border-color:var(--bad)}
 .why .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--ink3);display:block;margin-bottom:2px}
 .result{border-radius:18px;padding:20px 18px;margin-bottom:12px}
-.result .big{font-family:var(--display);font-size:34px;font-weight:650;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.result .big{font-family:var(--display);font-size:34px;font-weight:780;letter-spacing:-.042em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
 .result .sub{font-size:15px;color:var(--ink);margin:8px 0 12px;line-height:1.45}
 .result .miss{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
 .result .miss button{font-family:var(--round);font-size:13px;font-weight:740;padding:6px 11px;border-radius:999px;font-variant-numeric:tabular-nums;
@@ -330,89 +330,6 @@ sup.fn{font-family:var(--round);font-size:.7em;font-weight:760;color:var(--accen
 .fnl{margin:0 16px 14px;padding:0 0 0 22px;font-size:14px;line-height:1.45;color:var(--ink);display:grid;gap:6px}
 .fnl li::marker{font-family:var(--round);font-weight:760;color:var(--accent)}
 </style>
-<style id="stone">
-/* kinari re-theme (2026-09-13, bricolage type): fonts, colors, no glow, no glass. layout untouched. */
-@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
-@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
-@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
-:root{
-  --text:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --round:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --accent:#8A442D;
-  --ground:#EEE8DC; --ink:#20272B;
-  --ink2:rgba(94,90,82,.88); --ink3:rgba(94,90,82,.76);
-  --glass:#FBF8F1; --glass-hi:#F4EFE5;
-  --rim-a:transparent; --rim-b:transparent; --rim-c:transparent; --gloss:transparent; --spec:transparent;
-  --sep:#D4CABB; --line:#D4CABB; --fill:#F4EFE5; --fill2:#F4EFE5;
-  --blue:#294A5E; --good:#4C6A48; --bad:#8E3F4C;
-  --blur:0px; --sat:100%; --shadow:none; --amb:0; --hi:#944B34;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --text:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --round:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --accent:#E08B68;
-  --ground:#151B20; --ink:#F2ECDF;
-  --ink2:rgba(185,178,167,.72); --ink3:rgba(185,178,167,.6);
-  --glass:#1D252A; --glass-hi:#192024;
-  --rim-a:transparent; --rim-b:transparent; --rim-c:transparent; --gloss:transparent; --spec:transparent;
-  --sep:#354149; --line:#354149; --fill:#192024; --fill2:#192024;
-  --blue:#8FB7CA; --good:#9BBC8A; --bad:#DF8592;
-  --blur:0px; --sat:100%; --shadow:none; --amb:0; --hi:#E18A67;
-}}
-:root[data-theme="dark"]{
-  --text:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --round:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --accent:#E08B68;
-  --ground:#151B20; --ink:#F2ECDF;
-  --ink2:rgba(185,178,167,.72); --ink3:rgba(185,178,167,.6);
-  --glass:#1D252A; --glass-hi:#192024;
-  --rim-a:transparent; --rim-b:transparent; --rim-c:transparent; --gloss:transparent; --spec:transparent;
-  --sep:#354149; --line:#354149; --fill:#192024; --fill2:#192024;
-  --blue:#8FB7CA; --good:#9BBC8A; --bad:#DF8592;
-  --blur:0px; --sat:100%; --shadow:none; --amb:0; --hi:#E18A67;
-}
-#amb{display:none !important}
-.g{border:1px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
-.g::before,.g::after,.spec{display:none !important}
-/* homepage chrome: corners, chips, tabs, line glyphs, site bar */
-.g,.card,.qcard,.fc,.fc>div,.start{border-radius:14px !important}
-.card,.qcard{box-shadow:none}
-.vgbar{position:sticky;top:0;z-index:40;background:var(--ground);padding:max(10px,env(safe-area-inset-top)) 0 10px;box-shadow:0 1px 0 0 var(--line)}
-.vgbar .wrap{max-width:640px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:10px}
-.vgbar a{color:inherit;text-decoration:none}
-.vghome{display:flex;align-items:center;gap:10px;min-width:0}
-.vghome svg{width:26px;height:26px;border-radius:5px;flex:none;display:block}
-.vghome span{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.025em;text-transform:lowercase;white-space:nowrap}
-.vgall{margin-left:auto;flex:none;font-size:12px;font-weight:500;color:var(--ink3);padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--glass);text-transform:lowercase}
-#prog{display:none !important}
-.hrow{align-items:center}
-.glyph{width:26px;height:26px;border-radius:0 !important;background:none !important;box-shadow:none !important}
-.glyph{color:var(--accent) !important}
-.glyph svg,.glyph svg *{stroke:var(--accent) !important}
-.cls,.kick{font-family:var(--text);font-weight:600;font-size:12px;letter-spacing:.04em}
-.chip,.hsub{font-family:var(--text);font-weight:500;font-size:12px;padding:3px 8px;border-radius:8px;background:transparent;border:1px solid var(--accent);color:var(--accent);box-shadow:none}
-.seg{background:var(--glass);border:1px solid var(--line);border-radius:10px;box-shadow:none;padding:2px}
-.seg button{font-family:var(--text);font-weight:500;font-size:13px;color:var(--ink3);border-radius:8px}
-.seg button[aria-selected="true"]{color:var(--ground)}
-.seg .ind,.seg .thumb{background:var(--ink);box-shadow:none;border-radius:8px}
-.ct{font-family:var(--text);font-weight:500;font-size:16px;letter-spacing:-.004em}
-.dot{box-shadow:none;border-radius:2px;width:8px;height:8px}
-.chead:active{transform:none}
-.term,.qn .tag{font-family:var(--text);font-weight:500;font-size:12px;border-radius:8px;padding:3px 8px;box-shadow:none;background:color-mix(in srgb,var(--accent) 10%,transparent);border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line));color:var(--ink)}
-.w{font-family:var(--text);font-weight:600;font-size:11.5px;border-radius:8px;letter-spacing:0;padding:3px 8px}
-.w3{color:var(--glass)}
-.opt{border-radius:10px;background:var(--glass-hi);border:1px solid var(--line);box-shadow:none}
-.opt:active{transform:none}
-.opt .k,.qn,.callout .cl,.why .cl{font-family:var(--text);font-weight:600;letter-spacing:.04em}
-.callout,.why{border-radius:10px;background:var(--glass);border:1px solid var(--line);border-left-width:3px}
-.btn,.pill,.fcnav button{border-radius:10px;box-shadow:none;font-family:var(--text)}
-footer{text-align:left;border-top:1px solid var(--line);padding:16px 0 6px;margin-top:34px}
-</style>
-<script>(function(){function go(){var b=document.createElement("div");b.className="vgbar";b.innerHTML='<div class="wrap"><a class="vghome" href="/" aria-label="all guides"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--blue)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--ground)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg><span>valentino guides</span></a><a class="vgall" href="/">all guides</a></div>';document.body.insertBefore(b,document.body.firstChild)}if(document.body)go();else document.addEventListener("DOMContentLoaded",go)})();</script>
-
 </head>
 <body>
 <div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -446,6 +363,7 @@ const GUIDE = {
   due:   "leq tue 9/15 · 40 min",
 
   top:[
+    "!!Another section's prompt was on slavery and the economy.!! Don't count on the same prompt; count on the same territory: **servants to slaves**, what the economy did to slavery and what slavery did to the economy.",
     "==Six rows, 0 to 10 each, 60 total, straight to a percentage.== Thesis = ==last sentence of a 4+ sentence contextualization paragraph==. !!Anywhere else loses points.!!",
     "Evidence gets **linked**, not listed. Every body sentence ties back to the thesis. ==Four linked pieces instead of two earns complexity.==",
     "Comparison needs **balance**. !!All similarities or all differences loses the analysis row.!!",
@@ -454,6 +372,22 @@ const GUIDE = {
   ],
 
   outline:[
+    { w:3, t:"From servants to slaves; Bacon's Rebellion",
+      sum:"The Chesapeake ran out of servants and switched to enslaved Africans. Know both directions: what the economy did to slavery, what slavery did to the economy.",
+      story:["==Fewer indentured servants after the 1650s==: good land gone, life in England better. Planters still need hands.",
+             "==European Christians believed enslaving heathen peoples was justifiable.==",
+             "**\"Society with slaves\"**: slavery exists, economy doesn't depend on it. **\"Slave society\"**: economy runs on it. ==Chesapeake and South Carolina become slave societies; Africans about 20% of the Chesapeake.==",
+             "Supply comes through **Barbados**, a sugar island with surplus slaves; younger sons move to **Charles Town** and bring them.",
+             "Slaves cost more but ==children were born enslaved==. Small planters sell out; ==rich-poor gap widens==.",
+             "**South Carolina rice** grown on ==skills brought by enslaved Africans==; **indigo** from West Indian knowledge.[[7]]",
+             "**Middle Passage**: ==6 to 8 weeks, about 20% die==, shackled below deck; fattened in the Caribbean, sold for life."],
+      facts:["**Bacon's Rebellion** ==1676==: **Nathaniel Bacon**, frontier, asks **Governor Berkeley** for militia against Native raids; eastern planters refuse. Bacon raises his own army, marches on Jamestown, ==dies of dysentery==.",
+             "Why it matters: rich vs. poor exposed; ==encouraged greater reliance on enslaved labor==.[[8]]"],
+      cmp:[{h:"economy shaped slavery",t:"tobacco and rice demand, servant supply fails after the 1650s, hereditary labor pays off, Barbados surplus, Navigation Acts make tobacco an enumerated cash crop"},
+           {h:"slavery shaped the economy",t:"plantation scale, planter elite and a wider rich-poor gap, slave societies in the Chesapeake and SC, New England rum and shipping in the triangular trade, port cities"}],
+      notes:[{k:"ex",t:"The servants-to-slaves chain is a whole essay: economic causes plus a non-economic push (Bacon's, religion) is the complexity move built in."}],
+      terms:["society with slaves","slave society","Barbados","Charles Town","rice","indigo","Middle Passage","Bacon's Rebellion","William Berkeley"] },
+
     { w:3, t:"The Chesapeake: Jamestown, tobacco, labor",
       sum:"A business venture that nearly died, then found a crop that demanded land and bodies.",
       story:["==1607==: **Virginia Company**, a **joint-stock company**,[[1]] plants **Jamestown** for profit. !!Not religion.!!",
@@ -470,6 +404,19 @@ const GUIDE = {
              "**Maryland** (==1634==, **Lord Baltimore**): **Catholic haven**, fills with Protestants, second tobacco colony."],
       notes:[{k:"ex",t:"Economic founding, tobacco causing land and labor demand, headright, servants, 1622: one full body paragraph on any Chesapeake or comparison prompt."}],
       terms:["Virginia Company","joint-stock company","Powhatan","John Smith","John Rolfe","tobacco","headright","House of Burgesses","franchise","Opechancanough","royal colony","indentured servants","Lord Baltimore"] },
+
+    { w:3, t:"Mercantilism and the Navigation Acts",
+      sum:"Colonies exist to make the mother country rich; the Navigation Acts make it so. Longest lecture of the unit.",
+      story:["**Mercantilism**: ==colonies exist to benefit the mother country==. Wealth = finite **gold and silver**. Keep a **favorable balance of trade** and **trapped markets**.",
+             "**Trapped market**: ==foreign goods go to England first, then to the colonies==. Colonial lumber becomes English furniture sold back; England profits at every step.",
+             "**Tariffs**: **protectionist** (price foreign goods out) vs. **revenue** (price equal, charge for access).[[6]]",
+             "**Navigation Acts** ==1651, 1660, 1663==: **English ships** only; **enumerated goods** (tobacco, sugar, later rice, indigo) sell only inside the empire; European goods stop in England first; smugglers face **vice-admiralty courts**, no jury; no colonial wool exports, hats, ironworks.",
+             "**Triangular trade**: goods to Africa, people to the Americas (**Middle Passage**), raw materials to Europe. New England loop: molasses and sugar in, **rum** out.",
+             "**Salutary neglect**: lax enforcement, smuggling common. ==Serious enforcement only after 1763, and colonists refuse.=="],
+      facts:["**Boston, Newport, Philadelphia, New York** grow as ports; shipbuilding; a **merchant elite**. Colonies tied to the Atlantic economy, !!not self-sufficient farms.!!",
+             "==Some African kings consolidated power from slave-trade profits.=="],
+      notes:[{k:"ex",t:"Cause (Restoration government needs revenue and control) and effect (enumerated goods, ports, smuggling, resentment). Pairs with the Dominion of New England on an imperial-control prompt."}],
+      terms:["mercantilism","favorable balance of trade","trapped markets","tariffs","Navigation Acts","enumerated goods","vice-admiralty courts","triangular trade","Middle Passage","rum","salutary neglect"] },
 
     { w:3, t:"New England: Puritan society and self-government",
       sum:"Religious families governed by covenant and church members. Long lives, short tempers with neighbors.",
@@ -503,33 +450,6 @@ const GUIDE = {
              "**Proprietary** colonies drift to **royal colonies** over time."],
       notes:[{k:"ex",t:"Events in England producing colonies (NY, NJ, Carolina, PA) and self-rule habits (Interregnum neglect, assemblies modeled on Parliament)."}],
       terms:["divine right","Civil War","Cavaliers","Roundheads","Oliver Cromwell","Interregnum","Restoration","proprietorship","Duke of York","Duke's Laws","George Carteret","John Locke","William Penn","Quakers","James Oglethorpe","legislative assembly"] },
-
-    { w:3, t:"Mercantilism and the Navigation Acts",
-      sum:"Colonies exist to make the mother country rich; the Navigation Acts make it so. Longest lecture of the unit.",
-      story:["**Mercantilism**: ==colonies exist to benefit the mother country==. Wealth = finite **gold and silver**. Keep a **favorable balance of trade** and **trapped markets**.",
-             "**Trapped market**: ==foreign goods go to England first, then to the colonies==. Colonial lumber becomes English furniture sold back; England profits at every step.",
-             "**Tariffs**: **protectionist** (price foreign goods out) vs. **revenue** (price equal, charge for access).[[6]]",
-             "**Navigation Acts** ==1651, 1660, 1663==: **English ships** only; **enumerated goods** (tobacco, sugar, later rice, indigo) sell only inside the empire; European goods stop in England first; smugglers face **vice-admiralty courts**, no jury; no colonial wool exports, hats, ironworks.",
-             "**Triangular trade**: goods to Africa, people to the Americas (**Middle Passage**), raw materials to Europe. New England loop: molasses and sugar in, **rum** out.",
-             "**Salutary neglect**: lax enforcement, smuggling common. ==Serious enforcement only after 1763, and colonists refuse.=="],
-      facts:["**Boston, Newport, Philadelphia, New York** grow as ports; shipbuilding; a **merchant elite**. Colonies tied to the Atlantic economy, !!not self-sufficient farms.!!",
-             "==Some African kings consolidated power from slave-trade profits.=="],
-      notes:[{k:"ex",t:"Cause (Restoration government needs revenue and control) and effect (enumerated goods, ports, smuggling, resentment). Pairs with the Dominion of New England on an imperial-control prompt."}],
-      terms:["mercantilism","favorable balance of trade","trapped markets","tariffs","Navigation Acts","enumerated goods","vice-admiralty courts","triangular trade","Middle Passage","rum","salutary neglect"] },
-
-    { w:3, t:"From servants to slaves; Bacon's Rebellion",
-      sum:"The Chesapeake ran out of servants and switched to enslaved Africans. A frontier revolt made the switch look safer.",
-      story:["==Fewer indentured servants after the 1650s==: good land gone, life in England better. Planters still need hands.",
-             "==European Christians believed enslaving heathen peoples was justifiable.==",
-             "**\"Society with slaves\"**: slavery exists, economy doesn't depend on it. **\"Slave society\"**: economy runs on it. ==Chesapeake and South Carolina become slave societies; Africans about 20% of the Chesapeake.==",
-             "Supply comes through **Barbados**, a sugar island with surplus slaves; younger sons move to **Charles Town** and bring them.",
-             "Slaves cost more but ==children were born enslaved==. Small planters sell out; ==rich-poor gap widens==.",
-             "**South Carolina rice** grown on ==skills brought by enslaved Africans==; **indigo** from West Indian knowledge.[[7]]",
-             "**Middle Passage**: ==6 to 8 weeks, about 20% die==, shackled below deck; fattened in the Caribbean, sold for life."],
-      facts:["**Bacon's Rebellion** ==1676==: **Nathaniel Bacon**, frontier, asks **Governor Berkeley** for militia against Native raids; eastern planters refuse. Bacon raises his own army, marches on Jamestown, ==dies of dysentery==.",
-             "Why it matters: rich vs. poor exposed; ==encouraged greater reliance on enslaved labor==.[[8]]"],
-      notes:[{k:"ex",t:"The servants-to-slaves chain is a whole essay: economic causes plus a non-economic push (Bacon's, religion) is the complexity move built in."}],
-      terms:["society with slaves","slave society","Barbados","Charles Town","rice","indigo","Middle Passage","Bacon's Rebellion","William Berkeley"] },
 
     { w:2, t:"Imperial reorganization to King William's War",
       sum:"James II tightens the reins, loses his throne, and the colonies get a war with France. Unit 2 starts here.",
@@ -604,6 +524,28 @@ const GUIDE = {
            "A complexity paragraph: the other side or the extent, with two more examples.",
            "Conclusion optional. Reread for thesis placement, always/never, and dates."],
     prompts:[
+      { q:"Evaluate the extent to which economic factors caused the growth of slavery in the British North American colonies in the period from 1619 to 1700.",
+        kind:"most likely · causation",
+        thesis:"Economic factors caused the shift to a large extent: fewer servants arrived once the good land was gone and life in England improved, tobacco's demand for labor never dropped, and slaves paid off because their children were born enslaved; yet Bacon's Rebellion in 1676 and the belief that enslaving heathens was justified show that fear of poor freemen and religious ideas pushed the change too.",
+        paras:[
+          { l:"paragraph 1 · contextualization, then thesis", t:"Jamestown began as a **joint-stock** hunt for Spanish-style riches, found tobacco instead, and tobacco ate land and labor. Headright grants spread plantations along the rivers. The first Africans in 1619 held a fluid status next to seven-year servants. By the 1650s the colony's problem was hands, not land. ==Thesis last.==" },
+          { l:"paragraph 2 · indentured servitude fails", t:"Topic: the servant pipeline broke while tobacco kept asking. Evidence first: **indentured servants**, seven-year terms, headright land for whoever paid passage. Evidence: fewer servants after the ==1650s==, the good land gone, conditions in England improving, tobacco still needing bodies. Link: a planter with acres and no workers had to find labor that couldn't leave." },
+          { l:"paragraph 3 · slaves paid off, and Barbados supplied them", t:"Topic: the economics of buying a person outright. Evidence: ==children born enslaved==, the **Barbados** surplus, **Charles Town** migrants, rich planters buying out small ones, South Carolina **rice** and **indigo** on African skills. Link: the up-front cost bought labor for generations, so the big planters got bigger." },
+          { l:"paragraph 4 · the non-economic push", t:"Topic: fear and belief did work money didn't. Evidence: **Bacon's Rebellion** (==1676==) shows armed ex-servants as a danger; Virginia laws of the 1660s and 70s make slavery **hereditary**; Christians believed enslaving heathens was justified. Link: slaves never finish a term and never become angry freemen with guns." },
+          { l:"paragraph 5 · effects and extent", t:"Topic: what the shift made. Evidence: the Chesapeake and South Carolina become **slave societies**, Africans about one fifth of the Chesapeake, the rich-poor gap widens, the **Middle Passage** at ==6 to 8 weeks and 20% dead==. Extent: economics set the direction; Bacon's and religion set the speed." }
+        ],
+        trap:"Causation needs effects. Stopping at planters bought slaves, without the slave-society outcome, leaves the reasoning row short." },
+      { q:"Evaluate the extent to which slavery shaped the economy of the British North American colonies in the period from 1619 to 1700.",
+        kind:"most likely · causation",
+        thesis:"Slavery shaped the colonial economy to a large extent: it made tobacco and rice plantation economies possible once the servant supply failed, concentrated land and wealth in a planter elite, and tied every region, New England's rum and ships included, into the Atlantic slave trade; still, New England and the Middle Colonies built farm, port and merchant economies that used slavery only at the margins.",
+        paras:[
+          { l:"paragraph 1 · contextualization, then thesis", t:"By the 1650s the Chesapeake ran on **tobacco** and seven-year **indentured servants**; the first Africans of 1619 held a fluid status. England's **mercantilism** wanted staple crops shipped home, and **Barbados** sugar had already shown what enslaved labor could produce. Then the servants stopped coming. ==Thesis last.==" },
+          { l:"paragraph 2 · staple crops at plantation scale", t:"Topic: slavery made the cash-crop economy possible. Evidence: servant flow falls after the ==1650s==, ==children born enslaved==, **Barbados** surplus to **Charles Town**, South Carolina **rice** and **indigo** on African skills, tobacco an **enumerated good** (==1660, 1663==). Link: labor that never left let planters grow what England wanted at a scale servants never could." },
+          { l:"paragraph 3 · a planter elite", t:"Topic: slavery sorted the colonies into rich and poor. Evidence: big planters buy out small ones, ==rich-poor gap widens==, **Bacon's Rebellion** (==1676==) pushes planters toward slaves over freemen, Chesapeake and South Carolina become **slave societies**, Africans about ==20%== of the Chesapeake. Link: wealth followed slave ownership, so politics did too (landowner franchise, Burgesses)." },
+          { l:"paragraph 4 · the whole Atlantic", t:"Topic: even non-slave regions profited. Evidence: **triangular trade**, **Middle Passage** (==6 to 8 weeks, 20% dead==), New England **rum** from Caribbean molasses, shipbuilding and the ports of **Boston, Newport, Philadelphia, New York**, African kings consolidating power on the trade. Link: the slave trade was the loop that connected colonial lumber, rum and ships to English profit." },
+          { l:"paragraph 5 · extent", t:"Topic: where slavery mattered less. Evidence: New England **subsistence farms** and family labor, a **merchant elite** built on trade not plantations, small-scale Native and African slavery there (a **society with slaves**). Extent: slavery built the South's economy outright and only greased the North's." }
+        ],
+        trap:"Don't narrate the Middle Passage. Every fact needs an economic effect attached or it is evidence without a link." },
       { q:"Evaluate the extent to which the Chesapeake and New England colonies developed differently in the period from 1607 to 1700.",
         kind:"comparison",
         thesis:"Although both regions took Native land through war and built representative bodies, the Chesapeake and New England developed differently to a large extent, because tobacco produced a dispersed, male, short-lived planter society run on bound labor, while Puritan religion produced town-centered family communities governed by church-member voters.",
@@ -615,17 +557,6 @@ const GUIDE = {
           { l:"paragraph 5 · balance and extent", t:"Topic: the similarities that keep this from being total. Evidence: both fought Native wars (==1622, 1637, 1675 to 1676==), both held slaves, both copied governor, council, assembly. Extent: by 1700 the Chesapeake gains a native elite and the regions start to converge, so the difference is largest early." }
         ],
         trap:"All differences and no similarities loses the reasoning row. Paragraph 5 is not optional." },
-      { q:"Evaluate the extent to which economic factors caused the Chesapeake colonies to replace indentured servants with enslaved Africans in the period from 1619 to 1700.",
-        kind:"causation",
-        thesis:"Economic factors caused the shift to a large extent: fewer servants arrived once the good land was gone and life in England improved, tobacco's demand for labor never dropped, and slaves paid off because their children were born enslaved; yet Bacon's Rebellion in 1676 and the belief that enslaving heathens was justified show that fear of poor freemen and religious ideas pushed the change too.",
-        paras:[
-          { l:"paragraph 1 · contextualization, then thesis", t:"Jamestown began as a **joint-stock** hunt for Spanish-style riches, found tobacco instead, and tobacco ate land and labor. Headright grants spread plantations along the rivers. The first Africans in 1619 held a fluid status next to seven-year servants. By the 1650s the colony's problem was hands, not land. ==Thesis last.==" },
-          { l:"paragraph 2 · supply dries up, demand doesn't", t:"Topic: the servant pipeline broke while tobacco kept asking. Evidence: fewer servants after the ==1650s==, the good land gone, conditions in England improving, tobacco still needing bodies. Link: a planter with acres and no workers had to find labor that couldn't leave." },
-          { l:"paragraph 3 · slaves paid off, and Barbados supplied them", t:"Topic: the economics of buying a person outright. Evidence: ==children born enslaved==, the **Barbados** surplus, **Charles Town** migrants, rich planters buying out small ones, South Carolina **rice** and **indigo** on African skills. Link: the up-front cost bought labor for generations, so the big planters got bigger." },
-          { l:"paragraph 4 · the non-economic push", t:"Topic: fear and belief did work money didn't. Evidence: **Bacon's Rebellion** (==1676==) shows armed ex-servants as a danger; Virginia laws of the 1660s and 70s make slavery **hereditary**; Christians believed enslaving heathens was justified. Link: slaves never finish a term and never become angry freemen with guns." },
-          { l:"paragraph 5 · effects and extent", t:"Topic: what the shift made. Evidence: the Chesapeake and South Carolina become **slave societies**, Africans about one fifth of the Chesapeake, the rich-poor gap widens, the **Middle Passage** at ==6 to 8 weeks and 20% dead==. Extent: economics set the direction; Bacon's and religion set the speed." }
-        ],
-        trap:"Causation needs effects. Stopping at planters bought slaves, without the slave-society outcome, leaves the reasoning row short." },
       { q:"Evaluate the extent to which events in England shaped the development of the North American colonies in the period from 1640 to 1700.",
         kind:"causation",
         thesis:"Events in England shaped the colonies to a great extent: the Civil War and Interregnum left the colonies to govern themselves, the Restoration created proprietary colonies as Stuart debt payments and brought the Navigation Acts, and the Glorious Revolution both removed the Dominion of New England and locked in Parliament's control of trade; still, Bacon's Rebellion and King Philip's War show the colonies changing on their own terms.",
@@ -800,7 +731,7 @@ function keyCard(host){
   sh.innerHTML='<span class="spec" aria-hidden="true"></span><div class="chead" style="cursor:default"><span class="dot"></span><span class="ct">the shape</span></div><div class="cbody on"><div></div></div>';
   sh.querySelector(".cbody > div").appendChild(stepList(L.shape));rise(sh);host.appendChild(sh);
 
-  const h2=el("div","sh");h2.textContent="three likely prompts, paragraph by paragraph. tap for the thesis";host.appendChild(h2);
+  const h2=el("div","sh");h2.textContent="likely prompts, paragraph by paragraph. tap for the thesis";host.appendChild(h2);
   L.prompts.forEach((p,i)=>{
     const card=el("div","qcard g");
     card.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">prompt '+(i+1)+'<span class="tag">'+esc(p.kind)+'</span></div>'+
