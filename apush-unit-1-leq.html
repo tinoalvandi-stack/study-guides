@@ -2,845 +2,1313 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="AP US History Unit 1 LEQ study guide: English colonization from Jamestown to King William&#39;s War, the six-row rubric, three likely prompts mapped paragraph by paragraph, and a 40-minute pacing plan.">
-<title>apush unit 1 leq study guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>unit 1 leq study guide · ap us history · valentino guides</title>
+<meta name="description" content="AP US History Unit 1 LEQ study guide: English colonization to King William&#39;s War, the six-row rubric, four possible prompts with context, thesis, evidence and reasoning moves, and a 40-minute pacing plan.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+   Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+
+:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1);--ink3:rgba(94,90,82,.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--good:#4C6A48;--bad:#8E3F4C;
+  --c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}}
+:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}
+
 :root{
-  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro",system-ui,sans-serif;
-  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",system-ui,sans-serif;
-  --round:ui-rounded,"SF Pro Rounded","SF Compact Rounded",-apple-system,system-ui,sans-serif;
-
-  /* class color: ap us history */
-  --accent:#FF9500;
-  /* palette: field. blob 1 is always the class color */
-  --amb1:var(--accent); --amb2:#30D158; --amb3:#40C8E0; --amb4:#F0B429;
-  --ground:color-mix(in oklab,#E3E3EE 91%,var(--amb1));
-
-  --ink:#08080D;
-  --ink2:rgba(56,56,64,.68); --ink3:rgba(56,56,64,.40);
-  --glass:rgba(255,255,255,.54); --glass-hi:rgba(255,255,255,.72);
-  --rim-a:rgba(255,255,255,.95); --rim-b:rgba(255,255,255,.10); --rim-c:rgba(255,255,255,.42);
-  --gloss:rgba(255,255,255,.55); --spec:rgba(255,255,255,.34);
-  --sep:rgba(56,56,64,.10); --fill:rgba(118,118,128,.10); --fill2:rgba(118,118,128,.055);
-  --blue:#007AFF; --good:#2FB350; --bad:#FF3B30;
-  --blur:22px; --sat:195%;
-  --shadow:0 1px 1px rgba(14,14,38,.04), 0 10px 28px -10px rgba(14,14,38,.22);
+  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:600; --ls-d:-.025em;
+  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px;
+  --r-card:14px; --r-btn:10px; --r-chip:8px;
   --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
-  --amb:.82; --amb-blur:66px;
-  --hlmix:22%;
+  --gap:16px;
+  --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --accent:#FF9F0A;
-  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
-  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
-  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
-  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
-  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
-  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
-  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
-  --blur:26px; --sat:175%;
-  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
-  --amb:.62; --amb-blur:82px;
-  --hlmix:30%;
-}}
-:root[data-theme="dark"]{
-  --accent:#FF9F0A;
-  --ground:color-mix(in oklab,#06060B 89%,var(--amb1)); --ink:#FFFFFF;
-  --ink2:rgba(235,235,245,.66); --ink3:rgba(235,235,245,.38);
-  --glass:rgba(255,255,255,.06); --glass-hi:rgba(255,255,255,.095);
-  --rim-a:rgba(255,255,255,.42); --rim-b:rgba(255,255,255,.04); --rim-c:rgba(255,255,255,.16);
-  --gloss:rgba(255,255,255,.16); --spec:rgba(255,255,255,.14);
-  --sep:rgba(255,255,255,.085); --fill:rgba(255,255,255,.085); --fill2:rgba(255,255,255,.045);
-  --blue:#0A84FF; --good:#30D158; --bad:#FF453A;
-  --blur:26px; --sat:175%;
-  --shadow:0 1px 1px rgba(0,0,0,.5), 0 12px 32px -12px rgba(0,0,0,.85);
-  --amb:.62; --amb-blur:82px;
-  --hlmix:30%;
-}
-
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{background:var(--ground)}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);
-  font-optical-sizing:auto;font-size:17px;line-height:1.45;letter-spacing:-.012em;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
   padding-bottom:calc(48px + env(safe-area-inset-bottom))}
-button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
-a{color:var(--blue)}
-:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
-.wrap{max-width:640px;margin:0 auto;padding:0 16px}
-.hidden{display:none !important}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
+.lc{text-transform:lowercase}
 
-/* ambient layer: four blobs from the palette, slow drift, tiny hue swing */
-#amb{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;contain:strict;
-  filter:blur(var(--amb-blur)) saturate(160%);opacity:var(--amb);animation:hue 120s linear infinite}
-#amb i{position:absolute;display:block;border-radius:50%;animation:drift 38s var(--ease) infinite alternate}
-#amb i:nth-child(1){width:64vw;height:64vw;left:-12vw;top:-10vh;background:radial-gradient(circle,var(--amb1),transparent 66%)}
-#amb i:nth-child(2){width:58vw;height:58vw;right:-14vw;top:8vh;background:radial-gradient(circle,var(--amb2),transparent 66%);animation-duration:45s;animation-delay:-10s}
-#amb i:nth-child(3){width:70vw;height:70vw;left:2vw;top:46vh;background:radial-gradient(circle,var(--amb3),transparent 66%);animation-duration:41s;animation-delay:-20s}
-#amb i:nth-child(4){width:52vw;height:52vw;right:-8vw;bottom:-14vh;background:radial-gradient(circle,var(--amb4),transparent 66%);animation-duration:48s;animation-delay:-30s}
-@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(7vw,-6vh,0) scale(1.2)}}
-@keyframes hue{0%,100%{filter:blur(var(--amb-blur)) saturate(160%) hue-rotate(-7deg)}50%{filter:blur(var(--amb-blur)) saturate(172%) hue-rotate(7deg)}}
+/* bar */
+.bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
+.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px}
+.home{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:26px;height:26px;border-radius:5px;flex:none;display:block}
+.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase;white-space:nowrap}
+@media (max-width:379px){.bar h1{display:none}}
+.seg{position:relative;display:flex;border:1px solid var(--line);border-radius:8px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
+.seg button{position:relative;z-index:2;padding:4px 9px;border-radius:6px;font-size:var(--t12);font-weight:500;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
+.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.bar .seg{margin-left:auto}
 
-/* glass: fill + rim + gloss + specular */
-.g{position:relative;isolation:isolate;background:var(--glass);
-  -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
-  backdrop-filter:blur(var(--blur)) saturate(var(--sat));box-shadow:var(--shadow)}
-.g::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
-  background:linear-gradient(150deg,var(--rim-a),var(--rim-b) 32%,transparent 56%,var(--rim-c));
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
-.g::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
-  background:linear-gradient(180deg,var(--gloss),transparent 38%);opacity:.5}
-.spec{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
-  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--spec),transparent 68%);
-  transition:opacity .4s var(--ease)}
-@media (hover:hover){.g:hover > .spec{opacity:1}}
+/* intro */
+main{padding-top:22px}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cname svg{width:20px;height:20px;flex:none}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
+.chip.past{color:var(--ink3)}
+h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
 
-/* header */
-header{position:sticky;top:0;z-index:40;background:var(--glass);
-  -webkit-backdrop-filter:blur(20px) saturate(var(--sat));backdrop-filter:blur(20px) saturate(var(--sat));
-  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
-header.stuck{background:var(--glass-hi);box-shadow:inset 0 -.5px 0 0 var(--sep),0 6px 26px -12px rgba(14,14,38,.4)}
-.hrow{display:flex;align-items:center;gap:12px;padding:14px 0 12px}
-.glyph{width:40px;height:40px;border-radius:12px;flex:none;
-  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent));
-  box-shadow:inset 0 .5px 0 rgba(255,255,255,.55),0 4px 10px -4px rgba(0,0,0,.4)}
-.glyph svg path,.glyph svg circle,.glyph svg ellipse{stroke-dasharray:1;stroke-dashoffset:1;animation:ink 1.2s var(--ease) .2s forwards}
-@keyframes ink{to{stroke-dashoffset:0}}
-.cls{font-family:var(--round);font-size:12.5px;font-weight:740;color:var(--accent);text-transform:lowercase}
-h1{margin:0;font-family:var(--display);font-size:23px;font-weight:780;letter-spacing:-.042em;line-height:1.08;text-transform:lowercase}
-.chip{font-family:var(--round);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;
-  background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);
-  white-space:nowrap;margin-left:auto;flex:none;text-transform:lowercase;font-variant-numeric:tabular-nums}
+/* pane switcher */
+.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes::-webkit-scrollbar{display:none}
+.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button[aria-selected="true"]{color:var(--on-accent)}
+.panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.panes.one{display:none}
+.pane{display:none}
+.pane.on{display:block;animation:rise .38s var(--spring) both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* segmented control */
-.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;
-  background:var(--fill);border-radius:11px;padding:2px;margin-bottom:14px;box-shadow:inset 0 .5px 0 0 var(--gloss)}
-.seg button{position:relative;z-index:1;padding:7px 4px;border-radius:9px;font-family:var(--round);
-  font-size:13.5px;font-weight:640;color:var(--ink2);text-transform:lowercase;transition:color .25s var(--ease)}
-.seg button[aria-selected="true"]{color:var(--ink)}
-.seg .ind{position:absolute;z-index:0;top:2px;bottom:2px;border-radius:9px;background:var(--glass-hi);
-  box-shadow:inset 0 .5px 0 0 var(--gloss),0 2px 6px -2px rgba(0,0,0,.28);
-  transition:transform .42s var(--spring),width .42s var(--spring)}
-
-main{padding-top:20px}
-.sh{font-family:var(--round);font-size:13.5px;font-weight:680;color:var(--ink3);margin:30px 4px 10px;text-transform:lowercase}
+/* section head */
+.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
 .sh:first-child{margin-top:0}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
 
-/* cards */
-.card{border-radius:18px;overflow:hidden;margin-bottom:10px}
-.chead{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:14px 16px;position:relative;z-index:1;
-  transition:transform .34s var(--spring)}
-.chead:active{transform:scale(.99)}
-.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent)}
-.ct{flex:1;font-size:16.5px;font-weight:580;letter-spacing:-.018em;text-transform:lowercase}
-.tw{color:var(--ink3);transition:transform .34s var(--spring);flex:none}
-.chead[aria-expanded="true"] .tw{transform:rotate(90deg)}
-.cbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
-.cbody.on{grid-template-rows:1fr}
-.cbody > div{overflow:hidden}
-.cbody p{margin:0 0 10px;padding:0 16px;font-size:15.5px;line-height:1.5;color:var(--ink)}
-.cbody > div > :last-child{padding-bottom:16px}
-.top .cbody{grid-template-rows:1fr}
-.top .chead{cursor:default}
-.top p{color:var(--ink);font-size:15.5px}
-.terms{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 16px}
-.term{font-family:var(--round);font-size:12.5px;font-weight:640;padding:5px 10px;border-radius:9px;
-  background:color-mix(in srgb,var(--accent) 14%,transparent);color:color-mix(in srgb,var(--accent) 72%,var(--ink));
-  box-shadow:inset 0 .5px 0 0 var(--gloss)}
+/* cards + groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.card.top{border-left:4px solid var(--cls);padding-left:15px}
+.card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
+.row + .row,.body + .row{border-top:1px solid var(--line)}
+.row:active{background:var(--surface2)}
+@media (hover:hover){.row:hover{background:var(--surface2)}}
+.rt{min-width:0;flex:1}
+.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
+.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
+.row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
+.body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
+.body.on{grid-template-rows:1fr}
+.body > div{overflow:hidden}
+.body .in{padding:12px 16px 14px}
+.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
+.body p:last-child{margin-bottom:0}
 
-/* emphasis: key term, must-know line, trap */
-.kw{font-weight:720;color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);
-  text-decoration-thickness:2px;text-underline-offset:3px}
-.hl{background:color-mix(in srgb,var(--accent) var(--hlmix),transparent);color:var(--ink);
-  border-radius:5px;padding:1px 5px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.trap{color:var(--bad);font-weight:640}
-.vec{font-weight:760}
+/* prose emphasis */
+.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
+.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.trap{color:var(--bad);font-weight:600}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
+.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
+.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
+.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media (max-width:479px){.cmp{grid-template-columns:1fr}}
+.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
+.abbr b{color:var(--ink);font-weight:600}
 
-/* weight badge */
-.w{margin-left:auto;flex:none;font-family:var(--round);font-size:11.5px;font-weight:740;padding:4px 9px;border-radius:999px;
-  text-transform:lowercase;letter-spacing:-.01em}
-.w3{background:var(--accent);color:#fff}
-.w2{background:color-mix(in srgb,var(--accent) 20%,transparent);color:var(--accent)}
+/* practice mc */
+.q{margin-bottom:10px}
+.q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
+.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
+.opt:active{background:var(--surface2)}
+@media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
+.opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
+.q.done .opt{cursor:default}
+.opt.right{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q.done .why{display:block}
+.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
+.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wide{width:100%}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
 
-/* callouts */
-.callout{margin:0 16px 12px;padding:10px 13px 10px 14px;border-radius:12px;font-size:15px;line-height:1.45;
-  background:var(--fill2);border-left:3px solid var(--accent);color:var(--ink)}
-.callout.warn{border-color:var(--bad)} .callout.ex{border-color:var(--blue)} .callout.ok{border-color:var(--good)}
-.callout .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--ink3);display:block;margin-bottom:2px}
+/* problems + worked examples */
+.prob .qt{padding:14px 16px}
+.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block}
+.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+.ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
 
-/* shapes: step strip, compare grid */
-.steps{list-style:none;margin:0 16px 14px;padding:0;counter-reset:s;display:grid;gap:6px}
-.steps li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;color:var(--ink);
-  padding:8px 11px;border-radius:12px;background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss)}
-.steps li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
-  font-family:var(--round);font-size:12px;font-weight:760;background:var(--accent);color:#fff;margin-top:1px}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 12px}
-.cmp .callout{margin:0}
-@media (max-width:480px){.cmp{grid-template-columns:1fr}}
+/* formulas */
+.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
+.fx:first-child{border-top:0}
+.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
+.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
 
-/* worked examples */
-.ex-prob{margin:0 16px 10px;padding:11px 14px;border-radius:12px;background:color-mix(in srgb,var(--accent) 10%,transparent);
-  font-size:15.5px;line-height:1.5;color:var(--ink)}
-.ex-prob .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--accent);display:block;margin-bottom:2px}
-.ans{margin:0 16px 14px;padding:10px 14px;border-radius:12px;font-size:15.5px;line-height:1.5;color:var(--ink);
-  background:color-mix(in srgb,var(--good) 16%,transparent);border-left:3px solid var(--good)}
-.ans .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--good);display:block;margin-bottom:2px}
-.m{font-variant-numeric:tabular-nums;white-space:nowrap}
-.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.05;font-size:.92em;margin:0 2px}
-.frac > span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
-.frac > span:last-child{padding:0 3px}
-
-/* formula reference */
-.frow{display:grid;grid-template-columns:minmax(110px,38%) 1fr;gap:10px;padding:8px 16px;font-size:15px;line-height:1.45;color:var(--ink);align-items:baseline}
-.frow + .frow{box-shadow:inset 0 .5px 0 0 var(--sep)}
-.frow .fl{font-family:var(--round);font-size:12.5px;font-weight:700;color:color-mix(in srgb,var(--accent) 72%,var(--ink));text-transform:lowercase}
-.ftable{margin:0 16px 14px;border-radius:12px;overflow:hidden;background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss)}
-.ftable .frow{padding:8px 12px}
-.ftable .frow.h{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase}
-.ftable .frow.h .fl{color:var(--ink3)}
-
-/* practice */
-.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
-.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase;display:flex;gap:8px;align-items:center}
-.qn .tag{margin-left:auto;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 14%,transparent);
-  color:color-mix(in srgb,var(--accent) 72%,var(--ink));font-weight:700}
-.qt{margin:8px 0 14px;font-size:17px;font-weight:560;line-height:1.4;letter-spacing:-.02em;color:var(--ink)}
-.reveal{display:inline-flex;align-items:center;gap:8px;font-family:var(--round);font-size:14px;font-weight:680;color:var(--accent);
-  padding:9px 14px;border-radius:11px;background:color-mix(in srgb,var(--accent) 14%,transparent);text-transform:lowercase;
-  transition:transform .3s var(--spring),background .25s var(--ease)}
-.reveal:active{transform:scale(.987)}
-.sol{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s var(--spring)}
-.sol.on{grid-template-rows:1fr}
-.sol > div{overflow:hidden}
-.sol .steps{margin:12px 0 10px}
-.sol .ans{margin:0 0 4px}
-.pdfs{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 4px}
-.pdfs a{font-family:var(--round);font-size:13.5px;font-weight:680;text-decoration:none;padding:9px 13px;border-radius:11px;
-  background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);text-transform:lowercase}
-
-.rise{opacity:0;transform:translateY(18px) scale(.98);filter:blur(8px);animation:rise .9s var(--spring) forwards;animation-delay:calc(var(--i,0)*55ms)}
-@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
-
-footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padding:42px 8px 6px;text-transform:lowercase}
-
-@media (prefers-reduced-motion:reduce){
-  #amb{animation:none}
-  #amb i{animation:none}
-  .rise{opacity:1;transform:none;filter:none;animation:none}
-  .glyph svg *{animation:none;stroke-dashoffset:0}
-  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
-}
+/* flashcards */
+.deck{position:relative;perspective:1200px;margin-bottom:10px}
+.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.fc.flip{transform:rotateY(180deg)}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc .b .tag{color:var(--cls)}
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
 
 /* timeline */
-.tlbar{display:flex;flex-wrap:wrap;gap:6px;margin:0 2px 14px}
-.tlbar button{font-family:var(--round);font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:999px;
-  background:var(--fill2);color:var(--ink2);box-shadow:inset 0 .5px 0 0 var(--gloss);text-transform:lowercase;
-  display:inline-flex;align-items:center;gap:7px;transition:background .25s var(--ease),color .25s var(--ease),transform .3s var(--spring)}
-.tlbar button:active{transform:scale(.97)}
-.tlbar button[aria-pressed="true"]{background:var(--glass-hi);color:var(--ink)}
-.tlbar .ed{width:8px;height:8px;border-radius:50%;background:var(--ec)}
-.tl{position:relative;border-radius:18px;padding:6px 16px 6px 16px}
-.tl::after{content:"";position:absolute;left:46px;top:18px;bottom:18px;width:2px;border-radius:2px;
-  background:linear-gradient(180deg,transparent,var(--sep) 6%,var(--sep) 94%,transparent);z-index:1}
-.tr{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative;z-index:2;
-  transition:opacity .3s var(--ease)}
-.tr.off{display:none}
-.tr .ty{font-family:var(--round);font-size:13px;font-weight:780;font-variant-numeric:tabular-nums;color:var(--ec);
-  letter-spacing:-.01em;padding-top:2px;position:relative}
-.tr .ty::after{content:"";position:absolute;right:-16px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--ec);
-  box-shadow:0 0 0 3px var(--ground),0 0 10px color-mix(in srgb,var(--ec) 60%,transparent)}
-.tr .tt{font-size:15px;line-height:1.45;color:var(--ink);padding-left:10px}
-.tr .tt .ec{font-family:var(--round);font-size:11px;font-weight:760;color:var(--ec);text-transform:lowercase;margin-left:6px;
-  padding:2px 7px;border-radius:999px;background:color-mix(in srgb,var(--ec) 14%,transparent);vertical-align:1px;white-space:nowrap}
-.e-crown{--ec:var(--accent)} .e-colonies{--ec:var(--good)} .e-trade{--ec:var(--blue)} .e-wars{--ec:var(--bad)} .e-slavery{--ec:#BF5AF2}
+.tl{position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding:6px 0 12px}
+.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
+.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
+.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
 
-/* practice */
-.picker{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:2px 0 2px}
-.picker button{font-family:var(--round);font-size:14.5px;font-weight:700;padding:12px 10px;border-radius:13px;text-transform:lowercase;
-  background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);box-shadow:inset 0 .5px 0 0 var(--gloss);
-  transition:transform .3s var(--spring),background .25s var(--ease),color .25s var(--ease)}
-.picker button:active{transform:scale(.98)}
-.picker button[aria-pressed="true"]{background:var(--accent);color:#fff}
-.sbar{position:sticky;top:calc(var(--hh,112px) + 8px);z-index:30;border-radius:16px;padding:11px 14px;margin-bottom:12px;display:flex;align-items:center;gap:12px;
-  font-family:var(--round);font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
-.sbar .cl{color:var(--ink3);font-size:12px;font-weight:740;text-transform:lowercase}
-.sbar .clock{margin-left:auto;font-size:16px;letter-spacing:-.01em}
-.sbar .clock.low{color:var(--bad)}
-.sbar button{font-size:13px;color:var(--blue);padding:6px 10px;border-radius:9px;text-transform:lowercase}
-.qcard{border-radius:18px;padding:18px 16px;margin-bottom:12px}
-.qn{font-family:var(--round);font-size:12px;font-weight:740;color:var(--ink3);text-transform:lowercase;display:flex;gap:8px;align-items:center}
-.qn .tag{margin-left:auto;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 14%,transparent);
-  color:color-mix(in srgb,var(--accent) 72%,var(--ink));font-weight:700}
-.qt{margin:8px 0 14px;font-size:17px;font-weight:560;line-height:1.4;letter-spacing:-.02em;color:var(--ink)}
-.opt{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;padding:12px 13px;border-radius:12px;background:var(--fill2);
-  margin-bottom:7px;font-size:15.5px;line-height:1.35;color:var(--ink);box-shadow:inset 0 .5px 0 0 var(--gloss);
-  transition:background .2s var(--ease),transform .3s var(--spring)}
-.opt:active{transform:scale(.988)}
-.opt .k{font-family:var(--round);font-weight:740;font-size:13px;color:var(--ink3);flex:none;width:20px;text-transform:uppercase;padding-top:2px}
-.opt.right{background:color-mix(in srgb,var(--good) 20%,transparent);color:var(--good)}
-.opt.wrong{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
-.opt.right .k,.opt.wrong .k{color:inherit}
-.qcard.done .opt{cursor:default}
-.why{margin:10px 2px 0;font-size:14px;line-height:1.5;color:var(--ink);padding:10px 13px;border-radius:12px;background:var(--fill2);
-  border-left:3px solid var(--good)}
-.why.miss{border-color:var(--bad)}
-.why .cl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--ink3);display:block;margin-bottom:2px}
-.result{border-radius:18px;padding:20px 18px;margin-bottom:12px}
-.result .big{font-family:var(--display);font-size:34px;font-weight:780;letter-spacing:-.042em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
-.result .sub{font-size:15px;color:var(--ink);margin:8px 0 12px;line-height:1.45}
-.result .miss{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.result .miss button{font-family:var(--round);font-size:13px;font-weight:740;padding:6px 11px;border-radius:999px;font-variant-numeric:tabular-nums;
-  background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
-.result .again{font-family:var(--round);font-size:14px;font-weight:700;padding:10px 14px;border-radius:11px;text-transform:lowercase;
-  background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+/* checklist */
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
+.ck:first-child{border-top:0}
+.ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
+.ck.on .box{background:var(--good);border-color:var(--good)}
+.ck.on .t{color:var(--ink3);text-decoration:line-through}
+.ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
 
-/* key */
-.keyrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 14px;padding:0 16px 16px;font-size:14px;color:var(--ink)}
-.keyrow b{font-family:var(--round);font-weight:740;color:var(--accent)}
+/* footer */
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+footer .upd{display:block;margin-top:6px}
 
-/* fact rows */
-.facts{list-style:none;margin:0 16px 14px;padding:0;display:grid;gap:6px}
-.facts li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;color:var(--ink);
-  padding:8px 11px;border-radius:12px;background:var(--fill2);box-shadow:inset 0 .5px 0 0 var(--gloss)}
-.facts li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:7px;
-  box-shadow:0 0 8px color-mix(in srgb,var(--accent) 60%,transparent)}
+/* reveal on load */
+.rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
 
-/* class-only marker */
-.ast{color:var(--accent);font-family:var(--round);font-weight:800;font-size:1.05em;line-height:1;vertical-align:-1px;text-transform:none}
-.cl .ast{font-size:13px}
-
-.xl{font-family:var(--round);font-size:11.5px;font-weight:740;text-transform:lowercase;color:var(--ink3);margin:2px 16px 6px;
-  display:flex;align-items:center;gap:8px}
-.xl::after{content:"";flex:1;height:.5px;background:var(--sep)}
-.facts.x li::before{display:none}
-.facts.x li .ast{flex:none;width:7px;text-align:center;margin-top:1px}
-.facts.x li{background:transparent;box-shadow:inset 0 0 0 .5px var(--sep)}
-
-/* leq pane extras */
-.callout.said{border-color:#BF5AF2}
-.pbody{margin-top:6px}
-.psec{margin:0 0 12px}
-.psec .pl{margin:0 0 6px;color:var(--accent)}
-.psec .facts{margin:0}
-.pace{display:flex;gap:3px;height:34px;border-radius:10px;overflow:hidden;margin:10px 0 0}
-.pace div{display:grid;place-items:center;min-width:14px;color:#fff;font-family:var(--round);font-size:12px;font-weight:780;font-variant-numeric:tabular-nums;
-  box-shadow:inset 0 .5px 0 0 rgba(255,255,255,.4)}
-.pl{font-family:var(--round);font-size:12.5px;font-weight:760;text-transform:lowercase}
-.tl{margin-bottom:10px}
-sup.fn{font-family:var(--round);font-size:.7em;font-weight:760;color:var(--accent);vertical-align:super;line-height:0;margin-left:1px}
-.fnl{margin:0 16px 14px;padding:0 0 0 22px;font-size:14px;line-height:1.45;color:var(--ink);display:grid;gap:6px}
-.fnl li::marker{font-family:var(--round);font-weight:760;color:var(--accent)}
+/* leq guide additions */
+sup.fn{font-size:.7em;font-weight:600;color:var(--cls);vertical-align:super;line-height:0;margin-left:1px}
+.fnl{margin:0;padding:0 0 0 22px;font-size:var(--t15);line-height:1.5;display:grid;gap:6px}
+.fnl li::marker{font-weight:600;color:var(--cls)}
+.pp{margin-top:10px} .pp p{margin:0 0 8px} .pp p:last-child{margin:0}
+.steps + .pp{margin-top:12px}
+.callout.cls{border-left-color:var(--c-pre)}
+.callout + .callout{margin-top:8px}
+.card.prompt{padding:14px 16px 16px}
+.pn{display:flex;align-items:center;gap:8px;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;margin-bottom:6px}
+.pn .tag{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:var(--r-chip);background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
+.pq{margin:0 0 10px;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.2;text-wrap:balance}
+.pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin:14px 0 6px}
+.bul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.bul li{position:relative;padding:8px 12px 8px 26px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
+.bul li::before{content:"";position:absolute;left:11px;top:15px;width:7px;height:7px;border-radius:2px;background:var(--cls)}
+.ans.thesis{margin-top:0;border-left:3px solid var(--good);font-size:var(--t16);line-height:1.5}
+.ans.thesis b{display:block;margin:0 0 3px}
+.cmp.four{margin-top:0}
+.pace{display:flex;gap:3px;height:32px;border-radius:8px;overflow:hidden}
+.pace div{display:grid;place-items:center;min-width:14px;color:var(--surface);font-size:var(--t12);font-weight:600;font-variant-numeric:tabular-nums}
+.pl2{font-size:var(--t13);font-weight:600;text-transform:lowercase}
+.tl .d{font-size:var(--t12);color:var(--ink3);text-transform:lowercase;margin-top:0}
 </style>
 </head>
 <body>
-<div id="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-
-<header id="hdr"><div class="wrap">
-  <div class="hrow">
-    <span id="gly" class="glyph" aria-hidden="true"></span>
-    <div>
-      <div class="cls" id="cls"></div>
-      <h1 id="ttl"></h1>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="home" href="/" aria-label="all guides">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg>
+      <h1>valentino guides</h1>
+    </a>
+    <div class="seg" role="group" aria-label="theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">auto</button>
+      <button type="button" data-set="light" aria-pressed="false">light</button>
+      <button type="button" data-set="dark" aria-pressed="false">dark</button>
     </div>
-    <span class="chip" id="due"></span>
   </div>
-  <div class="seg" id="seg" role="tablist"><span class="ind"></span></div>
-</div></header>
+</header>
 
-<main class="wrap">
-  <section id="p-outline"></section>
-  <section id="p-leq" class="hidden"></section>
-  <section id="p-timeline" class="hidden"></section>
-  <footer>study guide written by a student. not affiliated with the school.<br>
-    check anything that matters against your own notes.</footer>
+<main class="wrap" id="main">
+  <div class="crow rv" id="crow"></div>
+  <h2 class="title rv" id="title"></h2>
+  <p class="sub rv" id="sub" hidden></p>
+  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div id="root" class="rv"></div>
+  <footer>
+    study guide written by a student, free to use. not affiliated with the school.
+    check anything that matters against your own notes. <a href="/">all guides</a>
+    <span class="upd" id="upd"></span>
+  </footer>
 </main>
 
 <script>
-/* ═══ content ═══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════
+   GUIDE — the only thing to edit. Delete panes you don't need from
+   `panes`; delete the matching data too. Prose accepts **term**,
+   ==fact== and !!trap!!. Everything is rendered from this object.
+   ═══════════════════════════════════════════════════════════════════ */
 const GUIDE = {
-  cls:   "AP US History",
-  glyph: "flag",
-  title: "Unit 1 LEQ study guide",
-  due:   "leq tue 9/15 · 40 min",
-
-  top:[
-    "!!Most likely territory: **servants to slaves**.!! Prep both directions: what the economy did to slavery and what slavery did to the economy.",
-    "==Six rows, 0 to 10 each, 60 total, straight to a percentage.== Thesis = ==last sentence of a 4+ sentence contextualization paragraph==. !!Anywhere else loses points.!!",
-    "Evidence gets **linked**, not listed. Every body sentence ties back to the thesis. ==Four linked pieces instead of two earns complexity.==",
-    "Comparison needs **balance**. !!All similarities or all differences loses the analysis row.!!",
-    "Where the points live: **Chesapeake vs. New England**, **servants to slaves**, **England's crises** driving the **Navigation Acts** and the Restoration colonies.",
-    "Say **thesis**, never claim. !!No always or never.!! Context = within about 20 years of the prompt."
-  ],
-
-  outline:[
-    { w:3, t:"From servants to slaves; Bacon's Rebellion",
-      sum:"The Chesapeake ran out of servants and switched to enslaved Africans. Know both directions: what the economy did to slavery, what slavery did to the economy.",
-      story:["==Fewer indentured servants after the 1650s==: good land gone, life in England better. Planters still need hands.",
-             "==European Christians believed enslaving heathen peoples was justifiable.==",
-             "**\"Society with slaves\"**: slavery exists, economy doesn't depend on it. **\"Slave society\"**: economy runs on it. ==Chesapeake and South Carolina become slave societies; Africans about 20% of the Chesapeake.==",
-             "Supply comes through **Barbados**, a sugar island with surplus slaves; younger sons move to **Charles Town** and bring them.",
-             "Slaves cost more but ==children were born enslaved==. Small planters sell out; ==rich-poor gap widens==.",
-             "**South Carolina rice** grown on ==skills brought by enslaved Africans==; **indigo** from West Indian knowledge.[[7]]",
-             "**Middle Passage**: ==6 to 8 weeks, about 20% die==, shackled below deck; fattened in the Caribbean, sold for life."],
-      facts:["**Bacon's Rebellion** ==1676==: **Nathaniel Bacon**, frontier, asks **Governor Berkeley** for militia against Native raids; eastern planters refuse. Bacon raises his own army, marches on Jamestown, ==dies of dysentery==.",
-             "Why it matters: rich vs. poor exposed; ==encouraged greater reliance on enslaved labor==.[[8]]"],
-      cmp:[{h:"economy shaped slavery",t:"tobacco and rice demand, servant supply fails after the 1650s, hereditary labor pays off, Barbados surplus, Navigation Acts make tobacco an enumerated cash crop"},
-           {h:"slavery shaped the economy",t:"plantation scale, planter elite and a wider rich-poor gap, slave societies in the Chesapeake and SC, New England rum and shipping in the triangular trade, port cities"}],
-      notes:[{k:"ex",t:"The servants-to-slaves chain is a whole essay: economic causes plus a non-economic push (Bacon's, religion) is the complexity move built in."}],
-      terms:["society with slaves","slave society","Barbados","Charles Town","rice","indigo","Middle Passage","Bacon's Rebellion","William Berkeley"] },
-
-    { w:3, t:"The Chesapeake: Jamestown, tobacco, labor",
-      sum:"A business venture that nearly died, then found a crop that demanded land and bodies.",
-      story:["==1607==: **Virginia Company**, a **joint-stock company**,[[1]] plants **Jamestown** for profit. !!Not religion.!!",
-             "**Powhatan** helps for leverage: **edged weapons**, power over rival tribes.[[2]]",
-             "**John Smith**: \"if you do not work, you do not eat.\" ==Starving Time, 1609 to 1610.==",
-             "**John Rolfe**, **tobacco**, ==1612==. It ==guaranteed the colony's survival==,[[2]] strips soil, so planters need **land** and **labor**. Farms along rivers, ==no towns==.",
-             "**Headright**: ==50 acres== per arrival. Land hunger pushes onto Native ground.",
-             "==1619==: **House of Burgesses**, elected by ==major landowners== only. **Franchise** = the sum total of all voters. Same year, ==first Africans==; status fluid, !!not hereditary slavery until the 1660s and 70s.!!",
-             "==March 22, 1622==: **Opechancanough** (fears **encroachment**) kills ==347, a quarter of the colony==. Ends in the **subjugation of the Powhatan Confederacy**.",
-             "==1624==: charter revoked, Virginia a **royal colony**."],
-      facts:["**Indentured servants**: the settled labor answer, ==seven-year term==, many died first.[[3]]",
-             "**Male majority**, poor conditions, ==life expectancy 40 to 45==: fewer, smaller, shorter-lived families.",
-             "**Immigrant majority** = **political instability**; no native-born elite until the 1700s.",
-             "**Maryland** (==1634==, **Lord Baltimore**): **Catholic haven**, fills with Protestants, second tobacco colony."],
-      notes:[{k:"ex",t:"Economic founding, tobacco causing land and labor demand, headright, servants, 1622: one full body paragraph on any Chesapeake or comparison prompt."}],
-      terms:["Virginia Company","joint-stock company","Powhatan","John Smith","John Rolfe","tobacco","headright","House of Burgesses","franchise","Opechancanough","royal colony","indentured servants","Lord Baltimore"] },
-
-    { w:3, t:"Mercantilism and the Navigation Acts",
-      sum:"Colonies exist to make the mother country rich; the Navigation Acts make it so. Longest lecture of the unit.",
-      story:["**Mercantilism**: ==colonies exist to benefit the mother country==. Wealth = finite **gold and silver**. Keep a **favorable balance of trade** and **trapped markets**.",
-             "**Trapped market**: ==foreign goods go to England first, then to the colonies==. Colonial lumber becomes English furniture sold back; England profits at every step.",
-             "**Tariffs**: **protectionist** (price foreign goods out) vs. **revenue** (price equal, charge for access).[[6]]",
-             "**Navigation Acts** ==1651, 1660, 1663==: **English ships** only; **enumerated goods** (tobacco, sugar, later rice, indigo) sell only inside the empire; European goods stop in England first; smugglers face **vice-admiralty courts**, no jury; no colonial wool exports, hats, ironworks.",
-             "**Triangular trade**: goods to Africa, people to the Americas (**Middle Passage**), raw materials to Europe. New England loop: molasses and sugar in, **rum** out.",
-             "**Salutary neglect**: lax enforcement, smuggling common. ==Serious enforcement only after 1763, and colonists refuse.=="],
-      facts:["**Boston, Newport, Philadelphia, New York** grow as ports; shipbuilding; a **merchant elite**. Colonies tied to the Atlantic economy, !!not self-sufficient farms.!!",
-             "==Some African kings consolidated power from slave-trade profits.=="],
-      notes:[{k:"ex",t:"Cause (Restoration government needs revenue and control) and effect (enumerated goods, ports, smuggling, resentment). Pairs with the Dominion of New England on an imperial-control prompt."}],
-      terms:["mercantilism","favorable balance of trade","trapped markets","tariffs","Navigation Acts","enumerated goods","vice-admiralty courts","triangular trade","Middle Passage","rum","salutary neglect"] },
-
-    { w:3, t:"New England: Puritan society and self-government",
-      sum:"Religious families governed by covenant and church members. Long lives, short tempers with neighbors.",
-      story:["**Separatists** first: ==Plymouth, 1620==. **Mayflower Compact**: self-government, a **civil body politic** under God, signed because they landed outside their grant.[[4]]",
-             "**Massasoit** and the **Pokanokets** ally with Plymouth after the ==1616 to 1618 epidemic==; they need a counterweight to the Narragansetts.",
-             "**Charles I** (==1625==) pushes the **Massachusetts Bay Company** to move its headquarters to America; the company meeting becomes the government. **John Winthrop** (==1629==), the **Arbella** (==1630==), **\"A Model of Christian Charity\"**: the **City upon a Hill**, common good first.",
-             "**Families** migrate with goods and neighbors. Land to **groups**, so towns not plantations. The **covenant** runs politics: **mutual consent**.",
-             "==Church membership required to vote== (Massachusetts, New Haven). Strict codes; **religious intolerance** is the design.",
-             "**Roger Williams** (Native rights, **separation of church and state**, tolerance) banished, founds **Providence** (==1636==). **Anne Hutchinson** (**covenant of grace**) banished ==1638==.",
-             "**Pequot War** (==1637==): English push into the Connecticut valley. **John Eliot**'s **praying towns** convert few.",
-             "**King Philip's War** (==1675 to 1676==): Pokanokets, Narragansett, Nipmucks vs. New England. Colonists win; ==10% of able-bodied white men killed or wounded==."],
-      facts:["==Life expectancy 60 to 65== vs. 40 to 45. Large families, farms for **subsistence and local sale**.",
-             "Slavery existed here too, Native and African, small. !!\"No slavery in New England\" is wrong.!!"],
-      cmp:[{h:"chesapeake",t:"tobacco, plantations, no towns, male majority, bound labor, landowner franchise, life 40 to 45, immigrant instability"},
-           {h:"new england",t:"subsistence farms, towns, families, church-member franchise, covenant, life 60 to 65, intolerance of dissent"}],
-      notes:[{k:"ok",t:"Both regions: Native wars (1622, 1637, 1675), representative bodies (Burgesses 1619, town meetings), slavery. That is the balance paragraph."}],
-      terms:["Separatists","Mayflower Compact","Massasoit","John Winthrop","City upon a Hill","covenant","Roger Williams","Anne Hutchinson","Pequot War","praying towns","King Philip's War"] },
-
-    { w:3, t:"England's crisis and the Restoration colonies",
-      sum:"King fights Parliament, loses his head; the son comes home broke and pays debts with American land.",
-      story:["**Charles I**, **divine right**, needs money. **Magna Carta**: taxes need Parliament. Parliament (Puritan-heavy) says limit your power first. He dismisses it (the **Rump Parliament**).",
-             "**Civil War** ==1642==: **Cavaliers** (king) vs. **Roundheads** (**Oliver Cromwell**). Charles I ==executed 1649==.",
-             "**Interregnum** ==1649 to 1660==: no king, Cromwell as **Lord Protector**. ==Colonies govern themselves meanwhile.==",
-             "**Restoration** ==1660==: **Charles II** back, owing everyone. He pays with land: the **Restoration colonies**, each a **proprietorship**.",
-             "**New York** ==1664==: **Duke of York** takes Dutch New Netherland. **Duke's Laws**: Dutch keep land, taxes go to England.",
-             "**New Jersey**: the Duke owes **Sir George Carteret**; great farmland, grows fast.",
-             "**Carolina** ==1663==: group of proprietors, constitution by **John Locke**; splits ==1729==, North = tobacco, South = rice.",
-             "**Pennsylvania** ==1681==: **William Penn**, **Quakers**,[[5]] a Stuart debt settled. Treaties with Natives, diversity; non-Quakers take over politics. **Delaware** splits off.",
-             "**Georgia** ==1732==, **James Oglethorpe**: **buffer** vs. Spanish Florida, debtors who join the militia. !!Not a Restoration colony.!!"],
-      facts:["Every colony copies England: **governor** (king), **royal council** (Lords), **legislative assembly** (Commons). Assemblies act **negatively**: block the governor.",
-             "**Proprietary** colonies drift to **royal colonies** over time."],
-      notes:[{k:"ex",t:"Events in England producing colonies (NY, NJ, Carolina, PA) and self-rule habits (Interregnum neglect, assemblies modeled on Parliament)."}],
-      terms:["divine right","Civil War","Cavaliers","Roundheads","Oliver Cromwell","Interregnum","Restoration","proprietorship","Duke of York","Duke's Laws","George Carteret","John Locke","William Penn","Quakers","James Oglethorpe","legislative assembly"] },
-
-    { w:2, t:"Imperial reorganization to King William's War",
-      sum:"James II tightens the reins, loses his throne, and the colonies get a war with France. Unit 2 starts here.",
-      story:["**James II** turns Catholic; Parliament waits because daughter **Mary** is Protestant and next. Then a Catholic son is born.",
-             "**Dominion of New England** ==1686==: colonies merged under **Sir Edmund Andros**, assemblies suspended.",
-             "**Glorious Revolution** ==1688==: James out, Parliament stronger. **William III** and **Mary II**, **joint sovereigns**.",
-             "==1689==: New England throws out Andros. No Dominion returns, but royal control keeps growing.",
-             "**King William's War** ==1689 to 1697==: first of three England-vs-France colonial wars, ==all inconclusive==.[[9]]"],
-      notes:[{k:"ok",t:"For a 1640 to 1700 prompt: London tries direct control, fails, loose control plus assemblies survives."}],
-      terms:["James II","Dominion of New England","Edmund Andros","Glorious Revolution","William III","Mary II","King William's War"] },
-
-    { w:2, t:"Why the English left: Reformation to the Stuarts",
-      sum:"Contextualization material. Religious split plus population boom made dissenters and surplus people.",
-      story:["**Henry VIII** breaks with Rome, **Act of Supremacy** ==1534==.[[10]] King replaces Pope, little else changes: the Puritan grievance.",
-             "**Elizabethan Settlement**: a middle way. Calvinists want three things: abolish the **hierarchy**, church free of **political interference**, membership for the **elect** only.",
-             "**Puritans** reform the Church from inside; **Separatists** say it can't be saved. ==One question splits them.== **Predestination** under both: anxious, self-examining culture.",
-             "**James I** ==1603==: **divine right**, intolerant of Puritans, Separatists, Catholics. **Charles I** ==1625== worse; dissenters leave ==by the thousands in the 1630s==.",
-             "Population ==doubles 1530 to 1680==; **enclosure** and **primogeniture** push people off land; America as a **siphon for surplus population**.",
-             "**Roanoke** ==1585 to 1590== fails. Lesson: the next try has to pay."],
-      notes:[{k:"ok",t:"Any 1607 prompt: Reformation, Stuart intolerance, population pressure, joint-stock funding, then the thesis."}],
-      terms:["Act of Supremacy","Elizabethan Settlement","Puritans","Separatists","predestination","James I","Charles I","enclosure","primogeniture","Roanoke"] },
-
-    { w:1, t:"France and Spain, as context only",
-      sum:"Two rival models. Contrast or wars, not a body paragraph.",
-      facts:["**New France**: huge claims, tiny population, **fur-trading outposts**, better at converting Natives; **New Orleans** controls the river.",
-             "**Spain**: **presidio** + **mission** + **pueblo**. **Spanish Florida** freed runaway slaves who converted.",
-             "Spain: slave society. French **Louisiana**: society with slaves."],
-      terms:["New France","missions","Spanish Florida","New Orleans"] }
-  ],
-
-  fn:["Shareholders spread the risk; no royal money. The Virginia Company never turned a profit.",
-      "Two different claims: Algonquian aid got Jamestown through its first years (the textbook's wording); tobacco guaranteed the venture. Use the one the prompt asks for.",
-      "The textbook adds that opportunity existed for servants who finished their contracts.",
-      "Class flagged the Mayflower Compact as a guaranteed AP exam item.",
-      "Quakers: egalitarians, everyone equal before God, no priests. Hated in England.",
-      "Command economy (government runs it) vs. market economy (free markets) came up alongside.",
-      "Rice first, indigo second, almost no sugar. Class: \"that's key.\"",
-      "Slaves never finish a term and never become angry, armed freemen.",
-      "King William's, Queen Anne's, King George's. Across them Britain gains Acadia and Port Royal; the French and Indian War finally settles it.",
-      "The textbook dates the break to 1533; class uses 1534."],
-
-  key:[["NE","New England"],["VA","Virginia"],["MD","Maryland"],["SC","South Carolina"],["NC","North Carolina"],["PA","Pennsylvania"],["NY","New York"],["NJ","New Jersey"],
-       ["LEQ","long essay question"],["CCOT","continuity and change over time"],["ctx","contextualization"],["Burgesses","House of Burgesses"],["JSC","joint-stock company"],
-       ["OA / GA / SA","outstanding, good, satisfactory analysis (margin codes)"],["LE+ / LE-","large error, wrong date early or late"]],
-
-  leq:{
-    format:"40 minutes from when materials are handed out. Blue book. One question, no choice, whole unit. The rubric handout is your checklist.",
-    math:"Six rows, 0 to 10 each = 60, straight to a percentage. 54/60 = 90. Length is not the metric; illegible is ungradable.",
-    rows:[
-      { n:"1 · thesis", earn:"One sentence: defensible position, previews the body points, uses the prompt's reasoning word. ==Last sentence of the contextualization paragraph.==",
-        lose:"Thesis anywhere else. Restated prompt. Vague (\"there were many differences\"). Calling it a claim.",
-        cls:"Most common margin notes: thesis not at the end of contextualization, weak thesis." },
-      { n:"2 · contextualization", earn:"==Four or more sentences== on American history within about 20 years of the prompt, flowing into the thesis.",
-        lose:"One throwaway sentence. Wrong century. A fact list with no link to the question.",
-        cls:"1607 prompts: Reformation, Stuart intolerance, population, joint-stock. 1660 prompts: Civil War, Interregnum." },
-      { n:"3 · evidence, specific", earn:"Named and dated: ==1619 Burgesses, 1622 attack, 1651 Navigation Act, 1676 Bacon's==. Two per body paragraph.",
-        lose:"Generalities (\"the colonists farmed\"). Wrong dates (LE+ / LE-). Evidence outside the prompt's window.",
-        cls:"Never write always or never." },
-      { n:"4 · evidence, linked", earn:"Each piece gets a sentence saying how it proves the thesis. ==Every body sentence ties back.==",
-        lose:"==Listing without linking== loses the row outright. Narrating instead of arguing.",
-        cls:"OA, GA, SA in the margin = outstanding, good, satisfactory analysis." },
-      { n:"5 · analysis, reasoning", earn:"Process matches the prompt: **comparison** = similarities AND differences; **causation** = causes AND effects; **CCOT** = what changed and what stayed.",
-        lose:"Wrong process (\"no excuse\"). !!No balance.!! No structure: paragraphs that don't map to the thesis.",
-        cls:"Conclusion optional. Structure is not." },
-      { n:"6 · analysis, complexity", earn:"==Four linked pieces instead of two==, plus a move that complicates the thesis: other side, exception, change over time, another period.",
-        lose:"A token \"however\" with nothing behind it. Complexity promised in the thesis, never delivered.",
-        cls:"Cheapest version: a fifth paragraph arguing the extent with two more dated examples." }
-    ],
-    shape:["Paragraph 1: ==four or more sentences of context==, ending in the thesis.",
-           "One body paragraph per thesis point, in the order the thesis lists them.",
-           "Each body paragraph: topic sentence tied to the thesis, two dated pieces of evidence, a link sentence for each.",
-           "A complexity paragraph: the other side or the extent, with two more examples.",
-           "Conclusion optional. Reread for thesis placement, always/never, and dates."],
-    prompts:[
-      { q:"Evaluate the extent to which economic factors influenced the shift from indentured servitude to enslaved labor in the British North American colonies in the period from 1619 to 1700.",
-        kind:"possible prompt · causation",
-        ctx:["Jamestown founded ==1607== as a **joint-stock** venture; **tobacco** (==1612==) becomes the cash crop and eats land and labor.",
-             "**Headright** (50 acres) spreads plantations along the rivers; **indentured servants** on seven-year terms are the labor answer.",
-             "First Africans ==1619==, status fluid, not yet hereditary slavery.",
-             "By the 1650s the problem is hands, not land."],
-        thesis:"Economic factors drove the shift to a large extent: fewer servants arrived once the good land was gone and life in England improved, tobacco's demand for labor never dropped, and slaves paid off because their children were born enslaved; yet Bacon's Rebellion in 1676 and the belief that enslaving heathens was justified show that fear of poor freemen and religious ideas pushed the change too.",
-        ev:["Servant supply falls after the ==1650s==: good land gone, conditions in England improve.",
-            "Tobacco demand steady; planters with acres and no hands.",
-            "==Children born enslaved==: higher up-front cost, labor for generations.",
-            "**Barbados** surplus slaves; younger sons to **Charles Town** with slaves in tow.",
-            "South Carolina **rice** on African skills, **indigo** second; tobacco an **enumerated good** (==1660, 1663==).",
-            "**Bacon's Rebellion** ==1676==: armed ex-servants as a danger; planters prefer labor that never goes free.",
-            "Virginia laws ==1660s to 70s== make slavery **hereditary**; Christian justification for enslaving heathens.",
-            "**Middle Passage** ==6 to 8 weeks, about 20% die==."],
-        moves:[{h:"causes, economic",t:"supply of servants down, demand for tobacco labor up, hereditary labor cheaper over time, Barbados pipeline"},
-               {h:"causes, not economic",t:"Bacon's Rebellion 1676, laws making status hereditary, religious justification"},
-               {h:"effects",t:"Chesapeake and SC become slave societies, Africans about 20% of the Chesapeake, rich-poor gap widens, planter elite"},
-               {h:"complexity",t:"economics set the direction, fear and belief set the speed; New England stays a society with slaves"}],
-        trap:"Causation needs effects. Stopping at planters bought slaves, without the slave-society outcome, leaves the reasoning row short." },
-      { q:"Evaluate the extent to which slavery shaped the economy of the British North American colonies in the period from 1619 to 1700.",
-        kind:"possible prompt · causation",
-        ctx:["By the 1650s the Chesapeake runs on **tobacco** and seven-year **indentured servants**; first Africans ==1619==, status fluid.",
-             "**Mercantilism**: England wants staple crops shipped home; **Navigation Acts** (==1651, 1660, 1663==) enumerate tobacco and sugar.",
-             "**Barbados** sugar has already shown what enslaved labor produces.",
-             "Then the servants stop coming."],
-        thesis:"Slavery shaped the colonial economy to a large extent: it made tobacco and rice plantation economies possible once the servant supply failed, concentrated land and wealth in a planter elite, and tied every region, New England's rum and ships included, into the Atlantic slave trade; still, New England and the Middle Colonies built farm, port and merchant economies that used slavery only at the margins.",
-        ev:["Servant flow falls after the ==1650s==; ==children born enslaved== replaces them.",
-            "**Barbados** to **Charles Town**; SC **rice** and **indigo** on African skills.",
-            "Big planters buy out small ones; ==rich-poor gap widens==; landowner franchise, **Burgesses**.",
-            "**Bacon's Rebellion** ==1676== pushes planters toward slaves over freemen.",
-            "Chesapeake and SC become **slave societies**; Africans about ==20%== of the Chesapeake.",
-            "**Triangular trade**: New England **rum** from Caribbean molasses; shipbuilding; ports **Boston, Newport, Philadelphia, New York**.",
-            "**Middle Passage** ==6 to 8 weeks, 20% dead==; some African kings consolidate power on the trade.",
-            "New England **subsistence farms**, family labor, **merchant elite**: a **society with slaves**."],
-        moves:[{h:"effects on the South",t:"plantation scale, cash crops England wanted, planter elite, slave society"},
-               {h:"effects on the North",t:"rum, shipping, ports, merchants profit from the trade without plantations"},
-               {h:"compare regions",t:"South built on slavery outright; North greased by it; both inside the Atlantic loop"},
-               {h:"complexity",t:"extent differs by region; slavery present everywhere, decisive only where staple crops grew"}],
-        trap:"Don't narrate the Middle Passage. Every fact needs an economic effect attached or it is evidence without a link." },
-      { q:"Evaluate the extent to which the Chesapeake and New England colonies developed differently in the period from 1607 to 1700.",
-        kind:"comparison",
-        ctx:["England's population ==doubles 1530 to 1680==; **enclosure** pushes people off the land.",
-             "**Henry VIII** breaks with Rome (==1534==); **James I** and **Charles I** persecute Puritans, Separatists and Catholics.",
-             "**Joint-stock companies** fund what the Crown won't; **Roanoke** has already failed (==1590==).",
-             "Two kinds of English leave: people chasing profit and people chasing God."],
-        thesis:"Although both regions took Native land through war and built representative bodies, the Chesapeake and New England developed differently to a large extent, because tobacco produced a dispersed, male, short-lived planter society run on bound labor, while Puritan religion produced town-centered family communities governed by church-member voters.",
-        ev:["Chesapeake: **tobacco** ==1612==, **headright** 50 acres, servants then slaves, no towns, male majority, ==life expectancy 40 to 45==, immigrant instability, **Burgesses** by landowners ==1619==, royal colony ==1624==, Catholic **Maryland** ==1634== turns Protestant.",
-            "New England: **Mayflower Compact** ==1620==, **Winthrop** and the **City upon a Hill** ==1630==, families and towns, land to groups, **covenant**, church-member franchise, ==life expectancy 60 to 65==, subsistence farms, **Williams** ==1636== and **Hutchinson** ==1638== banished.",
-            "Both: Native wars (==1622== Opechancanough, ==1637== Pequot, ==1675 to 76== King Philip), slavery in both, governor, council, assembly in both."],
-        moves:[{h:"differences",t:"economy (tobacco vs farms), society (life span, sex ratio, towns), government (property vs church membership), religion (tolerance in MD vs intolerance in MA)"},
-               {h:"similarities",t:"war with Natives, representative bodies, slavery, English institutions copied"},
-               {h:"change over time",t:"by 1700 the Chesapeake gains a native-born elite and the regions start to converge; the gap is widest early"},
-               {h:"complexity",t:"the balance paragraph plus the convergence point; two more dated examples earn the row"}],
-        trap:"All differences and no similarities loses the reasoning row. The balance paragraph is not optional." },
-      { q:"Evaluate the extent to which events in England shaped the development of the North American colonies in the period from 1640 to 1700.",
-        kind:"causation",
-        ctx:["By 1640 Virginia is a royal tobacco colony (==1624==); Massachusetts Bay a Puritan commonwealth voting by church membership (==1630==).",
-             "Both grew up under Stuart kings claiming **divine right**; both have already fought Native neighbors (==1622, 1637==).",
-             "**Charles I** vs. Parliament over money and power is about to become war."],
-        thesis:"Events in England shaped the colonies to a great extent: the Civil War and Interregnum left the colonies to govern themselves, the Restoration created proprietary colonies as Stuart debt payments and brought the Navigation Acts, and the Glorious Revolution both removed the Dominion of New England and locked in Parliament's control of trade; still, Bacon's Rebellion and King Philip's War show the colonies changing on their own terms.",
-        ev:["**Civil War** ==1642==, Charles I executed ==1649==, **Interregnum** to ==1660==: colonies left alone, assemblies act like Parliament.",
-            "**Restoration** ==1660==: **New York** ==1664==, **New Jersey**, **Carolina** ==1663==, **Pennsylvania** ==1681== as debt payments to proprietors.",
-            "**Navigation Acts** ==1651, 1660, 1663==: English ships, enumerated goods, vice-admiralty courts; **salutary neglect** in practice.",
-            "**James II**, **Dominion of New England** ==1686==, **Andros**; **Glorious Revolution** ==1688==; Andros overthrown ==1689==.",
-            "**King William's War** ==1689 to 1697==, first of three inconclusive wars with France.",
-            "Local: **Bacon's Rebellion** ==1676==, **King Philip's War** ==1675 to 76==."],
-        moves:[{h:"causes in England",t:"civil war and neglect, a broke king paying with land, a Catholic king overreaching, Parliament winning"},
-               {h:"effects in America",t:"habit of self-rule, four new colonies, trade rules and smuggling, Dominion tried and thrown out, war with France"},
-               {h:"change and continuity",t:"tighter control on paper after 1660; loose control in practice survives to 1763"},
-               {h:"complexity",t:"local forces (Bacon, King Philip) reshape labor and Native relations without London"}],
-        trap:"Georgia (1732) is outside the window and not a Restoration colony. Keep every date inside 1640 to 1700." }
-    ],
-    pace:[
-      { m:4,  l:"read and outline", c:"var(--accent)", t:"Underline the reasoning word. Write thesis skeleton and three body points. List at least four dated pieces of evidence before writing a word." },
-      { m:5,  l:"contextualization", c:"var(--blue)", t:"Four or more sentences, 20 years before the prompt. Do not start with the thesis." },
-      { m:1,  l:"thesis", c:"var(--accent)", t:"Last sentence of paragraph one. Position, three points, extent." },
-      { m:8,  l:"body 1", c:"var(--good)", t:"Topic sentence, two dated examples, link each one back." },
-      { m:8,  l:"body 2", c:"var(--good)", t:"Same shape. Check every sentence answers \"so what for the thesis.\"" },
-      { m:8,  l:"body 3", c:"var(--good)", t:"Same shape. If time is tight, this is the paragraph to shorten, not skip." },
-      { m:4,  l:"complexity", c:"#BF5AF2", t:"The other side or the extent, two more examples. This is where four pieces of evidence becomes six." },
-      { m:2,  l:"check", c:"var(--bad)", t:"Thesis at the end of paragraph one? Any always or never? Dates inside the window? Legible?" }
-    ],
-    codes:[["OA","outstanding analysis"],["GA","good analysis"],["SA","satisfactory analysis"],["LE+","date too late, major"],["LE-","date too early, major"]]
+ "id": "apush",
+ "cls": "AP US History",
+ "title": "Unit 1 LEQ study guide",
+ "test": "2026-09-15",
+ "meta": "40 min · one prompt · blue book",
+ "updated": "sept 15, 2026",
+ "panes": [
+  "outline",
+  "leq",
+  "timeline"
+ ],
+ "labels": {
+  "outline": "evidence",
+  "leq": "the leq"
+ },
+ "top": [
+  "!!Most likely territory: **servants to slaves**.!! Prep both directions: what the economy did to slavery and what slavery did to the economy.",
+  "==Six rows, 0 to 10 each, 60 total, straight to a percentage.== Thesis = ==last sentence of a 4+ sentence contextualization paragraph==. !!Anywhere else loses points.!!",
+  "Evidence gets **linked**, not listed. Every body sentence ties back to the thesis. ==Four linked pieces instead of two earns complexity.==",
+  "Comparison needs **balance**. !!All similarities or all differences loses the analysis row.!!",
+  "Where the points live: **Chesapeake vs. New England**, **servants to slaves**, **England's crises** driving the **Navigation Acts** and the Restoration colonies.",
+  "Say **thesis**, never claim. !!No always or never.!! Context = within about 20 years of the prompt."
+ ],
+ "outline": [
+  {
+   "w": 3,
+   "t": "From servants to slaves; Bacon's Rebellion",
+   "d": "The Chesapeake ran out of servants and switched to enslaved Africans. Know both directions: what the economy did to slavery, what slavery did to the economy.",
+   "steps": [
+    "==Fewer indentured servants after the 1650s==: good land gone, life in England better. Planters still need hands.",
+    "==European Christians believed enslaving heathen peoples was justifiable.==",
+    "**\"Society with slaves\"**: slavery exists, economy doesn't depend on it. **\"Slave society\"**: economy runs on it. ==Chesapeake and South Carolina become slave societies; Africans about 20% of the Chesapeake.==",
+    "Supply comes through **Barbados**, a sugar island with surplus slaves; younger sons move to **Charles Town** and bring them.",
+    "Slaves cost more but ==children were born enslaved==. Small planters sell out; ==rich-poor gap widens==.",
+    "**South Carolina rice** grown on ==skills brought by enslaved Africans==; **indigo** from West Indian knowledge.[[7]]",
+    "**Middle Passage**: ==6 to 8 weeks, about 20% die==, shackled below deck; fattened in the Caribbean, sold for life."
+   ],
+   "p": [
+    "**Bacon's Rebellion** ==1676==: **Nathaniel Bacon**, frontier, asks **Governor Berkeley** for militia against Native raids; eastern planters refuse. Bacon raises his own army, marches on Jamestown, ==dies of dysentery==.",
+    "Why it matters: rich vs. poor exposed; ==encouraged greater reliance on enslaved labor==.[[8]]"
+   ],
+   "cmp": {
+    "a": {
+     "h": "economy shaped slavery",
+     "p": [
+      "tobacco and rice demand, servant supply fails after the 1650s, hereditary labor pays off, Barbados surplus, Navigation Acts make tobacco an enumerated cash crop"
+     ]
+    },
+    "b": {
+     "h": "slavery shaped the economy",
+     "p": [
+      "plantation scale, planter elite and a wider rich-poor gap, slave societies in the Chesapeake and SC, New England rum and shipping in the triangular trade, port cities"
+     ]
+    }
+   },
+   "notes": [
+    {
+     "k": "ex",
+     "t": "The servants-to-slaves chain is a whole essay: economic causes plus a non-economic push (Bacon's, religion) is the complexity move built in."
+    }
+   ],
+   "terms": [
+    "society with slaves",
+    "slave society",
+    "Barbados",
+    "Charles Town",
+    "rice",
+    "indigo",
+    "Middle Passage",
+    "Bacon's Rebellion",
+    "William Berkeley"
+   ]
   },
-
-  timeline:[
-    ["1534","Act of Supremacy: Henry VIII heads the Church of England (the book says 1533)","crown"],
-    ["1559","Elizabethan Settlement: a middle way Puritans never accept","crown"],
-    ["1585","Roanoke planted; lost by 1590","colonies"],
-    ["1603","James I: divine right, intolerant of Puritans, Separatists and Catholics","crown"],
-    ["1607","Jamestown, Virginia Company, a joint-stock venture","colonies"],
-    ["1609","Starving Time winter; Smith's no work, no eat","colonies"],
-    ["1612","Rolfe's tobacco: the cash crop that saves the venture","trade"],
-    ["1619","House of Burgesses (landowners vote); first Africans in Virginia","colonies"],
-    ["1620","Plymouth; Mayflower Compact","colonies"],
-    ["1622","Opechancanough kills 347, a quarter of Jamestown","wars"],
-    ["1624","Virginia becomes a royal colony","crown"],
-    ["1625","Charles I; anti-Puritan policy pushes the Great Migration","crown"],
-    ["1630","Winthrop, the Arbella, City upon a Hill","colonies"],
-    ["1634","Maryland, Lord Baltimore's Catholic haven","colonies"],
-    ["1636","Williams banished; Providence","colonies"],
-    ["1637","Pequot War in the Connecticut valley","wars"],
-    ["1638","Hutchinson banished","colonies"],
-    ["1642","English Civil War begins","crown"],
-    ["1649","Charles I executed; Interregnum to 1660","crown"],
-    ["1651","First Navigation Act","trade"],
-    ["1660","Restoration: Charles II","crown"],
-    ["1663","Carolina chartered; Navigation Act on enumerated goods","colonies"],
-    ["1664","New York taken from the Dutch; Duke's Laws","colonies"],
-    ["1660s","Virginia laws make slavery hereditary through the 1670s","slavery"],
-    ["1675","King Philip's War to 1676; 10% of New England's white men","wars"],
-    ["1676","Bacon's Rebellion; Bacon dies of dysentery","wars"],
-    ["1681","Pennsylvania granted to Penn","colonies"],
-    ["1686","Dominion of New England under Andros","crown"],
-    ["1688","Glorious Revolution; William and Mary","crown"],
-    ["1689","Andros overthrown; King William's War begins","wars"],
-    ["1697","King William's War ends, inconclusive","wars"]
+  {
+   "w": 3,
+   "t": "The Chesapeake: Jamestown, tobacco, labor",
+   "d": "A business venture that nearly died, then found a crop that demanded land and bodies.",
+   "steps": [
+    "==1607==: **Virginia Company**, a **joint-stock company**,[[1]] plants **Jamestown** for profit. !!Not religion.!!",
+    "**Powhatan** helps for leverage: **edged weapons**, power over rival tribes.[[2]]",
+    "**John Smith**: \"if you do not work, you do not eat.\" ==Starving Time, 1609 to 1610.==",
+    "**John Rolfe**, **tobacco**, ==1612==. It ==guaranteed the colony's survival==,[[2]] strips soil, so planters need **land** and **labor**. Farms along rivers, ==no towns==.",
+    "**Headright**: ==50 acres== per arrival. Land hunger pushes onto Native ground.",
+    "==1619==: **House of Burgesses**, elected by ==major landowners== only. **Franchise** = the sum total of all voters. Same year, ==first Africans==; status fluid, !!not hereditary slavery until the 1660s and 70s.!!",
+    "==March 22, 1622==: **Opechancanough** (fears **encroachment**) kills ==347, a quarter of the colony==. Ends in the **subjugation of the Powhatan Confederacy**.",
+    "==1624==: charter revoked, Virginia a **royal colony**."
+   ],
+   "p": [
+    "**Indentured servants**: the settled labor answer, ==seven-year term==, many died first.[[3]]",
+    "**Male majority**, poor conditions, ==life expectancy 40 to 45==: fewer, smaller, shorter-lived families.",
+    "**Immigrant majority** = **political instability**; no native-born elite until the 1700s.",
+    "**Maryland** (==1634==, **Lord Baltimore**): **Catholic haven**, fills with Protestants, second tobacco colony."
+   ],
+   "notes": [
+    {
+     "k": "ex",
+     "t": "Economic founding, tobacco causing land and labor demand, headright, servants, 1622: one full body paragraph on any Chesapeake or comparison prompt."
+    }
+   ],
+   "terms": [
+    "Virginia Company",
+    "joint-stock company",
+    "Powhatan",
+    "John Smith",
+    "John Rolfe",
+    "tobacco",
+    "headright",
+    "House of Burgesses",
+    "franchise",
+    "Opechancanough",
+    "royal colony",
+    "indentured servants",
+    "Lord Baltimore"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Mercantilism and the Navigation Acts",
+   "d": "Colonies exist to make the mother country rich; the Navigation Acts make it so. Longest lecture of the unit.",
+   "steps": [
+    "**Mercantilism**: ==colonies exist to benefit the mother country==. Wealth = finite **gold and silver**. Keep a **favorable balance of trade** and **trapped markets**.",
+    "**Trapped market**: ==foreign goods go to England first, then to the colonies==. Colonial lumber becomes English furniture sold back; England profits at every step.",
+    "**Tariffs**: **protectionist** (price foreign goods out) vs. **revenue** (price equal, charge for access).[[6]]",
+    "**Navigation Acts** ==1651, 1660, 1663==: **English ships** only; **enumerated goods** (tobacco, sugar, later rice, indigo) sell only inside the empire; European goods stop in England first; smugglers face **vice-admiralty courts**, no jury; no colonial wool exports, hats, ironworks.",
+    "**Triangular trade**: goods to Africa, people to the Americas (**Middle Passage**), raw materials to Europe. New England loop: molasses and sugar in, **rum** out.",
+    "**Salutary neglect**: lax enforcement, smuggling common. ==Serious enforcement only after 1763, and colonists refuse.=="
+   ],
+   "p": [
+    "**Boston, Newport, Philadelphia, New York** grow as ports; shipbuilding; a **merchant elite**. Colonies tied to the Atlantic economy, !!not self-sufficient farms.!!",
+    "==Some African kings consolidated power from slave-trade profits.=="
+   ],
+   "notes": [
+    {
+     "k": "ex",
+     "t": "Cause (Restoration government needs revenue and control) and effect (enumerated goods, ports, smuggling, resentment). Pairs with the Dominion of New England on an imperial-control prompt."
+    }
+   ],
+   "terms": [
+    "mercantilism",
+    "favorable balance of trade",
+    "trapped markets",
+    "tariffs",
+    "Navigation Acts",
+    "enumerated goods",
+    "vice-admiralty courts",
+    "triangular trade",
+    "Middle Passage",
+    "rum",
+    "salutary neglect"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "New England: Puritan society and self-government",
+   "d": "Religious families governed by covenant and church members. Long lives, short tempers with neighbors.",
+   "steps": [
+    "**Separatists** first: ==Plymouth, 1620==. **Mayflower Compact**: self-government, a **civil body politic** under God, signed because they landed outside their grant.[[4]]",
+    "**Massasoit** and the **Pokanokets** ally with Plymouth after the ==1616 to 1618 epidemic==; they need a counterweight to the Narragansetts.",
+    "**Charles I** (==1625==) pushes the **Massachusetts Bay Company** to move its headquarters to America; the company meeting becomes the government. **John Winthrop** (==1629==), the **Arbella** (==1630==), **\"A Model of Christian Charity\"**: the **City upon a Hill**, common good first.",
+    "**Families** migrate with goods and neighbors. Land to **groups**, so towns not plantations. The **covenant** runs politics: **mutual consent**.",
+    "==Church membership required to vote== (Massachusetts, New Haven). Strict codes; **religious intolerance** is the design.",
+    "**Roger Williams** (Native rights, **separation of church and state**, tolerance) banished, founds **Providence** (==1636==). **Anne Hutchinson** (**covenant of grace**) banished ==1638==.",
+    "**Pequot War** (==1637==): English push into the Connecticut valley. **John Eliot**'s **praying towns** convert few.",
+    "**King Philip's War** (==1675 to 1676==): Pokanokets, Narragansett, Nipmucks vs. New England. Colonists win; ==10% of able-bodied white men killed or wounded==."
+   ],
+   "p": [
+    "==Life expectancy 60 to 65== vs. 40 to 45. Large families, farms for **subsistence and local sale**.",
+    "Slavery existed here too, Native and African, small. !!\"No slavery in New England\" is wrong.!!"
+   ],
+   "cmp": {
+    "a": {
+     "h": "chesapeake",
+     "p": [
+      "tobacco, plantations, no towns, male majority, bound labor, landowner franchise, life 40 to 45, immigrant instability"
+     ]
+    },
+    "b": {
+     "h": "new england",
+     "p": [
+      "subsistence farms, towns, families, church-member franchise, covenant, life 60 to 65, intolerance of dissent"
+     ]
+    }
+   },
+   "notes": [
+    {
+     "k": "ok",
+     "t": "Both regions: Native wars (1622, 1637, 1675), representative bodies (Burgesses 1619, town meetings), slavery. That is the balance paragraph."
+    }
+   ],
+   "terms": [
+    "Separatists",
+    "Mayflower Compact",
+    "Massasoit",
+    "John Winthrop",
+    "City upon a Hill",
+    "covenant",
+    "Roger Williams",
+    "Anne Hutchinson",
+    "Pequot War",
+    "praying towns",
+    "King Philip's War"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "England's crisis and the Restoration colonies",
+   "d": "King fights Parliament, loses his head; the son comes home broke and pays debts with American land.",
+   "steps": [
+    "**Charles I**, **divine right**, needs money. **Magna Carta**: taxes need Parliament. Parliament (Puritan-heavy) says limit your power first. He dismisses it (the **Rump Parliament**).",
+    "**Civil War** ==1642==: **Cavaliers** (king) vs. **Roundheads** (**Oliver Cromwell**). Charles I ==executed 1649==.",
+    "**Interregnum** ==1649 to 1660==: no king, Cromwell as **Lord Protector**. ==Colonies govern themselves meanwhile.==",
+    "**Restoration** ==1660==: **Charles II** back, owing everyone. He pays with land: the **Restoration colonies**, each a **proprietorship**.",
+    "**New York** ==1664==: **Duke of York** takes Dutch New Netherland. **Duke's Laws**: Dutch keep land, taxes go to England.",
+    "**New Jersey**: the Duke owes **Sir George Carteret**; great farmland, grows fast.",
+    "**Carolina** ==1663==: group of proprietors, constitution by **John Locke**; splits ==1729==, North = tobacco, South = rice.",
+    "**Pennsylvania** ==1681==: **William Penn**, **Quakers**,[[5]] a Stuart debt settled. Treaties with Natives, diversity; non-Quakers take over politics. **Delaware** splits off.",
+    "**Georgia** ==1732==, **James Oglethorpe**: **buffer** vs. Spanish Florida, debtors who join the militia. !!Not a Restoration colony.!!"
+   ],
+   "p": [
+    "Every colony copies England: **governor** (king), **royal council** (Lords), **legislative assembly** (Commons). Assemblies act **negatively**: block the governor.",
+    "**Proprietary** colonies drift to **royal colonies** over time."
+   ],
+   "notes": [
+    {
+     "k": "ex",
+     "t": "Events in England producing colonies (NY, NJ, Carolina, PA) and self-rule habits (Interregnum neglect, assemblies modeled on Parliament)."
+    }
+   ],
+   "terms": [
+    "divine right",
+    "Civil War",
+    "Cavaliers",
+    "Roundheads",
+    "Oliver Cromwell",
+    "Interregnum",
+    "Restoration",
+    "proprietorship",
+    "Duke of York",
+    "Duke's Laws",
+    "George Carteret",
+    "John Locke",
+    "William Penn",
+    "Quakers",
+    "James Oglethorpe",
+    "legislative assembly"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Imperial reorganization to King William's War",
+   "d": "James II tightens the reins, loses his throne, and the colonies get a war with France. Unit 2 starts here.",
+   "steps": [
+    "**James II** turns Catholic; Parliament waits because daughter **Mary** is Protestant and next. Then a Catholic son is born.",
+    "**Dominion of New England** ==1686==: colonies merged under **Sir Edmund Andros**, assemblies suspended.",
+    "**Glorious Revolution** ==1688==: James out, Parliament stronger. **William III** and **Mary II**, **joint sovereigns**.",
+    "==1689==: New England throws out Andros. No Dominion returns, but royal control keeps growing.",
+    "**King William's War** ==1689 to 1697==: first of three England-vs-France colonial wars, ==all inconclusive==.[[9]]"
+   ],
+   "notes": [
+    {
+     "k": "ok",
+     "t": "For a 1640 to 1700 prompt: London tries direct control, fails, loose control plus assemblies survives."
+    }
+   ],
+   "terms": [
+    "James II",
+    "Dominion of New England",
+    "Edmund Andros",
+    "Glorious Revolution",
+    "William III",
+    "Mary II",
+    "King William's War"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Why the English left: Reformation to the Stuarts",
+   "d": "Contextualization material. Religious split plus population boom made dissenters and surplus people.",
+   "steps": [
+    "**Henry VIII** breaks with Rome, **Act of Supremacy** ==1534==.[[10]] King replaces Pope, little else changes: the Puritan grievance.",
+    "**Elizabethan Settlement**: a middle way. Calvinists want three things: abolish the **hierarchy**, church free of **political interference**, membership for the **elect** only.",
+    "**Puritans** reform the Church from inside; **Separatists** say it can't be saved. ==One question splits them.== **Predestination** under both: anxious, self-examining culture.",
+    "**James I** ==1603==: **divine right**, intolerant of Puritans, Separatists, Catholics. **Charles I** ==1625== worse; dissenters leave ==by the thousands in the 1630s==.",
+    "Population ==doubles 1530 to 1680==; **enclosure** and **primogeniture** push people off land; America as a **siphon for surplus population**.",
+    "**Roanoke** ==1585 to 1590== fails. Lesson: the next try has to pay."
+   ],
+   "notes": [
+    {
+     "k": "ok",
+     "t": "Any 1607 prompt: Reformation, Stuart intolerance, population pressure, joint-stock funding, then the thesis."
+    }
+   ],
+   "terms": [
+    "Act of Supremacy",
+    "Elizabethan Settlement",
+    "Puritans",
+    "Separatists",
+    "predestination",
+    "James I",
+    "Charles I",
+    "enclosure",
+    "primogeniture",
+    "Roanoke"
+   ]
+  },
+  {
+   "w": 1,
+   "t": "France and Spain, as context only",
+   "d": "Two rival models. Contrast or wars, not a body paragraph.",
+   "p": [
+    "**New France**: huge claims, tiny population, **fur-trading outposts**, better at converting Natives; **New Orleans** controls the river.",
+    "**Spain**: **presidio** + **mission** + **pueblo**. **Spanish Florida** freed runaway slaves who converted.",
+    "Spain: slave society. French **Louisiana**: society with slaves."
+   ],
+   "terms": [
+    "New France",
+    "missions",
+    "Spanish Florida",
+    "New Orleans"
+   ]
+  }
+ ],
+ "fn": [
+  "Shareholders spread the risk; no royal money. The Virginia Company never turned a profit.",
+  "Two different claims: Algonquian aid got Jamestown through its first years (the textbook's wording); tobacco guaranteed the venture. Use the one the prompt asks for.",
+  "The textbook adds that opportunity existed for servants who finished their contracts.",
+  "Class flagged the Mayflower Compact as a guaranteed AP exam item.",
+  "Quakers: egalitarians, everyone equal before God, no priests. Hated in England.",
+  "Command economy (government runs it) vs. market economy (free markets) came up alongside.",
+  "Rice first, indigo second, almost no sugar. Class: \"that's key.\"",
+  "Slaves never finish a term and never become angry, armed freemen.",
+  "King William's, Queen Anne's, King George's. Across them Britain gains Acadia and Port Royal; the French and Indian War finally settles it.",
+  "The textbook dates the break to 1533; class uses 1534."
+ ],
+ "abbr": {
+  "NE": "New England",
+  "VA": "Virginia",
+  "MD": "Maryland",
+  "SC": "South Carolina",
+  "NC": "North Carolina",
+  "PA": "Pennsylvania",
+  "NY": "New York",
+  "NJ": "New Jersey",
+  "LEQ": "long essay question",
+  "CCOT": "continuity and change over time",
+  "ctx": "contextualization",
+  "Burgesses": "House of Burgesses",
+  "JSC": "joint-stock company",
+  "OA / GA / SA": "outstanding, good, satisfactory analysis (margin codes)",
+  "LE+ / LE-": "large error, wrong date early or late"
+ },
+ "leq": {
+  "format": "40 minutes from when materials are handed out. Blue book. One question, no choice, whole unit. The rubric handout is your checklist.",
+  "math": "Six rows, 0 to 10 each = 60, straight to a percentage. 54/60 = 90. Length is not the metric; illegible is ungradable.",
+  "rows": [
+   {
+    "n": "1 · thesis",
+    "earn": "One sentence: defensible position, previews the body points, uses the prompt's reasoning word. ==Last sentence of the contextualization paragraph.==",
+    "lose": "Thesis anywhere else. Restated prompt. Vague (\"there were many differences\"). Calling it a claim.",
+    "cls": "Most common margin notes: thesis not at the end of contextualization, weak thesis."
+   },
+   {
+    "n": "2 · contextualization",
+    "earn": "==Four or more sentences== on American history within about 20 years of the prompt, flowing into the thesis.",
+    "lose": "One throwaway sentence. Wrong century. A fact list with no link to the question.",
+    "cls": "1607 prompts: Reformation, Stuart intolerance, population, joint-stock. 1660 prompts: Civil War, Interregnum."
+   },
+   {
+    "n": "3 · evidence, specific",
+    "earn": "Named and dated: ==1619 Burgesses, 1622 attack, 1651 Navigation Act, 1676 Bacon's==. Two per body paragraph.",
+    "lose": "Generalities (\"the colonists farmed\"). Wrong dates (LE+ / LE-). Evidence outside the prompt's window.",
+    "cls": "Never write always or never."
+   },
+   {
+    "n": "4 · evidence, linked",
+    "earn": "Each piece gets a sentence saying how it proves the thesis. ==Every body sentence ties back.==",
+    "lose": "==Listing without linking== loses the row outright. Narrating instead of arguing.",
+    "cls": "OA, GA, SA in the margin = outstanding, good, satisfactory analysis."
+   },
+   {
+    "n": "5 · analysis, reasoning",
+    "earn": "Process matches the prompt: **comparison** = similarities AND differences; **causation** = causes AND effects; **CCOT** = what changed and what stayed.",
+    "lose": "Wrong process (\"no excuse\"). !!No balance.!! No structure: paragraphs that don't map to the thesis.",
+    "cls": "Conclusion optional. Structure is not."
+   },
+   {
+    "n": "6 · analysis, complexity",
+    "earn": "==Four linked pieces instead of two==, plus a move that complicates the thesis: other side, exception, change over time, another period.",
+    "lose": "A token \"however\" with nothing behind it. Complexity promised in the thesis, never delivered.",
+    "cls": "Cheapest version: a fifth paragraph arguing the extent with two more dated examples."
+   }
+  ],
+  "shape": [
+   "Paragraph 1: ==four or more sentences of context==, ending in the thesis.",
+   "One body paragraph per thesis point, in the order the thesis lists them.",
+   "Each body paragraph: topic sentence tied to the thesis, two dated pieces of evidence, a link sentence for each.",
+   "A complexity paragraph: the other side or the extent, with two more examples.",
+   "Conclusion optional. Reread for thesis placement, always/never, and dates."
+  ],
+  "prompts": [
+   {
+    "q": "Evaluate the extent to which economic factors influenced the shift from indentured servitude to enslaved labor in the British North American colonies in the period from 1619 to 1700.",
+    "kind": "possible prompt · causation",
+    "ctx": [
+     "Jamestown founded ==1607== as a **joint-stock** venture; **tobacco** (==1612==) becomes the cash crop and eats land and labor.",
+     "**Headright** (50 acres) spreads plantations along the rivers; **indentured servants** on seven-year terms are the labor answer.",
+     "First Africans ==1619==, status fluid, not yet hereditary slavery.",
+     "By the 1650s the problem is hands, not land."
+    ],
+    "thesis": "Economic factors drove the shift to a large extent: fewer servants arrived once the good land was gone and life in England improved, tobacco's demand for labor never dropped, and slaves paid off because their children were born enslaved; yet Bacon's Rebellion in 1676 and the belief that enslaving heathens was justified show that fear of poor freemen and religious ideas pushed the change too.",
+    "ev": [
+     "Servant supply falls after the ==1650s==: good land gone, conditions in England improve.",
+     "Tobacco demand steady; planters with acres and no hands.",
+     "==Children born enslaved==: higher up-front cost, labor for generations.",
+     "**Barbados** surplus slaves; younger sons to **Charles Town** with slaves in tow.",
+     "South Carolina **rice** on African skills, **indigo** second; tobacco an **enumerated good** (==1660, 1663==).",
+     "**Bacon's Rebellion** ==1676==: armed ex-servants as a danger; planters prefer labor that never goes free.",
+     "Virginia laws ==1660s to 70s== make slavery **hereditary**; Christian justification for enslaving heathens.",
+     "**Middle Passage** ==6 to 8 weeks, about 20% die==."
+    ],
+    "moves": [
+     {
+      "h": "causes, economic",
+      "t": "supply of servants down, demand for tobacco labor up, hereditary labor cheaper over time, Barbados pipeline"
+     },
+     {
+      "h": "causes, not economic",
+      "t": "Bacon's Rebellion 1676, laws making status hereditary, religious justification"
+     },
+     {
+      "h": "effects",
+      "t": "Chesapeake and SC become slave societies, Africans about 20% of the Chesapeake, rich-poor gap widens, planter elite"
+     },
+     {
+      "h": "complexity",
+      "t": "economics set the direction, fear and belief set the speed; New England stays a society with slaves"
+     }
+    ],
+    "trap": "Causation needs effects. Stopping at planters bought slaves, without the slave-society outcome, leaves the reasoning row short."
+   },
+   {
+    "q": "Evaluate the extent to which slavery shaped the economy of the British North American colonies in the period from 1619 to 1700.",
+    "kind": "possible prompt · causation",
+    "ctx": [
+     "By the 1650s the Chesapeake runs on **tobacco** and seven-year **indentured servants**; first Africans ==1619==, status fluid.",
+     "**Mercantilism**: England wants staple crops shipped home; **Navigation Acts** (==1651, 1660, 1663==) enumerate tobacco and sugar.",
+     "**Barbados** sugar has already shown what enslaved labor produces.",
+     "Then the servants stop coming."
+    ],
+    "thesis": "Slavery shaped the colonial economy to a large extent: it made tobacco and rice plantation economies possible once the servant supply failed, concentrated land and wealth in a planter elite, and tied every region, New England's rum and ships included, into the Atlantic slave trade; still, New England and the Middle Colonies built farm, port and merchant economies that used slavery only at the margins.",
+    "ev": [
+     "Servant flow falls after the ==1650s==; ==children born enslaved== replaces them.",
+     "**Barbados** to **Charles Town**; SC **rice** and **indigo** on African skills.",
+     "Big planters buy out small ones; ==rich-poor gap widens==; landowner franchise, **Burgesses**.",
+     "**Bacon's Rebellion** ==1676== pushes planters toward slaves over freemen.",
+     "Chesapeake and SC become **slave societies**; Africans about ==20%== of the Chesapeake.",
+     "**Triangular trade**: New England **rum** from Caribbean molasses; shipbuilding; ports **Boston, Newport, Philadelphia, New York**.",
+     "**Middle Passage** ==6 to 8 weeks, 20% dead==; some African kings consolidate power on the trade.",
+     "New England **subsistence farms**, family labor, **merchant elite**: a **society with slaves**."
+    ],
+    "moves": [
+     {
+      "h": "effects on the South",
+      "t": "plantation scale, cash crops England wanted, planter elite, slave society"
+     },
+     {
+      "h": "effects on the North",
+      "t": "rum, shipping, ports, merchants profit from the trade without plantations"
+     },
+     {
+      "h": "compare regions",
+      "t": "South built on slavery outright; North greased by it; both inside the Atlantic loop"
+     },
+     {
+      "h": "complexity",
+      "t": "extent differs by region; slavery present everywhere, decisive only where staple crops grew"
+     }
+    ],
+    "trap": "Don't narrate the Middle Passage. Every fact needs an economic effect attached or it is evidence without a link."
+   },
+   {
+    "q": "Evaluate the extent to which the Chesapeake and New England colonies developed differently in the period from 1607 to 1700.",
+    "kind": "comparison",
+    "ctx": [
+     "England's population ==doubles 1530 to 1680==; **enclosure** pushes people off the land.",
+     "**Henry VIII** breaks with Rome (==1534==); **James I** and **Charles I** persecute Puritans, Separatists and Catholics.",
+     "**Joint-stock companies** fund what the Crown won't; **Roanoke** has already failed (==1590==).",
+     "Two kinds of English leave: people chasing profit and people chasing God."
+    ],
+    "thesis": "Although both regions took Native land through war and built representative bodies, the Chesapeake and New England developed differently to a large extent, because tobacco produced a dispersed, male, short-lived planter society run on bound labor, while Puritan religion produced town-centered family communities governed by church-member voters.",
+    "ev": [
+     "Chesapeake: **tobacco** ==1612==, **headright** 50 acres, servants then slaves, no towns, male majority, ==life expectancy 40 to 45==, immigrant instability, **Burgesses** by landowners ==1619==, royal colony ==1624==, Catholic **Maryland** ==1634== turns Protestant.",
+     "New England: **Mayflower Compact** ==1620==, **Winthrop** and the **City upon a Hill** ==1630==, families and towns, land to groups, **covenant**, church-member franchise, ==life expectancy 60 to 65==, subsistence farms, **Williams** ==1636== and **Hutchinson** ==1638== banished.",
+     "Both: Native wars (==1622== Opechancanough, ==1637== Pequot, ==1675 to 76== King Philip), slavery in both, governor, council, assembly in both."
+    ],
+    "moves": [
+     {
+      "h": "differences",
+      "t": "economy (tobacco vs farms), society (life span, sex ratio, towns), government (property vs church membership), religion (tolerance in MD vs intolerance in MA)"
+     },
+     {
+      "h": "similarities",
+      "t": "war with Natives, representative bodies, slavery, English institutions copied"
+     },
+     {
+      "h": "change over time",
+      "t": "by 1700 the Chesapeake gains a native-born elite and the regions start to converge; the gap is widest early"
+     },
+     {
+      "h": "complexity",
+      "t": "the balance paragraph plus the convergence point; two more dated examples earn the row"
+     }
+    ],
+    "trap": "All differences and no similarities loses the reasoning row. The balance paragraph is not optional."
+   },
+   {
+    "q": "Evaluate the extent to which events in England shaped the development of the North American colonies in the period from 1640 to 1700.",
+    "kind": "causation",
+    "ctx": [
+     "By 1640 Virginia is a royal tobacco colony (==1624==); Massachusetts Bay a Puritan commonwealth voting by church membership (==1630==).",
+     "Both grew up under Stuart kings claiming **divine right**; both have already fought Native neighbors (==1622, 1637==).",
+     "**Charles I** vs. Parliament over money and power is about to become war."
+    ],
+    "thesis": "Events in England shaped the colonies to a great extent: the Civil War and Interregnum left the colonies to govern themselves, the Restoration created proprietary colonies as Stuart debt payments and brought the Navigation Acts, and the Glorious Revolution both removed the Dominion of New England and locked in Parliament's control of trade; still, Bacon's Rebellion and King Philip's War show the colonies changing on their own terms.",
+    "ev": [
+     "**Civil War** ==1642==, Charles I executed ==1649==, **Interregnum** to ==1660==: colonies left alone, assemblies act like Parliament.",
+     "**Restoration** ==1660==: **New York** ==1664==, **New Jersey**, **Carolina** ==1663==, **Pennsylvania** ==1681== as debt payments to proprietors.",
+     "**Navigation Acts** ==1651, 1660, 1663==: English ships, enumerated goods, vice-admiralty courts; **salutary neglect** in practice.",
+     "**James II**, **Dominion of New England** ==1686==, **Andros**; **Glorious Revolution** ==1688==; Andros overthrown ==1689==.",
+     "**King William's War** ==1689 to 1697==, first of three inconclusive wars with France.",
+     "Local: **Bacon's Rebellion** ==1676==, **King Philip's War** ==1675 to 76==."
+    ],
+    "moves": [
+     {
+      "h": "causes in England",
+      "t": "civil war and neglect, a broke king paying with land, a Catholic king overreaching, Parliament winning"
+     },
+     {
+      "h": "effects in America",
+      "t": "habit of self-rule, four new colonies, trade rules and smuggling, Dominion tried and thrown out, war with France"
+     },
+     {
+      "h": "change and continuity",
+      "t": "tighter control on paper after 1660; loose control in practice survives to 1763"
+     },
+     {
+      "h": "complexity",
+      "t": "local forces (Bacon, King Philip) reshape labor and Native relations without London"
+     }
+    ],
+    "trap": "Georgia (1732) is outside the window and not a Restoration colony. Keep every date inside 1640 to 1700."
+   }
+  ],
+  "pace": [
+   {
+    "m": 4,
+    "l": "read and outline",
+    "c": "var(--accent)",
+    "t": "Underline the reasoning word. Write thesis skeleton and three body points. List at least four dated pieces of evidence before writing a word."
+   },
+   {
+    "m": 5,
+    "l": "contextualization",
+    "c": "var(--accent)",
+    "t": "Four or more sentences, 20 years before the prompt. Do not start with the thesis."
+   },
+   {
+    "m": 1,
+    "l": "thesis",
+    "c": "var(--accent)",
+    "t": "Last sentence of paragraph one. Position, three points, extent."
+   },
+   {
+    "m": 8,
+    "l": "body 1",
+    "c": "var(--good)",
+    "t": "Topic sentence, two dated examples, link each one back."
+   },
+   {
+    "m": 8,
+    "l": "body 2",
+    "c": "var(--good)",
+    "t": "Same shape. Check every sentence answers \"so what for the thesis.\""
+   },
+   {
+    "m": 8,
+    "l": "body 3",
+    "c": "var(--good)",
+    "t": "Same shape. If time is tight, this is the paragraph to shorten, not skip."
+   },
+   {
+    "m": 4,
+    "l": "complexity",
+    "c": "var(--c-pre)",
+    "t": "The other side or the extent, two more examples. This is where four pieces of evidence becomes six."
+   },
+   {
+    "m": 2,
+    "l": "check",
+    "c": "var(--bad)",
+    "t": "Thesis at the end of paragraph one? Any always or never? Dates inside the window? Legible?"
+   }
+  ],
+  "codes": [
+   [
+    "OA",
+    "outstanding analysis"
+   ],
+   [
+    "GA",
+    "good analysis"
+   ],
+   [
+    "SA",
+    "satisfactory analysis"
+   ],
+   [
+    "LE+",
+    "date too late, major"
+   ],
+   [
+    "LE-",
+    "date too early, major"
+   ]
   ]
+ },
+ "timeline": [
+  {
+   "y": "1534",
+   "t": "Act of Supremacy: Henry VIII heads the Church of England (the book says 1533)",
+   "d": "crown"
+  },
+  {
+   "y": "1559",
+   "t": "Elizabethan Settlement: a middle way Puritans never accept",
+   "d": "crown"
+  },
+  {
+   "y": "1585",
+   "t": "Roanoke planted; lost by 1590",
+   "d": "colonies"
+  },
+  {
+   "y": "1603",
+   "t": "James I: divine right, intolerant of Puritans, Separatists and Catholics",
+   "d": "crown"
+  },
+  {
+   "y": "1607",
+   "t": "Jamestown, Virginia Company, a joint-stock venture",
+   "d": "colonies"
+  },
+  {
+   "y": "1609",
+   "t": "Starving Time winter; Smith's no work, no eat",
+   "d": "colonies"
+  },
+  {
+   "y": "1612",
+   "t": "Rolfe's tobacco: the cash crop that saves the venture",
+   "d": "trade"
+  },
+  {
+   "y": "1619",
+   "t": "House of Burgesses (landowners vote); first Africans in Virginia",
+   "d": "colonies"
+  },
+  {
+   "y": "1620",
+   "t": "Plymouth; Mayflower Compact",
+   "d": "colonies"
+  },
+  {
+   "y": "1622",
+   "t": "Opechancanough kills 347, a quarter of Jamestown",
+   "d": "wars"
+  },
+  {
+   "y": "1624",
+   "t": "Virginia becomes a royal colony",
+   "d": "crown"
+  },
+  {
+   "y": "1625",
+   "t": "Charles I; anti-Puritan policy pushes the Great Migration",
+   "d": "crown"
+  },
+  {
+   "y": "1630",
+   "t": "Winthrop, the Arbella, City upon a Hill",
+   "d": "colonies"
+  },
+  {
+   "y": "1634",
+   "t": "Maryland, Lord Baltimore's Catholic haven",
+   "d": "colonies"
+  },
+  {
+   "y": "1636",
+   "t": "Williams banished; Providence",
+   "d": "colonies"
+  },
+  {
+   "y": "1637",
+   "t": "Pequot War in the Connecticut valley",
+   "d": "wars"
+  },
+  {
+   "y": "1638",
+   "t": "Hutchinson banished",
+   "d": "colonies"
+  },
+  {
+   "y": "1642",
+   "t": "English Civil War begins",
+   "d": "crown"
+  },
+  {
+   "y": "1649",
+   "t": "Charles I executed; Interregnum to 1660",
+   "d": "crown"
+  },
+  {
+   "y": "1651",
+   "t": "First Navigation Act",
+   "d": "trade"
+  },
+  {
+   "y": "1660",
+   "t": "Restoration: Charles II",
+   "d": "crown"
+  },
+  {
+   "y": "1663",
+   "t": "Carolina chartered; Navigation Act on enumerated goods",
+   "d": "colonies"
+  },
+  {
+   "y": "1664",
+   "t": "New York taken from the Dutch; Duke's Laws",
+   "d": "colonies"
+  },
+  {
+   "y": "1660s",
+   "t": "Virginia laws make slavery hereditary through the 1670s",
+   "d": "slavery"
+  },
+  {
+   "y": "1675",
+   "t": "King Philip's War to 1676; 10% of New England's white men",
+   "d": "wars"
+  },
+  {
+   "y": "1676",
+   "t": "Bacon's Rebellion; Bacon dies of dysentery",
+   "d": "wars"
+  },
+  {
+   "y": "1681",
+   "t": "Pennsylvania granted to Penn",
+   "d": "colonies"
+  },
+  {
+   "y": "1686",
+   "t": "Dominion of New England under Andros",
+   "d": "crown"
+  },
+  {
+   "y": "1688",
+   "t": "Glorious Revolution; William and Mary",
+   "d": "crown"
+  },
+  {
+   "y": "1689",
+   "t": "Andros overthrown; King William's War begins",
+   "d": "wars"
+  },
+  {
+   "y": "1697",
+   "t": "King William's War ends, inconclusive",
+   "d": "wars"
+  }
+ ]
 };
 
-/* ═══ machinery ═════════════════════════════════════════════════════════ */
+
+/* ═══ machinery. nothing below needs editing. ═══ */
 const $=s=>document.querySelector(s);
-const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
 const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
-const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const fmt=s=>esc(s)
-  .replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>')
-  .replace(/==(.+?)==/g,'<mark class="hl">$1</mark>')
-  .replace(/!!(.+?)!!/g,'<span class="trap">$1</span>')
-  .replace(/\[\[(\d+)\]\]/g,'<sup class="fn">$1</sup>');
-
-const G={
- flag:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>'
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>').replace(/\[\[(\d+)\]\]/g,'<sup class="fn">$1</sup>');
+const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const ICON={
+ apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ psych:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ phys:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ pre:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ sem:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ span:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ apwh:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ biz:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ mor:'<path d="M13 4.5v17"/><path d="M7.5 9.5h11"/>',
+ csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
-$("#cls").textContent=GUIDE.cls;
-$("#ttl").textContent=GUIDE.title;
-$("#due").textContent=GUIDE.due;
-document.title=GUIDE.title.toLowerCase();
-$("#gly").innerHTML='<svg viewBox="0 0 26 26" width="40" height="40" aria-hidden="true">'+
-  '<g transform="scale(0.85) translate(2.3,2.3)" fill="none" stroke="#fff" stroke-width="1.7" '+
-  'stroke-linecap="round" stroke-linejoin="round" opacity=".97">'+(G[GUIDE.glyph]||G.flag)+'</g></svg>';
-$("#gly").querySelectorAll("path").forEach(p=>p.setAttribute("pathLength","1"));
+const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",leq:"the leq"};
 
-let riseN=0;
-const riseReset=()=>{riseN=0};
-const rise=n=>{if(!REDUCED){n.classList.add("rise");n.style.setProperty("--i",Math.min(riseN++,9))}};
+/* header */
+document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
+document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
+$("#title").textContent=GUIDE.title;
+if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+$("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
+(function(){
+  const c=$("#crow");
+  c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  if(GUIDE.test){
+    const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
+    const now=new Date(); now.setHours(0,0,0,0);
+    const days=Math.round((t-now)/864e5);
+    const md=`${t.getMonth()+1}/${t.getDate()}`+(GUIDE.end?`–${e.getMonth()+1}/${e.getDate()}`:"");
+    let txt, past=e<now;
+    if(past)txt=`test was ${md}`;
+    else if(days<=0)txt=`test today · ${md}`;
+    else if(days===1)txt=`test tomorrow · ${md}`;
+    else if(days<=14)txt=`test in ${days} days · ${md}`;
+    else txt=`test ${md}`;
+    c.appendChild(el("span","chip"+(past?" past":" due"),esc(txt)));
+  }
+  if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
+})();
 
-const LABEL={warn:"watch out",ex:"leq use",ok:"rule",said:"said in class"};
-
-/* collapsible card shell */
-function cardShell(title,badge,open){
-  const card=el("div","card g");
-  card.innerHTML='<span class="spec" aria-hidden="true"></span>'+
-    '<button class="chead" aria-expanded="false"><span class="dot"></span><span class="ct"></span>'+
-    '<svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" '+
-    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>'+
-    '<div class="cbody"><div></div></div>';
-  card.querySelector(".ct").textContent=title;
-  const head=card.querySelector(".chead"),body=card.querySelector(".cbody");
-  if(badge){const b=el("span","w w"+badge);b.textContent=badge===3?"tested most":"tested";head.insertBefore(b,head.querySelector(".tw"))}
-  head.onclick=()=>{const o=head.getAttribute("aria-expanded")==="true";head.setAttribute("aria-expanded",String(!o));body.classList.toggle("on",!o)};
-  if(open){head.setAttribute("aria-expanded","true");body.classList.add("on")}
-  return {card,head,body,inner:body.firstElementChild};
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length)||(id==="leq"&&GUIDE.leq));
+const builders={leq:buildLeq,outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist};
+const tabs=[];
+PANES.forEach((id,i)=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  builders[id](sec); root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+function show(id,user){
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
 }
-const callout=(k,t,label)=>{const c=el("div","callout "+k);
-  c.innerHTML='<span class="cl">'+(label||LABEL[k]||k)+'</span>'+fmt(t);return c};
-const stepList=arr=>{const ol=el("ol","steps");arr.forEach(s=>{const li=el("li");li.innerHTML='<span>'+fmt(s)+'</span>';ol.appendChild(li)});return ol};
-const factList=arr=>{const ul=el("ul","facts");arr.forEach(f=>{const li=el("li");li.innerHTML='<span>'+fmt(f)+'</span>';ul.appendChild(li)});return ul};
-function keyCard(host){
-  if(!GUIDE.key?.length)return;
-  const {card,inner}=cardShell("key to abbreviations",0,false);
-  const k=el("div","keyrow");GUIDE.key.forEach(([a,b])=>{const d=el("div");d.innerHTML='<b>'+esc(a)+'</b> '+esc(b);k.appendChild(d)});
-  inner.appendChild(k);rise(card);host.appendChild(card);
-}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
 
 /* outline */
-(function(){
-  const host=$("#p-outline");
-  const h=el("div","sh");h.textContent="ordered by what the essay will lean on. heaviest first";host.appendChild(h);
+function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
+function extras(s){
+  let h="";
+  if(s.steps)h+=`<ol class="steps" style="margin-top:0">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
+  if(s.p)h+=`<div class="pp">${s.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`;
+  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
+  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"leq use",ok:"rule",cls:"said in class"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
+  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
+  return h;
+}
+function buildOutline(sec){
   if(GUIDE.top?.length){
-    const t=el("div","card g top");
-    t.innerHTML='<span class="spec" aria-hidden="true"></span><div class="chead"><span class="dot"></span>'+
-      '<span class="ct">start here</span></div><div class="cbody on"><div>'+
-      GUIDE.top.map(x=>'<p>'+fmt(x)+'</p>').join("")+'</div></div>';
-    rise(t);host.appendChild(t);
+    sec.appendChild(shead("start here","the whole guide in one screen"));
+    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
   }
-  GUIDE.outline.forEach(s=>{
-    const {card,inner}=cardShell(s.t,s.w>=2?s.w:0,s.w===3);
-    if(s.sum)inner.appendChild(callout("ok",s.sum,"what happened"));
-    if(s.story)inner.appendChild(stepList(s.story));
-    (s.p||[]).forEach(x=>{const p=el("p");p.innerHTML=fmt(x);inner.appendChild(p)});
-    if(s.facts)inner.appendChild(factList(s.facts));
-    if(s.cmp){const g=el("div","cmp");
-      s.cmp.forEach(c=>{const d=el("div","callout ex");d.innerHTML='<span class="cl">'+fmt(c.h)+'</span>'+fmt(c.t);g.appendChild(d)});inner.appendChild(g)}
-    if(s.notes)s.notes.forEach(n=>inner.appendChild(callout(n.k,n.t)));
-    if(s.terms){const box=el("div","terms");s.terms.forEach(t=>{const c=el("span","term");c.textContent=t;box.appendChild(c)});inner.appendChild(box)}
-    rise(card);host.appendChild(card);
+  const list=GUIDE.outline||[]; if(!list.length)return;
+  const n3=list.filter(s=>s.w===3).length;
+  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
+  const g=el("div","group");
+  list.forEach((s,i)=>{
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
+    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
+    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${extras(s)}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body);
   });
+  sec.appendChild(g);
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    sec.appendChild(shead("abbreviations"));
+    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+  }
   if(GUIDE.fn?.length){
-    const {card,inner}=cardShell("notes",0,false);
-    const ol=el("ol","fnl");GUIDE.fn.forEach(t=>{const li=el("li");li.innerHTML=fmt(t);ol.appendChild(li)});
-    inner.appendChild(ol);rise(card);host.appendChild(card);
+    sec.appendChild(shead("notes",`${GUIDE.fn.length}`));
+    sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`));
   }
-  keyCard(host);
-})();
+}
 
-/* leq pane */
-(function(){
-  const host=$("#p-leq"),L=GUIDE.leq;
-  const h=el("div","sh");h.textContent="the rubric, as it's graded";host.appendChild(h);
-
-  const f=el("div","qcard g");
-  f.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">how it runs</div>'+
-    '<div class="qt" style="font-size:15.5px;font-weight:500">'+fmt(L.format)+'</div>'+
-    '<div class="callout ok" style="margin:0"><span class="cl">the math</span>'+fmt(L.math)+'</div>';
-  rise(f);host.appendChild(f);
-
+/* leq */
+function buildLeq(sec){
+  const L=GUIDE.leq;
+  sec.appendChild(shead("how it runs"));
+  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p><p>${fmt(L.math)}</p>`));
+  sec.appendChild(shead("the rubric","six rows · 0 to 10 each"));
+  const g=el("div","group");
   L.rows.forEach(r=>{
-    const {card,inner}=cardShell(r.n,0,true);
-    inner.appendChild(callout("ok",r.earn,"earns it"));
-    inner.appendChild(callout("warn",r.lose,"loses it"));
-    inner.appendChild(callout("said",r.cls));
-    rise(card);host.appendChild(card);
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","true");
+    row.innerHTML=`<span class="rt"><span class="rn">${esc(r.n)}</span></span>`+CHEV;
+    const body=el("div","body on",`<div><div class="in"><div class="callout ok" style="margin-top:0"><span class="cl">earns it</span>${fmt(r.earn)}</div><div class="callout warn"><span class="cl">loses it</span>${fmt(r.lose)}</div><div class="callout cls"><span class="cl">said in class</span>${fmt(r.cls)}</div></div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body);
   });
-
-  const cc=el("div","card g");
-  cc.innerHTML='<span class="spec" aria-hidden="true"></span><div class="chead" style="cursor:default"><span class="dot"></span><span class="ct">margin codes</span></div><div class="cbody on"><div></div></div>';
-  const box=el("div","terms");L.codes.forEach(([a,b])=>{const c=el("span","term");c.textContent=a+" · "+b;box.appendChild(c)});
-  cc.querySelector(".cbody > div").appendChild(box);rise(cc);host.appendChild(cc);
-
-  const sh=el("div","card g");
-  sh.innerHTML='<span class="spec" aria-hidden="true"></span><div class="chead" style="cursor:default"><span class="dot"></span><span class="ct">the shape</span></div><div class="cbody on"><div></div></div>';
-  sh.querySelector(".cbody > div").appendChild(stepList(L.shape));rise(sh);host.appendChild(sh);
-
-  const h2=el("div","sh");h2.textContent="likely prompts: prompt, context, thesis, evidence, reasoning";host.appendChild(h2);
+  sec.appendChild(g);
+  sec.appendChild(el("div","card",`<div class="terms" style="margin-top:0">${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
+  sec.appendChild(shead("the shape"));
+  sec.appendChild(el("div","card",`<ol class="steps" style="margin-top:0">${L.shape.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`));
+  sec.appendChild(shead("possible prompts",`${L.prompts.length}`));
   L.prompts.forEach((p,i)=>{
-    const card=el("div","qcard g");
-    card.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">prompt '+(i+1)+'<span class="tag">'+esc(p.kind)+'</span></div>'+
-      '<div class="qt"></div><div class="pbody"></div>';
-    card.querySelector(".qt").textContent=p.q;
-    const pb=card.querySelector(".pbody");
-    const sec=(label,node)=>{const w=el("div","psec");const h=el("div","pl");h.textContent=label;w.appendChild(h);w.appendChild(node);pb.appendChild(w)};
-    sec("1 · context, four or more sentences",factList(p.ctx));
-    const a=el("div","ans");a.style.margin="0";a.innerHTML='<span class="cl">last sentence of paragraph one</span>'+esc(p.thesis);
-    sec("2 · thesis",a);
-    sec("3 · evidence, dated",factList(p.ev));
-    const g=el("div","cmp");p.moves.forEach(m=>{const d=el("div","callout ok");d.innerHTML='<span class="cl">'+esc(m.h)+'</span>'+fmt(m.t);g.appendChild(d)});
-    sec("4 · reasoning moves",g);
-    const c3=callout("warn",p.trap);c3.style.margin="0";pb.appendChild(c3);
-    rise(card);host.appendChild(card);
+    const c=el("div","card prompt");
+    c.innerHTML=`<div class="pn">prompt ${i+1}<span class="tag">${esc(p.kind)}</span></div><h4 class="pq">${esc(p.q)}</h4>`+
+      `<div class="pl">1 · context, four or more sentences</div><ul class="bul">${p.ctx.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">2 · thesis</div><div class="ans thesis"><b>last sentence of paragraph one</b><br>${esc(p.thesis)}</div>`+
+      `<div class="pl">3 · evidence, dated</div><ul class="bul">${p.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">4 · reasoning moves</div><div class="cmp four">${p.moves.map(m=>`<div><h5>${esc(m.h)}</h5><p>${fmt(m.t)}</p></div>`).join("")}</div>`+
+      `<div class="callout warn"><span class="cl">watch out</span>${fmt(p.trap)}</div>`;
+    sec.appendChild(c);
   });
+  sec.appendChild(shead("40 minutes","minute by minute"));
+  const pc=el("div","card");
+  pc.innerHTML=`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m};background:${p.c}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>`+
+    `<ol class="steps">${L.pace.map(p=>`<li><b class="pl2" style="color:${p.c}">${esc(p.l)} · ${p.m} min</b><br>${fmt(p.t)}</li>`).join("")}</ol>`;
+  sec.appendChild(pc);
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    sec.appendChild(shead("abbreviations"));
+    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+  }
+}
 
-  const h3=el("div","sh");h3.textContent="40 minutes, minute by minute";host.appendChild(h3);
-  const pc=el("div","qcard g");
-  pc.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">pacing</div><div class="pace"></div><ol class="steps" style="margin:12px 0 0"></ol>';
-  const bar=pc.querySelector(".pace"),ol=pc.querySelector(".steps");
-  L.pace.forEach(p=>{
-    const seg=el("div");seg.style.flex=String(p.m);seg.style.background=p.c;seg.title=p.l+" · "+p.m+" min";
-    seg.innerHTML='<span>'+p.m+'</span>';bar.appendChild(seg);
-    const li=el("li");li.innerHTML='<span><b class="pl" style="color:'+p.c+'">'+esc(p.l)+' · '+p.m+' min</b><br>'+fmt(p.t)+'</span>';ol.appendChild(li);
+/* practice mc */
+function buildPractice(sec){
+  const qs=GUIDE.practice||[]; let done=0, right=0;
+  sec.appendChild(shead("practice",`${qs.length} questions`));
+  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  qs.forEach((q,i)=>{
+    const card=el("div","group q");
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
+      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      if(card.classList.contains("done"))return;
+      card.classList.add("done"); const j=+b.dataset.i;
+      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+    }));
+    sec.appendChild(card);
   });
-  rise(pc);host.appendChild(pc);
-  keyCard(host);
-})();
+  sec.appendChild(sc);
+  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+}
+
+/* problems / worked examples */
+function buildProblems(sec){
+  const ps=GUIDE.problems||[];
+  sec.appendChild(shead("problems",`${ps.length} to work`));
+  ps.forEach((p,i)=>{
+    const card=el("div","group prob");
+    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    const go=card.querySelector(".go");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    sec.appendChild(card);
+  });
+}
+
+/* formulas */
+function buildFormulas(sec){
+  const fs=GUIDE.formulas||[];
+  sec.appendChild(shead("formulas",`${fs.length}`));
+  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+}
+
+/* flashcards */
+function buildCards(sec){
+  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  sec.appendChild(shead("cards",`${cs.length}`));
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
+  const cnt=nav.querySelector("#cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const flip=()=>fc.classList.toggle("flip");
+  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
+  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
+  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
+  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  draw();
+}
 
 /* timeline */
-(function(){
-  const host=$("#p-timeline");
-  const h=el("div","sh");h.textContent="sequence, 1534 to 1697. tap a color to filter";host.appendChild(h);
-  const cats=[["all","all"],["crown","crown"],["colonies","colonies"],["trade","trade"],["wars","wars"],["slavery","slavery"]];
-  const bar=el("div","tlbar");
-  cats.forEach(([id,l],i)=>{const b=el("button");b.setAttribute("aria-pressed",String(i===0));
-    b.innerHTML=(id==="all"?"":'<span class="ed e-'+id+'"></span>')+l;b.onclick=()=>pick(id);bar.appendChild(b)});
-  host.appendChild(bar);
-  const card=el("div","tl g");card.innerHTML='<span class="spec" aria-hidden="true"></span>';
-  const rows=GUIDE.timeline.map(([y,t,c])=>{const r=el("div","tr e-"+c);r.dataset.c=c;
-    r.innerHTML='<span class="ty">'+esc(y)+'</span><span class="tt">'+fmt(t)+'<span class="ec">'+c+'</span></span>';card.appendChild(r);return r});
-  rise(card);host.appendChild(card);
-  function pick(id){bar.querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-pressed",String(cats[i][0]===id)));
-    rows.forEach(r=>r.classList.toggle("off",id!=="all"&&r.dataset.c!==id))}
-})();
+function buildTimeline(sec){
+  const ts=GUIDE.timeline||[];
+  sec.appendChild(shead("timeline",`${ts.length} events`));
+  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+}
 
-/* segmented control */
-(function(){
-  const tabs=[["outline","evidence"],["leq","the leq"],["timeline","timeline"]];
-  const seg=$("#seg"),ind=seg.querySelector(".ind");
-  tabs.forEach(([id,label],i)=>{const b=el("button");b.textContent=label;b.setAttribute("role","tab");
-    b.setAttribute("aria-selected",String(i===0));b.onclick=()=>select(i);seg.appendChild(b)});
-  function select(i){
-    const btns=[...seg.querySelectorAll("button")];
-    btns.forEach((b,j)=>b.setAttribute("aria-selected",String(i===j)));
-    tabs.forEach(([id],j)=>$("#p-"+id).classList.toggle("hidden",i!==j));
-    move();scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
-  }
-  function move(){
-    const btns=[...seg.querySelectorAll("button")];
-    const i=btns.findIndex(b=>b.getAttribute("aria-selected")==="true");
-    const b=btns[i];if(!b)return;
-    ind.style.width=b.offsetWidth+"px";ind.style.transform="translateX("+(b.offsetLeft-2)+"px)";
-    document.documentElement.style.setProperty("--hh",$("#hdr").offsetHeight+"px");
-  }
-  addEventListener("resize",move);requestAnimationFrame(move);
-})();
+/* checklist */
+function buildChecklist(sec){
+  const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+  sec.appendChild(shead("checklist",`${cs.length} items`));
+  const g=el("div","group");
+  cs.forEach((c,i)=>{
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
+    g.appendChild(b);
+  });
+  sec.appendChild(g);
+}
 
-/* header state + pointer specular */
-(function(){
-  const hdr=$("#hdr");let raf=0;
-  addEventListener("scroll",()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;hdr.classList.toggle("stuck",scrollY>6)})},{passive:true});
-  if(matchMedia("(hover:hover)").matches&&!REDUCED){
-    addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".g");if(!c)return;
-      const r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")},{passive:true});
-  }
+/* theme (shared with the homepage via localStorage "theme") */
+const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
+function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+function setTheme(mode){
+  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
+  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+}
+segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
+(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
 })();
+requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
+document.fonts?.ready.then(()=>{moveThumb();moveP()});
+
+/* sticky bar shadow + staggered reveal */
+(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
 </script>
 </body>
 </html>
