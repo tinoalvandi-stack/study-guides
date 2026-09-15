@@ -235,7 +235,8 @@ sup.fn{font-size:.7em;font-weight:600;color:var(--cls);vertical-align:super;line
 .pace{display:flex;gap:3px;height:32px;border-radius:8px;overflow:hidden}
 .pace div{display:grid;place-items:center;min-width:14px;color:var(--surface);font-size:var(--t12);font-weight:600;font-variant-numeric:tabular-nums}
 .pl2{font-size:var(--t13);font-weight:600;text-transform:lowercase}
-.so{margin:6px 0 0;padding:6px 12px;font-size:var(--t13);color:var(--ink2);border-left:2px solid var(--good)}
+.so{margin:6px 0 0;padding:6px 12px;font-size:var(--t13);color:var(--ink);border-left:2px solid var(--good)}
+.so .cl{display:block;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;margin-bottom:2px}
 .tl .d{font-size:var(--t12);color:var(--ink3);text-transform:lowercase;margin-top:0}
 </style>
 </head>
@@ -909,7 +910,7 @@ const GUIDE = {
  "prompts": [
   {
    "q": "Evaluate the extent to which economic factors influenced the shift from indentured servitude to enslaved African labor in the British North American colonies in the period from 1619 to 1700.",
-   "kind": "causation",
+   "kind": "ap leq · 6 points",
    "ctx": [
     "Jamestown ==1607==, a **joint-stock** venture for profit",
     "**Tobacco** ==1612==: eats land and labor",
@@ -925,7 +926,7 @@ const GUIDE = {
       "Servants finish terms and leave; planters keep needing hands",
       "Freed servants want land the rich already own"
      ],
-     "so": "cause: fewer servants → effect: planters look for labor that can't leave"
+     "so": "**causation** · fewer servants → effect: planters look for labor that can't leave"
     },
     {
      "h": "tobacco and rice demanded permanent labor",
@@ -934,7 +935,7 @@ const GUIDE = {
       "SC **rice** and **indigo** on African skills",
       "**Barbados** slave trade; ==large-scale importation in the 1670s=="
      ],
-     "so": "cause: staple crops → effect: a labor force sized to the crop, not the contract"
+     "so": "**causation** · staple crops → effect: a labor force sized to the crop, not the contract"
     },
     {
      "h": "slaves paid off, then fear finished the job",
@@ -943,7 +944,7 @@ const GUIDE = {
       "**Bacon's Rebellion** ==1676==: armed ex-servants as a danger",
       "Laws ==1660s to 70s== make slavery hereditary; Christian justification"
      ],
-     "so": "complexity: economics set the direction, Bacon's and belief set the speed"
+     "so": "**complexity** · economics set the direction, Bacon's and belief set the speed"
     }
    ],
    "concl": [
@@ -954,7 +955,7 @@ const GUIDE = {
   },
   {
    "q": "Evaluate the extent to which slavery shaped the economy of the British North American colonies in the period from 1619 to 1700.",
-   "kind": "causation",
+   "kind": "ap leq · 6 points",
    "ctx": [
     "By the 1650s the Chesapeake runs on **tobacco** and seven-year servants",
     "**Mercantilism**: England wants staple crops shipped home",
@@ -970,7 +971,7 @@ const GUIDE = {
       "SC **rice** (==African skills==) and **indigo**; tobacco an **enumerated good**",
       "**Barbados** to **Charles Town** pipeline"
      ],
-     "so": "cause: labor that never leaves → effect: crops England wanted at a scale servants never reached"
+     "so": "**causation** · labor that never leaves → effect: crops England wanted at a scale servants never reached"
     },
     {
      "h": "a planter elite",
@@ -979,7 +980,7 @@ const GUIDE = {
       "**Bacon's Rebellion** ==1676== pushes planters to slaves over freemen",
       "Landowner franchise, **House of Burgesses**: wealth becomes politics"
      ],
-     "so": "effect: slave societies in the Chesapeake and SC, about ==20%== African"
+     "so": "**causation, effect** · slave societies in the Chesapeake and SC, about ==20%== African"
     },
     {
      "h": "the North profits without plantations",
@@ -988,7 +989,7 @@ const GUIDE = {
       "Shipbuilding; ports **Boston, Newport, Philadelphia, New York**",
       "**Middle Passage** ==6 to 8 weeks, 20% die==; African kings consolidate power on the trade"
      ],
-     "so": "compare: South built on slavery outright, North greased by it"
+     "so": "**comparison** · South built on slavery outright, North greased by it"
     }
    ],
    "concl": [
@@ -999,7 +1000,7 @@ const GUIDE = {
   },
   {
    "q": "Evaluate the extent to which events in England shaped the development of the North American colonies in the period from 1640 to 1700.",
-   "kind": "causation",
+   "kind": "ap leq · 6 points",
    "ctx": [
     "Virginia a royal tobacco colony ==1624==; Massachusetts Bay a Puritan commonwealth ==1630==",
     "Stuart kings claim **divine right**; Parliament controls taxes",
@@ -1014,7 +1015,7 @@ const GUIDE = {
       "**Interregnum** to ==1660==, Cromwell as **Lord Protector**",
       "Assemblies act like Parliament, blocking governors"
      ],
-     "so": "cause: England looks away → effect: self-rule becomes a habit"
+     "so": "**causation** · England looks away → effect: self-rule becomes a habit"
     },
     {
      "h": "restoration",
@@ -1023,7 +1024,7 @@ const GUIDE = {
       "**Navigation Acts** ==1651, 1660, 1663==: English ships, enumerated goods, vice-admiralty courts",
       "**Salutary neglect** in practice"
      ],
-     "so": "cause: a broke king → effect: the Middle Colonies and the rules of trade"
+     "so": "**causation** · a broke king → effect: the Middle Colonies and the rules of trade"
     },
     {
      "h": "glorious revolution",
@@ -1032,7 +1033,7 @@ const GUIDE = {
       "**Glorious Revolution** ==1688==; Andros overthrown ==1689==",
       "**King William's War** ==1689 to 1697==, first of three wars with France"
      ],
-     "so": "cause: a king deposed in London → effect: a governor deposed in Boston within a year"
+     "so": "**causation** · a king deposed in London → effect: a governor deposed in Boston within a year"
     }
    ],
    "concl": [
@@ -1043,7 +1044,7 @@ const GUIDE = {
   },
   {
    "q": "Evaluate the extent to which the English colonies in North America developed political autonomy in the period from 1642 to 1700.",
-   "kind": "change and continuity",
+   "kind": "ap leq · 6 points",
    "ctx": [
     "Virginia a **royal colony** ==1624==, **Burgesses** since ==1619==",
     "Massachusetts Bay governs itself under a company charter ==1630==",
@@ -1058,7 +1059,7 @@ const GUIDE = {
       "**Interregnum** ==1649 to 1660==, Cromwell as **Lord Protector**",
       "Colonies trade and legislate on their own for eleven years"
      ],
-     "so": "cause: England looks away → effect: assemblies act like parliaments"
+     "so": "**causation** · England looks away → effect: assemblies act like parliaments"
     },
     {
      "h": "the structure every colony copied",
@@ -1068,7 +1069,7 @@ const GUIDE = {
       "**Local institutions**: town meetings in NE, county courts in VA",
       "Restoration **proprietorships** (NY ==1664==, NJ ==1664==, Carolina ==1663==, PA ==1681==) all get assemblies"
      ],
-     "so": "continuity: the same three-part shape from Virginia to Pennsylvania"
+     "so": "**continuity** · the same three-part shape from Virginia to Pennsylvania"
     },
     {
      "h": "the crown pushes back and loses, 1685 to 1689",
@@ -1077,7 +1078,7 @@ const GUIDE = {
       "**Glorious Revolution** ==1688==; New Englanders overthrow Andros ==1689==",
       "**King William's War** ==1689 to 1697== needs colonial militias, not obedient subjects"
      ],
-     "so": "change: the Dominion tried direct rule; its collapse locked assemblies in"
+     "so": "**change** · the Dominion tried direct rule; its collapse locked assemblies in"
     }
    ],
    "concl": [
@@ -1088,7 +1089,7 @@ const GUIDE = {
   },
   {
    "q": "Evaluate the extent to which British mercantilist policies affected the economy and society of the North American colonies in the period from 1651 to 1700.",
-   "kind": "causation",
+   "kind": "ap leq · 6 points",
    "ctx": [
     "**Mercantilism**: colonies exist to enrich the mother country; wealth is finite **gold and silver**",
     "**Favorable balance of trade** and **trapped markets**",
@@ -1103,7 +1104,7 @@ const GUIDE = {
       "European goods stop in England first",
       "**Vice-admiralty courts**, no jury; no wool exports, hats, ironworks"
      ],
-     "so": "cause: England wants a trapped market → effect: the colonies trade on England's terms"
+     "so": "**causation** · England wants a trapped market → effect: the colonies trade on England's terms"
     },
     {
      "h": "the economy it built",
@@ -1112,7 +1113,7 @@ const GUIDE = {
       "Ports **Boston, Newport, Philadelphia, New York**; shipbuilding; a **merchant elite**",
       "Tobacco and rice planters locked to English buyers"
      ],
-     "so": "effect: colonies tied to the Atlantic, not self-sufficient farms"
+     "so": "**causation, effect** · colonies tied to the Atlantic, not self-sufficient farms"
     },
     {
      "h": "the reaction",
@@ -1121,7 +1122,7 @@ const GUIDE = {
       "**Dominion of New England** ==1686== tries direct control; thrown out ==1689==",
       "==Serious enforcement only after 1763==, and the colonists refuse"
      ],
-     "so": "complexity: the acts shaped habits more than they shaped profits"
+     "so": "**complexity** · the acts shaped habits more than they shaped profits"
     }
    ],
    "concl": [
@@ -1132,7 +1133,7 @@ const GUIDE = {
   },
   {
    "q": "Evaluate the extent to which conflicts between colonists and Native Americans in the 1670s shaped the development of the English colonies.",
-   "kind": "causation",
+   "kind": "ap leq · 6 points",
    "ctx": [
     "Land hunger: **tobacco**, **headright**, towns spreading into the Connecticut valley",
     "Earlier wars set the pattern: ==1622== Opechancanough, ==1637== Pequot",
@@ -1147,7 +1148,7 @@ const GUIDE = {
       "Colonists win; ==10% of able-bodied white men killed or wounded==",
       "New England in full control of the region afterward"
      ],
-     "so": "cause: encroachment → effect: Native resistance destroyed, land open"
+     "so": "**causation** · encroachment → effect: Native resistance destroyed, land open"
     },
     {
      "h": "bacon's rebellion, 1676",
@@ -1156,7 +1157,7 @@ const GUIDE = {
       "Bacon's army marches on Jamestown; he ==dies of dysentery==",
       "Conflict with Indians becomes a **political struggle**: poor and landless vs the planter elite"
      ],
-     "so": "cause: frontier fear + no land for freemen → effect: revolt against the government itself"
+     "so": "**causation** · frontier fear + no land for freemen → effect: revolt against the government itself"
     },
     {
      "h": "what the wars changed",
@@ -1165,7 +1166,7 @@ const GUIDE = {
       "Chesapeake and SC **slave societies** by 1700",
       "Crown tightens control: royal governors, then the **Dominion of New England** ==1686=="
      ],
-     "so": "effect: labor and politics reorganized around fear"
+     "so": "**causation, effect** · labor and politics reorganized around fear"
     }
    ],
    "concl": [
@@ -1176,7 +1177,7 @@ const GUIDE = {
   },
   {
    "q": "Evaluate the extent to which English colonization of North America differed from French and Spanish colonization in the period from 1660 to 1740.",
-   "kind": "comparison",
+   "kind": "ap leq · 6 points",
    "ctx": [
     "Spain first: **presidios** and **missions**, extracting labor and converting",
     "France: fur trade, few settlers, alliances with Natives",
@@ -1191,7 +1192,7 @@ const GUIDE = {
       "France: huge claims, tiny population; **forts along the Mississippi** as the glue of empire, **New Orleans** ==1718==",
       "Spain: **forts and missions** into Texas and California; soldiers and priests, not settlers"
      ],
-     "so": "diff: England moved people; France and Spain moved posts"
+     "so": "**comparison, difference** · England moved people; France and Spain moved posts"
     },
     {
      "h": "native relations",
@@ -1200,7 +1201,7 @@ const GUIDE = {
       "France trades and allies, fights the **Iroquois Confederacy**",
       "Spain converts and extracts through the mission system"
      ],
-     "so": "diff: displacement vs alliance vs conversion"
+     "so": "**comparison, difference** · displacement vs alliance vs conversion"
     },
     {
      "h": "slavery",
@@ -1209,7 +1210,7 @@ const GUIDE = {
       "French **Louisiana**: a **society with slaves**, not a slave society",
       "**Spanish Florida** ==1693== frees runaway slaves who convert to Catholicism"
      ],
-     "so": "diff: slavery central to English staple crops, marginal elsewhere"
+     "so": "**comparison, difference** · slavery central to English staple crops, marginal elsewhere"
     }
    ],
    "concl": [
@@ -1218,6 +1219,12 @@ const GUIDE = {
     "Extent: the differences were about scale and settlement, not intent"
    ]
   }
+ ],
+ "prompts_note": [
+  "The prompt says **evaluate the extent**. The rubric doesn't grade the prompt type; it grades what you do with the evidence.",
+  "Rows 3 and 4: two dated pieces per body, each **linked** to the thesis.",
+  "Row 5: the analysis line under each body names the reasoning the evidence shows: **causation**, **comparison**, or **continuity and change**. Write that sentence in the essay.",
+  "Row 6: four linked pieces plus one twist (other side, exception, change over time) earns complexity."
  ]
 };
 
@@ -1333,13 +1340,15 @@ function buildOutline(sec){
 /* prompts */
 function buildPrompts(sec){
   const ps=GUIDE.prompts||[];
+  sec.appendChild(shead("how points are earned"));
+  sec.appendChild(el("div","card top",(GUIDE.prompts_note||[]).map(x=>`<p>${fmt(x)}</p>`).join("")));
   sec.appendChild(shead("possible prompts",`${ps.length} · ap wording`));
   ps.forEach((p,i)=>{
     const c=el("div","card prompt");
     c.innerHTML=`<div class="pn">prompt ${i+1}<span class="tag">${esc(p.kind)}</span></div><h4 class="pq">${esc(p.q)}</h4>`+
       `<div class="pl">context</div><ul class="bul">${p.ctx.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
       `<div class="pl">thesis · three prongs</div><div class="ans thesis"><b>last sentence of paragraph one</b>${esc(p.thesis)}</div>`+
-      p.body.map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so">${fmt(bd.so)}</div>`).join("")+
+      p.body.map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">analysis · what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
       `<div class="pl">conclusion</div><ul class="bul">${p.concl.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
     sec.appendChild(c);
   });
