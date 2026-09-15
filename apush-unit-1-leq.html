@@ -224,7 +224,11 @@ sup.fn{font-size:.7em;font-weight:600;color:var(--cls);vertical-align:super;line
 .card.prompt{padding:14px 16px 16px}
 .pn{display:flex;align-items:center;gap:8px;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;margin-bottom:6px}
 .pn .tag{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:var(--r-chip);background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
-.pq{margin:0 0 10px;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.2;text-wrap:balance}
+.pq{font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.2;text-wrap:balance}
+.row .rn.pq{font-size:17px;line-height:1.25;white-space:normal}
+.prompt .row{align-items:flex-start;padding:14px 14px 14px 16px}
+.prompt .row .chev{margin-top:4px}
+.prompt .body .in{padding:4px 16px 16px}
 .pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin:14px 0 6px}
 .bul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
 .bul li{position:relative;padding:8px 12px 8px 26px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
@@ -1387,14 +1391,18 @@ function buildPrompts(sec){
   sec.appendChild(el("div","card top",(GUIDE.prompts_note||[]).map(x=>`<p>${fmt(x)}</p>`).join("")));
   sec.appendChild(shead("possible prompts",`${ps.length} · ap wording`));
   ps.forEach((p,i)=>{
-    const c=el("div","card prompt");
-    c.innerHTML=`<div class="pn">prompt ${i+1}<span class="tag">${esc(p.kind)}</span></div><h4 class="pq">${esc(p.q)}</h4>`+
-      (p.tldr?`<div class="pl">tldr</div><ul class="bul tldr">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
+    const g=el("div","group prompt");
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
+    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn pq">${esc(p.q)}</span></span>`+CHEV;
+    const inner=(p.tldr?`<div class="pl" style="margin-top:2px">tldr</div><ul class="bul tldr">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
       `<div class="pl">context</div><ul class="bul">${p.ctx.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
       `<div class="pl">thesis · three prongs</div><div class="ans thesis"><b>last sentence of paragraph one</b>${esc(p.thesis)}</div>`+
       p.body.map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">analysis · what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
       `<div class="pl">conclusion</div><ul class="bul">${p.concl.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
-    sec.appendChild(c);
+    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on));if(on&&!REDUCED)setTimeout(()=>row.scrollIntoView({block:"start",behavior:"smooth"}),60)});
+    g.appendChild(row); g.appendChild(body);
+    sec.appendChild(g);
   });
 }
 
