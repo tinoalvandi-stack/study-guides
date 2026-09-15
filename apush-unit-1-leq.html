@@ -228,6 +228,7 @@ sup.fn{font-size:.7em;font-weight:600;color:var(--cls);vertical-align:super;line
 .pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin:14px 0 6px}
 .bul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
 .bul li{position:relative;padding:8px 12px 8px 26px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
+.bul.tldr li{background:color-mix(in srgb,var(--cls) 9%,var(--surface2));border-color:color-mix(in srgb,var(--cls) 35%,var(--line));font-weight:500}
 .bul li::before{content:"";position:absolute;left:11px;top:15px;width:7px;height:7px;border-radius:2px;background:var(--cls)}
 .ans.thesis{margin-top:0;border-left:3px solid var(--good);font-size:var(--t16);line-height:1.5}
 .ans.thesis b{display:block;margin:0 0 3px}
@@ -951,6 +952,12 @@ const GUIDE = {
     "Effect: by ==1700== the Chesapeake and South Carolina were **slave societies**, economies that ran on slave labor; ==by 1710 Africans were 20%== of the Chesapeake.",
     "Effect: the switch widened the gap between rich and poor planters, because only the rich could buy people.",
     "Extent: New England, with no staple crop, stayed a **society with slaves**, which proves the crop drove the change."
+   ],
+   "tldr": [
+    "Argue: economics drove the switch to a large extent",
+    "1 servant supply dried up after the 1650s · 2 tobacco and rice needed permanent labor · 3 slaves paid off across generations",
+    "Twist: **Bacon's Rebellion** 1676 and religious ideas pushed the timing",
+    "Effect: slave societies by 1700, Africans 20% of the Chesapeake by 1710"
    ]
   },
   {
@@ -996,6 +1003,12 @@ const GUIDE = {
     "Extent: slavery was decisive where staple crops grew and marginal where families farmed; New England stayed a **society with slaves**.",
     "Every region sat inside the same Atlantic loop that mercantilism designed to enrich England.",
     "Complexity: French **Louisiana** and Spanish **Florida** (freedom to converted runaways, ==1693==) show slavery was not automatic in North America; it was the English crop economy that demanded it."
+   ],
+   "tldr": [
+    "Argue: slavery shaped the economy to a large extent, differently by region",
+    "1 staple crops at plantation scale · 2 a planter elite · 3 the North profits through rum, ships, ports",
+    "Twist: New England stayed a **society with slaves**; Louisiana and Florida show it wasn't automatic",
+    "Key dates: 1650s, 1670s importation, 1676, 1700, 1710"
    ]
   },
   {
@@ -1040,6 +1053,12 @@ const GUIDE = {
     "Extent: great, because every turning point in colonial government from 1642 to 1700 began in London.",
     "Complexity: **Bacon's Rebellion** ==1676== and **King Philip's War** ==1675 to 76== changed labor and land without any English event behind them.",
     "Continuity: loose enforcement lasted until 1763, when serious enforcement finally began and the colonists refused."
+   ],
+   "tldr": [
+    "Argue: events in England shaped the colonies to a great extent",
+    "1 Civil War and Interregnum 1642 to 1660 · 2 Restoration colonies and Navigation Acts · 3 Dominion, Glorious Revolution, King William's War",
+    "Twist: **Bacon's** and **King Philip's** changed things with no English cause",
+    "Continuity: salutary neglect until 1763"
    ]
   },
   {
@@ -1085,6 +1104,12 @@ const GUIDE = {
     "Extent: large in practice, limited on paper; proprietary colonies drifted to royal colonies and the **Navigation Acts** stood.",
     "Complexity: autonomy was for landowning men; **Bacon's Rebellion** ==1676== shows how many colonists were shut out.",
     "Continuity: **salutary neglect** became the settled arrangement until 1763."
+   ],
+   "tldr": [
+    "Argue: the colonies gained autonomy to a large extent in practice",
+    "1 neglect 1642 to 1660 · 2 governor, council, assembly in every colony · 3 the Dominion 1686 fails by 1689",
+    "Twist: autonomy was for landowning men; Navigation Acts still stood",
+    "Continuity: assemblies hold the purse from Virginia to Pennsylvania"
    ]
   },
   {
@@ -1129,6 +1154,12 @@ const GUIDE = {
     "Effect: port cities and merchants in the North, a planter elite in the South.",
     "Extent: moderate, because the rules bit less than they read.",
     "Continuity: loose enforcement from the 1650s to 1763, then the break."
+   ],
+   "tldr": [
+    "Argue: mercantilism affected the colonies to a moderate extent",
+    "1 the rules: Navigation Acts 1651, 1660, 1663 · 2 the economy: ports and planters tied to England · 3 the reaction: smuggling and salutary neglect",
+    "Twist: the acts built habits more than they controlled trade",
+    "Effect: merchant elite North, planter elite South"
    ]
   },
   {
@@ -1173,6 +1204,12 @@ const GUIDE = {
     "Both wars were about land; both ended with more control at the top.",
     "Complexity: **New France** allied with Natives against the **Iroquois** instead of displacing them, so English expansion was a choice, not a necessity.",
     "Continuity: Native land remained the currency of colonial growth to 1763 and beyond."
+   ],
+   "tldr": [
+    "Argue: the 1670s wars shaped the colonies to a large extent",
+    "1 King Philip's War 1675 to 76 · 2 Bacon's Rebellion 1676 · 3 effects: slavery and royal control",
+    "Compare: one war united a colony, the other split it",
+    "Twist: New France allied with Natives instead"
    ]
   },
   {
@@ -1217,6 +1254,12 @@ const GUIDE = {
     "Similarity for balance: all three ran on **mercantilism** and fought each other, as in **King William's War** ==1689 to 97==.",
     "Similarity: all three enslaved Africans and Natives.",
     "Extent: the differences were about scale and settlement, not intent; every empire came to take wealth."
+   ],
+   "tldr": [
+    "Argue: English colonization differed to a large extent",
+    "1 who came: settlers vs forts and missions · 2 Natives: displace vs ally vs convert · 3 slavery: central vs marginal",
+    "Balance: all three ran on mercantilism, fought each other, and held slaves",
+    "Key: New Orleans 1718, Iroquois, Florida 1693, Louisiana a society with slaves"
    ]
   }
  ],
@@ -1346,6 +1389,7 @@ function buildPrompts(sec){
   ps.forEach((p,i)=>{
     const c=el("div","card prompt");
     c.innerHTML=`<div class="pn">prompt ${i+1}<span class="tag">${esc(p.kind)}</span></div><h4 class="pq">${esc(p.q)}</h4>`+
+      (p.tldr?`<div class="pl">tldr</div><ul class="bul tldr">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
       `<div class="pl">context</div><ul class="bul">${p.ctx.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
       `<div class="pl">thesis · three prongs</div><div class="ans thesis"><b>last sentence of paragraph one</b>${esc(p.thesis)}</div>`+
       p.body.map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">analysis · what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
