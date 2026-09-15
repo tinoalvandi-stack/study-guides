@@ -320,7 +320,10 @@ footer{text-align:center;font-size:12.5px;line-height:1.6;color:var(--ink3);padd
 
 /* leq pane extras */
 .callout.said{border-color:#BF5AF2}
-.paras{margin-top:-4px}
+.pbody{margin-top:6px}
+.psec{margin:0 0 12px}
+.psec .pl{margin:0 0 6px;color:var(--accent)}
+.psec .facts{margin:0}
 .pace{display:flex;gap:3px;height:34px;border-radius:10px;overflow:hidden;margin:10px 0 0}
 .pace div{display:grid;place-items:center;min-width:14px;color:#fff;font-family:var(--round);font-size:12px;font-weight:780;font-variant-numeric:tabular-nums;
   box-shadow:inset 0 .5px 0 0 rgba(255,255,255,.4)}
@@ -526,47 +529,75 @@ const GUIDE = {
     prompts:[
       { q:"Evaluate the extent to which economic factors influenced the shift from indentured servitude to enslaved labor in the British North American colonies in the period from 1619 to 1700.",
         kind:"the other section's prompt · causation",
-        thesis:"Economic factors caused the shift to a large extent: fewer servants arrived once the good land was gone and life in England improved, tobacco's demand for labor never dropped, and slaves paid off because their children were born enslaved; yet Bacon's Rebellion in 1676 and the belief that enslaving heathens was justified show that fear of poor freemen and religious ideas pushed the change too.",
-        paras:[
-          { l:"paragraph 1 · contextualization, then thesis", t:"Jamestown began as a **joint-stock** hunt for Spanish-style riches, found tobacco instead, and tobacco ate land and labor. Headright grants spread plantations along the rivers. The first Africans in 1619 held a fluid status next to seven-year servants. By the 1650s the colony's problem was hands, not land. ==Thesis last.==" },
-          { l:"paragraph 2 · indentured servitude fails", t:"Topic: the servant pipeline broke while tobacco kept asking. Evidence first: **indentured servants**, seven-year terms, headright land for whoever paid passage. Evidence: fewer servants after the ==1650s==, the good land gone, conditions in England improving, tobacco still needing bodies. Link: a planter with acres and no workers had to find labor that couldn't leave." },
-          { l:"paragraph 3 · slaves paid off, and Barbados supplied them", t:"Topic: the economics of buying a person outright. Evidence: ==children born enslaved==, the **Barbados** surplus, **Charles Town** migrants, rich planters buying out small ones, South Carolina **rice** and **indigo** on African skills. Link: the up-front cost bought labor for generations, so the big planters got bigger." },
-          { l:"paragraph 4 · the non-economic push", t:"Topic: fear and belief did work money didn't. Evidence: **Bacon's Rebellion** (==1676==) shows armed ex-servants as a danger; Virginia laws of the 1660s and 70s make slavery **hereditary**; Christians believed enslaving heathens was justified. Link: slaves never finish a term and never become angry freemen with guns." },
-          { l:"paragraph 5 · effects and extent", t:"Topic: what the shift made. Evidence: the Chesapeake and South Carolina become **slave societies**, Africans about one fifth of the Chesapeake, the rich-poor gap widens, the **Middle Passage** at ==6 to 8 weeks and 20% dead==. Extent: economics set the direction; Bacon's and religion set the speed." }
-        ],
+        ctx:["Jamestown founded ==1607== as a **joint-stock** venture; **tobacco** (==1612==) becomes the cash crop and eats land and labor.",
+             "**Headright** (50 acres) spreads plantations along the rivers; **indentured servants** on seven-year terms are the labor answer.",
+             "First Africans ==1619==, status fluid, not yet hereditary slavery.",
+             "By the 1650s the problem is hands, not land."],
+        thesis:"Economic factors drove the shift to a large extent: fewer servants arrived once the good land was gone and life in England improved, tobacco's demand for labor never dropped, and slaves paid off because their children were born enslaved; yet Bacon's Rebellion in 1676 and the belief that enslaving heathens was justified show that fear of poor freemen and religious ideas pushed the change too.",
+        ev:["Servant supply falls after the ==1650s==: good land gone, conditions in England improve.",
+            "Tobacco demand steady; planters with acres and no hands.",
+            "==Children born enslaved==: higher up-front cost, labor for generations.",
+            "**Barbados** surplus slaves; younger sons to **Charles Town** with slaves in tow.",
+            "South Carolina **rice** on African skills, **indigo** second; tobacco an **enumerated good** (==1660, 1663==).",
+            "**Bacon's Rebellion** ==1676==: armed ex-servants as a danger; planters prefer labor that never goes free.",
+            "Virginia laws ==1660s to 70s== make slavery **hereditary**; Christian justification for enslaving heathens.",
+            "**Middle Passage** ==6 to 8 weeks, about 20% die==."],
+        moves:[{h:"causes, economic",t:"supply of servants down, demand for tobacco labor up, hereditary labor cheaper over time, Barbados pipeline"},
+               {h:"causes, not economic",t:"Bacon's Rebellion 1676, laws making status hereditary, religious justification"},
+               {h:"effects",t:"Chesapeake and SC become slave societies, Africans about 20% of the Chesapeake, rich-poor gap widens, planter elite"},
+               {h:"complexity",t:"economics set the direction, fear and belief set the speed; New England stays a society with slaves"}],
         trap:"Causation needs effects. Stopping at planters bought slaves, without the slave-society outcome, leaves the reasoning row short." },
       { q:"Evaluate the extent to which slavery shaped the economy of the British North American colonies in the period from 1619 to 1700.",
         kind:"likely variant · causation",
+        ctx:["By the 1650s the Chesapeake runs on **tobacco** and seven-year **indentured servants**; first Africans ==1619==, status fluid.",
+             "**Mercantilism**: England wants staple crops shipped home; **Navigation Acts** (==1651, 1660, 1663==) enumerate tobacco and sugar.",
+             "**Barbados** sugar has already shown what enslaved labor produces.",
+             "Then the servants stop coming."],
         thesis:"Slavery shaped the colonial economy to a large extent: it made tobacco and rice plantation economies possible once the servant supply failed, concentrated land and wealth in a planter elite, and tied every region, New England's rum and ships included, into the Atlantic slave trade; still, New England and the Middle Colonies built farm, port and merchant economies that used slavery only at the margins.",
-        paras:[
-          { l:"paragraph 1 · contextualization, then thesis", t:"By the 1650s the Chesapeake ran on **tobacco** and seven-year **indentured servants**; the first Africans of 1619 held a fluid status. England's **mercantilism** wanted staple crops shipped home, and **Barbados** sugar had already shown what enslaved labor could produce. Then the servants stopped coming. ==Thesis last.==" },
-          { l:"paragraph 2 · staple crops at plantation scale", t:"Topic: slavery made the cash-crop economy possible. Evidence: servant flow falls after the ==1650s==, ==children born enslaved==, **Barbados** surplus to **Charles Town**, South Carolina **rice** and **indigo** on African skills, tobacco an **enumerated good** (==1660, 1663==). Link: labor that never left let planters grow what England wanted at a scale servants never could." },
-          { l:"paragraph 3 · a planter elite", t:"Topic: slavery sorted the colonies into rich and poor. Evidence: big planters buy out small ones, ==rich-poor gap widens==, **Bacon's Rebellion** (==1676==) pushes planters toward slaves over freemen, Chesapeake and South Carolina become **slave societies**, Africans about ==20%== of the Chesapeake. Link: wealth followed slave ownership, so politics did too (landowner franchise, Burgesses)." },
-          { l:"paragraph 4 · the whole Atlantic", t:"Topic: even non-slave regions profited. Evidence: **triangular trade**, **Middle Passage** (==6 to 8 weeks, 20% dead==), New England **rum** from Caribbean molasses, shipbuilding and the ports of **Boston, Newport, Philadelphia, New York**, African kings consolidating power on the trade. Link: the slave trade was the loop that connected colonial lumber, rum and ships to English profit." },
-          { l:"paragraph 5 · extent", t:"Topic: where slavery mattered less. Evidence: New England **subsistence farms** and family labor, a **merchant elite** built on trade not plantations, small-scale Native and African slavery there (a **society with slaves**). Extent: slavery built the South's economy outright and only greased the North's." }
-        ],
+        ev:["Servant flow falls after the ==1650s==; ==children born enslaved== replaces them.",
+            "**Barbados** to **Charles Town**; SC **rice** and **indigo** on African skills.",
+            "Big planters buy out small ones; ==rich-poor gap widens==; landowner franchise, **Burgesses**.",
+            "**Bacon's Rebellion** ==1676== pushes planters toward slaves over freemen.",
+            "Chesapeake and SC become **slave societies**; Africans about ==20%== of the Chesapeake.",
+            "**Triangular trade**: New England **rum** from Caribbean molasses; shipbuilding; ports **Boston, Newport, Philadelphia, New York**.",
+            "**Middle Passage** ==6 to 8 weeks, 20% dead==; some African kings consolidate power on the trade.",
+            "New England **subsistence farms**, family labor, **merchant elite**: a **society with slaves**."],
+        moves:[{h:"effects on the South",t:"plantation scale, cash crops England wanted, planter elite, slave society"},
+               {h:"effects on the North",t:"rum, shipping, ports, merchants profit from the trade without plantations"},
+               {h:"compare regions",t:"South built on slavery outright; North greased by it; both inside the Atlantic loop"},
+               {h:"complexity",t:"extent differs by region; slavery present everywhere, decisive only where staple crops grew"}],
         trap:"Don't narrate the Middle Passage. Every fact needs an economic effect attached or it is evidence without a link." },
       { q:"Evaluate the extent to which the Chesapeake and New England colonies developed differently in the period from 1607 to 1700.",
         kind:"comparison",
+        ctx:["England's population ==doubles 1530 to 1680==; **enclosure** pushes people off the land.",
+             "**Henry VIII** breaks with Rome (==1534==); **James I** and **Charles I** persecute Puritans, Separatists and Catholics.",
+             "**Joint-stock companies** fund what the Crown won't; **Roanoke** has already failed (==1590==).",
+             "Two kinds of English leave: people chasing profit and people chasing God."],
         thesis:"Although both regions took Native land through war and built representative bodies, the Chesapeake and New England developed differently to a large extent, because tobacco produced a dispersed, male, short-lived planter society run on bound labor, while Puritan religion produced town-centered family communities governed by church-member voters.",
-        paras:[
-          { l:"paragraph 1 · contextualization, then thesis", t:"England before 1607: population doubles 1530 to 1680, enclosure pushes people off the land; Henry VIII's break with Rome breeds dissenters; James I persecutes Puritans, Separatists and Catholics alike; joint-stock companies fund what the Crown won't; Roanoke has already failed. ==Thesis is the last sentence.==" },
-          { l:"paragraph 2 · economy and labor", t:"Topic: the Chesapeake grew a crop, New England grew families. Evidence: **tobacco** (1612), **headright** 50 acres, servants then slaves via **Barbados**, Africans about 20% vs. subsistence farms, family labor, land granted to groups. Link: tobacco demanded land and hands; the Puritan town needed neither." },
-          { l:"paragraph 3 · society and demography", t:"Topic: who lived there and how long. Evidence: ==life expectancy 40 to 45 vs. 60 to 65==, male majority and immigrant instability vs. family migration with goods and neighbors, no towns vs. covenant towns. Link: the Chesapeake couldn't produce a native-born elite until the 1700s; New England had one by the second generation." },
-          { l:"paragraph 4 · government and religion", t:"Topic: who voted and why. Evidence: **Burgesses** elected by landowners (1619), royal colony (1624), Catholic **Maryland** turning Protestant vs. **Mayflower Compact** (1620), church-member franchise, **Williams** (1636) and **Hutchinson** (1638) banished. Link: property ran Virginia politics; the covenant ran Massachusetts." },
-          { l:"paragraph 5 · balance and extent", t:"Topic: the similarities that keep this from being total. Evidence: both fought Native wars (==1622, 1637, 1675 to 1676==), both held slaves, both copied governor, council, assembly. Extent: by 1700 the Chesapeake gains a native elite and the regions start to converge, so the difference is largest early." }
-        ],
-        trap:"All differences and no similarities loses the reasoning row. Paragraph 5 is not optional." },
+        ev:["Chesapeake: **tobacco** ==1612==, **headright** 50 acres, servants then slaves, no towns, male majority, ==life expectancy 40 to 45==, immigrant instability, **Burgesses** by landowners ==1619==, royal colony ==1624==, Catholic **Maryland** ==1634== turns Protestant.",
+            "New England: **Mayflower Compact** ==1620==, **Winthrop** and the **City upon a Hill** ==1630==, families and towns, land to groups, **covenant**, church-member franchise, ==life expectancy 60 to 65==, subsistence farms, **Williams** ==1636== and **Hutchinson** ==1638== banished.",
+            "Both: Native wars (==1622== Opechancanough, ==1637== Pequot, ==1675 to 76== King Philip), slavery in both, governor, council, assembly in both."],
+        moves:[{h:"differences",t:"economy (tobacco vs farms), society (life span, sex ratio, towns), government (property vs church membership), religion (tolerance in MD vs intolerance in MA)"},
+               {h:"similarities",t:"war with Natives, representative bodies, slavery, English institutions copied"},
+               {h:"change over time",t:"by 1700 the Chesapeake gains a native-born elite and the regions start to converge; the gap is widest early"},
+               {h:"complexity",t:"the balance paragraph plus the convergence point; two more dated examples earn the row"}],
+        trap:"All differences and no similarities loses the reasoning row. The balance paragraph is not optional." },
       { q:"Evaluate the extent to which events in England shaped the development of the North American colonies in the period from 1640 to 1700.",
         kind:"causation",
+        ctx:["By 1640 Virginia is a royal tobacco colony (==1624==); Massachusetts Bay a Puritan commonwealth voting by church membership (==1630==).",
+             "Both grew up under Stuart kings claiming **divine right**; both have already fought Native neighbors (==1622, 1637==).",
+             "**Charles I** vs. Parliament over money and power is about to become war."],
         thesis:"Events in England shaped the colonies to a great extent: the Civil War and Interregnum left the colonies to govern themselves, the Restoration created proprietary colonies as Stuart debt payments and brought the Navigation Acts, and the Glorious Revolution both removed the Dominion of New England and locked in Parliament's control of trade; still, Bacon's Rebellion and King Philip's War show the colonies changing on their own terms.",
-        paras:[
-          { l:"paragraph 1 · contextualization, then thesis", t:"By 1640 Virginia was a royal tobacco colony and Massachusetts Bay a Puritan commonwealth voting by church membership. Both grew up under Stuart kings claiming **divine right**; both had already fought their Native neighbors (1622, 1637). England's quarrel between king and Parliament was about to spill across the ocean. ==Thesis last.==" },
-          { l:"paragraph 2 · civil war and interregnum", t:"Topic: England looked away and the colonies learned to run themselves. Evidence: **Civil War** (==1642==), Charles I executed (==1649==), **Interregnum** to 1660, assemblies modeled on Parliament acting to block governors. Link: eleven years of neglect made self-rule a habit London later had to fight." },
-          { l:"paragraph 3 · restoration", t:"Topic: a broke king paid debts with land and rules. Evidence: **New York** (==1664==), **New Jersey**, **Carolina** (==1663==), **Pennsylvania** (==1681==) as proprietorships; **Navigation Acts** (==1651, 1660, 1663==) with enumerated goods and vice-admiralty courts. Link: Charles II's debts drew the map of the Middle Colonies and his revenue needs drew the trade rules." },
-          { l:"paragraph 4 · glorious revolution", t:"Topic: direct control tried and failed. Evidence: **Dominion of New England** (==1686==), **Andros**, **Glorious Revolution** (==1688==), Andros overthrown (==1689==), **King William's War** (==1689 to 1697==). Link: a change of king in London changed the government in Boston within a year." },
-          { l:"paragraph 5 · local forces and extent", t:"Topic: some change came from America. Evidence: **Bacon's Rebellion** (==1676==) and **King Philip's War** (==1675 to 1676==) reshaped labor and Native relations without London; **salutary neglect** meant the Navigation Acts were barely enforced. Extent: England's reach on paper outran its reach in practice." }
-        ],
+        ev:["**Civil War** ==1642==, Charles I executed ==1649==, **Interregnum** to ==1660==: colonies left alone, assemblies act like Parliament.",
+            "**Restoration** ==1660==: **New York** ==1664==, **New Jersey**, **Carolina** ==1663==, **Pennsylvania** ==1681== as debt payments to proprietors.",
+            "**Navigation Acts** ==1651, 1660, 1663==: English ships, enumerated goods, vice-admiralty courts; **salutary neglect** in practice.",
+            "**James II**, **Dominion of New England** ==1686==, **Andros**; **Glorious Revolution** ==1688==; Andros overthrown ==1689==.",
+            "**King William's War** ==1689 to 1697==, first of three inconclusive wars with France.",
+            "Local: **Bacon's Rebellion** ==1676==, **King Philip's War** ==1675 to 76==."],
+        moves:[{h:"causes in England",t:"civil war and neglect, a broke king paying with land, a Catholic king overreaching, Parliament winning"},
+               {h:"effects in America",t:"habit of self-rule, four new colonies, trade rules and smuggling, Dominion tried and thrown out, war with France"},
+               {h:"change and continuity",t:"tighter control on paper after 1660; loose control in practice survives to 1763"},
+               {h:"complexity",t:"local forces (Bacon, King Philip) reshape labor and Native relations without London"}],
         trap:"Georgia (1732) is outside the window and not a Restoration colony. Keep every date inside 1640 to 1700." }
     ],
     pace:[
@@ -731,20 +762,21 @@ function keyCard(host){
   sh.innerHTML='<span class="spec" aria-hidden="true"></span><div class="chead" style="cursor:default"><span class="dot"></span><span class="ct">the shape</span></div><div class="cbody on"><div></div></div>';
   sh.querySelector(".cbody > div").appendChild(stepList(L.shape));rise(sh);host.appendChild(sh);
 
-  const h2=el("div","sh");h2.textContent="likely prompts, paragraph by paragraph. tap for the thesis";host.appendChild(h2);
+  const h2=el("div","sh");h2.textContent="likely prompts: prompt, context, thesis, evidence, reasoning";host.appendChild(h2);
   L.prompts.forEach((p,i)=>{
     const card=el("div","qcard g");
     card.innerHTML='<span class="spec" aria-hidden="true"></span><div class="qn">prompt '+(i+1)+'<span class="tag">'+esc(p.kind)+'</span></div>'+
-      '<div class="qt"></div><div class="paras"></div><button class="reveal" type="button" aria-expanded="false">show model thesis</button><div class="sol"><div></div></div>';
+      '<div class="qt"></div><div class="pbody"></div>';
     card.querySelector(".qt").textContent=p.q;
-    const pa=card.querySelector(".paras");
-    p.paras.forEach((x,j)=>{const c=callout(j===0?"ex":(j===p.paras.length-1?"said":"ok"),x.t,x.l);c.style.margin="0 0 8px";pa.appendChild(c)});
-    const sol=card.querySelector(".sol > div");
-    const a=el("div","ans");a.style.margin="12px 0 8px";a.innerHTML='<span class="cl">model thesis, last sentence of paragraph one</span>'+esc(p.thesis);sol.appendChild(a);
-    const c3=callout("warn",p.trap);c3.style.margin="0";sol.appendChild(c3);
-    const btn=card.querySelector(".reveal");
-    btn.onclick=()=>{const o=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!o));
-      card.querySelector(".sol").classList.toggle("on",!o);btn.textContent=o?"show model thesis":"hide"};
+    const pb=card.querySelector(".pbody");
+    const sec=(label,node)=>{const w=el("div","psec");const h=el("div","pl");h.textContent=label;w.appendChild(h);w.appendChild(node);pb.appendChild(w)};
+    sec("1 · context, four or more sentences",factList(p.ctx));
+    const a=el("div","ans");a.style.margin="0";a.innerHTML='<span class="cl">last sentence of paragraph one</span>'+esc(p.thesis);
+    sec("2 · thesis",a);
+    sec("3 · evidence, dated",factList(p.ev));
+    const g=el("div","cmp");p.moves.forEach(m=>{const d=el("div","callout ok");d.innerHTML='<span class="cl">'+esc(m.h)+'</span>'+fmt(m.t);g.appendChild(d)});
+    sec("4 · reasoning moves",g);
+    const c3=callout("warn",p.trap);c3.style.margin="0";pb.appendChild(c3);
     rise(card);host.appendChild(card);
   });
 
