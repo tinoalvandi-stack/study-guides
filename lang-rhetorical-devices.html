@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>study guide · valentino guides</title>
+<meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+   Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+
+:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1);--ink3:rgba(94,90,82,.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--good:#4C6A48;--bad:#8E3F4C;
+  --c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}}
+:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}
+
+:root{
+  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:600; --ls-d:-.025em;
+  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px;
+  --r-card:14px; --r-btn:10px; --r-chip:8px;
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --gap:16px;
+  --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
+.lc{text-transform:lowercase}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
+.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px}
+.home{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:26px;height:26px;border-radius:5px;flex:none;display:block}
+.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase;white-space:nowrap}
+@media (max-width:379px){.bar h1{display:none}}
+.seg{position:relative;display:flex;border:1px solid var(--line);border-radius:8px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
+.seg button{position:relative;z-index:2;padding:4px 9px;border-radius:6px;font-size:var(--t12);font-weight:500;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
+.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.bar .seg{margin-left:auto}
+
+/* intro */
+main{padding-top:22px}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cname svg{width:20px;height:20px;flex:none}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
+.chip.past{color:var(--ink3)}
+h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+
+/* pane switcher */
+.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes::-webkit-scrollbar{display:none}
+.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button[aria-selected="true"]{color:var(--on-accent)}
+.panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.panes.one{display:none}
+.pane{display:none}
+.pane.on{display:block;animation:rise .38s var(--spring) both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* section head */
+.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+.sh:first-child{margin-top:0}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+
+/* cards + groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.card.top{border-left:4px solid var(--cls);padding-left:15px}
+.card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
+.row + .row,.body + .row{border-top:1px solid var(--line)}
+.row:active{background:var(--surface2)}
+@media (hover:hover){.row:hover{background:var(--surface2)}}
+.rt{min-width:0;flex:1}
+.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
+.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
+.row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
+.body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
+.body.on{grid-template-rows:1fr}
+.body > div{overflow:hidden}
+.body .in{padding:12px 16px 14px}
+.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
+.body p:last-child{margin-bottom:0}
+
+/* prose emphasis */
+.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
+.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.trap{color:var(--bad);font-weight:600}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
+.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
+.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
+.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media (max-width:479px){.cmp{grid-template-columns:1fr}}
+.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
+.abbr b{color:var(--ink);font-weight:600}
+
+/* practice mc */
+.q{margin-bottom:10px}
+.q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
+.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
+.opt:active{background:var(--surface2)}
+@media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
+.opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
+.q.done .opt{cursor:default}
+.opt.right{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q.done .why{display:block}
+.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
+.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wide{width:100%}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
+
+/* problems + worked examples */
+.prob .qt{padding:14px 16px}
+.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block}
+.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+.ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+
+/* formulas */
+.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
+.fx:first-child{border-top:0}
+.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
+.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+
+/* flashcards */
+.deck{position:relative;perspective:1200px;margin-bottom:10px}
+.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.fc.flip{transform:rotateY(180deg)}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc .b .tag{color:var(--cls)}
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+
+/* timeline */
+.tl{position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding:6px 0 12px}
+.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
+.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
+.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+
+/* checklist */
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
+.ck:first-child{border-top:0}
+.ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
+.ck.on .box{background:var(--good);border-color:var(--good)}
+.ck.on .t{color:var(--ink3);text-decoration:line-through}
+.ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
+
+/* footer */
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+footer .upd{display:block;margin-top:6px}
+
+/* reveal on load */
+.rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="home" href="/" aria-label="all guides">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg>
+      <h1>valentino guides</h1>
+    </a>
+    <div class="seg" role="group" aria-label="theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">auto</button>
+      <button type="button" data-set="light" aria-pressed="false">light</button>
+      <button type="button" data-set="dark" aria-pressed="false">dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="crow rv" id="crow"></div>
+  <h2 class="title rv" id="title"></h2>
+  <p class="sub rv" id="sub" hidden></p>
+  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div id="root" class="rv"></div>
+  <footer>
+    study guide written by a student, free to use. not affiliated with the school.
+    check anything that matters against your own notes. <a href="/">all guides</a>
+    <span class="upd" id="upd"></span>
+  </footer>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   GUIDE — the only thing to edit. Delete panes you don't need from
+   `panes`; delete the matching data too. Prose accepts **term**,
+   ==fact== and !!trap!!. Everything is rendered from this object.
+   ═══════════════════════════════════════════════════════════════════ */
+const GUIDE = {
+  id:    "lang",
+  cls:   "AP English Language",
+  title: "Rhetorical devices",
+  meta:  "53 devices · 2 examples each",
+  sub:   "",
+  updated: "sept 16, 2026",
+
+  panes: [ "outline", "practice", "cards" ],
+  labels: { outline:"devices", practice:"name it" },
+
+  top: [
+    "**TLDR:** every device from the class rhetorical analyses, ==most common first, rarest last==. Each one has a definition, how it works, a class-reading quote and an outside quote. Quiz and flashcards are in the other tabs."
+  ],
+
+  outline: [
+    /* ───────── w:3 · found in almost every passage ───────── */
+    { w:3, t:"Anaphora", d:"same opening, clause after clause",
+      p:["**Anaphora** repeats the ==first word or phrase== of back-to-back clauses or sentences. Each repeat resets the rhythm, so the idea lands like a drumbeat."],
+      cmp:{ a:{h:"class reading",p:["“==We are resisting being turned into== a National Sacrifice Area. ==We are resisting being turned into== a national sacrifice people.” (Means)","The second sentence swaps land for people, and the repeat makes the swap impossible to miss."]},
+            b:{h:"beyond class",p:["“==we shall fight== on the beaches, ==we shall fight== on the landing grounds” (Churchill)","Defiance stacked until surrender sounds unthinkable."]} },
+      notes:[{k:"warn",t:"Repeat at the end is **epistrophe**. Start and end together is **symploce**."}],
+      terms:["epistrophe","symploce"] },
+
+    { w:3, t:"Antithesis", d:"opposites in matching grammar",
+      p:["**Antithesis** sets two opposing ideas in ==parallel structure==, usually inside one sentence. The matched grammar forces a direct comparison, so the contrast feels like logic instead of opinion."],
+      cmp:{ a:{h:"class reading",p:["“==Being== is a spiritual proposition. ==Gaining== is a material act.” (Means)","Two cultures reduced to two verbs, weighed on the same scale."]},
+            b:{h:"beyond class",p:["“It was ==the best of times==, it was ==the worst of times==” (Dickens)","One era, two verdicts, same sentence frame."]} },
+      notes:[{k:"warn",t:"Opposites placed near each other !!without!! matched grammar are **juxtaposition**."}],
+      terms:["juxtaposition"] },
+
+    { w:3, t:"Juxtaposition", d:"two things side by side",
+      p:["**Juxtaposition** places two images or ideas next to each other so the ==gap between them== makes the point. No parallel grammar required; the reader does the comparing."],
+      cmp:{ a:{h:"class reading",p:["“==a massive, gleaming, new city hall==” … “==a parking lot with a few cars in it==” (Nguyen)","Civic pride next to emptiness, and no comment needed."]},
+            b:{h:"beyond class",p:["“Look on my Works, ye Mighty, and despair!” / ==Nothing beside remains.== (Shelley)","The boast sits right against the ruin."]} },
+      notes:[{k:"ok",t:"Opposites in matched grammar? Call it **antithesis**, the sharper label."}],
+      terms:["antithesis"] },
+
+    { w:3, t:"Asyndeton", d:"a list with the conjunctions cut",
+      p:["**Asyndeton** drops the “and” or “or” between list items. The items hit fast, so the list feels urgent, or like it could run on forever."],
+      cmp:{ a:{h:"class reading",p:["“==a glance downward, a shuffling of the feet, a mumbled mention of Cambridge==” (Gladwell)","Three quick gestures, no “and” between them, act out the practiced modesty of hinting at Harvard."]},
+            b:{h:"beyond class",p:["“==I came, I saw, I conquered.==” (Julius Caesar)","Victory told at the speed it happened."]} },
+      notes:[{k:"warn",t:"Extra conjunctions are the opposite move, **polysyndeton**."}],
+      terms:["polysyndeton"] },
+
+    { w:3, t:"Polysyndeton", d:"a list with extra conjunctions",
+      p:["**Polysyndeton** puts a conjunction ==between every item==. It slows the list down and makes each item pile onto the last."],
+      cmp:{ a:{h:"class reading",p:["“people who play squash ==and== rugby ==and== who sail boats” (Gladwell)","The “and”s make elite hobbies sound like an endless checklist."]},
+            b:{h:"beyond class",p:["“the rain descended, ==and== the floods came, ==and== the winds blew” (Matthew 7:25)","Each blow lands separately, and the storm keeps coming."]} },
+      notes:[{k:"warn",t:"Conjunctions cut out entirely is **asyndeton**."}],
+      terms:["asyndeton"] },
+
+    { w:3, t:"Allusion", d:"a quick nod to something famous",
+      p:["An **allusion** is a brief reference to a text, event, or figure the audience ==already knows==. It borrows that source’s weight without stopping to explain it.",
+         "Name the type for extra precision: **biblical allusion**, **historical allusion** (Kingsolver’s “we hold these truths to be self-evident”), or **literary allusion** (Kingsolver’s Phileas Fogg burning the ship’s decks)."],
+      cmp:{ a:{h:"class reading",p:["“==Thou shalt not kill==” (Means)","A commandment turned back on the culture that preaches it."]},
+            b:{h:"beyond class",p:["“==Five score years ago==” (King, “I Have a Dream”)","Echoes Lincoln’s “Four score and seven years ago” while standing at his memorial."]} },
+      terms:["biblical allusion","historical allusion","literary allusion"] },
+
+    { w:3, t:"Epistrophe", d:"same ending, clause after clause",
+      p:["**Epistrophe** repeats the ==last word or phrase== of back-to-back clauses. The repeated words get the final, loudest spot every time."],
+      cmp:{ a:{h:"class reading",p:["“Forty ==people laughed==” … “Four ==people laughed==” (Klosterman)","Only the number changes, so the shrinking crowd is the joke."]},
+            b:{h:"beyond class",p:["“government of ==the people==, by ==the people==, for ==the people==” (Lincoln)","Every phrase ends on the same owners."]} },
+      notes:[{k:"warn",t:"Repeat at the start is **anaphora**. Both ends matched is **symploce**."}],
+      terms:["anaphora","symploce"] },
+
+    { w:3, t:"Analogy", d:"a comparison that makes an argument",
+      p:["An **analogy** explains an unfamiliar situation through a familiar one, ==point by point==. It goes further than a **simile**: the comparison carries the reasoning, not just an image."],
+      cmp:{ a:{h:"class reading",p:["“They are in the ==luxury-brand-management business==” (Gladwell)","Elite colleges become luxury brands, where exclusivity is the product."]},
+            b:{h:"beyond class",p:["“America has given the Negro people ==a bad check==, a check which has come back marked ‘insufficient funds.’” (King)","A broken promise becomes a debt anyone can understand."]} },
+      notes:[{k:"ok",t:"Comparison carried across a whole passage? That is an **extended metaphor**."}],
+      terms:["simile","extended metaphor"] },
+
+    /* ───────── w:2 · medium, name them precisely ───────── */
+    { w:2, t:"Extended metaphor", d:"one metaphor carried a long way",
+      p:["An **extended metaphor** keeps one comparison going across several lines or a whole piece, ==adding new details== each time. The comparison becomes the frame for the argument."],
+      cmp:{ a:{h:"class reading",p:["“How can we get from here to there, ==without burning up our ship==?” (Kingsolver)","The economy is a ship burning its own decks for fuel."]},
+            b:{h:"beyond class",p:["“==All the world’s a stage==, / And all the men and women merely players” (Shakespeare)","Life becomes a play, then exits, entrances, and roles."]} },
+      notes:[{k:"warn",t:"A one-line comparison is just a **metaphor**, a low-level label."}],
+      terms:["metaphor"] },
+
+    { w:2, t:"Concession", d:"granting the other side a point",
+      p:["**Concession** admits something the opposing side gets right ==before pushing back==. The writer looks fair, so the rebuttal hits harder."],
+      cmp:{ a:{h:"class reading",p:["“==This is true as far as it goes==” (Means)","Grants the point, then limits it in the same breath."]},
+            b:{h:"beyond class",p:["“==The signers of the Declaration of Independence were brave men.== They were great men too” (Douglass)","Praise first, so the charge of hypocrisy that follows cannot be waved off."]} },
+      notes:[{k:"ok",t:"Concession grants a point. **Procatalepsis** predicts an objection and answers it."}],
+      terms:["procatalepsis"] },
+
+    { w:2, t:"Procatalepsis", d:"answering the objection before it’s raised",
+      p:["**Procatalepsis** voices the audience’s likely objection ==first==, then answers it. The counterargument gets handled on the writer’s terms."],
+      cmp:{ a:{h:"class reading",p:["“‘==But look what happened to boxing==,’ people will say (and these people sometimes include me)” (Klosterman)","He raises the obvious comeback himself, then takes it apart."]},
+            b:{h:"beyond class",p:["“==You may well ask: ‘Why direct action?==’” (King, “Letter from Birmingham Jail”)","The critics’ question is asked for them, then answered."]} },
+      terms:["concession"],
+      notes:[{k:"warn",t:"!!Not the same as!! **concession**: procatalepsis anticipates the objection, concession agrees with part of it."}] },
+
+    { w:2, t:"Hypophora", d:"ask a question, answer it",
+      p:["**Hypophora** poses a question and ==answers it right away==. The writer controls both sides of the exchange, and the answer arrives like a reveal."],
+      cmp:{ a:{h:"class reading",p:["“Do they know how these things will be controlled? ==No, they simply have faith.==” (Means)","The answer turns science into a religion."]},
+            b:{h:"beyond class",p:["“But why, some say, the moon? Why choose this as our goal?” … “==We choose to go to the moon==” (Kennedy)","The doubters’ questions set up the answer."]} },
+      notes:[{k:"warn",t:"Question left unanswered is a !!rhetorical question!! (low-level). Real, unresolved doubt is **aporia**."}],
+      terms:["aporia"] },
+
+    { w:2, t:"Refrain", d:"a line that keeps coming back",
+      p:["A **refrain** is a phrase repeated ==at intervals== across a whole piece, like a chorus. Each return picks up meaning from what came between."],
+      cmp:{ a:{h:"class reading",p:["“It’s really just ==the same old song==” (Means)","Every new ideology gets filed under the same tune."]},
+            b:{h:"beyond class",p:["“Quoth the Raven, ‘==Nevermore==.’” (Poe)","The same word answers every hope, and it gets darker each time."]} },
+      notes:[{k:"ok",t:"Repeats in back-to-back clauses are **anaphora** or **epistrophe**. Spread out across the piece, it is a refrain."}],
+      terms:["anaphora","epistrophe"] },
+
+    { w:2, t:"Verbal irony", d:"saying the opposite of what’s meant",
+      p:["**Verbal irony** says one thing and means the opposite. The ==gap between words and meaning== becomes the criticism. In print, scare quotes often signal it."],
+      cmp:{ a:{h:"class reading",p:["“‘==revolutionized==’ physics” and “these ‘==thinkers==’” (Means)","The quotation marks take the praise back."]},
+            b:{h:"beyond class",p:["“For Brutus is ==an honourable man==” (Shakespeare, Julius Caesar)","Repeated until “honourable” means the reverse."]} } },
+
+    { w:2, t:"Understatement", d:"making it sound smaller than it is",
+      p:["**Understatement** presents something as ==less serious or smaller== than it is. The restraint makes readers supply the real weight themselves."],
+      cmp:{ a:{h:"class reading",p:["“The whole process ==probably took ten minutes==” (Gladwell)","Applying to college, a decision families agonize over, shrinks to ten minutes."]},
+            b:{h:"beyond class",p:["“Ay, ay, ==a scratch, a scratch==” (Mercutio, Romeo and Juliet)","He calls his fatal wound a scratch."]} },
+      notes:[{k:"ok",t:"Understatement by denying the opposite (“not bad”) is **litotes**."}],
+      terms:["litotes"] },
+
+    { w:2, t:"Anticlimax", d:"building up, then dropping flat",
+      p:["**Anticlimax** (also called **bathos**) builds toward something grand, then ==drops to something trivial==. The fall creates humor or deflates the subject."],
+      cmp:{ a:{h:"class reading",p:["“==Quit smoking, and observe posted speed limits==” (Kingsolver)","After lofty talk of wisdom, the advice lands on traffic rules."]},
+            b:{h:"beyond class",p:["“Dost sometimes counsel take—==and sometimes tea==.” (Pope)","A queen’s serious business shares a line with teatime."]} },
+      notes:[{k:"warn",t:"Building up and landing the biggest item last is the reverse move, not an anticlimax."}],
+      terms:["bathos"] },
+
+    { w:2, t:"Pun", d:"a word with two meanings at once",
+      p:["A **pun** plays on a word’s ==double meaning== or on words that sound alike. The joke smuggles a second argument inside it."],
+      cmp:{ a:{h:"class reading",p:["“Peter ‘==MacDollar==’” (Means)","One syllable turns a name into a charge of greed."]},
+            b:{h:"beyond class",p:["“ask for me to-morrow, and you shall find me ==a grave man==” (Mercutio, Romeo and Juliet)","Serious, and about to be in a grave."]} },
+      notes:[{k:"ok",t:"Same word repeated in two senses has a sharper name, **antanaclasis**."}],
+      terms:["antanaclasis"] },
+
+    { w:2, t:"Sentence fragment", d:"a deliberately incomplete sentence",
+      p:["A **sentence fragment** leaves out a subject or verb ==on purpose==. Standing alone, the phrase hits hard and slows the reader."],
+      cmp:{ a:{h:"class reading",p:["“==Again.== This makes no sense.” (Gladwell)","One word standing alone signals the absurdity is repeating."]},
+            b:{h:"beyond class",p:["“==Implacable November weather.==” (Dickens, Bleak House)","No verb, just the mood, dropped like a stage set."]} } },
+
+    { w:2, t:"Self-deprecation", d:"poking fun at yourself",
+      p:["**Self-deprecation** mocks the speaker’s own status or flaws. It ==lowers the audience’s guard== and builds trust before the real argument."],
+      cmp:{ a:{h:"class reading",p:["“you all went to Harvard, ==I did not==” (Winfrey)","A billionaire puts herself below the graduates."]},
+            b:{h:"beyond class",p:["“==I am the man who accompanied Jacqueline Kennedy to Paris==, and I have enjoyed it.” (Kennedy)","The president casts himself as the sidekick."]} } },
+
+    { w:2, t:"Anecdote", d:"a short story used as evidence",
+      p:["An **anecdote** is a brief personal story that ==makes an abstract claim concrete==. Say what the story proves, not just that a story exists."],
+      cmp:{ a:{h:"class reading",p:["“Mom, just so you know, the only reason I’m letting you ==wear that outfit== is because of your age” (Kingsolver)","A kid’s jab becomes permission to be unembarrassed and sincere."]},
+            b:{h:"beyond class",p:["“==I dropped out of Reed College== after the first 6 months” (Jobs, Stanford commencement)","Failure told as a story sets up a lesson about trusting the path."]} } },
+
+    { w:2, t:"Parallelism", d:"matching grammar across a series",
+      p:["**Parallelism** repeats the ==same grammatical shape== across words, phrases, or clauses. Matched structure makes the ideas feel equal and easy to follow."],
+      cmp:{ a:{h:"class reading",p:["“==the argument, the approach, the angle, the wording==” (Roberts)","Four “the + noun” units stacked into one rhythm."]},
+            b:{h:"beyond class",p:["“==one small step for man, one giant leap for mankind==” (Armstrong)","Two halves built the same way, so the jump in size is what stands out."]} },
+      notes:[{k:"ok",t:"Opposites in parallel structure is **antithesis**. Name the specific one when it fits."}],
+      terms:["antithesis"] },
+
+    { w:2, t:"Litotes", d:"understatement by negation",
+      p:["**Litotes** affirms something by ==denying its opposite== (“not bad” for good). The double negative sounds modest while quietly stressing the point."],
+      cmp:{ a:{h:"class reading",p:["“==You are no fool.==” (Roberts)","Denying “fool” is a sly way of saying the reader is smart enough to know better."]},
+            b:{h:"beyond class",p:["“a citizen of ==no mean city==” (Acts 21:39)","“No mean” means important."]} },
+      terms:["understatement"],
+      notes:[{k:"ok",t:"Litotes is a specific kind of **understatement**. Use the specific name when the negation is there."}] },
+
+    { w:2, t:"Euphemism", d:"a soft word for a harsh thing",
+      p:["A **euphemism** swaps in a ==polite term== for an unpleasant one. It can spare feelings or hide something ugly, and pointing out a hidden one is strong analysis."],
+      cmp:{ a:{h:"class reading",p:["“‘==passed away==,’ ‘==left us==,’ ‘==joined his Maker==,’ ‘==went to his reward==.’” (Roberts)","Four soft ways to dodge the word “died,” listed so the padding shows."]},
+            b:{h:"beyond class",p:["“When we have ==shuffled off this mortal coil==” (Shakespeare, Hamlet)","Death described as shrugging off a tangle."]} },
+      notes:[{k:"warn",t:"A harsh word swapped in for a neutral one is the opposite, **dysphemism**."}],
+      terms:["dysphemism"] },
+
+    { w:2, t:"Dysphemism", d:"a harsh word for a neutral thing",
+      p:["A **dysphemism** swaps in an ==insulting term== for a neutral one. The word choice itself becomes the accusation."],
+      cmp:{ a:{h:"class reading",p:["“the ==indoctrination mills== Europeans like to call schools” (Means)","Schools recast as factories for obedience."]},
+            b:{h:"beyond class",p:["“Bah!” said Scrooge, “==Humbug!==” (Dickens, A Christmas Carol)","Christmas reduced to a fraud in one word."]} },
+      terms:["euphemism"],
+      notes:[{k:"ok",t:"Opposite of **euphemism**."}] },
+
+    { w:2, t:"Motif", d:"a recurring image or idea",
+      p:["A **motif** is an image, phrase, or idea that ==recurs across a work== to build a theme. Looser than a **refrain**: the wording can change each time."],
+      cmp:{ a:{h:"class reading",p:["“==Your money or your life==” (Kingsolver)","A robber’s demand that returns as the real choice graduates face."]},
+            b:{h:"beyond class",p:["“Gatsby believed in ==the green light==” (Fitzgerald)","The light keeps returning until it means the whole dream."]} },
+      terms:["refrain"] },
+
+    { w:2, t:"Symbolism", d:"a concrete thing standing for an idea",
+      p:["**Symbolism** uses an object or image to ==stand for a larger idea==. The concrete thing carries abstract meaning without spelling it out."],
+      cmp:{ a:{h:"class reading",p:["“Michael decided to banish that ==darkness with light==” (Winfrey)","Suffering and service become dark and light."]},
+            b:{h:"beyond class",p:["“==the torch has been passed== to a new generation of Americans” (Kennedy)","The torch is responsibility handed down."]} } },
+
+    { w:2, t:"Colloquialism", d:"casual talk in a formal setting",
+      p:["**Colloquialism** drops ==everyday, informal wording== into a formal moment. The shift in register shrinks the distance between speaker and audience."],
+      cmp:{ a:{h:"class reading",p:["“anybody who has ever felt inferior or felt disadvantaged, ==felt screwed by life==” (Winfrey)","Slang at a Harvard commencement speaks straight to the ones who feel left out."]},
+            b:{h:"beyond class",p:["“but that ==ain’t no matter==.” (Twain, Huckleberry Finn)","The narrator sounds like a real kid from the first page."]} } },
+
+    { w:2, t:"Direct address", d:"talking straight to the audience",
+      p:["**Direct address** speaks to the audience ==by name or as “you.”== It turns listeners into participants."],
+      cmp:{ a:{h:"class reading",p:["“And to you, ==members of the Harvard class of 2013==! Hello!” (Winfrey)","The graduates are pulled into the speech from the first line."]},
+            b:{h:"beyond class",p:["“==Friends, Romans, countrymen==, lend me your ears” (Shakespeare, Julius Caesar)","Three titles that flatter the crowd before the argument."]} },
+      notes:[{k:"warn",t:"Speaking to someone absent or to an idea (“Death, be not proud”) is **apostrophe**, !!not!! direct address."}],
+      terms:["apostrophe"] },
+
+    { w:2, t:"Aside", d:"a quick side comment",
+      p:["An **aside** (also called a parenthetical) breaks off from the main line for a brief comment, often in ==parentheses or dashes==. It sounds candid, like a remark meant just for the reader."],
+      cmp:{ a:{h:"class reading",p:["“==Not my channel, by the way.==” (Winfrey)","A quick joke that makes the speech feel unscripted."]},
+            b:{h:"beyond class",p:["“==A little more than kin, and less than kind.==” (Shakespeare, Hamlet)","Hamlet’s first line, spoken to the audience, not the king."]} } },
+
+    { w:2, t:"Enumeratio", d:"a list that breaks a subject into parts",
+      p:["**Enumeratio** lists the ==parts or details== of a subject. The pile of specifics makes the claim feel thorough and concrete."],
+      cmp:{ a:{h:"class reading",p:["“==lawyer, senator, C.E.O., scientist, physicist==” (Winfrey)","The list makes a Harvard degree’s future feel crowded with options."]},
+            b:{h:"beyond class",p:["“I have nothing to offer but ==blood, toil, tears and sweat==.” (Churchill)","Four costs of war, counted out plainly."]} },
+      notes:[{k:"ok",t:"If the point is the missing conjunctions, call it **asyndeton**. If the point is the list itself, enumeratio."}],
+      terms:["asyndeton"] },
+
+    { w:2, t:"Amplification", d:"repeat it, then add to it",
+      p:["**Amplification** repeats a word or idea and ==expands it with detail==. The second pass enlarges what the first only named."],
+      cmp:{ a:{h:"class reading",p:["“Not just a flop, but ==a big bold flop== they call it.” (Winfrey)","The failure gets bigger each time she says it."]},
+            b:{h:"beyond class",p:["“Fog everywhere. ==Fog up the river== … ==fog down the river==” (Dickens, Bleak House)","The fog spreads with every repeat."]} } },
+
+    { w:2, t:"Connotation", d:"the feeling a word carries",
+      p:["**Connotation** is the ==feeling or association== a word carries beyond its dictionary meaning (its **denotation**). Two words can point at the same thing and leave opposite impressions."],
+      cmp:{ a:{h:"class reading",p:["“There is more than a literal difference between ‘They sat around the ==fireside==’ and ‘They sat around the ==stove==.’” (Roberts)","Same warmth, same people, but “fireside” carries comfort and tradition that “stove” does not."]},
+            b:{h:"beyond class",p:["“crippled by the ==manacles== of segregation and the ==chains== of discrimination” (King)","Words from slavery tie segregation straight back to it."]} },
+      notes:[{k:"ok",t:"Quote the word and name the feeling it carries. “Word choice” alone is too vague to earn credit."}],
+      terms:["denotation"] },
+
+    { w:2, t:"Aphorism", d:"a short, quotable truth",
+      p:["An **aphorism** is a ==brief, memorable statement of a general truth==. It packs the argument into a rule readers can carry away and repeat."],
+      cmp:{ a:{h:"class reading",p:["“==It is always a bad mistake to think your readers more naive than they really are.==” (Roberts)","A whole lesson on audience in one sentence."]},
+            b:{h:"beyond class",p:["“==Early to bed and early to rise, makes a man healthy, wealthy and wise.==” (Franklin, Poor Richard’s Almanack)","Rhyme and rhythm make the advice stick."]} } },
+
+    { w:2, t:"Imperative sentence", d:"a direct command",
+      p:["An **imperative sentence** gives a ==command== with an implied “you.” It speaks straight to the reader and makes advice sound urgent and certain."],
+      cmp:{ a:{h:"class reading",p:["“If he was a fool, ==call him a fool==.” (Roberts)","Blunt advice about bluntness, delivered bluntly."]},
+            b:{h:"beyond class",p:["“==Simplify, simplify.==” (Thoreau, Walden)","Two words, and the command repeats itself."]} } },
+
+    { w:2, t:"Jargon", d:"inflated or insider language",
+      p:["**Jargon** is ==specialized or puffed-up technical language==. In analysis, it usually signals a writer mocking empty expertise or showing how language shuts outsiders out."],
+      cmp:{ a:{h:"class reading",p:["“==satisfactory integration of the personality as a social unit==” (Roberts)","A long way to say “fitting in,” quoted to be laughed at."]},
+            b:{h:"beyond class",p:["“==Objective considerations of contemporary phenomena compel the conclusion== that success or failure in competitive activities exhibits no tendency to be commensurate with innate capacity” (Orwell)","A plain Bible verse rewritten as bureaucratic fog to prove a point."]} } },
+
+    { w:2, t:"Appositive", d:"a noun phrase that renames",
+      p:["An **appositive** is a ==noun phrase set beside another noun== to rename or describe it. It adds detail without a new sentence, and it can slip in a judgment."],
+      cmp:{ a:{h:"class reading",p:["“Take your roommate, ==Alfred Simkins, the second-string center==.” (Roberts)","A vague “roommate” becomes a specific, slightly sad person."]},
+            b:{h:"beyond class",p:["“Paul, ==a servant of Jesus Christ==, called to be an apostle” (Romans 1:1)","The writer’s identity is set right beside his name."]} } },
+
+    { w:2, t:"Hypothetical example", d:"an invented scenario as proof",
+      p:["A **hypothetical example** invents a scenario to ==test or illustrate a claim==. It isolates the principle without real-world clutter."],
+      cmp:{ a:{h:"class reading",p:["“As a hypothetical example, ==take the University of Pennsylvania and Penn State==” (Gladwell)","Two real schools dropped into an invented test so the argument is easy to follow."]},
+            b:{h:"beyond class",p:["“==if I am walking past a shallow pond and see a child drowning in it==, I ought to wade in and pull the child out.” (Singer)","One small scene carries a whole moral argument."]} } },
+
+    /* ───────── w:1 · the really good ones ───────── */
+    { w:1, t:"Chiasmus", d:"ideas mirrored, A-B then B-A",
+      p:["**Chiasmus** reverses the order of ideas in the second half (==A-B, B-A==). The mirror shape makes the second half feel like a consequence of the first."],
+      cmp:{ a:{h:"class reading",p:["“when Harvard changed whom it admitted, ==it changed Harvard==” (Gladwell)","Admissions and identity trade places."]},
+            b:{h:"beyond class",p:["“==Fair is foul, and foul is fair==” (Shakespeare, Macbeth)","The flip turns the world upside down."]} },
+      notes:[{k:"ok",t:"When the exact same words come back reversed, the sharper name is **antimetabole**."}],
+      terms:["antimetabole"] },
+
+    { w:1, t:"Antimetabole", d:"the same words, reversed",
+      p:["**Antimetabole** is chiasmus with the ==same words repeated in reverse order==. The flip sounds clever and makes the reversal itself the point."],
+      cmp:{ a:{h:"class reading",p:["“my son ==teaches me==, too, even as ==I teach him==” (Nguyen, “What I’ve Learned From My 4-year-old”)","Teacher and student swap places inside one sentence."]},
+            b:{h:"beyond class",p:["“ask not what your country can do for you—==ask what you can do for your country==” (Kennedy)","Duty flipped from the government to the citizen."]} },
+      terms:["chiasmus"],
+      notes:[{k:"ok",t:"Every antimetabole is a **chiasmus**; name antimetabole when the words are identical."}] },
+
+    { w:1, t:"Symploce", d:"same start and same end",
+      p:["**Symploce** is **anaphora** and **epistrophe** at once: ==matching openings and matching endings== on back-to-back clauses. Only the middle changes, so the middle is what matters. Sometimes taught as “diaposis.”"],
+      cmp:{ a:{h:"class reading",p:["“==The audience for== the Brickyard 400 ==is a marginalized audience==” … “==The audience for== Cheyenne Frontier Days ==is a marginalized audience==” (Klosterman)","Different events, identical verdict."]},
+            b:{h:"beyond class",p:["“==Are they== Hebrews? ==so am I==. ==Are they== Israelites? ==so am I==.” (2 Corinthians 11:22)","Every claim the rivals make gets matched."]} },
+      terms:["anaphora","epistrophe"] },
+
+    { w:1, t:"Epizeuxis", d:"one word, back to back",
+      p:["**Epizeuxis** repeats a word ==immediately, with nothing in between==. Pure emphasis, usually emotional."],
+      cmp:{ a:{h:"class reading",p:["“==Love it. Love it.==” (Harbaugh, quoted by Klosterman)","The coach’s enthusiasm sounds almost automatic."]},
+            b:{h:"beyond class",p:["“==Never, never, never, never, never.==” (Shakespeare, King Lear)","Grief with no other words left."]} } },
+
+    { w:1, t:"Antanaclasis", d:"same word, new meaning",
+      p:["**Antanaclasis** repeats a word but ==changes its meaning== each time. The shift forces a double take. It is a sharper name than **pun** for this move."],
+      cmp:{ a:{h:"class reading",p:["“==passing== time, ==passing== strange. Don’t ==pass== this up” (Kingsolver)","One word slides from time to strangeness to a warning."]},
+            b:{h:"beyond class",p:["“let the ==dead== bury their ==dead==” (Matthew 8:22)","The first “dead” are spiritually dead; the second are actually dead."]} },
+      terms:["pun"] },
+
+    { w:1, t:"Periphrasis", d:"the long way around a plain word",
+      p:["**Periphrasis** uses a ==roundabout description== instead of the simple name. The detour adds humor, dignity, or distance. A compact version is a **kenning**."],
+      cmp:{ a:{h:"class reading",p:["“==a big, flappy dress with sleeves down to your knees==” (Kingsolver)","The graduation gown, made ridiculous by describing it."]},
+            b:{h:"beyond class",p:["“the ==whale-road==” (Beowulf)","The sea, named by who travels it."]} },
+      terms:["kenning"] },
+
+    { w:1, t:"Ellipsis", d:"leaving out words the reader fills in",
+      p:["**Ellipsis** (the device, not just the “…” mark) ==drops words the reader can supply==, often a repeated verb. The gap makes the line faster and harder-hitting."],
+      cmp:{ a:{h:"class reading",p:["“What will he look back on when he graduates from college?” … “==Toil and torn ligaments.==” (Roberts)","The answer skips “he will look back on” and just lands."]},
+            b:{h:"beyond class",p:["“tribulation worketh patience; And patience, ==experience==; and experience, ==hope==.” (Romans 5:3–4)","“worketh” is dropped after its first use, so the chain speeds up."]} },
+      notes:[{k:"ok",t:"A deliberately incomplete sentence standing alone is also a **sentence fragment**. Call it ellipsis when the missing words are clearly implied."}],
+      terms:["sentence fragment"] },
+
+    { w:1, t:"Etymology", d:"arguing from a word’s origin",
+      p:["**Etymology** traces a word back to its ==root or original meaning==. The history of the word becomes evidence for what it should mean now."],
+      cmp:{ a:{h:"class reading",p:["“comes from the Latin word meaning to ==‘carry across’==” (Nguyen, “America, Say My Name”)","The word’s root does the arguing about crossing between languages and countries."]},
+            b:{h:"beyond class",p:["“for sauntering, ==which word is beautifully derived== ‘from idle people who roved about the country, in the Middle Ages’” (Thoreau, “Walking”)","The origin turns an idle stroll into a pilgrimage."]} } },
+
+    { w:1, t:"Distinctio", d:"defining a word on the spot",
+      p:["**Distinctio** stops to spell out ==exactly what a word means== in this context. It closes loopholes and controls how the reader hears the word."],
+      cmp:{ a:{h:"class reading",p:["“==When I say ‘we,’ I mean== even those who were once refugees” (Nguyen)","Former refugees are pulled into the group that fears refugees."]},
+            b:{h:"beyond class",p:["“It depends upon ==what the meaning of the word ‘is’ is==.” (Clinton, grand jury testimony)","A definition used to dodge, which is why it became famous."]} } },
+
+    { w:1, t:"Aporia", d:"real or staged doubt",
+      p:["**Aporia** voices ==uncertainty about what to say or think==. The speaker seems honest, and the audience is invited to deliberate too."],
+      cmp:{ a:{h:"class reading",p:["“==I’ve got to stop and ask myself whether I’m being too harsh==” (Means)","Doubt that makes the harsh claims sound considered."]},
+            b:{h:"beyond class",p:["“==To be, or not to be, that is the question==” (Shakespeare, Hamlet)","The whole speech is a mind arguing with itself."]} },
+      notes:[{k:"warn",t:"If the question gets answered right away, it is **hypophora**."}],
+      terms:["hypophora"] },
+
+    { w:1, t:"Paradox", d:"seems contradictory, holds a truth",
+      p:["A **paradox** looks self-contradictory but ==turns out to be true==. The reader has to stop and resolve it, which makes the idea stick."],
+      cmp:{ a:{h:"class reading",p:["“==Other things being equal, avoid phrases like ‘other things being equal.’==” (Roberts)","The rule breaks itself while it is being given, which is the joke and the lesson."]},
+            b:{h:"beyond class",p:["“==The Child is father of the Man==” (Wordsworth)","Childhood shapes the adult, so the child comes first."]} },
+      notes:[{k:"ok",t:"Two clashing words jammed together (“deafening silence”) is an **oxymoron**."}],
+      terms:["oxymoron"] },
+
+    { w:1, t:"Periodic sentence", d:"main point held to the end",
+      p:["A **periodic sentence** delays the main clause ==until the very end==. Suspense builds through the opening, and the point lands last."],
+      cmp:{ a:{h:"class reading",p:["“Whenever I hear Gerber Sprinklittle play ‘Mississippi Man’ on the trombone, ==my socks creep up my ankles==.” (Roberts)","The setup runs long, so the silly payoff lands last and hardest."]},
+            b:{h:"beyond class",p:["“But when you have seen vicious mobs lynch your mothers and fathers at will … ==then you will understand why we find it difficult to wait==.” (King, “Letter from Birmingham Jail”)","A long list of injustices before the main clause finally arrives."]} },
+      notes:[{k:"ok",t:"Main clause first, details after, is the opposite: **cumulative sentence**."}],
+      terms:["cumulative sentence"] },
+
+    { w:1, t:"Cumulative sentence", d:"main point first, details pile on",
+      p:["A **cumulative sentence** (also called a loose sentence) states the main clause first, then ==keeps adding modifiers==. It gathers detail the way a camera zooms in."],
+      cmp:{ a:{h:"class reading",p:["“faithful and lovable companions, ==intelligent, useful as guardians of the house==” (Roberts)","Praise piles on one add-on at a time, which is exactly the padded style being mocked."]},
+            b:{h:"beyond class",p:["“==he was a tight-fisted hand at the grindstone==, Scrooge! a squeezing, wrenching, grasping, scraping, clutching, covetous, old sinner!” (Dickens)","The insult keeps growing after the sentence could have ended."]} },
+      terms:["periodic sentence"],
+      notes:[{k:"ok",t:"Main clause held to the end is a **periodic sentence**."}] },
+
+    { w:1, t:"Neologism", d:"a newly invented word",
+      p:["A **neologism** is a ==coined word==. Inventing one signals something so specific that no existing word fits."],
+      cmp:{ a:{h:"class reading",p:["“all of her ==Beyonceness==” (Winfrey)","A person turned into a quality."]},
+            b:{h:"beyond class",p:["“He ==chortled== in his joy.” (Carroll, “Jabberwocky”)","Coined from chuckle and snort; now it is in the dictionary."]} } },
+
+    { w:1, t:"Parody", d:"imitating a style to mock it",
+      p:["**Parody** imitates a ==familiar voice or text== to make fun of it. The borrowed form shows how hollow the original sounds."],
+      cmp:{ a:{h:"class reading",p:["“At the University of Texas ==we believe in the principle of diversity==. But unfortunately we cannot offer an environment …” (Gladwell)","An imagined, too-honest university statement that exposes the real ones."]},
+            b:{h:"beyond class",p:["“==Twinkle, twinkle, little bat!== How I wonder what you’re at!” (Carroll, Alice’s Adventures in Wonderland)","A nursery rhyme turned into nonsense."]} } },
+
+    { w:1, t:"Satire", d:"mocking something to expose it",
+      p:["**Satire** uses ==humor, irony, or exaggeration to criticize== foolishness or wrongdoing. The laugh is the delivery system for the attack."],
+      cmp:{ a:{h:"class reading",p:["“==those cases of writing which contain too many instances of words like these==” (Roberts)","He criticizes padded writing in padded writing."]},
+            b:{h:"beyond class",p:["“a young healthy child well nursed is at a year old ==a most delicious, nourishing, and wholesome food==” (Swift, “A Modest Proposal”)","A calm, reasonable tone makes the monstrous proposal expose how the poor were treated."]} },
+      notes:[{k:"ok",t:"**Parody** imitates a specific style or text. Satire is the bigger goal of mocking to criticize; parody is one tool for it."}],
+      terms:["parody"] },
+
+    { w:1, t:"Low-level labels: trade up", d:"basic names that earn little credit",
+      p:["These labels are ==too basic to lead with==. Find the more precise device doing the work, and name that instead."],
+      steps:[
+        "**Simile** or **metaphor**: upgrade to **analogy** or **extended metaphor** if the comparison builds an argument.",
+        "**Rhetorical question**: upgrade to **hypophora** (answered) or **aporia** (real doubt).",
+        "**Repetition**: say where it repeats. **Anaphora**, **epistrophe**, **symploce**, **epizeuxis**, or **refrain**.",
+        "**Hyperbole**: look for **amplification**. The reverse is **understatement** or **litotes**.",
+        "**Imagery**, **personification**, **alliteration**, **idiom**: name what the image, sound, or phrase does, such as **symbolism**, **motif**, or **connotation**.",
+        "**Ethos**, **pathos**, **logos**: name the device that creates the appeal. **Self-deprecation** builds trust; an **anecdote** stirs feeling.",
+        "**Dialogue** or a quotation: name what it proves, such as an **anecdote** or a **parody**.",
+        "**Parenthetical idea**: call it an **aside**."
+      ],
+      notes:[{k:"warn",t:"!!Naming a low-level label alone!! reads as surface-level. The precise name is the point."}] }
+  ],
+
+  practice: [
+    { q:"“Being is a spiritual proposition. Gaining is a material act.” (Means)",
+      opts:["juxtaposition","antithesis","chiasmus","paradox"], a:1,
+      why:"Two opposites in ==matching grammar== is antithesis. Juxtaposition only places things side by side; the parallel structure earns the sharper label." },
+    { q:"“passing time, passing strange. Don’t pass this up” and “Pass your hope like a bad check” (Kingsolver)",
+      opts:["epizeuxis","refrain","anaphora","antanaclasis"], a:3,
+      why:"One word, ==shifting meaning== each time: antanaclasis. Epizeuxis would repeat it back to back with the same meaning." },
+    { q:"“Do they know how these things will be controlled? No, they simply have faith.” (Means)",
+      opts:["hypophora","aporia","rhetorical question","procatalepsis"], a:0,
+      why:"The question gets ==answered immediately==, so it is hypophora. A rhetorical question expects no answer, and aporia leaves the doubt open." },
+    { q:"“a big, flappy dress with sleeves down to your knees” (Kingsolver, describing a graduation gown)",
+      opts:["euphemism","enumeratio","periphrasis","connotation"], a:2,
+      why:"A ==roundabout description== replaces the plain word “gown”: periphrasis. It isn’t a euphemism, because nothing unpleasant is being softened." },
+    { q:"“I’ve got to stop and ask myself whether I’m being too harsh” (Means)",
+      opts:["aporia","hypophora","concession","self-deprecation"], a:0,
+      why:"The speaker voices ==doubt== without resolving it: aporia. It is not self-deprecation, which mocks yourself; here he questions his judgment." },
+    { q:"“The audience for the Brickyard 400 is a marginalized audience” … “The audience for Cheyenne Frontier Days is a marginalized audience” (Klosterman)",
+      opts:["anaphora","epistrophe","refrain","symploce"], a:3,
+      why:"The start AND the end repeat: ==symploce== (sometimes taught as diaposis). Anaphora and epistrophe each only cover one end." },
+    { q:"“the indoctrination mills Europeans like to call schools” (Means)",
+      opts:["euphemism","periphrasis","dysphemism","verbal irony"], a:2,
+      why:"A ==harsh term== replaces a neutral one (schools), so it is dysphemism. Euphemism does the reverse, softening." },
+    { q:"“my son teaches me, too, even as I teach him” (Nguyen)",
+      opts:["antithesis","antimetabole","epistrophe","concession"], a:1,
+      why:"The same words come back in ==reverse order== (son teaches me, I teach him): antimetabole. Antithesis needs opposite ideas." },
+    { q:"“When I say ‘we,’ I mean even those who were once refugees” (Nguyen)",
+      opts:["aside","direct address","concession","distinctio"], a:3,
+      why:"The writer stops to ==define a word== for this context: distinctio. An aside wanders off the main line; this one pins it down." },
+    { q:"“Love it. Love it.” (Harbaugh, quoted by Klosterman)",
+      opts:["epizeuxis","refrain","epistrophe","anaphora"], a:0,
+      why:"The same words, ==back to back, nothing between==: epizeuxis. A refrain is spread across a whole piece." },
+    { q:"“‘But look what happened to boxing,’ people will say (and these people sometimes include me)” (Klosterman)",
+      opts:["concession","hypophora","procatalepsis","direct address"], a:2,
+      why:"He ==raises the objection before readers can==, then answers it: procatalepsis. Concession would agree that the objection is right." },
+    { q:"“comes from the Latin word meaning to ‘carry across’” (Nguyen)",
+      opts:["allusion","etymology","distinctio","jargon"], a:1,
+      why:"Arguing from a word’s ==origin== is etymology. Distinctio defines a word for this context; etymology digs up where it came from." },
+    { q:"“Phileas Fogg convinces the Captain to pull up the decks and throw them into the boiler” (Kingsolver)",
+      opts:["literary allusion","historical allusion","biblical allusion","anecdote"], a:0,
+      why:"Phileas Fogg is a character from Jules Verne, so this is a ==literary allusion==. It isn’t an anecdote; it isn’t her own story." },
+    { q:"“You are no fool.” (Roberts)",
+      opts:["euphemism","dysphemism","paradox","litotes"], a:3,
+      why:"It says something positive by ==denying the opposite== (“no fool” means smart): litotes." },
+    { q:"“Quit smoking, and observe posted speed limits” (Kingsolver), right after lofty talk about wisdom",
+      opts:["climax","anticlimax","understatement","verbal irony"], a:1,
+      why:"Grand buildup, ==trivial landing==: anticlimax. A climax would save the biggest item for last." },
+    { q:"“What will he look back on when he graduates from college?” … “Toil and torn ligaments.” (Roberts)",
+      opts:["anticlimax","asyndeton","ellipsis","enumeratio"], a:2,
+      why:"The answer ==drops the words the reader already knows== (“he will look back on”): ellipsis." },
+    { q:"“Whenever I hear Gerber Sprinklittle play ‘Mississippi Man’ on the trombone, my socks creep up my ankles.” (Roberts)",
+      opts:["periodic sentence","cumulative sentence","hypophora","anecdote"], a:0,
+      why:"The ==main clause comes last== (“my socks creep up my ankles”): periodic sentence. A cumulative sentence puts the main clause first." },
+    { q:"“It’s really just the same old song” … “It’s the same old song” (Means, across several pages)",
+      opts:["anaphora","epistrophe","refrain","epizeuxis"], a:2,
+      why:"A line that ==returns at intervals== across the whole speech is a refrain, not back-to-back repetition." },
+    { q:"“It is always a bad mistake to think your readers more naive than they really are.” (Roberts)",
+      opts:["imperative sentence","hyperbole","verbal irony","aphorism"], a:3,
+      why:"A short, quotable ==general truth==: aphorism. It is not a command, so it isn’t an imperative sentence." },
+    { q:"“Take your roommate, Alfred Simkins, the second-string center.” What is “Alfred Simkins, the second-string center” doing?",
+      opts:["aside","appositive","enumeratio","periphrasis"], a:1,
+      why:"A noun phrase that ==renames== “your roommate” sits right beside it: appositive. An aside breaks off into a separate comment." },
+    { q:"“There is more than a literal difference between ‘They sat around the fireside’ and ‘They sat around the stove.’” (Roberts)",
+      opts:["connotation","jargon","euphemism","juxtaposition"], a:0,
+      why:"The point is the ==feeling each word carries== beyond its meaning: connotation." },
+    { q:"“those cases of writing which contain too many instances of words like these” (Roberts), mocking padded writing with padded writing",
+      opts:["parody","paradox","satire","understatement"], a:2,
+      why:"The aim is to ==criticize by mocking==: satire. Parody would imitate one specific text or voice." },
+    { q:"“I even heard it from Beyonce and all of her Beyonceness.” (Winfrey)",
+      opts:["pun","periphrasis","colloquialism","neologism"], a:3,
+      why:"“Beyonceness” is a ==made-up word==: neologism." },
+    { q:"“to mine and manufacture, to transport, to burn, to bury” (Kingsolver)",
+      opts:["asyndeton","polysyndeton","refrain","antithesis"], a:0,
+      why:"No “and” before the last item, so the verbs rush together: ==asyndeton==. Polysyndeton would put a conjunction between every item." }
+  ],
+
+  cards: [
+    { f:"Anaphora", b:"Same **opening** repeated across back-to-back clauses. “We shall fight … we shall fight …”" },
+    { f:"Antithesis", b:"Opposites in **parallel grammar**. “the best of times … the worst of times”" },
+    { f:"Juxtaposition", b:"Two things **side by side** so the gap makes the point. No parallel grammar needed." },
+    { f:"Asyndeton", b:"List with the **conjunctions cut**. “I came, I saw, I conquered.”" },
+    { f:"Polysyndeton", b:"List with **a conjunction between every item**. “squash and rugby and … sail boats”" },
+    { f:"Allusion", b:"Brief reference to a **famous text, event, or figure**. Name the type: biblical, historical, literary." },
+    { f:"Epistrophe", b:"Same **ending** repeated across back-to-back clauses. “of the people, by the people, for the people”" },
+    { f:"Analogy", b:"Point-by-point comparison that **makes an argument**. College admissions as a luxury brand." },
+    { f:"Extended metaphor", b:"One metaphor **carried across a passage**, adding detail. “All the world’s a stage …”" },
+    { f:"Concession", b:"**Granting** the other side a point before pushing back." },
+    { f:"Procatalepsis", b:"**Raising the objection** before the audience does, then answering it." },
+    { f:"Hypophora", b:"Ask a question, **answer it right away**." },
+    { f:"Refrain", b:"A line that **returns at intervals** across a piece. “Nevermore.”" },
+    { f:"Verbal irony", b:"Saying **the opposite** of what’s meant. “Brutus is an honourable man.”" },
+    { f:"Understatement", b:"Making something sound **smaller** than it is. A fatal wound called “a scratch.”" },
+    { f:"Anticlimax (bathos)", b:"Builds up, then **drops to something trivial**. “counsel take—and sometimes tea”" },
+    { f:"Pun", b:"Play on a word’s **double meaning** or sound. “a grave man”" },
+    { f:"Sentence fragment", b:"A **deliberately incomplete** sentence for impact. “Again.”" },
+    { f:"Self-deprecation", b:"**Mocking yourself** to lower the audience’s guard." },
+    { f:"Anecdote", b:"A **short personal story** used as evidence." },
+    { f:"Litotes", b:"Understatement by **denying the opposite**. “no mean city” = an important city" },
+    { f:"Euphemism", b:"A **soft word** for a harsh thing. “shuffled off this mortal coil”" },
+    { f:"Dysphemism", b:"A **harsh word** for a neutral thing. “indoctrination mills” for schools" },
+    { f:"Motif", b:"An image or idea that **recurs across a work**; wording can change. The green light." },
+    { f:"Symbolism", b:"A **concrete object** standing for an abstract idea. “the torch has been passed”" },
+    { f:"Colloquialism", b:"**Casual wording** in a formal setting. “felt screwed by life”" },
+    { f:"Direct address", b:"Speaking **straight to the audience**. “Friends, Romans, countrymen”" },
+    { f:"Aside", b:"A **brief side comment**, often in parentheses. “Not my channel, by the way.”" },
+    { f:"Enumeratio", b:"A **list of parts or details**. “blood, toil, tears and sweat”" },
+    { f:"Amplification", b:"Repeat a word, then **expand it**. “a flop … a big bold flop”" },
+    { f:"Hypothetical example", b:"An **invented scenario** used as proof. Singer’s drowning child." },
+    { f:"Chiasmus", b:"Ideas **mirrored**, A-B then B-A. “Fair is foul, and foul is fair”" },
+    { f:"Antimetabole", b:"Chiasmus with **the same words reversed**. “ask not what your country can do for you …”" },
+    { f:"Symploce (diaposis)", b:"**Same start and same end** on back-to-back clauses. Anaphora + epistrophe." },
+    { f:"Epizeuxis", b:"One word **back to back**. “Never, never, never, never, never.”" },
+    { f:"Antanaclasis", b:"Same word, **different meaning** each time. “let the dead bury their dead”" },
+    { f:"Periphrasis", b:"A **roundabout description** instead of the plain name. “whale-road” for the sea" },
+    { f:"Distinctio", b:"**Defining a word** on the spot. “When I say ‘we,’ I mean …”" },
+    { f:"Aporia", b:"Voicing **doubt** about what to say or think. “To be, or not to be”" },
+    { f:"Paradox", b:"Seems **self-contradictory** but holds a truth. “The Child is father of the Man”" },
+    { f:"Periodic sentence", b:"Main clause **held to the end**. Builds suspense." },
+    { f:"Cumulative sentence", b:"Main clause **first**, then details pile on. Also called a loose sentence." },
+    { f:"Neologism", b:"A **newly invented word**. “Beyonceness,” “chortled”" },
+    { f:"Parallelism", b:"**Same grammatical shape** repeated. “one small step for man, one giant leap for mankind”" },
+    { f:"Connotation", b:"The **feeling** a word carries beyond its dictionary meaning. “manacles,” “chains”" },
+    { f:"Aphorism", b:"A **short, quotable truth**. “Early to bed and early to rise …”" },
+    { f:"Imperative sentence", b:"A **direct command**. “Simplify, simplify.”" },
+    { f:"Jargon", b:"**Inflated or insider** language, often quoted to mock it." },
+    { f:"Appositive", b:"A noun phrase that **renames** the noun beside it. “your roommate, Alfred Simkins”" },
+    { f:"Ellipsis", b:"**Leaving out words** the reader fills in. “Toil and torn ligaments.”" },
+    { f:"Etymology", b:"Arguing from a word’s **origin**. “which word is beautifully derived …”" },
+    { f:"Satire", b:"**Mocking to criticize**. Swift’s “A Modest Proposal”" },
+    { f:"Parody", b:"**Imitating a style** to mock it. “Twinkle, twinkle, little bat!”" }
+  ]
+};
+
+/* ═══ machinery. nothing below needs editing. ═══ */
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const ICON={
+ apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ psych:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ phys:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ pre:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ sem:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ span:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ apwh:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ biz:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ mor:'<path d="M13 4.5v17"/><path d="M7.5 9.5h11"/>',
+ csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
+};
+const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist"};
+
+/* header */
+document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
+document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
+$("#title").textContent=GUIDE.title;
+if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+$("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
+(function(){
+  const c=$("#crow");
+  c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  if(GUIDE.test){
+    const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
+    const now=new Date(); now.setHours(0,0,0,0);
+    const days=Math.round((t-now)/864e5);
+    const md=`${t.getMonth()+1}/${t.getDate()}`+(GUIDE.end?`–${e.getMonth()+1}/${e.getDate()}`:"");
+    let txt, past=e<now;
+    if(past)txt=`test was ${md}`;
+    else if(days<=0)txt=`test today · ${md}`;
+    else if(days===1)txt=`test tomorrow · ${md}`;
+    else if(days<=14)txt=`test in ${days} days · ${md}`;
+    else txt=`test ${md}`;
+    c.appendChild(el("span","chip"+(past?" past":" due"),esc(txt)));
+  }
+  if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
+})();
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist};
+const tabs=[];
+PANES.forEach((id,i)=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  builders[id](sec); root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+function show(id,user){
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
+/* outline */
+function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
+function extras(s){
+  let h="";
+  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
+  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
+  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
+  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
+  return h;
+}
+function buildOutline(sec){
+  if(GUIDE.top?.length){
+    sec.appendChild(shead("start here","the whole guide in one screen"));
+    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  }
+  const list=GUIDE.outline||[]; if(!list.length)return;
+  const n3=list.filter(s=>s.w===3).length;
+  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
+  const g=el("div","group");
+  list.forEach((s,i)=>{
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
+    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
+    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body);
+  });
+  sec.appendChild(g);
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    sec.appendChild(shead("abbreviations"));
+    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+  }
+}
+
+/* practice mc */
+function buildPractice(sec){
+  const qs=GUIDE.practice||[]; let done=0, right=0;
+  sec.appendChild(shead("practice",`${qs.length} questions`));
+  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  qs.forEach((q,i)=>{
+    const card=el("div","group q");
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
+      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      if(card.classList.contains("done"))return;
+      card.classList.add("done"); const j=+b.dataset.i;
+      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+    }));
+    sec.appendChild(card);
+  });
+  sec.appendChild(sc);
+  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+}
+
+/* problems / worked examples */
+function buildProblems(sec){
+  const ps=GUIDE.problems||[];
+  sec.appendChild(shead("problems",`${ps.length} to work`));
+  ps.forEach((p,i)=>{
+    const card=el("div","group prob");
+    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    const go=card.querySelector(".go");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    sec.appendChild(card);
+  });
+}
+
+/* formulas */
+function buildFormulas(sec){
+  const fs=GUIDE.formulas||[];
+  sec.appendChild(shead("formulas",`${fs.length}`));
+  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+}
+
+/* flashcards */
+function buildCards(sec){
+  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  sec.appendChild(shead("cards",`${cs.length}`));
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
+  const cnt=nav.querySelector("#cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const flip=()=>fc.classList.toggle("flip");
+  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
+  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
+  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
+  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  draw();
+}
+
+/* timeline */
+function buildTimeline(sec){
+  const ts=GUIDE.timeline||[];
+  sec.appendChild(shead("timeline",`${ts.length} events`));
+  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+}
+
+/* checklist */
+function buildChecklist(sec){
+  const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+  sec.appendChild(shead("checklist",`${cs.length} items`));
+  const g=el("div","group");
+  cs.forEach((c,i)=>{
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
+    g.appendChild(b);
+  });
+  sec.appendChild(g);
+}
+
+/* theme (shared with the homepage via localStorage "theme") */
+const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
+function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+function setTheme(mode){
+  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
+  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+}
+segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
+(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
+})();
+requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
+document.fonts?.ready.then(()=>{moveThumb();moveP()});
+
+/* sticky bar shadow + staggered reveal */
+(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
