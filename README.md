@@ -1,8 +1,10 @@
 # Study Guides
 
 Valentino's study-guides site. Replaces the old Linktree. One static page, no
-build step, no backend, no analytics, no third-party scripts. There is nothing
-to breach because nothing runs server-side and nothing loads from anywhere else.
+build step, no backend, no third-party scripts. There is nothing to breach
+because nothing runs server-side and nothing loads from anywhere else. Visitor
+counts come from Vercel Web Analytics: cookieless, anonymous, served from this
+domain.
 
 ## Files
 

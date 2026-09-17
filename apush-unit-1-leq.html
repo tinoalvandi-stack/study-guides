@@ -1541,5 +1541,6 @@ document.fonts?.ready.then(()=>{moveThumb();moveP()});
 (function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
 document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

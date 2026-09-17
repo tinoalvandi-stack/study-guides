@@ -55,7 +55,10 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
    `index.html`.** That list is hand-maintained, not generated from `CLASSES`.
    Forgetting it is the easy mistake: the site looks fine, but the no-JS and
    crawler view silently misses the guide.
-4. Commit and push. Vercel handles the rest.
+4. Make sure the page carries the analytics tag right before `</body>`
+   (the template already has it):
+   `<script defer src="/_vercel/insights/script.js"></script>`
+5. Commit and push. Vercel handles the rest.
 
 ## Featuring an upcoming test
 
@@ -178,11 +181,24 @@ print sheet and is left alone.
 
 ## Content Security Policy
 
-`vercel.json` sets a strict CSP: `default-src 'none'`, inline styles and
-scripts allowed, images from self and `data:` only. A guide that pulls a font,
+`vercel.json` sets a strict CSP: `default-src 'self'`, inline styles and
+scripts allowed, images from self and `data:` only, `connect-src` limited to
+`'self'` (Vercel Web Analytics) and `https://docs.google.com` (feedback form). A guide that pulls a font,
 script, or image from an external host will silently fail to load it. Inline
 everything and embed images as data URIs. If a guide needs to link out to
 Google Docs or Drive, that is a link, not a fetch, and is fine.
+
+## Analytics
+
+Vercel Web Analytics (enabled on the Vercel project, Hobby plan). Every
+page carries one line before `</body>`:
+`<script defer src="/_vercel/insights/script.js"></script>`. The script is
+served by Vercel from this domain, sets no cookies, and records page views
+anonymously (path, referrer, country/city, device, browser). It cannot tell
+who a visitor is. Hobby includes 50k events a month and keeps one month of
+history. Numbers live in the Vercel dashboard under the project's Analytics
+tab. A page without the line is simply not counted. `sxsw-edu-2027.html` is
+left out on purpose (not a guide).
 
 ## Local preview
 
