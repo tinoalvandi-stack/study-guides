@@ -615,7 +615,8 @@ const FEATURES=[
   {classId:"pre",   title:"Vectors, ICF & trig equations study guide", url:"/precalc-vectors-icf-trig-eq", test:"2026-09-04"},
   {classId:"apush", title:"Unit 1/B study guide", url:"/apush-unit-1b", test:"2026-09-08", end:"2026-09-09"},
   {classId:"psych", title:"Unit 1.1\u20131.3 study guide", url:"/psych-unit-1-1-1-3", test:"2026-09-15", end:"2026-09-16", note:"Heredity and environment, the nervous system, the neuron and neural firing."},
-  {classId:"apush", title:"Unit 1 LEQ study guide", url:"/apush-unit-1-leq", test:"2026-09-16", note:"In-class LEQ, 40 minutes. English colonization through King William's War."}
+  {classId:"apush", title:"Unit 1 LEQ study guide", url:"/apush-unit-1-leq", test:"2026-09-16", note:"In-class LEQ, 40 minutes. English colonization through King William's War."},
+  {classId:"pre",   title:"Complex numbers & trig form study guide", url:"/precalc-complex-trig-form", test:"2026-09-18", note:"Non-calculator quiz, 11 questions, 30 minutes. Complex arithmetic, trig/polar form, the Julia set."}
 ];
 /* CLASSES: one entry per unit, newest first. A unit is the guide plus optional extras
    (kind: "cram" | "pdf" | "quiz"). added = the day it went up; "new" shows for 7 days.
@@ -639,6 +640,9 @@ const CLASSES=[
   {id:"mor", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality (Rinaldo)", abbr:"Morality", units:[
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", units:[
+     {t:"Complex numbers & trig form", url:"/precalc-complex-trig-form", added:"2026-09-17", extras:[
+        {kind:"pdf", t:"practice a", url:"/precalc-complex-trig-form-practice-a.pdf"},
+        {kind:"pdf", t:"practice b", url:"/precalc-complex-trig-form-practice-b.pdf"}]},
      {t:"Vectors, ICF & trig equations", url:"/precalc-vectors-icf-trig-eq", added:"2026-09-03", extras:[
         {kind:"pdf", t:"practice a", url:"/precalc-vectors-icf-trig-eq-practice-a.pdf"},
         {kind:"pdf", t:"practice b", url:"/precalc-vectors-icf-trig-eq-practice-b.pdf"},
@@ -1059,6 +1063,7 @@ $(".bar h1").classList.add("show");
   </ul>
   <h3>Honors Precalculus BC</h3>
   <ul>
+    <li><a href="/precalc-complex-trig-form">Complex numbers &amp; trig form</a> &middot; Guide (<a href="/precalc-complex-trig-form-practice-a.pdf">practice A</a>, <a href="/precalc-complex-trig-form-practice-b.pdf">practice B</a>)</li>
     <li><a href="/precalc-vectors-icf-trig-eq">Vectors, ICF &amp; trig equations</a> &middot; Guide (<a href="/precalc-vectors-icf-trig-eq-practice-a.pdf">practice A</a>, <a href="/precalc-vectors-icf-trig-eq-practice-b.pdf">practice B</a>, <a href="/precalc-quizzes">quizzes</a>)</li>
     <li><a href="/precalc-vectors">Vectors + dot product</a> &middot; Guide</li>
   </ul>
