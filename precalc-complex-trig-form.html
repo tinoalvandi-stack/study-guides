@@ -157,6 +157,9 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .btn.wide{width:100%}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.pdfs a{text-decoration:none}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
 @media (hover:hover){.btn:hover{filter:brightness(1.06)}}
 .btn:active{transform:scale(.987)}
 
@@ -234,6 +237,7 @@ footer .upd{display:block;margin-top:6px}
   <div class="crow rv" id="crow"></div>
   <h2 class="title rv" id="title"></h2>
   <p class="sub rv" id="sub" hidden></p>
+  <div class="pdfs rv" id="pdfs" hidden></div>
   <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
   <div id="root" class="rv"></div>
   <footer>
@@ -255,7 +259,12 @@ const GUIDE = {
   title: "Complex numbers & trig form",
   test:  "2026-09-18",
   meta:  "11 questions · 30 min · no calculator",
-  sub:   "Worked problems for every type, heaviest first. Practice quizzes A and B are the PDFs beside this guide.",
+  sub:   "Worked problems for every type, then every formula. Print a practice quiz, set a 30-minute timer, check the key.",
+  pdfs:  [ { t:"all quizzes + memorize sheet", url:"/precalc-complex-trig-form-quizzes.pdf" },
+           { t:"practice quiz a", url:"/precalc-complex-trig-form-practice-a.pdf" },
+           { t:"practice quiz b", url:"/precalc-complex-trig-form-practice-b.pdf" },
+           { t:"practice quiz c", url:"/precalc-complex-trig-form-practice-c.pdf" } ],
+  pdfsNote: "PDFs open in Notability or GoodNotes, or print. Answer key follows each quiz.",
   updated: "sept 17, 2026",
 
   panes: [ "problems", "formulas" ],
@@ -508,6 +517,7 @@ document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
 document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
 $("#title").textContent=GUIDE.title;
 if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");

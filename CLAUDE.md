@@ -152,7 +152,7 @@ hold, because they are what the site's readers rely on:
 New guides start from `template/guide-template.html`. Everything renders from
 one `GUIDE` object: `id` (class token: apush psych phys pre sem biz mor lang
 span apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`,
-`updated`, `panes` (tab order; a pane only shows when its data exists), `top`
+`pdfs` (optional `{t, url}` buttons under the title for printable practice quizzes/tests; first is filled, the rest ghost; optional `pdfsNote` line), `updated`, `panes` (tab order; a pane only shows when its data exists), `top`
 (start-here lines), `outline` (`w:3/2/1`, `t`, `p[]`, `terms[]`, optional
 `notes[]`, `cmp`, `steps[]`, `d`), `practice` (`q`, `opts[]`, `a`, `why`),
 `problems` (`q`, `steps[]`, `ans`), `formulas` (`n`, `f`, `note`), `cards`
