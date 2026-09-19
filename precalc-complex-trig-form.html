@@ -348,7 +348,7 @@ const GUIDE = {
 
     { q:"**Julia set**: is z = 0 + 0i in the Julia set? Is z = i?",
       steps:[
-        "z = 0: 0² − 1 = −1, |−1| = 1 ✓. (−1)² − 1 = 0, |0| = 0 ✓. 0² − 1 = −1 ✓. It cycles −1, 0, −1, never past 2: **yes**.",
+        "z = 0: 0² − 1 = −1, |−1| = 1 ✓. (−1)² − 1 = 0, |0| = 0 ✓. 0² − 1 = −1 ✓. It cycles 0, −1, 0 forever, so the whole orbit stays bounded (never past 2): **yes**.",
         "z = i: i² − 1 = −2, |−2| = 2. !!Equal to 2 is not exceeding 2!!, keep going.",
         "(−2)² − 1 = 3, |3| = 3 > 2: **not in the set**."
       ],
@@ -456,7 +456,7 @@ const GUIDE = {
 
   formulas: [
     { n:"i", f:"i² = −1", note:"i = √−1" },
-    { n:"negative radical", f:"√−a = i√a", note:"!!Convert before multiplying!!: √−a · √−b = −√(ab)" },
+    { n:"negative radical", f:"√−a = i√a", note:"!!Convert to i before multiplying!!: for a, b ≥ 0, √−a · √−b = (i√a)(i√b) = −√(ab)" },
     { n:"powers of i", f:"i, −1, −i, 1", note:"repeats every 4. Exponent ÷ 4, use the ==remainder==. For 1/iⁿ, simplify iⁿ, then flip." },
     { n:"standard form", f:"a + bi", note:"real part a, imaginary part b. Final answers go in this form." },
     { n:"conjugate", f:"a − bi", note:"of a + bi. Product: (a + bi)(a − bi) = ==a² + b²==" },
@@ -476,14 +476,14 @@ const GUIDE = {
     { n:"quadrant II", f:"180° − α" },
     { n:"quadrant III", f:"180° + α" },
     { n:"quadrant IV", f:"360° − α" },
-    { n:"on an axis", f:"0°, 90°, 180°, 270°", note:"+real, +imaginary, −real, −imaginary" },
+    { n:"on an axis", f:"0°, 90°, 180°, 270°", note:"+real, +imaginary, −real, −imaginary. The number 0 has r = 0 and no angle." },
     { n:"30°", f:"(√3/2, 1/2)", note:"(cos, sin); signs come from the quadrant" },
     { n:"45°", f:"(√2/2, √2/2)" },
     { n:"60°", f:"(1/2, √3/2)" },
     { n:"radians", f:"× 180°/π", note:"7π/4 = 315°, 5π/6 = 150°, 11π/6 = 330°" },
-    { n:"Julia set", f:"z² − 1, repeat", note:"square the last result, subtract 1, check |result|. ==Any |result| over 2 → not in the set==. Exactly 2 keeps going." },
+    { n:"Julia set", f:"z² − 1, repeat", note:"square the last result, subtract 1, check |result|. ==Any |result| over 2 → not in the set==. Exactly 2 keeps going. Mathematicians call this the **filled Julia set**: in it means the whole orbit stays bounded." },
     { n:"product", f:"r₁r₂ cis(θ₁+θ₂)", note:"multiply the r's, add the angles" },
-    { n:"quotient", f:"r₁/r₂ cis(θ₁−θ₂)", note:"divide the r's, subtract the angles" }
+    { n:"quotient", f:"r₁/r₂ cis(θ₁−θ₂)", note:"divide the r's (r₂ ≠ 0), subtract the angles" }
   ],
 
   abbr: {}

@@ -551,7 +551,7 @@ const GUIDE = {
     { t:"position vector and direction angle",
       p:["a position vector has its initial point at the origin. every vector in the plane matches one ordered pair `⟨a, b⟩`, where a is the horizontal component and b is the vertical component.",
          "the direction angle θ is the positive angle from the positive x-axis around to the vector.",
-         "from the components: `|u| = √(a² + b²)` and `tan θ = b/a`, `a ≠ 0`. the angle has to be reported in `[0, 2π)`, so check the quadrant before you write it down."],
+         "from the components: `|u| = √(a² + b²)` and reference angle `α = tan⁻¹|b/a|`, `a ≠ 0`, then the signs of `a` and `b` pick the quadrant. the angle has to be reported in `[0, 2π)`. the zero vector has no direction angle."],
       fig:'<svg class="fig" viewBox="0 0 200 128" role="img" aria-label="position vector with horizontal and vertical components">'+
           '<path class="ln" d="M14 104 L190 104"/><path class="ln" d="M34 14 L34 120"/>'+
           '<path class="va" d="M34 104 L142 39"/>'+
@@ -573,7 +573,7 @@ const GUIDE = {
 
   worked:[
     { t:"sketching the operations", src:"worksheet 1-5", tag:"non-calc",
-      q:"given two drawn vectors `g` and `h`, draw `−g`, `2g`, `h + g`, and `h − g`.",
+      q:"use `g = ⟨3, 1⟩` and `h = ⟨−1, 2⟩`. draw both from the origin, then sketch `−g`, `2g`, `h + g`, and `h − g`.",
       steps:[
         {n:"−g", d:"same length as `g`, arrow turned around `180°`."},
         {n:"2g", d:"same direction, twice the length. a scalar only changes length, and only flips direction when it is negative."},
@@ -581,7 +581,7 @@ const GUIDE = {
         {n:"h − g", d:"draw `−g` first, then add it to the tip of `h`. here the order does matter: `g − h` is the same arrow pointing the other way."},
         {n:"check", d:"parallelogram version: from a shared tail, `h + g` is one diagonal and `h − g` is the arrow from the tip of `g` to the tip of `h`."}
       ],
-      a:"`−g` reversed, `2g` doubled, `h + g` tip to tail, `h − g` = `h + (−g)`" },
+      a:"`−g = ⟨−3, −1⟩`, `2g = ⟨6, 2⟩`, `h + g = ⟨2, 3⟩`, `h − g = ⟨−4, 1⟩`" },
 
     { t:"vector operations", src:"worksheet 8-11", tag:"non-calc",
       q:"`u = ⟨−1, 4⟩`, `v = ⟨3, −7⟩`. find `−2u`, `u + v`, `2v − u`, `|u|`, `|v|`, `|u − v|`.",
@@ -670,9 +670,9 @@ const GUIDE = {
         {n:"draw it", d:"put the two forces on the sides of a parallelogram. the resultant is the diagonal."},
         {n:"use the supplement", d:"the angle inside the triangle, across from the diagonal, is `180° − 85° = 95°`. this is the step everyone loses."},
         {n:"law of cosines", d:"`x = √(250² + 450² − 2(250)(450)cos 95°)`, written as one radical."},
-        {n:"evaluate", d:"`x ≈ 533.488` newtons. using `85°` gives `495.4`, which is the wrong triangle."}
+        {n:"evaluate", d:"`x ≈ 533.489` newtons. using `85°` gives `495.4`, which is the wrong triangle."}
       ],
-      a:"`≈ 533.488 N`" },
+      a:"`≈ 533.489 N`" },
 
     { t:"components at an ugly angle", src:"notes ex 3", tag:"calculator",
       q:"vector `v` has magnitude `50` and an angle of inclination of `20°` from the horizontal. find the magnitudes of the horizontal and vertical components.",
@@ -701,11 +701,11 @@ const GUIDE = {
       rows:[
         ["from 2 points","`PQ = ⟨x₂ − x₁, y₂ − y₁⟩` (terminal minus initial)"],
         ["magnitude","`|⟨a, b⟩| = √(a² + b²)`"],
-        ["direction angle","`tan θ = b/a`, `a ≠ 0`, then fix by quadrant so `0 ≤ θ < 2π`"],
+        ["direction angle","reference angle `α = tan⁻¹|b/a|`, `a ≠ 0`, then fix by quadrant so `0 ≤ θ < 2π`. axis directions: `0`, `π/2`, `π`, `3π/2`"],
         ["horizontal comp","`a = |v|cos θ`"],
         ["vertical comp","`b = |v|sin θ`, so `v = ⟨|v|cos θ, |v|sin θ⟩`"],
         ["i, j form","`⟨a, b⟩ = ai + bj`, where `i = ⟨1, 0⟩` and `j = ⟨0, 1⟩`"],
-        ["unit vector","any vector with magnitude `1`"]
+        ["unit vector","magnitude `1`. to find one in the direction of `v ≠ 0`: `v/|v|`. e.g. `⟨3, 4⟩/5 = ⟨3/5, 4/5⟩`"]
       ] },
     { t:"operations",
       rows:[
@@ -720,8 +720,8 @@ const GUIDE = {
         ["definition","`u · v = ac + bd`. the answer is a scalar"],
         ["with itself","`u · u = |u|²`"],
         ["angle between","`cos θ = (u · v)/(|u||v|)`, with `0° ≤ θ ≤ 180°`"],
-        ["orthogonal","`u · v = 0` ⟺ `θ = 90°`"],
-        ["sign table","positive → acute · zero → right · negative → obtuse"],
+        ["orthogonal","`u · v = 0` ⟺ `θ = 90°` (nonzero vectors; the zero vector has no angle)"],
+        ["sign table","positive → `0° ≤ θ < 90°` · zero → `90°` · negative → `90° < θ ≤ 180°`"],
         ["properties","`u · v = v · u`, `u · (v + w) = u · v + u · w`, `(ku) · v = k(u · v)`"]
       ] },
 
@@ -737,7 +737,7 @@ const GUIDE = {
   traps:[
     { t:"the force problem uses the supplement",
       p:["two forces with `85°` between them go into the law of cosines as `cos 95°`. the resultant is the diagonal of the parallelogram, and the angle across from it is the supplement of the angle between the forces.",
-         "if the resultant comes out smaller than the larger force, you probably used the wrong angle."] },
+         "here the forces are only `85°` apart, so the resultant is bigger than either force. in general `|a − b| ≤ R ≤ a + b`: forces pulling in nearly opposite directions can give a resultant smaller than either one."] },
     { t:"tan⁻¹ does not know the quadrant",
       p:["`tan⁻¹` only ever returns quadrant `I` or `IV`. plot the signs of `⟨a, b⟩` first, then add `π` (or `180°`) for quadrants `II` and `III`, and add `2π` (or `360°`) to a negative quadrant `IV` answer.",
          "the reported direction angle has to live in `[0, 2π)`. `−π/4` is not an answer, `7π/4` is."] },
@@ -745,17 +745,17 @@ const GUIDE = {
       p:["subtract the components, then take the magnitude of what's left. `⟨−1, 4⟩ − ⟨3, −7⟩ = ⟨−4, 11⟩`, so `|u − v| = √137 ≈ 11.7`, not `√17 − √58`, which is negative."] },
     { t:"a missing component is a zero",
       p:["`u = 5i` means `u = ⟨5, 0⟩`, and `u = −6j` means `u = ⟨0, −6⟩`. the slot is still there, it just holds a zero.",
-         "this bites hardest in dot products: `⟨5, 0⟩ · ⟨−3, 2⟩ = −15 + 0`, not `−15 + 2`. and going the other way, an answer of `⟨16, 0⟩` still gets written `16i + 0j` when both forms are asked for."] },
+         "this bites hardest in dot products: `⟨5, 0⟩ · ⟨−3, 2⟩ = −15 + 0`, not `−15 + 2`. and going the other way, an answer of `⟨16, 0⟩` is `16i` (or `16i + 0j`) when both forms are asked for."] },
 
     { t:"scaling changes length by |k|",
-      p:["`|kv| = |k||v|`. so `|−2v| = 2|v|`, and a negative scalar never shortens a vector, it only turns it around.",
+      p:["`|kv| = |k||v|`. so `|−2v| = 2|v|`. a negative scalar reverses the direction, and `|k|` sets the length: `−½v` is half as long, `−v` is the same length, `−2v` is twice as long.",
          "you do not have to recompute components for this. find `|v|` once, then multiply.",
          "different rule from adding: `|u + v|` is almost never `|u| + |v|`."] },
 
     { t:"the dot product is a number",
       p:["`u · v = ac + bd` collapses two vectors into one scalar. if your answer has angle brackets or an `i` in it, you did componentwise multiplication, which is not a thing."] },
     { t:"give both forms when asked",
-      p:["the worksheet wants component form and `i`, `j` form. `⟨0, 4⟩` still has to be written as `0i + 4j`, not just `4j`, when both are asked for.",
+      p:["the worksheet wants component form and `i`, `j` form. when both are asked for, write `⟨0, 4⟩` and `4j` (`0i + 4j` is the same thing, just more explicit).",
          "same for magnitude and direction: two answers, two boxes."] },
 
     { t:"read the sign before you compute the angle",
@@ -771,7 +771,7 @@ const GUIDE = {
       "`PQ = ⟨x₂ − x₁, y₂ − y₁⟩` (terminal − initial)",
       "`⟨a, b⟩ = ai + bj`,  `i = ⟨1, 0⟩`,  `j = ⟨0, 1⟩`",
       "`|⟨a, b⟩| = √(a² + b²)`",
-      "unit vector: magnitude `1`"]},
+      "unit vector: magnitude `1`, found by `v/|v|`"]},
     {t:"Dot product", l:[
       "`u · v = ac + bd` (a number, not a vector)",
       "`u · u = |u|²`",
@@ -782,14 +782,15 @@ const GUIDE = {
       "`a = |v|cos θ` (horizontal)",
       "`b = |v|sin θ` (vertical)",
       "`v = ⟨|v|cos θ, |v|sin θ⟩`",
-      "`tan θ = b/a`, `a ≠ 0` (reference angle)",
+      "reference angle `α = tan⁻¹|b/a|`, `a ≠ 0`; signs of `a`, `b` pick the quadrant",
       "report `θ` in `[0, 2π)`"]},
     {t:"Angle between", l:[
       "`cos θ = (u · v)/(|u||v|)`,  `0° ≤ θ ≤ 180°`",
       "orthogonal ⟺ `u · v = 0`",
-      "dot `> 0`: acute",
-      "dot `= 0`: right",
-      "dot `< 0`: obtuse"]},
+      "nonzero vectors only:",
+      "dot `> 0`: `0° ≤ θ < 90°`",
+      "dot `= 0`: `90°`",
+      "dot `< 0`: `90° < θ ≤ 180°`"]},
 
     {t:"Quadrant fix", l:[
       "`tan⁻¹` only answers in QI or QIV. signs of `⟨a, b⟩` give the quadrant:",
@@ -804,7 +805,7 @@ const GUIDE = {
     {t:"Operations", l:[
       "`⟨a, b⟩ ± ⟨c, d⟩ = ⟨a ± c, b ± d⟩`",
       "`k⟨a, b⟩ = ⟨ka, kb⟩`",
-      "`|kv| = |k||v|` (the sign never shortens it)",
+      "`|kv| = |k||v|` (a negative `k` flips direction; `|k|` sets length)",
       "resultant = the sum: tip to tail, or the diagonal of the parallelogram",
       "addition commutes, subtraction does not"]},
     {t:"Exact values", table:[

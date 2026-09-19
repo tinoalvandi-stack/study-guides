@@ -458,8 +458,8 @@ const GUIDE = {
     { t:"measurements",
       p:[ "number + unit. "+pen("no naked numbers.")+" unit on every line.",
           "read every certain digit, estimate one more. ruler in mm → "+m("4.13 cm")+".",
-          "+ −: fewest decimal places. × ÷: fewest sig figs. counts and conversions: exact.",
-          m("10. cm")+" → 2 sig figs. "+m("10 cm")+" → 1. round once, at the end." ],
+          "+ −: fewest decimal places. × ÷: fewest sig figs. counts and defined conversions: exact.",
+          m("10. cm")+" → 2 sig figs. "+m("10 cm")+" is unclear: write "+m("1 × 10¹ cm")+" (1 sig fig) or "+m("1.0 × 10¹ cm")+" (2). round once, at the end." ],
       ex:[ { q:"two masses, "+m("7.6 g")+" and "+m("5.17 g")+". sum?",
              w:()=>F(m("7.6 g + 5.17 g = 12.77 g → ")+box("12.8 g")) },
            { q:"cube, "+m("10. cm")+" on a side. volume?",
@@ -516,18 +516,18 @@ const GUIDE = {
              w:()=>F(m("t = ")+fr("d","v")+m(" = (185 mi) / (130. mi/h) = ")+box("1.42 h")) },
            { q:"guard walks "+m("110 m")+" in "+m("240 s")+". speed?",
              w:()=>F(m("v = ")+fr("d","t")+m(" = (110 m) / (240 s) = ")+box("0.46 m/s")) },
-           { q:m("100 km/h")+" in m/s?",
-             w:()=>F(m("v = (100 km/h)")+fr("1000 m","1 km")+fr("1 h","3600 s")+m(" = ")+box("27.8 m/s")) },
+           { q:m("1.00 × 10² km/h")+" in m/s?",
+             w:()=>F(m("v = (1.00 × 10² km/h)")+fr("1000 m","1 km")+fr("1 h","3600 s")+m(" = ")+box("27.8 m/s")) },
            { q:"horse at "+m("600 m")+" at 0 s, "+m("500 m")+" at 10 s. velocity?",
              w:()=>F(m("v = ")+fr(DX,DT)+m(" = (500 m − 600 m) / (10 s − 0 s) = ")+box("−10 m/s")) } ],
       terms:[m("v")+" avg = "+m("Δx/Δt"),"speed = distance/"+m("Δt"),"secant = average","tangent = instantaneous"] },
 
     { t:"motion diagrams with vectors",
       p:[ "displacement vectors: dot to dot. equal arrows = constant v.",
-          "velocity vectors: one per dot. length = speed. flips at a turnaround.",
+          "velocity vectors: one per dot, instantaneous v. length = speed. flips at a turnaround.",
           "speeding up: spacing grows. slowing: spacing shrinks. rest: dots pile up.",
           "turnaround: v = 0 for one instant only.",
-          "his diagram questions: velocity +, −, or 0? change in speed? change in velocity? make up numbers from the arrow lengths (1, 2, 3, 4), negative if left, then subtract." ],
+          "diagram questions: velocity +, −, or 0? speed and velocity: increasing, decreasing, or constant? make up numbers from the arrow lengths (1, 2, 3, 4), negative if left, then subtract." ],
       ex:[ { q:"softball player, from rest, speeds up toward first base.",
              w:()=>md({min:0,max:9,step:1,unit:"x (m)",rows:[{pos:[0,0.5,2,4.5,8],t:["0 s","1 s","2 s","3 s","4 s"],vel:[0,1,2,3,4]}]})+
                  '<p class="side">dots spread out, arrows grow, all point the same way.</p>' },
@@ -535,7 +535,7 @@ const GUIDE = {
              w:()=>md({min:0,max:15,step:1,scale:6,unit:"x (m)",rows:[{pos:[0,3,6,9,11.5,13,14],t:["0","1","2","3","4","5","6 s"],vel:[3,3,3,3,2,1,0]}]})+
                  '<p class="side">equal spacing, then bunching, then no arrow.</p>' },
            { q:"walking left, arrows getting longer. velocity? change in speed? change in velocity?",
-             w:()=>md({min:0,max:9,step:1,unit:"x (m)",rows:[{pos:[8,7,5,2],t:["0 s","1 s","2 s","3 s"],vel:[-1,-2,-3,-4]}]})+
+             w:()=>md({min:0,max:9,step:1,unit:"x (m)",rows:[{pos:[8,6.5,4,0.5],t:["0 s","1 s","2 s","3 s"],vel:[-1,-2,-3,-4]}]})+
                  F(m("velocities: −1, −2, −3, −4 m/s → ")+box("negative"))+
                  F(m("speeds 1, 2, 3, 4 → change in speed ")+box("+"))+
                  F(m("−1 → −4, more negative → change in velocity ")+box("−"))+
@@ -558,7 +558,7 @@ const GUIDE = {
       terms:["slope = velocity","steeper = faster","flat = rest","intercept = start"] },
 
     { t:"velocity-time graphs",
-      p:[ "height = v. sign = direction. flat = constant v (still moving). on the axis = rest.",
+      p:[ "height = v. sign = direction. flat = constant v: moving if off the axis, rest if on it.",
           pen("area = displacement.")+" below the axis → negative. |areas| added = distance.",
           "away from the axis = speeding up. toward it = slowing down. crosses it = turned around." ],
       ex:[ { q:"area under the line, 0 to 5 s?",
@@ -570,12 +570,12 @@ const GUIDE = {
              w:()=>graph({xmin:0,xmax:8,xstep:1,ymin:-5,ymax:1,ystep:1,xlab:"t (s)",ylab:"v (m/s)",segs:[{pts:[[0,-4],[8,-2]]}]})+
                  F(m("rectangle: (−2 m/s)(8 s) = −16 m"))+F(m("triangle: ½(8 s)(−2 m/s) = −8 m"))+F(DX+m(" = −16 m + (−8 m) = ")+box("−24 m"))+
                  '<p>velocity '+box("increasing")+' (−4 → −2, toward +). speed '+box("decreasing")+' (4 → 2).</p>' },
-           { q:"three racers, v-t curves. who went farthest by 5.0 s?",
-             w:()=>'<p>biggest area under the curve. compare areas, not heights at 5.0 s.</p>' } ],
+           { q:"three racers, all moving forward (v ≥ 0), v-t curves. who went farthest by 5.0 s?",
+             w:()=>'<p>biggest area between the curve and the t-axis. compare areas, not heights at 5.0 s. any area below the axis: add |areas| for distance.</p>' } ],
       terms:["area = displacement","below = negative","away from axis = speeding up"] },
 
     { t:"sketching one graph from the other",
-      p:[ "x-t → v-t: each slope → a horizontal line at that value. flat → zero. vertical jumps between.",
+      p:[ "x-t → v-t: each straight segment → a horizontal line at its slope. flat → zero. curved x-t → follow the changing tangent slope. sharp corners = idealized instant jumps.",
           "v-t → x-t: add up areas. start at the given x. constant v → straight. rising v → curves up. v below axis → x goes down.",
           "number both axes. label with units." ],
       ex:[ { q:"x-t: straight line 0 to 50 m in 5 s. sketch v-t.",
@@ -583,7 +583,7 @@ const GUIDE = {
            { q:"v-t: "+m("v = 10t")+". sketch displacement-time.",
              w:()=>graph({xmin:0,xmax:5,xstep:1,ymin:0,ymax:125,ystep:25,xlab:"t (s)",ylab:"Δx (m)",segs:[{pts:[[0,0],[0.5,1.25],[1,5],[1.5,11.25],[2,20],[2.5,31.25],[3,45],[3.5,61.25],[4,80],[4.5,101.25],[5,125]]},{pts:[[0,0],[1,5],[2,20],[3,45],[4,80],[5,125]],dots:true,nol:true}]})+
                  F(m("areas: 5, 15, 25, 35, 45 m → running total 0, 5, 20, 45, 80, 125 m"))+'<p class="side">curve bends up. steeper every second.</p>' },
-           { q:"mail carrier: "+m("+3 m/s")+" 0 to 6 s, "+m("0")+" 6 to 8 s, "+m("−2 m/s")+" 8 to 10 s. sketch x-t. mailbox?",
+           { q:"mail carrier starts at "+m("x = 0 m")+", passes the mailbox, stops, then returns to it at "+m("t = 10 s")+": "+m("+3 m/s")+" 0 to 6 s, "+m("0")+" 6 to 8 s, "+m("−2 m/s")+" 8 to 10 s. sketch x-t. mailbox?",
              w:()=>graph({xmin:0,xmax:10,xstep:1,ymin:0,ymax:20,ystep:5,xlab:"t (s)",ylab:"x (m)",segs:[{pts:[[0,0],[6,18],[8,18],[10,14]]},{pts:[[0,0],[6,18],[8,18],[10,14]],dots:true,nol:true}]})+
                  F(m("(3 m/s)(6 s) = 18 m   ·   0   ·   (−2 m/s)(2 s) = −4 m"))+F(m("x: 0 → 18 m → 18 m → 14 m"))+'<p>mailbox at '+box("14 m")+'. the stop at 18 m is the overshoot. he backs up after.</p>' } ],
       terms:["slope → height","area → rise","label units"] }
@@ -600,7 +600,7 @@ const GUIDE = {
            F(m("x-t slope = v   ·   v-t area = ")+DX)+
            F(m("area: bh, ½bh, ½(b₁ + b₂)h"))+
            F(m("resultant: tip to tail"))+
-           F(m("1 km = 1000 m · 1 h = 3600 s · 1 mi = 1609 m · 1 ms = 10⁻³ s"))+
+           F(m("1 km = 1000 m · 1 h = 3600 s · 1 mi = 1609.344 m (exact) ≈ 1609 m · 1 ms = 10⁻³ s"))+
            '<div class="rule">formula → substitute with units → boxed answer with unit.</div>' },
 
     { h:"vector vs scalar",
@@ -629,7 +629,7 @@ const GUIDE = {
       body:'<p>'+m("−4 → −2 m/s")+': velocity up, speed down. '+m("−1 → −4 m/s")+': speed up, velocity down.</p>'+
            '<p>full lap: '+m(DX)+' = 0, speed ≠ 0.</p>'+
            '<p>move the origin: '+m(X)+' changes, '+m(DX)+' doesn\'t.</p>'+
-           '<p>flat x-t = rest. flat v-t = moving.</p>'+
+           '<p>flat x-t = rest. flat v-t = constant v: at zero = rest, off zero = moving.</p>'+
            '<p>x-t crosses zero = at origin. v-t crosses zero = turned around.</p>'+
            '<p>piled-up dots = a v = 0 stretch, not a ramp through zero.</p>'+
            '<p>mailbox = where the trip ends, not the overshoot stop.</p>' }
@@ -653,7 +653,7 @@ const GUIDE = {
               '<p class="lbl">(c)</p>'+F(m("v = (18.0 km/h)")+fr("1000 m","1 km")+fr("1 h","3600 s")+m(" = ")+box("5.00 m/s"))+
               '<p class="why"><b>why</b> west leg subtracts from '+m(DX)+', adds to distance. chain the conversions so km and h cancel.</p>' },
         { k:"problem", q:"sprinter: "+m("100. m")+" in "+m("9.80 s")+". constant speed.",
-          parts:["speed, m/s.","distance in "+m("3.00 s")+" at that speed.","speed in mi/h. "+m("1 mi = 1609 m")+"."],
+          parts:["speed, m/s.","distance in "+m("3.00 s")+" at that speed.","speed in mi/h. "+m("1 mi ≈ 1609 m")+"."],
           sol:()=>'<p class="lbl">(a)</p>'+F(m("v = ")+fr("d",DT)+m(" = (100. m) / (9.80 s) = ")+box("10.2 m/s"))+
               '<p class="lbl">(b)</p>'+F(m("d = v ")+DT+m(" = (10.2 m/s)(3.00 s) = ")+box("30.6 m"))+
               '<p class="lbl">(c)</p>'+F(m("v = (10.2 m/s)")+fr("1 mi","1609 m")+fr("3600 s","1 h")+m(" = ")+box("22.8 mi/h"))+
@@ -739,12 +739,12 @@ const GUIDE = {
               '<p>(b) velocity '+box("+")+' (still moving right). speed 4 → 0, change '+box("−")+'. velocity 4 → 0, change '+box("−")+'.</p>'+
               '<p>(c) '+box("at the end")+'. slowest there, least distance per interval.</p>'+
               '<p class="why"><b>why</b> moving right and slowing: speed and velocity both drop. only leftward motion splits them.</p>' },
-        { k:"problem", q:"car passes the "+m("100 m")+" sign at "+m("0 s")+" and the "+m("140 m")+" sign at "+m("2.5 s")+".",
-          parts:["speed in m/s.","speed in km/h.","speed in mi/h. "+m("1 mi = 1609 m")+"."],
+        { k:"problem", q:"car passes the "+m("100 m")+" sign at "+m("0 s")+" and the "+m("140 m")+" sign at "+m("2.5 s")+". it drives directly between the signs without reversing.",
+          parts:["average speed in m/s.","speed in km/h.","speed in mi/h. "+m("1 mi ≈ 1609 m")+"."],
           sol:()=>'<p class="lbl">(a)</p>'+F(m("v = ")+fr(DX,DT)+m(" = (140 m − 100 m) / (2.5 s − 0 s) = ")+box("16 m/s"))+
               '<p class="lbl">(b)</p>'+F(m("(16 m/s)")+fr("1 km","1000 m")+fr("3600 s","1 h")+m(" = ")+box("58 km/h"))+
               '<p class="lbl">(c)</p>'+F(m("(16 m/s)")+fr("1 mi","1609 m")+fr("3600 s","1 h")+m(" = ")+box("36 mi/h"))+
-              '<p class="why"><b>why</b> slope formula first. every conversion is exact, so it never limits the answer.</p>' },
+              '<p class="why"><b>why</b> slope formula first. 1000 m and 3600 s are exact; 1609 m is rounded to 4 sig figs, more than the 2 sig figs in the answer, so neither limits it.</p>' },
         { k:"problem", q:"skateboard starts at "+m("x = +2 m")+", moves toward −x at a constant "+m("1.5 m/s")+" for "+m("4 s")+".",
           parts:["displacement.","final position.","closer to or farther from the origin at the end? why?"],
           sol:()=>'<p class="lbl">(a)</p>'+F(DX+m(" = ")+Vv+DT+m(" = (−1.5 m/s)(4 s) = ")+box("−6 m"))+
@@ -786,8 +786,8 @@ const GUIDE = {
               '<p class="lbl">(c)</p>'+F(VA+" = "+fr(DX,DT)+m(" = (4 km) / (4.0 h) = ")+box("1.0 km/h north"))+F(m("avg speed = (8 km) / (4.0 h) = ")+box("2.0 km/h"))+
               '<p class="why"><b>why</b> second arrow starts at the tip of the first. resultant runs tail of first → tip of second. same time, two different answers.</p>' },
         { k:"problem", q:"security guard walks one "+m("110 m")+" loop around a building in "+m("240 s")+".",
-          parts:["speed.","displacement.","average velocity.","time for the loop in minutes."],
-          sol:()=>'<p class="lbl">(a)</p>'+F(m("speed = ")+fr("distance",DT)+m(" = (110 m) / (240 s) = ")+box("0.46 m/s"))+
+          parts:["average speed for the loop.","displacement.","average velocity.","time for the loop in minutes."],
+          sol:()=>'<p class="lbl">(a)</p>'+F(m("avg speed = ")+fr("distance",DT)+m(" = (110 m) / (240 s) = ")+box("0.46 m/s"))+
               '<p class="lbl">(b)</p>'+F(DX+m(" = ")+box("0 m")+m(", ends where he started"))+
               '<p class="lbl">(c)</p>'+F(VA+m(" = (0 m) / (240 s) = ")+box("0 m/s"))+
               '<p class="lbl">(d)</p>'+F(m("(240 s)")+fr("1 min","60 s")+m(" = ")+box("4.0 min"))+
