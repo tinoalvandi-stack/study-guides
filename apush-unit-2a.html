@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>study guide · valentino guides</title>
+<meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+   Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+
+:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1);--ink3:rgba(94,90,82,.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--good:#4C6A48;--bad:#8E3F4C;
+  --c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}}
+:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}
+
+:root{
+  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:600; --ls-d:-.025em;
+  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px;
+  --r-card:14px; --r-btn:10px; --r-chip:8px;
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --gap:16px;
+  --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
+.lc{text-transform:lowercase}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
+.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px}
+.home{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:26px;height:26px;border-radius:5px;flex:none;display:block}
+.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase;white-space:nowrap}
+@media (max-width:379px){.bar h1{display:none}}
+.seg{position:relative;display:flex;border:1px solid var(--line);border-radius:8px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
+.seg button{position:relative;z-index:2;padding:4px 9px;border-radius:6px;font-size:var(--t12);font-weight:500;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
+.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.bar .seg{margin-left:auto}
+
+/* intro */
+main{padding-top:22px}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cname svg{width:20px;height:20px;flex:none}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
+.chip.past{color:var(--ink3)}
+h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+
+/* pane switcher */
+.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes::-webkit-scrollbar{display:none}
+.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button[aria-selected="true"]{color:var(--on-accent)}
+.panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.panes.one{display:none}
+.pane{display:none}
+.pane.on{display:block;animation:rise .38s var(--spring) both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* section head */
+.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+.sh:first-child{margin-top:0}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+
+/* cards + groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.card.top{border-left:4px solid var(--cls);padding-left:15px}
+.card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
+.row + .row,.body + .row{border-top:1px solid var(--line)}
+.row:active{background:var(--surface2)}
+@media (hover:hover){.row:hover{background:var(--surface2)}}
+.rt{min-width:0;flex:1}
+.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
+.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
+.row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
+.body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
+.body.on{grid-template-rows:1fr}
+.body > div{overflow:hidden}
+.body .in{padding:12px 16px 14px}
+.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
+.body p:last-child{margin-bottom:0}
+
+/* prose emphasis */
+.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
+.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.trap{color:var(--bad);font-weight:600}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
+.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
+.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
+.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media (max-width:479px){.cmp{grid-template-columns:1fr}}
+.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
+.abbr b{color:var(--ink);font-weight:600}
+
+/* practice mc */
+.q{margin-bottom:10px}
+.q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
+.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
+.opt:active{background:var(--surface2)}
+@media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
+.opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
+.q.done .opt{cursor:default}
+.opt.right{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q.done .why{display:block}
+.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
+.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wide{width:100%}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.pdfs a{text-decoration:none}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
+
+/* problems + worked examples */
+.prob .qt{padding:14px 16px}
+.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block}
+.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+.ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+
+/* formulas */
+.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
+.fx:first-child{border-top:0}
+.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
+.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+
+/* flashcards */
+.deck{position:relative;perspective:1200px;margin-bottom:10px}
+.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.fc.flip{transform:rotateY(180deg)}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc .b .tag{color:var(--cls)}
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+
+/* timeline */
+.tl{position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding:6px 0 12px}
+.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
+.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
+.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+
+/* checklist */
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
+.ck:first-child{border-top:0}
+.ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
+.ck.on .box{background:var(--good);border-color:var(--good)}
+.ck.on .t{color:var(--ink3);text-decoration:line-through}
+.ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
+
+/* footer */
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+footer .upd{display:block;margin-top:6px}
+
+/* reveal on load */
+.rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="home" href="/" aria-label="all guides">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg>
+      <h1>valentino guides</h1>
+    </a>
+    <div class="seg" role="group" aria-label="theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">auto</button>
+      <button type="button" data-set="light" aria-pressed="false">light</button>
+      <button type="button" data-set="dark" aria-pressed="false">dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="crow rv" id="crow"></div>
+  <h2 class="title rv" id="title"></h2>
+  <p class="sub rv" id="sub" hidden></p>
+  <div class="pdfs rv" id="pdfs" hidden></div>
+  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div id="root" class="rv"></div>
+  <footer>
+    study guide written by a student, free to use. not affiliated with the school.
+    check anything that matters against your own notes. <a href="/">all guides</a>
+    <span class="upd" id="upd"></span>
+  </footer>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   GUIDE — the only thing to edit. Delete panes you don't need from
+   `panes`; delete the matching data too. Prose accepts **term**,
+   ==fact== and !!trap!!. Everything is rendered from this object.
+   ═══════════════════════════════════════════════════════════════════ */
+const GUIDE = {
+  id:    "apush",
+  cls:   "AP US History",
+  title: "Unit 2/A study guide",
+  test:  "2026-09-23",
+  meta:  "25 questions · 17 min",
+  sub:   "population and the great awakening through the declaration of independence. acts of parliament first; numbers are not tested.",
+  updated: "sept 21, 2026",
+
+  panes: [ "outline", "timeline", "practice", "cards" ],
+  labels: { practice:"practice" },
+
+  top: [
+    "Every question is a pair: an **act of Parliament** and the **colonial answer**. Know the order: ==Sugar 1764, Currency 1764, Stamp 1765, Quartering 1765, Declaratory 1766, Townshend 1767, Tea 1773, Coercive 1774==.",
+    "**Sugar Act** !!lowered!! the molasses duty (6 to 3 pence) but was ==enforced, for revenue==. **Stamp Act** = **internal tax**, ==never implemented==; repealed 1766 with the **Declaratory Act** attached.",
+    "**Townshend** duties repealed 1770 !!except tea!!. **Tea Act** made legal tea cheaper; Boston dumped it anyway, ==Dec. 16, 1773==.",
+    "**Coercive** (British name) = **Intolerable** (colonial name); the **Quebec Act** is !!not one of them!!. Answer: **First Continental Congress**, which conceded trade regulation but said Parliament !!cannot tax for revenue!!."
+  ],
+
+  outline: [
+    { w:3, t:"Parliament's legislation, 1764 to 1767", d:"the spine of the test: what each act did and why colonists objected",
+      p:["The **Molasses Act (1733)** had put a ==6 pence per gallon== duty on French, Spanish and Dutch molasses used for rum, but Britain never enforced the **Navigation Acts** (==salutary neglect==), so American smugglers paid customs officers a ==1.5 pence== bribe and moved on.",
+         "After 1763 the king's policy was that colonists would pay a share of the war debt and the Navigation Acts would be enforced. The **Sugar Act (1764)** cut the duty to ==3 pence== but collected it, and it was openly for **revenue**, !!not trade regulation!!. The **Currency Act (1764)** banned colonial paper money, centering the American economy on English banknotes.",
+         "The **Stamp Act (1765)** required a purchased **tax stamp** on printed items, legal documents and newspapers: a document was not legal without it. It was an **internal tax**, felt directly, where a tariff is an **external tax** paid invisibly inside a price. The **Quartering Act (1765)** told colonies to pay for and house British troops that had no military reason to be there except to watch colonists; most went to **Boston**, the most radical colony."],
+      terms:["Molasses Act","Navigation Acts","salutary neglect","Sugar Act","Currency Act","Stamp Act","Quartering Act","internal vs external tax","George Grenville"],
+      cmp:{ a:{h:"External tax (tariff)", p:["Paid at the port, hidden inside the price. Sugar Act, Townshend duties.","Colonists could argue this was trade regulation, until it was clearly for revenue."]},
+            b:{h:"Internal tax", p:["Reaches directly into the pocket. Stamp Act.","Psychologically different; the fight starts here."]} },
+      notes:[{k:"warn",t:"Sugar Act !!lowered!! the rate. The tempting wrong answer is that it raised the tax. What changed was enforcement and purpose."},
+             {k:"ex",t:"**George Grenville** was the prime minister behind the Sugar, Currency and Stamp Acts (textbook). The Stamp Act stamp went on newspapers, wills, deeds, licenses, even playing cards."}] },
+
+    { w:3, t:"The Stamp Act crisis, 1765 to 1766", d:"why it was never implemented, and the seven-step colonial response",
+      p:["The Stamp Act ==was never implemented in the colonies== because the protest was too large. The colonial answer had two prongs. First, **direct mob protest**: crowds in the streets, attacks on tax collectors, **tar and feathering**, riding the rail, burning effigies, until every stamp distributor resigned. The mob frightened the colonial elite (leaderless, what if it goes too far), so elites formed the **Sons of Liberty** to steer protest at British officials and keep it legal-looking. Second, **economic boycotts** of British goods, so British manufacturers lost money and begged Parliament to repeal.",
+         "**James Otis**, *Rights of the British Colonies Asserted and Proved*: Parliament is the supreme legislature of the realm; it should not tax colonies that have no representation; colonies may protest; but !!in the end colonists must obey Parliament's law!!. **Patrick Henry**, a member of Virginia's **House of Burgesses**, pushed the **Virginia Stamp Act Resolves**: only Virginia's own assembly may tax Virginians (radical). The **Stamp Act Congress** met in **New York** (nine colonies, textbook) to write one unified response.",
+         "Parliament repealed the Stamp Act in ==1766== and the same day passed the **Declaratory Act**: Parliament has the right to tax and legislate for the colonies in all cases. Repeal settled the tax, !!not the principle!!."],
+      steps:["1. Never implemented: mobs and boycotts","2. Otis, Rights of the British Colonies","3. Virginia Resolves, Patrick Henry","4. Sons of Liberty","5. Colonial boycotts","6. Repeal, 1766","7. Declaratory Act, 1766"],
+      terms:["Sons of Liberty","James Otis","Patrick Henry","Virginia Stamp Act Resolves","House of Burgesses","Stamp Act Congress","boycott","Declaratory Act","Loyal Nine","Thomas Hutchinson"],
+      notes:[{k:"ex",t:"Textbook detail: Boston's **Loyal Nine** (artisans and shopkeepers) organized the first crowd in August 1765; the mob hanged stamp distributor **Andrew Oliver** in effigy and later gutted Lieutenant Governor **Thomas Hutchinson**'s house."},
+             {k:"warn",t:"Otis is the moderate: he denies Parliament's right to tax the unrepresented, then says obey anyway. Henry is the radical: Virginia taxes Virginians. A question that asks who argued the assembly alone could tax is Henry, not Otis."}] },
+
+    { w:3, t:"Townshend Acts (1767) and the answers to them", d:"the tea tax that survived",
+      p:["Written by Chancellor **Charles Townshend** after the Stamp Act failure: an **import tax on English manufactured goods** (==paint, glass, lead, tea==). Because these were enumerated goods colonists could buy only from England, the duties were plainly for **revenue**. The money would pay the **salaries of royal officials**. Colonists had !!wanted!! to pay those salaries themselves: an official whose pay you control does at least some of what you ask. Once London paid him, the colonies lost that leverage. Enforcement came with an **American Board of Customs Commissioners** (seated in Boston) and **vice-admiralty courts**, where accused smugglers were tried outside the colonies by military officers acting as judges, !!no jury!!.",
+         "**John Dickinson**, *Letters from a Farmer in Pennsylvania*: Parliament may regulate American trade, but it may not hide a tax inside a trade regulation; the Townshend duties regulate nothing, so they are unconstitutional and violate the **rights of Englishmen** (England has no written constitution; unconstitutional means against the precedent law of English rights). Massachusetts' **Circular Letter** (1768, Samuel Adams and Otis) asked the other assemblies to resist together; when Parliament ordered it rescinded the assembly refused ==92 to 17== and the governor **dissolved the Massachusetts assembly**. Politics was considered dirty and women were kept out of it, so the **Daughters of Liberty** brought women in through a fitting domain: **homespun** cloth, blankets and jackets to replace British textiles, and coffee in place of tea, so boycotts could actually bite.",
+         "**Nonimportation** boycotts cost British manufacturers capital; in ==1770== Parliament repealed every Townshend duty !!except the one on tea!!, kept deliberately to preserve the principle that Parliament could tax."],
+      terms:["Charles Townshend","Townshend Acts","American Board of Customs Commissioners","vice-admiralty courts","John Dickinson","Letters from a Farmer in Pennsylvania","Massachusetts Circular Letter","Daughters of Liberty","homespun","nonimportation"],
+      notes:[{k:"warn",t:"Townshend taxed !!English!! manufactured goods, not foreign ones. Sugar Act taxed foreign molasses. Do not swap them."},
+             {k:"ex",t:"Textbook: customs officers seized John Hancock's sloop *Liberty* in June 1768; the riot that followed is why British regiments landed in Boston that October, which sets up the Massacre."}] },
+
+    { w:3, t:"Proclamation of 1763 and Pontiac", d:"what Britain did with the land it just won, and why colonists hated it",
+      p:["With the French gone, Native nations could no longer play one empire against the other. **Pontiac**, an **Ottawa** chief inspired by the Delaware prophet **Neolin** (textbook), led an uprising along the English frontier west of the Appalachians in 1763; it was defeated at **Bushy Run, Pennsylvania**. Britain was broke and did not want another Indian war.",
+         "So the **Proclamation of 1763** drew a line along the ==crest of the Appalachians== and outlawed settlement beyond it: negotiate with the tribes first, move in later. The problem was that colonists and **land speculators** already held land on the far side, bought with borrowed money, expecting to sell it later; the line froze their investment. Colonists largely ignored it, and Britain !!did not assert its authority!! to stop them."],
+      terms:["Pontiac","Ottawa","Neolin","Bushy Run","Proclamation of 1763","Appalachians","land speculation","Paxton Boys"],
+      notes:[{k:"warn",t:"The Proclamation was about !!land!!, not taxes. A question pairing it with a tax is the distractor."},
+             {k:"ex",t:"Textbook: the **Paxton Boys** of Pennsylvania massacred peaceful Conestoga Indians in late 1763, showing how little control colonial governments had on the frontier."}] },
+
+    { w:3, t:"The final straw: Tea Act, Tea Party, Coercive Acts, Quebec Act", d:"1773 to 1774, the chain that makes the Congress",
+      p:["**Tea Act (May 1773)**: the **East India Company**, near bankruptcy as tea prices fell, could not pay the tariff on a big shipment, and cargo has ==20 days== to clear the tariff or it is confiscated; many members of Parliament held EIC stock. So Parliament slashed the EIC's tariff and let it sell through agents it chose, British not American, ==cutting out the American merchant middlemen==. Three colonial fears: an EIC **monopoly** (tyranny), Americans shut out of the legal tea trade, and cheap legal tea undercutting the smugglers, whose tea was the patriotic tea; the elite feared people would take the cheap tea and pay the tax.",
+         "Ships went to four cities. New York's never arrived on schedule, Philadelphia turned its ship around, Charleston landed the tea and let it rot in a warehouse. In Boston Governor **Thomas Hutchinson** refused to let the ships leave, so on ==Dec. 16, 1773==, the day before confiscation, a third of Boston filled the **Old South Church**, **Samuel Adams** gave the cue (\"the Mohawks are coming\"), and men in burlap and pigeon feathers, fooling no one, dumped ==342 chests== into the harbor: about ==£10,000 sterling==, a sum of money, !!not a weight!!. All classes took part.",
+         "Parliament's answer, the **Coercive Acts** (British name) or **Intolerable Acts** (colonial name): the **Boston Port Act** ==closed the port== until the tea was paid for; the **Massachusetts Government Act** revoked the charter, made the council appointed instead of elected, and allowed one town meeting a year without the governor's permission; the **Justice Act** sent British officials accused of murder while enforcing the law to trial outside the colonies, which colonists read as a guarantee they would walk. Two separate laws from the same session get lumped in and !!are not Coercive Acts!!: the **Quebec Act** (**Catholic Church**, **French civil law**, Quebec's border down to the Ohio River, cutting off Virginia's and New York's land claims) and the **Quartering Act (1774)**, troops in homes and businesses until the colonies paid; 4,000 of Britain's 8,000 North American troops were in Boston."],
+      terms:["Tea Act","East India Company","monopoly","Boston Tea Party","Thomas Hutchinson","Old South Church","Samuel Adams","Coercive Acts","Intolerable Acts","Boston Port Act","Massachusetts Government Act","Justice Act","Quartering Act of 1774","Quebec Act"],
+      cmp:{ a:{h:"Coercive Acts (three)", p:["Boston Port Act","Massachusetts Government Act","Justice Act (Administration of Justice Act)"]},
+            b:{h:"Separate laws, same session", p:["**Quebec Act**: Catholic Church, French civil law, Quebec down to the Ohio River.","**Quartering Act 1774**: troops in homes and businesses.","Colonists hated both; !!neither is a Coercive Act!! on this test. The textbook counts the Quartering Act as a fourth."]} },
+      notes:[{k:"ok",t:"In an essay, use both names, Coercive and Intolerable, and say whose name each is. It shows you understand the two sides."},
+             {k:"warn",t:"The Tea Act made tea !!cheaper!!. The tempting wrong answer says it raised the price. The grievance was monopoly and the principle of the tax."}] },
+
+    { w:3, t:"First Continental Congress (1774)", d:"Philadelphia, every colony but Georgia",
+      p:["Called after the Coercive Acts; the crown called it illegal and told royal governors to disband any legislature that sent delegates. Three jobs: define the grievances, plan resistance, and define the relationship between Parliament and the colonies. **Richard Henry Lee** of Virginia (Patrick Henry's friend) argued Parliament was only England's local legislature: the colonies stay loyal to the crown and accept trade regulation, but Parliament cannot tax them. Radical. **Joseph Galloway** of Pennsylvania offered a **Plan of Union**, a legislature sitting over the thirteen colonies that would say yes or no to each act of Parliament. Conservative, and defeated ==by one vote== (textbook).",
+         "The delegates rejected Lee as too radical and Galloway as too conservative and adopted John Adams's **Declaration of Rights and Grievances**, sent to George III: the colonies \"cheerfully consent\" to acts that are a bona fide regulation of external commerce, so Parliament ==can only regulate American trade== and ==cannot tax for revenue==; the consent is given today and can be withdrawn. The Coercive Acts were declared unconstitutional. The **Continental Association** set **non-importation** and **non-exportation** agreements: a boycott, but this time enforced. Massachusetts' **Suffolk Resolves**, endorsed by Congress, urged the colony to arm (textbook)."],
+      terms:["First Continental Congress","Richard Henry Lee","Joseph Galloway","Plan of Union","Declaration of Rights and Grievances","Continental Association","Suffolk Resolves","non-importation","non-exportation"],
+      steps:["Parliament passes an act.","Colonial answer: mob action steered by the Sons of Liberty, economic boycott (now the Continental Association), and the Congress itself."],
+      notes:[{k:"warn",t:"The First Congress did !!not!! declare independence or claim Parliament had no power at all. It conceded trade regulation and denied taxation. That is the same line Otis drew in 1764, now with the consent made revocable."}] },
+
+    { w:3, t:"Theories of representation and the Real Whigs", d:"the argument underneath every act",
+      p:["English theory: subjects consent to taxes through Parliament. Britain said colonists were English subjects, so Parliament looked out for them: **virtual representation**, where every member represents the whole empire, not a district. Colonists answered **no taxation without representation** and **actual (individual) representation**: only a body they elected, their own assembly, could tax them. Behind that sat the **Real Whigs**, an English opposition tradition that wanted to diffuse power, feared a strong king and centralized government, and warned that power always tries to crush liberty; colonists read the acts through that lens.",
+         "Colonists wanted **limited government**: fine with the king and with trade regulation, not with a legislature they never chose reaching into their pockets. The textbook adds the **Enlightenment** thread: **John Locke**'s **natural rights** and government by **consent** of the governed, which the Declaration later quotes."],
+      terms:["virtual representation","actual representation","consent","Real Whigs","limited government","John Locke","natural rights","no taxation without representation"],
+      cmp:{ a:{h:"Virtual representation (Britain)", p:["Every MP represents every subject, colonists included.","So Parliament can tax them."]},
+            b:{h:"Actual representation (colonies)", p:["Only elected representatives can consent to taxes.","So only colonial assemblies can tax colonists."]} } },
+
+    { w:2, t:"French and Indian War, 1754 to 1763", d:"the war that settled who owns North America, and the debt behind everything after",
+      p:["Earlier wars against France were inconclusive: **King William's War** (1689 to 1697), **Queen Anne's War** (1702 to 1713, gave Britain control of the Atlantic slave trade and influence in Hudson Bay and the fur trade), **King George's War** (1745 to 1748, nothing changed but many died). The **Iroquois** stayed neutral and played the empires against each other.",
+         "The French pushed east from the Ohio country and the British pushed west; they collided at the forks of the Ohio, where young **George Washington** surrendered at **Fort Necessity** in 1754 (textbook) and this war, unlike the others, ==started in the colonies and spread overseas== (the **Seven Years' War**). Britain lost early (**Edward Braddock**'s column was destroyed near Fort Duquesne in 1755): well-trained, well-equipped soldiers led by aristocrats who had bought their commissions. **William Pitt** replaced them with officers promoted on merit, paid the colonies' war costs, and Britain started winning: **Quebec** fell in 1759 and France was beaten by 1763.",
+         "**Albany Congress (1754)**: delegates from seven colonies met in Albany, New York, to coordinate defense and win the Iroquois; Franklin's **Albany Plan of Union** passed the delegates but ==every colonial legislature rejected it== rather than give up authority. Franklin's cartoon was **Join, or Die** (not Don't Tread on Me)."],
+      terms:["King William's War","Queen Anne's War","King George's War","Iroquois neutrality","Fort Necessity","Seven Years' War","William Pitt","Albany Congress","Albany Plan of Union","Join, or Die","Edward Braddock"],
+      notes:[{k:"warn",t:"The Albany Congress !!failed!! on both counts: no Iroquois alliance, no coordinated defense. It matters as the first try at union."}] },
+
+    { w:2, t:"Treaty (Peace) of Paris, 1763", d:"who got what",
+      p:["France was removed from North America but kept two small islands off Newfoundland, **St. Pierre and Miquelon**, plus fishing rights, and the sugar islands **Martinique and Guadeloupe** in the West Indies: Britain gave France a bone. Britain's new boundaries: north to the Arctic, south to the Gulf of Mexico, east the Atlantic, west the ==eastern bank of the Mississippi==. French **Louisiana**, including **New Orleans**, went to **Spain**, so New Orleans was !!not British!!. Britain won an empire and a huge debt."],
+      terms:["Treaty of Paris 1763","St. Pierre and Miquelon","Martinique","Guadeloupe","Louisiana to Spain","New Orleans","Mississippi River"],
+      notes:[{k:"warn",t:"Two Treaties of Paris in this unit: ==1763== ends the French and Indian War; ==1783== ends the Revolution. Read the date in the stem."}] },
+
+    { w:2, t:"Boston Massacre (March 5, 1770) and the trial", d:"the event is low detail on the test; the trial is the point",
+      p:["Troops had been quartered in Boston since 1768. A 17-year-old wigmaker's apprentice, Edward Garrick, mouthed off at an officer; Private **Hugh White** left his post and hit him with his musket, a crowd formed, and Captain **Thomas Preston** marched a squad of the 29th Regiment to the **Custom House**, where the crowd threw rocks, bricks and hard-packed snow. Private Montgomery was knocked down by a rock, got up and fired; others followed. ==Five colonists died==, including **Crispus Attucks** (textbook); Preston !!never gave the order!!, and Henry Knox had just warned him that firing would get them all killed.",
+         "Britain would never let colonists execute its soldiers, and the colonial elite needed the trial to look fair, so **John Adams** defended them: Preston was acquitted, Montgomery and Kilroy were convicted of ==manslaughter, not murder== (an unintended killing) and branded with an M on the thumb. **Paul Revere**'s engraving, Preston behind the line ordering fire, is pure propaganda. March 1770 to September 1773 is the **superficial calm**: no big events, lots of organizing."],
+      terms:["Boston Massacre","Thomas Preston","John Adams","Crispus Attucks","Paul Revere engraving","manslaughter"] },
+
+    { w:2, t:"Samuel Adams and the Committees of Correspondence (1772)", d:"information is the key to a revolution",
+      p:["**Samuel Adams** (failed businessman, ex tax collector, unwavering Patriot, and a first-rate organizer and orator) built the **Committees of Correspondence** in Massachusetts in ==1772==, an **intracolonial** network (within the colony) that he then pushed into the other colonies to make it **intercolonial** (between colonies). By 1774 the colonies had some of the best communication in the world: something happens in Massachusetts and it reaches the right hands in Georgia. ==Information is the key to resistance==. The trigger was Britain's plan to pay the Massachusetts governor and judges from customs revenue, and the burning of the customs schooner **Gaspée** in Rhode Island (textbook)."],
+      terms:["Samuel Adams","Committees of Correspondence","intercolonial","Gaspée"] },
+
+    { w:2, t:"From congress to war: Committees of Observation, choosing sides", d:"late 1774 to 1775",
+      p:["How Britain lost control, in order: governors disbanded legislatures that sent delegates; the legislatures reconvened themselves as **provincial conventions**; governors called out the militia to stop them; the militia was the colonists and refused. Meanwhile **Committees of Observation**, elected at the town level by all qualified voters (so they carried popular support), enforced the Continental Association and were the **de facto governments** for about six months (September 1774 to March 1775) until each provincial convention came online. By early 1775 the crown controlled Boston and nothing else, so it tried force: that is why there was a war.",
+         "Sides: roughly ==40% Patriots, 40% neutral, 20% Loyalists (Tories)==. In 1775 !!nobody was fighting for independence!!; Patriots were fighting for their rights as Englishmen. British looting, pillaging and hired mercenaries kept pushing neutrals to the Patriots. Colonies with the highest share of enslaved people (the South) showed the lowest support for revolution: slaves were their wealth. Virginia's royal governor **Lord Dunmore** proclaimed freedom for any slave or indentured servant who ran to the British, to wreck the economy; enslaved people generally sided with the English, seeing the colonists as their oppressors."],
+      terms:["Committees of Observation","Provincial conventions","de facto government","Patriots","Loyalists","Tories","Lord Dunmore's Proclamation"] },
+
+    { w:2, t:"Lexington, Concord and Bunker Hill (1775)", d:"how the shooting started",
+      p:["Governor **Thomas Gage** sent about 1,800 troops twenty miles to seize militia supplies at **Concord**. The colonial spy network knew: lanterns in the Old North Church signaled the route, and **William Dawes**, **Paul Revere** and Samuel Prescott rode to the local militia commanders (not shouting in the streets) so the **minutemen**, independent units of 20 to 30 men, could gather and shadow the column. At **Lexington** on ==April 19, 1775== Captain **John Parker**'s roughly 70 militia met the advance; !!nobody knows who fired the first shot and neither side ordered it!!, probably an accidental discharge. Eight Americans died.",
+         "The militia then pinned the British inside Boston. Cannons from **Fort Ticonderoga** were dug in on **Breed's Hill** by mistake (the fight is misnamed **Bunker Hill**, ==June 17, 1775==); General **William Howe** marched his lines up three times, the Americans broke two charges and lost the hill on the third only because they ran out of ammunition (\"don't fire till you see the whites of their eyes\"). A **Pyrrhic victory**: more British casualties than any other battle of the war, and they were still pinned in. They evacuated Boston on ==March 17, 1776== to refit at Halifax while 32,000 troops were readied."],
+      steps:["Concord: supplies already moved; a knocked-over oil lamp burns a house.","The smoke draws every militia unit in the area; Colonel Barrett's men fight at the North Bridge.","Lt. Col. Francis Smith, deep in hostile country with no recon, retreats.","Guerrilla ambushes the whole road back to Boston until a relief column arrives."],
+      terms:["Lexington and Concord","minutemen","Paul Revere","William Dawes","Bunker Hill","Breed's Hill","Fort Ticonderoga","Thomas Gage","Pyrrhic victory"],
+      notes:[{k:"warn",t:"Bunker Hill was a !!British victory!! on the ground and a costly one. Do not call it an American win; call it a British win that proved the militia would stand."}] },
+
+    { w:2, t:"Second Continental Congress, Common Sense, Declaration of Independence", d:"1775 to July 4, 1776",
+      p:["The First Congress was built to answer the Coercive Acts, not to run a war, so new elections produced the **Second Continental Congress** (May 1775), the wartime government until the Articles of Confederation. To bring the South in it named a Virginian, **George Washington**, commander in chief, organized the colonies for war, and on ==July 6, 1775== issued the **Declaration of the Causes and Necessity of Taking Up Arms**: arms taken up for \"the freedom that is our birthright,\" rights as Englishmen, !!not independence!!, to be laid down when those rights return. Two days later the **Olive Branch Petition** asked **George III** for peace; he refused to recognize either.",
+         "**Thomas Paine**, *Common Sense* (January 1776), made a violent, emotional, God-invoking, plain-language case for **independence**, not English rights: distance from England, the size of the land and the population are advantages, and farmers can take on the world's greatest military power. The **Committee of Five** (**Thomas Jefferson** as primary writer, John Adams, Benjamin Franklin, Roger Sherman, Robert R. Livingston) drafted the **Declaration of Independence**; Jefferson resisted at first and was told he was the best writer in the room.",
+         "Three parts: the theory of government, a **list of grievances**, and the conclusion. The theory is **Locke**: unalienable rights to life, liberty and the pursuit of happiness (Locke wrote property; changed so the document would not sound purely economic), power from the **consent of the governed**, and a right to alter or abolish a government that destroys those rights. The grievances all begin \"He has\": aimed at the **king**, not Parliament, because Congress now held that Parliament never had authority and George III had let it harm them; they map onto everything from the Proclamation of 1763 to the Coercive Acts. Jefferson's clause blaming Britain for slavery was cut to keep the South."],
+      steps:["May 10, 1776: Congress tells the colonies to replace colonial governments with state governments.","June 1776: Lee's resolution; the Committee of Five drafts.","June 28: Congress receives the draft.","July 4, 1776: the Second Continental Congress ratifies it."],
+      terms:["Second Continental Congress","George Washington","Declaration of the Causes and Necessity of Taking Up Arms","Olive Branch Petition","George III","Thomas Paine","Common Sense","Thomas Jefferson","Committee of Five","consent of the governed","list of grievances"],
+      cmp:{ a:{h:"Declaration of Causes (July 1775)", p:["Why we are fighting: rights as Englishmen.","Still loyal to the king."]},
+            b:{h:"Declaration of Independence (July 1776)", p:["Why we are leaving: natural rights.","Blames the king by name."]} } },
+
+    { w:2, t:"The First Great Awakening", d:"a crisis in religion, 1730s to 1760s",
+      p:["Religion was waning; the revival ran ==1735 to 1745 in New England== and reached Virginia in the 1760s. **Jonathan Edwards** of Northampton preached that only God's grace saves (\"Sinners in the Hands of an Angry God\"); **George Whitefield**, an English **itinerant preacher**, toured the colonies in 1739 to 1740 and drew crowds of thousands. People re-embraced faith through **emotion** rather than introspection, which is why the established **Old Lights** turned against it while **New Lights** embraced it.",
+         "Impact: **congregations splintered**, the number of denominations grew (Presbyterian, Baptist, Methodist, Anglican, Catholic, Quaker, Amish), so !!no one church had a majority!! and none could claim orthodoxy, which pushed toward **religious toleration** and eventually the **separation of church and state**. In the South, **Baptists** preached that all are equal before God even if born to different stations: masters should not be cruel, slaves should not run away, and some owners freed slaves. Colonists also learned that challenging established authority worked."],
+      terms:["First Great Awakening","Jonathan Edwards","George Whitefield","New Lights","Old Lights","itinerant preacher","religious toleration","Baptists"],
+      notes:[{k:"warn",t:"The !!Second!! Great Awakening (1800s) is the reform movement (moral legislation, temperance). Unit 2/A is the First."}] },
+
+    { w:1, t:"Population growth and ethnic diversity", d:"why the colonies were ten times bigger by 1775 Signing was treason if Britain won; **John Hancock** signed large so the king could read it without spectacles.",
+      p:["The colonial population grew about ==tenfold from 1700 to 1775==, and most of it was **natural increase** (families), not immigration. Immigration mattered only ==after 1730==. **Africans** came as **involuntary migrants** in the largest single stream (say \"the numbers who came voluntarily were minuscule\", !!never say never!!). Among Europeans the Irish and Scots were the largest group, then Germans (settled Pennsylvania; **Pennsylvania Dutch** means Deutsch), then the **Scots-Irish**: Scots whom Cromwell planted in northern Ireland, who became culturally Irish but stayed Protestant, which is the root of the Protestant-Catholic split there."],
+      terms:["natural increase","involuntary migrants","Scots-Irish","Pennsylvania Dutch","Germans"] },
+
+    { w:1, t:"Where 2/A leads: the 1776 campaign", d:"lectured Sept. 21, belongs to 2/B",
+      p:["In August 1776 General **Howe** landed over 32,000 troops on **Long Island**; **Washington** had 19,000 and no chance, but fought anyway so neutrals would see the cause was serious, then escaped only because the British fleet left the river open and Marblehead fishermen ferried the army out. He ran across New Jersey and the Delaware; the British settled into New York for winter and left outposts of **Hessian** mercenaries. Washington crossed the Delaware on ==Dec. 25, 1776==, hit **Trenton** on the 26th while the Hessians slept off Christmas (their commander Johann Rall was killed), took nearly a thousand prisoners and their supplies with no American dead, then beat the British at **Princeton** (Jan. 3, 1777). British pillaging turned neutral New Jersey Patriot; the army wintered at **Morristown** and Britain held only New York City."],
+      terms:["Long Island","Trenton","Hessians","Princeton","Morristown"] }
+  ],
+
+  practice: [
+    { q:"The Sugar Act of 1764 differed from the Molasses Act of 1733 mainly because the Sugar Act",
+      opts:["raised the duty on foreign molasses","was actually enforced and passed to raise revenue","applied only to sugar from the British West Indies","was repealed within a year"],
+      a:1, why:"The rate went down from 6 to 3 pence. What changed was enforcement and purpose: revenue, not trade regulation. Raising the duty is the tempting miss." },
+    { q:"Which act prohibited the American colonies from issuing their own paper money?",
+      opts:["Sugar Act","Currency Act","Declaratory Act","Quartering Act"],
+      a:1, why:"Currency Act (1764). Both 1764 acts are Grenville's; the Sugar Act is the molasses duty." },
+    { q:"The Stamp Act was considered more objectionable than earlier duties because it was",
+      opts:["an external tax on foreign trade","an internal tax paid directly by colonists","the first act enforced by the Royal Navy","aimed only at New England merchants"],
+      a:1, why:"A stamp on documents and newspapers reached straight into the pocket; tariffs hid inside prices. External is the wrong pick." },
+    { q:"Which is true of the Stamp Act in the colonies?",
+      opts:["it was collected for two years before repeal","it was never implemented","it was enforced only in Boston","it was replaced by the Townshend Acts before it took effect"],
+      a:1, why:"Protest made every distributor resign, so it never took effect. Repeal came in 1766, but nothing had been collected." },
+    { q:"James Otis's Rights of the British Colonies Asserted and Proved argued that",
+      opts:["colonists should refuse to obey any act of Parliament","Parliament could not tax unrepresented colonies, but colonists must still obey its laws","Virginia's assembly alone could tax Virginians","colonies should declare independence"],
+      a:1, why:"Otis is the moderate: protest, but obey. The Virginia-alone claim is Patrick Henry's Resolves." },
+    { q:"Patrick Henry introduced the Virginia Stamp Act Resolves in the",
+      opts:["Stamp Act Congress","House of Burgesses","First Continental Congress","Virginia Provincial Convention"],
+      a:1, why:"Henry was a burgess; the Resolves passed Virginia's own legislature. The Stamp Act Congress was the intercolonial meeting in New York." },
+    { q:"The Sons of Liberty were formed mainly to",
+      opts:["organize armed militias against British troops","give colonial elites control over mob protest and direct it at British officials","enforce the Continental Association","raise money to pay the stamp tax"],
+      a:1, why:"Elites feared a leaderless mob; the Sons steered protest at tax collectors and officials. Enforcing the Association is the Committees of Observation (1774)." },
+    { q:"The Declaratory Act of 1766 stated that",
+      opts:["the Stamp Act would be enforced by the army","Parliament had the right to tax and legislate for the colonies in all cases","colonial assemblies could tax only with royal consent","the Townshend duties were repealed"],
+      a:1, why:"Passed with the Stamp Act repeal to preserve the principle. Nothing was settled." },
+    { q:"The Quartering Act of 1765 required colonies to",
+      opts:["send delegates to New York","pay for and house British troops stationed in the colonies","surrender their militia weapons","quarter Hessian mercenaries"],
+      a:1, why:"Colonists asked why troops were needed with no military threat: to watch them. Most went to Boston." },
+    { q:"The Townshend Acts placed duties on",
+      opts:["foreign molasses, wine and coffee","English manufactured goods such as paint, glass, lead and tea","land west of the Appalachians","legal documents and newspapers"],
+      a:1, why:"English goods, enumerated so colonists had to buy them from England. Foreign molasses is the Sugar Act; documents is the Stamp Act." },
+    { q:"Revenue from the Townshend duties was intended to",
+      opts:["pay the salaries of royal governors and judges","fund the East India Company","build forts on the frontier","reimburse merchants for the Boston Tea Party"],
+      a:0, why:"Paying officials from customs money freed them from colonial assemblies' power of the purse. That is why assemblies hated it." },
+    { q:"Vice-admiralty courts were resented because accused smugglers",
+      opts:["were tried in England","were tried by a judge without a jury","could not appeal","were tried by colonial assemblies"],
+      a:1, why:"Judge only, no jury of colonial peers. Trial in England is the Justice Act of 1774." },
+    { q:"John Dickinson's Letters from a Farmer in Pennsylvania argued that Parliament",
+      opts:["had no authority over the colonies at all","could regulate trade but could not use trade regulations to raise revenue","could tax the colonies with the king's approval","should repeal the Navigation Acts"],
+      a:1, why:"Dickinson conceded regulation and rejected hidden taxes. Total denial of Parliament's authority is Richard Henry Lee in 1774." },
+    { q:"After 1770, the only Townshend duty left in place was the tax on",
+      opts:["glass","paper","tea","lead"],
+      a:2, why:"Kept on purpose to preserve Parliament's right to tax; it set up the Tea Act." },
+    { q:"Under the Townshend Acts, paying royal officials' salaries from the duties mattered to colonists because",
+      opts:["it raised the total tax burden","it removed the colonists' leverage over officials whose pay they had controlled","it required new taxes on land","it forced governors to leave the colonies"],
+      a:1, why:"Colonists had wanted to pay the salaries: an official you pay does some of what you ask. Once London paid him, that influence was gone." },
+    { q:"The Daughters of Liberty supported resistance mainly by",
+      opts:["writing pamphlets against the Stamp Act","producing homespun cloth and substitutes so boycotts of British goods could work","serving as couriers for the Committees of Correspondence","petitioning the king"],
+      a:1, why:"Boycotts only bite if colonists can replace the goods; women's textile production did that." },
+    { q:"At the trial after the Boston Massacre, John Adams",
+      opts:["prosecuted Captain Preston for murder","defended the soldiers; Preston was acquitted and two soldiers were convicted of manslaughter","refused to take the case","won a murder conviction against all eight soldiers"],
+      a:1, why:"Adams defended them to show colonial respect for law. Manslaughter, not murder; the two were branded on the thumb." },
+    { q:"The Committees of Correspondence of 1772 were organized by",
+      opts:["John Adams","Samuel Adams","Patrick Henry","Thomas Paine"],
+      a:1, why:"Samuel Adams, the organizer; John Adams is the lawyer. They spread information between colonies." },
+    { q:"The Tea Act of 1773 was passed primarily to",
+      opts:["raise the price of tea in the colonies","save the East India Company from bankruptcy","punish Boston for smuggling","repeal the tea tax"],
+      a:1, why:"MPs held EIC stock and the company had unsold tea. Legal tea got cheaper, which is the trap: colonists objected to the monopoly and the principle." },
+    { q:"Under British law, cargo that landed had how long to clear its tariff before confiscation, the clock that drove both the Tea Act and the Tea Party?",
+      opts:["3 days","20 days","60 days","one year"],
+      a:1, why:"20 days. The East India Company could not pay in time, so Parliament rescued it; in Boston the tea was dumped the night before day 20." },
+    { q:"In response to the Tea Act, colonists in Charleston",
+      opts:["dumped the tea into the harbor","turned the ships around before they docked","landed the tea and let it rot in a warehouse","paid the tax and sold the tea"],
+      a:2, why:"Philadelphia turned its ship around, New York's never arrived on time, Boston dumped it. Charleston stored it." },
+    { q:"Which was NOT one of the Coercive (Intolerable) Acts?",
+      opts:["Boston Port Act","Massachusetts Government Act","Quebec Act","Justice Act"],
+      a:2, why:"Colonists resented the Quebec Act and lumped it in, but it was separate legislation about Catholicism, French civil law and Quebec's borders." },
+    { q:"The Justice Act of 1774 provided that British officials accused of murder while enforcing the law would be",
+      opts:["tried by a colonial jury","tried outside the colonies","pardoned automatically by the governor","tried by a court of colonial assemblymen"],
+      a:1, why:"Trial moved out of the colonies; colonists assumed that meant acquittal. A colonial jury is what the Boston Massacre trial had, which is exactly what Britain wanted to avoid repeating." },
+    { q:"The Massachusetts Government Act",
+      opts:["closed the port of Boston","revoked the charter, made the council appointed, and limited town meetings","moved murder trials of officials to England","required colonists to house troops"],
+      a:1, why:"Each Coercive Act has one job. Closing the port, moving trials and housing troops are the other three." },
+    { q:"The First Continental Congress declared that Parliament",
+      opts:["had no authority over the colonies whatsoever","could regulate American trade but could not tax for revenue","could tax the colonies if they were given seats","had authority over everything except religion"],
+      a:1, why:"The Declaration of Rights and Grievances split the difference between Lee (no authority) and Galloway (a colonial veto). Total denial came later, in the Declaration of Independence." },
+    { q:"John Adams's Declaration of Rights and Grievances said the colonies would \"cheerfully consent\" to acts of Parliament that were",
+      opts:["bona fide regulations of external commerce","necessary to pay the war debt","approved by the colonial assemblies","limited to internal taxes"],
+      a:0, why:"Trade regulation yes, revenue no, and the consent could be withdrawn. Assembly approval is Galloway's plan." },
+    { q:"The Continental Association was",
+      opts:["a plan for an American legislature to review Parliament's laws","enforced non-importation and non-exportation agreements","the first name of the Continental Army","a loyalist organization"],
+      a:1, why:"A boycott with teeth, enforced locally by the Committees of Observation. The legislature plan is Galloway's Plan of Union." },
+    { q:"Lord Dunmore's Proclamation promised",
+      opts:["freedom to enslaved people and servants who fled to the British","pardons to Patriots who laid down arms","land west of the Appalachians to loyalists","that Virginia would remain neutral"],
+      a:0, why:"Virginia's royal governor aimed to wreck the Patriot economy; it pushed slaveholders toward the Patriot side." },
+    { q:"The Declaration of the Causes and Necessity of Taking Up Arms (July 1775) asserted that the colonies were fighting for",
+      opts:["independence from Britain","their rights as Englishmen","a republican government","control of the Ohio country"],
+      a:1, why:"July 1775 is still a war for English rights; the Olive Branch Petition followed two days later. Independence is the July 1776 document." },
+    { q:"Which best describes the argument of Thomas Paine's Common Sense?",
+      opts:["colonists should petition the king one more time","the colonies should declare independence and form a republic","Parliament could regulate trade but not tax","the colonies should seek a French alliance first"],
+      a:1, why:"Emotional, plain, aimed at independence, not English rights. That break from the 1775 language is the point." },
+    { q:"The list of grievances in the Declaration of Independence is directed at",
+      opts:["Parliament","King George III","the East India Company","the royal governors"],
+      a:1, why:"Every grievance starts \"He has.\" By 1776 Congress held Parliament never had authority, so the king who let it act is blamed." },
+    { q:"Jefferson changed Locke's \"life, liberty and property\" to \"pursuit of happiness\" because the committee",
+      opts:["did not believe in property rights","did not want the document to sound purely economic","had to appease the southern states","wanted to quote Thomas Paine"],
+      a:1, why:"The idea is Locke's; the wording was softened. The southern states forced a different cut: Jefferson's anti-slavery grievance." },
+    { q:"On May 10, 1776, the Second Continental Congress",
+      opts:["ratified the Declaration of Independence","recommended that the colonies replace their colonial governments with state governments","appointed George Washington commander in chief","received Jefferson's draft"],
+      a:1, why:"May 10 is state governments; June 28 Congress receives the draft; July 4 it ratifies. Washington was appointed in 1775." },
+    { q:"The Albany Plan of Union (1754) failed because",
+      opts:["the Iroquois refused to attend","the colonial legislatures rejected it rather than give up authority","Parliament vetoed it","Franklin withdrew it"],
+      a:1, why:"Delegates passed it; every assembly killed it. Britain was not the obstacle." },
+    { q:"By the Treaty of Paris of 1763, Louisiana and New Orleans passed to",
+      opts:["Britain","Spain","the Iroquois","the United States"],
+      a:1, why:"France gave Louisiana to Spain; Britain's western boundary was the east bank of the Mississippi, excluding New Orleans." },
+    { q:"The Proclamation of 1763 was issued mainly to",
+      opts:["raise revenue from western land sales","keep settlers east of the Appalachians and avoid another Indian war after Pontiac's uprising","punish Pennsylvania for the Paxton Boys","reward veterans with land"],
+      a:1, why:"Britain was broke and Pontiac had just been beaten at Bushy Run. It was about land, not taxes; speculators hated it." }
+  ],
+
+  cards: [
+    { f:"Molasses Act (1733)", b:"6 pence per gallon on foreign molasses; never enforced, smugglers bribed customs at 1.5 pence." },
+    { f:"Sugar Act (1764)", b:"Cut the molasses duty to 3 pence but enforced it; passed for revenue, not to regulate trade. Grenville." },
+    { f:"Currency Act (1764)", b:"Colonies could not issue paper money; American economy tied to English banknotes." },
+    { f:"Stamp Act (1765)", b:"Purchased tax stamp on printed items, legal documents, newspapers. Internal tax. Never implemented; repealed 1766." },
+    { f:"Quartering Act (1765)", b:"Colonies must pay for and house British troops; most sent to Boston. Root of the Third Amendment." },
+    { f:"Declaratory Act (1766)", b:"Passed with Stamp Act repeal: Parliament may tax and legislate for the colonies in all cases." },
+    { f:"Townshend Acts (1767)", b:"Import duties on English manufactured goods (paint, glass, lead, tea) to pay royal officials' salaries; customs board, vice-admiralty courts. Repealed 1770 except tea." },
+    { f:"Tea Act (May 1773)", b:"Let the East India Company skip the English tariff and sell through its own agents; cheaper tea, feared monopoly." },
+    { f:"Boston Tea Party (Dec. 16, 1773)", b:"342 chests dumped the night before confiscation, after Hutchinson refused to let the ships leave." },
+    { f:"Coercive / Intolerable Acts (1774)", b:"Three: Boston Port Act, Massachusetts Government Act, Justice Act. British name / colonial name." },
+    { f:"Quebec Act (1774)", b:"Catholic Church and French civil law in Quebec, border down to the Ohio River. Hated by colonists; a separate law, not a Coercive Act." },
+    { f:"Quartering Act (1774)", b:"Extension of 1765: troops put in homes and businesses until the colonies paid for them. Separate from the Coercive Acts." },
+    { f:"Pyrrhic victory", b:"A win at a cost too high to be worth it; Bunker Hill for the British." },
+    { f:"Superficial calm", b:"March 1770 to September 1773: no major events, but colonial organizing (Committees of Correspondence)." },
+    { f:"Proclamation of 1763", b:"No settlement west of the Appalachian crest; a land policy after Pontiac, ignored by speculators." },
+    { f:"Pontiac", b:"Ottawa chief; 1763 uprising along the frontier; defeated at Bushy Run, Pennsylvania." },
+    { f:"Albany Congress (1754)", b:"Seven colonies in Albany, NY; Franklin's Plan of Union; failed to ally the Iroquois or coordinate defense; rejected by every assembly." },
+    { f:"French and Indian War", b:"1754 to 1763; started in the colonies and spread overseas as the Seven Years' War; Pitt's merit reforms turned it; British victory." },
+    { f:"Treaty of Paris (1763)", b:"France out of North America (keeps St. Pierre, Miquelon, Martinique, Guadeloupe); Britain to the Mississippi; Louisiana to Spain." },
+    { f:"Treaty of Paris (1783)", b:"Ends the Revolution: independence, Newfoundland fishing, Mississippi boundary, debts and loyalist property, British forts evacuated." },
+    { f:"William Pitt", b:"British minister who replaced purchased commissions with merit and paid colonial war costs; Britain began winning." },
+    { f:"Virtual representation", b:"British claim that every MP represents every subject, so Parliament may tax colonists." },
+    { f:"Actual representation", b:"Colonial claim that only an elected assembly may consent to taxes." },
+    { f:"Real Whigs", b:"English opposition thinkers who feared centralized power and a strong king; colonists borrowed the lens." },
+    { f:"James Otis", b:"Rights of the British Colonies Asserted and Proved: no taxation without representation, protest allowed, but obey Parliament." },
+    { f:"Patrick Henry", b:"House of Burgesses; Virginia Stamp Act Resolves: only Virginia may tax Virginians." },
+    { f:"Sons of Liberty", b:"Elite-led groups that directed mob protest at British officials during the Stamp Act crisis." },
+    { f:"Stamp Act Congress (1765)", b:"Nine colonies in New York; one unified petition against the Stamp Act." },
+    { f:"John Dickinson", b:"Letters from a Farmer in Pennsylvania: Parliament may regulate trade, not hide taxes in regulation." },
+    { f:"Massachusetts Circular Letter (1768)", b:"Samuel Adams and Otis asked other colonies to resist Townshend; assembly refused to rescind, governor dissolved it." },
+    { f:"Daughters of Liberty", b:"Women's homespun and boycott support that made nonimportation work." },
+    { f:"Boston Massacre (March 5, 1770)", b:"Five colonists killed at the Custom House; Preston gave no order; John Adams defended the soldiers; two convicted of manslaughter." },
+    { f:"Committees of Correspondence (1772)", b:"Samuel Adams' information network: intracolonial (within Massachusetts) first, then intercolonial (between colonies). Information is the key to resistance." },
+    { f:"First Continental Congress (1774)", b:"Philadelphia, all but Georgia; Declaration of Rights and Grievances; Continental Association; rejected Lee and Galloway." },
+    { f:"Declaration of Rights and Grievances", b:"John Adams: colonies \"cheerfully consent\" to bona fide regulation of external commerce; no taxation for revenue; Coercive Acts unconstitutional." },
+    { f:"Continental Association", b:"Enforced non-importation and non-exportation; policed by Committees of Observation." },
+    { f:"Joseph Galloway", b:"Conservative Plan of Union: an American legislature to approve or veto Parliament's acts; lost by one vote." },
+    { f:"Committees of Observation", b:"Enforced the Association, chosen by all voters, de facto governments for about six months." },
+    { f:"Lord Dunmore's Proclamation", b:"Virginia's royal governor offered freedom to slaves and servants who joined the British." },
+    { f:"Lexington and Concord", b:"April 19, 1775; nobody ordered the first shot; British column ambushed back to Boston." },
+    { f:"Bunker (Breed's) Hill", b:"June 17, 1775; British win the hill on the third assault at the war's highest British cost." },
+    { f:"Second Continental Congress (1775)", b:"Wartime government; Washington commander; Declaration of Causes; Olive Branch Petition." },
+    { f:"Olive Branch Petition (July 8, 1775)", b:"Last appeal to George III for peace; he refused to receive it." },
+    { f:"Common Sense (Jan. 1776)", b:"Thomas Paine; plain, emotional case for independence and a republic." },
+    { f:"Declaration of Independence", b:"Jefferson's draft; committee of Jefferson, John Adams, Franklin, Sherman, Livingston; received June 28, ratified July 4, 1776; grievances aimed at the king." },
+    { f:"Jonathan Edwards", b:"Northampton minister; Great Awakening preacher of God's grace and emotional conversion." },
+    { f:"George Whitefield", b:"English itinerant whose 1739 to 1740 tour spread the Great Awakening through the colonies." },
+    { f:"New Lights vs Old Lights", b:"Revival supporters vs established clergy who distrusted emotion over introspection." },
+    { f:"Scots-Irish", b:"Scots planted in northern Ireland under Cromwell; Protestant, culturally Irish; large 1700s immigrant group." }
+  ],
+
+  timeline: [
+    { y:"1733", t:"Molasses Act", d:"6 pence duty, never enforced." },
+    { y:"1735-45", t:"First Great Awakening peaks in New England", d:"Edwards; Whitefield tours 1739-40." },
+    { y:"1754", t:"Albany Congress; Fort Necessity", d:"Plan of Union rejected; French and Indian War begins." },
+    { y:"1759", t:"Quebec falls", d:"Pitt's reforms turn the war." },
+    { y:"1763", t:"Treaty of Paris; Pontiac's uprising; Proclamation of 1763", d:"France out; line at the Appalachian crest." },
+    { y:"1764", t:"Sugar Act and Currency Act", d:"Grenville; revenue and enforcement begin." },
+    { y:"1765", t:"Stamp Act; Quartering Act; Stamp Act Congress", d:"Otis, Henry's Resolves, Sons of Liberty, boycotts." },
+    { y:"1766", t:"Stamp Act repealed; Declaratory Act", d:"Tax gone, principle kept." },
+    { y:"1767", t:"Townshend Acts", d:"Paint, glass, lead, tea; customs board; vice-admiralty courts." },
+    { y:"1768", t:"Circular Letter; Massachusetts assembly dissolved; troops land in Boston", d:"Dickinson's Letters circulate." },
+    { y:"1770", t:"Boston Massacre (March 5); Townshend duties repealed except tea", d:"Adams defends the soldiers. Superficial calm begins." },
+    { y:"1772", t:"Committees of Correspondence; Gaspée burned", d:"Samuel Adams' network." },
+    { y:"May 1773", t:"Tea Act", d:"East India Company bailout." },
+    { y:"Dec. 16, 1773", t:"Boston Tea Party", d:"342 chests." },
+    { y:"1774", t:"Coercive Acts; Quebec Act; First Continental Congress (Sept.-Oct.)", d:"Declaration of Rights and Grievances; Continental Association." },
+    { y:"late 1774", t:"Committees of Observation; provincial conventions", d:"De facto colonial governments." },
+    { y:"Apr. 19, 1775", t:"Lexington and Concord", d:"War begins." },
+    { y:"May 1775", t:"Second Continental Congress; Ticonderoga taken", d:"Washington named commander." },
+    { y:"June 17, 1775", t:"Bunker (Breed's) Hill", d:"Costly British win." },
+    { y:"July 6, 1775", t:"Declaration of the Causes and Necessity of Taking Up Arms", d:"Rights as Englishmen." },
+    { y:"July 8, 1775", t:"Olive Branch Petition", d:"King refuses it; colonies declared in rebellion." },
+    { y:"Nov. 1775", t:"Dunmore's Proclamation", d:"Freedom for slaves who join the British." },
+    { y:"Jan. 1776", t:"Common Sense", d:"Paine argues independence." },
+    { y:"Mar. 17, 1776", t:"British evacuate Boston", d:"" },
+    { y:"May 10, 1776", t:"Congress recommends state governments", d:"" },
+    { y:"June 28, 1776", t:"Congress receives the Declaration", d:"Jefferson's draft." },
+    { y:"July 4, 1776", t:"Declaration of Independence ratified", d:"End of Unit 2/A." },
+    { y:"Aug.-Dec. 1776", t:"Long Island; Trenton (Dec. 26)", d:"2/B starts here." },
+    { y:"Jan. 3, 1777", t:"Princeton", d:"End of the 1776 campaign; winter at Morristown." }
+  ],
+
+  abbr: { "EIC":"East India Company", "MP":"member of Parliament" }
+};
+
+/* ═══ machinery. nothing below needs editing. ═══ */
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const ICON={
+ apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ psych:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ phys:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ pre:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ sem:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ span:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ apwh:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ biz:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ mor:'<path d="M13 4.5v17"/><path d="M7.5 9.5h11"/>',
+ csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
+};
+const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist"};
+
+/* header */
+document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
+document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
+$("#title").textContent=GUIDE.title;
+if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
+$("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
+(function(){
+  const c=$("#crow");
+  c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  if(GUIDE.test){
+    const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
+    const now=new Date(); now.setHours(0,0,0,0);
+    const days=Math.round((t-now)/864e5);
+    const md=`${t.getMonth()+1}/${t.getDate()}`+(GUIDE.end?`–${e.getMonth()+1}/${e.getDate()}`:"");
+    let txt, past=e<now;
+    if(past)txt=`test was ${md}`;
+    else if(days<=0)txt=`test today · ${md}`;
+    else if(days===1)txt=`test tomorrow · ${md}`;
+    else if(days<=14)txt=`test in ${days} days · ${md}`;
+    else txt=`test ${md}`;
+    c.appendChild(el("span","chip"+(past?" past":" due"),esc(txt)));
+  }
+  if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
+})();
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist};
+const tabs=[];
+PANES.forEach((id,i)=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  builders[id](sec); root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+function show(id,user){
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
+/* outline */
+function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
+function extras(s){
+  let h="";
+  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
+  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
+  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
+  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
+  return h;
+}
+function buildOutline(sec){
+  if(GUIDE.top?.length){
+    sec.appendChild(shead("start here","the whole guide in one screen"));
+    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  }
+  const list=GUIDE.outline||[]; if(!list.length)return;
+  const n3=list.filter(s=>s.w===3).length;
+  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
+  const g=el("div","group");
+  list.forEach((s,i)=>{
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
+    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
+    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body);
+  });
+  sec.appendChild(g);
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    sec.appendChild(shead("abbreviations"));
+    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+  }
+}
+
+/* practice mc */
+function buildPractice(sec){
+  const qs=GUIDE.practice||[]; let done=0, right=0;
+  sec.appendChild(shead("practice",`${qs.length} questions`));
+  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  qs.forEach((q,i)=>{
+    const card=el("div","group q");
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
+      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      if(card.classList.contains("done"))return;
+      card.classList.add("done"); const j=+b.dataset.i;
+      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+    }));
+    sec.appendChild(card);
+  });
+  sec.appendChild(sc);
+  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+}
+
+/* problems / worked examples */
+function buildProblems(sec){
+  const ps=GUIDE.problems||[];
+  sec.appendChild(shead("problems",`${ps.length} to work`));
+  ps.forEach((p,i)=>{
+    const card=el("div","group prob");
+    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    const go=card.querySelector(".go");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    sec.appendChild(card);
+  });
+}
+
+/* formulas */
+function buildFormulas(sec){
+  const fs=GUIDE.formulas||[];
+  sec.appendChild(shead("formulas",`${fs.length}`));
+  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+}
+
+/* flashcards */
+function buildCards(sec){
+  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  sec.appendChild(shead("cards",`${cs.length}`));
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
+  const cnt=nav.querySelector("#cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const flip=()=>fc.classList.toggle("flip");
+  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
+  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
+  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
+  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  draw();
+}
+
+/* timeline */
+function buildTimeline(sec){
+  const ts=GUIDE.timeline||[];
+  sec.appendChild(shead("timeline",`${ts.length} events`));
+  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+}
+
+/* checklist */
+function buildChecklist(sec){
+  const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+  sec.appendChild(shead("checklist",`${cs.length} items`));
+  const g=el("div","group");
+  cs.forEach((c,i)=>{
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
+    g.appendChild(b);
+  });
+  sec.appendChild(g);
+}
+
+/* theme (shared with the homepage via localStorage "theme") */
+const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
+function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+function setTheme(mode){
+  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
+  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+}
+segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
+(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
+})();
+requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
+document.fonts?.ready.then(()=>{moveThumb();moveP()});
+
+/* sticky bar shadow + staggered reveal */
+(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
