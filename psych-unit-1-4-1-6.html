@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>study guide · valentino guides</title>
+<meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+   Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+
+:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1);--ink3:rgba(94,90,82,.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--good:#4C6A48;--bad:#8E3F4C;
+  --c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}}
+:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}
+
+:root{
+  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:600; --ls-d:-.025em;
+  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px;
+  --r-card:14px; --r-btn:10px; --r-chip:8px;
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --gap:16px;
+  --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
+.lc{text-transform:lowercase}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
+.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px}
+.home{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:26px;height:26px;border-radius:5px;flex:none;display:block}
+.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase;white-space:nowrap}
+@media (max-width:379px){.bar h1{display:none}}
+.seg{position:relative;display:flex;border:1px solid var(--line);border-radius:8px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
+.seg button{position:relative;z-index:2;padding:4px 9px;border-radius:6px;font-size:var(--t12);font-weight:500;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
+.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.bar .seg{margin-left:auto}
+
+/* intro */
+main{padding-top:22px}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cname svg{width:20px;height:20px;flex:none}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
+.chip.past{color:var(--ink3)}
+h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+
+/* pane switcher */
+.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes::-webkit-scrollbar{display:none}
+.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button[aria-selected="true"]{color:var(--on-accent)}
+.panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.panes.one{display:none}
+.pane{display:none}
+.pane.on{display:block;animation:rise .38s var(--spring) both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* section head */
+.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+.sh:first-child{margin-top:0}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+
+/* cards + groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.card.top{border-left:4px solid var(--cls);padding-left:15px}
+.card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
+.row + .row,.body + .row{border-top:1px solid var(--line)}
+.row:active{background:var(--surface2)}
+@media (hover:hover){.row:hover{background:var(--surface2)}}
+.rt{min-width:0;flex:1}
+.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
+.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
+.row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
+.body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
+.body.on{grid-template-rows:1fr}
+.body > div{overflow:hidden}
+.body .in{padding:12px 16px 14px}
+.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
+.body p:last-child{margin-bottom:0}
+
+/* prose emphasis */
+.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
+.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.trap{color:var(--bad);font-weight:600}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
+.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
+.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
+.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media (max-width:479px){.cmp{grid-template-columns:1fr}}
+.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
+.abbr b{color:var(--ink);font-weight:600}
+
+/* practice mc */
+.q{margin-bottom:10px}
+.q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
+.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
+.opt:active{background:var(--surface2)}
+@media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
+.opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
+.q.done .opt{cursor:default}
+.opt.right{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q.done .why{display:block}
+.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
+.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wide{width:100%}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.pdfs a{text-decoration:none}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
+
+/* problems + worked examples */
+.prob .qt{padding:14px 16px}
+.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block}
+.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+.ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+
+/* formulas */
+.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
+.fx:first-child{border-top:0}
+.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
+.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+
+/* flashcards */
+.deck{position:relative;perspective:1200px;margin-bottom:10px}
+.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.fc.flip{transform:rotateY(180deg)}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc .b .tag{color:var(--cls)}
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+
+/* timeline */
+.tl{position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding:6px 0 12px}
+.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
+.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
+.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+
+/* checklist */
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
+.ck:first-child{border-top:0}
+.ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
+.ck.on .box{background:var(--good);border-color:var(--good)}
+.ck.on .t{color:var(--ink3);text-decoration:line-through}
+.ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
+
+/* label rows inside an outline section: [["why","..."],["what","..."]] */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px}
+.rows dt{padding:6px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:21.75px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:6px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* cram sheet */
+.cr{display:grid;grid-template-columns:minmax(0,11em) 1fr;gap:2px 14px;padding:10px 14px;border-top:1px solid var(--line)}
+.cr:first-child{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:600;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:600}
+@media (max-width:599px){
+  .tbl thead{display:none}
+  .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbl tbody tr:first-child{border-top:0}
+  .tbl td{display:block;padding:0;border:0}
+  .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* footer */
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+footer .upd{display:block;margin-top:6px}
+
+/* reveal on load */
+.rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="home" href="/" aria-label="all guides">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg>
+      <h1>valentino guides</h1>
+    </a>
+    <div class="seg" role="group" aria-label="theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">auto</button>
+      <button type="button" data-set="light" aria-pressed="false">light</button>
+      <button type="button" data-set="dark" aria-pressed="false">dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="crow rv" id="crow"></div>
+  <h2 class="title rv" id="title"></h2>
+  <p class="sub rv" id="sub" hidden></p>
+  <div class="pdfs rv" id="pdfs" hidden></div>
+  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div id="root" class="rv"></div>
+  <footer>
+    study guide written by a student, free to use. not affiliated with the school.
+    check anything that matters against your own notes. <a href="/">all guides</a>
+    <span class="upd" id="upd"></span>
+  </footer>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   GUIDE — the only thing to edit. Delete panes you don't need from
+   `panes`; delete the matching data too. Prose accepts **term**,
+   ==fact== and !!trap!!. Everything is rendered from this object.
+   ═══════════════════════════════════════════════════════════════════ */
+const GUIDE = {
+  id:    "psych",
+  cls:   "AP Psychology",
+  title: "Unit 1.4–1.6 study guide",
+  test:  "2026-09-23",
+  end:   "2026-09-24",
+  meta:  "open-note quiz · 3 mini FRQs + 16 MCQs",
+  sub:   "the brain, sleep, and sensation, with the Phineas Gage FRQs worked out",
+  updated: "sept 23, 2026",
+
+  panes: [ "outline", "problems", "practice" ],
+  labels: { problems:"mini frqs", practice:"practice" },
+
+  top: [
+    "==All three mini FRQs are about Phineas Gage==: what the **frontal lobe** damage did to his behavior, why his life is a **case study**, and what he shows about **neuroplasticity**. Write one full paragraph each and name the term.",
+    "**Frontal lobes** (behind the forehead) = judgment, planning, impulse control, personality. The **prefrontal cortex** is the front part. !!Gage kept his intelligence and memory; his personality changed.!!",
+    "**Motor cortex** = rear of the frontal lobe, ==sends== movement commands. **Somatosensory cortex** = front of the parietal lobe, ==receives== touch. Both are wired to the !!opposite side!! of the body.",
+    "Sleep: ==4 stages, about every 90 minutes==. N3 = deep, slow **delta waves**. **REM** = vivid dreams, brain active, body nearly paralyzed.",
+    "Sensation: **transduction** turns energy into neural impulses. **Cones** = color and detail; **rods** = dim light. **Absolute threshold** = detect it 50% of the time."
+  ],
+
+  outline: [
+    { w:3, t:"The four lobes and the cortex", d:"every FRQ starts here",
+      p:["The **cerebral cortex** is the thin, wrinkled outer layer of the brain. Each hemisphere has ==four lobes==, and most of the cortex is **association areas**, which handle learning, remembering, thinking, and speaking.",
+         "The **prefrontal cortex**, the front of the **frontal lobes**, enables ==judgment, planning, social interactions, and processing new memories==. Damage here can !!leave intelligence intact but change personality and remove inhibitions!!."],
+      terms:["frontal lobes","parietal lobes","occipital lobes","temporal lobes","prefrontal cortex","association areas"],
+      cmp:{a:{h:"Frontal + Parietal",p:["**Frontal**: behind forehead. Judgment, planning, speaking, **motor cortex** (voluntary movement).","**Parietal**: top and rear. **Somatosensory cortex** (touch, body position), math and spatial reasoning."]},
+           b:{h:"Occipital + Temporal",p:["**Occipital**: back of the head. **Visual cortex**.","**Temporal**: above the ears. **Auditory cortex**, face recognition, smell and taste."]}},
+      notes:[{k:"warn",t:"!!Motor cortex sends, somatosensory cortex receives.!! More precise or sensitive body parts (fingers, lips) get more cortex, not bigger ones."}] },
+
+    { w:3, t:"Phineas Gage, case studies, and neuroplasticity", d:"the FRQ topics",
+      p:["In ==1848== an iron rod shot through Gage's left cheek and out the top of his skull, damaging his **frontal lobes**. Once friendly and soft-spoken, he became ==irritable, profane, and dishonest==: \"no longer Gage.\"",
+         "A **case study** is a ==non-experimental== in-depth look at one person. It can reveal what may happen and suggest ideas, but !!it cannot show cause and effect or be generalized without more research!!.",
+         "**Neuroplasticity** is the brain's ability to ==change by reorganizing after damage or building new pathways from experience==. It is strongest in childhood but lasts all life. Gage adapted and later worked as a stagecoach driver."],
+      terms:["case study","neuroplasticity","localization of function","neurogenesis"],
+      notes:[{k:"ok",t:"Gage stayed functional because the damage was limited to the frontal lobes. His **motor**, **sensory**, and language areas still worked, so he could walk, talk, and remember."},
+             {k:"warn",t:"!!Brain and spinal cord neurons usually do not regenerate.!! Healing means other areas reorganize or take over (plus some **neurogenesis**, new neurons)."}] },
+
+    { w:3, t:"Brainstem, limbic system, cerebellum", d:"the most common MC targets",
+      p:["The **brainstem** handles automatic survival functions: the **medulla** (==heartbeat and breathing==), the **pons** (movement, sleep), and the **reticular formation** (==arousal==, filters incoming stimuli).",
+         "The **thalamus** is the ==sensory control center== (every sense except smell). The **cerebellum** (\"little brain\") coordinates ==voluntary movement and balance== and nonverbal learning."],
+      terms:["medulla","pons","reticular formation","thalamus","cerebellum","amygdala","hypothalamus","hippocampus"],
+      cmp:{a:{h:"Limbic system",p:["**Amygdala**: ==fear and aggression==.","**Hypothalamus**: ==hunger, thirst, body temperature==, controls the pituitary, reward.","**Hippocampus**: forms ==new explicit memories==."]},
+           b:{h:"Quick tells",p:["Breathing stops = !!medulla!!.","Can't balance after a hit to the head = **cerebellum**.","Hungry = **hypothalamus**."]}} },
+
+    { w:2, t:"Tools for studying the brain", d:"structure vs function",
+      p:["Early clues came from **case studies** and **lesions** (destroying tissue). Today scans split into two jobs: showing ==structure== or showing ==activity==."],
+      cmp:{a:{h:"Structure (anatomy)",p:["**CT**: X-ray slices.","**MRI**: magnetic fields; detailed pictures of soft tissue."]},
+           b:{h:"Function (activity)",p:["**EEG**: electrical waves on the scalp.","**PET**: glucose use shown by radioactive tracer.","**fMRI**: blood flow, shows activity and structure."]}},
+      notes:[{k:"warn",t:"!!MRI shows structure; fMRI shows function.!! The f stands for functional."}] },
+
+    { w:2, t:"Two hemispheres and split brains", d:"left vs right",
+      p:["The **corpus callosum** connects the two hemispheres. In a **split brain** it is cut, so the halves cannot share information.",
+         "The ==left hemisphere is more verbal== (speech, reading, math). The ==right== excels at visual perception, inferences, and self-awareness. !!Each side controls the opposite side of the body.!!"],
+      terms:["corpus callosum","split brain"] },
+
+    { w:2, t:"Sleep stages and rhythms", d:"what happens each 90 minutes",
+      p:["The **circadian rhythm** is the ==24-hour biological clock==. The **suprachiasmatic nucleus** responds to light and controls **melatonin**; screens and night shifts throw it off.",
+         "Through the night, ==N3 gets shorter and REM gets longer==. Missing REM leads to **REM rebound** (more REM the next night)."],
+      steps:["Awake, relaxed: **alpha waves**","N1: light sleep, **hallucinations**","N2: **sleep spindles**, about half the night","N3: deep, **delta waves**","**REM**: dreams, active brain, paralyzed body"],
+      terms:["circadian rhythm","alpha waves","sleep spindles","delta waves","REM sleep","REM rebound"] },
+
+    { w:2, t:"Sleep loss, disorders, and dreams", d:"match the symptom",
+      p:["Sleep ==restores the immune system==, consolidates memories, and supports growth. Losing it brings irritability, weight gain, weaker immunity, and !!more accidents!!."],
+      cmp:{a:{h:"Disorders",p:["**Insomnia**: trouble falling or staying asleep.","**Narcolepsy**: sudden sleep attacks, sometimes straight into REM.","**Sleep apnea**: breathing stops repeatedly.","**Sleepwalking**: in N3."]},
+           b:{h:"Dream theories",p:["**Information processing**: sorts the day's memories.","**Physiological function**: keeps neural pathways working.","**Neural activation** (activation-synthesis): the brain makes a story from random firing.","**Cognitive development**: dreams match what we know."]}} },
+
+    { w:2, t:"Sensation basics", d:"thresholds and adaptation",
+      p:["Every sense ==receives, transforms, and delivers==. **Transduction** converts one form of energy into neural impulses.",
+         "**Absolute threshold** = minimum stimulation detected ==50% of the time==. **Difference threshold** (jnd) = smallest change noticed 50% of the time. **Weber's law**: the difference must be a !!constant percentage, not a constant amount!!."],
+      terms:["transduction","absolute threshold","difference threshold","Weber's law","sensory adaptation","signal detection theory"],
+      notes:[{k:"ex",t:"**Sensory adaptation**: you stop noticing your shirt or a room's smell because nothing is changing."}] },
+
+    { w:2, t:"Vision", d:"eye to cortex",
+      p:["**Cones** (center of the retina) see ==color and detail==; **rods** see ==dim light and the edges of vision==. **Wavelength** = color (hue); **amplitude** = brightness.",
+         "Color works in two stages: **trichromatic theory** (three cone types: red, green, blue), then **opponent-process** (red-green, blue-yellow, white-black), which explains !!afterimages!!. **Feature detectors** in the visual cortex respond to edges, lines, and motion."],
+      steps:["**Cornea**","**Pupil** and **iris**","**Lens**","**Retina** (rods, cones)","**Optic nerve**","**Thalamus**","**Visual cortex**"],
+      terms:["cones","rods","trichromatic theory","opponent-process theory","feature detectors","parallel processing","blind spot"] },
+
+    { w:1, t:"Hearing", d:"pitch and deafness",
+      p:["Sound travels ==eardrum, middle-ear bones, cochlea==; hair cells on the **basilar membrane** fire. **Frequency** = pitch; **amplitude** = loudness.",
+         "**Place theory** explains ==high pitches==; **frequency theory** explains ==low pitches==. **Sensorineural** loss = damaged hair cells or nerve; **conduction** loss = !!damaged eardrum or middle-ear bones!!."],
+      terms:["cochlea","place theory","frequency theory","sensorineural hearing loss","conduction hearing loss"] },
+
+    { w:1, t:"Touch, pain, taste, smell, balance", d:"the other senses",
+      p:["Touch = ==pressure, warmth, cold, pain==. **Gate-control theory**: the spinal cord has a \"gate\" that opens or closes to pain signals.",
+         "Taste (**gustation**) and smell (**olfaction**) are ==chemical senses==. !!Smell is the only sense that skips the thalamus.!! **Kinesthesis** = body-part position; **vestibular sense** = balance (semicircular canals)."],
+      terms:["gate-control theory","gustation","olfaction","kinesthesis","vestibular sense","sensory interaction"] },
+
+    { w:1, t:"Consciousness and dual processing", d:"one or two questions at most",
+      p:["**Consciousness** is our awareness of ourselves and our environment. The mind runs on **dual processing**: a ==conscious, sequential== track and an ==unconscious, parallel== track."],
+      terms:["consciousness","dual processing"] }
+  ],
+
+  problems: [
+    { q:"(**Frontal lobe / prefrontal cortex**) How did damage to Phineas Gage's frontal lobe change the way he behaved?",
+      steps:["Define it: the **frontal lobes** sit behind the forehead; the **prefrontal cortex** (front part) handles ==judgment, planning, social behavior, and impulse control==.",
+             "Give the injury: in ==1848== an iron rod went through his left cheek and out the top of his skull, damaging his frontal lobes.",
+             "Name the change: from friendly and soft-spoken to ==irritable, profane, and dishonest==, less inhibited, \"no longer Gage.\"",
+             "Contrast: !!his intelligence and memories stayed mostly intact!!; only his personality and self-control changed."],
+      ans:"The **frontal lobes**, behind the forehead, handle judgment, planning, and impulse control, and the **prefrontal cortex** at their front manages social behavior and decision making. When an iron rod shot through Phineas Gage's skull in 1848, it damaged his frontal lobes and their connections to the brain's emotion centers. Before the accident he was friendly and soft-spoken, but afterward he became irritable, profane, dishonest, and impulsive, so much that friends said he was \"no longer Gage.\" His intelligence and memories stayed mostly intact, which shows the frontal lobes control personality and self-control rather than basic thinking." },
+
+    { q:"(**Case study**) Gage was studied for about 12 years, from his accident until he died. How did this research method help answer questions about the human brain?",
+      steps:["Define it: a **case study** is a ==non-experimental, in-depth study of one person==.",
+             "Apply it: doctors followed Gage over time, recording how his behavior changed after the damage.",
+             "What it revealed: **localization of function**, the idea that ==specific brain areas control specific functions== (frontal lobes = personality and impulse control).",
+             "Limit: !!one person cannot prove cause and effect or represent everyone!!; findings need more research."],
+      ans:"A **case study** is a non-experimental research method that examines one individual in depth. Doctors observed Gage for the roughly 12 years between his accident and his death, recording how his behavior changed after his frontal lobes were damaged. His case helped reveal **localization of function**: specific parts of the brain control specific jobs, and the frontal lobes govern personality, judgment, and impulse control while movement, speech, and memory are handled elsewhere. Because it studies only one person, a case study cannot prove cause and effect or be generalized to everyone without further research." },
+
+    { q:"(**Neuroplasticity**) What did Gage's injury show early psychologists about the brain's ability to heal? Was he still functional afterward, and how?",
+      steps:["Define it: **neuroplasticity** = the brain's ability to ==change by reorganizing after damage or building new pathways==.",
+             "Answer yes: he sat up and spoke right after the accident, went back to work, and kept his memory.",
+             "Explain how: the damage was ==limited to the frontal lobes==; his motor, sensory, and language areas still worked.",
+             "Heal = adapt: over time he adjusted and later drove a stagecoach. !!Damaged neurons don't grow back; other areas reorganize around the damage.!!"],
+      ans:"**Neuroplasticity** is the brain's ability to change by reorganizing after damage or building new pathways based on experience. Gage was still functional after his accident: he sat up and spoke right away, returned to work after the wound healed, and kept most of his memory and mental abilities. This was possible because the damage was limited to his frontal lobes, leaving his motor cortex, sensory areas, and language areas intact. Over time he adapted to his injury and later worked as a stagecoach driver, showing that even though damaged neurons usually do not regrow, the rest of the brain can adapt and reorganize so a person keeps functioning." }
+  ],
+
+  practice: [
+    { q:"Damage to which structure is most likely to stop a person's breathing?", opts:["Amygdala","Thalamus","Medulla","Hypothalamus"], a:2, why:"The **medulla** controls ==heartbeat and breathing==. !!The hypothalamus handles hunger, thirst, and temperature, not breathing.!!" },
+    { q:"After Phineas Gage's accident, which change was most noticeable?", opts:["He could no longer speak","He lost all his memories","His personality and impulse control changed","He became blind on one side"], a:2, why:"Frontal lobe damage changed his ==personality and inhibitions==. !!His speech and memory stayed mostly intact!!, which is why his case matters." },
+    { q:"A researcher studies one patient with a rare brain injury in great depth for years. This method is a", opts:["naturalistic observation","case study","survey","experiment"], a:1, why:"A **case study** examines ==one individual in depth==. !!It is not an experiment: nothing is manipulated, so it shows no cause and effect.!!" },
+    { q:"A child recovers speech after surgery removed part of her left hemisphere. This best shows", opts:["neuroplasticity","localization of function","sensory adaptation","transduction"], a:0, why:"**Neuroplasticity**: the brain ==reorganizes after damage==, strongest in childhood. !!Localization is the opposite idea: one area, one job.!!" },
+    { q:"Stimulating which area would most likely make a person's hand move involuntarily?", opts:["Somatosensory cortex","Motor cortex","Visual cortex","Auditory cortex"], a:1, why:"The **motor cortex** (rear of the frontal lobe) ==sends movement commands==. !!The somatosensory cortex receives touch; stimulating it produces a feeling, not a movement.!!" },
+    { q:"A gymnast hits her head and now has trouble keeping her balance. Which structure was most likely affected?", opts:["Reticular formation","Cerebellum","Amygdala","Medulla"], a:1, why:"The **cerebellum** coordinates ==voluntary movement and balance==." },
+    { q:"Planning your day and resisting an impulse depend most on the", opts:["occipital lobes","temporal lobes","frontal lobes","parietal lobes"], a:2, why:"The **frontal lobes** (prefrontal cortex) handle ==judgment and planning==. !!Occipital = vision, temporal = hearing, parietal = touch.!!" },
+    { q:"Which scan shows brain activity by tracking blood flow?", opts:["CT","MRI","fMRI","Lesion"], a:2, why:"**fMRI** shows ==function== through blood flow. !!Plain MRI and CT only show structure.!!" },
+    { q:"Damage to the hippocampus would most affect a person's ability to", opts:["feel fear","form new explicit memories","regulate hunger","see color"], a:1, why:"The **hippocampus** processes ==new conscious, explicit memories==. !!Fear is the amygdala.!!" },
+    { q:"In most people, speech and language are controlled mainly by the", opts:["right hemisphere","left hemisphere","corpus callosum","cerebellum"], a:1, why:"The ==left hemisphere is the more verbal one==. The **corpus callosum** only connects the two sides." },
+    { q:"Sleep spindles are the signature of which stage?", opts:["N1","N2","N3","REM"], a:1, why:"**N2** has ==sleep spindles== and takes up about half the night. !!Delta waves = N3.!!" },
+    { q:"Why is REM sleep called paradoxical sleep?", opts:["The body is active but the brain is quiet","The brain is active but the muscles are nearly paralyzed","It happens only in the morning","It has no dreams"], a:1, why:"In **REM** the ==brain is aroused but the body is calm== (near paralysis)." },
+    { q:"Someone falls asleep suddenly during the day, sometimes straight into REM. This describes", opts:["insomnia","sleep apnea","narcolepsy","sleepwalking"], a:2, why:"**Narcolepsy** = ==sudden, uncontrollable sleep attacks==. !!Sleep apnea is breathing stopping during sleep.!!" },
+    { q:"The smallest amount of a stimulus a person can detect 50 percent of the time is the", opts:["difference threshold","absolute threshold","just noticeable difference","sensory adaptation"], a:1, why:"**Absolute threshold** = ==detecting it at all==. !!The difference threshold (jnd) is noticing a change between two stimuli.!!" },
+    { q:"Which photoreceptors let you see color and fine detail?", opts:["Rods","Cones","Bipolar cells","Ganglion cells"], a:1, why:"**Cones** handle ==color and detail==. !!Rods work in dim light and peripheral vision.!!" },
+    { q:"After staring at a red square, you see a green afterimage. Which theory explains this?", opts:["Trichromatic theory","Opponent-process theory","Place theory","Gate-control theory"], a:1, why:"**Opponent-process theory**: colors work in ==pairs (red-green, blue-yellow)==, so tiring one side shows its opposite. !!Trichromatic theory is about three cone types, not afterimages.!!" }
+  ],
+
+  abbr: { "N1/N2/N3":"non-REM sleep stages 1, 2, 3", "REM":"rapid eye movement", "fMRI":"functional MRI", "MRI":"magnetic resonance imaging", "CT":"computed tomography", "EEG":"electroencephalogram", "PET":"positron emission tomography", "jnd":"just noticeable difference" }
+};
+
+/* ═══ machinery. nothing below needs editing. ═══ */
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const ICON={
+ apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ psych:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ phys:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ pre:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ sem:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ span:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ apwh:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ biz:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ mor:'<path d="M13 4.5v17"/><path d="M7.5 9.5h11"/>',
+ csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
+};
+const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables"};
+
+/* header */
+document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
+document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
+$("#title").textContent=GUIDE.title;
+if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
+$("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
+(function(){
+  const c=$("#crow");
+  c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  if(GUIDE.test){
+    const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
+    const now=new Date(); now.setHours(0,0,0,0);
+    const days=Math.round((t-now)/864e5);
+    const md=`${t.getMonth()+1}/${t.getDate()}`+(GUIDE.end?`–${e.getMonth()+1}/${e.getDate()}`:"");
+    let txt, past=e<now;
+    if(past)txt=`test was ${md}`;
+    else if(days<=0)txt=`test today · ${md}`;
+    else if(days===1)txt=`test tomorrow · ${md}`;
+    else if(days<=14)txt=`test in ${days} days · ${md}`;
+    else txt=`test ${md}`;
+    c.appendChild(el("span","chip"+(past?" past":" due"),esc(txt)));
+  }
+  if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
+})();
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables};
+const tabs=[];
+PANES.forEach((id,i)=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  builders[id](sec); root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+function show(id,user){
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
+/* outline */
+function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
+function extras(s){
+  let h="";
+  if(s.rows)h+=`<dl class="rows">${s.rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${fmt(v)}</dd>`).join("")}</dl>`;
+  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
+  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
+  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
+  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
+  return h;
+}
+function buildOutline(sec){
+  if(GUIDE.top?.length){
+    sec.appendChild(shead("start here","the whole guide in one screen"));
+    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  }
+  const list=GUIDE.outline||[]; if(!list.length)return;
+  const n3=list.filter(s=>s.w===3).length;
+  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
+  const g=el("div","group");
+  list.forEach((s,i)=>{
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
+    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
+    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body);
+  });
+  sec.appendChild(g);
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    sec.appendChild(shead("abbreviations"));
+    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+  }
+}
+
+/* practice mc */
+function buildPractice(sec){
+  const qs=GUIDE.practice||[]; let done=0, right=0;
+  sec.appendChild(shead("practice",`${qs.length} questions`));
+  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  qs.forEach((q,i)=>{
+    const card=el("div","group q");
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
+      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      if(card.classList.contains("done"))return;
+      card.classList.add("done"); const j=+b.dataset.i;
+      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+    }));
+    sec.appendChild(card);
+  });
+  sec.appendChild(sc);
+  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+}
+
+/* problems / worked examples */
+function buildProblems(sec){
+  const ps=GUIDE.problems||[];
+  sec.appendChild(shead("problems",`${ps.length} to work`));
+  ps.forEach((p,i)=>{
+    const card=el("div","group prob");
+    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    const go=card.querySelector(".go");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    sec.appendChild(card);
+  });
+}
+
+/* formulas */
+function buildFormulas(sec){
+  const fs=GUIDE.formulas||[];
+  sec.appendChild(shead("formulas",`${fs.length}`));
+  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+}
+
+/* flashcards */
+function buildCards(sec){
+  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  sec.appendChild(shead("cards",`${cs.length}`));
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
+  const cnt=nav.querySelector("#cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const flip=()=>fc.classList.toggle("flip");
+  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
+  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
+  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
+  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  draw();
+}
+
+/* timeline */
+function buildTimeline(sec){
+  const ts=GUIDE.timeline||[];
+  sec.appendChild(shead("timeline",`${ts.length} events`));
+  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+}
+
+/* checklist */
+function buildChecklist(sec){
+  const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+  sec.appendChild(shead("checklist",`${cs.length} items`));
+  const g=el("div","group");
+  cs.forEach((c,i)=>{
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
+    g.appendChild(b);
+  });
+  sec.appendChild(g);
+}
+
+/* cram sheet: [{h:"group", d:"optional", items:[{n:"name", y:"date", t:"one line"}]}] */
+function buildCram(sec){
+  (GUIDE.cram||[]).forEach(g=>{
+    const it=g.items||[];
+    sec.appendChild(shead(g.h||"cram sheet",g.d||`${it.length}`));
+    sec.appendChild(el("div","group",it.map(c=>`<div class="cr"><div class="n"><span>${fmt(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${fmt(c.t)}</div></div>`).join("")));
+  });
+}
+
+/* tables: [{h:"title", d:"optional", cols:["a","b"], rows:[["..",".."]]}]. stacks into cards on a phone */
+function buildTables(sec){
+  (GUIDE.tables||[]).forEach(tb=>{
+    const cols=tb.cols||[], rows=tb.rows||[];
+    sec.appendChild(shead(tb.h||"table",tb.d||`${rows.length}`));
+    sec.appendChild(el("div","group",`<table class="tbl"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table>`));
+  });
+}
+
+/* theme (shared with the homepage via localStorage "theme") */
+const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
+function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+function setTheme(mode){
+  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
+  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+}
+segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
+(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
+})();
+requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
+document.fonts?.ready.then(()=>{moveThumb();moveP()});
+
+/* sticky bar shadow + staggered reveal */
+(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
