@@ -207,6 +207,34 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .ck.on .t{color:var(--ink3);text-decoration:line-through}
 .ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
 
+/* label rows inside an outline section: [["why","..."],["what","..."]] */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px}
+.rows dt{padding:6px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:21.75px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:6px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* cram sheet */
+.cr{display:grid;grid-template-columns:minmax(0,11em) 1fr;gap:2px 14px;padding:10px 14px;border-top:1px solid var(--line)}
+.cr:first-child{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:600;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:600}
+@media (max-width:599px){
+  .tbl thead{display:none}
+  .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbl tbody tr:first-child{border-top:0}
+  .tbl td{display:block;padding:0;border:0}
+  .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
 /* footer */
 footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
 footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
@@ -264,7 +292,7 @@ const GUIDE = {
   // pdfs: [ { t:"practice quiz a", url:"/precalc-unit-2-practice-a.pdf" } ], pdfsNote: "one line. optional",
   updated: "sept 13, 2026",
 
-  // tab order. ids: outline practice problems formulas cards timeline checklist
+  // tab order. ids: outline practice problems formulas cards timeline checklist cram tables
   panes: [ "outline", "practice", "cards" ],
   labels: { practice:"practice", cards:"cards" },   // optional overrides for tab names
 
@@ -275,6 +303,9 @@ const GUIDE = {
     "Three colonial models: Spain converted and extracted, France traded, England settled and displaced."
   ],
 
+  // outline sections also take rows:[["why","..."],["what","..."]] (label + line), rendered before cmp/steps
+  // cram: [ { h:"the acts", d:"optional", items:[ { n:"Sugar Act", y:"1764", t:"one line" } ] } ]
+  // tables: [ { h:"people who get mixed up", cols:["who","known for"], rows:[ ["Otis","..."] ] } ]
   // outline: sorted heaviest first. w:3 tested most (starts open), w:2 tested, w:1 know it
   outline: [
     { w:3, t:"The Columbian Exchange",
@@ -358,7 +389,7 @@ const ICON={
  csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
 const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
-const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist"};
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables"};
 
 /* header */
 document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
@@ -389,7 +420,7 @@ $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 /* panes */
 const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
 const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
-const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist};
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables};
 const tabs=[];
 PANES.forEach((id,i)=>{
   const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
@@ -412,6 +443,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
 function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
 function extras(s){
   let h="";
+  if(s.rows)h+=`<dl class="rows">${s.rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${fmt(v)}</dd>`).join("")}</dl>`;
   if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
   if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
   if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
@@ -519,6 +551,24 @@ function buildChecklist(sec){
     g.appendChild(b);
   });
   sec.appendChild(g);
+}
+
+/* cram sheet: [{h:"group", d:"optional", items:[{n:"name", y:"date", t:"one line"}]}] */
+function buildCram(sec){
+  (GUIDE.cram||[]).forEach(g=>{
+    const it=g.items||[];
+    sec.appendChild(shead(g.h||"cram sheet",g.d||`${it.length}`));
+    sec.appendChild(el("div","group",it.map(c=>`<div class="cr"><div class="n"><span>${fmt(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${fmt(c.t)}</div></div>`).join("")));
+  });
+}
+
+/* tables: [{h:"title", d:"optional", cols:["a","b"], rows:[["..",".."]]}]. stacks into cards on a phone */
+function buildTables(sec){
+  (GUIDE.tables||[]).forEach(tb=>{
+    const cols=tb.cols||[], rows=tb.rows||[];
+    sec.appendChild(shead(tb.h||"table",tb.d||`${rows.length}`));
+    sec.appendChild(el("div","group",`<table class="tbl"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table>`));
+  });
 }
 
 /* theme (shared with the homepage via localStorage "theme") */

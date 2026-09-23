@@ -207,6 +207,34 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .ck.on .t{color:var(--ink3);text-decoration:line-through}
 .ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
 
+/* label rows inside an outline section: [["why","..."],["what","..."]] */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px}
+.rows dt{padding:6px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:21.75px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:6px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* cram sheet */
+.cr{display:grid;grid-template-columns:minmax(0,11em) 1fr;gap:2px 14px;padding:10px 14px;border-top:1px solid var(--line)}
+.cr:first-child{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:600;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:600}
+@media (max-width:599px){
+  .tbl thead{display:none}
+  .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbl tbody tr:first-child{border-top:0}
+  .tbl td{display:block;padding:0;border:0}
+  .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
 /* footer */
 footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
 footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
@@ -259,167 +287,299 @@ const GUIDE = {
   title: "Unit 2/A study guide",
   test:  "2026-09-23",
   meta:  "25 questions · 17 min",
-  sub:   "population and the great awakening through choosing sides. for each act: what it was, why britain did it, why colonists were mad.",
+  sub:   "the story first, then every act as why → what → why mad → result. cram sheet, mix-ups and timeline have their own tabs.",
   updated: "sept 22, 2026",
 
-  panes: [ "outline", "timeline", "practice", "cards" ],
-  labels: { practice:"practice" },
+  panes: [ "outline", "cram", "tables", "timeline", "practice", "cards" ],
+  labels: { cram:"cram sheet", tables:"mix-ups" },
 
   top: [],
 
   outline: [
-    { w:3, t:"Cram sheet", d:"one line each, in order",
+    { w:3, t:"The whole story in 8 steps", d:"read this first. every act fits into it",
       steps:[
-        "**French and Indian War** (1754-63): Britain beats France, French leave North America, Britain is left with a huge debt. Everything after starts here.",
-        "**Treaty of Paris 1763**: Britain to the Mississippi; Louisiana and New Orleans go to Spain, not Britain.",
-        "**Pontiac** (1763): Native uprising west of the Appalachians, beaten at Bushy Run.",
-        "**Proclamation of 1763**: no settlement past the Appalachians. Land, not tax. Colonists ignored it.",
-        "**Sugar Act 1764**: molasses duty lowered but enforced, for revenue. First tax for money instead of trade.",
-        "**Currency Act 1764**: no colonial paper money.",
-        "**Stamp Act 1765**: internal tax on paper. Never implemented. Mobs, Sons of Liberty, boycotts, Stamp Act Congress.",
-        "**Quartering Act 1765**: colonies pay to house troops whose only job is watching colonists.",
-        "**Declaratory Act 1766**: Stamp Act repealed, but Parliament keeps the right to tax.",
-        "**Townshend Acts 1767**: duties on English goods to pay royal officials. Repealed 1770 except tea.",
-        "**Boston Massacre 1770**: five dead. John Adams defends the soldiers; manslaughter, not murder.",
-        "**Committees of Correspondence 1772**: Samuel Adams' information network between colonies.",
-        "**Tea Act 1773**: cheap East India Company tea, feared monopoly. Boston Tea Party, Dec. 16.",
-        "**Coercive Acts 1774**: port closed, charter gutted, trials moved. Quebec Act is separate.",
-        "**First Continental Congress 1774**: Parliament may regulate trade, not tax. Continental Association boycott.",
-        "**Committees of Observation** and **provincial conventions**: colonists run their own governments; Britain helpless.",
-        "**Choosing sides**: about 2 in 5 Patriot, 2 in 5 neutral, 1 in 5 Loyalist. Enslaved people side with the British (Dunmore)."
-      ] },
+        "**French and Indian War** (1754-63) → Britain beats France → France out of North America → Britain left with a ==huge war debt==.",
+        "Britain: we defended you → you help pay → ends **salutary neglect** (the old deal: London barely enforced its trade laws, colonists mostly ran themselves).",
+        "Parliament passes acts → taxes meant to raise ==revenue== + real enforcement (Sugar, Stamp, Townshend, Tea).",
+        "Colonists: we elect nobody in Parliament → **no taxation without representation** → boycotts, mobs, pamphlets.",
+        "Boycotts hurt British merchants → merchants lobby Parliament → Parliament drops the tax, !!but keeps the claim it can tax!! (Declaratory Act, the tea duty).",
+        "Each round the colonists organize better: **Sons of Liberty** → **Committees of Correspondence** → a Continental Congress.",
+        "**Boston Tea Party** (1773) → Britain punishes Massachusetts (**Coercive Acts**) → other colonies: we're next → **First Continental Congress** (1774).",
+        "Colonists start running their own governments → Britain loses control → everyone picks a side. !!Still not independence!!: they want their rights as Englishmen."
+      ],
+      notes:[{k:"ok",t:"The loop behind every act: Britain needs money → new act → colonists protest → Britain backs off the money but not the power → next act."}],
+      terms:["French and Indian War","salutary neglect","no taxation without representation","Sons of Liberty","Committees of Correspondence","Boston Tea Party","Coercive Acts","First Continental Congress"] },
 
     { w:3, t:"Proclamation of 1763", d:"land, not tax",
-      p:["Why it happened: the French were gone, so Native nations could no longer play empires against each other. **Pontiac**, an Ottawa chief, rose up west of the Appalachians and was beaten at **Bushy Run**. Britain was broke and wanted no more Indian wars."],
-      cmp:{ a:{h:"what it did", p:["Drew a line along the crest of the **Appalachians**. No settlement past it until Britain negotiated with the tribes."]},
-            b:{h:"why colonists were mad", p:["They and **land speculators** had already bought land past the line with borrowed money, planning to resell. The line froze their investment."]} },
-      notes:[{k:"ok",t:"The twist: colonists ignored it and Britain did not enforce it. First sign London could not make its rules stick. On the test it is !!not a tax!!."}],
-      terms:["Pontiac","Bushy Run","Proclamation of 1763","land speculators"] },
+      rows:[
+        ["why","French gone → Native nations can't play Britain against France anymore → **Pontiac** (Ottawa chief) attacks British forts west of the Appalachians (1763) → beaten at **Bushy Run**, Pennsylvania → Britain is broke and wants no more Indian wars → keep settlers off Native land."],
+        ["what","Line along the **Appalachian Mountains** → ==no colonial settlement west of it==."],
+        ["why mad","The war was partly fought over that western land (the Ohio Valley) → **land speculators** had already bought land out there, often with borrowed money → the line froze it."],
+        ["result","Colonists ignored it → Britain didn't enforce it → first sign London can't make its rules stick."]
+      ],
+      notes:[{k:"warn",t:"The Proclamation is !!not a tax!!. It's about land. Answer choices will try to call it a tax."}],
+      terms:["Pontiac","Bushy Run","Appalachian Mountains","land speculators"] },
 
-    { w:3, t:"Sugar Act and Currency Act (1764)", d:"why the taxes start",
-      p:["Why it happened: the war left Britain a ==huge debt==. **George III** decided colonists would pay a share and the **Navigation Acts** would finally be enforced. Until then Britain had practiced **salutary neglect**: the Molasses Act (1733) put 6 pence a gallon on foreign molasses and nobody collected it."],
-      cmp:{ a:{h:"what it did", p:["**Sugar Act**: cut the molasses duty to 3 pence but actually collected it (prime minister **Grenville**).","**Currency Act**: colonies could not issue paper money."]},
-            b:{h:"why colonists were mad", p:["The Sugar Act was openly for **revenue**, not to steer trade. Parliament was taxing them to raise money.","The Currency Act tied their economy to scarce English money."]} },
-      notes:[{k:"warn",t:"The Sugar Act !!lowered!! the rate. What changed was enforcement and purpose."}],
-      terms:["war debt","salutary neglect","Sugar Act","Currency Act","revenue"] },
+    { w:3, t:"Sugar Act and Currency Act (1764)", d:"the first tax to raise money",
+      rows:[
+        ["why","War debt → prime minister **George Grenville** + King George III: colonists pay a share + the **Navigation Acts** finally get enforced. The old **Molasses Act** (1733) taxed foreign molasses 6 pence a gallon → nobody paid (smuggling, bribed officials)."],
+        ["what","**Sugar Act**: duty on foreign molasses cut to ==3 pence== → but actually collected → smugglers tried in **vice-admiralty courts** (a judge, no jury)."],
+        ["why mad","Openly passed for ==revenue== → first time Parliament taxes colonists just to raise money, not to steer trade → New England rum makers hit hardest."],
+        ["also 1764","**Currency Act**: colonies ==can't print paper money== → colonists already short on coins → harder to pay debts and taxes."]
+      ],
+      notes:[{k:"warn",t:"The Sugar Act !!lowered!! the rate. What changed was enforcement and purpose (revenue)."}],
+      terms:["George Grenville","Navigation Acts","Molasses Act","Sugar Act","vice-admiralty courts","Currency Act"] },
 
-    { w:3, t:"Stamp Act (1765) and the Declaratory Act (1766)", d:"internal tax, never implemented",
-      p:["Why it happened: the Sugar Act did not raise enough, so Parliament reached inside the colonies."],
-      cmp:{ a:{h:"what it did", p:["Required a purchased **tax stamp** on newspapers, legal documents and printed items. No stamp, not legal."]},
-            b:{h:"why colonists were mad", p:["An **internal tax**, felt directly by everyone. A tariff hides inside a price; this reached into the pocket."]} },
-      steps:["Never implemented: **mobs** (tar and feathering, effigies) made every distributor resign.",
-             "**Sons of Liberty**: the elite formed them to steer the mob at British officials so it would not go too far.",
-             "**Boycotts** hurt British merchants, who lobbied Parliament for repeal.",
-             "**James Otis**: Parliament should not tax the unrepresented, but obey anyway (moderate).",
-             "**Patrick Henry**, Virginia Resolves: only Virginia's assembly may tax Virginians (radical).",
-             "**Stamp Act Congress** in New York: one unified protest.",
-             "Repealed 1766. Same day, the **Declaratory Act**: Parliament may tax and legislate in all cases. The tax died, the principle did not."],
-      terms:["Stamp Act","internal tax","Sons of Liberty","James Otis","Patrick Henry","Stamp Act Congress","Declaratory Act"] },
+    { w:3, t:"Stamp Act (1765) and Declaratory Act (1766)", d:"the big one. never implemented",
+      rows:[
+        ["why","The Sugar Act didn't raise enough → Grenville wants more."],
+        ["what","**Stamp Act**: buy a **tax stamp** for printed paper → newspapers, legal documents, licenses, even playing cards → no stamp, not legal."],
+        ["why mad","**Internal tax** = paid directly on things used inside the colonies, by everyone → hits lawyers, printers and merchants, the loudest people around → not a trade duty hidden in a price."]
+      ],
+      steps:[
+        "**James Otis**: Parliament shouldn't tax people it doesn't represent → but colonists should still obey. The moderate.",
+        "**Patrick Henry** → **Virginia Stamp Act Resolves** in the House of Burgesses → only Virginia's assembly can tax Virginians. The radical.",
+        "**Sons of Liberty** → mobs, effigies, tar and feathers → every stamp distributor resigns → nobody to sell stamps → ==never implemented==.",
+        "**Stamp Act Congress** (New York, 1765) → 9 colonies send one joint protest → first time the colonies act together.",
+        "Boycotts of British goods → British merchants lose money → they lobby Parliament → ==repealed 1766==.",
+        "Same day → **Declaratory Act**: Parliament can make laws for the colonies ==in all cases whatsoever== → tax gone, power claimed."
+      ],
+      notes:[{k:"ok",t:"Why the elite formed the Sons of Liberty: to aim the mob at British officials so it wouldn't turn on the rich."}],
+      terms:["Stamp Act","internal tax","James Otis","Patrick Henry","Sons of Liberty","Stamp Act Congress","Declaratory Act"] },
 
-    { w:3, t:"Quartering Act (1765)", d:"",
-      cmp:{ a:{h:"what it did", p:["Colonies had to pay for and house British troops."]},
-            b:{h:"why colonists were mad", p:["With the French gone, the troops had nothing to guard against. Their only job was watching colonists, and colonists paid for it. Most went to **Boston**, the most radical colony."]} },
-      terms:["Quartering Act 1765"] },
+    { w:3, t:"Quartering Act (1765)", d:"pay for the troops watching you",
+      rows:[
+        ["what","**Quartering Act**: colonies must house and supply British troops → barracks, food, firewood."],
+        ["why mad","French gone → the troops have no enemy to guard against → their only job is watching colonists → and colonists pay for it → most end up in ==Boston==, the most radical town."]
+      ],
+      notes:[{k:"warn",t:"Two Quartering Acts. ==1765==: colonies supply the troops. ==1774==: troops can be put in colonists' empty buildings; passed with the Coercive Acts but !!not one of them!!."}],
+      terms:["Quartering Act"] },
 
-    { w:3, t:"Townshend Acts (1767)", d:"the tea tax that survived",
-      p:["Why it happened: after the Stamp Act failed, **Charles Townshend** tried an external tax, since colonists had said they would accept those."],
-      cmp:{ a:{h:"what it did", p:["Duties on **English manufactured goods**: paint, glass, lead, tea.","Revenue paid the **salaries of royal officials**.","Customs board in Boston; **vice-admiralty courts** tried smugglers with no jury."]},
-            b:{h:"why colonists were mad", p:["The goods could only be bought from England, so the duties regulated nothing; they were for revenue.","Assemblies had paid officials' salaries, which gave them leverage (**power of the purse**). London paying them took that away.","No jury."]} },
-      steps:["**John Dickinson**, Letters from a Farmer: Parliament may regulate trade but not hide a tax in a regulation.",
-             "Massachusetts **Circular Letter** (1768) asked other colonies to resist; the governor dissolved the assembly.",
-             "**Daughters of Liberty**: homespun cloth and coffee so the boycott could work.",
-             "Boycotts cost British merchants money. Repealed 1770, !!except tea!!, to keep the principle alive."],
-      terms:["Townshend Acts","power of the purse","vice-admiralty courts","John Dickinson","Circular Letter","Daughters of Liberty"] },
+    { w:3, t:"Townshend Acts (1767)", d:"external tax. only tea survives",
+      rows:[
+        ["why","Colonists said internal taxes = bad, trade duties = OK → **Charles Townshend**: fine, trade duties then (an **external tax**)."],
+        ["what","Import duties on ==English goods==: glass, lead, paint, paper, tea → the money pays **royal officials' salaries** (governors, judges) → new customs board in Boston + more vice-admiralty courts (no jury)."],
+        ["why mad","Those goods could only come from England → the duty steers no trade → it's revenue in disguise (**John Dickinson**, Letters from a Farmer in Pennsylvania) → and with London paying officials, assemblies lose the **power of the purse** (they can't threaten an official's paycheck anymore)."]
+      ],
+      steps:[
+        "Massachusetts **Circular Letter** (1768, Samuel Adams) → asks the other colonies to resist together → Britain dissolves the Massachusetts assembly.",
+        "Boycotts again → **Daughters of Liberty** spin homespun cloth, brew substitute tea → the boycott actually holds.",
+        "1768: British troops land in Boston → sets up the Massacre.",
+        "==1770: every duty repealed except tea== → tea kept on purpose, to prove Parliament can still tax."
+      ],
+      terms:["Charles Townshend","external tax","royal officials' salaries","John Dickinson","power of the purse","Circular Letter","Daughters of Liberty"] },
+
+    { w:3, t:"Boston Massacre (March 5, 1770)", d:"the trial is the point",
+      rows:[
+        ["what","Troops in Boston since 1768 → soldiers and locals compete for jobs, hate each other → a crowd taunts a sentry, throws snowballs and rocks → soldiers fire → ==5 colonists dead==, including **Crispus Attucks**."],
+        ["trial","Captain **Thomas Preston** never gave the order → **John Adams** defends the soldiers (shows colonists respect the law) → Preston acquitted → 2 soldiers guilty of **manslaughter**, !!not murder!!."],
+        ["spin","**Paul Revere**'s engraving → propaganda: soldiers firing on command into a calm crowd."],
+        ["after","Townshend repealed the same year → **superficial calm** (1770-73): quiet on the surface, organizing underneath."]
+      ],
+      terms:["Crispus Attucks","Thomas Preston","John Adams","manslaughter","Paul Revere","superficial calm"] },
+
+    { w:3, t:"Committees of Correspondence (1772)", d:"the information network",
+      rows:[
+        ["what","**Samuel Adams** starts letter-writing committees → town to town in Massachusetts → then colony to colony (**intercolonial**)."],
+        ["trigger","**Gaspée** (1772): Rhode Islanders burn a British customs ship → Britain wants suspects shipped to England for trial → colonies start organizing."],
+        ["matters","News spreads fast → colonies react together → sets up the united answer to the Coercive Acts. ==Information is the key to resistance==."]
+      ],
+      notes:[{k:"warn",t:"Correspondence (1772) = ==share information==. Observation (1774-75) = ==enforce the boycott==. !!Different committees!!."}],
+      terms:["Samuel Adams","intercolonial","Gaspée"] },
 
     { w:3, t:"Tea Act (1773) and the Boston Tea Party", d:"cheaper tea, bigger fight",
-      p:["Why it happened: the **East India Company** was near bankruptcy with unsold tea, and many members of Parliament owned its stock."],
-      cmp:{ a:{h:"what it did", p:["Let the company skip the English tariff and sell through its own agents, cutting out American merchants. Legal tea got cheaper."]},
-            b:{h:"why colonists were mad", p:["A **monopoly** felt like tyranny.","American merchants were shut out.","Cheap tea tempted people to pay the tax and concede the principle."]} },
-      notes:[{k:"ok",t:"Why Boston: other ports sent ships away or stored the tea. Governor **Hutchinson** refused to let the ships leave, and unpaid cargo gets confiscated, so on Dec. 16, 1773 Samuel Adams gave the cue and men dressed as Mohawks dumped 342 chests."},
-             {k:"warn",t:"The Tea Act made tea !!cheaper!!. The grievance was monopoly and principle, not price."}],
-      terms:["Tea Act","East India Company","monopoly","Boston Tea Party","Thomas Hutchinson","Samuel Adams"] },
+      rows:[
+        ["why","**East India Company** (giant British trading company) → nearly bankrupt, warehouses full of unsold tea → many members of Parliament own its stock → bail it out."],
+        ["what","**Tea Act**: the company sells tea straight to the colonies through its own agents → skips the middlemen → legal tea now cheaper than smuggled Dutch tea → but the Townshend ==tea tax is still paid==."],
+        ["why mad","1) **monopoly** → cuts out American merchants → what gets monopolized next? 2) cheap tea is a trap → buy it and you accept Parliament's right to tax."],
+        ["result","Other ports send the ships back or lock the tea up → in Boston, Governor **Thomas Hutchinson** won't let the ships leave → ==Dec. 16, 1773== → Sons of Liberty dressed as Mohawks dump 342 chests → **Boston Tea Party**."]
+      ],
+      notes:[{k:"warn",t:"The Tea Act made tea !!cheaper!!. The fight is monopoly + principle, not price."}],
+      terms:["East India Company","Tea Act","monopoly","Thomas Hutchinson","Boston Tea Party"] },
 
-    { w:3, t:"Coercive Acts (1774) and the Quebec Act", d:"punish Massachusetts",
-      p:["Why it happened: Parliament wanted to make an example of Massachusetts after the Tea Party. British name **Coercive**, colonial name **Intolerable**."],
-      cmp:{ a:{h:"the three coercive acts", p:["**Boston Port Act**: port closed until the tea was paid for.","**Massachusetts Government Act**: charter revoked, council appointed not elected, town meetings only with the governor's permission.","**Justice Act**: officials accused of murder tried outside the colonies."]},
-            b:{h:"separate laws, same session", p:["**Quebec Act**: Catholic Church and French civil law in Quebec, Quebec enlarged to the Ohio River, cutting off colonial land claims.","**Quartering Act 1774**: troops in homes and businesses.","Colonists hated both; !!neither is a Coercive Act!!."]} },
-      notes:[{k:"ok",t:"Why colonists were mad: the Justice Act read as a promise officials would walk free; the Government Act ended self-rule. Effect: the other colonies saw it could happen to them and called a congress."}],
-      terms:["Coercive Acts","Intolerable Acts","Boston Port Act","Massachusetts Government Act","Justice Act","Quebec Act"] },
+    { w:3, t:"Coercive Acts (1774) and the Quebec Act", d:"punish Massachusetts. it backfires",
+      rows:[
+        ["why","Tea Party → Britain: make an example of Massachusetts → scare the other colonies into line."],
+        ["what","Three acts. **Boston Port Act** → port closed until the tea is paid for. **Massachusetts Government Act** → charter gutted, council appointed not elected, town meetings only with the governor's OK. **Justice Act** → British officials accused of murder tried in England or another colony."],
+        ["why mad","Justice Act = murder act → officials walk free. Government Act = self-government gone → other colonies: if they can gut Massachusetts' charter, they can gut ours."],
+        ["result","Backfires → colonies send Boston food and support → call the First Continental Congress."]
+      ],
+      cmp:{ a:{h:"Quebec Act: same year, separate law", p:["Catholic Church + French civil law (no jury trials) in Quebec.","Quebec stretched south to the ==Ohio River==."]},
+            b:{h:"why colonists hated it", p:["Protestant colonists feared Catholicism and rule without juries or an assembly.","Western land cut off again, the Proclamation problem all over."]} },
+      notes:[{k:"warn",t:"British name **Coercive**, colonial name **Intolerable**. Which was NOT a Coercive Act? → the !!Quebec Act!! (and the 1774 Quartering Act)."}],
+      terms:["Boston Port Act","Massachusetts Government Act","Justice Act","Coercive","Intolerable","Quebec Act"] },
 
-    { w:3, t:"First Continental Congress (1774)", d:"Philadelphia, every colony but Georgia",
-      p:["Why it happened: to answer the Coercive Acts. Jobs: list grievances, plan resistance, decide what Parliament may do to the colonies."],
-      cmp:{ a:{h:"Richard Henry Lee (radical)", p:["Parliament is England's local legislature and cannot tax the colonies at all."]},
-            b:{h:"Joseph Galloway (conservative)", p:["**Plan of Union**: an American legislature to approve or veto each act of Parliament. Lost by one vote."]} },
-      steps:["Result: the **Declaration of Rights and Grievances**. Parliament may regulate trade; it may !!not tax for revenue!!. Coercive Acts unconstitutional.",
-             "**Continental Association**: non-importation and non-exportation, a boycott that would be enforced locally.",
-             "Not independence. Still loyal to the king; the fight is over Parliament."],
-      terms:["First Continental Congress","Richard Henry Lee","Joseph Galloway","Declaration of Rights and Grievances","Continental Association"] },
+    { w:3, t:"First Continental Congress (1774)", d:"Philadelphia. still not independence",
+      rows:[
+        ["where","==Philadelphia==, Sept. 1774 → every colony but ==Georgia== → answer the Coercive Acts."],
+        ["result","**Declaration of Rights and Grievances** → sent to George III → Parliament may regulate trade but !!can't tax for revenue!! → Coercive Acts unconstitutional."],
+        ["boycott","**Continental Association** → non-importation + non-exportation (no buying from Britain, no selling to Britain) → enforced by local committees."],
+        ["goal","Not independence → still loyal to the king → the fight is with Parliament."]
+      ],
+      cmp:{ a:{h:"Richard Henry Lee · Virginia · radical", p:["Parliament has ==no authority== over the colonies at all. It's only England's legislature."]},
+            b:{h:"Joseph Galloway · Pennsylvania · conservative", p:["Plan of Union: an American legislature that approves or vetoes Parliament's laws for the colonies. ==Lost by one vote==."]} },
+      notes:[{k:"ok",t:"**Richard Henry Lee** said no authority, **Joseph Galloway** wanted a colonial veto → the Congress landed in the middle: regulate trade yes, tax no."}],
+      terms:["Declaration of Rights and Grievances","Continental Association","Richard Henry Lee","Joseph Galloway"] },
 
-    { w:3, t:"Representation: the argument under every act", d:"",
-      cmp:{ a:{h:"Britain: virtual representation", p:["Every member of Parliament represents every subject, colonists included. So Parliament can tax them."]},
-            b:{h:"Colonies: actual representation", p:["Only a body you elect can consent to your taxes. So only colonial assemblies can tax colonists. **No taxation without representation**."]} },
-      p:["Behind the colonial view: the **Real Whigs**, English thinkers who feared a strong king and centralized power and warned that power always tries to crush liberty. Colonists read every act after 1763 as a plot against their rights as Englishmen, not a one-off tax. They wanted **limited government**: fine with the king and trade regulation, not with a legislature they never chose. The Enlightenment thread: **John Locke**, natural rights and government by **consent of the governed**, the idea the colonists kept quoting."],
-      terms:["virtual representation","actual representation","Real Whigs","limited government","John Locke","consent of the governed"] },
+    { w:3, t:"Representation: the argument under every act", d:"why 'no taxation without representation'",
+      cmp:{ a:{h:"Britain says", p:["**Virtual representation**: every member of Parliament speaks for every British subject, colonists included → so Parliament can tax them."]},
+            b:{h:"colonists say", p:["**Actual representation**: only people you elect can tax you → only colonial assemblies can tax colonists."]} },
+      rows:[
+        ["fear","**Real Whigs** (English writers) → power always tries to crush liberty → a strong king and central government are dangerous → so colonists read every act as a plot, not a one-off tax."],
+        ["want","**Limited government** → fine with the king and trade rules, not with a legislature they never elected."],
+        ["idea","**John Locke** → natural rights → government runs on the ==consent of the governed==."]
+      ],
+      terms:["virtual representation","actual representation","Real Whigs","limited government","John Locke"] },
 
-    { w:2, t:"After the Congress: how Britain lost control, and choosing sides", d:"late 1774 to 1775",
-      steps:["Governors dissolved legislatures that sent delegates.",
-             "Legislatures reconvened themselves as **provincial conventions** and took over.",
-             "Governors called the militia to stop them; the militia was the colonists and refused.",
-             "**Committees of Observation**, elected by all voters, enforced the boycott and ran things for about six months.",
-             "By early 1775 the crown held Boston and little else, so it turned to force."],
-      cmp:{ a:{h:"sides", p:["About 2 in 5 **Patriots**, 2 in 5 neutral, 1 in 5 **Loyalists** (Tories).","In 1775 nobody was fighting for independence, only for rights as Englishmen. British looting pushed neutrals to the Patriots."]},
-            b:{h:"enslaved people", p:["Colonies with the most enslaved people (the South) supported revolution least: the enslaved were their wealth.","**Lord Dunmore**, Virginia's governor, offered freedom to any enslaved person who joined the British. Enslaved people generally sided with the English."]} },
+    { w:2, t:"After the Congress: Britain loses control, and choosing sides", d:"late 1774 to 1775",
+      steps:[
+        "Governors dissolve the assemblies that sent delegates to Congress.",
+        "Assemblies meet anyway as **provincial conventions** → take over as the real government (late 1774 to early 1775).",
+        "Governors call out the militia → the militia is the colonists → it refuses → ==British authorities helpless==.",
+        "**Committees of Observation** → elected by all qualified voters (broad support) → enforce the boycott → act as local government for about six months.",
+        "By early 1775 the crown controls Boston and little else → turns to force."
+      ],
+      cmp:{ a:{h:"who picked what", p:["About 2 in 5 **Patriots**, 2 in 5 neutral, 1 in 5 **Loyalists** (Tories).","Nobody fighting for independence yet, just their rights as Englishmen."]},
+            b:{h:"enslaved people", p:["Colonies with the most enslaved people (the South) backed the revolution least → feared losing control of them.","**Lord Dunmore's Proclamation** (Virginia's governor, 1775) → freedom for enslaved people who join the British → most sided with Britain."]} },
       terms:["provincial conventions","Committees of Observation","Patriots","Loyalists","Lord Dunmore's Proclamation"] },
 
-    { w:2, t:"Boston Massacre (March 5, 1770)", d:"the trial is the point",
-      p:["What: troops had been in Boston since 1768. A crowd taunted a sentry at the Custom House, Captain **Preston**'s squad arrived, rocks and packed snow flew, one soldier fired, others followed. Five colonists died, including **Crispus Attucks**. Preston never gave the order.",
-         "Why the trial matters: Britain would never let colonists execute its soldiers, and the elite wanted the trial to look fair, so **John Adams** defended them. Preston acquitted; two soldiers convicted of **manslaughter**, not murder. Paul Revere's engraving is propaganda. 1770 to 1773 is the **superficial calm**: quiet on the surface, organizing underneath."],
-      terms:["Boston Massacre","Thomas Preston","Crispus Attucks","John Adams","manslaughter","superficial calm"] },
-
-    { w:2, t:"Committees of Correspondence (1772)", d:"",
-      p:["**Samuel Adams** built them in Massachusetts, then pushed them into other colonies: first intracolonial, then **intercolonial**. Why it matters: news from Massachusetts reached Georgia fast, so the colonies could answer the Coercive Acts together. Information is the key to resistance."],
-      terms:["Samuel Adams","Committees of Correspondence","intercolonial"] },
-
-    { w:2, t:"French and Indian War (1754-63) and the Albany Congress", d:"the debt behind everything",
-      p:["Earlier wars with France (**Queen Anne's War**, **King George's War**) settled nothing; the **Iroquois** stayed neutral and played the empires against each other. The **Albany Congress** (1754, seven colonies) tried to win the Iroquois and coordinate defense and failed at both; **Benjamin Franklin**'s **Plan of Union** (his cartoon: **Join, or Die**) was rejected by every colonial legislature. It matters as the first try at union.",
-         "This war started in the colonies (young Washington at **Fort Necessity**) and spread overseas as the **Seven Years' War**. Britain lost early (**Braddock**'s column destroyed near Fort Duquesne, 1755) under officers who bought their commissions; **William Pitt** promoted on merit, paid colonial war costs, and **Quebec** fell in 1759. Result: an empire, no French threat, and a huge debt."],
-      terms:["Queen Anne's War","King George's War","Iroquois neutrality","Albany Congress","Benjamin Franklin","Albany Plan of Union","Join, or Die","Fort Necessity","Seven Years' War","Braddock","William Pitt","Quebec"] },
+    { w:2, t:"French and Indian War (1754-63) and the Albany Congress", d:"where the debt comes from",
+      rows:[
+        ["before","**Queen Anne's War** (1702-13), **King George's War** (1745-48) → Britain vs. France → settle nothing → the Iroquois stay neutral and play both sides."],
+        ["albany","**Albany Congress** (1754): 7 colonies meet in Albany, New York → goal: win an Iroquois alliance + coordinate defense → ==failed at both== → Benjamin Franklin's **Albany Plan of Union** (cartoon: Join, or Die) → rejected by every colonial assembly (none wanted to give up power)."],
+        ["war","Starts in the Ohio Valley (young Washington at Fort Necessity, 1754) → goes worldwide as the **Seven Years' War** → Britain loses early (Braddock killed, 1755) → **William Pitt** takes over, pays colonial costs, promotes on merit → Quebec falls 1759 → Britain wins."],
+        ["result","Treaty of Paris 1763 + a ==huge debt== → sets off everything else in this unit."]
+      ],
+      terms:["Queen Anne's War","King George's War","Albany Congress","Albany Plan of Union","Seven Years' War","William Pitt"] },
 
     { w:2, t:"Treaty of Paris (1763)", d:"who got what",
-      p:["**Treaty of Paris 1763**: France out of North America, keeping only St. Pierre and Miquelon and the sugar islands Martinique and Guadeloupe. Britain's western line: the eastern bank of the **Mississippi**. **Louisiana** and **New Orleans** went to Spain, not Britain."],
-      terms:["Treaty of Paris 1763","Mississippi River","Louisiana to Spain","New Orleans"] },
+      rows:[
+        ["France","Out of North America → keeps only St. Pierre + Miquelon (fishing islands off Newfoundland) and Martinique + Guadeloupe (sugar islands)."],
+        ["Britain","Everything east of the ==Mississippi River==, plus Canada (and Florida from Spain) → !!except New Orleans!!."],
+        ["Spain","Gets **Louisiana** + **New Orleans** from France."]
+      ],
+      notes:[{k:"warn",t:"This is the **Treaty of Paris 1763**. Don't mix it up with the Treaty of Paris of !!1783!!, which ends the Revolution (not on this test)."}],
+      terms:["Treaty of Paris 1763","Mississippi River","Louisiana","New Orleans"] },
 
-    { w:2, t:"First Great Awakening", d:"a crisis in religion",
-      p:["Why: religion was fading. **Jonathan Edwards** (Northampton, \"Sinners in the Hands of an Angry God\") preached that only God's grace saves; **George Whitefield**, an English **itinerant preacher**, toured the colonies and drew crowds of thousands. Faith came back through emotion. Established **Old Lights** rejected it; **New Lights** embraced it.",
-         "Effects: congregations splintered into many denominations, so no church held a majority and none could claim to be the true one. That pushed toward **religious toleration** and, later, separation of church and state. In the South, **Baptists** preached that all are equal before God, master and slave alike. Colonists also learned that challenging authority could work."],
-      notes:[{k:"warn",t:"The !!Second!! Great Awakening (1800s) is the reform movement. This is the First."}],
-      terms:["Jonathan Edwards","George Whitefield","itinerant preacher","Old Lights","New Lights","religious toleration","Baptists"] },
+    { w:2, t:"First Great Awakening", d:"1730s-40s religious revival",
+      rows:[
+        ["why","Churches had gone cold and routine → preachers push emotional, personal faith."],
+        ["who","**Jonathan Edwards** → Massachusetts, Sinners in the Hands of an Angry God → only God's grace saves. **George Whitefield** → English **itinerant** (traveling) preacher → tours the colonies, crowds in the thousands."],
+        ["split","**New Lights** (for the revival) vs. **Old Lights** (traditional churches, against it)."],
+        ["effects","Congregations splinter → many denominations → no church holds a majority → ==religious toleration== grows → colonists learn they can challenge authority. In the South, Baptists preach all are equal before God."]
+      ],
+      notes:[{k:"warn",t:"This is the !!First!! Great Awakening. The Second (1800s) is the reform one."}],
+      terms:["Jonathan Edwards","George Whitefield","itinerant","New Lights","Old Lights"] },
 
     { w:2, t:"Also know: smaller names that show up as answer choices", d:"one line each",
-      steps:["**Molasses Act (1733)**: the unenforced 6-pence duty the Sugar Act replaced.",
-             "**Paxton Boys** (1763): Pennsylvania frontiersmen who massacred peaceful Conestoga Indians; shows how little control colonial governments had on the frontier.",
-             "**Loyal Nine** and **Andrew Oliver**: Boston's first Stamp Act mob hanged distributor Oliver in effigy, then gutted Lieutenant Governor Hutchinson's house.",
-             "**Hancock's sloop Liberty** (1768): customs officers seized it; the riot brought British regiments to Boston, which sets up the Massacre.",
-             "**Writs of assistance**: general search warrants customs officers used against smugglers; Otis argued against them.",
-             "**Gaspée** (1772): British customs schooner burned in Rhode Island; helped trigger the Committees of Correspondence.",
-             "**Suffolk Resolves** (1774): Massachusetts county urged resistance and arming; the First Continental Congress endorsed them.",
-             "**Thomas Hutchinson**: Massachusetts governor whose refusal to let the tea ships leave forced the Tea Party.",
-             "**Crispus Attucks**: first to die at the Boston Massacre.",
-             "**Paul Revere's engraving**: propaganda image of the Massacre showing Preston ordering fire."] },
+      steps:[
+        "**Paxton Boys** (1763): Pennsylvania frontiersmen kill peaceful Conestoga Indians → shows colonial governments can't control the frontier.",
+        "**Loyal Nine** → Boston group behind the first Stamp Act mob → hang distributor **Andrew Oliver** in effigy → later gut Hutchinson's house.",
+        "**Liberty** affair (1768): customs officers seize **John Hancock**'s ship → riot → Britain sends troops to Boston.",
+        "**Writs of assistance**: blank search warrants for smuggled goods → James Otis argued against them.",
+        "**Suffolk Resolves** (1774): a Massachusetts county says resist and arm → the First Continental Congress endorses them."
+      ] },
 
     { w:1, t:"Population growth", d:"",
-      p:["The colonies grew about tenfold from 1700 to 1775, mostly by **natural increase** (families), not immigration; immigration only mattered after 1730. Africans came as **involuntary migrants**, the largest single group. Europeans: Irish and Scots, Germans (Pennsylvania), and the **Scots-Irish**, Protestant Scots planted in northern Ireland."],
+      rows:[
+        ["growth","About ==10 times bigger== from 1700 to 1775 → mostly **natural increase** (more births than deaths), !!not immigration!!."],
+        ["Africans","Largest single group arriving → **involuntary migrants** (enslaved)."],
+        ["Europeans","Most arrive after 1730 → Irish, Scots, Germans (many to Pennsylvania), and the **Scots-Irish** (Protestant Scots who had settled in northern Ireland)."]
+      ],
       terms:["natural increase","involuntary migrants","Scots-Irish"] }
+  ],
+
+  cram: [
+    { h:"before the acts", items:[
+      { n:"Great Awakening", y:"1730s-40s", t:"Edwards + Whitefield → emotional revival → churches split → more toleration." },
+      { n:"Albany Congress", y:"1754", t:"7 colonies → Franklin's Plan of Union → ==failed==: no Iroquois alliance, no joint defense." },
+      { n:"French and Indian War", y:"1754-63", t:"Britain beats France → ==huge debt== → Britain wants colonists to pay." },
+      { n:"Treaty of Paris", y:"1763", t:"France out → Britain to the Mississippi → Louisiana + New Orleans to Spain." },
+      { n:"Pontiac's Uprising", y:"1763", t:"Ottawa chief attacks British forts out west → beaten at Bushy Run → leads to the Proclamation." }
+    ]},
+    { h:"the acts", d:"why → what → why mad", items:[
+      { n:"Proclamation of 1763", y:"1763", t:"avoid Indian wars → ==no settling past the Appalachians== → they'd already bought that land. !!Not a tax!!. Ignored." },
+      { n:"Sugar Act", y:"1764", t:"war debt → molasses duty ==cut to 3 pence but enforced== → first tax for revenue." },
+      { n:"Currency Act", y:"1764", t:"no colonial paper money → coins scarce → harder to pay debts." },
+      { n:"Stamp Act", y:"1765", t:"need more money → stamp on all printed paper → ==internal tax== → mobs + boycotts → never implemented." },
+      { n:"Quartering Act", y:"1765", t:"colonies house + feed troops → troops only there to watch colonists." },
+      { n:"Declaratory Act", y:"1766", t:"Stamp Act repealed → but Parliament can tax ==in all cases whatsoever==." },
+      { n:"Townshend Acts", y:"1767", t:"duties on English glass, lead, paint, paper, tea → pay royal officials → assemblies lose the power of the purse → ==repealed 1770 except tea==." },
+      { n:"Tea Act", y:"1773", t:"save the East India Company → tea !!cheaper!! → monopoly + buying it accepts the tax → Tea Party." },
+      { n:"Coercive (Intolerable) Acts", y:"1774", t:"punish Boston → port closed, charter gutted, officials tried elsewhere → colonies unite instead." },
+      { n:"Quebec Act", y:"1774", t:"Catholic Church + French law in Quebec → Quebec to the Ohio River. !!Not a Coercive Act!!." }
+    ]},
+    { h:"resistance", items:[
+      { n:"James Otis", y:"1760s", t:"no taxation without representation → but obey. The moderate." },
+      { n:"Patrick Henry", y:"1765", t:"Virginia Stamp Act Resolves → only Virginia taxes Virginians. The radical." },
+      { n:"Sons of Liberty", y:"1765", t:"elite-led mobs aimed at stamp distributors and British officials." },
+      { n:"Stamp Act Congress", y:"1765", t:"New York, 9 colonies → first joint protest." },
+      { n:"John Dickinson", y:"1767-68", t:"Letters from a Farmer → regulate trade yes, hidden revenue tax no." },
+      { n:"Daughters of Liberty", y:"1760s", t:"homespun cloth + substitutes → boycotts work." },
+      { n:"Boston Massacre", y:"Mar. 5, 1770", t:"5 dead → John Adams defends the soldiers → manslaughter, !!not murder!!." },
+      { n:"Committees of Correspondence", y:"1772", t:"Samuel Adams → letters between towns, then colonies → ==share information==." },
+      { n:"Boston Tea Party", y:"Dec. 16, 1773", t:"Hutchinson won't let the ships leave → 342 chests dumped." }
+    ]},
+    { h:"the break", items:[
+      { n:"First Continental Congress", y:"1774", t:"Philadelphia, no Georgia → trade yes, taxes no → Declaration of Rights and Grievances + Continental Association boycott." },
+      { n:"Lee vs. Galloway", y:"1774", t:"Lee: Parliament has ==no authority==. Galloway: Plan of Union, colonial veto, lost by one vote." },
+      { n:"Committees of Observation", y:"1774-75", t:"elected by all voters → ==enforce the boycott== → local government for about six months." },
+      { n:"Provincial conventions", y:"1774-75", t:"dissolved assemblies meet anyway → take over → Britain helpless." },
+      { n:"Choosing sides", y:"1775", t:"about 40% Patriot, 40% neutral, 20% Loyalist → enslaved people mostly side with Britain (Dunmore)." }
+    ]}
+  ],
+
+  tables: [
+    { h:"people who get mixed up", cols:["who","where · when · side","known for","don't confuse with"], rows:[
+      ["Patrick Henry","Virginia · 1765 · radical","**Virginia Stamp Act Resolves** in the House of Burgesses → only Virginia can tax Virginians.","Richard Henry Lee: also Virginia, also radical, but ==1774, at the Congress==."],
+      ["Richard Henry Lee","Virginia · 1774 · radical","First Continental Congress → Parliament has ==no authority at all== over the colonies.","Patrick Henry (1765, Stamp Act). Trick: Henry first, Lee later."],
+      ["Joseph Galloway","Pennsylvania · 1774 · conservative","**Plan of Union** at the First Continental Congress → American legislature can veto Parliament → lost by one vote.","Franklin's Albany Plan of Union (1754). Two different plans of union."],
+      ["Benjamin Franklin","Pennsylvania · 1754","**Albany Plan of Union** + the Join, or Die cartoon → rejected by every assembly.","Galloway's Plan of Union (1774)."],
+      ["James Otis","Massachusetts · 1760s · moderate","Rights of the British Colonies Asserted and Proved → no taxation without representation, !!but obey Parliament!!.","Patrick Henry, the radical who says only Virginia can tax Virginia."],
+      ["John Dickinson","Pennsylvania · 1767-68 · moderate","**Letters from a Farmer in Pennsylvania** → Parliament can regulate trade, can't hide a revenue tax in it.","Otis (Stamp Act era). Dickinson = Townshend era."],
+      ["Samuel Adams","Massachusetts · the organizer","Sons of Liberty, Circular Letter, ==Committees of Correspondence==, gave the Tea Party signal.","John Adams, his cousin the lawyer."],
+      ["John Adams","Massachusetts · the lawyer","Defended the British soldiers after the ==Boston Massacre== → fair trial, manslaughter not murder.","Samuel Adams, the agitator."],
+      ["George Grenville","British prime minister · 1764-65","Sugar Act, Currency Act, Stamp Act, Quartering Act.","Charles Townshend (1767)."],
+      ["Charles Townshend","British treasury chief · 1767","**Townshend Acts** → duties on English goods to pay royal officials.","Grenville (the earlier acts)."],
+      ["William Pitt","British war leader · 1750s","Paid colonial war costs, promoted on merit → won the French and Indian War.","Grenville, who made the colonies pay afterward."],
+      ["Thomas Hutchinson","Massachusetts governor","Wouldn't let the tea ships leave → Tea Party. A Stamp Act mob gutted his house in 1765.","Thomas Preston, the soldier at the Massacre."],
+      ["Thomas Preston","British captain · 1770","Commanded the soldiers at the ==Boston Massacre==, never ordered them to fire → acquitted.","Hutchinson, the governor."],
+      ["Lord Dunmore","Virginia's royal governor · 1775","Offered ==freedom to enslaved people== who joined the British.","He's on the British side, not a Patriot."],
+      ["Pontiac","Ottawa chief · 1763","Uprising west of the Appalachians → beaten at Bushy Run → leads to the Proclamation of 1763.","The Iroquois, who stayed neutral in the earlier wars."],
+      ["Jonathan Edwards","Massachusetts · 1730s-40s","Great Awakening preacher, Sinners in the Hands of an Angry God → only God's grace saves.","Whitefield: English, ==traveling== preacher, huge outdoor crowds."]
+    ]},
+    { h:"ideas and acts that get mixed up", cols:["this","vs. that","how to tell"], rows:[
+      ["Committees of Correspondence (1772)","Committees of Observation (1774-75)","Correspondence = letters, ==share information== (Samuel Adams). Observation = elected, ==enforce the boycott==, run local government."],
+      ["Molasses Act (1733)","Sugar Act (1764)","Molasses: 6 pence, never enforced. Sugar: !!lower!! 3 pence, actually enforced, for revenue."],
+      ["Stamp Act (1765)","Townshend Acts (1767)","Stamp = ==internal== (paper used inside the colonies). Townshend = ==external== (duties on imported English goods)."],
+      ["Quartering Act 1765","Quartering Act 1774","1765: colonies supply the troops. 1774: troops put in colonists' empty buildings, passed alongside the Coercive Acts."],
+      ["Coercive Acts","Quebec Act","Coercive = the 3 punishments of Massachusetts (port, government, justice). Quebec = separate law: Catholic Church, French law, bigger borders."],
+      ["Declaratory Act (1766)","Declaration of Rights and Grievances (1774)","Declaratory = ==Parliament== says it can do anything. Declaration of Rights = ==Congress== says Parliament can't tax."],
+      ["Stamp Act Congress (1765)","First Continental Congress (1774)","Stamp Act Congress: New York, 9 colonies, one protest. First Continental: Philadelphia, 12 colonies, boycott + grievances."],
+      ["Albany Plan of Union (1754)","Galloway's Plan of Union (1774)","Albany = Franklin, unite against France. Galloway = American legislature that can veto Parliament."],
+      ["virtual representation","actual representation","Virtual = ==Britain's== view: Parliament speaks for everyone. Actual = ==colonists'== view: only people you elect can tax you."],
+      ["internal tax","external tax","Internal = on things used inside the colonies (stamps). External = on trade coming in (duties)."],
+      ["regulation","revenue","Regulation = taxing trade to steer it (colonists accepted it). Revenue = taxing to raise money (the problem)."],
+      ["vice-admiralty courts","Justice Act","Vice-admiralty = smugglers tried by a judge, no jury. Justice Act = British officials tried outside the colony."],
+      ["Sons of Liberty","Daughters of Liberty","Sons = protests, mobs, Tea Party. Daughters = homespun cloth, kept the boycotts going."],
+      ["salutary neglect","enforcement","Before 1763 Britain looked the other way. After 1763 it collected. That switch starts the unit."],
+      ["Treaty of Paris 1763","Treaty of Paris 1783","1763 ends the French and Indian War. 1783 ends the Revolution (!!not on this test!!)."],
+      ["Old Lights","New Lights","Old = traditional churches, against the revival. New = for the revival."],
+      ["First Great Awakening","Second Great Awakening","First = 1730s-40s, this unit. Second = 1800s reform era."]
+    ]}
   ],
 
   practice: [
     { q:"Why did Britain begin taxing the colonies after 1763?", opts:["to punish smuggling","to pay the debt from the French and Indian War","to fund the East India Company","to pay for the Albany Congress"], a:1, why:"Huge war debt. Colonists would pay a share and the Navigation Acts would be enforced." },
     { q:"The Proclamation of 1763 was issued mainly to", opts:["raise revenue from land sales","keep settlers east of the Appalachians and avoid another Indian war","punish Pennsylvania","reward veterans with land"], a:1, why:"Britain was broke and Pontiac had just been beaten. Land, not tax." },
     { q:"Colonists resented the Proclamation of 1763 because", opts:["it taxed frontier land","they already owned land past the line and could not settle or sell it","it gave the Ohio country to Spain","it required them to house troops"], a:1, why:"Speculators' investment was frozen. Colonists ignored it; Britain did not enforce it." },
+    { q:"Salutary neglect describes", opts:["Britain loosely enforcing its trade laws before 1763","colonists refusing to pay any taxes","Parliament ignoring the Iroquois","the boycotts of 1765"], a:0, why:"The old deal. The Sugar Act ended it by actually collecting." },
     { q:"The Sugar Act differed from the Molasses Act because the Sugar Act", opts:["raised the duty","was actually enforced and passed for revenue","applied only to British sugar","was repealed within a year"], a:1, why:"Rate went down; enforcement and purpose changed." },
     { q:"Colonists objected to the Sugar Act on the principle that", opts:["Parliament was taxing them for revenue, not to regulate trade","the duty was higher than before","it applied only to New England","it taxed English goods"], a:0, why:"Regulation they accepted; revenue without representation they did not." },
+    { q:"Which British prime minister is most tied to the Sugar Act and the Stamp Act?", opts:["William Pitt","George Grenville","Charles Townshend","Lord Dunmore"], a:1, why:"Grenville, 1764-65. Townshend is 1767; Pitt won the war; Dunmore is Virginia's governor." },
     { q:"Which act banned colonial paper money?", opts:["Sugar Act","Currency Act","Declaratory Act","Quartering Act"], a:1, why:"Currency Act, 1764." },
     { q:"The Stamp Act was worse than earlier duties because it was", opts:["an external tax","an internal tax paid directly","enforced by the navy","aimed only at merchants"], a:1, why:"A stamp on documents reaches the pocket; a tariff hides in a price." },
+    { q:"The Stamp Act differed from the Townshend Acts because the Stamp Act", opts:["taxed goods imported from England","was an internal tax on paper used inside the colonies","paid royal officials' salaries","was kept on tea after 1770"], a:1, why:"Internal vs. external. The other three are all Townshend." },
     { q:"Why was the Stamp Act never implemented?", opts:["Parliament repealed it before it started","mobs made every distributor resign and boycotts pressured Parliament","the Stamp Act Congress voided it","governors refused to enforce it"], a:1, why:"No distributors, no stamps. Repeal came after, in 1766." },
     { q:"The elite formed the Sons of Liberty to", opts:["arm a militia","control mob protest and aim it at British officials","enforce the Continental Association","pay the stamp tax"], a:1, why:"A leaderless mob scared them. Enforcing the Association is the Committees of Observation." },
     { q:"Boycotts pushed Parliament to repeal the Stamp Act because", opts:["they cut off tea","British merchants lost money and lobbied for repeal","vice-admiralty courts enforced them","the king ordered it"], a:1, why:"Hurt the merchants and they beg Parliament. Same lever repealed most Townshend duties." },
@@ -429,11 +589,12 @@ const GUIDE = {
     { q:"Colonists resented the Quartering Act of 1765 because", opts:["it sent troops against the Iroquois","the troops had no purpose but watching colonists, who paid for them","it drafted colonists","it applied only to Virginia"], a:1, why:"No enemy left. Most troops went to Boston." },
     { q:"The Townshend Acts placed duties on", opts:["foreign molasses","English manufactured goods like paint, glass, lead and tea","western land","legal documents"], a:1, why:"English goods. Foreign molasses is the Sugar Act; documents is the Stamp Act." },
     { q:"Why did colonists object to Townshend revenue paying royal officials?", opts:["it raised the total tax","assemblies lost leverage over officials whose pay they had controlled","it taxed land","governors had to leave"], a:1, why:"Power of the purse. Once London paid him, the assembly had nothing on him." },
-    { q:"Vice-admiralty courts were resented because smugglers", opts:["were tried in England","were tried by officers with no jury","could not appeal","were tried by assemblies"], a:1, why:"No jury of peers. Trial outside the colonies for murder is the Justice Act." },
+    { q:"Vice-admiralty courts were resented because smugglers", opts:["were tried in England","were tried by a judge with no jury","could not appeal","were tried by assemblies"], a:1, why:"No jury of peers. Trial outside the colony for murder is the Justice Act." },
     { q:"John Dickinson argued that Parliament", opts:["had no authority at all","could regulate trade but not hide a tax in a regulation","could tax with the king's approval","should repeal the Navigation Acts"], a:1, why:"Regulation yes, hidden revenue no. No authority at all is Richard Henry Lee." },
     { q:"The Daughters of Liberty mainly", opts:["wrote pamphlets","made homespun cloth and substitutes so boycotts could work","carried messages","petitioned the king"], a:1, why:"A boycott only bites if you can replace the goods." },
     { q:"Why did Parliament keep the tea duty in 1770?", opts:["tea earned the most","to preserve the principle that it could tax","the East India Company demanded it","to fund the customs board"], a:1, why:"A symbol. That is why the Tea Act landed on an open wound." },
     { q:"At the Boston Massacre trial, John Adams", opts:["prosecuted Preston","defended the soldiers; Preston acquitted, two convicted of manslaughter","refused the case","won murder convictions"], a:1, why:"Showed colonial respect for law. Manslaughter, not murder." },
+    { q:"Samuel Adams is best known for", opts:["defending the soldiers after the Boston Massacre","organizing the Committees of Correspondence","writing Letters from a Farmer in Pennsylvania","the Albany Plan of Union"], a:1, why:"John Adams defended the soldiers, Dickinson wrote the Letters, Franklin wrote the Albany Plan." },
     { q:"The Committees of Correspondence mattered because they", opts:["enforced the boycott","spread information between colonies so resistance could be coordinated","collected the tea tax","organized the militia"], a:1, why:"Samuel Adams' network. Enforcing the boycott is the Committees of Observation." },
     { q:"The Tea Act of 1773 was passed to", opts:["raise the price of tea","save the East India Company from bankruptcy","punish Boston","repeal the tea tax"], a:1, why:"Unsold tea and members of Parliament holding stock. Tea got cheaper." },
     { q:"Colonists objected to the Tea Act even though tea got cheaper because", opts:["the duty rose","it created a monopoly, cut out American merchants, and tempted people to pay the tax","it banned Dutch tea","it applied only to Boston"], a:1, why:"Buy the cheap tea and you concede Parliament's right to tax." },
@@ -441,10 +602,12 @@ const GUIDE = {
     { q:"Which was NOT a Coercive Act?", opts:["Boston Port Act","Massachusetts Government Act","Quebec Act","Justice Act"], a:2, why:"Separate law from the same session about Catholicism, French law and Quebec's borders." },
     { q:"Parliament passed the Coercive Acts to", opts:["raise revenue","punish Massachusetts and make an example of it","protect Catholics","fund the Quartering Act"], a:1, why:"Punishment, not revenue. Effect: the other colonies called a congress." },
     { q:"The Massachusetts Government Act", opts:["closed the port","revoked the charter, made the council appointed, and limited town meetings","moved trials","housed troops"], a:1, why:"Each Coercive Act has one job." },
-    { q:"Colonists feared the Justice Act because officials who killed colonists", opts:["would face a colonial jury","would be tried outside the colonies and, they assumed, go free","would be pardoned by Parliament","would face military courts in Boston"], a:1, why:"Read as a guarantee of acquittal." },
+    { q:"Colonists feared the Justice Act because officials who killed colonists", opts:["would face a colonial jury","would be tried outside the colony and, they assumed, go free","would be pardoned by Parliament","would face military courts in Boston"], a:1, why:"Read as a guarantee of acquittal." },
     { q:"The Quebec Act angered colonists because it", opts:["closed Quebec's port","recognized the Catholic Church and French civil law and enlarged Quebec into land the colonies claimed","imposed the Stamp Act on Canada","gave Quebec an assembly"], a:1, why:"Catholicism, no juries, and a border down to the Ohio." },
     { q:"The First Continental Congress declared that Parliament", opts:["had no authority","could regulate trade but not tax for revenue","could tax if colonists got seats","had authority over everything but religion"], a:1, why:"Between Lee (no authority) and Galloway (a colonial veto)." },
+    { q:"At the First Continental Congress, Richard Henry Lee argued that", opts:["Parliament had no authority over the colonies at all","Parliament could regulate trade but not tax","an American legislature should veto Parliament's laws","only Virginia could tax Virginians"], a:0, why:"Lee = no authority. Galloway = the veto plan. Only Virginia taxes Virginians = Patrick Henry, 1765." },
     { q:"The Continental Association was", opts:["an American legislature to review Parliament's laws","non-importation and non-exportation agreements, enforced locally","the first name of the army","a loyalist group"], a:1, why:"A boycott with teeth. The legislature idea is Galloway's Plan of Union." },
+    { q:"Committees of Observation differed from Committees of Correspondence because they", opts:["shared news between colonies","enforced the Continental Association and acted as local governments","were appointed by royal governors","were started by Samuel Adams in 1772"], a:1, why:"Observation = enforce the boycott, elected by all voters. The other choices describe Correspondence or nothing." },
     { q:"Committees of Observation had popular support because they", opts:["were appointed by governors","were chosen by all qualified voters","were led by the Sons of Liberty","were created by Parliament"], a:1, why:"Elected locally, so they could enforce the boycott and govern for about six months." },
     { q:"Provincial conventions took over in 1774-75 because", opts:["Parliament authorized them","governors dissolved the legislatures, which reconvened themselves, and the militia would not stop them","Congress ordered them","the king recognized them"], a:1, why:"No troops, no loyal militia, no way to enforce anything." },
     { q:"Colonies with the most enslaved people supported revolution least because", opts:["they had no grievances","the enslaved were their wealth and revolt risked losing control of them","they were Catholic","they had no assemblies"], a:1, why:"Dunmore's offer of freedom made that fear real." },
@@ -459,63 +622,72 @@ const GUIDE = {
   cards: [
     { f:"Proclamation of 1763", b:"No settlement past the Appalachians. Why: broke, avoid another Indian war. Mad: land already bought. Ignored." },
     { f:"Pontiac", b:"Ottawa chief; 1763 uprising west of the Appalachians; beaten at Bushy Run." },
-    { f:"Sugar Act (1764)", b:"Molasses duty cut to 3 pence but enforced, for revenue. Grenville." },
+    { f:"Salutary neglect", b:"Before 1763: Britain barely enforced its trade laws. The Sugar Act ended it." },
+    { f:"George Grenville", b:"British prime minister behind the Sugar, Currency, Stamp and Quartering Acts (1764-65)." },
+    { f:"Molasses Act (1733)", b:"6 pence on foreign molasses; never enforced." },
+    { f:"Sugar Act (1764)", b:"Molasses duty cut to 3 pence but enforced, for revenue." },
     { f:"Currency Act (1764)", b:"No colonial paper money." },
     { f:"Stamp Act (1765)", b:"Purchased stamp on documents and newspapers. Internal tax. Never implemented; repealed 1766." },
     { f:"Quartering Act (1765)", b:"Colonies pay to house troops whose only job is watching them. Most in Boston." },
     { f:"Declaratory Act (1766)", b:"With Stamp Act repeal: Parliament may tax and legislate in all cases." },
-    { f:"Townshend Acts (1767)", b:"Duties on English goods (paint, glass, lead, tea) to pay royal officials; customs board; vice-admiralty courts. Repealed 1770 except tea." },
+    { f:"Charles Townshend", b:"British treasury chief; 1767 duties on English goods to pay royal officials." },
+    { f:"Townshend Acts (1767)", b:"Duties on English goods (paint, glass, lead, paper, tea) to pay royal officials; customs board; vice-admiralty courts. Repealed 1770 except tea." },
     { f:"Power of the purse", b:"Assemblies controlled officials by paying them; Townshend revenue ended that." },
     { f:"Tea Act (1773)", b:"East India Company skips the tariff and sells through its own agents. Cheaper tea, feared monopoly." },
     { f:"Boston Tea Party (Dec. 16, 1773)", b:"342 chests dumped after Hutchinson refused to let the ships leave." },
     { f:"Coercive / Intolerable Acts (1774)", b:"Boston Port Act, Massachusetts Government Act, Justice Act. Punish Massachusetts." },
     { f:"Quebec Act (1774)", b:"Catholic Church, French civil law, Quebec to the Ohio River. Separate from the Coercive Acts." },
-    { f:"Quartering Act (1774)", b:"Troops in homes and businesses. Separate from the Coercive Acts." },
+    { f:"Quartering Act (1774)", b:"Troops put in colonists' empty buildings. Separate from the Coercive Acts." },
     { f:"Virtual representation", b:"Britain: every MP represents every subject, so Parliament may tax colonists." },
     { f:"Actual representation", b:"Colonies: only an elected assembly may consent to taxes." },
     { f:"Real Whigs", b:"English thinkers who feared centralized power and a strong king." },
     { f:"James Otis", b:"No taxation without representation, but obey Parliament. The moderate." },
-    { f:"Patrick Henry", b:"Virginia Stamp Act Resolves in the House of Burgesses: only Virginia may tax Virginians. The radical." },
+    { f:"Patrick Henry", b:"1765, Virginia Stamp Act Resolves in the House of Burgesses: only Virginia may tax Virginians. The radical." },
+    { f:"Richard Henry Lee", b:"1774, First Continental Congress: Parliament has no authority over the colonies at all." },
     { f:"Sons of Liberty", b:"Elite-led groups that steered mob protest at British officials." },
-    { f:"Stamp Act Congress (1765)", b:"New York; one unified petition against the Stamp Act." },
+    { f:"Stamp Act Congress (1765)", b:"New York; 9 colonies; one unified protest against the Stamp Act." },
     { f:"John Dickinson", b:"Letters from a Farmer in Pennsylvania: regulate trade yes, hidden taxes no." },
     { f:"Circular Letter (1768)", b:"Massachusetts asked other colonies to resist Townshend; governor dissolved the assembly." },
     { f:"Daughters of Liberty", b:"Homespun and tea substitutes that made boycotts work." },
     { f:"Boston Massacre (1770)", b:"Five killed; Preston gave no order; John Adams defended; two convicted of manslaughter." },
     { f:"Superficial calm", b:"1770 to 1773: quiet on the surface, organizing underneath." },
+    { f:"Samuel Adams", b:"The organizer: Sons of Liberty, Circular Letter, Committees of Correspondence, Tea Party signal." },
+    { f:"Gaspée (1772)", b:"British customs ship burned in Rhode Island; helped spark the Committees of Correspondence." },
     { f:"Committees of Correspondence (1772)", b:"Samuel Adams' information network between colonies." },
-    { f:"First Continental Congress (1774)", b:"All but Georgia; Declaration of Rights and Grievances; Continental Association; rejected Lee and Galloway." },
+    { f:"First Continental Congress (1774)", b:"Philadelphia; all but Georgia; Declaration of Rights and Grievances; Continental Association; rejected Lee and Galloway." },
     { f:"Declaration of Rights and Grievances", b:"Parliament may regulate trade, not tax for revenue; Coercive Acts unconstitutional." },
     { f:"Continental Association", b:"Non-importation and non-exportation, enforced by Committees of Observation." },
     { f:"Joseph Galloway", b:"Plan of Union: an American legislature to veto Parliament's acts. Lost by one vote." },
     { f:"Committees of Observation", b:"Elected by all voters; enforced the boycott; governed about six months." },
     { f:"Provincial conventions", b:"Dissolved legislatures that reconvened themselves and took over; militia would not stop them." },
     { f:"Lord Dunmore's Proclamation", b:"Freedom to enslaved people and servants who joined the British." },
-    { f:"Albany Congress (1754)", b:"Seven colonies; failed to ally the Iroquois or coordinate defense; Plan of Union rejected by every assembly." },
+    { f:"Albany Congress (1754)", b:"Seven colonies; failed to ally the Iroquois or coordinate defense; Franklin's Plan of Union rejected by every assembly." },
     { f:"French and Indian War", b:"1754-63; started in the colonies, spread overseas; Pitt's reforms won it; British victory and huge debt." },
     { f:"Treaty of Paris (1763)", b:"France out; Britain to the Mississippi; Louisiana and New Orleans to Spain." },
     { f:"Jonathan Edwards", b:"Great Awakening preacher: only God's grace saves." },
     { f:"George Whitefield", b:"English itinerant preacher who spread the Awakening through the colonies." },
     { f:"Great Awakening effects", b:"Congregations splintered; no majority church; toleration grew." },
-    { f:"Scots-Irish", b:"Protestant Scots planted in northern Ireland; big 1700s immigrant group." }
+    { f:"Scots-Irish", b:"Protestant Scots who had settled in northern Ireland; big 1700s immigrant group." }
   ],
 
   timeline: [
     { y:"1733", t:"Molasses Act", d:"6 pence duty, never enforced." },
     { y:"1730s-40s", t:"First Great Awakening", d:"Edwards; Whitefield tours." },
     { y:"1754", t:"Albany Congress; Fort Necessity", d:"French and Indian War begins." },
-    { y:"1763", t:"Treaty of Paris; Pontiac; Proclamation of 1763", d:"France out; line at the Appalachians." },
-    { y:"1764", t:"Sugar Act; Currency Act", d:"Revenue and enforcement begin." },
+    { y:"1759", t:"Quebec falls", d:"Pitt's reforms turn the war → Britain wins." },
+    { y:"1763", t:"Treaty of Paris; Pontiac; Proclamation of 1763", d:"France out → line at the Appalachians." },
+    { y:"1764", t:"Sugar Act; Currency Act", d:"Grenville → revenue + enforcement begin." },
     { y:"1765", t:"Stamp Act; Quartering Act; Stamp Act Congress", d:"Otis, Henry, Sons of Liberty, boycotts." },
     { y:"1766", t:"Stamp Act repealed; Declaratory Act", d:"Tax gone, principle kept." },
-    { y:"1767", t:"Townshend Acts", d:"Paint, glass, lead, tea." },
-    { y:"1768", t:"Circular Letter; assembly dissolved; troops land in Boston", d:"" },
+    { y:"1767", t:"Townshend Acts", d:"Glass, lead, paint, paper, tea → pay royal officials." },
+    { y:"1768", t:"Circular Letter; assembly dissolved; troops land in Boston", d:"Liberty seized → riot → troops." },
     { y:"1770", t:"Boston Massacre (March 5); Townshend repealed except tea", d:"Superficial calm begins." },
-    { y:"1772", t:"Committees of Correspondence", d:"" },
-    { y:"May 1773", t:"Tea Act", d:"" },
-    { y:"Dec. 16, 1773", t:"Boston Tea Party", d:"" },
-    { y:"1774", t:"Coercive Acts; Quebec Act; First Continental Congress (Sept.-Oct.)", d:"Declaration of Rights and Grievances; Continental Association." },
-    { y:"late 1774-early 1775", t:"Committees of Observation; provincial conventions", d:"End of Unit 2/A." },
+    { y:"1772", t:"Gaspée burned; Committees of Correspondence", d:"Samuel Adams' network." },
+    { y:"May 1773", t:"Tea Act", d:"Save the East India Company." },
+    { y:"Dec. 16, 1773", t:"Boston Tea Party", d:"Hutchinson won't let the ships leave." },
+    { y:"1774", t:"Coercive Acts; Quebec Act; Quartering Act", d:"Punish Massachusetts → colonies unite." },
+    { y:"Sept.-Oct. 1774", t:"First Continental Congress", d:"Declaration of Rights and Grievances; Continental Association." },
+    { y:"late 1774-early 1775", t:"Committees of Observation; provincial conventions", d:"Colonists govern themselves; Britain helpless." },
     { y:"Nov. 1775", t:"Dunmore's Proclamation", d:"Choosing sides." }
   ],
 
@@ -543,7 +715,7 @@ const ICON={
  csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
 const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
-const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist"};
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables"};
 
 /* header */
 document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
@@ -574,7 +746,7 @@ $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 /* panes */
 const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
 const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
-const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist};
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables};
 const tabs=[];
 PANES.forEach((id,i)=>{
   const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
@@ -597,6 +769,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
 function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
 function extras(s){
   let h="";
+  if(s.rows)h+=`<dl class="rows">${s.rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${fmt(v)}</dd>`).join("")}</dl>`;
   if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
   if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
   if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
@@ -704,6 +877,24 @@ function buildChecklist(sec){
     g.appendChild(b);
   });
   sec.appendChild(g);
+}
+
+/* cram sheet: [{h:"group", d:"optional", items:[{n:"name", y:"date", t:"one line"}]}] */
+function buildCram(sec){
+  (GUIDE.cram||[]).forEach(g=>{
+    const it=g.items||[];
+    sec.appendChild(shead(g.h||"cram sheet",g.d||`${it.length}`));
+    sec.appendChild(el("div","group",it.map(c=>`<div class="cr"><div class="n"><span>${fmt(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${fmt(c.t)}</div></div>`).join("")));
+  });
+}
+
+/* tables: [{h:"title", d:"optional", cols:["a","b"], rows:[["..",".."]]}]. stacks into cards on a phone */
+function buildTables(sec){
+  (GUIDE.tables||[]).forEach(tb=>{
+    const cols=tb.cols||[], rows=tb.rows||[];
+    sec.appendChild(shead(tb.h||"table",tb.d||`${rows.length}`));
+    sec.appendChild(el("div","group",`<table class="tbl"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table>`));
+  });
 }
 
 /* theme (shared with the homepage via localStorage "theme") */

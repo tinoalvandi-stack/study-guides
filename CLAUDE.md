@@ -154,9 +154,10 @@ one `GUIDE` object: `id` (class token: apush psych phys pre sem biz mor lang
 span apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`,
 `pdfs` (optional `{t, url}` buttons under the title for printable practice quizzes/tests; first is filled, the rest ghost; optional `pdfsNote` line), `updated`, `panes` (tab order; a pane only shows when its data exists), `top`
 (start-here lines), `outline` (`w:3/2/1`, `t`, `p[]`, `terms[]`, optional
-`notes[]`, `cmp`, `steps[]`, `d`), `practice` (`q`, `opts[]`, `a`, `why`),
+`notes[]`, `cmp`, `steps[]`, `rows[]` of `[label, line]` pairs for why/what/result chains, `d`), `practice` (`q`, `opts[]`, `a`, `why`),
 `problems` (`q`, `steps[]`, `ans`), `formulas` (`n`, `f`, `note`), `cards`
-(`f`, `b`), `timeline` (`y`, `t`, `d`), `checklist` (`t`, `d`), `abbr` (map).
+(`f`, `b`), `timeline` (`y`, `t`, `d`), `checklist` (`t`, `d`), `cram` (groups `{h, d, items:[{n, y, t}]}`, a one-line-per-item cram tab),
+`tables` (`{h, d, cols[], rows[[]]}`, compare/who's-who tables that stack into cards on a phone), `abbr` (map).
 Prose accepts `**term**`, `==fact==`, `!!trap!!`. The class color is `--cls`
 (set from `id`); site indigo `--accent` stays on buttons. The header bar links
 home and shares the theme choice with the homepage (`localStorage` "theme").
