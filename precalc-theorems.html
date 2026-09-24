@@ -291,8 +291,7 @@ const GUIDE = {
   pdfs:  [ { t:"practice quiz a", url:"/precalc-theorems-practice-a.pdf" },
            { t:"practice quiz b", url:"/precalc-theorems-practice-b.pdf" },
            { t:"practice quiz c", url:"/precalc-theorems-practice-c.pdf" },
-           { t:"all three + keys", url:"/precalc-theorems-quizzes.pdf" },
-           { t:"optional practice, worked", url:"/precalc-theorems-optional-practice.pdf" } ],
+           { t:"all three + keys", url:"/precalc-theorems-quizzes.pdf" } ],
   pdfsNote: "Each quiz is 5 questions at 3 points, no calculator, the hardest version of each homework type. The fully worked key follows each quiz.",
   updated: "sept 23, 2026",
 
@@ -304,7 +303,7 @@ const GUIDE = {
     "**Product**: multiply r's, add θ's. **Quotient**: divide r's, subtract θ's. **Power**: rⁿ, nθ. **Roots**: ⁿ√r, θ/n, then keep adding ==360°/n== until you have n of them.",
     "Final angles live ==between 0° and 360°== (0 and 2π): subtract 360° when over, !!add 360° when negative!!.",
     "!!Isolate xⁿ before converting!!: x³ + 27i = 0 means x³ = −27i, which is 270°, not 90°.",
-    "Given radians, answer in radians. A final angle like 165° (11π/12) is not on the unit circle: use the ==sum or difference formula== for the exact value."
+    "Given radians, answer in radians. Odd input angles like 85° or 7π/12 are fine: after you add or multiply, the angle ==lands back on the unit circle== ((√6 cis 85°)⁶ → 510° → 150°)."
   ],
 
   cram: [
@@ -320,7 +319,6 @@ const GUIDE = {
       { n:"on an axis", y:"no tan needed", t:"5 → 0°, 5i → 90°, −5 → 180°, −5i → 270°. A real number like 7 is 7 cis 0°; −64 is 64 cis 180°." },
       { n:"trig → rectangular", y:"r cis θ", t:"Exact cos and sin, then ==distribute r to both parts==. 128√2(−√3/2 − ½i) = −64√6 − 64√2 i." },
       { n:"quadrant trap", y:"tan⁻¹", t:"tan⁻¹ only gives QI or QIV. !!Both parts negative is QIII!!: −3√21 − 3i√7 is 210°, not 30°." },
-      { n:"angle not on the circle", y:"like 2 − i", t:"θ = tan⁻¹(y/x) ==on the calculator==, fix the quadrant (QII/QIII +180°, QIV +360°), then the theorem as usual. Needs a calculator, so on a no-calculator quiz expect unit-circle angles." }
     ]},
     { h:"arithmetic that costs points", items:[
       { n:"radicals multiply", y:"√a·√b = √ab", t:"√2·√2 = 2. ==(√2)⁵ = 4√2==, so (2√2)⁵ = 32·4√2 = 128√2." },
@@ -329,17 +327,7 @@ const GUIDE = {
       { n:"rationalize", y:"no √ on the bottom", t:"3√2/√3 = √6, 2/√2 = √2, √2/(2√5) = √10/10." },
       { n:"roots of r", y:"ⁿ√r", t:"∛27 = 3, ∜16 = 2, ∜81 = 3, ⁵√32 = 2, ⁵√243 = 3. ∛4 and ⁵√2 ==stay as radicals==." },
       { n:"powers of i", y:"cycle of 4", t:"i² = −1, i³ = −i, i⁴ = 1. (3i)⁴ = 81, so !!x⁴ = −81 has no ±3i answers!!." },
-      { n:"squaring a + bi", y:"(a + bi)²", t:"= ==a² − b² + 2abi==. !!Never square each part separately!!." },
       { n:"adding radians", y:"common denominator", t:"5π/4 + 11π/12 = 15π/12 + 11π/12 = 26π/12 = 13π/6, minus 2π (12π/6) = ==π/6==." }
-    ]},
-    { h:"exact values off the unit circle (15° family)", d:"cos(A ± B) = cos A cos B ∓ sin A sin B · sin(A ± B) = sin A cos B ± cos A sin B", items:[
-      { n:"15° (π/12)", y:"45° − 30°", t:"cos = (√6 + √2)/4 · sin = (√6 − √2)/4" },
-      { n:"75° (5π/12)", y:"45° + 30°", t:"cos = (√6 − √2)/4 · sin = (√6 + √2)/4" },
-      { n:"105° (7π/12)", y:"60° + 45°", t:"cos = (√2 − √6)/4 · sin = (√6 + √2)/4" },
-      { n:"165° (11π/12)", y:"120° + 45°", t:"cos = −(√6 + √2)/4 · sin = (√6 − √2)/4" },
-      { n:"255° (17π/12)", y:"210° + 45°", t:"cos = (√2 − √6)/4 · sin = −(√6 + √2)/4" },
-      { n:"285° (19π/12)", y:"240° + 45°", t:"cos = (√6 − √2)/4 · sin = −(√6 + √2)/4" },
-      { n:"the pattern", y:"two numbers", t:"Every one is ==(√6 + √2)/4 or (√6 − √2)/4== with a sign from the quadrant. Near the x-axis (15°, 165°…), cos gets the big one." }
     ]},
     { h:"graphing roots", items:[
       { n:"the picture", y:"one circle", t:"All n roots sit on ==one circle of radius ⁿ√r==, evenly spaced 360°/n. Draw each as an arrow from the origin." },
@@ -370,7 +358,7 @@ const GUIDE = {
 
     { w:3, t:"De Moivre's theorem (powers)", d:"[r cis θ]ⁿ = rⁿ cis nθ",
       p:["**De Moivre's theorem**: raise r to the n and ==multiply the angle by n==. Then subtract 360° (or 2π) until it lands in range.",
-         "If the number is given as x + yi, convert first. If θ isn't a unit-circle angle, like (5 − 3i)⁴, get θ with ==tan⁻¹ on the calculator==, fix the quadrant, then De Moivre and round at the end."],
+         "If the number is given as x + yi, convert first. An odd input angle is fine: (√6 cis 85°)⁶ = 216 cis 510°, and 510° − 360° = ==150°==."],
       terms:["De Moivre's theorem"],
       steps:["Convert to r cis θ.","rⁿ (simplify radicals).","nθ, then reduce by 360° (2π).","Exact cos and sin, distribute rⁿ."],
       notes:[{k:"ex",t:"(−3 + 3i√3)⁵: r = 6, θ = 120°. 6⁵ = 7776, 5·120° = 600° → 240°. 7776(−½ − (√3/2)i) = −3888 − 3888√3 i."}] },
@@ -382,11 +370,11 @@ const GUIDE = {
       steps:["Isolate xⁿ = c.","Write c as r cis θ.","ⁿ√r and θ/n.","Add 360°/n, n − 1 times.","Graph: arrows of equal length on one circle."],
       notes:[{k:"warn",t:"!!x⁴ + 16 = 0 is not x = ±2i!!: (2i)⁴ = +16. An even power of a pure imaginary is positive, so the answers sit between the axes: 2 cis 45°, 135°, 225°, 315°."}] },
 
-    { w:2, t:"When the angle isn't special", d:"the theorems still work",
-      p:["Products can land on a 15° multiple: 2π/3 + π/4 = 11π/12 (165°). For exact values use the **sum formula** (or the **difference formula**), or the 15° family on the cram sheet. If a factor like 2 − i has no unit-circle angle, find θ with ==tan⁻¹ on the calculator== and fix the quadrant.",
-         "A non-special starting angle can still work out: [2 cis 7π/12]⁸ has angle 14π/3, which reduces to 2π/3. Multiply first, then decide."],
-      terms:["sum formula","difference formula"],
-      notes:[{k:"ok",t:"cos(A + B) = cos A cos B − sin A sin B; sin(A + B) = sin A cos B + cos A sin B."}] },
+    { w:2, t:"Odd angles that land on the unit circle", d:"do the theorem first, then look",
+      p:["Inputs like 85°, 500° or 7π/12 aren't on the unit circle, but the ==answer's angle will be==. Do the theorem first, then find the **coterminal** angle between 0° and 360° (0 and 2π).",
+         "(√6 cis 85°)⁶: 6·85° = 510° → 150°. [2 cis 7π/12]⁸: 14π/3 → 2π/3."],
+      terms:["coterminal"],
+      notes:[{k:"ex",t:"20 cis 500° ÷ 5 cis 140° = 4 cis 360° = 4 cis 0° = 4. Angles past 360° can show up in the problem itself."}] },
 
     { w:2, t:"Given one root, find the others", d:"same r, step by 360°/n",
       p:["All n **distinct roots** share the same r and sit 360°/n apart. Convert the given root, then step forward: ==cube roots add 120°, fourth roots add 90°==.",
@@ -404,15 +392,13 @@ const GUIDE = {
   problems: [
     {"q":"**Quotient from rectangular** (hardest on the homework): (√5 − i√15) / (5√15 + 5i√5)","steps":["Top: r = √(5 + 15) = √20 = 2√5. tan θ = −√15/√5 = −√3, QIV: ==300°==.","Bottom: r = √(375 + 125) = √500 = 10√5. tan θ = 5√5/(5√15) = 1/√3, QI: ==30°==.","Divide r's: 2√5/(10√5) = 1/5. Subtract angles: 300° − 30° = 270°.","(1/5)(cos 270° + i sin 270°) = (1/5)(0 − i)."],"ans":"−(1/5)i"},
     {"q":"**De Moivre from rectangular** (hardest on the homework): (−3 + 3i√3)⁵","steps":["r = √(9 + 27) = √36 = 6. tan θ = 3√3/(−3) = −√3, QII: ==120°==.","6⁵ = 7776. 5 · 120° = 600°, minus 360° = ==240°==.","7776(cos 240° + i sin 240°) = 7776(−½ − (√3/2)i)"],"ans":"−3888 − 3888√3 i"},
-    {"q":"**Fifth roots, degrees then radians** (warm-up and optional practice): 1 + i√3, n = 5","steps":["r = √(1 + 3) = 2, θ = 60°. ⁵√2 stays a radical.","First: 60°/5 = 12°. Spacing: 360°/5 = 72°.","Degrees: ⁵√2 cis 12°, 84°, 156°, 228°, 300°.","Radians: θ = π/3, so first = π/15; spacing 2π/5 = 6π/15: π/15, 7π/15, 13π/15, 19π/15, 25π/15 = 5π/3."],"ans":"⁵√2 cis 12°, 84°, 156°, 228°, 300°  (or π/15, 7π/15, 13π/15, 19π/15, 5π/3)"},
+    {"q":"**Fifth roots, degrees then radians** (warm-up): 1 + i√3, n = 5","steps":["r = √(1 + 3) = 2, θ = 60°. ⁵√2 stays a radical.","First: 60°/5 = 12°. Spacing: 360°/5 = 72°.","Degrees: ⁵√2 cis 12°, 84°, 156°, 228°, 300°.","Radians: θ = π/3, so first = π/15; spacing 2π/5 = 6π/15: π/15, 7π/15, 13π/15, 19π/15, 25π/15 = 5π/3."],"ans":"⁵√2 cis 12°, 84°, 156°, 228°, 300°  (or π/15, 7π/15, 13π/15, 19π/15, 5π/3)"},
     {"q":"**Solve, trig form** (hardest on the homework): x³ − (−32√2 + 32i√2) = 0","steps":["Isolate: x³ = −32√2 + 32i√2.","r = √(2048 + 2048) = √4096 = 64. tan θ = −1, QII: ==135°==.","∛64 = 4. 135°/3 = 45°. Add 120° twice."],"ans":"4 cis 45°, 4 cis 165°, 4 cis 285°"},
     {"q":"**Solve, rectangular form**: x⁴ + 16 = 0","steps":["x⁴ = −16 = ==16 cis 180°==. !!Not ±2i!!: (2i)⁴ = 16.","∜16 = 2. 180°/4 = 45°, spacing 90°: 2 cis 45°, 135°, 225°, 315°.","2 cis 45° = 2(√2/2 + (√2/2)i) = √2 + √2 i, and the same size with every sign combination."],"ans":"√2 + √2 i, −√2 + √2 i, −√2 − √2 i, √2 − √2 i"},
     {"q":"**Real number on top**: 7 / (√3 + i)","steps":["7 = 7 + 0i = ==7 cis 0°==.","√3 + i: r = √(3 + 1) = 2, θ = 30°.","(7/2) cis(0° − 30°) = (7/2) cis(−30°). !!Negative, so add 360°!!: (7/2) cis 330°.","(7/2)(√3/2 − ½i) = 7√3/4 − (7/4)i"],"ans":"7√3/4 − (7/4)i"},
     {"q":"**De Moivre in radians** (warm-up): [√7(cos 11π/6 + i sin 11π/6)]⁴","steps":["(√7)⁴ = 49. 4 · 11π/6 = 44π/6 = 22π/3.","Subtract 2π (6π/3) until in range: 22π/3 − 18π/3 = ==4π/3==.","49(cos 4π/3 + i sin 4π/3) = 49(−½ − (√3/2)i)"],"ans":"−49/2 − (49√3/2)i"},
+    {"q":"**Odd angle that lands on the circle** (homework): (√6 cis 85°)⁶","steps":["(√6)⁶ = 6³ = 216.","6 · 85° = 510°. Subtract 360°: ==150°==.","216(cos 150° + i sin 150°) = 216(−√3/2) + 216(½)i"],"ans":"−108√3 + 108i"},
     {"q":"**One root given** (homework): one cube root of a number is 2 + 2i√3. Find the other two in rectangular form.","steps":["2 + 2i√3: r = √(4 + 12) = 4, θ = 60°.","Cube roots are ==120° apart==: 180° and 300°.","4 cis 180° = −4. 4 cis 300° = 4(½ − (√3/2)i) = 2 − 2i√3."],"ans":"−4 and 2 − 2i√3"},
-    {"q":"**Product, angle off the unit circle** (from the optional practice): 6(cos π/6 + i sin π/6) × 4(cos 5π/4 + i sin 5π/4)","steps":["r = 6 · 4 = 24. θ = π/6 + 5π/4 = 2π/12 + 15π/12 = ==17π/12== (255°).","255° is not on the unit circle: 255° = 210° + 45°.","cos 255° = cos 210° cos 45° − sin 210° sin 45° = (−√3/2)(√2/2) − (−½)(√2/2) = (√2 − √6)/4","sin 255° = sin 210° cos 45° + cos 210° sin 45° = (−½)(√2/2) + (−√3/2)(√2/2) = −(√2 + √6)/4","Distribute 24: 24·(√2 − √6)/4 = 6√2 − 6√6, and 24·(−(√2 + √6)/4) = −6√2 − 6√6."],"ans":"6√2 − 6√6 + (−6√6 − 6√2)i"},
-    {"q":"**De Moivre, angle not on the unit circle** (from the optional practice, calculator): (5 − 3i)⁴","steps":["r = √(5² + (−3)²) = √34. θ = tan⁻¹(−3/5) = −30.9638°, ==Q4 so +360° = 329.0362°==.","(√34 cis 329.0362°)⁴ = (√34)⁴ cis 4(329.0362°) = 1156 cis 1316.1448°","1316.1448° − 3(360°) = 236.1448°","1156(cos 236.1448° + i sin 236.1448°), round at the end."],"ans":"−644 − 960i"},
-    {"q":"**Quotient, angles not on the unit circle** (from the optional practice, calculator): (4 − 6i) / (−6 − 2i)","steps":["Top: r = √52 = 2√13, θ = tan⁻¹(−6/4) = −56.3099°, Q4 → 303.6901°.","Bottom: r = √40 = 2√10, θ = tan⁻¹(−2/−6) = 18.4349°, but ==both parts negative is Q3== → +180° = 198.4349°.","Divide r's, subtract θ's: (2√13/2√10) cis(303.6901° − 198.4349°) = √1.3 cis 105.2552°.","√1.3(cos 105.2552° + i sin 105.2552°) = −0.3 + 1.1i"],"ans":"−3/10 + (11/10)i"},
     {"q":"**Mandelbrot set** (homework): is z = −0.6i in the set?","steps":["|z| = 0.6. z² + z = (−0.6i)² − 0.6i = −0.36 − 0.6i, |·| = √(0.1296 + 0.36) ≈ 0.70.","(z² + z)² + z = (−0.36 − 0.6i)² − 0.6i = 0.1296 + 0.432i − 0.36 − 0.6i = −0.2304 − 0.168i, |·| ≈ 0.29.","The values stay small and ==never exceed 2==."],"ans":"Yes, it is in the set"}
   ],
 
