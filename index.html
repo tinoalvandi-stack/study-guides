@@ -619,7 +619,8 @@ const FEATURES=[
   {classId:"apush", title:"Unit 1 LEQ study guide", url:"/apush-unit-1-leq", test:"2026-09-16", note:"In-class LEQ, 40 minutes. English colonization through King William's War."},
   {classId:"apush", title:"Unit 2/A study guide", url:"/apush-unit-2a", test:"2026-09-23", note:"25 questions, 17 minutes. Population and the Great Awakening through choosing sides (1774-75); acts of Parliament first."},
   {classId:"psych", title:"Unit 1.4\u20131.6 study guide", url:"/psych-unit-1-4-1-6", test:"2026-09-23", end:"2026-09-24", note:"The brain, sleep, and sensation, plus the Phineas Gage mini FRQs."},
-  {classId:"pre",   title:"Complex numbers & trig form study guide", url:"/precalc-complex-trig-form", test:"2026-09-18", note:"Non-calculator quiz, 11 questions, 30 minutes. Complex arithmetic, trig/polar form, the Julia set."}
+  {classId:"pre",   title:"Complex numbers & trig form study guide", url:"/precalc-complex-trig-form", test:"2026-09-18", note:"Non-calculator quiz, 11 questions, 30 minutes. Complex arithmetic, trig/polar form, the Julia set."},
+  {classId:"pre",   title:"Product, quotient & De Moivre's theorems study guide", url:"/precalc-theorems", test:"2026-09-24", note:"Non-calculator quiz, 5 questions, 30 minutes. Product and quotient theorems, De Moivre's theorem, nth roots."}
 ];
 /* CLASSES: one entry per unit, newest first. A unit is the guide plus optional extras
    (kind: "cram" | "pdf" | "quiz"). added = the day it went up; "new" shows for 7 days.
@@ -644,6 +645,11 @@ const CLASSES=[
   {id:"mor", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality (Rinaldo)", abbr:"Morality", units:[
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", units:[
+     {t:"Product, quotient & De Moivre's theorems", url:"/precalc-theorems", added:"2026-09-23", extras:[
+        {kind:"pdf", t:"practice a", url:"/precalc-theorems-practice-a.pdf"},
+        {kind:"pdf", t:"practice b", url:"/precalc-theorems-practice-b.pdf"},
+        {kind:"pdf", t:"practice c", url:"/precalc-theorems-practice-c.pdf"},
+        {kind:"pdf", t:"all quizzes + keys", url:"/precalc-theorems-quizzes.pdf"}]},
      {t:"Complex numbers & trig form", url:"/precalc-complex-trig-form", added:"2026-09-17", extras:[
         {kind:"pdf", t:"practice a", url:"/precalc-complex-trig-form-practice-a.pdf"},
         {kind:"pdf", t:"practice b", url:"/precalc-complex-trig-form-practice-b.pdf"},
@@ -1069,6 +1075,7 @@ $(".bar h1").classList.add("show");
   </ul>
   <h3>Honors Precalculus BC</h3>
   <ul>
+    <li><a href="/precalc-theorems">Product, quotient &amp; De Moivre&#39;s theorems</a> &middot; Guide (<a href="/precalc-theorems-practice-a.pdf">practice A</a>, <a href="/precalc-theorems-practice-b.pdf">practice B</a>, <a href="/precalc-theorems-practice-c.pdf">practice C</a>, <a href="/precalc-theorems-quizzes.pdf">all quizzes</a>)</li>
     <li><a href="/precalc-complex-trig-form">Complex numbers &amp; trig form</a> &middot; Guide (<a href="/precalc-complex-trig-form-practice-a.pdf">practice A</a>, <a href="/precalc-complex-trig-form-practice-b.pdf">practice B</a>, <a href="/precalc-complex-trig-form-practice-c.pdf">practice C</a>, <a href="/precalc-complex-trig-form-quizzes.pdf">all quizzes</a>)</li>
     <li><a href="/precalc-vectors-icf-trig-eq">Vectors, ICF &amp; trig equations</a> &middot; Guide (<a href="/precalc-vectors-icf-trig-eq-practice-a.pdf">practice A</a>, <a href="/precalc-vectors-icf-trig-eq-practice-b.pdf">practice B</a>, <a href="/precalc-quizzes">quizzes</a>)</li>
     <li><a href="/precalc-vectors">Vectors + dot product</a> &middot; Guide</li>
