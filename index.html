@@ -605,7 +605,8 @@ const ICON={"search": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fil
 /* ═══════════ CONTENT (preview data: dates are examples) ═══════════ */
 /* ═══════════ DATA ═══════════
    FEATURES: upcoming tests, in date order. Expired ones drop off on their own; leave them.
-   Optional note: one line on what the test covers. Optional end: last day of a multi-day test. */
+   Optional note: one line on what the test covers. Optional end: last day of a multi-day test.
+   Optional pin:true puts a live entry first in up next, ahead of earlier-dated ones; it still drops off after its date. */
 const FEATURES=[
   {classId:"apush", title:"Unit 1/A study guide", url:"/apush-unit-1a", test:"2026-08-31", end:"2026-09-01"},
   {classId:"pre",   title:"Vectors + dot product study guide", url:"/precalc-vectors", test:"2026-08-31"},
@@ -620,7 +621,7 @@ const FEATURES=[
   {classId:"apush", title:"Unit 2/A study guide", url:"/apush-unit-2a", test:"2026-09-23", note:"25 questions, 17 minutes. Population and the Great Awakening through choosing sides (1774-75); acts of Parliament first."},
   {classId:"psych", title:"Unit 1.4\u20131.6 study guide", url:"/psych-unit-1-4-1-6", test:"2026-09-23", end:"2026-09-24", note:"The brain, sleep, and sensation, plus the Phineas Gage mini FRQs."},
   {classId:"pre",   title:"Complex numbers & trig form study guide", url:"/precalc-complex-trig-form", test:"2026-09-18", note:"Non-calculator quiz, 11 questions, 30 minutes. Complex arithmetic, trig/polar form, the Julia set."},
-  {classId:"pre",   title:"Product, quotient & De Moivre's theorems study guide", url:"/precalc-theorems", test:"2026-09-24", note:"Non-calculator quiz, 5 questions, 30 minutes. Product and quotient theorems, De Moivre's theorem, nth roots."}
+  {classId:"pre",   title:"Product, quotient & De Moivre's theorems study guide", url:"/precalc-theorems", test:"2026-09-24", pin:true, note:"Non-calculator quiz, 5 questions, 30 minutes. Product and quotient theorems, De Moivre's theorem, nth roots."}
 ];
 /* CLASSES: one entry per unit, newest first. A unit is the guide plus optional extras
    (kind: "cram" | "pdf" | "quiz"). added = the day it went up; "new" shows for 7 days.
@@ -741,7 +742,7 @@ function glyphSvgWrap(c){const s=el("span");s.innerHTML=glyphSvg(c.glyph,c.c,20)
 
 /* ═══════════ UP NEXT ═══════════ */
 (function(){
-  const live=FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>a.test.localeCompare(b.test));
+  const live=FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>(b.pin?1:0)-(a.pin?1:0)||a.test.localeCompare(b.test));
   if(!live.length)return;
   $("#upnext").hidden=false;
   const md=x=>(x.getMonth()+1)+"/"+x.getDate();
@@ -820,7 +821,7 @@ function rank(query){
   const q=norm(query); if(!q)return {hits:[],q:q};
   const words=q.split(" ");
   const recent=store.get("recent",[]).map(r=>r.u);
-  const live=FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>a.test.localeCompare(b.test)).map(f=>f.url);
+  const live=FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>(b.pin?1:0)-(a.pin?1:0)||a.test.localeCompare(b.test)).map(f=>f.url);
   const classOnly=CLASSES.find(c=>norm(c.name)===q||norm(c.abbr||"")===q||(ALIAS[c.id]||[]).includes(q));
   let kind=null; for(const k in KINDW)if(KINDW[k].some(w=>q===w||q.includes(w)))kind=k;
   const hits=[];

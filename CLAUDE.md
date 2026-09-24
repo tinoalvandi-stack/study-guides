@@ -73,6 +73,8 @@ The "up next" card shows the soonest test that has not passed; the others list
 under it as "also coming up". `note` (optional) is one line on what the test
 covers. `end` (optional) is the last day of a multi-day test. Expired entries
 drop off on their own; leave them in the array.
+`pin: true` (optional) puts that entry first in "up next" while it is live,
+ahead of earlier-dated entries; it still drops off after its date.
 
 ## Design system: "indigo & kinari" (September 2026)
 
