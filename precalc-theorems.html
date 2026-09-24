@@ -381,12 +381,6 @@ const GUIDE = {
          "To find the original number, raise the given root to the n with De Moivre."],
       terms:["distinct roots"],
       notes:[{k:"ex",t:"One cube root is 2 + 2i√3 = 4 cis 60°. Others: 4 cis 180° = −4 and 4 cis 300° = 2 − 2i√3."}] },
-
-
-    { w:1, t:"Mandelbrot set & the true/false", d:"from the homework",
-      p:["**Mandelbrot set**: compute z, z² + z, (z² + z)² + z, … If any ==absolute value exceeds 2==, z is not in the set. z = 1 − i: z² + z = 1 − 3i, |1 − 3i| = √10 > 2, so no.",
-         "True or false, every real number has two distinct real square roots: !!false!!. Negatives have imaginary roots (−4 → ±2i), and 0 has only one."],
-      terms:["Mandelbrot set"] }
   ],
 
   problems: [
@@ -399,7 +393,6 @@ const GUIDE = {
     {"q":"**De Moivre in radians** (warm-up): [√7(cos 11π/6 + i sin 11π/6)]⁴","steps":["(√7)⁴ = 49. 4 · 11π/6 = 44π/6 = 22π/3.","Subtract 2π (6π/3) until in range: 22π/3 − 18π/3 = ==4π/3==.","49(cos 4π/3 + i sin 4π/3) = 49(−½ − (√3/2)i)"],"ans":"−49/2 − (49√3/2)i"},
     {"q":"**Odd angle that lands on the circle** (homework): (√6 cis 85°)⁶","steps":["(√6)⁶ = 6³ = 216.","6 · 85° = 510°. Subtract 360°: ==150°==.","216(cos 150° + i sin 150°) = 216(−√3/2) + 216(½)i"],"ans":"−108√3 + 108i"},
     {"q":"**One root given** (homework): one cube root of a number is 2 + 2i√3. Find the other two in rectangular form.","steps":["2 + 2i√3: r = √(4 + 12) = 4, θ = 60°.","Cube roots are ==120° apart==: 180° and 300°.","4 cis 180° = −4. 4 cis 300° = 4(½ − (√3/2)i) = 2 − 2i√3."],"ans":"−4 and 2 − 2i√3"},
-    {"q":"**Mandelbrot set** (homework): is z = −0.6i in the set?","steps":["|z| = 0.6. z² + z = (−0.6i)² − 0.6i = −0.36 − 0.6i, |·| = √(0.1296 + 0.36) ≈ 0.70.","(z² + z)² + z = (−0.36 − 0.6i)² − 0.6i = 0.1296 + 0.432i − 0.36 − 0.6i = −0.2304 − 0.168i, |·| ≈ 0.29.","The values stay small and ==never exceed 2==."],"ans":"Yes, it is in the set"}
   ],
 
 
