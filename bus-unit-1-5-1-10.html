@@ -1,0 +1,2016 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>study guide · valentino guides</title>
+<meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+   Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+
+:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1);--ink3:rgba(94,90,82,.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--good:#4C6A48;--bad:#8E3F4C;
+  --c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}}
+:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}
+
+:root{
+  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:600; --ls-d:-.025em;
+  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px;
+  --r-card:14px; --r-btn:10px; --r-chip:8px;
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --gap:16px;
+  --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
+.lc{text-transform:lowercase}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
+.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px}
+.home{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:26px;height:26px;border-radius:5px;flex:none;display:block}
+.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase;white-space:nowrap}
+@media (max-width:379px){.bar h1{display:none}}
+.seg{position:relative;display:flex;border:1px solid var(--line);border-radius:8px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
+.seg button{position:relative;z-index:2;padding:4px 9px;border-radius:6px;font-size:var(--t12);font-weight:500;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
+.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.bar .seg{margin-left:auto}
+
+/* intro */
+main{padding-top:22px}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cname svg{width:20px;height:20px;flex:none}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
+.chip.past{color:var(--ink3)}
+h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+
+/* pane switcher */
+.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes::-webkit-scrollbar{display:none}
+.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button[aria-selected="true"]{color:var(--on-accent)}
+.panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.panes.one{display:none}
+.pane{display:none}
+.pane.on{display:block;animation:rise .38s var(--spring) both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* section head */
+.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+.sh:first-child{margin-top:0}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+
+/* cards + groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.card.top{border-left:4px solid var(--cls);padding-left:15px}
+.card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
+.row + .row,.body + .row{border-top:1px solid var(--line)}
+.row:active{background:var(--surface2)}
+@media (hover:hover){.row:hover{background:var(--surface2)}}
+.rt{min-width:0;flex:1}
+.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
+.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
+.row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
+.body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
+.body.on{grid-template-rows:1fr}
+.body > div{overflow:hidden}
+.body .in{padding:12px 16px 14px}
+.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
+.body p:last-child{margin-bottom:0}
+
+/* prose emphasis */
+.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
+.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.trap{color:var(--bad);font-weight:600}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
+.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
+.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
+.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media (max-width:479px){.cmp{grid-template-columns:1fr}}
+.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
+.abbr b{color:var(--ink);font-weight:600}
+
+/* practice mc */
+.q{margin-bottom:10px}
+.q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
+.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
+.opt:active{background:var(--surface2)}
+@media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
+.opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
+.q.done .opt{cursor:default}
+.opt.right{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q.done .why{display:block}
+.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
+.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wide{width:100%}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.pdfs a{text-decoration:none}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
+
+/* problems + worked examples */
+.prob .qt{padding:14px 16px}
+.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block}
+.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+.ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+
+/* formulas */
+.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
+.fx:first-child{border-top:0}
+.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
+.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+
+/* flashcards */
+.deck{position:relative;perspective:1200px;margin-bottom:10px}
+.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.fc.flip{transform:rotateY(180deg)}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc .b .tag{color:var(--cls)}
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+
+/* timeline */
+.tl{position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding:6px 0 12px}
+.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
+.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
+.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+
+/* checklist */
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
+.ck:first-child{border-top:0}
+.ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
+.ck.on .box{background:var(--good);border-color:var(--good)}
+.ck.on .t{color:var(--ink3);text-decoration:line-through}
+.ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
+
+/* label rows inside an outline section: [["why","..."],["what","..."]] */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px}
+.rows dt{padding:6px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:21.75px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:6px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* cram sheet */
+.cr{display:grid;grid-template-columns:minmax(0,11em) 1fr;gap:2px 14px;padding:10px 14px;border-top:1px solid var(--line)}
+.cr:first-child{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:600;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:600}
+@media (max-width:599px){
+  .tbl thead{display:none}
+  .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbl tbody tr:first-child{border-top:0}
+  .tbl td{display:block;padding:0;border:0}
+  .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* footer */
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+footer .upd{display:block;margin-top:6px}
+
+/* reveal on load */
+.rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="home" href="/" aria-label="all guides">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg>
+      <h1>valentino guides</h1>
+    </a>
+    <div class="seg" role="group" aria-label="theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">auto</button>
+      <button type="button" data-set="light" aria-pressed="false">light</button>
+      <button type="button" data-set="dark" aria-pressed="false">dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="crow rv" id="crow"></div>
+  <h2 class="title rv" id="title"></h2>
+  <p class="sub rv" id="sub" hidden></p>
+  <div class="pdfs rv" id="pdfs" hidden></div>
+  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div id="root" class="rv"></div>
+  <footer>
+    study guide written by a student, free to use. not affiliated with the school.
+    check anything that matters against your own notes. <a href="/">all guides</a>
+    <span class="upd" id="upd"></span>
+  </footer>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   GUIDE — the only thing to edit. Delete panes you don't need from
+   `panes`; delete the matching data too. Prose accepts **term**,
+   ==fact== and !!trap!!. Everything is rendered from this object.
+   ═══════════════════════════════════════════════════════════════════ */
+const GUIDE = {
+ "id": "biz",
+ "cls": "Business Principles",
+ "title": "High exam #2 study guide",
+ "test": "2026-10-01",
+ "end": "2026-10-02",
+ "meta": "LPs 1-5 to 1-10",
+ "sub": "",
+ "updated": "sept 24, 2026",
+ "panes": [
+  "outline",
+  "tables",
+  "practice",
+  "cards"
+ ],
+ "top": [
+  "**Liability** decides ownership: sole proprietorship and general partnership are ==unlimited==; LP, LLP, LLC and every corporation are ==limited to what you invested==.",
+  "**Gross margin** = (sales revenue − COGS) ÷ sales revenue: ==($20 − $8) ÷ $20 = 60%==. !!Never divide by COGS.!!",
+  "**Direct competition**: same product (Pizza Hut vs Domino’s). **Indirect competition**: different product, same need (==bus vs airline==).",
+  "**Monopoly** one seller, **oligopoly** a few, **monopolistic competition** many and differentiated, **pure competition** many and identical, where ==consumers have the most power==.",
+  "**Primary data** you collect first-hand; **secondary data** someone else already collected."
+ ],
+ "outline": [
+  {
+   "w": 3,
+   "t": "Types of business ownership",
+   "d": "LP 1-10 · the biggest lesson quiz",
+   "p": [
+    "**Liability** is the legal responsibility for a business’s actions, debts and obligations. **Unlimited liability** reaches past what you invested; **limited liability** caps your loss at ==the total amount you invested==.",
+    "**Pass-through** taxes: profit goes straight onto the owners’ own taxes. **Double taxation** hits C and B corporations: ==the company pays tax on profits, then shareholders pay again on dividends=="
+   ],
+   "rows": [
+    [
+     "sole proprietorship",
+     "One owner, ==unlimited liability==, easy to start. You are your own boss and can ==minimize overhead expenses==."
+    ],
+    [
+     "general partnership",
+     "Two or more owners who all manage, with ==unlimited liability for all partners==. Write a **partnership agreement**."
+    ],
+    [
+     "limited partnership",
+     "Some partners are not active, have ==no decision-making power==, and are liable only for what they invested."
+    ],
+    [
+     "LLP",
+     "All partners manage and have limited liability, and ==partners are not liable for other partners’ actions== (law firms, doctors’ offices)."
+    ],
+    [
+     "LLC",
+     "Limited liability plus pass-through taxes. Owners are called ==members==; it raises money with ==units, not shares==."
+    ]
+   ],
+   "notes": [
+    {
+     "k": "warn",
+     "t": "LP vs LLP: in an **LLP** every partner manages and is protected. In an **LP** only the limited partners are protected, and !!they give up decision-making power!!."
+    }
+   ],
+   "terms": [
+    "liability",
+    "unlimited liability",
+    "limited liability",
+    "pass-through",
+    "double taxation",
+    "partnership agreement"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Corporations",
+   "d": "LP 1-10 · C, S, B, public, private",
+   "p": [
+    "A **corporation** is a ==legal entity separate from its owners==, controlled by a **board of directors**, with limited liability. Corporations are “legal persons” and must file **Articles of Incorporation** in the state where they operate."
+   ],
+   "rows": [
+    [
+     "C corporation",
+     "Sells unlimited shares, heavily regulated. Main disadvantage: ==double taxation==."
+    ],
+    [
+     "S corporation",
+     "==Passes corporate income (or loss) through to its shareholders== for taxes. ==Up to 100 owners==, all U.S. citizens or permanent residents; no businesses as shareholders."
+    ],
+    [
+     "B corporation",
+     "==Considers public benefit== in its decisions, not only shareholder value (Ben & Jerry’s, Patagonia). Still double taxation."
+    ],
+    [
+     "public corporation",
+     "==Sells shares to the public== on a stock exchange (NYSE, NASDAQ), so it ==must report its finances publicly==."
+    ],
+    [
+     "private corporation",
+     "Doesn’t sell stock to the public and doesn’t report its finances publicly (Mars, IKEA, Lego)."
+    ]
+   ],
+   "notes": [
+    {
+     "k": "ok",
+     "t": "Going public = ==raise capital by selling shares==. Staying private = ==avoid publicly reporting financial information==. Picking any structure: ==analyze the pros and cons of each type==."
+    }
+   ],
+   "terms": [
+    "corporation",
+    "board of directors",
+    "Articles of Incorporation"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Business models",
+   "d": "LP 1-7 · 28-term glossary quiz",
+   "p": [
+    "A **business model** is ==how a company sells its products to customers and its plan for making a profit==. A **business plan** is the full roadmap of goals and strategy; the model is one part of it.",
+    "From maker to customer, in order. Every look-alike pair, with examples, is in the tables tab."
+   ],
+   "steps": [
+    "**Manufacturer** makes finished products from ==raw materials==.",
+    "**Distributor** buys from manufacturers and resells to ==wholesalers, retailers or the public==.",
+    "**Wholesaler** buys ==large quantities==, warehouses them, and resells to retailers.",
+    "**Retailer** buys from manufacturers, distributors and/or wholesalers and ==sells directly to the consuming public==."
+   ],
+   "notes": [
+    {
+     "k": "warn",
+     "t": "**D2C** sells to the end user ==without any middlemen== (Tesla). **Direct sales** is selling in a !!non-retail environment!!, door to door (Mary Kay). Different models."
+    }
+   ],
+   "terms": [
+    "business model",
+    "business plan",
+    "manufacturer",
+    "distributor",
+    "wholesaler",
+    "retailer",
+    "D2C",
+    "direct sales"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Types of competition",
+   "d": "LP 1-8",
+   "p": [
+    "**Direct competition**: companies offer essentially the same product or service (==Pizza Hut vs Domino’s==, Coke vs Pepsi). **Indirect competition**: not the same product, but ==it satisfies the same need== (a bus company vs an airline).",
+    "**Price competition** uses lower prices to attract customers; anyone can do it. **Non-price competition** competes on ==features and attributes other than price== (Apple: the iPhone is “easier and smarter”).",
+    "The U.S. economy is built on **capitalism**: ==privately owned companies==, driven by profit, with prices set by supply and demand."
+   ],
+   "terms": [
+    "direct competition",
+    "indirect competition",
+    "price competition",
+    "non-price competition",
+    "capitalism"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Market models",
+   "d": "LP 1-8 · most sellers to one",
+   "steps": [
+    "**Pure competition**: many companies, essentially the same product and price, low barriers. ==Consumers have the most buying power== (corn, wheat).",
+    "**Monopolistic competition**: many suppliers and low barriers, but they ==differentiate their products== to gain some price advantage (health and beauty products).",
+    "**Oligopoly**: ==a small number of companies== control supply; barriers highly restrictive (airlines, Verizon and AT&T).",
+    "**Monopoly**: ==one company== controls supply, no real options for consumers, barriers highly restrictive."
+   ],
+   "notes": [
+    {
+     "k": "warn",
+     "t": "A monopoly by itself is !!not illegal!!. **Monopolistic behavior** is: unfair pricing power and suppressing competition. A **regulated monopoly**, like a utility company, is allowed under strict supervision."
+    }
+   ],
+   "terms": [
+    "pure competition",
+    "monopolistic competition",
+    "oligopoly",
+    "monopoly",
+    "regulated monopoly"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Information management",
+   "d": "LP 1-5",
+   "p": [
+    "**Information management** is a business function that involves ==people, processes, and systems== that collect, organize, store and secure relevant data and information, and makes it accessible and useful for ==making informed decisions==. A **management information system (MIS)** is the computerized system that supports it.",
+    "**Data** is the raw form of information before it becomes useful. **Relevant data** is only what’s important and useful, so it helps you make ==decisions==. Access to ==information== is critical for business success."
+   ],
+   "rows": [
+    [
+     "trade secret",
+     "A practice or process ==not generally known outside the company== that owns it, with economic value."
+    ],
+    [
+     "intangible asset",
+     "Anything of value that is ==not physical in nature==."
+    ],
+    [
+     "intellectual property",
+     "Anything created from the mind: ==inventions, ideas, or methods==."
+    ],
+    [
+     "risk management",
+     "Predicting events with negative consequences and taking ==proactive measures== to avoid and combat them."
+    ],
+    [
+     "audit",
+     "An ==independent and unbiased inspection== of information, systems, processes, procedures and protocols."
+    ],
+    [
+     "cyber security",
+     "==Protection of networks, devices, and data== from unauthorized access or criminal use."
+    ],
+    [
+     "data integrity",
+     "The ==accuracy and validity of data== over its lifecycle."
+    ]
+   ],
+   "notes": [
+    {
+     "k": "ex",
+     "t": "The six business functions: Human Resources, **Strategy**, **Operations**, Marketing, Finance/Accounting, Information Management. Data analysts, systems analysts and database managers work in ==information management==."
+    }
+   ],
+   "terms": [
+    "information management",
+    "MIS",
+    "data",
+    "relevant data"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Gross profit equation",
+   "d": "LP 1-6 · class assignment",
+   "p": [
+    "**COGS** (cost of goods sold) is what the goods you sell cost you: the raw materials for a candle (wax, wick, fragrance), or what you pay a supplier for what you resell."
+   ],
+   "steps": [
+    "Sales revenue − COGS = **gross profit**: ==$20 − $8 = $12==.",
+    "Gross profit ÷ sales revenue = **gross margin**, as a percent: ==$12 ÷ $20 = 0.6 × 100 = 60%==.",
+    "COGS rises to $10, price stays $20: gross profit is $10 and the margin ==drops from 60% to 50%==."
+   ],
+   "notes": [
+    {
+     "k": "warn",
+     "t": "!!Divide by sales revenue, never by COGS!!: $12 ÷ $8 gives 150%, which is wrong."
+    },
+    {
+     "k": "ex",
+     "t": "Sales is only half the equation. Success also depends on ==how well you buy==: low costs keep prices competitive and leave more money to reinvest."
+    }
+   ],
+   "terms": [
+    "COGS",
+    "gross profit",
+    "gross margin"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Competitive analysis",
+   "d": "LP 1-8 · class assignment",
+   "p": [
+    "Know each direct competitor’s products, 4Ps, target markets, size, market share, marketing, ==strengths and weaknesses==, threats, and media. Then plot them on a **competitive analysis grid**: two axes, the two measures ==most important to your customers==."
+   ],
+   "cmp": {
+    "a": {
+     "h": "primary data",
+     "p": [
+      "**Primary data** is collected ==first-hand== by you.",
+      "Customer interviews, questionnaires, ==price surveys you conduct==."
+     ]
+    },
+    "b": {
+     "h": "secondary data",
+     "p": [
+      "**Secondary data** was ==already collected by others==.",
+      "==Industry publications, press releases==, news stories, annual reports."
+     ]
+    }
+   },
+   "notes": [
+    {
+     "k": "ex",
+     "t": "The iPhone grid: hard to use vs easy to use, not so smart vs smart. iPhone sat alone in the ==smart and easy to use== corner."
+    }
+   ],
+   "terms": [
+    "competitive analysis grid",
+    "primary data",
+    "secondary data"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Government and fair competition",
+   "d": "LP 1-8",
+   "p": [
+    "The government regulates business, enforces fair competition and protects consumers through ==antitrust laws== (Sherman Antitrust Act, Clayton Act, Federal Trade Commission Act). The **FTC** keeps monopolies from forming or breaks them up, as with Standard Oil.",
+    "Competition helps consumers with ==lower prices, better quality, more variety, and innovation==."
+   ],
+   "rows": [
+    [
+     "price fixing",
+     "!!Illegal!!: talking to your competitors about prices."
+    ],
+    [
+     "truth-in-advertising",
+     "A business ==can’t knowingly make false claims==. Red Bull settled lawsuits because it doesn’t actually “give you wings.”"
+    ]
+   ],
+   "terms": [
+    "FTC"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Operations",
+   "d": "LP 1-6",
+   "p": [
+    "**Operations** is ==the daily functioning of an organization, managing the inputs and outputs==; it includes manufacturing, purchasing, and logistics. It is where the execution of strategy happens.",
+    "The 8 activities: **manufacturing**, **transportation**, **purchasing**, **distribution**, **logistics**, **inventory management**, **quality control**, **supply chain management**."
+   ],
+   "rows": [
+    [
+     "manufacturing",
+     "Making products from ==raw materials and other inputs== like labor, machinery and tools."
+    ],
+    [
+     "mass production",
+     "Using ==technology and assembly lines== to make large quantities of the same product."
+    ],
+    [
+     "quality control",
+     "Measuring and testing a product against the intended ==quality benchmarks==."
+    ],
+    [
+     "purchasing",
+     "The organized ==acquisition of goods and services== on behalf of a business."
+    ],
+    [
+     "logistics",
+     "Optimizing the ==flow of inputs and outputs== until goods reach their final destination."
+    ],
+    [
+     "distribution",
+     "Part of logistics: ==categorize, sort, and transport== goods to all their destinations."
+    ],
+    [
+     "transportation",
+     "Part of distribution: ==move goods or assets== from one place to another."
+    ],
+    [
+     "supply chain",
+     "The network of people, suppliers, activities and resources that moves a product ==from suppliers to the end consumer==."
+    ]
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Business and technology trends",
+   "d": "LP 1-9",
+   "p": [
+    "A **business trend** is ==a general change in the way business is developing==. In business, change is the only ==constant==, and the fastest-moving trends relate to ==technology==.",
+    "The Internet of Things and machine learning fuel hyperlocal, personal ads that reach your ==target audience== more precisely. **Generation Z** is the generation after Millennials."
+   ],
+   "rows": [
+    [
+     "artificial intelligence",
+     "A computer program or machine that can ==think and learn== and emulate what humans do, like reasoning and deciding."
+    ],
+    [
+     "machine learning",
+     "==A type of AI==: machines receive information and make decisions based on it."
+    ],
+    [
+     "Internet of Things",
+     "Devices on the Internet that ==identify themselves and communicate== with each other. Appliances, autonomous cars and clothes: ==all of the above==."
+    ],
+    [
+     "ambient intelligence",
+     "The connectivity when ==many objects act in unison==."
+    ],
+    [
+     "other trends",
+     "The **gig economy** (contract workers, often remote), rising cyber attacks, subscriptions, streaming over cable."
+    ]
+   ],
+   "terms": [
+    "business trend",
+    "Generation Z",
+    "gig economy"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Franchises and growth terms",
+   "d": "LP 1-10 · bolded on the review sheet",
+   "rows": [
+    [
+     "franchise",
+     "The franchisee legally uses the franchisor’s ==brand, expertise, practices and systems== (McDonald’s, Subway)."
+    ],
+    [
+     "business format franchise",
+     "Name and products ==plus the whole system== for running the business (most fast food)."
+    ],
+    [
+     "product trade name franchise",
+     "Sells the franchisor’s products under its name, ==no full system== (car dealerships, gas stations)."
+    ],
+    [
+     "piggyback franchise",
+     "A franchise ==inside another business’s store== (a Starbucks inside a Target)."
+    ],
+    [
+     "merger",
+     "Two companies ==join into one== (Exxon and Mobil became ExxonMobil)."
+    ],
+    [
+     "consolidation",
+     "Two or more companies form a ==brand-new company==; the originals stop existing."
+    ],
+    [
+     "joint venture",
+     "Businesses team up on ==one project==, sharing cost, risk and profit, and stay separate."
+    ],
+    [
+     "licensing",
+     "One company lets another ==use its intellectual property== for a fee or royalty."
+    ],
+    [
+     "expansion",
+     "Growing by adding ==locations, products, markets or employees==."
+    ],
+    [
+     "non-profit corporation",
+     "Serves a ==mission, not owners’ profit==; usually tax-exempt."
+    ],
+    [
+     "pyramid scheme",
+     "!!Illegal!!: money comes from recruiting members who pay to join, not from selling real products. A legal MLM earns from ==real sales==."
+    ]
+   ]
+  }
+ ],
+ "tables": [
+  {
+   "h": "ownership types",
+   "cols": [
+    "type",
+    "owners",
+    "to start",
+    "liability",
+    "taxes",
+    "know"
+   ],
+   "rows": [
+    [
+     "Sole proprietor",
+     "1",
+     "Easy",
+     "==Unlimited==",
+     "Pass through",
+     "You are your own boss"
+    ],
+    [
+     "General partnership",
+     "2+",
+     "Easy",
+     "==Unlimited==",
+     "Pass through",
+     "Partnership agreement"
+    ],
+    [
+     "Limited partnership",
+     "2+",
+     "Easy",
+     "Hybrid",
+     "Pass through",
+     "Active partners manage"
+    ],
+    [
+     "LLP",
+     "2+",
+     "Easy",
+     "Limited",
+     "Pass through",
+     "Registered with Secretary of State"
+    ],
+    [
+     "LLC",
+     "1+",
+     "Easy",
+     "Limited",
+     "Pass through",
+     "Owners are **members**"
+    ],
+    [
+     "C corp",
+     "1+",
+     "Difficult",
+     "Limited",
+     "==Double taxation==",
+     "Heavily regulated, unlimited shares"
+    ],
+    [
+     "B corp",
+     "1+",
+     "Difficult",
+     "Limited",
+     "==Double taxation==",
+     "Balancing profit and purpose"
+    ],
+    [
+     "S corp",
+     "Up to 100 U.S. residents",
+     "Difficult",
+     "Limited",
+     "Pass through",
+     "Limited shares and owners"
+    ]
+   ]
+  },
+  {
+   "h": "market models",
+   "cols": [
+    "model",
+    "sellers",
+    "product",
+    "barriers to entry",
+    "example"
+   ],
+   "rows": [
+    [
+     "**Pure competition**",
+     "Large number",
+     "Same product, same price",
+     "Low",
+     "Corn, wheat"
+    ],
+    [
+     "**Monopolistic competition**",
+     "Many",
+     "==Differentiated==",
+     "Low",
+     "Health and beauty"
+    ],
+    [
+     "**Oligopoly**",
+     "==Small number==",
+     "They control supply",
+     "Highly restrictive",
+     "Airlines, Verizon and AT&T"
+    ],
+    [
+     "**Monopoly**",
+     "==One==",
+     "No real options",
+     "Highly restrictive",
+     "Standard Oil (broken up)"
+    ],
+    [
+     "**Regulated monopoly**",
+     "One, supervised",
+     "Allowed by government",
+     "Set by government",
+     "Utility company"
+    ]
+   ]
+  },
+  {
+   "h": "business models people mix up",
+   "d": "the phrase that gives each one away",
+   "cols": [
+    "model",
+    "key phrase",
+    "example"
+   ],
+   "rows": [
+    [
+     "**Crowdfunding**",
+     "Small amounts of ==capital== from many individuals",
+     "Kickstarter, GoFundMe"
+    ],
+    [
+     "**Crowdsourcing**",
+     "==Services, ideas, or content== from a large group",
+     "Wikipedia"
+    ],
+    [
+     "**Direct to consumer (D2C)**",
+     "Sells to the end user, ==no middlemen==",
+     "Tesla"
+    ],
+    [
+     "**Direct sales**",
+     "Sells in a ==non-retail environment==",
+     "Mary Kay, Pampered Chef"
+    ],
+    [
+     "**Multilevel marketing (MLM)**",
+     "Income from sales ==and recruiting others==",
+     "Mary Kay, Pampered Chef"
+    ],
+    [
+     "**Aggregator**",
+     "Sells aggregated products through ==its own platform==",
+     "Airbnb, Uber, Hotels.com"
+    ],
+    [
+     "**Online marketplace**",
+     "Suppliers ==compete against each other== on one platform",
+     "Amazon marketplace, Alibaba"
+    ],
+    [
+     "**Freemium**",
+     "Basic services free, ==pay for extra features==",
+     "Dropbox, Slack"
+    ],
+    [
+     "**Subscription**",
+     "A ==regularly scheduled fee==, monthly or annually",
+     "Netflix, Spotify"
+    ],
+    [
+     "**Dropshipping**",
+     "==No inventory==; a third party ships to the customer",
+     "Online web stores"
+    ],
+    [
+     "**Auction**",
+     "Commission for selling to the ==highest bidder==",
+     "eBay"
+    ],
+    [
+     "**Peer-to-peer**",
+     "Two individuals deal directly, ==no third party==",
+     "Craigslist"
+    ],
+    [
+     "**Bricks-and-mortar**",
+     "Traditional ==physical street-side locations==",
+     "Local bank, hardware store"
+    ],
+    [
+     "**Bricks-and-clicks**",
+     "Buy at the stores ==and also online==",
+     "Target, Kohl’s, Walmart"
+    ],
+    [
+     "**Nickel-and-dime**",
+     "==Low price points==, low cost providers",
+     "Dollar Tree, low cost airlines"
+    ],
+    [
+     "**Advertisement**",
+     "Service free, ==sells advertising space==",
+     "YouTube, Instagram"
+    ],
+    [
+     "**Affiliate marketing**",
+     "Pays a promoter for an ad and link: ==PPC, PPL, PPS==",
+     "Online merchants"
+    ],
+    [
+     "**Agency**",
+     "Earns a ==fee for handling business activities== for others",
+     "Ogilvy & Mather"
+    ],
+    [
+     "**Data licensing / selling**",
+     "==Sells or licenses the data it collects==",
+     "Twitter"
+    ]
+   ]
+  }
+ ],
+ "practice": [
+  {
+   "q": "Which type of business ownership involves a single owner with unlimited liability?",
+   "opts": [
+    "Limited liability company",
+    "Corporation",
+    "Limited partnership",
+    "Sole proprietorship"
+   ],
+   "a": 3,
+   "why": "One owner plus unlimited liability is a ==sole proprietorship==. An LLC can have one owner too, but its liability is !!limited!!."
+  },
+  {
+   "q": "Why might an owner choose a sole proprietorship despite its unlimited liability?",
+   "opts": [
+    "To minimize overhead expenses",
+    "To limit their personal liability",
+    "To reduce government regulation",
+    "To have access to public capital"
+   ],
+   "a": 0,
+   "why": "It’s cheap and simple to run: ==minimize overhead expenses==. It does !!nothing to limit liability!!, and public capital means selling shares."
+  },
+  {
+   "q": "Which partnership limits the liability of some partners to their investment?",
+   "opts": [
+    "Limited partnership",
+    "General partnership",
+    "Corporation",
+    "Sole proprietorship"
+   ],
+   "a": 0,
+   "why": "A ==limited partnership== protects its limited partners, who give up decision-making power. In a general partnership ==every partner has unlimited liability==."
+  },
+  {
+   "q": "In which business structure are the owners called members?",
+   "opts": [
+    "General partnership",
+    "Sole proprietorship",
+    "Corporation",
+    "Limited liability company"
+   ],
+   "a": 3,
+   "why": "LLC owners are ==members==. Corporations have !!shareholders!!."
+  },
+  {
+   "q": "What is a defining characteristic of a corporation?",
+   "opts": [
+    "Separate legal entity from its owners",
+    "No decision-making power for shareholders",
+    "Ownership by a single individual",
+    "Unlimited liability for shareholders"
+   ],
+   "a": 0,
+   "why": "A corporation is a ==legal entity separate from its owners== (a “legal person”), which is why shareholders have limited, not unlimited, liability."
+  },
+  {
+   "q": "What is the primary disadvantage of a C corporation?",
+   "opts": [
+    "Unlimited liability for the owners",
+    "Managed by an individual",
+    "Limited ability to raise capital",
+    "Double taxation"
+   ],
+   "a": 3,
+   "why": "==Double taxation==: the company pays on profits, shareholders pay again on dividends. C corps raise capital !!more easily!!, not less."
+  },
+  {
+   "q": "Which structure passes corporate income (or loss) to its shareholders for tax purposes?",
+   "opts": [
+    "General partnership",
+    "C corporation",
+    "S corporation",
+    "Limited liability company"
+   ],
+   "a": 2,
+   "why": "The ==S corporation== is the corporation that passes income through. An LLC also has pass-through taxes, but the question says ==corporate income== and ==shareholders==."
+  },
+  {
+   "q": "Which corporation can have up to 100 owners who must be U.S. citizens or permanent residents?",
+   "opts": [
+    "C corporation",
+    "General partnership",
+    "LLC",
+    "S corporation"
+   ],
+   "a": 3,
+   "why": "==Up to 100 U.S. owners== is the S corp limit. A C corp can sell !!unlimited shares!!."
+  },
+  {
+   "q": "What is a key benefit of a B corporation?",
+   "opts": [
+    "It offers unlimited liability to its owners",
+    "It avoids all types of taxation",
+    "It considers public benefit in decisions",
+    "It maximizes shareholder value only"
+   ],
+   "a": 2,
+   "why": "B corps ==consider public benefit==, balancing profit and purpose. They still face !!double taxation!!."
+  },
+  {
+   "q": "A company wants to stay privately held instead of going public. The most likely reason:",
+   "opts": [
+    "To avoid unlimited liability",
+    "To limit the number of shareholders",
+    "To avoid publicly reporting financial information",
+    "To skip filing Articles of Incorporation"
+   ],
+   "a": 2,
+   "why": "Public corporations ==must report finances publicly==; private ones don’t. Both are corporations, so both have limited liability and both !!file Articles of Incorporation!!."
+  },
+  {
+   "q": "What is one feature of a limited liability partnership (LLP)?",
+   "opts": [
+    "Only one partner has decision-making power",
+    "Unlimited liability for all partners",
+    "It is managed by a single individual",
+    "Partners are not liable for other partners’ actions"
+   ],
+   "a": 3,
+   "why": "In an LLP all partners manage, have limited liability, and ==aren’t liable for other partners’ actions== (think law firms)."
+  },
+  {
+   "q": "What must a business file to legally establish itself as a corporation?",
+   "opts": [
+    "Tax return",
+    "Articles of Incorporation",
+    "Operating agreement",
+    "Partnership agreement"
+   ],
+   "a": 1,
+   "why": "==Articles of Incorporation==, filed in the state where it operates. A partnership agreement is for !!partnerships!!."
+  },
+  {
+   "q": "A significant advantage of being a public corporation:",
+   "opts": [
+    "Unlimited liability for shareholders",
+    "Exemption from government regulation",
+    "Limited decision-making power for management",
+    "Ability to raise capital by selling shares"
+   ],
+   "a": 3,
+   "why": "Selling shares on a stock exchange ==raises capital==. The cost: public corporations are !!heavily regulated!!, not exempt."
+  },
+  {
+   "q": "How do the Retailer model and the Wholesaler model differ?",
+   "opts": [
+    "The wholesaler sells to the consuming public; the retailer resells to wholesalers",
+    "Both sell directly to the public",
+    "The retailer sells to the consuming public; the wholesaler resells to retailers",
+    "The retailer makes products from raw materials"
+   ],
+   "a": 2,
+   "why": "The ==wholesaler== buys large quantities and ==resells to retailers==. The ==retailer== ==sells directly to the consuming public==."
+  },
+  {
+   "q": "A web store sells a product but keeps no inventory; the supplier ships straight to the customer. Which model?",
+   "opts": [
+    "E-commerce model",
+    "Distributor model",
+    "Direct sales model",
+    "Dropshipping model"
+   ],
+   "a": 3,
+   "why": "==No inventory, third party ships== is ==dropshipping==. It is e-commerce too, but the matching term is the specific one."
+  },
+  {
+   "q": "Wikipedia gets its content from contributions by a large group of people online. Which model?",
+   "opts": [
+    "Crowdfunding",
+    "Peer-to-peer",
+    "Crowdsourcing",
+    "Aggregator"
+   ],
+   "a": 2,
+   "why": "==Crowdsourcing== collects ==services, ideas, or content==. !!Crowdfunding collects money!!."
+  },
+  {
+   "q": "A platform lets many suppliers compete against each other for customers and takes a fee per transaction. Which model?",
+   "opts": [
+    "Agency",
+    "Online marketplace",
+    "Wholesaler",
+    "Aggregator"
+   ],
+   "a": 1,
+   "why": "==Suppliers compete against each other on one platform== is the ==online marketplace== (Amazon, Alibaba). An aggregator !!sells the products through its own platform!! (Airbnb, Uber)."
+  },
+  {
+   "q": "Dropbox gives basic storage free and charges for extra features. Which model?",
+   "opts": [
+    "Freemium",
+    "Nickel-and-dime",
+    "Subscription",
+    "Advertisement"
+   ],
+   "a": 0,
+   "why": "==Free basics, paid extras== is ==freemium==. Advertisement-model services stay free and !!sell ad space!! instead."
+  },
+  {
+   "q": "Selling directly to consumers in a non-retail environment, like door to door, is the:",
+   "opts": [
+    "Distributor model",
+    "Direct sales model",
+    "Retailer model",
+    "Direct to consumer (D2C) model"
+   ],
+   "a": 1,
+   "why": "==Direct sales== = ==non-retail environment==. D2C means !!no middlemen!!, like Tesla selling without dealerships."
+  },
+  {
+   "q": "A bus company selling a ticket from Nashville to Tampa is ______ for airlines.",
+   "opts": [
+    "bargaining power of buyers",
+    "bargaining power of suppliers",
+    "indirect competition",
+    "direct competition"
+   ],
+   "a": 2,
+   "why": "Different product, ==same need== (long-distance travel) = ==indirect competition==. Direct would be !!another airline!!."
+  },
+  {
+   "q": "Industry publications and press releases used in a competitive analysis are:",
+   "opts": [
+    "indirect competition",
+    "secondary data",
+    "direct competition",
+    "primary data"
+   ],
+   "a": 1,
+   "why": "==Already collected by someone else== = ==secondary data==. Price surveys you run yourself would be !!primary!!."
+  },
+  {
+   "q": "A small number of companies control supply and barriers to entry are highly restrictive. This is:",
+   "opts": [
+    "monopolistic competition",
+    "an oligopoly",
+    "a monopoly",
+    "non-price competition"
+   ],
+   "a": 1,
+   "why": "==A small number== = ==oligopoly==. A monopoly is !!only one!! company."
+  },
+  {
+   "q": "Many suppliers and low barriers, but suppliers differentiate their products to gain some price advantage. This is:",
+   "opts": [
+    "pure competition",
+    "monopolistic competition",
+    "an oligopoly",
+    "price competition"
+   ],
+   "a": 1,
+   "why": "==Differentiate== is the tell for ==monopolistic competition==. Pure competition sells !!essentially the same product!!."
+  },
+  {
+   "q": "Consumers have the most buying power in which market model?",
+   "opts": [
+    "Pure competition",
+    "Monopolistic competition",
+    "Oligopoly",
+    "Price competition"
+   ],
+   "a": 0,
+   "why": "==Pure competition==: many sellers of the same product, so ==consumers have the most options==. Price competition is a tactic, !!not a market model!!."
+  },
+  {
+   "q": "Apple marketing the first iPhone as “easier and smarter” is an example of:",
+   "opts": [
+    "indirect competition",
+    "non-price competition",
+    "price competition",
+    "monopolistic behavior"
+   ],
+   "a": 1,
+   "why": "Competing on ==features and attributes other than price== is ==non-price competition==."
+  },
+  {
+   "q": "Two competitors meet and agree on what price to charge. This is:",
+   "opts": [
+    "non-price competition",
+    "truth-in-advertising",
+    "price fixing",
+    "a regulated monopoly"
+   ],
+   "a": 2,
+   "why": "==Talking to competitors about prices== is ==price fixing==, and it is !!illegal!!."
+  },
+  {
+   "q": "A candle sells for $20 and costs the store $8. What is the gross margin?",
+   "opts": [
+    "150%",
+    "$12",
+    "60%",
+    "40%"
+   ],
+   "a": 2,
+   "why": "Gross profit $20 − $8 = $12, then ==$12 ÷ $20 = 60%==. $12 is gross profit, !!not margin!!; 150% comes from dividing by COGS."
+  },
+  {
+   "q": "COGS rises from $8 to $10 per candle while the $20 price stays the same. The gross margin:",
+   "opts": [
+    "drops to 40%",
+    "stays at 60%",
+    "rises to 67%",
+    "drops to 50%"
+   ],
+   "a": 3,
+   "why": "$20 − $10 = $10, and ==$10 ÷ $20 = 50%==."
+  },
+  {
+   "q": "The raw form of information before it actually becomes useful information is:",
+   "opts": [
+    "risk",
+    "secure",
+    "data",
+    "useful"
+   ],
+   "a": 2,
+   "why": "==Data== is raw. It only becomes useful information once it is ==organized, compiled and analyzed==."
+  },
+  {
+   "q": "A practice or process not generally known outside the company that owns it, with economic value, is a:",
+   "opts": [
+    "trade secret",
+    "risk",
+    "cyber security",
+    "audit"
+   ],
+   "a": 0,
+   "why": "That is a ==trade secret==, a type of ==intangible asset==."
+  },
+  {
+   "q": "An independent and unbiased inspection of information, systems, processes, procedures and protocols is a/an:",
+   "opts": [
+    "cyberattack",
+    "risk",
+    "transaction",
+    "audit"
+   ],
+   "a": 3,
+   "why": "An ==audit==. Regular audits are part of ==risk management==."
+  },
+  {
+   "q": "Which are examples of intellectual property?",
+   "opts": [
+    "Inventions, methods, ideas",
+    "Investments, computers, ideas",
+    "Computers, databases, servers",
+    "Inventions, investments, methods"
+   ],
+   "a": 0,
+   "why": "IP is created ==from the mind==: inventions, ideas, methods. !!Investments and computers!! are not IP."
+  },
+  {
+   "q": "Which two complete the six business functions: Human Resources, ___, ___, Marketing, Finance/Accounting, Information Management?",
+   "opts": [
+    "Strategy and Risks",
+    "Strategy and Operations",
+    "Operations and Procedures",
+    "Risks and Property"
+   ],
+   "a": 1,
+   "why": "The six: Human Resources, ==Strategy, Operations==, Marketing, Finance/Accounting, Information Management."
+  },
+  {
+   "q": "In business, change is the only:",
+   "opts": [
+    "constant",
+    "leverage",
+    "export",
+    "import"
+   ],
+   "a": 0,
+   "why": "==Change is the only constant==, so businesses that don’t adapt fall behind customers and competitors."
+  },
+  {
+   "q": "A type of artificial intelligence where machines receive information and make decisions based on it is:",
+   "opts": [
+    "machine learning",
+    "ambient intelligence",
+    "HTML",
+    "Internet of Things"
+   ],
+   "a": 0,
+   "why": "==Machine learning== is ==a way of achieving AI==. The IoT is !!the network of connected devices!!."
+  },
+  {
+   "q": "The Internet of Things includes:",
+   "opts": [
+    "appliances",
+    "autonomous cars",
+    "clothes",
+    "all the above"
+   ],
+   "a": 3,
+   "why": "Anything connected that ==identifies itself and communicates==: appliances, cars, clothes, all of it."
+  },
+  {
+   "q": "Which describes the gross profit equation?",
+   "opts": [
+    "Sales revenue − COGS",
+    "Gross profit ÷ COGS",
+    "COGS − sales revenue",
+    "Sales revenue + COGS"
+   ],
+   "a": 0,
+   "why": "==Sales revenue − COGS = gross profit==. Gross margin then divides gross profit by !!sales revenue!!."
+  }
+ ],
+ "cards": [
+  {
+   "f": "Liability",
+   "b": "The legal responsibility of an individual or entity for actions, debts, and obligations."
+  },
+  {
+   "f": "Unlimited liability",
+   "b": "Extends ==beyond== an individual’s financial investment in a company."
+  },
+  {
+   "f": "Limited liability",
+   "b": "Restricts potential loss to ==the total amount of the investment==."
+  },
+  {
+   "f": "Sole Proprietorship",
+   "b": "A business owned by ==one person==, where the owner has unlimited liability."
+  },
+  {
+   "f": "Partnership",
+   "b": "A business owned by ==two or more people==; they create a partnership agreement."
+  },
+  {
+   "f": "General Partnership",
+   "b": "All partners have decision-making and management power, and ==unlimited liability==."
+  },
+  {
+   "f": "Limited Partnership",
+   "b": "One or more partners are ==not active==, have no decision-making power, and are liable only for what they invested."
+  },
+  {
+   "f": "Limited Liability Partnership (LLP)",
+   "b": "All partners manage, have limited liability, and ==can’t be held responsible for other partners’ actions==."
+  },
+  {
+   "f": "Limited Liability Company (LLC)",
+   "b": "Hybrid: operates like a sole proprietorship or partnership, liability ==limited to the amount invested==, pass-through taxes. Owners are **members**; raises money with units."
+  },
+  {
+   "f": "Corporation",
+   "b": "A ==legal entity separate from its owners==, controlled by a board of directors, with limited liability. Must file Articles of Incorporation."
+  },
+  {
+   "f": "“C” Corporation",
+   "b": "Sells unlimited shares, heavily regulated, reports finances publicly; ==double taxation==."
+  },
+  {
+   "f": "“S” Corporation",
+   "b": "==Passes corporate income (or loss) through to shareholders==. Max 100 owners, U.S. citizens or permanent residents."
+  },
+  {
+   "f": "“B” Corporation",
+   "b": "==Considers public benefit== in decisions, not only shareholder value. Ben & Jerry’s, Patagonia."
+  },
+  {
+   "f": "Private Corporation",
+   "b": "A small group of owners; ==does not sell stock to the public== or report finances publicly. Mars, IKEA, Lego."
+  },
+  {
+   "f": "Non-Profit Corporation",
+   "b": "Formed to serve a ==mission or cause==, not owners’ profit; usually tax-exempt."
+  },
+  {
+   "f": "Franchise",
+   "b": "A franchisee legally uses the franchisor’s ==brand, expertise, practices, and systems==. McDonald’s, Subway."
+  },
+  {
+   "f": "Business Format Franchise",
+   "b": "Name and products ==plus the whole system== for running the business."
+  },
+  {
+   "f": "Product Trade Name Franchise",
+   "b": "Sells the franchisor’s products under its brand name, ==without a full system==. Car dealerships, gas stations."
+  },
+  {
+   "f": "Piggyback Franchise",
+   "b": "A franchise ==inside another business’s store==. A Starbucks inside a Target."
+  },
+  {
+   "f": "Merger",
+   "b": "Two companies ==join into one==. Exxon and Mobil."
+  },
+  {
+   "f": "Consolidation",
+   "b": "Two or more companies form a ==brand-new company==; the originals stop existing."
+  },
+  {
+   "f": "Joint Venture",
+   "b": "Businesses team up on ==one specific project==, sharing cost, risk, and profit."
+  },
+  {
+   "f": "Licensing",
+   "b": "One company lets another ==use its intellectual property== for a fee or royalty."
+  },
+  {
+   "f": "Expansion",
+   "b": "Growing a business by adding ==locations, products, markets, or employees==."
+  },
+  {
+   "f": "Pyramid Scheme",
+   "b": "!!Illegal!!: money comes mainly from ==recruiting new members== who pay to join, not from selling real products."
+  },
+  {
+   "f": "Business Model",
+   "b": "How a company sells its products to customers and its ==plan for making a profit==."
+  },
+  {
+   "f": "Manufacturer model",
+   "b": "Makes ==finished products from raw materials==. GE, Boeing, Ford."
+  },
+  {
+   "f": "Distributor model",
+   "b": "Buys from manufacturers and resells to ==wholesalers, retailers, or the public==. W.W. Grainger."
+  },
+  {
+   "f": "Wholesaler model",
+   "b": "Buys ==large quantities== from manufacturers or distributors, warehouses them, resells to retailers."
+  },
+  {
+   "f": "Retailer model",
+   "b": "Buys from manufacturers, distributors, and/or wholesalers and ==sells directly to the consuming public==."
+  },
+  {
+   "f": "Direct to Consumer (D2C)",
+   "b": "Sells directly to the end user, ==without retailers, wholesalers, or other middlemen==. Tesla."
+  },
+  {
+   "f": "Direct Sales model",
+   "b": "Sells directly to the consumer in a ==non-retail environment==. Mary Kay."
+  },
+  {
+   "f": "Multilevel Marketing (MLM)",
+   "b": "Independent sellers earn from personal sales ==and by recruiting others==, whose sales pay commissions up the network."
+  },
+  {
+   "f": "Bricks-and-Mortar model",
+   "b": "Traditional ==physical street-side locations==, like a local bank or hardware store."
+  },
+  {
+   "f": "Bricks-and-Clicks model",
+   "b": "Customers can buy ==at the stores and also online==. Target, Kohl’s, Walmart."
+  },
+  {
+   "f": "E-Commerce model",
+   "b": "Uses an ==electronic medium (a web site/store)== to facilitate buying and selling. B2B, B2C, C2C."
+  },
+  {
+   "f": "Franchise model",
+   "b": "A franchisee starts a business by legally using a ==franchisor’s brand and established systems==."
+  },
+  {
+   "f": "Nickel-and-Dime model",
+   "b": "==Low price points== for the cost-sensitive consumer; low cost providers. Dollar Tree."
+  },
+  {
+   "f": "Freemium model",
+   "b": "Some ==basic services free==, then charges for additional features. Dropbox, Slack."
+  },
+  {
+   "f": "Subscription model",
+   "b": "A ==regularly scheduled fee==, usually monthly or annually. Netflix, Spotify."
+  },
+  {
+   "f": "Aggregator model",
+   "b": "Collects info on competing goods/services and sells them ==through its own platform== for a fee. Airbnb, Uber."
+  },
+  {
+   "f": "Online Marketplace model",
+   "b": "Fee per transaction for letting ==suppliers compete against each other== on one platform. Amazon, Alibaba."
+  },
+  {
+   "f": "Advertisement model",
+   "b": "Provides services ==for free and sells advertising space==. YouTube, Instagram."
+  },
+  {
+   "f": "Data Licensing / Data Selling model",
+   "b": "==Sells or licenses the data it collects== as revenue. Twitter."
+  },
+  {
+   "f": "Agency model",
+   "b": "Earns a ==fee for handling business activities== for other companies, like advertising."
+  },
+  {
+   "f": "Affiliate Marketing model",
+   "b": "A merchant ==pays a promoter== for an ad and link to its site: pay-per-click, pay-per-lead, pay-per-sale."
+  },
+  {
+   "f": "Auction model",
+   "b": "The auction house takes a commission for taking bids and ==selling to the highest bidder==. eBay."
+  },
+  {
+   "f": "Crowdsourcing model",
+   "b": "Obtaining ==services, ideas, or content== from contributions by a large group, especially online. Wikipedia."
+  },
+  {
+   "f": "Crowdfunding model",
+   "b": "Collects ==small amounts of capital from many individuals== to finance a venture or project. Kickstarter."
+  },
+  {
+   "f": "SaaS model",
+   "b": "Sells ==Software as a Service==. Salesforce, Adobe Creative Cloud."
+  },
+  {
+   "f": "Dropshipping model",
+   "b": "Sells from a web store but ==keeps no inventory==; a third party ships to the customer directly."
+  },
+  {
+   "f": "Peer-to-Peer model",
+   "b": "A decentralized platform where ==two individuals interact directly==, without a third party. Craigslist."
+  },
+  {
+   "f": "Blockchain",
+   "b": "An ==unchangeable, decentralized, digital ledger==."
+  },
+  {
+   "f": "Capitalism",
+   "b": "==Privately owned companies==, driven by profit, with prices set by supply and demand. The U.S. economy."
+  },
+  {
+   "f": "Direct Competition",
+   "b": "Companies offer ==essentially the same product or service==. Pizza Hut vs Domino’s."
+  },
+  {
+   "f": "Indirect Competition",
+   "b": "Different products that ==satisfy the same need==. Greyhound vs Delta."
+  },
+  {
+   "f": "Price Competition",
+   "b": "Uses ==pricing== to attract customers."
+  },
+  {
+   "f": "Non-price Competition",
+   "b": "Competes on ==features and attributes other than price==. iPhone: “easier and smarter.”"
+  },
+  {
+   "f": "Pure Competition",
+   "b": "Many companies, ==same product, same price==, low barriers. Consumers have the most power. Corn, wheat."
+  },
+  {
+   "f": "Monopolistic Competition",
+   "b": "Many suppliers, low barriers, but they ==differentiate their products==. Health and beauty."
+  },
+  {
+   "f": "Oligopoly",
+   "b": "==A small number of companies== control supply; barriers highly restrictive. Airlines."
+  },
+  {
+   "f": "Monopoly",
+   "b": "==One company== controls supply; no real options; barriers highly restrictive."
+  },
+  {
+   "f": "Regulated Monopolies",
+   "b": "Allowed ==under strict supervision== when one entity, like a utility, serves more efficiently."
+  },
+  {
+   "f": "Primary Data",
+   "b": "Collected ==first-hand==: interviews, questionnaires, price surveys."
+  },
+  {
+   "f": "Secondary Data",
+   "b": "==Already collected by others==: industry publications, press releases, news, annual reports."
+  },
+  {
+   "f": "Information Management",
+   "b": "==People, processes, and systems== that collect, organize, store and secure relevant data, and make it useful for informed decisions."
+  },
+  {
+   "f": "Management Information System (MIS)",
+   "b": "A ==computerized system== that supports the Information Management function."
+  },
+  {
+   "f": "Data Integrity",
+   "b": "The ==accuracy and validity== of data over its lifecycle."
+  },
+  {
+   "f": "Trade Secret",
+   "b": "A practice or process ==not known outside the company==, with economic value."
+  },
+  {
+   "f": "Intangible Asset",
+   "b": "Anything of value that is ==not physical==."
+  },
+  {
+   "f": "Intellectual Property",
+   "b": "Created from the mind: ==inventions, ideas, methods==."
+  },
+  {
+   "f": "Risk Management",
+   "b": "Predicting events with negative consequences and taking ==proactive measures== to avoid and combat them."
+  },
+  {
+   "f": "Audit",
+   "b": "An ==independent and unbiased inspection== of information, systems, processes, procedures and protocols."
+  },
+  {
+   "f": "Cyber Security",
+   "b": "==Protection of networks, devices, and data== from unauthorized access or criminal use."
+  },
+  {
+   "f": "Operations",
+   "b": "The ==daily functioning== of an organization, managing inputs and outputs."
+  },
+  {
+   "f": "Inputs",
+   "b": "==Raw materials== and other inputs like labor, machinery, and tools."
+  },
+  {
+   "f": "Output",
+   "b": "The ==end result== of the process that uses inputs to make goods and services."
+  },
+  {
+   "f": "Manufacturing",
+   "b": "Making products from ==raw materials and other inputs==."
+  },
+  {
+   "f": "Mass Production",
+   "b": "==Technology and assembly lines== making large quantities of the same product."
+  },
+  {
+   "f": "Quality Control",
+   "b": "Measuring and testing against ==quality benchmarks== to ensure consistent quality."
+  },
+  {
+   "f": "Purchasing",
+   "b": "The organized ==acquisition of goods and services== on behalf of a business."
+  },
+  {
+   "f": "Logistics",
+   "b": "Optimizing the ==flow of inputs and outputs== until goods reach their destination."
+  },
+  {
+   "f": "Distribution",
+   "b": "Part of logistics: ==categorize, sort, and transport== goods to their destinations."
+  },
+  {
+   "f": "Transportation",
+   "b": "Part of distribution: ==move goods or assets== from one place to another."
+  },
+  {
+   "f": "Fleet Management",
+   "b": "Managing ==vehicles== over their useful life; tracks driver performance and location."
+  },
+  {
+   "f": "Supply Chain",
+   "b": "The network that moves a product ==from suppliers to the end consumer==."
+  },
+  {
+   "f": "Supply Chain Management",
+   "b": "==Coordinating every supplier and step== in the supply chain."
+  },
+  {
+   "f": "Inventory Management",
+   "b": "Tracking and controlling goods on hand so there’s ==enough to meet demand without overstocking==."
+  },
+  {
+   "f": "Gross Margin",
+   "b": "Gross profit ==as a percentage==: gross profit ÷ sales revenue."
+  },
+  {
+   "f": "Business Trend",
+   "b": "==A general change== in the way business is developing."
+  },
+  {
+   "f": "Artificial Intelligence (AI)",
+   "b": "A computer program or machine that can ==think and learn== and emulate humans."
+  },
+  {
+   "f": "Machine Learning (ML)",
+   "b": "==A type of AI==: machines receive information and decide based on it."
+  },
+  {
+   "f": "Internet of Things (IoT)",
+   "b": "Internet-connected devices that ==identify themselves and communicate==."
+  },
+  {
+   "f": "Ambient Intelligence",
+   "b": "The connectivity when ==many objects act in unison==."
+  },
+  {
+   "f": "Return on Investment (ROI)",
+   "b": "==(Gain − cost) ÷ cost==. Spend $1,000 on ads, get $1,500 back: 50%."
+  },
+  {
+   "f": "Leverage",
+   "b": "Using something you have (a tool, a technology, borrowed money) to ==get a bigger result==."
+  },
+  {
+   "f": "Imports and Exports",
+   "b": "Imports are ==bought from== another country; exports are ==sold to== another country."
+  },
+  {
+   "f": "HTML",
+   "b": "Hyper Text Markup Language: the ==standard code for building web pages==."
+  }
+ ],
+ "abbr": {
+  "COGS": "cost of goods sold",
+  "MIS": "management information system",
+  "LP": "limited partnership",
+  "LLP": "limited liability partnership",
+  "LLC": "limited liability company",
+  "D2C": "direct to consumer",
+  "MLM": "multilevel marketing",
+  "SaaS": "software as a service",
+  "AI": "artificial intelligence",
+  "ML": "machine learning",
+  "IoT": "Internet of Things",
+  "FTC": "Federal Trade Commission",
+  "ROI": "return on investment",
+  "HTML": "Hyper Text Markup Language",
+  "PPC / PPL / PPS": "pay-per-click, pay-per-lead, pay-per-sale",
+  "NYSE": "New York Stock Exchange",
+  "B2B / B2C / C2C": "business to business, business to consumer, consumer to consumer",
+  "4Ps": "product, price, place, promotion"
+ }
+};
+
+/* ═══ machinery. nothing below needs editing. ═══ */
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const ICON={
+ apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ psych:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ phys:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ pre:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ sem:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ span:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ apwh:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ biz:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ mor:'<path d="M13 4.5v17"/><path d="M7.5 9.5h11"/>',
+ csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
+};
+const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables"};
+
+/* header */
+document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
+document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
+$("#title").textContent=GUIDE.title;
+if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
+$("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
+(function(){
+  const c=$("#crow");
+  c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  if(GUIDE.test){
+    const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
+    const now=new Date(); now.setHours(0,0,0,0);
+    const days=Math.round((t-now)/864e5);
+    const md=`${t.getMonth()+1}/${t.getDate()}`+(GUIDE.end?`–${e.getMonth()+1}/${e.getDate()}`:"");
+    let txt, past=e<now;
+    if(past)txt=`test was ${md}`;
+    else if(days<=0)txt=`test today · ${md}`;
+    else if(days===1)txt=`test tomorrow · ${md}`;
+    else if(days<=14)txt=`test in ${days} days · ${md}`;
+    else txt=`test ${md}`;
+    c.appendChild(el("span","chip"+(past?" past":" due"),esc(txt)));
+  }
+  if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
+})();
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables};
+const tabs=[];
+PANES.forEach((id,i)=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  builders[id](sec); root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+function show(id,user){
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
+/* outline */
+function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
+function extras(s){
+  let h="";
+  if(s.rows)h+=`<dl class="rows">${s.rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${fmt(v)}</dd>`).join("")}</dl>`;
+  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
+  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
+  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
+  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
+  return h;
+}
+function buildOutline(sec){
+  if(GUIDE.top?.length){
+    sec.appendChild(shead("start here","the whole guide in one screen"));
+    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  }
+  const list=GUIDE.outline||[]; if(!list.length)return;
+  const n3=list.filter(s=>s.w===3).length;
+  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
+  const g=el("div","group");
+  list.forEach((s,i)=>{
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
+    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
+    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body);
+  });
+  sec.appendChild(g);
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    sec.appendChild(shead("abbreviations"));
+    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+  }
+}
+
+/* practice mc */
+function buildPractice(sec){
+  const qs=GUIDE.practice||[]; let done=0, right=0;
+  sec.appendChild(shead("practice",`${qs.length} questions`));
+  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  qs.forEach((q,i)=>{
+    const card=el("div","group q");
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
+      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      if(card.classList.contains("done"))return;
+      card.classList.add("done"); const j=+b.dataset.i;
+      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+    }));
+    sec.appendChild(card);
+  });
+  sec.appendChild(sc);
+  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+}
+
+/* problems / worked examples */
+function buildProblems(sec){
+  const ps=GUIDE.problems||[];
+  sec.appendChild(shead("problems",`${ps.length} to work`));
+  ps.forEach((p,i)=>{
+    const card=el("div","group prob");
+    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    const go=card.querySelector(".go");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    sec.appendChild(card);
+  });
+}
+
+/* formulas */
+function buildFormulas(sec){
+  const fs=GUIDE.formulas||[];
+  sec.appendChild(shead("formulas",`${fs.length}`));
+  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+}
+
+/* flashcards */
+function buildCards(sec){
+  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  sec.appendChild(shead("cards",`${cs.length}`));
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
+  const cnt=nav.querySelector("#cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const flip=()=>fc.classList.toggle("flip");
+  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
+  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
+  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
+  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  draw();
+}
+
+/* timeline */
+function buildTimeline(sec){
+  const ts=GUIDE.timeline||[];
+  sec.appendChild(shead("timeline",`${ts.length} events`));
+  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+}
+
+/* checklist */
+function buildChecklist(sec){
+  const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+  sec.appendChild(shead("checklist",`${cs.length} items`));
+  const g=el("div","group");
+  cs.forEach((c,i)=>{
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
+    g.appendChild(b);
+  });
+  sec.appendChild(g);
+}
+
+/* cram sheet: [{h:"group", d:"optional", items:[{n:"name", y:"date", t:"one line"}]}] */
+function buildCram(sec){
+  (GUIDE.cram||[]).forEach(g=>{
+    const it=g.items||[];
+    sec.appendChild(shead(g.h||"cram sheet",g.d||`${it.length}`));
+    sec.appendChild(el("div","group",it.map(c=>`<div class="cr"><div class="n"><span>${fmt(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${fmt(c.t)}</div></div>`).join("")));
+  });
+}
+
+/* tables: [{h:"title", d:"optional", cols:["a","b"], rows:[["..",".."]]}]. stacks into cards on a phone */
+function buildTables(sec){
+  (GUIDE.tables||[]).forEach(tb=>{
+    const cols=tb.cols||[], rows=tb.rows||[];
+    sec.appendChild(shead(tb.h||"table",tb.d||`${rows.length}`));
+    sec.appendChild(el("div","group",`<table class="tbl"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table>`));
+  });
+}
+
+/* theme (shared with the homepage via localStorage "theme") */
+const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
+function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+function setTheme(mode){
+  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
+  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+}
+segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
+(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
+})();
+requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
+document.fonts?.ready.then(()=>{moveThumb();moveP()});
+
+/* sticky bar shadow + staggered reveal */
+(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
