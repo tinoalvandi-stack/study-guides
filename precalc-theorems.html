@@ -302,31 +302,31 @@ const GUIDE = {
     "Every question is the same three moves: **convert to trig form** (r, then θ from a sketch), apply the theorem, convert back if it says ==rectangular==.",
     "**Product**: multiply r's, add θ's. **Quotient**: divide r's, subtract θ's. **Power**: rⁿ, nθ. **Roots**: ⁿ√r, θ/n, then keep adding ==360°/n== until you have n of them.",
     "Final angles live ==between 0° and 360°== (0 and 2π): subtract 360° when over, !!add 360° when negative!!.",
-    "!!Isolate xⁿ before converting!!: x³ + 27i = 0 means x³ = −27i, which is 270°, not 90°.",
-    "Given radians, answer in radians. Odd input angles like 85° or 7π/12 are fine: after you add or multiply, the angle ==lands back on the unit circle== ((√6 cis 85°)⁶ → 510° → 150°)."
+    "!!Isolate xⁿ before converting!!: x³ + 8i = 0 means x³ = −8i, which is 270°, not 90°.",
+    "Given radians, answer in radians. Odd input angles like 105° or 7π/12 are fine: after you add or multiply, the angle ==lands back on the unit circle== ((√2 cis 105°)⁴ → 420° → 60°)."
   ],
 
   cram: [
     { h:"the four theorems", items:[
       { n:"product", y:"multiply · add", t:"(r₁ cis θ₁)(r₂ cis θ₂) = ==r₁r₂ cis(θ₁ + θ₂)==. Sum over 360°? Subtract 360°." },
       { n:"quotient", y:"divide · subtract", t:"(r₁ cis θ₁) / (r₂ cis θ₂) = ==(r₁/r₂) cis(θ₁ − θ₂)==. !!Negative angle: add 360°!!." },
-      { n:"De Moivre (powers)", y:"[r cis θ]ⁿ", t:"= ==rⁿ cis(nθ)==. Then subtract 360° as many times as it takes: 1650° − 4(360°) = 210°." },
+      { n:"De Moivre (powers)", y:"[r cis θ]ⁿ", t:"= ==rⁿ cis(nθ)==. Then subtract 360° if it runs over: 675° − 360° = 315°." },
       { n:"nth roots", y:"k = 0, 1, … n − 1", t:"ⁿ√r cis(θ/n + 360°k/n). ==Exactly n roots==, same length, 360°/n apart. !!Stop at n!!: the next one repeats the first." },
       { n:"cis", y:"shorthand", t:"r cis θ = r(cos θ + i sin θ). Either way of writing it is fine." }
     ]},
     { h:"converting (every problem starts here)", items:[
       { n:"rectangular → trig", y:"x + yi", t:"r = √(x² + y²), tan θ = y/x, then ==sketch for the quadrant==. QII: 180° − ref. QIII: 180° + ref. QIV: 360° − ref." },
       { n:"on an axis", y:"no tan needed", t:"5 → 0°, 5i → 90°, −5 → 180°, −5i → 270°. A real number like 7 is 7 cis 0°; −64 is 64 cis 180°." },
-      { n:"trig → rectangular", y:"r cis θ", t:"Exact cos and sin, then ==distribute r to both parts==. 128√2(−√3/2 − ½i) = −64√6 − 64√2 i." },
-      { n:"quadrant trap", y:"tan⁻¹", t:"tan⁻¹ only gives QI or QIV. !!Both parts negative is QIII!!: −3√21 − 3i√7 is 210°, not 30°." },
+      { n:"trig → rectangular", y:"r cis θ", t:"Exact cos and sin, then ==distribute r to both parts==. 2√2(−√3/2 − ½i) = −√6 − √2 i." },
+      { n:"quadrant trap", y:"tan⁻¹", t:"tan⁻¹ only gives QI or QIV. !!Both parts negative is QIII!!: −√3 − i is 210°, not 30°." },
     ]},
     { h:"arithmetic that costs points", items:[
-      { n:"radicals multiply", y:"√a·√b = √ab", t:"√2·√2 = 2. ==(√2)⁵ = 4√2==, so (2√2)⁵ = 32·4√2 = 128√2." },
-      { n:"square the coefficient", y:"(a√b)² = a²b", t:"(−3√6)² = 9·6 = ==54==. !!Not 18, not −54!!." },
-      { n:"simplify r", y:"pull out squares", t:"√72 = 6√2, √252 = 6√7, √500 = 10√5, √1024 = 32, √12 = 2√3." },
+      { n:"radicals multiply", y:"√a·√b = √ab", t:"√2·√2 = 2. ==(√2)³ = 2√2==, (√2)⁴ = 4, √6·√2 = √12 = 2√3." },
+      { n:"square the coefficient", y:"(a√b)² = a²b", t:"(−2√3)² = 4·3 = ==12==. !!Not 6, not −12!!." },
+      { n:"simplify r", y:"pull out squares", t:"√8 = 2√2, √12 = 2√3, √18 = 3√2, √20 = 2√5." },
       { n:"rationalize", y:"no √ on the bottom", t:"3√2/√3 = √6, 2/√2 = √2, √2/(2√5) = √10/10." },
-      { n:"roots of r", y:"ⁿ√r", t:"∛27 = 3, ∜16 = 2, ∜81 = 3, ⁵√32 = 2, ⁵√243 = 3. ∛4 and ⁵√2 ==stay as radicals==." },
-      { n:"powers of i", y:"cycle of 4", t:"i² = −1, i³ = −i, i⁴ = 1. (3i)⁴ = 81, so !!x⁴ = −81 has no ±3i answers!!." },
+      { n:"roots of r", y:"ⁿ√r", t:"∛8 = 2, ∜16 = 2, ==∜4 = √2==. ∛4 and ⁵√2 ==stay as radicals==." },
+      { n:"powers of i", y:"cycle of 4", t:"i² = −1, i³ = −i, i⁴ = 1. (2i)⁴ = 16, so !!x⁴ = −16 has no ±2i answers!!." },
       { n:"adding radians", y:"common denominator", t:"5π/4 + 11π/12 = 15π/12 + 11π/12 = 26π/12 = 13π/6, minus 2π (12π/6) = ==π/6==." }
     ]},
     { h:"graphing roots", items:[
@@ -352,27 +352,27 @@ const GUIDE = {
       p:["**Product theorem**: multiply the r's and ==add the angles==. **Quotient theorem**: divide the r's and ==subtract the angles== (top minus bottom).",
          "Keep the result between 0° and 360°: subtract 360° from a big sum, !!add 360° to a negative difference!!. If the numbers come in rectangular form, convert top and bottom separately first."],
       terms:["product theorem","quotient theorem"],
-      cmp:{ a:{h:"product",p:["(4√2 cis 165°)(3√2 cis 240°)","r = 24, θ = 405° → 45°","= 12√2 + 12√2 i"]},
+      cmp:{ a:{h:"product",p:["(√6 cis 165°)(√2 cis 255°)","r = √12 = 2√3, θ = 420° → 60°","= √3 + 3i"]},
             b:{h:"quotient",p:["(3 cis 305°)/(9 cis 65°)","r = ⅓, θ = 240°","= −1/6 − (√3/6)i"]} },
       notes:[{k:"ok",t:"A real numerator is still trig form: 7 = 7 cis 0°, so 7/(√3 + i) = (7/2) cis(−30°) = (7/2) cis 330°."}] },
 
     { w:3, t:"De Moivre's theorem (powers)", d:"[r cis θ]ⁿ = rⁿ cis nθ",
       p:["**De Moivre's theorem**: raise r to the n and ==multiply the angle by n==. Then subtract 360° (or 2π) until it lands in range.",
-         "If the number is given as x + yi, convert first. An odd input angle is fine: (√6 cis 85°)⁶ = 216 cis 510°, and 510° − 360° = ==150°==."],
+         "If the number is given as x + yi, convert first. An odd input angle is fine: (√2 cis 105°)⁴ = 4 cis 420°, and 420° − 360° = ==60°==."],
       terms:["De Moivre's theorem"],
       steps:["Convert to r cis θ.","rⁿ (simplify radicals).","nθ, then reduce by 360° (2π).","Exact cos and sin, distribute rⁿ."],
-      notes:[{k:"ex",t:"(−3 + 3i√3)⁵: r = 6, θ = 120°. 6⁵ = 7776, 5·120° = 600° → 240°. 7776(−½ − (√3/2)i) = −3888 − 3888√3 i."}] },
+      notes:[{k:"ex",t:"(−1 − i)³: r = √2, θ = 225° (QIII). (√2)³ = 2√2, 3·225° = 675° → 315°. 2√2(√2/2 − (√2/2)i) = 2 − 2i."}] },
 
     { w:3, t:"nth roots & solving xⁿ = c", d:"n answers, 360°/n apart",
       p:["The **nth root theorem**: every nonzero number has ==exactly n distinct nth roots==. First root: ⁿ√r cis(θ/n). The rest: keep adding 360°/n (2π/n in radians).",
-         "For an equation, !!isolate xⁿ first!! (x³ + 27i = 0 → x³ = −27i), convert the constant, then take roots. Convert each root to rectangular only if asked."],
+         "For an equation, !!isolate xⁿ first!! (x³ + 8i = 0 → x³ = −8i), convert the constant, then take roots. Convert each root to rectangular only if asked."],
       terms:["nth root theorem"],
       steps:["Isolate xⁿ = c.","Write c as r cis θ.","ⁿ√r and θ/n.","Add 360°/n, n − 1 times.","Graph: arrows of equal length on one circle."],
       notes:[{k:"warn",t:"!!x⁴ + 16 = 0 is not x = ±2i!!: (2i)⁴ = +16. An even power of a pure imaginary is positive, so the answers sit between the axes: 2 cis 45°, 135°, 225°, 315°."}] },
 
     { w:2, t:"Odd angles that land on the unit circle", d:"do the theorem first, then look",
-      p:["Inputs like 85°, 500° or 7π/12 aren't on the unit circle, but the ==answer's angle will be==. Do the theorem first, then find the **coterminal** angle between 0° and 360° (0 and 2π).",
-         "(√6 cis 85°)⁶: 6·85° = 510° → 150°. [2 cis 7π/12]⁸: 14π/3 → 2π/3."],
+      p:["Inputs like 105°, 500° or 7π/12 aren't on the unit circle, but the ==answer's angle will be==. Do the theorem first, then find the **coterminal** angle between 0° and 360° (0 and 2π).",
+         "(√2 cis 105°)⁴: 4·105° = 420° → 60°. [√2 cis 7π/12]⁴: 7π/3 → π/3."],
       terms:["coterminal"],
       notes:[{k:"ex",t:"20 cis 500° ÷ 5 cis 140° = 4 cis 360° = 4 cis 0° = 4. Angles past 360° can show up in the problem itself."}] },
 
@@ -384,14 +384,14 @@ const GUIDE = {
   ],
 
   problems: [
-    {"q":"**Quotient from rectangular** (hardest on the homework): (√5 − i√15) / (5√15 + 5i√5)","steps":["Top: r = √(5 + 15) = √20 = 2√5. tan θ = −√15/√5 = −√3, QIV: ==300°==.","Bottom: r = √(375 + 125) = √500 = 10√5. tan θ = 5√5/(5√15) = 1/√3, QI: ==30°==.","Divide r's: 2√5/(10√5) = 1/5. Subtract angles: 300° − 30° = 270°.","(1/5)(cos 270° + i sin 270°) = (1/5)(0 − i)."],"ans":"−(1/5)i"},
-    {"q":"**De Moivre from rectangular** (hardest on the homework): (−3 + 3i√3)⁵","steps":["r = √(9 + 27) = √36 = 6. tan θ = 3√3/(−3) = −√3, QII: ==120°==.","6⁵ = 7776. 5 · 120° = 600°, minus 360° = ==240°==.","7776(cos 240° + i sin 240°) = 7776(−½ − (√3/2)i)"],"ans":"−3888 − 3888√3 i"},
+    {"q":"**Quotient from rectangular**: (√2 − i√6) / (√3 + i)","steps":["Top: r = √(2 + 6) = √8 = 2√2. tan θ = −√6/√2 = −√3, QIV: ==300°==.","Bottom: r = √(3 + 1) = 2. tan θ = 1/√3, QI: ==30°==.","Divide r's: 2√2/2 = √2. Subtract angles: 300° − 30° = 270°.","√2(cos 270° + i sin 270°) = √2(0 − i)."],"ans":"−√2 i"},
+    {"q":"**De Moivre from rectangular**: (−1 + i√3)⁴","steps":["r = √(1 + 3) = 2. tan θ = √3/(−1) = −√3, QII: ==120°==.","2⁴ = 16. 4 · 120° = 480°, minus 360° = ==120°==.","16(cos 120° + i sin 120°) = 16(−½) + 16(√3/2)i"],"ans":"−8 + 8√3 i"},
     {"q":"**Fifth roots, degrees then radians** (warm-up): 1 + i√3, n = 5","steps":["r = √(1 + 3) = 2, θ = 60°. ⁵√2 stays a radical.","First: 60°/5 = 12°. Spacing: 360°/5 = 72°.","Degrees: ⁵√2 cis 12°, 84°, 156°, 228°, 300°.","Radians: θ = π/3, so first = π/15; spacing 2π/5 = 6π/15: π/15, 7π/15, 13π/15, 19π/15, 25π/15 = 5π/3."],"ans":"⁵√2 cis 12°, 84°, 156°, 228°, 300°  (or π/15, 7π/15, 13π/15, 19π/15, 5π/3)"},
-    {"q":"**Solve, trig form** (hardest on the homework): x³ − (−32√2 + 32i√2) = 0","steps":["Isolate: x³ = −32√2 + 32i√2.","r = √(2048 + 2048) = √4096 = 64. tan θ = −1, QII: ==135°==.","∛64 = 4. 135°/3 = 45°. Add 120° twice."],"ans":"4 cis 45°, 4 cis 165°, 4 cis 285°"},
+    {"q":"**Solve, trig form**: x³ − (−4√2 + 4i√2) = 0","steps":["Isolate: x³ = −4√2 + 4i√2.","r = √(32 + 32) = √64 = 8. tan θ = −1, QII: ==135°==.","∛8 = 2. 135°/3 = 45°. Add 120° twice."],"ans":"2 cis 45°, 2 cis 165°, 2 cis 285°"},
     {"q":"**Solve, rectangular form**: x⁴ + 16 = 0","steps":["x⁴ = −16 = ==16 cis 180°==. !!Not ±2i!!: (2i)⁴ = 16.","∜16 = 2. 180°/4 = 45°, spacing 90°: 2 cis 45°, 135°, 225°, 315°.","2 cis 45° = 2(√2/2 + (√2/2)i) = √2 + √2 i, and the same size with every sign combination."],"ans":"√2 + √2 i, −√2 + √2 i, −√2 − √2 i, √2 − √2 i"},
     {"q":"**Real number on top**: 7 / (√3 + i)","steps":["7 = 7 + 0i = ==7 cis 0°==.","√3 + i: r = √(3 + 1) = 2, θ = 30°.","(7/2) cis(0° − 30°) = (7/2) cis(−30°). !!Negative, so add 360°!!: (7/2) cis 330°.","(7/2)(√3/2 − ½i) = 7√3/4 − (7/4)i"],"ans":"7√3/4 − (7/4)i"},
-    {"q":"**De Moivre in radians** (warm-up): [√7(cos 11π/6 + i sin 11π/6)]⁴","steps":["(√7)⁴ = 49. 4 · 11π/6 = 44π/6 = 22π/3.","Subtract 2π (6π/3) until in range: 22π/3 − 18π/3 = ==4π/3==.","49(cos 4π/3 + i sin 4π/3) = 49(−½ − (√3/2)i)"],"ans":"−49/2 − (49√3/2)i"},
-    {"q":"**Odd angle that lands on the circle** (homework): (√6 cis 85°)⁶","steps":["(√6)⁶ = 6³ = 216.","6 · 85° = 510°. Subtract 360°: ==150°==.","216(cos 150° + i sin 150°) = 216(−√3/2) + 216(½)i"],"ans":"−108√3 + 108i"},
+    {"q":"**De Moivre in radians**: [√2(cos 5π/6 + i sin 5π/6)]⁴","steps":["(√2)⁴ = 4. 4 · 5π/6 = 20π/6 = 10π/3.","Subtract 2π (6π/3): ==4π/3==.","4(cos 4π/3 + i sin 4π/3) = 4(−½) + 4(−√3/2)i"],"ans":"−2 − 2√3 i"},
+    {"q":"**Odd angle that lands on the circle**: (√2 cis 105°)⁴","steps":["(√2)⁴ = 4.","4 · 105° = 420°. Subtract 360°: ==60°==.","4(cos 60° + i sin 60°) = 4(½) + 4(√3/2)i"],"ans":"2 + 2√3 i"},
     {"q":"**One root given** (homework): one cube root of a number is 2 + 2i√3. Find the other two in rectangular form.","steps":["2 + 2i√3: r = √(4 + 12) = 4, θ = 60°.","Cube roots are ==120° apart==: 180° and 300°.","4 cis 180° = −4. 4 cis 300° = 4(½ − (√3/2)i) = 2 − 2i√3."],"ans":"−4 and 2 − 2i√3"},
   ],
 
