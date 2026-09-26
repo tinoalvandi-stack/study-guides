@@ -1,0 +1,1130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>study guide · valentino guides</title>
+<meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+   Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+
+:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1);--ink3:rgba(94,90,82,.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--good:#4C6A48;--bad:#8E3F4C;
+  --c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}}
+:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}
+
+:root{
+  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:600; --ls-d:-.025em;
+  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px;
+  --r-card:14px; --r-btn:10px; --r-chip:8px;
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --gap:16px;
+  --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
+.lc{text-transform:lowercase}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
+.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px}
+.home{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:26px;height:26px;border-radius:5px;flex:none;display:block}
+.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase;white-space:nowrap}
+@media (max-width:379px){.bar h1{display:none}}
+.seg{position:relative;display:flex;border:1px solid var(--line);border-radius:8px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
+.seg button{position:relative;z-index:2;padding:4px 9px;border-radius:6px;font-size:var(--t12);font-weight:500;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
+.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.bar .seg{margin-left:auto}
+
+/* intro */
+main{padding-top:22px}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cname svg{width:20px;height:20px;flex:none}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
+.chip.past{color:var(--ink3)}
+h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+
+/* pane switcher */
+.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes::-webkit-scrollbar{display:none}
+.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button[aria-selected="true"]{color:var(--on-accent)}
+.panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.panes.one{display:none}
+.pane{display:none}
+.pane.on{display:block;animation:rise .38s var(--spring) both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* section head */
+.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+.sh:first-child{margin-top:0}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+
+/* cards + groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.card.top{border-left:4px solid var(--cls);padding-left:15px}
+.card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
+.row + .row,.body + .row{border-top:1px solid var(--line)}
+.row:active{background:var(--surface2)}
+@media (hover:hover){.row:hover{background:var(--surface2)}}
+.rt{min-width:0;flex:1}
+.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
+.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
+.row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
+.body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
+.body.on{grid-template-rows:1fr}
+.body > div{overflow:hidden}
+.body .in{padding:12px 16px 14px}
+.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
+.body p:last-child{margin-bottom:0}
+
+/* prose emphasis */
+.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
+.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.trap{color:var(--bad);font-weight:600}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
+.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
+.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
+.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media (max-width:479px){.cmp{grid-template-columns:1fr}}
+.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
+.abbr b{color:var(--ink);font-weight:600}
+
+/* practice mc */
+.q{margin-bottom:10px}
+.q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
+.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
+.opt:active{background:var(--surface2)}
+@media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
+.opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
+.q.done .opt{cursor:default}
+.opt.right{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q.done .why{display:block}
+.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
+.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wide{width:100%}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.pdfs a{text-decoration:none}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
+
+/* problems + worked examples */
+.prob .qt{padding:14px 16px}
+.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block}
+.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+.ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+
+/* formulas */
+.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
+.fx:first-child{border-top:0}
+.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
+.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+
+/* flashcards */
+.deck{position:relative;perspective:1200px;margin-bottom:10px}
+.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.fc.flip{transform:rotateY(180deg)}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
+.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc .b .tag{color:var(--cls)}
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+
+/* timeline */
+.tl{position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding:6px 0 12px}
+.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
+.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
+.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+
+/* checklist */
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
+.ck:first-child{border-top:0}
+.ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
+.ck.on .box{background:var(--good);border-color:var(--good)}
+.ck.on .t{color:var(--ink3);text-decoration:line-through}
+.ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
+
+/* label rows inside an outline section: [["why","..."],["what","..."]] */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px}
+.rows dt{padding:6px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:21.75px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:6px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* cram sheet */
+.cr{display:grid;grid-template-columns:minmax(0,11em) 1fr;gap:2px 14px;padding:10px 14px;border-top:1px solid var(--line)}
+.cr:first-child{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:600;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:600}
+@media (max-width:599px){
+  .tbl thead{display:none}
+  .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbl tbody tr:first-child{border-top:0}
+  .tbl td{display:block;padding:0;border:0}
+  .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* footer */
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+footer .upd{display:block;margin-top:6px}
+
+/* reveal on load */
+.rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="home" href="/" aria-label="all guides">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg>
+      <h1>valentino guides</h1>
+    </a>
+    <div class="seg" role="group" aria-label="theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">auto</button>
+      <button type="button" data-set="light" aria-pressed="false">light</button>
+      <button type="button" data-set="dark" aria-pressed="false">dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="crow rv" id="crow"></div>
+  <h2 class="title rv" id="title"></h2>
+  <p class="sub rv" id="sub" hidden></p>
+  <div class="pdfs rv" id="pdfs" hidden></div>
+  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div id="root" class="rv"></div>
+  <footer>
+    study guide written by a student, free to use. not affiliated with the school.
+    check anything that matters against your own notes. <a href="/">all guides</a>
+    <span class="upd" id="upd"></span>
+  </footer>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   GUIDE — the only thing to edit. Delete panes you don't need from
+   `panes`; delete the matching data too. Prose accepts **term**,
+   ==fact== and !!trap!!. Everything is rendered from this object.
+   ═══════════════════════════════════════════════════════════════════ */
+const GUIDE = {
+  id:    "psych",
+  cls:   "AP Psychology",
+  title: "Unit 1 exam study guide",
+  test:  "2026-09-29",
+  end:   "2026-10-01",
+  meta:  "AAQ + 50 MCQs · modules 1.1–1.6, plus unit 0",
+  sub:   "the whole unit ordered by how often it gets asked, 107 practice questions with the why, and two AAQs worked out",
+  updated: "sept 25, 2026",
+
+  panes: [ "outline", "tables", "practice", "problems", "cards" ],
+  labels: { outline:"guide", tables:"cheat tables", practice:"practice", problems:"aaq", cards:"cards" },
+
+  top: [
+    "The exam is ==an AAQ plus 50 multiple choice==, and !!unit 0 is on it!!: perspectives, **mean, median and range**, and **independent vs dependent variables**.",
+    "Brain by symptom: **medulla** breathing, **cerebellum** balance, **hippocampus** new memories, **amygdala** fear, **thalamus** every sense !!but smell!!, **hypothalamus** hunger, thirst, temperature.",
+    "Scans: ==CT and MRI show structure==; ==EEG, MEG, PET and fMRI show activity==. !!MRI is structure, fMRI is function.!!",
+    "Neurons: at threshold ==Na⁺ rushes in== and firing is **all-or-none**. **Myelin** makes it jump node to node; **reuptake** = the sender takes it back. **Agonist** mimics, **antagonist** blocks.",
+    "Finish the **Unit 1 Quizizz** on Classroom: it's a medium-level grade and the closest preview of the multiple choice."
+  ],
+
+  outline: [
+    { w:3, t:"Brain structures: stem, limbic system, cerebellum", d:"the biggest cluster of questions: a symptom, then name the part",
+      p:["The **hindbrain** (medulla, pons, cerebellum) runs survival without conscious effort. The **medulla**, at the base of the **brainstem**, controls ==heartbeat and breathing==, which is why damage there is life-threatening. The **pons** helps coordinate movement and controls sleep.",
+         "The **reticular formation** is a netlike nerve network running through the brainstem into the thalamus. It filters information and controls ==arousal==: stimulated means instantly awake, severed means a coma-like state. The **cerebellum** (\"little brain\") coordinates ==movement and balance== and nonverbal learning.",
+         "The **thalamus** is the ==sensory relay station==, routing every sense to the cortex !!except smell!!. The **limbic system** handles emotions and drives."],
+      cmp:{ a:{h:"limbic system",p:["**Amygdala**: two lima-bean clusters, ==fear, aggression, anxiety, rage==.","**Hippocampus**: processes ==new explicit (conscious) memories== for storage.","**Hypothalamus**: ==eating, drinking, body temperature==, reward, and it controls the **pituitary**."]},
+            b:{h:"quick tells",p:["Can't breathe = **medulla**.","Wobbly after a hit to the back of the head = **cerebellum**.","Remembers childhood, can't form new memories = **hippocampus**.","Seeing = !!occipital lobe, never the hypothalamus!!."]} },
+      terms:["brainstem","medulla","pons","reticular formation","cerebellum","thalamus","limbic system","amygdala","hippocampus","hypothalamus"],
+      notes:[{k:"ok",t:"The hypothalamus's jobs are the **5 Fs**: food and thirst, fight, flight, furnace (temperature), fornication. Anything outside that list, such as !!interpreting what the eyes see!!, is not the hypothalamus."}] },
+
+    { w:3, t:"The cortex, the lobes, and famous brains", d:"frontal-lobe scenarios and the case studies",
+      p:["The **cerebral cortex** is the wrinkled outer layer of interconnected neurons, the body's ultimate control and information-processing center. Each hemisphere has four lobes, and !!each side controls the opposite side of the body!!.",
+         "The **motor cortex** sits at the ==rear of the frontal lobe== and sends voluntary movement commands, so stimulating it makes a limb move. The **somatosensory cortex** sits at the ==front of the parietal lobe== and receives touch and body-position signals.",
+         "**Association areas**, found in all four lobes, handle higher mental functions: learning, remembering, thinking, speaking."],
+      rows:[["frontal","behind the forehead: ==planning, judgment==, personality, speech production, the motor cortex"],
+            ["parietal","top and rear: ==touch and body position==, spatial and math reasoning"],
+            ["occipital","back of the head: ==vision=="],
+            ["temporal","above the ears: ==hearing==, language comprehension"]],
+      cmp:{ a:{h:"famous brains",p:["**Phineas Gage** (1848): iron rod through the **prefrontal cortex**. ==Personality, emotional control and impulse control changed==; memory and intelligence stayed.","**Albert Einstein**: unusually large **parietal lobes** and ==more glial cells==."]},
+            b:{h:"language areas",p:["**Broca's area** (frontal): damage breaks ==speaking==.","**Wernicke's area** (temporal): damage breaks ==understanding==.","**Aphasia**: losing the ability to understand or express speech."]} },
+      terms:["cerebral cortex","frontal lobes","parietal lobes","occipital lobes","temporal lobes","motor cortex","somatosensory cortex","association areas","prefrontal cortex","Broca's area","Wernicke's area"],
+      notes:[{k:"warn",t:"A question about planning, being on time, or self-control is the **frontal lobe**. !!Blaming the occipital, temporal or parietal lobe is the planted wrong answer.!!"}] },
+
+    { w:3, t:"Unit 0 is on this exam", d:"perspectives, history, statistics, research terms",
+      p:["**Psychology** is the ==scientific study of behavior and mental processes==. **Functionalism** asked how mental and behavioral processes help us ==adapt, survive and flourish==; **structuralism** tried to break the mind into its elements by introspection. **Phrenology** read skull bumps for traits: !!unscientific!!, but it pushed the idea that functions are localized.",
+         "**Modern behaviorists** agree psychology should be an ==objective science== studying behavior; they no longer insist mental processes be ignored. The **APA** (American Psychological Association), founded by ==G. Stanley Hall in 1892==, is the oldest psychology organization in America. !!The DSM-5 comes from the American Psychiatric Association, a different APA.!!",
+         "**Psychometrics** is the ==measuring of human abilities, attitudes and traits==. For statistics, the **median** of an even set is ==the average of the two middle numbers==, and the **range** is highest minus lowest."],
+      rows:[["independent variable","what the researcher ==changes or sets up== (the cause being tested)"],
+            ["dependent variable","what gets ==measured== (brain waves, test scores)"],
+            ["operational definition","exactly ==how a variable is measured==, so the study can be replicated"],
+            ["nature vs nurture","an IV that varies ==genes== studies nature; one that varies ==environment==, even prenatal, studies nurture"]],
+      terms:["psychology","functionalism","structuralism","phrenology","modern behaviorists","psychometrics","median","range","independent variable","dependent variable","operational definition"],
+      notes:[{k:"ok",t:"Perspective tells: unconscious conflict from childhood = **psychodynamic**; thinking and remembering = **cognitive**; Darwin and survival = **evolutionary**; learned through consequences = **behavioral**. Full list in the cheat tables."}] },
+
+    { w:3, t:"Nature, nurture, twins, and evolution", d:"module 1.1: twin logic and gene-environment interaction",
+      p:["**Nature** = ==biological and genetic predispositions inherited from parents==. **Nurture** = every nongenetic influence, ==starting with prenatal nutrition and exposure==, so a drug given during pregnancy is !!nurture, not nature!!. Most traits are **polygenic**: ==many genes working together==, each with a small effect.",
+         "**Gene-environment interaction** needs ==both halves in one scenario==: an inherited risk plus an environmental trigger, like high cholesterol that runs in the family plus a high-fat diet. Humans share about ==99.9% of their genes==, which is what shared human nature means.",
+         "**Evolutionary psychology** explains tendencies such as fearing heights or craving sweets as traits that ==helped ancestors survive and reproduce== (**natural selection**). A **proximate** explanation gives the mechanism right now (receptors, dopamine); an **ultimate** one gives the survival reason. !!The word \"why\" in a question does not make it ultimate.!!"],
+      cmp:{ a:{h:"twin logic",p:["**Identical (monozygotic)**: one egg, ==100% shared genes==. **Fraternal (dizygotic)**: two eggs, about half, like any siblings.","Most alike of all: ==identical twins raised together== (same genes, same home)."]},
+            b:{h:"why twins raised apart",p:["Genes are held constant and the environment varies, so they ==isolate nature from nurture== best.","Identical twins raised together being more alike than identical twins raised apart is the evidence that ==environment matters==."]} },
+      terms:["nature","nurture","polygenic","gene-environment interaction","monozygotic","dizygotic","natural selection","evolutionary psychology","proximate explanation","ultimate explanation"],
+      notes:[{k:"ok",t:"**Fingerprints** are what identical twins do !!not!! share: they form from pressure and position in the womb. Blood type, eye color and natural hair color all match."}] },
+
+    { w:3, t:"The nervous system's divisions", d:"module 1.2: map it and the questions answer themselves",
+      p:["The nervous system has three basic jobs: ==sensory input, integration, motor output==. The **central nervous system** is ==the brain and spinal cord==, the decision maker. The **peripheral nervous system** is everything else, carrying messages in and out.",
+         "The three types of neurons are **sensory** (body to brain), **motor** (==brain to muscles and glands==) and **interneurons** (==transmit and process inside the brain and spinal cord==). !!A dendrite is a part of a neuron, not a type.!! Pulling a hand off a hot stove: the **motor neuron** carries the command out."],
+      steps:["**CNS**: brain + spinal cord.","**PNS**: all the nerves outside it.","**Somatic**: ==voluntary== skeletal muscle (scratching your nose).","**Autonomic**: ==self-regulating== organs and glands (digestion).","**Sympathetic** arouses (heart up, pupils dilate, digestion stops); **parasympathetic** calms and returns the body to homeostasis."],
+      terms:["central nervous system","peripheral nervous system","sensory neurons","motor neurons","interneurons","somatic nervous system","autonomic nervous system","sympathetic","parasympathetic"],
+      notes:[{k:"warn",t:"\"Calms down after the scare\" is !!parasympathetic!!, even though the scary part of the story is sympathetic. Read which half of the story the question asks about."}] },
+
+    { w:2, t:"The neuron and neural firing", d:"module 1.3a: parts, the action potential, the synapse",
+      p:["**Dendrites** ==receive== incoming messages. The **axon hillock** ==adds up the signals and starts the action potential==. The **myelin sheath** makes the impulse ==jump from one **node of Ranvier** to the next==, which is the speed trick; its breakdown is **multiple sclerosis**, which slows messages and causes motor problems.",
+         "At rest the neuron is **polarized**: ==negative inside, positive outside==. When excitatory signals outnumber inhibitory ones enough to hit **threshold**, ==sodium channels open and Na⁺ rushes in== (**depolarization**). The **action potential** is an ==all-or-none== electrical impulse down the axon. During the **refractory period** the cell pumps sodium back out to reset and cannot fire.",
+         "Neurotransmitters cross the **synaptic gap** to receptor sites. Afterward the ==sending neuron reabsorbs them== (**reuptake**)."],
+      terms:["dendrite","axon hillock","myelin sheath","node of Ranvier","threshold","depolarization","action potential","all-or-none","refractory period","synaptic gap","reuptake"],
+      notes:[{k:"warn",t:"Myelin does !!not!! insulate the entire axon, widen it, or pump ions. The gaps are the mechanism. And the receiving neuron !!does not!! pass along the neurotransmitters it got; the sender takes them back."}] },
+
+    { w:2, t:"Tools for studying the brain", d:"module 1.4a: match the scan to what it picks up",
+      p:["A **lesion** is ==destroyed or damaged brain tissue==, natural (injury, disease) or made on purpose in a lab. What stops working reveals what that tissue did.",
+         "For **sleep stages** and seizures, use the **EEG**: electrodes on the scalp record ==electrical waves==. !!An EEG only shows brain-wave activity!!, so it cannot find where an injury is."],
+      cmp:{ a:{h:"structure",p:["**CT**: computer-combined ==X-rays== of a slice of the brain.","**MRI**: ==magnetic fields and radio waves==, detailed soft tissue, no radiation."]},
+            b:{h:"activity",p:["**EEG**: electrical waves. **MEG**: ==magnetic fields== from that electrical activity.","**PET**: where ==radioactive glucose== goes during a task (Please Eat Treats).","**fMRI**: ==blood flow and oxygen use==, so function plus structure."]} },
+      terms:["lesion","EEG","MEG","CT","PET","MRI","fMRI"] },
+
+    { w:2, t:"Neurotransmitters and drugs", d:"module 1.3: match the chemical, name the drug action",
+      p:["The pairs that show up: **serotonin** and **norepinephrine** too low = ==depression==; **dopamine** too low = ==Parkinson's tremors==; **norepinephrine** = ==alertness==; **acetylcholine** = muscle action and memory. Full table in the cheat tables.",
+         "An **agonist** ==mimics or boosts== a neurotransmitter by binding its receptor (morphine mimics endorphins). An **antagonist** ==blocks== it (curare blocks ACh, so muscles are paralyzed). **SSRIs** block serotonin reuptake, so ==more serotonin stays in the synapse==; !!they do not make more serotonin!!."],
+      cmp:{ a:{h:"drug classes",p:["**Depressants** ==slow== neural activity: alcohol, barbiturates, opiates.","**Stimulants** ==speed up== body functions: caffeine, nicotine, cocaine, amphetamines.","**Hallucinogens** distort perception: LSD, THC."]},
+            b:{h:"the disorder words",p:["**Tolerance**: ==bigger doses for the same effect==.","**Addiction**: compulsive craving.","**Withdrawal**: pain, tremors, anxiety when stopping."]} },
+      terms:["serotonin","norepinephrine","dopamine","acetylcholine","endorphins","agonist","antagonist","SSRIs","depressants","stimulants","hallucinogens","tolerance"] },
+
+    { w:2, t:"The AAQ, part by part", d:"the written part: a study, then parts A through F",
+      p:["The AAQ hands you a study and asks you to ==apply research methods to it==. Answer each part in ==complete sentences==, label it, and reuse the prompt's own words. !!A correct idea stated vaguely does not earn the point.!!"],
+      steps:["**A. Method**: \"The research method used in this study was ==an experiment== (or a correlational study, case study, naturalistic observation, survey).\" Random assignment plus a manipulated variable = experiment.",
+             "**B. Operational definition**: name exactly ==how the variable was measured== (\"the number of words recalled out of 30\").",
+             "**C. Results**: say what the difference in means (or the correlation) shows, with the actual numbers.",
+             "**D. Ethics**: name one guideline and point to it in the study: ==informed consent==, the right to leave, confidentiality, debriefing.",
+             "**E. Generalizability**: \"The results may be generalizable to ___ because ___,\" naming the ==actual sample== (age, place, who volunteered).",
+             "**F. Support or refute**: \"The evidence shows that ___,\" then tie it to a ==unit 1 concept== by name. This part is worth two points."],
+      terms:["experiment","correlational study","operational definition","informed consent","generalizability"],
+      notes:[{k:"warn",t:"A correlational study !!cannot show cause and effect!!. If nothing was manipulated and nobody was randomly assigned, it is not an experiment."}] },
+
+    { w:2, t:"Hormones and the endocrine system", d:"module 1.3a: the slow chemical system",
+      p:["**Hormones** are ==chemical messengers released into the bloodstream== by endocrine glands. !!Both hormones and neurotransmitters are chemical, not electrical!!; hormones are slower and their effects last longer. The **adrenal glands**, above the kidneys, release the hormones that ==arouse the body under stress==.",
+         "The **hypothalamus** signals the **pituitary gland**, the ==master gland==, which regulates growth and directs the other glands, so an unusually tall 12-year-old points to the pituitary. **Oxytocin** is ==made in the hypothalamus and stored and released by the posterior pituitary==."],
+      terms:["endocrine system","hormones","hypothalamus","pituitary gland","oxytocin","adrenal glands"],
+      notes:[{k:"ok",t:"TSH, ACTH and prolactin are made by the pituitary itself, so !!they are wrong for \"produced by the hypothalamus\"!!. Oxytocin is the answer."}] },
+
+    { w:2, t:"Sleep and dreams", d:"module 1.5: stages, disorders, dream theories",
+      p:["The **circadian rhythm** is the ==24-hour biological clock== for sleep and wakefulness, body temperature and hormones, reset by light through the **suprachiasmatic nucleus** in the hypothalamus. **REM sleep** brings ==vivid dreams, darting eyes, an active brain and paralyzed muscles==.",
+         "**Activation-synthesis** says the brain ==builds a story out of random neural firing== from the brainstem. For **Freud**, the remembered storyline is the ==manifest== content and the hidden meaning is the ==latent== content."],
+      cmp:{ a:{h:"stages",p:["Awake and relaxed: **alpha waves**.","**N1**: drifting off, hypnagogic jerks. **N2**: most of the night.","**N3**: deep sleep, **delta waves**. **REM**: dreams."]},
+            b:{h:"disorders",p:["**Sleep apnea**: ==breathing stops== repeatedly, brief awakenings.","**Narcolepsy**: sudden attacks of ==REM straight from waking==.","**Insomnia**: trouble falling or staying asleep."]} },
+      terms:["circadian rhythm","suprachiasmatic nucleus","REM sleep","activation-synthesis","manifest content","latent content","sleep apnea","narcolepsy","insomnia"] },
+
+    { w:1, t:"Sensation", d:"module 1.6: know the basics",
+      p:["**Transduction** turns stimulus energy into neural impulses. **Absolute threshold** = the minimum stimulus detected ==50% of the time==; **Weber's law** says two stimuli must differ by a ==constant percentage== to be noticed. **Sensory adaptation** is why a constant smell or sound ==fades from notice==.",
+         "**Cones** handle ==color and detail==; **rods** handle ==dim light and motion==. **Opponent-process** theory explains afterimages. For pitch, **place theory** covers ==high== tones and **frequency theory** covers ==low== ones. !!Smell is the only sense that skips the thalamus.!!"],
+      terms:["transduction","absolute threshold","Weber's law","sensory adaptation","cones","rods","opponent-process theory","place theory","frequency theory"] },
+
+    { w:1, t:"Consciousness", d:"module 1.5a",
+      p:["**Consciousness** is our ==awareness of ourselves and our environment==; dreaming, meditating and hallucinating are all states of it. **Dual processing** means information runs on ==conscious and unconscious tracks at the same time==. !!That is not the two hemispheres.!!"],
+      terms:["consciousness","dual processing"] }
+  ],
+
+  practice: [
+    { q:"Which limbic structure is most tied to spotting threats and producing fear and aggression?",
+      opts:["Amygdala","Hippocampus","Thalamus","Basal ganglia"], a:0,
+      why:"The **amygdala** is two lima-bean clusters linked to ==fear, aggression, anxiety and rage==. !!The hippocampus is memory!!, and the thalamus relays sensory signals." },
+    { q:"After a concussion, a tennis player's swings turn jerky and she keeps losing her balance on the court. Which structure most likely took the damage?",
+      opts:["Cerebellum","Corpus callosum","Pons","Medulla"], a:0,
+      why:"The **cerebellum** coordinates ==smooth movement and balance==. !!The medulla handles breathing and heartbeat!!, and the corpus callosum just connects the hemispheres." },
+    { q:"A skateboarder falls on the back of his head and afterward can't stay steady on the board. Which area was most likely affected?",
+      opts:["Amygdala","Frontal lobe","Reticular formation","Cerebellum"], a:3,
+      why:"Balance trouble after a hit to the back of the head is the ==cerebellum== every time. The reticular formation controls arousal, !!not balance!!." },
+    { q:"Which structure routes incoming signals from every sense except smell to the right receiving area of the cortex?",
+      opts:["Hypothalamus","Hippocampus","Amygdala","Thalamus"], a:3,
+      why:"The **thalamus** is the ==sensory relay station==; smell is the one sense that bypasses it. !!Hypothalamus is the look-alike name!!, but it runs hunger, thirst and temperature." },
+    { q:"After damage to both medial temporal lobes, a man still remembers his childhood but cannot form any new conscious long-term memories. Which structure was damaged?",
+      opts:["Amygdala","Hypothalamus","Cerebellum","Hippocampus"], a:3,
+      why:"The **hippocampus** processes ==new explicit memories== for storage. Old memories are already stored elsewhere, which is why they survive. !!The amygdala sits nearby but handles fear.!!" },
+    { q:"The netlike network of neurons running up through the brainstem into the thalamus plays a central role in",
+      opts:["arousal and alertness","hunger and thirst","storing long-term memories","releasing hormones"], a:0,
+      why:"The **reticular formation** controls ==arousal==: stimulate it and an animal wakes instantly, sever it and the result is a coma-like state." },
+    { q:"The hypothalamus handles many maintenance jobs. Which of these is NOT one of them?",
+      opts:["Making sense of what the eyes see","Hunger and thirst","Regulating body temperature","Sexual behavior"], a:0,
+      why:"The hypothalamus runs the ==5 Fs==: food and thirst, fight, flight, furnace, fornication. Interpreting visual input is the !!occipital lobe's job!!." },
+    { q:"Why is damage to the medulla so often fatal?",
+      opts:["It controls heartbeat and breathing","It stores explicit memories","It processes visual input","It produces fear responses"], a:0,
+      why:"The **medulla**, at the base of the brainstem, runs ==heartbeat and breathing== automatically. Lose it and the body cannot keep itself alive." },
+    { q:"Marco keeps missing deadlines and says, \"My occipital lobe must be broken, I can't plan anything.\" Which correction makes his claim accurate?",
+      opts:["\"It's your frontal lobes, which handle planning.\"","\"It's your temporal lobes, which handle planning.\"","\"It's your parietal lobes, which handle planning.\"","\"It's your somatosensory cortex, which handles planning.\""], a:0,
+      why:"==Planning, judgment and executive function== live in the **frontal lobes**. !!The occipital lobe is vision!!, the temporal lobe hearing, and the parietal lobe touch." },
+    { q:"A stroke patient understands everything said to her but can barely get words out. Which area was likely damaged, and which area handles understanding?",
+      opts:["Broca's area; understanding is Wernicke's area","Wernicke's area; understanding is Broca's area","The occipital lobe; understanding is the temporal lobe","The motor cortex; understanding is the parietal lobe"], a:0,
+      why:"**Broca's area** damage breaks ==speaking==; **Wernicke's area** damage breaks ==understanding==. !!The swapped order is the trap.!! Memory hook: Broca = broken speech." },
+    { q:"Which 1848 railroad worker survived an iron rod through his skull and became famous for how his personality changed?",
+      opts:["Paul Broca","Franz Joseph Gall","Phineas Gage","Franz Mesmer"], a:2,
+      why:"**Phineas Gage** damaged his ==prefrontal cortex==. Broca found the speech area, **Gall** founded phrenology, and Mesmer is linked to hypnotism." },
+    { q:"What changed most dramatically after Gage's frontal lobe injury?",
+      opts:["His vision","His ability to understand spoken language","His personality, emotional control and impulse control","His fine motor coordination and balance"], a:2,
+      why:"The frontal lobe governs ==personality, emotional regulation and impulse control==. !!His memory and intelligence mostly survived!!, which is why the case is famous." },
+    { q:"During brain surgery, an electrode touches one strip of cortex and the patient's arm lifts on its own. Which area was stimulated?",
+      opts:["Somatosensory cortex","Visual cortex","Glial cells","Motor cortex"], a:3,
+      why:"The **motor cortex**, at the rear of the frontal lobe, ==sends movement commands==. !!Stimulating the somatosensory cortex produces a feeling, not a movement.!!" },
+    { q:"The thin, wrinkled outer layer of interconnected neurons covering the cerebral hemispheres is the",
+      opts:["cerebral cortex","limbic system","reticular activating system","somatosensory strip"], a:0,
+      why:"The **cerebral cortex** is the ==body's ultimate control and information-processing center==. The limbic system sits below it." },
+    { q:"Einstein's brain is remembered for unusually large ___ lobes and an unusually high number of ___ cells.",
+      opts:["frontal; motor","parietal; glial","occipital; sensory","temporal; myelin"], a:1,
+      why:"Large **parietal lobes** fit his ==mathematical and spatial reasoning==, and extra **glial cells** meant more support and nourishment for his neurons." },
+    { q:"School A's six scores are 87, 89, 84, 88, 77 and 91. What is the mean?",
+      opts:["83","84","86","87.5"], a:2,
+      why:"Add them (==516==) and divide by 6: ==86==. !!87.5 is the median, not the mean.!!" },
+    { q:"Using the same School A scores (87, 89, 84, 88, 77, 91), what is the median?",
+      opts:["86","87","87.5","88"], a:2,
+      why:"Sort first: 77, 84, ==87, 88==, 89, 91. With an even count, the median is ==the average of the two middle numbers==: 87.5. !!Picking just 87 or 88 is the classic miss.!!" },
+    { q:"What is the range of School A's scores (87, 89, 84, 88, 77, 91)?",
+      opts:["9","14","17","24"], a:1,
+      why:"Range = highest minus lowest: ==91 − 77 = 14==." },
+    { q:"School B's six scores are 85, 67, 88, 76, 86 and 94. Its mean is closest to",
+      opts:["82","83","84","86"], a:1,
+      why:"The total is ==496==; 496 ÷ 6 ≈ ==82.7==, which rounds to 83. The low 67 drags School B's mean below School A's." },
+    { q:"What is the median of School B's scores (85, 67, 88, 76, 86, 94)?",
+      opts:["85","85.5","86","87"], a:1,
+      why:"Sorted: 67, 76, ==85, 86==, 88, 94. Average the two middle scores: ==85.5==." },
+    { q:"What is the range of School B's scores (85, 67, 88, 76, 86, 94)?",
+      opts:["14","17","24","27"], a:3,
+      why:"==94 − 67 = 27==. !!14 is School A's range!!; always check which school the question names." },
+    { q:"Which early school of psychology asked how our mental and behavioral processes help us adapt, survive and flourish?",
+      opts:["Structuralism","Psychodynamic","Behaviorism","Functionalism"], a:3,
+      why:"**Functionalism** (William James, influenced by Darwin) focused on ==what the mind is for==. !!Structuralism tried to list the mind's elements through introspection.!!" },
+    { q:"Modern behaviorists generally describe psychology as",
+      opts:["the objective, scientific study of behavior","the study of the biology of behavior","the study of behavior with no reference to thinking","the study of the unconscious mind"], a:0,
+      why:"Behaviorism defined psychology as an ==objective science of behavior==. Most psychologists today keep that part but !!no longer insist on ignoring mental processes!!, so the \"no reference to thinking\" option is the outdated half." },
+    { q:"Phrenology claimed that",
+      opts:["the bumps on a person's skull reveal their abilities and character","dreams reveal unconscious wishes","all behavior is learned through rewards","the mind can be studied through careful introspection"], a:0,
+      why:"**Phrenology** (Franz Gall) read ==skull bumps== to predict traits. It was !!unscientific!!, but it helped push the idea that functions are localized in the brain." },
+    { q:"Psychology is best defined as the",
+      opts:["study of the mind","study of the soul","scientific study of behavior and mental processes","study and treatment of mental illness"], a:2,
+      why:"Both halves matter: ==behavior== (what we do) and ==mental processes== (thoughts, feelings), studied ==scientifically==. Treating mental illness is only one part of the field." },
+    { q:"The American Psychological Association, the oldest psychology organization in America, was founded in 1892 by",
+      opts:["Wilhelm Wundt","Sigmund Freud","William James","G. Stanley Hall"], a:3,
+      why:"==G. Stanley Hall== founded the **APA** and was its first president. !!The DSM-5 is published by the American Psychiatric Association!!, a different APA." },
+    { q:"A therapist explains a man's angry outbursts as an outlet for unconscious hostility toward his parents left over from childhood. Which perspective is that?",
+      opts:["Psychodynamic","Social-cultural","Behavioral","Biological"], a:0,
+      why:"==Unconscious drives and childhood conflict== are the signature of the **psychodynamic** perspective (Freud). Behavioral would point to learned rewards and punishments." },
+    { q:"A cognitive psychologist would most want to investigate how people",
+      opts:["think, remember and solve problems","feel emotions","react to rewards","evolved"], a:0,
+      why:"**Cognitive** psychology studies ==thinking, knowing, remembering and communicating==." },
+    { q:"Psychometrics is",
+      opts:["a learning theory","a branch of pure science only","the study and treatment of mental illness","the measurement of human abilities, attitudes and traits"], a:3,
+      why:"**Psychometrics** is the science of ==measuring== abilities, attitudes and traits, which is where intelligence and personality tests come from." },
+    { q:"Darwin's On the Origin of Species is the foundation of which psychological perspective?",
+      opts:["Evolutionary","Biological","Psychodynamic","Behavioral"], a:0,
+      why:"**Natural selection** is the core of the ==evolutionary perspective==. The biological perspective looks at the brain and body now, !!not how traits were selected!!." },
+    { q:"A sleep lab records the electrical activity across volunteers' brains every night for a week to learn which wave patterns appear. The dependent variable is operationally defined as",
+      opts:["MRI images","CT images","MEG readings","EEG readings"], a:3,
+      why:"==Electrical activity picked up by scalp electrodes== is an **EEG**. MRI and CT show structure, and !!MEG measures magnetic fields!!." },
+    { q:"A researcher wants to study how the central nervous system affects emotional expression in young children. Which is an appropriate independent variable?",
+      opts:["Motor neuron activity","Somatic nervous system activity","Sensory neuron activity","Brain activity"], a:3,
+      why:"The CNS is ==the brain and spinal cord==, so brain activity fits. !!Motor neurons, sensory neurons and the somatic system all belong to the peripheral nervous system.!!" },
+    { q:"A researcher records EEGs while 100 participants daydream, to see which brain-wave patterns show up. The independent variable is",
+      opts:["daydreaming, the state of consciousness","the 100 participants","the EEG brain-wave data","the effect of daydreaming on the EEG"], a:0,
+      why:"The IV is the ==condition the researcher sets up==: daydreaming. !!The EEG data is what gets measured, so it is the dependent variable!!, the most common wrong pick." },
+    { q:"A scientist watches living neural tissue under a microscope and notes that some cells wrap around capillaries and seem to feed the neurons near them. What kind of research is this?",
+      opts:["Experiment","Case study","Correlational study","Naturalistic observation"], a:3,
+      why:"Nothing is manipulated and nothing is correlated; the researcher is ==watching and describing==, which is **naturalistic observation**. The cells are **glial cells**." },
+    { q:"A scientist exposes pregnant rats to cocaine and later measures how hyperactive their pups are. Which statement is accurate?",
+      opts:["The IV is hyperactivity, which reflects nurture.","The IV is cocaine exposure, which reflects nature.","The IV is hyperactivity, which reflects nature.","The IV is cocaine exposure, which reflects nurture."], a:3,
+      why:"The researcher manipulates ==cocaine exposure==, so that is the IV; hyperactivity is measured (DV). Prenatal exposure is ==environment==, so it is **nurture**. !!\"Before birth\" does not make it genetic.!!" },
+    { q:"Identical twins match on nearly everything their DNA codes for. Which do they NOT share?",
+      opts:["Blood type","Eye color","Fingerprints","Natural hair color"], a:2,
+      why:"**Fingerprints** form from ==pressure and position in the womb==, so they differ even in monozygotic twins. Everything coded straight from DNA matches." },
+    { q:"Evolutionary psychologists explain tendencies like fearing heights or craving sweets by pointing to how those traits",
+      opts:["were classically conditioned in early childhood","come from specific chromosomal abnormalities","helped ancestors survive and reproduce","can be changed through daily choices"], a:2,
+      why:"**Natural selection** keeps traits that ==promoted survival and reproduction== for our ancestors. Conditioning is learning within one lifetime, !!not evolution!!." },
+    { q:"A study compares 1,000 twin pairs, identical or fraternal, raised together or apart, on athletic ability. Which pairs should be most alike?",
+      opts:["Fraternal twins raised together","Identical twins raised apart","Fraternal twins raised apart","Identical twins raised together"], a:3,
+      why:"==Same genes plus same home== gives maximum similarity. !!Identical twins raised apart come second, not first.!!" },
+    { q:"Which is an example of gene-environment interaction?",
+      opts:["Priya has blue eyes like both of her parents.","Luis catches the flu from a classmate.","Dana, whose family has a history of type 2 diabetes, develops it after years of a high-sugar diet.","Omar inherits a rare blood disorder."], a:2,
+      why:"Interaction needs ==an inherited risk and an environmental trigger== together. Only Dana has both. Priya and Omar are heredity alone; !!the flu is environment alone!!." },
+    { q:"Asked why people like sugar, a researcher answers that sugar activates taste receptors on the tongue and triggers dopamine release. That is which type of explanation?",
+      opts:["Ultimate","Phylogenetic","By-product","Proximate"], a:3,
+      why:"Receptors and dopamine are the ==immediate mechanism==, so it is **proximate**. An ultimate explanation would say sweet tastes meant scarce calories. !!The word \"why\" does not make it ultimate.!!" },
+    { q:"A researcher wants to test how heredity influences musical ability. Which is the best operational definition of her independent variable?",
+      opts:["Comparing the DNA of professional musicians with that of people with little musical skill","Scoring each performance on a 1 to 5 quality scale","Handing instruments to half the children and none to the rest","Having some expectant mothers play music daily while others avoid it"], a:0,
+      why:"To study **heredity** the IV has to vary ==genes==. The rating scale is a !!dependent variable!!, and giving instruments or prenatal music manipulates environment (nurture)." },
+    { q:"Which study examines the influence of nature on behavior?",
+      opts:["The effect of genes on teenagers' academic performance","The effect of parenting style on children's food choices","The effect of media exposure on college students' career choices","The effect of exercise on middle schoolers' attention"], a:0,
+      why:"**Nature** = ==genes==. Parenting, media and exercise are all environment, so they are **nurture**." },
+    { q:"In behavior genetics, the term \"nature\" refers mainly to",
+      opts:["biological and genetic predispositions inherited from parents","parenting style and socioeconomic status","cultural norms absorbed in childhood","peer and school influences"], a:0,
+      why:"Nature is ==what the genes supply==. !!Every other option is nurture in a different costume.!!" },
+    { q:"Most human traits are polygenic, meaning they",
+      opts:["are controlled by one dominant allele","pass down only through the mother's side","are set entirely by the environment after birth","come from many genes interacting"], a:3,
+      why:"**Polygenic** = ==many genes==, each adding a small effect. That is why !!no single gene determines a complex behavior!!." },
+    { q:"A researcher comparing human genes with each other's and with other animals' would most likely conclude that",
+      opts:["chimpanzees share very few genes with humans","each complex behavior is controlled by one specific gene","human genes are mostly the same from person to person","genes don't explain our shared human nature"], a:2,
+      why:"People are about ==99.9% genetically alike==, and chimps share 96% or more with us. Complex behavior is polygenic, and shared genes are exactly what explains shared human nature." },
+    { q:"Children are randomly assigned to a social-skills program or a lesson on how to whistle, then take an emotional-stability questionnaire a month later. The independent variable measures the impact of",
+      opts:["nature","epigenetics","nurture","evolution"], a:2,
+      why:"The researcher manipulates ==an environmental experience==, which is **nurture**. !!\"Nature\" tempts because emotional stability sounds like a trait.!!" },
+    { q:"For separating nature from nurture, the ideal research subjects are",
+      opts:["fraternal twins","identical twins","identical twins separated at birth","fraternal twins separated at birth"], a:2,
+      why:"Identical twins raised apart have ==identical genes and different environments==, so their differences point to environment and their similarities to genes." },
+    { q:"Why do behavior geneticists value identical twins raised apart more than identical twins raised together?",
+      opts:["It holds the environment constant while the genes vary.","It better separates the effects of genes from the effects of environment.","It shows mutations happen faster when twins live apart.","It removes prenatal hormones as a confound."], a:1,
+      why:"Genes are held constant and ==environment varies==, which isolates nature from nurture. !!The first option has it backwards.!!" },
+    { q:"Which finding is the best evidence that environment plays a role in intelligence?",
+      opts:["Identical twins raised together are more alike than identical twins raised apart.","Identical twins raised apart are more alike than fraternal twins raised together.","Fraternal twins raised together are more alike than unrelated people raised together.","Unrelated people raised together are less alike than siblings raised together."], a:0,
+      why:"Genes are identical in both groups, so the only difference left is ==the environment==. !!The second option is evidence for heredity!!, since it varies genetic relatedness." },
+    { q:"Identical twins adopted into different families meet in their thirties. One is two inches shorter and was an extremely picky eater as a child. What method and explanation fit best?",
+      opts:["Longitudinal study; heredity matters far more than environment","Case study; environment matters far more than heredity","Case study; both heredity and environment matter","Longitudinal study; environment matters far less than heredity"], a:2,
+      why:"One pair studied in depth is a **case study**. Same genes gave the same birth length, and diet made the difference, so ==both matter==. !!Any \"far more important\" claim overreaches from one pair.!!" },
+    { q:"Which of these is NOT one of the three types of neurons?",
+      opts:["Interneurons","Motor neurons","Sensory neurons","Dendrites"], a:3,
+      why:"The three types are ==sensory, motor and interneurons==. A **dendrite** is !!a part of a neuron!!, not a type." },
+    { q:"The central nervous system is made up of the",
+      opts:["brain and cranial nerves","brain and spinal cord","cranial and spinal nerves","spinal cord and spinal nerves"], a:1,
+      why:"**CNS** = ==brain and spinal cord==. Every nerve that branches off them is peripheral." },
+    { q:"A jump scare in a movie makes your heart race, your pupils widen and your digestion pause. Which division is responsible?",
+      opts:["Parasympathetic","Sympathetic","Somatic","Central"], a:1,
+      why:"The **sympathetic** division ==arouses== the body for fight or flight. Parasympathetic is the one that calms you afterward." },
+    { q:"Reaching up to scratch your nose is controlled by which division of the peripheral nervous system?",
+      opts:["Autonomic","Somatic","Sympathetic","Central"], a:1,
+      why:"==Voluntary movement of skeletal muscle== is the **somatic** system. !!Central is not a division of the peripheral system!!." },
+    { q:"If Jordan's motor neurons stopped working, he would lose the ability to",
+      opts:["send messages from body parts to the brain","process information inside the brain and spinal cord","process neurotransmitters in the brain","send messages from the brain to body parts"], a:3,
+      why:"**Motor (efferent)** neurons carry commands ==out from the CNS to muscles and glands==. !!The first option describes sensory neurons!!, the second interneurons." },
+    { q:"What are the nervous system's basic functions?",
+      opts:["Sensory input and motor output only","Integration and memory storage only","Sensory input, integration and motor output","Reflexes and gland secretion"], a:2,
+      why:"Take information in, ==process it (integration)==, and send a response out. Two-item options leave out a step." },
+    { q:"Once a threat has passed, which system slows the heart, shrinks the pupils and returns the body to homeostasis?",
+      opts:["Sympathetic nervous system","Parasympathetic nervous system","Somatic nervous system","Endocrine system"], a:1,
+      why:"The **parasympathetic** division ==calms and conserves energy==. !!Sympathetic is the tempting pick because it appears in the story!!, but it caused the arousal." },
+    { q:"The word \"autonomic\" means",
+      opts:["calming","voluntary","self-regulating","arousing"], a:2,
+      why:"The **autonomic** system is ==self-regulating==: heartbeat and digestion run with no decision. Calming and arousing are its two divisions." },
+    { q:"Interneurons",
+      opts:["send messages from the brain to body parts","send messages from body parts to the brain","transmit and process information within the brain and spinal cord","control the pituitary gland"], a:2,
+      why:"**Interneurons** stay ==inside the CNS==, linking sensory input to motor output. The first two options are motor and sensory neurons." },
+    { q:"You yank your hand off a hot pan. Which kind of neuron carries the command that actually moves the hand?",
+      opts:["Sensory neuron","Interneuron","Receptor neuron","Motor neuron"], a:3,
+      why:"Sensory neurons carry \"hot\" in and interneurons process it, but the ==motor neuron== carries the movement command out to the muscle." },
+    { q:"The autonomic nervous system is most directly involved in",
+      opts:["driving a car","sensing a painful stimulus","digesting food","experiencing pain"], a:2,
+      why:"==Digestion== is an internal organ running on its own. Driving is somatic, and sensing pain is a sensory job." },
+    { q:"How does the myelin sheath speed up a nerve impulse?",
+      opts:["By widening the axon","By pumping extra sodium and potassium across the membrane","By insulating the entire axon so no ions cross anywhere","By making the action potential jump from one node of Ranvier to the next"], a:3,
+      why:"The impulse ==jumps between the gaps==. !!Myelin does not cover the whole axon!!; an axon with no ion exchange anywhere could not fire at all." },
+    { q:"During depolarization, which ion channels open, and which way do the ions move?",
+      opts:["Potassium channels open; ions move in","Sodium channels open; ions move in","Sodium channels open; ions move out","Calcium channels open; ions move out"], a:1,
+      why:"==Sodium (Na⁺) rushes into the cell==, flipping the inside from negative to positive. !!Potassium moving out is repolarization, the next step.!!" },
+    { q:"Which part of a neuron adds up incoming signals and starts the action potential?",
+      opts:["Dendrite","Synaptic knob","Axon hillock","Node of Ranvier"], a:2,
+      why:"The **axon hillock**, where the axon leaves the cell body, ==sums the graded potentials== and fires if threshold is reached. Dendrites receive but do not initiate." },
+    { q:"Which part of the neuron mainly receives chemical signals from other neurons?",
+      opts:["Axon","Dendrite","Myelin sheath","Axon terminal"], a:1,
+      why:"**Dendrites** ==listen==; axons ==speak==. Axon terminals are the sending end." },
+    { q:"The myelin sheath",
+      opts:["supports, nourishes and protects neurons","contains the cell's life-support center","blocks neurotransmitters","lets impulses hop node to node for much faster transmission"], a:3,
+      why:"Myelin is a fatty layer that makes impulses ==hop node to node==. !!Supporting and nourishing neurons is what glial cells do!!, and the life-support center is the cell body." },
+    { q:"An action potential is best described as",
+      opts:["a chemical message crossing the synaptic gap","a gradual warming of the cell body","an all-or-none electrical impulse that travels down the axon","the recovery during the refractory period"], a:2,
+      why:"==Electrical, down the axon, all-or-none==. !!Crossing the gap is chemical!! and belongs to neurotransmitters." },
+    { q:"A researcher timing how fast neurotransmitters cross from one neuron to the next is studying the",
+      opts:["synaptic gap","axon","myelin sheath","dendrites"], a:0,
+      why:"The space ==between== neurons is the **synaptic gap (cleft)**. !!Myelin affects speed inside one axon, not between neurons.!!" },
+    { q:"Multiple sclerosis results from the breakdown of the",
+      opts:["myelin sheath","dendrites","axon hillock","terminal buttons"], a:0,
+      why:"In **MS** the immune system ==eats away at myelin==, so messages slow down and communication between brain and body breaks down." },
+    { q:"Someone with multiple sclerosis is most likely to experience which effect?",
+      opts:["Neurons can't reach threshold, causing fatigue","Depolarization never happens, causing sensory loss","Neurotransmitters stay in the synapse, causing memory loss","Messages travel slowly down the axon, causing motor problems"], a:3,
+      why:"Lost myelin means ==slower conduction==, and the result is **motor impairment**. The neuron still reaches threshold and still depolarizes." },
+    { q:"During a neuron's refractory period,",
+      opts:["the neuron fires at half strength","the cell pumps sodium back out of the membrane to reset","neurotransmitters are reabsorbed by the receiving neuron's dendrites","the myelin sheath breaks down"], a:1,
+      why:"It is the ==reset==: sodium goes back out, and the neuron cannot fire until it is done. !!All-or-none means there is no half-strength firing.!!" },
+    { q:"For a neuron to fire an action potential, what must be true?",
+      opts:["It must be in the refractory period.","Glial cells must release neurotransmitters into the axon.","Excitatory signals must outnumber inhibitory signals.","Dopamine and serotonin must be equal."], a:2,
+      why:"When ==excitatory minus inhibitory crosses threshold==, it fires. !!The refractory period is when it can't fire.!!" },
+    { q:"After neurotransmitters trigger a neighboring neuron, what happens to the extra ones in the synapse?",
+      opts:["The synaptic cleft closes to end the signal.","The myelin sheath absorbs them.","The receiving neuron absorbs them to pass along.","The sending neuron reabsorbs them for reuse."], a:3,
+      why:"That is **reuptake**: ==the sender takes them back==. !!The receiving neuron releases its own neurotransmitters!!; it does not pass along the ones it got." },
+    { q:"Which is true of a neuron at rest?",
+      opts:["The inside is negative compared with the outside.","The outside is negative compared with the inside.","Sodium is equal inside and outside.","The neuron is not polarized."], a:0,
+      why:"At rest the neuron is ==polarized: negative inside, positive outside==. The reverse is what happens during depolarization." },
+    { q:"What does an fMRI show that a standard MRI does not?",
+      opts:["Impulses traveling along peripheral nerves","Blood flow and oxygen use, revealing function as well as structure","A static 3-D view of bone only","Where radioactive glucose collects"], a:1,
+      why:"The f is for **functional**: ==activity plus structure==. !!Radioactive glucose is a PET scan.!!" },
+    { q:"Destroyed or damaged brain tissue, whether from injury or done on purpose in a lab, is called a",
+      opts:["synapse","plasticity","lateralization","lesion"], a:3,
+      why:"A **lesion** is ==tissue destruction==. Whatever stops working afterward reveals what that tissue did." },
+    { q:"To see which regions burn the most glucose while someone solves hard math problems, a researcher would use a(n)",
+      opts:["PET scan","MRI","CT scan","X-ray"], a:0,
+      why:"**PET** tracks where ==radioactive glucose== goes during a task. Memory hook: Please Eat Treats." },
+    { q:"Which technique uses magnetic fields and radio waves to make detailed images of soft brain tissue without radiation?",
+      opts:["EEG","PET scan","MRI","Angiogram"], a:2,
+      why:"**MRI** = ==magnetic fields + radio waves==, structure only. !!PET uses a radioactive tracer.!!" },
+    { q:"After a car crash, a doctor suspects damage to the back of a patient's brain. Why is an EEG a poor way to check?",
+      opts:["It only shows glucose use.","It only shows brain-wave activity.","It only produces still images.","It only stimulates one region."], a:1,
+      why:"An **EEG** records ==electrical waves from the scalp==, not a picture of the tissue. To find structural damage, use CT or MRI." },
+    { q:"To record the brain's overall electrical activity during different sleep stages, use a(n)",
+      opts:["CT scan","EEG","PET scan","MRI"], a:1,
+      why:"Sleep stages are defined by ==brain waves==, so the **EEG** is the tool." },
+    { q:"Computer-combined X-ray images of a slice of the brain are",
+      opts:["PET scans","fMRI images","CT scans","MRI images"], a:2,
+      why:"**CT** = ==X-rays from many angles== combined by computer. It shows structure and can reveal damage." },
+    { q:"Measuring the brain's activity through the magnetic fields its electrical activity gives off is done with",
+      opts:["CT","EEG","MEG","PET"], a:2,
+      why:"**MEG** measures ==magnetic fields==. !!EEG measures the electrical waves themselves.!!" },
+    { q:"SSRIs treat depression by blocking the reuptake of serotonin. The result is",
+      opts:["more serotonin produced in the cell body","receptors that bind serotonin less","more serotonin staying in the synapse to bind receptors","faster breakdown of serotonin by enzymes"], a:2,
+      why:"Blocking reuptake ==keeps serotonin in the synapse longer==. !!SSRIs do not make new serotonin.!!" },
+    { q:"Alcohol, barbiturates and opiates reduce neural activity and slow body functions. They belong to which class?",
+      opts:["Stimulants","Hallucinogens","Depressants","Antagonists"], a:2,
+      why:"**Depressants** ==slow things down==. \"Antagonist\" describes how a molecule acts at a receptor, !!not a drug class!!." },
+    { q:"A chemical that mimics or strengthens a neurotransmitter by binding to its receptor is a(n)",
+      opts:["antagonist","agonist","reuptake inhibitor","enzyme inhibitor"], a:1,
+      why:"**Agonist** = ==mimics or boosts==. **Antagonist** = ==blocks==." },
+    { q:"With regular use, a person needs bigger and bigger doses of a drug to feel the same effect. That is",
+      opts:["withdrawal","physical dependence","tolerance","addiction"], a:2,
+      why:"**Tolerance** is ==needing more for the same effect==, because the brain adapts. Withdrawal is what happens when the drug stops." },
+    { q:"A patient newly diagnosed with major depressive disorder most likely has too little",
+      opts:["oxytocin and GABA","acetylcholine and histamine","dopamine and acetylcholine","serotonin and norepinephrine"], a:3,
+      why:"Low **serotonin** and low **norepinephrine** are both ==linked to depression==. Low GABA is anxiety and seizures; low ACh is Alzheimer's." },
+    { q:"The motor symptoms of Parkinson's disease are most directly linked to a shortage of",
+      opts:["serotonin","acetylcholine","dopamine","endorphins"], a:2,
+      why:"**Dopamine** influences ==movement==; too little brings tremors and rigidity. !!Too much dopamine is linked to schizophrenia.!!" },
+    { q:"Maya wakes up feeling sharp and alert. Which neurotransmitter is most responsible?",
+      opts:["Acetylcholine","Norepinephrine","Substance P","Dopamine"], a:1,
+      why:"**Norepinephrine** controls ==alertness and arousal==. !!Dopamine is the reward chemical, not the alertness one.!!" },
+    { q:"Curare paralyzes by blocking acetylcholine receptors on muscle cells. Curare acts as a(n)",
+      opts:["agonist","antagonist","hormone","neuromodulator"], a:1,
+      why:"It ==blocks== the receptor, so it is an **antagonist**. With ACh blocked, muscles can't contract." },
+    { q:"Nicotine, cocaine and amphetamines excite neural activity, speed up body functions and lift energy and mood. They are",
+      opts:["depressants","stimulants","hallucinogens","opiates"], a:1,
+      why:"**Stimulants** ==speed things up==. Opiates are depressants." },
+    { q:"Morphine mimics the brain's own endorphins. In a study giving morphine to volunteers, the independent variable is a(n)",
+      opts:["antagonist","synapse","ion","agonist"], a:3,
+      why:"\"Mimics\" is the tell: an **agonist**. The IV is simply the morphine given." },
+    { q:"Hormones are ___ released into the ___.",
+      opts:["chemical messengers; bloodstream","neurons; synapse","electrical messengers; bloodstream","electrical messengers; synapse"], a:0,
+      why:"Endocrine glands release ==chemical messengers into the blood==. !!Hormones are never electrical.!!" },
+    { q:"Which hormone is produced by the hypothalamus but stored and released by the posterior pituitary?",
+      opts:["Oxytocin","Thyroid-stimulating hormone","Adrenocorticotropic hormone","Prolactin"], a:0,
+      why:"**Oxytocin** is made in the hypothalamus and released from the ==posterior pituitary==. !!The other three are made by the pituitary itself.!!" },
+    { q:"Which gland, controlled directly by the hypothalamus, regulates growth and directs the other endocrine glands?",
+      opts:["Adrenal gland","Pituitary gland","Thyroid gland","Pineal gland"], a:1,
+      why:"The **pituitary** is the ==master gland==. The adrenals sit on the kidneys and handle stress." },
+    { q:"Which structure signals the pituitary, which in turn directs the endocrine system?",
+      opts:["Parathyroids","Hypothalamus","Autonomic nervous system","Spinal cord"], a:1,
+      why:"The **hypothalamus** is ==where the nervous system reaches the endocrine system==." },
+    { q:"Which gland would best explain an unusually tall 12-year-old?",
+      opts:["Adrenal","Pancreas","Parathyroid","Pituitary"], a:3,
+      why:"The **pituitary** releases ==growth hormone==." },
+    { q:"Sleep apnea is a disorder marked by",
+      opts:["walking and talking during deep sleep","breathing that stops repeatedly, with brief awakenings","trouble falling or staying asleep every night","terrifying nightmares that wake the sleeper screaming"], a:1,
+      why:"**Apnea** = ==breathing stops==. The sleeper briefly wakes to gasp and usually doesn't remember it. The third option is insomnia." },
+    { q:"According to activation-synthesis theory, dreams are",
+      opts:["the brain building a story out of random neural firing that starts in the brainstem","practice for surviving threats","disguised versions of unfulfilled wishes","the brain filing memories into long-term storage"], a:0,
+      why:"**Activation-synthesis**: ==random firing, then the brain makes it make sense==. Wishes are Freud; memory filing is information processing." },
+    { q:"Which sleep disorder involves sudden, uncontrollable attacks of REM sleep straight from being awake?",
+      opts:["Sleep apnea","Insomnia","Narcolepsy","Night terrors"], a:2,
+      why:"**Narcolepsy** = ==sleep attacks==, sometimes directly into REM. Night terrors happen in N3 deep sleep." },
+    { q:"Vivid dreams, darting eyes, a highly active brain and paralyzed voluntary muscles describe which stage?",
+      opts:["N1","N2","N3","REM"], a:3,
+      why:"**REM** is ==paradoxical sleep==: brain active, body nearly paralyzed." },
+    { q:"In Freud's theory, the remembered storyline of a dream is its ___ content, and its hidden meaning is its ___ content.",
+      opts:["latent; manifest","manifest; latent","evolutionary; physiological","cognitive; activation-synthesis"], a:1,
+      why:"==Manifest = what you remember==; ==latent = what it supposedly means==. !!Swapping them is the trap.!!" },
+    { q:"The roughly 24-hour clock that sets our sleep-wake cycle, body temperature and hormone release in response to light is the",
+      opts:["circadian rhythm","infradian rhythm","REM cycle","endocrine rhythm"], a:0,
+      why:"**Circadian rhythm** = ==24-hour biological clock==, run by the suprachiasmatic nucleus. A REM cycle is about 90 minutes." },
+    { q:"The smallest amount of a stimulus a person can detect 50 percent of the time is the",
+      opts:["difference threshold","absolute threshold","just noticeable difference","sensory adaptation"], a:1,
+      why:"**Absolute threshold** = ==detecting it at all==. !!The difference threshold is noticing a change between two stimuli.!!" },
+    { q:"Which photoreceptors let you see color and fine detail?",
+      opts:["Rods","Cones","Bipolar cells","Ganglion cells"], a:1,
+      why:"**Cones** handle ==color and detail==. Rods handle dim light and motion." },
+    { q:"After staring at a red square, you see a green afterimage. Which theory explains this?",
+      opts:["Trichromatic theory","Opponent-process theory","Place theory","Gate-control theory"], a:1,
+      why:"**Opponent-process**: colors work in ==pairs==, so tiring one side shows its opposite." },
+    { q:"Which statement best describes dual processing?",
+      opts:["The two hemispheres both process incoming messages.","Information is processed on conscious and unconscious tracks at the same time.","Each lobe processes incoming information.","The brain processes emotion first, then logic."], a:1,
+      why:"**Dual processing** = ==conscious and unconscious tracks at once==. !!\"Dual\" does not mean two hemispheres.!!" }
+  ],
+
+  problems: [
+    { q:"**Study 1, an experiment.** Researchers wanted to know whether losing a night of sleep hurts memory. Sixty undergraduate volunteers at one university were ==randomly assigned== to sleep 8 hours in the lab or stay awake all night in the lab. The next morning both groups studied 30 word pairs and were tested on them. The rested group recalled a mean of ==22 of 30== pairs; the sleep-deprived group recalled a mean of ==15 of 30==. Everyone signed a consent form, could leave at any time, and was debriefed afterward. Hypothesis: sleep deprivation reduces memory. Answer parts A through F.",
+      steps:["**A. Method.** The research method used in this study was an ==experiment==, because participants were randomly assigned and the researchers manipulated sleep.",
+             "**B. Operational definition.** Memory was operationally defined as ==the number of word pairs, out of 30, each participant correctly recalled the next morning==.",
+             "**C. Difference in means.** The rested group recalled ==7 more word pairs on average== (22 vs 15), which suggests a night without sleep lowers recall.",
+             "**D. Ethics.** The researchers followed ==informed consent==: every participant signed a consent form before taking part. (Right to withdraw and debriefing also count.)",
+             "**E. Generalizability.** The results may be generalizable to ==young adult college students== like this sample, but !!not necessarily to children or older adults!!, because every participant was an undergraduate volunteer from one university.",
+             "**F. Support (two points).** The evidence shows the sleep-deprived group recalled fewer pairs, which ==supports the hypothesis==. Sleep ==aids memory consolidation==, the process in which the **hippocampus** helps store the day's explicit memories, so skipping sleep leaves less to recall."],
+      ans:"A. The research method used in this study was an experiment, because the researchers randomly assigned participants to conditions and manipulated whether they slept. B. Memory was operationally defined as the number of word pairs, out of 30, that each participant correctly recalled the next morning. C. The rested group recalled a mean of 22 word pairs and the sleep-deprived group a mean of 15, a difference of 7 pairs, which indicates that the sleep-deprived participants remembered less. D. The researchers followed the ethical guideline of informed consent, because every participant signed a consent form before the study began. E. The results may be generalizable to young adult college students, because every participant was an undergraduate volunteer; they may not generalize to children or older adults, whose sleep and memory differ. F. The evidence shows that the sleep-deprived group recalled fewer word pairs than the rested group, which supports the hypothesis that sleep deprivation reduces memory. Sleep aids memory consolidation, the process in which the hippocampus helps move the day's explicit memories into long-term storage, so participants who skipped sleep had less of the material stored and recalled less of it." },
+
+    { q:"**Study 2, a correlational study.** Researchers surveyed 400 high school students in one state about how many minutes they spend on their phones in bed after lights-out, and measured each student's total nightly sleep with a wrist tracker for two weeks. They found a ==correlation of −0.48== between late-night phone minutes and total sleep. Parents signed permission forms, students agreed to take part, and all data was kept anonymous. Hypothesis: more late-night screen light is linked to less sleep. Answer parts A through F.",
+      steps:["**A. Method.** The research method used in this study was a ==correlational study==, because the researchers measured two variables as they occurred and !!manipulated nothing!!.",
+             "**B. Operational definition.** Sleep was operationally defined as ==the total minutes of sleep per night recorded by the wrist tracker, averaged over two weeks==.",
+             "**C. The statistic.** A correlation of −0.48 is a ==moderate negative correlation==: students who used their phones longer after lights-out tended to sleep less. !!It does not show that phone use causes less sleep.!!",
+             "**D. Ethics.** The researchers kept the data ==confidential (anonymous)==, and because the participants were minors they got parental permission as well as the students' agreement.",
+             "**E. Generalizability.** The results may be generalizable to ==high school students in that state==, because that was the sample; !!they may not apply to adults!!, whose sleep needs and phone habits differ.",
+             "**F. Support (two points).** The evidence shows a negative correlation between late-night phone use and sleep, which ==supports the hypothesis==. Light from a screen reaches the **suprachiasmatic nucleus**, which ==delays melatonin== and pushes the **circadian rhythm** later, so heavier late-night users would be expected to sleep less."],
+      ans:"A. The research method used in this study was a correlational study, because the researchers measured phone use and sleep as they naturally occurred and did not manipulate either one. B. Sleep was operationally defined as the total minutes of sleep per night recorded by each student's wrist tracker, averaged over two weeks. C. The correlation of −0.48 is a moderate negative correlation, meaning that students who spent more minutes on their phones after lights-out tended to get less total sleep; because it is a correlation, it does not show that phone use causes the lost sleep. D. The researchers kept the data confidential by recording it anonymously, and because the participants were minors they obtained parental permission along with the students' agreement. E. The results may be generalizable to high school students in that state, because they were the sample, but they may not generalize to adults, whose sleep needs and phone habits differ. F. The evidence shows that more late-night phone use went along with less sleep, which supports the hypothesis. Screen light reaches the suprachiasmatic nucleus, the hypothalamus's circadian clock, which responds to light by delaying melatonin production and shifting the circadian rhythm later, so students on their phones longer after lights-out would be expected to fall asleep later and sleep less." }
+  ],
+
+  tables: [
+    { h:"brain structures by symptom", d:"the question describes it, you name it",
+      cols:["if the question says","the answer is"],
+      rows:[["breathing or heartbeat fails; life-threatening damage","**medulla**"],
+            ["balance, coordination, smooth movement","**cerebellum**"],
+            ["can't form new conscious memories","**hippocampus**"],
+            ["fear, aggression, threat","**amygdala**"],
+            ["hunger, thirst, body temperature; signals the pituitary","**hypothalamus**"],
+            ["relays every sense to the cortex except smell","**thalamus**"],
+            ["arousal and alertness; coma if cut","**reticular formation**"],
+            ["movement coordination and sleep","**pons**"],
+            ["planning, judgment, personality, impulse control","**frontal lobe** (prefrontal cortex)"],
+            ["stimulated strip makes a limb move","**motor cortex** (rear of frontal lobe)"],
+            ["touch and body position","**somatosensory cortex** (front of parietal lobe)"],
+            ["vision","**occipital lobe**"],
+            ["hearing","**temporal lobe**"],
+            ["can't produce speech","**Broca's area**"],
+            ["can't understand language","**Wernicke's area**"],
+            ["connects the two hemispheres","**corpus callosum**"]] },
+    { h:"tools for studying the brain", d:"structure or activity",
+      cols:["tool","what it picks up","shows"],
+      rows:[["**lesion**","what stops working when tissue is destroyed","function, by subtraction"],
+            ["**EEG**","electrical waves through scalp electrodes; sleep stages, seizures","activity"],
+            ["**MEG**","magnetic fields made by the brain's electrical activity","activity"],
+            ["**CT**","X-rays from many angles combined by computer","structure"],
+            ["**MRI**","magnetic fields and radio waves on soft tissue","structure"],
+            ["**PET**","where radioactive glucose goes during a task","activity"],
+            ["**fMRI**","blood flow and oxygen use across successive MRI scans","activity and structure"]] },
+    { h:"neurotransmitters", d:"eight to know",
+      cols:["chemical","what it does","too little","too much"],
+      rows:[["**acetylcholine (ACh)**","muscle movement, learning, memory","Alzheimer's, paralysis","muscle spasms"],
+            ["**dopamine**","movement, reward, motivation","Parkinson's tremors, rigidity","schizophrenia, addiction"],
+            ["**serotonin**","mood, sleep, appetite","depression","hallucinations"],
+            ["**norepinephrine**","alertness and arousal","depression","anxiety"],
+            ["**epinephrine (adrenaline)**","the fight-or-flight surge","weak stress response","jitteriness, high blood pressure"],
+            ["**GABA**","slows neural activity (the brake)","anxiety, seizures, insomnia","sedation"],
+            ["**glutamate**","learning and memory (the gas)","none listed","migraines, seizures"],
+            ["**endorphins**","natural painkillers, pleasure","excess pain","an artificial high"]] },
+    { h:"drugs and how they act", d:"class, action, examples",
+      cols:["term","what it means","examples"],
+      rows:[["**depressant**","slows neural activity and body functions","alcohol, barbiturates, opiates"],
+            ["**stimulant**","speeds up neural activity and body functions","caffeine, nicotine, cocaine, amphetamines"],
+            ["**hallucinogen**","distorts perception without sensory input","LSD, THC"],
+            ["**agonist**","mimics or boosts a neurotransmitter at its receptor","morphine (mimics endorphins)"],
+            ["**antagonist**","blocks a neurotransmitter at its receptor","curare, Botox (block ACh)"],
+            ["**reuptake inhibitor**","keeps the neurotransmitter in the synapse longer","SSRIs (serotonin)"]] },
+    { h:"psychology's perspectives", d:"unit 0, still on this exam",
+      cols:["perspective","explains behavior through","the tell"],
+      rows:[["**biological**","brain, genes, neurotransmitters, hormones","\"brain activity,\" \"serotonin\""],
+            ["**evolutionary**","natural selection (Darwin)","\"helped ancestors survive\""],
+            ["**psychodynamic**","unconscious drives, childhood conflict (Freud)","\"unconscious hostility\""],
+            ["**behavioral**","learning through rewards and consequences","\"was rewarded for\""],
+            ["**cognitive**","thinking, memory, problem solving","\"how people think\""],
+            ["**humanistic**","growth and free will","\"reaching potential\""],
+            ["**social-cultural**","culture and the people around us","\"cultural norms\""],
+            ["**functionalism** (history)","how the mind helps us adapt and survive","William James"],
+            ["**structuralism** (history)","the mind's basic elements, by introspection","Wundt, Titchener"]] },
+    { h:"research methods", d:"part A of the AAQ",
+      cols:["method","what happens","cause and effect?"],
+      rows:[["**experiment**","researcher manipulates an IV, random assignment","yes"],
+            ["**correlational study**","measures how two variables relate","no"],
+            ["**case study**","one person or pair studied in depth","no"],
+            ["**naturalistic observation**","watch and record without interfering","no"],
+            ["**survey**","ask many people questions","no"],
+            ["**longitudinal study**","same people measured over years","no"]] }
+  ],
+
+  cards: [
+    { f:"Medulla", b:"Base of the brainstem. Controls ==heartbeat and breathing==." },
+    { f:"Pons", b:"Brainstem structure that helps ==coordinate movement and controls sleep==." },
+    { f:"Reticular formation", b:"Nerve network through the brainstem into the thalamus. Filters information and controls ==arousal==." },
+    { f:"Cerebellum", b:"The \"little brain\" at the rear of the brainstem. ==Coordination, balance==, nonverbal learning." },
+    { f:"Thalamus", b:"The ==sensory relay station==: routes every sense to the cortex !!except smell!!." },
+    { f:"Limbic system", b:"Neural system below the cerebral hemispheres linked to ==emotions and drives==." },
+    { f:"Amygdala", b:"Two lima-bean clusters linked to ==fear, aggression, anxiety and rage==." },
+    { f:"Hypothalamus", b:"Below the thalamus. ==Eating, drinking, body temperature==, reward; governs the endocrine system through the pituitary." },
+    { f:"Hippocampus", b:"Processes ==new explicit (conscious) memories== of facts and events for storage." },
+    { f:"Cerebral cortex", b:"The wrinkled outer layer of interconnected neurons; the body's ==ultimate control and information-processing center==." },
+    { f:"Frontal lobes", b:"Behind the forehead. ==Planning, judgment==, speech production, muscle movement, executive function." },
+    { f:"Parietal lobes", b:"Top of the head toward the rear. ==Touch and body position==." },
+    { f:"Occipital lobes", b:"Back of the head. ==Vision==." },
+    { f:"Temporal lobes", b:"Above the ears. ==Hearing== and language processing." },
+    { f:"Motor cortex", b:"Rear of the frontal lobes. ==Controls voluntary movement==." },
+    { f:"Somatosensory cortex", b:"Front of the parietal lobes. Registers ==body and movement sensations==." },
+    { f:"Association areas", b:"Cortex areas for ==higher mental functions==: learning, remembering, thinking, speaking. In all four lobes." },
+    { f:"Broca's area vs Wernicke's area", b:"**Broca's** damage breaks ==speaking==. **Wernicke's** damage breaks ==understanding==." },
+    { f:"Phineas Gage", b:"1848 prefrontal cortex injury. ==Personality and impulse control changed==; memory and intelligence stayed." },
+    { f:"Corpus callosum", b:"The band of neural fibers ==connecting the two hemispheres==." },
+    { f:"Split brain", b:"Surgery cutting the ==corpus callosum==, isolating the two hemispheres." },
+    { f:"Neuroplasticity", b:"The brain's ability to ==change==, especially in childhood, by reorganizing after damage or building new pathways." },
+    { f:"Lesion", b:"==Destroyed or damaged brain tissue==, natural or experimental." },
+    { f:"EEG", b:"Records ==electrical waves== across the brain's surface with scalp electrodes. Sleep stages, seizures." },
+    { f:"MEG", b:"Measures the ==magnetic fields== from the brain's electrical activity." },
+    { f:"CT scan", b:"==X-ray images== from many angles combined into a slice of the brain's structure." },
+    { f:"PET scan", b:"Shows where ==radioactive glucose== goes during a task. Activity." },
+    { f:"MRI vs fMRI", b:"**MRI**: magnetic fields and radio waves, ==structure==. **fMRI**: blood flow across scans, ==function plus structure==." },
+    { f:"Dendrites", b:"Branching extensions that ==receive== messages and conduct them toward the cell body." },
+    { f:"Axon hillock", b:"Where the axon leaves the cell body. ==Sums incoming signals and starts the action potential==." },
+    { f:"Myelin sheath", b:"Fatty layer on the axon. Impulses ==hop node to node==, far faster. Breaks down in multiple sclerosis." },
+    { f:"Glial cells", b:"Cells that ==support, nourish and protect== neurons. About 90% of the brain." },
+    { f:"Action potential", b:"A brief, ==all-or-none electrical impulse== that travels down the axon." },
+    { f:"Depolarization", b:"At threshold, ==sodium channels open and Na⁺ rushes in==; the inside turns positive." },
+    { f:"Refractory period", b:"Right after firing, the cell ==pumps sodium back out== and cannot fire again yet." },
+    { f:"Threshold", b:"The stimulation needed to fire; reached when ==excitatory signals outnumber inhibitory ones==." },
+    { f:"Synapse", b:"The meeting point between neurons; the tiny space is the ==synaptic gap (cleft)==." },
+    { f:"Reuptake", b:"The ==sending neuron reabsorbs== its leftover neurotransmitter." },
+    { f:"Agonist vs antagonist", b:"**Agonist** ==mimics or boosts== a neurotransmitter. **Antagonist** ==blocks== it." },
+    { f:"SSRI", b:"Blocks serotonin reuptake, so ==more serotonin stays in the synapse==. The most prescribed antidepressant." },
+    { f:"Acetylcholine (ACh)", b:"==Muscle movement, learning, memory==. Deficit: Alzheimer's. Blocked: paralysis." },
+    { f:"Dopamine", b:"==Movement, reward, motivation==. Too little: Parkinson's. Too much: schizophrenia." },
+    { f:"Serotonin", b:"==Mood, sleep, appetite==. Too little: depression." },
+    { f:"Norepinephrine", b:"==Alertness and arousal==. Too little: depression." },
+    { f:"GABA vs glutamate", b:"**GABA** is the ==brake== (inhibitory). **Glutamate** is the ==gas== (excitatory)." },
+    { f:"Endorphins", b:"\"Morphine within\": ==natural painkillers== linked to pleasure, released during exercise." },
+    { f:"Depressants", b:"==Slow== neural activity and body functions: alcohol, barbiturates, opiates." },
+    { f:"Stimulants", b:"==Speed up== neural activity and body functions: caffeine, nicotine, cocaine, amphetamines." },
+    { f:"Hallucinogens", b:"==Distort perception== and evoke images without sensory input: LSD, THC." },
+    { f:"Tolerance", b:"Needing ==larger and larger doses== for the same effect." },
+    { f:"Withdrawal", b:"The ==pain, tremors, anxiety and depression== that come with stopping a drug." },
+    { f:"Hormones", b:"==Chemical messengers== made by endocrine glands that travel ==through the bloodstream==." },
+    { f:"Pituitary gland", b:"The ==master gland==, controlled by the hypothalamus. Growth hormone, oxytocin." },
+    { f:"Oxytocin", b:"Made in the ==hypothalamus==, stored and released by the ==posterior pituitary==. Bonding." },
+    { f:"Adrenal glands", b:"Above the kidneys. Secrete hormones that ==arouse the body in times of stress==." },
+    { f:"Central nervous system", b:"The ==brain and spinal cord==. The decision maker." },
+    { f:"Peripheral nervous system", b:"Sensory and motor neurons ==connecting the CNS to the rest of the body==." },
+    { f:"Somatic nervous system", b:"PNS division for ==voluntary skeletal muscle==." },
+    { f:"Autonomic nervous system", b:"PNS division that is ==self-regulating==: glands and internal organs." },
+    { f:"Sympathetic vs parasympathetic", b:"**Sympathetic** ==arouses== (fight or flight). **Parasympathetic** ==calms== (rest and digest)." },
+    { f:"Sensory, motor, interneurons", b:"**Sensory**: body to CNS. **Motor**: CNS to muscles. **Interneurons**: ==process inside the CNS==." },
+    { f:"Nature vs nurture", b:"**Nature**: ==genetic predispositions== from parents. **Nurture**: every nongenetic influence, ==prenatal included==." },
+    { f:"Polygenic", b:"A trait shaped by ==many genes working together==." },
+    { f:"Gene-environment interaction", b:"An inherited risk ==plus== an environmental trigger producing the outcome." },
+    { f:"Monozygotic vs dizygotic", b:"**Monozygotic** (identical): one egg, ==100% shared genes==. **Dizygotic** (fraternal): two eggs, about half." },
+    { f:"Proximate vs ultimate", b:"**Proximate**: the ==immediate mechanism==. **Ultimate**: the ==evolutionary reason== it was selected." },
+    { f:"Natural selection", b:"Inherited traits that ==help an organism survive and reproduce== get passed on." },
+    { f:"Circadian rhythm", b:"The ==24-hour biological clock==, reset by light through the suprachiasmatic nucleus." },
+    { f:"REM sleep", b:"==Vivid dreams==, active brain, paralyzed muscles. Also called paradoxical sleep." },
+    { f:"Sleep apnea vs narcolepsy", b:"**Apnea**: ==breathing stops==. **Narcolepsy**: sudden ==sleep attacks== into REM." },
+    { f:"Activation-synthesis", b:"Dreams are the brain ==making a story out of random neural firing==." },
+    { f:"Manifest vs latent content", b:"Freud: **manifest** = the ==remembered storyline==; **latent** = the ==hidden meaning==." },
+    { f:"Functionalism", b:"Early school: how mental processes help us ==adapt, survive and flourish==." },
+    { f:"Psychometrics", b:"The ==measuring of human abilities, attitudes and traits==." },
+    { f:"Median of an even set", b:"Sort, then ==average the two middle numbers==." },
+    { f:"Operational definition", b:"Exactly ==how a variable is measured==, so others can replicate the study." }
+  ],
+
+  abbr: { "AAQ":"article analysis question (the research-methods free response)", "MCQ":"multiple choice question", "CNS":"central nervous system", "PNS":"peripheral nervous system", "ACh":"acetylcholine", "GABA":"gamma-aminobutyric acid", "SSRI":"selective serotonin reuptake inhibitor", "MS":"multiple sclerosis", "Na⁺":"sodium ion", "EEG":"electroencephalogram", "MEG":"magnetoencephalography", "CT":"computed tomography", "PET":"positron emission tomography", "MRI":"magnetic resonance imaging", "fMRI":"functional MRI", "REM":"rapid eye movement", "N1/N2/N3":"the three non-REM sleep stages", "IV":"independent variable", "DV":"dependent variable", "APA":"American Psychological Association", "DSM-5":"the diagnostic manual of mental disorders", "TSH":"thyroid-stimulating hormone", "ACTH":"adrenocorticotropic hormone", "LSD":"lysergic acid diethylamide", "THC":"the active ingredient in marijuana" }
+};
+
+/* ═══ machinery. nothing below needs editing. ═══ */
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const ICON={
+ apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ psych:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ phys:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ pre:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ sem:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ span:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ apwh:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ biz:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ mor:'<path d="M13 4.5v17"/><path d="M7.5 9.5h11"/>',
+ csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
+};
+const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables"};
+
+/* header */
+document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
+document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
+$("#title").textContent=GUIDE.title;
+if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
+$("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
+(function(){
+  const c=$("#crow");
+  c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  if(GUIDE.test){
+    const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
+    const now=new Date(); now.setHours(0,0,0,0);
+    const days=Math.round((t-now)/864e5);
+    const md=`${t.getMonth()+1}/${t.getDate()}`+(GUIDE.end?`–${e.getMonth()+1}/${e.getDate()}`:"");
+    let txt, past=e<now;
+    if(past)txt=`test was ${md}`;
+    else if(days<=0)txt=`test today · ${md}`;
+    else if(days===1)txt=`test tomorrow · ${md}`;
+    else if(days<=14)txt=`test in ${days} days · ${md}`;
+    else txt=`test ${md}`;
+    c.appendChild(el("span","chip"+(past?" past":" due"),esc(txt)));
+  }
+  if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
+})();
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables};
+const tabs=[];
+PANES.forEach((id,i)=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  builders[id](sec); root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+function show(id,user){
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
+/* outline */
+function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
+function extras(s){
+  let h="";
+  if(s.rows)h+=`<dl class="rows">${s.rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${fmt(v)}</dd>`).join("")}</dl>`;
+  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
+  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
+  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
+  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
+  return h;
+}
+function buildOutline(sec){
+  if(GUIDE.top?.length){
+    sec.appendChild(shead("start here","the whole guide in one screen"));
+    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  }
+  const list=GUIDE.outline||[]; if(!list.length)return;
+  const n3=list.filter(s=>s.w===3).length;
+  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
+  const g=el("div","group");
+  list.forEach((s,i)=>{
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
+    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
+    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body);
+  });
+  sec.appendChild(g);
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    sec.appendChild(shead("abbreviations"));
+    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+  }
+}
+
+/* practice mc */
+function buildPractice(sec){
+  const qs=GUIDE.practice||[]; let done=0, right=0;
+  sec.appendChild(shead("practice",`${qs.length} questions`));
+  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  qs.forEach((q,i)=>{
+    const card=el("div","group q");
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
+      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      if(card.classList.contains("done"))return;
+      card.classList.add("done"); const j=+b.dataset.i;
+      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+    }));
+    sec.appendChild(card);
+  });
+  sec.appendChild(sc);
+  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+}
+
+/* problems / worked examples */
+function buildProblems(sec){
+  const ps=GUIDE.problems||[];
+  sec.appendChild(shead("problems",`${ps.length} to work`));
+  ps.forEach((p,i)=>{
+    const card=el("div","group prob");
+    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    const go=card.querySelector(".go");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    sec.appendChild(card);
+  });
+}
+
+/* formulas */
+function buildFormulas(sec){
+  const fs=GUIDE.formulas||[];
+  sec.appendChild(shead("formulas",`${fs.length}`));
+  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+}
+
+/* flashcards */
+function buildCards(sec){
+  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  sec.appendChild(shead("cards",`${cs.length}`));
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
+  const cnt=nav.querySelector("#cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const flip=()=>fc.classList.toggle("flip");
+  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
+  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
+  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
+  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  draw();
+}
+
+/* timeline */
+function buildTimeline(sec){
+  const ts=GUIDE.timeline||[];
+  sec.appendChild(shead("timeline",`${ts.length} events`));
+  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+}
+
+/* checklist */
+function buildChecklist(sec){
+  const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+  sec.appendChild(shead("checklist",`${cs.length} items`));
+  const g=el("div","group");
+  cs.forEach((c,i)=>{
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
+    g.appendChild(b);
+  });
+  sec.appendChild(g);
+}
+
+/* cram sheet: [{h:"group", d:"optional", items:[{n:"name", y:"date", t:"one line"}]}] */
+function buildCram(sec){
+  (GUIDE.cram||[]).forEach(g=>{
+    const it=g.items||[];
+    sec.appendChild(shead(g.h||"cram sheet",g.d||`${it.length}`));
+    sec.appendChild(el("div","group",it.map(c=>`<div class="cr"><div class="n"><span>${fmt(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${fmt(c.t)}</div></div>`).join("")));
+  });
+}
+
+/* tables: [{h:"title", d:"optional", cols:["a","b"], rows:[["..",".."]]}]. stacks into cards on a phone */
+function buildTables(sec){
+  (GUIDE.tables||[]).forEach(tb=>{
+    const cols=tb.cols||[], rows=tb.rows||[];
+    sec.appendChild(shead(tb.h||"table",tb.d||`${rows.length}`));
+    sec.appendChild(el("div","group",`<table class="tbl"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table>`));
+  });
+}
+
+/* theme (shared with the homepage via localStorage "theme") */
+const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
+function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+function setTheme(mode){
+  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
+  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+}
+segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
+(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
+})();
+requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
+document.fonts?.ready.then(()=>{moveThumb();moveP()});
+
+/* sticky bar shadow + staggered reveal */
+(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
