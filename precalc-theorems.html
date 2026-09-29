@@ -133,6 +133,18 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
 .steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
 .steps li + li{border-top:1px solid var(--line)}
+/* line-by-line work | why (math and physics worked steps) */
+.work{margin:0;padding:0;list-style:none}
+.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
+.work li + li{border-top:1px solid var(--line)}
+.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.work .wm.cont{padding-left:1.1em}
+.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink);padding-left:12px;border-left:2px solid var(--line)}
+.work .wy:empty{border-left-color:transparent}
+.work li.hd{padding:0 0 4px}
+.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
+.work li.hd .wh + .wh{padding-left:14px}
+@media (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0;color:var(--ink2)}.work li.hd{display:none}}
 .abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
 .abbr b{color:var(--ink);font-weight:600}
 
@@ -390,16 +402,16 @@ const GUIDE = {
   ],
 
   problems: [
-    {"q":"**Quotient from rectangular**: (√2 − i√6) / (√3 + i)","steps":["Top: r = √(2 + 6) = √8 = 2√2. tan θ = −√6/√2 = −√3, QIV: ==300°==.","Bottom: r = √(3 + 1) = 2. tan θ = 1/√3, QI: ==30°==.","Divide r's: 2√2/2 = √2. Subtract angles: 300° − 30° = 270°.","√2(cos 270° + i sin 270°) = √2(0 − i)."],"ans":"−√2 i"},
-    {"q":"**De Moivre from rectangular**: (−1 + i√3)⁴","steps":["r = √(1 + 3) = 2. tan θ = √3/(−1) = −√3, QII: ==120°==.","2⁴ = 16. 4 · 120° = 480°, minus 360° = ==120°==.","16(cos 120° + i sin 120°) = 16(−½) + 16(√3/2)i"],"ans":"−8 + 8√3 i"},
-    {"q":"**Fifth roots, degrees then radians** (warm-up): 1 + i√3, n = 5","steps":["r = √(1 + 3) = 2, θ = 60°. ⁵√2 stays a radical.","First: 60°/5 = 12°. Spacing: 360°/5 = 72°.","Degrees: ⁵√2 cis 12°, 84°, 156°, 228°, 300°.","Radians: θ = π/3, so first = π/15; spacing 2π/5 = 6π/15: π/15, 7π/15, 13π/15, 19π/15, 25π/15 = 5π/3."],"ans":"⁵√2 cis 12°, 84°, 156°, 228°, 300°  (or π/15, 7π/15, 13π/15, 19π/15, 5π/3)"},
-    {"q":"**Solve, trig form**: x³ − (−4√2 + 4i√2) = 0","steps":["Isolate: x³ = −4√2 + 4i√2.","r = √(32 + 32) = √64 = 8. tan θ = −1, QII: ==135°==.","∛8 = 2. 135°/3 = 45°. Add 120° twice."],"ans":"2 cis 45°, 2 cis 165°, 2 cis 285°"},
-    {"q":"**Solve, rectangular form**: x⁴ + 16 = 0","steps":["x⁴ = −16 = ==16 cis 180°==. !!Not ±2i!!: (2i)⁴ = 16.","∜16 = 2. 180°/4 = 45°, spacing 90°: 2 cis 45°, 135°, 225°, 315°.","2 cis 45° = 2(√2/2 + (√2/2)i) = √2 + √2 i, and the same size with every sign combination."],"ans":"√2 + √2 i, −√2 + √2 i, −√2 − √2 i, √2 − √2 i"},
-    {"q":"**Real number on top**: 7 / (√3 + i)","steps":["7 = 7 + 0i = ==7 cis 0°==.","√3 + i: r = √(3 + 1) = 2, θ = 30°.","(7/2) cis(0° − 30°) = (7/2) cis(−30°). !!Negative, so add 360°!!: (7/2) cis 330°.","(7/2)(√3/2 − ½i) = 7√3/4 − (7/4)i"],"ans":"7√3/4 − (7/4)i"},
-    {"q":"**De Moivre in radians**: [√2(cos 5π/6 + i sin 5π/6)]⁴","steps":["(√2)⁴ = 4. 4 · 5π/6 = 20π/6 = 10π/3.","Subtract 2π (6π/3): ==4π/3==.","4(cos 4π/3 + i sin 4π/3) = 4(−½) + 4(−√3/2)i"],"ans":"−2 − 2√3 i"},
-    {"q":"**Odd angle that lands on the circle**: (√2 cis 105°)⁴","steps":["(√2)⁴ = 4.","4 · 105° = 420°. Subtract 360°: ==60°==.","4(cos 60° + i sin 60°) = 4(½) + 4(√3/2)i"],"ans":"2 + 2√3 i"},
-    {"q":"**One root given** (homework): one cube root of a number is 2 + 2i√3. Find the other two in rectangular form.","steps":["2 + 2i√3: r = √(4 + 12) = 4, θ = 60°.","Cube roots are ==120° apart==: 180° and 300°.","4 cis 180° = −4. 4 cis 300° = 4(½ − (√3/2)i) = 2 − 2i√3."],"ans":"−4 and 2 − 2i√3"},
-    {"q":"**Mandelbrot set**: is z = −1 + i in the set?","steps":["|z| = √(1 + 1) = √2 ≈ 1.4, under 2.","z² + z = (1 − 2i + i²) + (−1 + i) = −2i − 1 + i = −1 − i. |−1 − i| = √2, still under 2.","(z² + z)² + z = (−1 − i)² + (−1 + i) = (1 + 2i + i²) − 1 + i = 2i − 1 + i = −1 + 3i.","|−1 + 3i| = √(1 + 9) = √10 ≈ 3.2, ==more than 2==. !!Two checks passed, the third fails!!."],"ans":"Not in the set"},
+    {"q": "**Quotient from rectangular**: (√2 − i√6) / (√3 + i)", "steps": [["r₁ = √((√2)² + (−√6)²) = √(2 + 6) = 2√2", "Top first. √8 = 2√2."], ["θ₁ = tan⁻¹(−√6/√2) = tan⁻¹(−√3) = −60°", "tan⁻¹ only gives QI or QIV."], ["θ₁ = −60° + 360° = ==300°==", "x > 0, y < 0 is QIV: add 360°."], ["r₂ = √((√3)² + 1²) = √4 = 2", "Bottom."], ["θ₂ = tan⁻¹(1/√3) = ==30°==", "Both positive: QI, no fix."], ["(2√2 cis 300°) / (2 cis 30°) = (2√2/2) cis(300° − 30°)", "**Quotient theorem**: divide the r's, subtract the θ's."], ["= √2 cis 270°", ""], ["= √2(cos 270° + i sin 270°)", "Write cis out."], ["= √2(0 − i) = −√2 i", "270° points straight down: cos 0, sin −1."]], "ans": "−√2 i"},
+    {"q": "**De Moivre from rectangular**: (−1 + i√3)⁴", "steps": [["r = √((−1)² + (√3)²) = √4 = 2", "Convert first."], ["θ = tan⁻¹(√3/−1) = tan⁻¹(−√3) = −60°", ""], ["θ = −60° + 180° = ==120°==", "x < 0, y > 0 is QII: add 180°."], ["(−1 + i√3)⁴ = (2 cis 120°)⁴", ""], ["= 2⁴ cis(4 · 120°) = 16 cis 480°", "**De Moivre**: rⁿ and nθ."], ["= 16 cis 120°", "480° − 360° = 120°."], ["= 16(−½ + (√3/2)i)", "QII: cos −, sin +."], ["= −8 + 8√3 i", ""]], "ans": "−8 + 8√3 i"},
+    {"q": "**Fifth roots, degrees then radians** (warm-up): 1 + i√3, n = 5", "steps": [["r = √(1² + (√3)²) = √4 = 2", "Convert first."], ["θ = tan⁻¹(√3/1) = 60°", "Both positive: QI."], ["⁵√2 cis((60° + 360°k)/5)", "**nth root theorem**, k = 0 to 4."], ["= ⁵√2 cis(12° + 72°k)", "⁵√2 stays a radical. Fifth roots sit 72° apart."], ["= ⁵√2 cis 12°, 84°, 156°, 228°, 300°", "Add 72° four times, then stop."], ["θ = π/3: first π/15, spacing 2π/5 = 6π/15", "Radians: same steps."], ["= ⁵√2 cis π/15, 7π/15, 13π/15, 19π/15, 5π/3", "25π/15 = 5π/3."]], "ans": "⁵√2 cis 12°, 84°, 156°, 228°, 300°  (or π/15, 7π/15, 13π/15, 19π/15, 5π/3)"},
+    {"q": "**Solve, trig form**: x³ − (−4√2 + 4i√2) = 0", "steps": [["x³ = −4√2 + 4i√2", "Isolate x³."], ["r = √((−4√2)² + (4√2)²) = √(32 + 32) = 8", "(4√2)² = 16 · 2 = 32. √64 = 8."], ["θ = tan⁻¹(4√2/−4√2) = tan⁻¹(−1) = −45°", ""], ["θ = −45° + 180° = ==135°==", "x < 0, y > 0 is QII: add 180°."], ["x = ∛8 cis((135° + 360°k)/3)", "**nth root theorem**, k = 0, 1, 2."], ["= 2 cis(45° + 120°k)", "∛8 = 2. Cube roots sit 120° apart."], ["= 2 cis 45°, 2 cis 165°, 2 cis 285°", ""]], "ans": "2 cis 45°, 2 cis 165°, 2 cis 285°"},
+    {"q": "**Solve, rectangular form**: x⁴ + 16 = 0", "steps": [["x⁴ = −16", "Isolate x⁴."], ["r = 16, θ = ==180°==", "−16 + 0i sits on the negative real axis. !!Not ±2i!!: (2i)⁴ = +16."], ["x = ∜16 cis((180° + 360°k)/4)", "**nth root theorem**, k = 0 to 3."], ["= 2 cis(45° + 90°k)", "∜16 = 2. Fourth roots sit 90° apart."], ["k = 0: 2 cis 45° = 2(√2/2 + (√2/2)i) = √2 + √2 i", "2 · √2/2 = √2."], ["k = 1: 2 cis 135° = 2(−√2/2 + (√2/2)i) = −√2 + √2 i", "QII."], ["k = 2: 2 cis 225° = 2(−√2/2 − (√2/2)i) = −√2 − √2 i", "QIII."], ["k = 3: 2 cis 315° = 2(√2/2 − (√2/2)i) = √2 − √2 i", "QIV."]], "ans": "√2 + √2 i, −√2 + √2 i, −√2 − √2 i, √2 − √2 i"},
+    {"q": "**Real number on top**: 7 / (√3 + i)", "steps": [["7 = 7 + 0i: r₁ = 7, θ₁ = ==0°==", "A positive real number is its own r, at 0°."], ["r₂ = √((√3)² + 1²) = √4 = 2", "Bottom."], ["θ₂ = tan⁻¹(1/√3) = 30°", "Both positive: QI."], ["(7 cis 0°) / (2 cis 30°) = (7/2) cis(0° − 30°)", "**Quotient theorem**."], ["= (7/2) cis(−30°)", ""], ["= (7/2) cis 330°", "!!Negative, so add 360°!!."], ["= (7/2)(√3/2 − ½ i)", "QIV: cos +, sin −."], ["= 7√3/4 − (7/4)i", ""]], "ans": "7√3/4 − (7/4)i"},
+    {"q": "**De Moivre in radians**: [√2(cos 5π/6 + i sin 5π/6)]⁴", "steps": [["= (√2)⁴ cis(4 · 5π/6)", "**De Moivre**: rⁿ and nθ."], ["= 4 cis 20π/6 = 4 cis 10π/3", "(√2)⁴ = 4. Simplify."], ["= 4 cis 4π/3", "10π/3 − 6π/3 = ==4π/3== (subtract 2π)."], ["= 4(−½ − (√3/2)i)", "QIII: both negative."], ["= −2 − 2√3 i", ""]], "ans": "−2 − 2√3 i"},
+    {"q": "**Odd angle that lands on the circle**: (√2 cis 105°)⁴", "steps": [["= (√2)⁴ cis(4 · 105°)", "**De Moivre**: rⁿ and nθ."], ["= 4 cis 420°", "(√2)⁴ = 4."], ["= 4 cis 60°", "420° − 360° = ==60°==. 105° isn't on the circle, but 4 · 105° lands on it."], ["= 4(½ + (√3/2)i)", "Unit circle at 60°."], ["= 2 + 2√3 i", ""]], "ans": "2 + 2√3 i"},
+    {"q": "**One root given** (homework): one cube root of a number is 2 + 2i√3. Find the other two in rectangular form.", "steps": [["r = √(2² + (2√3)²) = √(4 + 12) = 4", "Convert the given root."], ["θ = tan⁻¹(2√3/2) = tan⁻¹(√3) = 60°", "Both positive: QI."], ["60° + 120° = 180°, 180° + 120° = 300°", "All cube roots share r and sit ==120° apart==."], ["4 cis 180° = 4(−1 + 0i) = −4", ""], ["4 cis 300° = 4(½ − (√3/2)i) = 2 − 2i√3", "QIV: cos +, sin −."]], "ans": "−4 and 2 − 2i√3"},
+    {"q": "**Mandelbrot set**: is z = −1 + i in the set?", "steps": [["|−1 + i| = √(1 + 1) = √2 ≈ 1.4", "Not over 2."], ["z² + z = (−1 + i)² + (−1 + i)", "Square, then add z."], ["= (1 − 2i + i²) − 1 + i = −1 − i", "(−1 + i)² = 1 − 2i − 1 = −2i."], ["|−1 − i| = √2 ≈ 1.4", "Still not over 2."], ["(−1 − i)² + (−1 + i) = (1 + 2i + i²) − 1 + i", "Square the last result, add z."], ["= 2i − 1 + i = −1 + 3i", ""], ["|−1 + 3i| = √(1 + 9) = √10 ≈ 3.2", "==Over 2==: not in the set. !!Two checks passed, the third fails!!."]], "ans": "Not in the set"},
   ],
 
 
@@ -535,12 +547,14 @@ function buildPractice(sec){
 }
 
 /* problems / worked examples */
+/* steps: plain strings render numbered; [work, why] pairs render line by line, work left, why right */
+function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps" style="margin-top:0">${st.map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${fmt(m)}</div><div class="wy">${y?fmt(y):""}</div></li>`}).join("")}</ul>`}
 function buildProblems(sec){
   const ps=GUIDE.problems||[];
   sec.appendChild(shead("problems",`${ps.length} to work`));
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
-    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
     const go=card.querySelector(".go");
     go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
     sec.appendChild(card);
