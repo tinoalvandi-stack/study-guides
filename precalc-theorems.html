@@ -14,7 +14,7 @@
 <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+/* ═══ valentino guides · guide template v2 (kinari, wide layout, sept 29 2026) ═══
    Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
 @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
 @font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
@@ -38,15 +38,21 @@
   --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--barh,56px) + 58px)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
-  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+  padding-bottom:calc(56px + env(safe-area-inset-bottom))}
 button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
-.lc{text-transform:lowercase}
+:root{--maxw:1180px;--gut:clamp(14px,3.4vw,36px)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* reading aids */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;background:var(--cls)}
 
 /* bar */
 .bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
@@ -62,98 +68,282 @@ a{color:inherit;text-decoration:none}
 .seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .bar .seg{margin-left:auto}
 
-/* intro */
+/* hero */
 main{padding-top:22px}
-.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t13);font-weight:600;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
 .cname svg{width:20px;height:20px;flex:none}
-.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
 .chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
 .chip.past{color:var(--ink3)}
-h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
-.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+h2.title{margin:0 0 8px;font-family:var(--display);font-size:clamp(30px,5.2vw,50px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.02;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 16px;font-size:var(--t16);line-height:1.5;color:var(--ink2);max-width:70ch}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
 
 /* pane switcher */
-.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes{display:inline-flex;max-width:100%;gap:2px;margin:6px 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none;vertical-align:top}
 .panes::-webkit-scrollbar{display:none}
-.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button{flex:0 0 auto;position:relative;z-index:2;padding:8px 16px;border-radius:8px;text-align:center;font-size:var(--t15);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
 .panes button[aria-selected="true"]{color:var(--on-accent)}
 .panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .panes.one{display:none}
-.pane{display:none}
+@media (max-width:599px){.panes{display:flex}.panes button{flex:1 0 auto;padding:7px 12px;font-size:var(--t13)}}
+.pane{display:none;container-type:inline-size}
 .pane.on{display:block;animation:rise .38s var(--spring) both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* section head */
-.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+/* small section label */
+.sh{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
 .sh:first-child{margin-top:0}
-.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;white-space:nowrap}
 .sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
-.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;white-space:nowrap}
 
-/* cards + groups */
-.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+/* ═══ outline: side menu + all-open sections ═══ */
+.ol{display:grid;grid-template-columns:1fr;gap:0 32px;align-items:start}
+@media (min-width:960px){.ol{grid-template-columns:212px minmax(0,1fr)}}
+.toc{position:sticky;top:var(--barh,56px);z-index:30;background:var(--paper);margin:0 calc(var(--gut) * -1) 14px;padding:6px var(--gut) 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.toc::-webkit-scrollbar{display:none}
+.toc .tl{display:none}
+.toc a{flex:none;display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:var(--r-chip);font-size:var(--t13);font-weight:500;color:var(--ink2);border:1px solid var(--line);background:var(--surface);white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.toc a.on{color:var(--on-accent);background:var(--ink);border-color:var(--ink)}
+.toc i{flex:none;width:8px;height:8px;border-radius:3px;border:1.5px solid var(--cls)}
+.toc i.w3{background:var(--cls)} .toc i.w2{background:color-mix(in srgb,var(--cls) 40%,transparent)}
+.toc a.on i{border-color:var(--on-accent)} .toc a.on i.w3{background:var(--on-accent)}
+@media (min-width:960px){
+  .toc{top:calc(var(--barh,56px) + 12px);margin:0;padding:0;display:block;overflow:visible;border:0;background:none;max-height:calc(100vh - var(--barh,56px) - 32px);overflow-y:auto}
+  .toc .tl{display:block;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;margin:2px 0 8px 10px}
+  .toc a{display:flex;align-items:flex-start;white-space:normal;border:0;background:none;padding:7px 10px;line-height:1.3;border-radius:8px}
+  .toc a i{margin-top:5px}
+  .toc a:hover{background:var(--surface)}
+  .toc a.on{background:var(--surface);color:var(--ink);box-shadow:inset 2px 0 0 var(--cls);border-radius:0 8px 8px 0}
+  .toc a.on i{border-color:var(--cls)} .toc a.on i.w3{background:var(--cls)}
+  .toc .leg{display:flex;flex-direction:column;gap:4px;margin:14px 0 0 10px;padding-top:12px;border-top:1px solid var(--line);font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
+  .toc .leg span{display:flex;align-items:center;gap:7px}
+}
+.toc .leg{display:none}
+@media (min-width:960px){.toc .leg{display:flex}}
+
+/* start here tiles */
+.tops{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:26px;counter-reset:tp}
+.tops .tp{counter-increment:tp;position:relative;padding:14px 16px 14px 48px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
+.tops .tp::before{content:counter(tp);position:absolute;left:14px;top:13px;width:24px;height:24px;border-radius:7px;background:var(--cls);color:var(--surface);font-weight:650;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+
+/* section card */
+.sec{container-type:inline-size;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);margin-bottom:16px;scroll-margin-top:calc(var(--barh,56px) + 60px);overflow:hidden}
+@media (min-width:960px){.sec{scroll-margin-top:calc(var(--barh,56px) + 16px)}}
+.sec > header{display:flex;align-items:flex-start;gap:12px;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.sec .num{flex:none;font-family:var(--display);font-weight:var(--w-d);font-size:var(--t15);color:var(--cls);font-variant-numeric:tabular-nums;padding-top:4px;min-width:1.4em}
+.sec .ht{flex:1;min-width:0}
+.sec h3{margin:0;font-family:var(--display);font-size:clamp(20px,2.4vw,24px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.sec .sd{margin:3px 0 0;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;white-space:nowrap;margin-top:3px}
+@container (max-width:520px){.sec > header{flex-wrap:wrap;row-gap:6px}.sec .ht{flex:1 1 calc(100% - 3em)}.sec > header .w{order:3;margin:0 0 0 calc(1.4em + 12px)}}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 14%,transparent);color:var(--cls)}
+.sb{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:16px 18px 18px}
+@container (min-width:700px){
+  .sb .duo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+  .sb .duo.wide-side{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+}
+.sb .duo{display:grid;gap:16px}
+.duo > .main,.duo > .side{container-type:inline-size;min-width:0}
+.sb .main > :first-child{margin-top:0}
+.sb .main.solo{max-width:72ch}
+.sb p{margin:0 0 10px;line-height:1.55}
+.sb p:last-child{margin-bottom:0}
+b.kw{font-weight:680;color:var(--ink)}
+
+/* bullets */
+.pts{margin:10px 0 0;padding:0;list-style:none}
+.pts:first-child{margin-top:0}
+.pts li{position:relative;padding:4px 0 4px 18px;line-height:1.5}
+.pts li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:2px;background:var(--cls)}
+.pts.two{columns:2 220px;column-gap:24px}
+.pts.two li{break-inside:avoid}
+
+/* label rows */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:14px}
+.rows:first-child{margin-top:0}
+.rows dt{padding:7px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:22px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:7px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* numbered steps */
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps:first-child{margin-top:0}
+.steps li{position:relative;padding:7px 0 7px 32px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:21px;height:21px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:650;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+
+/* flow: cause -> effect chain */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 0;margin:0;padding:0;list-style:none}
+.flow li{position:relative;flex:1 1 0;min-width:120px;display:flex;align-items:center;padding:10px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.35;margin-right:26px}
+.flow li:last-child{margin-right:0;border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:12px;height:12px;margin-top:-6px;background:var(--ink3);clip-path:polygon(0 15%,100% 50%,0 85%)}
+@container (max-width:519px){
+  .flow{flex-direction:column;gap:0}
+  .flow li{margin:0 0 22px;min-width:0}
+  .flow li:last-child{margin-bottom:0}
+  .flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;margin:0 0 0 -6px;clip-path:polygon(15% 0,85% 0,50% 100%)}
+}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tiles > div{padding:11px 13px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);border-top:3px solid var(--cls)}
+.tiles h5{margin:0 0 3px;font-size:var(--t15);font-weight:650;line-height:1.3}
+.tiles p{margin:0;font-size:var(--t13);line-height:1.45;color:var(--ink)}
+.tiles .tk{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--cls);text-transform:lowercase}
+
+/* tree (org chart; indented list on narrow cards) */
+.tree{overflow-x:auto}
+.tree ul{position:relative;display:flex;justify-content:center;margin:0;padding:16px 0 0;list-style:none}
+.tree > ul{padding-top:0}
+.tree li{position:relative;flex:1 1 0;padding:16px 4px 0;text-align:center;min-width:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:16px;border-top:1.5px solid var(--line2)}
+.tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line2)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:1.5px solid var(--line2);border-radius:0 6px 0 0}
+.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:16px;border-left:1.5px solid var(--line2)}
+.tree .nd{display:inline-block;max-width:100%;padding:7px 10px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t13);line-height:1.3;vertical-align:top}
+.tree .nd b{display:block;font-size:var(--t15);font-weight:650}
+.tree .nd span{display:block;color:var(--ink2);margin-top:2px}
+.tree > ul > li > .nd{background:var(--cls);border-color:var(--cls);color:var(--surface)}
+.tree > ul > li > .nd span{color:color-mix(in srgb,var(--surface) 85%,transparent)}
+.tree > ul > li > ul > li > .nd{border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+@container (max-width:379px){
+  .tree ul{display:block;padding:0 0 0 18px}
+  .tree > ul{padding-left:0}
+  .tree li{padding:6px 0 0 16px;text-align:left}
+  .tree > ul > li{padding-left:0}
+  .tree li::before{top:0;left:0;right:auto;width:12px;height:22px;border-top:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li::after{top:22px;left:0;right:auto;width:0;height:calc(100% - 22px);border:0;border-left:1.5px solid var(--line2);border-radius:0}
+  .tree li:last-child::after{display:none}
+  .tree li:first-child::before,.tree li:last-child::before{border-top:0;border-right:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li:first-child::after{border-radius:0}
+  .tree > ul > li::before,.tree > ul > li::after{display:none}
+  .tree ul ul::before{display:none}
+  .tree li:only-child::before{display:block}
+  .tree li:only-child{padding-top:6px}
+  .tree > ul > li:only-child{padding:0}
+  .tree > ul > li:only-child::before,.tree > ul > li:only-child::after{display:none}
+}
+
+/* figure (inline svg drawn per guide) */
+.fig{margin:0;padding:14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.fig svg{display:block;width:100%;height:auto;max-height:440px;font-family:var(--sans);overflow:visible}
+.fig figcaption{margin-top:8px;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.fig .ln{fill:none;stroke:var(--ink2);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .lc{fill:none;stroke:var(--cls);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .la{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .lb{fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+.fig .lg{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round}
+.fig .dash{stroke-dasharray:5 5}
+.fig .fc{fill:var(--cls)} .fig .fa{fill:var(--accent)} .fig .fb{fill:var(--bad)} .fig .fg{fill:var(--good)} .fig .fi{fill:var(--ink)}
+.fig .fs{fill:color-mix(in srgb,var(--cls) 18%,var(--surface))}
+.fig .fsa{fill:color-mix(in srgb,var(--accent) 16%,var(--surface))}
+.fig .fp{fill:var(--surface);stroke:var(--line2);stroke-width:1.2}
+.fig .fn{fill:none}
+.fig text{fill:var(--ink);font-size:14px}
+.fig .tm{fill:var(--ink2);font-size:12.5px}
+.fig .tb{font-weight:650}
+.fig .tc{fill:var(--cls);font-weight:650}
+.fig .ta{fill:var(--accent);font-weight:650}
+.fig .tw{fill:var(--surface);font-weight:650}
+.fig .tbd{fill:var(--bad);font-weight:650}
+.fig .mid{text-anchor:middle} .fig .end{text-anchor:end}
+.mk-ink{fill:var(--ink2)} .mk-cls{fill:var(--cls)} .mk-acc{fill:var(--accent)} .mk-bad{fill:var(--bad)}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.cmp > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.cmp h5{margin:0 0 6px;font-size:var(--t13);font-weight:650;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15);line-height:1.45} .cmp p:last-child{margin:0}
+
+/* tables */
+.tbw{overflow-x:auto;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:650}
+.tcap{margin:0 0 8px;font-size:var(--t13);font-weight:600;color:var(--ink2);text-transform:lowercase}
+@container (max-width:519px){
+  .tbw .tbl thead{display:none}
+  .tbw .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbw .tbl tbody tr:first-child{border-top:0}
+  .tbw .tbl td{display:block;padding:0;border:0}
+  .tbw .tbl.two td:not(:first-child)::before{display:none}
+  .tbw .tbl.two td:first-child{margin-bottom:2px}
+  .tbw .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* on the test (example) */
+.exs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.tq{border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.tq .el{display:flex;align-items:center;gap:6px;padding:10px 13px 0;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--accent);text-transform:lowercase}
+.tq .el svg{flex:none}
+.tq .eq{padding:4px 13px 12px;font-size:var(--t15);line-height:1.45;font-weight:500;flex:1}
+.tq .eb{display:flex;align-items:center;justify-content:space-between;width:100%;padding:9px 13px;border-top:1px solid var(--line);font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase}
+.tq .eb .chev{transition:transform .24s var(--spring)}
+.tq.on .eb .chev{transform:rotate(90deg)}
+.tq .ea{display:none;padding:10px 13px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.tq.on .ea{display:block;animation:rise .3s var(--spring) both}
+.tq .ea b.aa{display:block;font-weight:680;margin-bottom:3px}
+.tq .ea .why{color:var(--ink2)}
+
+/* watch out + callouts */
+.watch{border-radius:var(--r-btn);background:color-mix(in srgb,var(--bad) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 30%,var(--line));padding:11px 14px 12px}
+.watch .wl,.callout .cl{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--bad);text-transform:lowercase;margin-bottom:4px}
+.watch ul{margin:0;padding:0;list-style:none}
+.watch li{position:relative;padding:3px 0 3px 16px;font-size:var(--t15);line-height:1.45}
+.watch li::before{content:"";position:absolute;left:1px;top:11px;width:8px;height:2px;border-radius:1px;background:var(--bad)}
+.callout{border-radius:var(--r-btn);padding:10px 14px 11px;font-size:var(--t15);line-height:1.45;background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--cls)}
+.callout.ok{border-left-color:var(--good)} .callout.ok .cl{color:var(--good)}
+.callout.ex{border-left-color:var(--accent)} .callout.ex .cl{color:var(--accent)}
+.callout.cls .cl{color:var(--cls)}
+
+/* terms */
+.terms{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.terms .tl{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;margin-right:2px}
+.term{font-size:var(--t13);font-weight:500;padding:3px 9px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface2);color:var(--ink)}
+
+.abbr{padding:14px 16px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);color:var(--ink2);line-height:1.7}
+.abbr b{color:var(--ink);font-weight:650}
+
+/* generic cards / groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px}
 .card.top{border-left:4px solid var(--cls);padding-left:15px}
 .card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
-.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:12px}
 .row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
 .row + .row,.body + .row{border-top:1px solid var(--line)}
-.row:active{background:var(--surface2)}
 @media (hover:hover){.row:hover{background:var(--surface2)}}
 .rt{min-width:0;flex:1}
-.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rn{display:block;font-size:var(--t16);font-weight:550;line-height:1.3}
 .rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
 .chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
 .row[aria-expanded="true"] .chev{transform:rotate(90deg)}
-.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
-.w3{background:var(--cls);color:var(--surface)}
-.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
 .body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
 .body.on{grid-template-rows:1fr}
 .body > div{overflow:hidden}
-.body .in{padding:12px 16px 14px}
-.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
-.body p:last-child{margin-bottom:0}
-
-/* prose emphasis */
-.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
-.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.trap{color:var(--bad);font-weight:600}
-.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
-.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
-.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
-.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-@media (max-width:479px){.cmp{grid-template-columns:1fr}}
-.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
-.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
-.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
-.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
-.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
-.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
-.steps li + li{border-top:1px solid var(--line)}
-/* line-by-line work | why (math and physics worked steps) */
-.work{margin:0;padding:0;list-style:none}
-.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
-.work li + li{border-top:1px solid var(--line)}
-.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
-.work .wm.cont{padding-left:1.1em}
-.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink);padding-left:12px;border-left:2px solid var(--line)}
-.work .wy:empty{border-left-color:transparent}
-.work li.hd{padding:0 0 4px}
-.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
-.work li.hd .wh + .wh{padding-left:14px}
-@media (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0;color:var(--ink2)}.work li.hd{display:none}}
-.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
-.abbr b{color:var(--ink);font-weight:600}
+.body .in{padding:12px 16px 14px;display:grid;gap:10px}
+.body p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
 
 /* practice mc */
-.q{margin-bottom:10px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:12px;align-items:start}
+.q{margin:0}
 .q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
-.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
 .opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
-.opt:active{background:var(--surface2)}
 @media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
 .opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
 .q.done .opt{cursor:default}
@@ -161,103 +351,145 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
 .opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
 .opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
-.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q .why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
 .q.done .why{display:block}
-.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
-.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.wide{width:100%}
-.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
-.pdfs a{text-decoration:none}
-.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
-@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
-.btn:active{transform:scale(.987)}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease)}
+.scorepill.show{transform:translateX(-50%);opacity:1;pointer-events:auto}
+.scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
+.scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
 
-/* problems + worked examples */
-.prob .qt{padding:14px 16px}
-.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
-.prob.on .reveal{display:block}
-.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
-.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+/* problems */
+.pgrid{display:grid;gap:12px}
+.prob{container-type:inline-size;margin:0}
+.prob .pi{display:grid;grid-template-columns:minmax(0,1fr)}
+.prob .qt{padding:14px 16px;font-size:var(--t16);font-weight:500;line-height:1.45}
+.prob .go{border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.prob .reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block;animation:rise .3s var(--spring) both}
+.prob.on .go .chev{transform:rotate(90deg)}
+@container (min-width:820px){
+  .prob .pi{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .prob .qside{border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .prob .qside .qt{flex:1}
+  .prob .reveal{border-top:0;display:block;min-height:100%}
+  .prob:not(.on) .reveal::before{content:"work it first, then show the steps";display:grid;place-items:center;height:100%;min-height:120px;font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+  .prob:not(.on) .reveal > *{display:none}
+}
+.ans{margin-top:10px;padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);border-left:3px solid var(--good)}
 .ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+.work{margin:0;padding:0;list-style:none}
+.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
+.work li + li{border-top:1px solid var(--line)}
+.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.work .wm.cont{padding-left:1.1em}
+.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink2);padding-left:12px;border-left:2px solid var(--line)}
+.work .wy:empty{border-left-color:transparent}
+.work li.hd{padding:0 0 4px}
+.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
+.work li.hd .wh + .wh{padding-left:14px}
+@container (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0}.work li.hd{display:none}}
 
 /* formulas */
-.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
-.fx:first-child{border-top:0}
-.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
-.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
-.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.fx{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.fx .n{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t16);font-weight:500;overflow-wrap:anywhere}
+.fx .note{font-size:var(--t13);color:var(--ink2);line-height:1.45}
 
 /* flashcards */
-.deck{position:relative;perspective:1200px;margin-bottom:10px}
-.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.dk{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.deck{position:relative;perspective:1200px}
+.fc{position:relative;min-height:230px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
 .fc.flip{transform:rotateY(180deg)}
-.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
-.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:22px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t16);line-height:1.5;color:var(--ink)}
+.fc .tag{position:absolute;left:16px;top:13px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
 .fc .b .tag{color:var(--cls)}
-.dnav{display:flex;align-items:center;gap:8px}
+.dnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px;margin-top:6px}
+.clist > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.clist b{display:block;font-weight:650;margin-bottom:3px}
+.clist span{font-size:var(--t15);line-height:1.45;color:var(--ink)}
 
 /* timeline */
-.tl{position:relative;padding-left:22px}
-.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl .ev{position:relative;padding:6px 0 12px}
-.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
-.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
-.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
-.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+.tln{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.tln .ev{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 18px;padding:12px 16px;border-top:1px solid var(--line);position:relative}
+.tln .ev:first-child{border-top:0}
+.tln .y{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t16);color:var(--cls);font-variant-numeric:tabular-nums;line-height:1.35}
+.tln .t{font-size:var(--t16);font-weight:600;line-height:1.35}
+.tln .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+@media (min-width:900px){.tln .ev{grid-template-columns:110px minmax(0,.9fr) minmax(0,1.3fr)}.tln .d{margin-top:0}}
+@media (max-width:479px){.tln .ev{grid-template-columns:1fr;gap:2px}}
+
+/* cram */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:12px;align-items:start}
+.cgrid .group{margin:0}
+.cgrid .gh{padding:11px 14px;border-bottom:1px solid var(--line);font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;display:flex;justify-content:space-between;gap:10px}
+.cgrid .gh span{color:var(--ink3);font-weight:500}
+.cr{display:grid;grid-template-columns:minmax(0,10em) 1fr;gap:2px 14px;padding:9px 14px;border-top:1px solid var(--line)}
+.gh + .cr{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:650;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables pane */
+.tpane{display:grid;gap:22px}
+.tpane .tblk{container-type:inline-size}
 
 /* checklist */
-.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
-.ck:first-child{border-top:0}
+.ckg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:0 12px}
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:12px 14px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.4;background:var(--surface);border:1px solid var(--line);margin-bottom:8px}
 .ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
 .ck.on .box{background:var(--good);border-color:var(--good)}
 .ck.on .t{color:var(--ink3);text-decoration:line-through}
 .ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
 
-/* label rows inside an outline section: [["why","..."],["what","..."]] */
-.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px}
-.rows dt{padding:6px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:21.75px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
-.rows dd{margin:0;padding:6px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
-.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
-
-/* cram sheet */
-.cr{display:grid;grid-template-columns:minmax(0,11em) 1fr;gap:2px 14px;padding:10px 14px;border-top:1px solid var(--line)}
-.cr:first-child{border-top:0}
-.cr .n{font-size:var(--t15);font-weight:600;line-height:1.35}
-.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
-.cr .t{font-size:var(--t15);line-height:1.45}
-@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
-
-/* tables */
-.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
-.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line)}
-.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
-.tbl tbody tr:first-child td{border-top:0}
-.tbl td:first-child{font-weight:600}
-@media (max-width:599px){
-  .tbl thead{display:none}
-  .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
-  .tbl tbody tr:first-child{border-top:0}
-  .tbl td{display:block;padding:0;border:0}
-  .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
-}
+/* essay panes (leq / prompts) */
+.bul{margin:0;padding-left:18px}
+.bul li{margin:3px 0;line-height:1.45}
+.pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin-top:6px}
+.so{padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:var(--t15)}
+.so .cl{display:block;font-size:11.5px;font-weight:650;color:var(--accent);letter-spacing:.05em;text-transform:lowercase}
+.pace{display:flex;height:34px;border-radius:8px;overflow:hidden;gap:2px}
+.pace > div{display:grid;place-items:center;color:var(--surface);font-size:var(--t12);font-weight:650;background:var(--cls)}
+.pace > div:nth-child(2n){background:var(--accent)}
+.pace > div:nth-child(3n){background:var(--ink2)}
+.fnl{margin:0;padding-left:20px;font-size:var(--t15)}
+.fnl li{margin:4px 0}
 
 /* footer */
-footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
 footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
 footer .upd{display:block;margin-top:6px}
 
-/* reveal on load */
 .rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+
+@media print{
+  :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
+  .bar,.toc,.panes,.skipl,#prog,.scorepill,.tq .eb,.prob .go,.seg{display:none !important}
+  .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
+  .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
+  .prob:not(.on) .reveal::before{display:none}
+  .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
+  @page{margin:.6in}
+}
 </style>
 </head>
 <body>
+<a class="skipl" href="#main">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-ink"/></marker>
+  <marker id="ahc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-cls"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-acc"/></marker>
+  <marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-bad"/></marker>
+</defs></svg>
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="home" href="/" aria-label="all guides">
@@ -278,7 +510,7 @@ footer .upd{display:block;margin-top:6px}
   <h2 class="title rv" id="title"></h2>
   <p class="sub rv" id="sub" hidden></p>
   <div class="pdfs rv" id="pdfs" hidden></div>
-  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div class="rv"><div class="panes" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div></div>
   <div id="root" class="rv"></div>
   <footer>
     study guide written by a student, free to use. not affiliated with the school.
@@ -286,146 +518,824 @@ footer .upd{display:block;margin-top:6px}
     <span class="upd" id="upd"></span>
   </footer>
 </main>
+<div class="scorepill" id="score" aria-live="polite"><span><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
-   GUIDE — the only thing to edit. Delete panes you don't need from
-   `panes`; delete the matching data too. Prose accepts **term**,
-   ==fact== and !!trap!!. Everything is rendered from this object.
+   GUIDE: the only thing to edit. Everything renders from this object.
+   Rules (sept 29 2026, from reader feedback):
+   · bold a key term with **term** the first time it appears in a
+     section. Nothing else is marked inline: no highlights, no
+     underlines, no red text. (The renderer bolds each term once per
+     section and ignores legacy ==x== / !!x!! markers.)
+   · traps go in `watch`, never in the prose.
+   · two short paragraphs max per section; everything else is a shape:
+     pts, flow, steps, rows, tiles, tree, table, cmp, fig.
+   · every tested section gets at least one `ex` (see it on a test).
    ═══════════════════════════════════════════════════════════════════ */
 const GUIDE = {
-  id:    "pre",
-  cls:   "Honors Precalculus BC",
-  title: "Product, quotient & De Moivre's theorems",
-  test:  "2026-09-24",
-  meta:  "5 questions · 30 min · no calculator",
-  sub:   "Cram sheet first. Then print a practice quiz, set a 30-minute timer, and check the key.",
-  pdfs:  [ { t:"practice quiz a", url:"/precalc-theorems-practice-a.pdf" },
-           { t:"practice quiz b", url:"/precalc-theorems-practice-b.pdf" },
-           { t:"practice quiz c", url:"/precalc-theorems-practice-c.pdf" },
-           { t:"all three + keys", url:"/precalc-theorems-quizzes.pdf" } ],
-  pdfsNote: "Each quiz is 5 questions at 3 points, no calculator, the hardest version of each homework type. The fully worked key follows each quiz.",
-  updated: "sept 23, 2026",
-
-  panes: [ "cram", "outline", "problems" ],
-  labels: { outline:"lesson", problems:"worked examples" },
-
-  top: [
-    "Every question is the same three moves: **convert to trig form** (r, then θ from a sketch), apply the theorem, convert back if it says ==rectangular==.",
-    "**Product**: multiply r's, add θ's. **Quotient**: divide r's, subtract θ's. **Power**: rⁿ, nθ. **Roots**: ⁿ√r, θ/n, then keep adding ==360°/n== until you have n of them.",
-    "Final angles live ==between 0° and 360°== (0 and 2π): subtract 360° when over, !!add 360° when negative!!.",
-    "!!Isolate xⁿ before converting!!: x³ + 8i = 0 means x³ = −8i, which is 270°, not 90°.",
-    "Given radians, answer in radians. Odd input angles like 105° or 7π/12 are fine: after you add or multiply, the angle ==lands back on the unit circle== ((√2 cis 105°)⁴ → 420° → 60°)."
-  ],
-
-  cram: [
-    { h:"the four theorems", items:[
-      { n:"product", y:"multiply · add", t:"(r₁ cis θ₁)(r₂ cis θ₂) = ==r₁r₂ cis(θ₁ + θ₂)==. Sum over 360°? Subtract 360°." },
-      { n:"quotient", y:"divide · subtract", t:"(r₁ cis θ₁) / (r₂ cis θ₂) = ==(r₁/r₂) cis(θ₁ − θ₂)==. !!Negative angle: add 360°!!." },
-      { n:"De Moivre (powers)", y:"[r cis θ]ⁿ", t:"= ==rⁿ cis(nθ)==. Then subtract 360° if it runs over: 675° − 360° = 315°." },
-      { n:"nth roots", y:"k = 0, 1, … n − 1", t:"ⁿ√r cis(θ/n + 360°k/n). ==Exactly n roots==, same length, 360°/n apart. !!Stop at n!!: the next one repeats the first." },
-      { n:"cis", y:"shorthand", t:"r cis θ = r(cos θ + i sin θ). Either way of writing it is fine." }
-    ]},
-    { h:"converting (every problem starts here)", items:[
-      { n:"rectangular → trig", y:"x + yi", t:"r = √(x² + y²), tan θ = y/x, then ==sketch for the quadrant==. QII: 180° − ref. QIII: 180° + ref. QIV: 360° − ref." },
-      { n:"on an axis", y:"no tan needed", t:"5 → 0°, 5i → 90°, −5 → 180°, −5i → 270°. A real number like 7 is 7 cis 0°; −64 is 64 cis 180°." },
-      { n:"trig → rectangular", y:"r cis θ", t:"Exact cos and sin, then ==distribute r to both parts==. 2√2(−√3/2 − ½i) = −√6 − √2 i." },
-      { n:"quadrant trap", y:"tan⁻¹", t:"tan⁻¹ only gives QI or QIV. !!Both parts negative is QIII!!: −√3 − i is 210°, not 30°." },
-    ]},
-    { h:"arithmetic that costs points", items:[
-      { n:"radicals multiply", y:"√a·√b = √ab", t:"√2·√2 = 2. ==(√2)³ = 2√2==, (√2)⁴ = 4, √6·√2 = √12 = 2√3." },
-      { n:"square the coefficient", y:"(a√b)² = a²b", t:"(−2√3)² = 4·3 = ==12==. !!Not 6, not −12!!." },
-      { n:"simplify r", y:"pull out squares", t:"√8 = 2√2, √12 = 2√3, √18 = 3√2, √20 = 2√5." },
-      { n:"rationalize", y:"no √ on the bottom", t:"3√2/√3 = √6, 2/√2 = √2, √2/(2√5) = √10/10." },
-      { n:"roots of r", y:"ⁿ√r", t:"∛8 = 2, ∜16 = 2, ==∜4 = √2==. ∛4 and ⁵√2 ==stay as radicals==." },
-      { n:"powers of i", y:"cycle of 4", t:"i² = −1, i³ = −i, i⁴ = 1. (2i)⁴ = 16, so !!x⁴ = −16 has no ±2i answers!!." },
-      { n:"adding radians", y:"common denominator", t:"5π/4 + 11π/12 = 15π/12 + 11π/12 = 26π/12 = 13π/6, minus 2π (12π/6) = ==π/6==." }
-    ]},
-    { h:"graphing roots", items:[
-      { n:"the picture", y:"one circle", t:"All n roots sit on ==one circle of radius ⁿ√r==, evenly spaced 360°/n. Draw each as an arrow from the origin." },
-      { n:"shapes", y:"quick check", t:"2 roots: a straight line. 3: the peace sign (120°). 4: an X or + (90°). 5: a star (72°)." }
-    ]},
-    { h:"before you turn it in", items:[
-      { n:"form", y:"read the direction", t:"Rectangular or trig form, whichever it asked. ==Exact values==, radicals simplified, denominators rationalized." },
-      { n:"angles", y:"0 ≤ θ < 360°", t:"Every angle reduced into range. Radians in, radians out." },
-      { n:"count", y:"n roots", t:"Cube roots: 3 answers. Fourth roots: 4. An equation xⁿ = c has n solutions." }
-    ]}
-  ],
-
-  outline: [
-    { w:3, t:"Convert first: rectangular ↔ trig", d:"every question starts or ends here",
-      p:["For **rectangular form** x + yi, the **modulus** is r = √(x² + y²) and the **argument** θ comes from tan θ = y/x. ==Sketch the point== before trusting tan⁻¹; it only returns QI or QIV angles.",
-         "Going back from **trig form**, plug in exact cos and sin and distribute r to both parts. If the angle is past 360° or negative, reduce it first."],
-      terms:["modulus","argument","trig form","rectangular form"],
-      steps:["Sketch x + yi to see the quadrant.","r = √(x² + y²), simplified.","Reference angle from |y/x|, then place it in the quadrant.","Write r cis θ."],
-      notes:[{k:"warn",t:"!!−2 − 2i√3 is QIII (240°)!!, even though tan⁻¹(√3) says 60°. Both negative means add 180°."}] },
-
-    { w:3, t:"Product & quotient theorems", d:"multiply/add, divide/subtract",
-      p:["**Product theorem**: multiply the r's and ==add the angles==. **Quotient theorem**: divide the r's and ==subtract the angles== (top minus bottom).",
-         "Keep the result between 0° and 360°: subtract 360° from a big sum, !!add 360° to a negative difference!!. If the numbers come in rectangular form, convert top and bottom separately first."],
-      terms:["product theorem","quotient theorem"],
-      cmp:{ a:{h:"product",p:["(√6 cis 165°)(√2 cis 255°)","r = √12 = 2√3, θ = 420° → 60°","= √3 + 3i"]},
-            b:{h:"quotient",p:["(3 cis 305°)/(9 cis 65°)","r = ⅓, θ = 240°","= −1/6 − (√3/6)i"]} },
-      notes:[{k:"ok",t:"A real numerator is still trig form: 7 = 7 cis 0°, so 7/(√3 + i) = (7/2) cis(−30°) = (7/2) cis 330°."}] },
-
-    { w:3, t:"De Moivre's theorem (powers)", d:"[r cis θ]ⁿ = rⁿ cis nθ",
-      p:["**De Moivre's theorem**: raise r to the n and ==multiply the angle by n==. Then subtract 360° (or 2π) until it lands in range.",
-         "If the number is given as x + yi, convert first. An odd input angle is fine: (√2 cis 105°)⁴ = 4 cis 420°, and 420° − 360° = ==60°==."],
-      terms:["De Moivre's theorem"],
-      steps:["Convert to r cis θ.","rⁿ (simplify radicals).","nθ, then reduce by 360° (2π).","Exact cos and sin, distribute rⁿ."],
-      notes:[{k:"ex",t:"(−1 − i)³: r = √2, θ = 225° (QIII). (√2)³ = 2√2, 3·225° = 675° → 315°. 2√2(√2/2 − (√2/2)i) = 2 − 2i."}] },
-
-    { w:3, t:"nth roots & solving xⁿ = c", d:"n answers, 360°/n apart",
-      p:["The **nth root theorem**: every nonzero number has ==exactly n distinct nth roots==. First root: ⁿ√r cis(θ/n). The rest: keep adding 360°/n (2π/n in radians).",
-         "For an equation, !!isolate xⁿ first!! (x³ + 8i = 0 → x³ = −8i), convert the constant, then take roots. Convert each root to rectangular only if asked."],
-      terms:["nth root theorem"],
-      steps:["Isolate xⁿ = c.","Write c as r cis θ.","ⁿ√r and θ/n.","Add 360°/n, n − 1 times.","Graph: arrows of equal length on one circle."],
-      notes:[{k:"warn",t:"!!x⁴ + 16 = 0 is not x = ±2i!!: (2i)⁴ = +16. An even power of a pure imaginary is positive, so the answers sit between the axes: 2 cis 45°, 135°, 225°, 315°."}] },
-
-    { w:2, t:"Odd angles that land on the unit circle", d:"do the theorem first, then look",
-      p:["Inputs like 105°, 500° or 7π/12 aren't on the unit circle, but the ==answer's angle will be==. Do the theorem first, then find the **coterminal** angle between 0° and 360° (0 and 2π).",
-         "(√2 cis 105°)⁴: 4·105° = 420° → 60°. [√2 cis 7π/12]⁴: 7π/3 → π/3."],
-      terms:["coterminal"],
-      notes:[{k:"ex",t:"20 cis 500° ÷ 5 cis 140° = 4 cis 360° = 4 cis 0° = 4. Angles past 360° can show up in the problem itself."}] },
-
-    { w:2, t:"Given one root, find the others", d:"same r, step by 360°/n",
-      p:["All n **distinct roots** share the same r and sit 360°/n apart. Convert the given root, then step forward: ==cube roots add 120°, fourth roots add 90°==.",
-         "To find the original number, raise the given root to the n with De Moivre."],
-      terms:["distinct roots"],
-      notes:[{k:"ex",t:"One cube root is 2 + 2i√3 = 4 cis 60°. Others: 4 cis 180° = −4 and 4 cis 300° = 2 − 2i√3."}] },
-
-    { w:2, t:"Mandelbrot set", d:"keep squaring and adding z",
-      p:["**Mandelbrot set**: compute z, z² + z, (z² + z)² + z, … Check each ==absolute value== √(a² + b²). If any one is ==more than 2==, z is !!not!! in the set. If the values start repeating and never pass 2, it is.",
-         "Exactly 2 does not count as over 2, so keep going. Square the whole number: (1 + i)² = 1 + 2i + i² = 2i."],
-      terms:["Mandelbrot set"],
-      notes:[{k:"ex",t:"z = i: i, then −1 + i (√2), then −i (1), then −1 + i again. It repeats and never passes 2, so i is in the set."}] },
-  ],
-
-  problems: [
-    {"q": "**Quotient from rectangular**: (√2 − i√6) / (√3 + i)", "steps": [["r₁ = √((√2)² + (−√6)²) = √(2 + 6) = 2√2", "Top first. √8 = 2√2."], ["θ₁ = tan⁻¹(−√6/√2) = tan⁻¹(−√3) = −60°", "tan⁻¹ only gives QI or QIV."], ["θ₁ = −60° + 360° = ==300°==", "x > 0, y < 0 is QIV: add 360°."], ["r₂ = √((√3)² + 1²) = √4 = 2", "Bottom."], ["θ₂ = tan⁻¹(1/√3) = ==30°==", "Both positive: QI, no fix."], ["(2√2 cis 300°) / (2 cis 30°) = (2√2/2) cis(300° − 30°)", "**Quotient theorem**: divide the r's, subtract the θ's."], ["= √2 cis 270°", ""], ["= √2(cos 270° + i sin 270°)", "Write cis out."], ["= √2(0 − i) = −√2 i", "270° points straight down: cos 0, sin −1."]], "ans": "−√2 i"},
-    {"q": "**De Moivre from rectangular**: (−1 + i√3)⁴", "steps": [["r = √((−1)² + (√3)²) = √4 = 2", "Convert first."], ["θ = tan⁻¹(√3/−1) = tan⁻¹(−√3) = −60°", ""], ["θ = −60° + 180° = ==120°==", "x < 0, y > 0 is QII: add 180°."], ["(−1 + i√3)⁴ = (2 cis 120°)⁴", ""], ["= 2⁴ cis(4 · 120°) = 16 cis 480°", "**De Moivre**: rⁿ and nθ."], ["= 16 cis 120°", "480° − 360° = 120°."], ["= 16(−½ + (√3/2)i)", "QII: cos −, sin +."], ["= −8 + 8√3 i", ""]], "ans": "−8 + 8√3 i"},
-    {"q": "**Fifth roots, degrees then radians** (warm-up): 1 + i√3, n = 5", "steps": [["r = √(1² + (√3)²) = √4 = 2", "Convert first."], ["θ = tan⁻¹(√3/1) = 60°", "Both positive: QI."], ["⁵√2 cis((60° + 360°k)/5)", "**nth root theorem**, k = 0 to 4."], ["= ⁵√2 cis(12° + 72°k)", "⁵√2 stays a radical. Fifth roots sit 72° apart."], ["= ⁵√2 cis 12°, 84°, 156°, 228°, 300°", "Add 72° four times, then stop."], ["θ = π/3: first π/15, spacing 2π/5 = 6π/15", "Radians: same steps."], ["= ⁵√2 cis π/15, 7π/15, 13π/15, 19π/15, 5π/3", "25π/15 = 5π/3."]], "ans": "⁵√2 cis 12°, 84°, 156°, 228°, 300°  (or π/15, 7π/15, 13π/15, 19π/15, 5π/3)"},
-    {"q": "**Solve, trig form**: x³ − (−4√2 + 4i√2) = 0", "steps": [["x³ = −4√2 + 4i√2", "Isolate x³."], ["r = √((−4√2)² + (4√2)²) = √(32 + 32) = 8", "(4√2)² = 16 · 2 = 32. √64 = 8."], ["θ = tan⁻¹(4√2/−4√2) = tan⁻¹(−1) = −45°", ""], ["θ = −45° + 180° = ==135°==", "x < 0, y > 0 is QII: add 180°."], ["x = ∛8 cis((135° + 360°k)/3)", "**nth root theorem**, k = 0, 1, 2."], ["= 2 cis(45° + 120°k)", "∛8 = 2. Cube roots sit 120° apart."], ["= 2 cis 45°, 2 cis 165°, 2 cis 285°", ""]], "ans": "2 cis 45°, 2 cis 165°, 2 cis 285°"},
-    {"q": "**Solve, rectangular form**: x⁴ + 16 = 0", "steps": [["x⁴ = −16", "Isolate x⁴."], ["r = 16, θ = ==180°==", "−16 + 0i sits on the negative real axis. !!Not ±2i!!: (2i)⁴ = +16."], ["x = ∜16 cis((180° + 360°k)/4)", "**nth root theorem**, k = 0 to 3."], ["= 2 cis(45° + 90°k)", "∜16 = 2. Fourth roots sit 90° apart."], ["k = 0: 2 cis 45° = 2(√2/2 + (√2/2)i) = √2 + √2 i", "2 · √2/2 = √2."], ["k = 1: 2 cis 135° = 2(−√2/2 + (√2/2)i) = −√2 + √2 i", "QII."], ["k = 2: 2 cis 225° = 2(−√2/2 − (√2/2)i) = −√2 − √2 i", "QIII."], ["k = 3: 2 cis 315° = 2(√2/2 − (√2/2)i) = √2 − √2 i", "QIV."]], "ans": "√2 + √2 i, −√2 + √2 i, −√2 − √2 i, √2 − √2 i"},
-    {"q": "**Real number on top**: 7 / (√3 + i)", "steps": [["7 = 7 + 0i: r₁ = 7, θ₁ = ==0°==", "A positive real number is its own r, at 0°."], ["r₂ = √((√3)² + 1²) = √4 = 2", "Bottom."], ["θ₂ = tan⁻¹(1/√3) = 30°", "Both positive: QI."], ["(7 cis 0°) / (2 cis 30°) = (7/2) cis(0° − 30°)", "**Quotient theorem**."], ["= (7/2) cis(−30°)", ""], ["= (7/2) cis 330°", "!!Negative, so add 360°!!."], ["= (7/2)(√3/2 − ½ i)", "QIV: cos +, sin −."], ["= 7√3/4 − (7/4)i", ""]], "ans": "7√3/4 − (7/4)i"},
-    {"q": "**De Moivre in radians**: [√2(cos 5π/6 + i sin 5π/6)]⁴", "steps": [["= (√2)⁴ cis(4 · 5π/6)", "**De Moivre**: rⁿ and nθ."], ["= 4 cis 20π/6 = 4 cis 10π/3", "(√2)⁴ = 4. Simplify."], ["= 4 cis 4π/3", "10π/3 − 6π/3 = ==4π/3== (subtract 2π)."], ["= 4(−½ − (√3/2)i)", "QIII: both negative."], ["= −2 − 2√3 i", ""]], "ans": "−2 − 2√3 i"},
-    {"q": "**Odd angle that lands on the circle**: (√2 cis 105°)⁴", "steps": [["= (√2)⁴ cis(4 · 105°)", "**De Moivre**: rⁿ and nθ."], ["= 4 cis 420°", "(√2)⁴ = 4."], ["= 4 cis 60°", "420° − 360° = ==60°==. 105° isn't on the circle, but 4 · 105° lands on it."], ["= 4(½ + (√3/2)i)", "Unit circle at 60°."], ["= 2 + 2√3 i", ""]], "ans": "2 + 2√3 i"},
-    {"q": "**One root given** (homework): one cube root of a number is 2 + 2i√3. Find the other two in rectangular form.", "steps": [["r = √(2² + (2√3)²) = √(4 + 12) = 4", "Convert the given root."], ["θ = tan⁻¹(2√3/2) = tan⁻¹(√3) = 60°", "Both positive: QI."], ["60° + 120° = 180°, 180° + 120° = 300°", "All cube roots share r and sit ==120° apart==."], ["4 cis 180° = 4(−1 + 0i) = −4", ""], ["4 cis 300° = 4(½ − (√3/2)i) = 2 − 2i√3", "QIV: cos +, sin −."]], "ans": "−4 and 2 − 2i√3"},
-    {"q": "**Mandelbrot set**: is z = −1 + i in the set?", "steps": [["|−1 + i| = √(1 + 1) = √2 ≈ 1.4", "Not over 2."], ["z² + z = (−1 + i)² + (−1 + i)", "Square, then add z."], ["= (1 − 2i + i²) − 1 + i = −1 − i", "(−1 + i)² = 1 − 2i − 1 = −2i."], ["|−1 − i| = √2 ≈ 1.4", "Still not over 2."], ["(−1 − i)² + (−1 + i) = (1 + 2i + i²) − 1 + i", "Square the last result, add z."], ["= 2i − 1 + i = −1 + 3i", ""], ["|−1 + 3i| = √(1 + 9) = √10 ≈ 3.2", "==Over 2==: not in the set. !!Two checks passed, the third fails!!."]], "ans": "Not in the set"},
-  ],
-
-
-  formulas: [], practice: [], cards: [], timeline: [], checklist: [],
-  abbr: { "QI–QIV":"quadrants I to IV", "ref":"reference angle", "cis θ":"cos θ + i sin θ" }
+ "id": "pre",
+ "cls": "Honors Precalculus BC",
+ "title": "Product, quotient & De Moivre's theorems",
+ "test": "2026-09-24",
+ "meta": "5 questions · 30 min · no calculator",
+ "sub": "Lesson first, then the cram sheet. Print a practice quiz, set a 30-minute timer, and check the key.",
+ "updated": "sept 29, 2026",
+ "pdfs": [
+  {
+   "t": "practice quiz a",
+   "url": "/precalc-theorems-practice-a.pdf"
+  },
+  {
+   "t": "practice quiz b",
+   "url": "/precalc-theorems-practice-b.pdf"
+  },
+  {
+   "t": "practice quiz c",
+   "url": "/precalc-theorems-practice-c.pdf"
+  },
+  {
+   "t": "all three + keys",
+   "url": "/precalc-theorems-quizzes.pdf"
+  }
+ ],
+ "pdfsNote": "Each quiz is 5 questions at 3 points, no calculator, the hardest version of each homework type. The fully worked key follows each quiz.",
+ "panes": [
+  "outline",
+  "cram",
+  "problems"
+ ],
+ "labels": {
+  "outline": "lesson",
+  "problems": "worked examples"
+ },
+ "top": [
+  "Three moves: convert to **trig form** (r, then θ from a sketch), apply the theorem, convert back if asked.",
+  "Product: multiply r's, add θ's. Quotient: divide, subtract. Power: rⁿ, nθ. Roots: ⁿ√r, θ/n, then add 360°/n.",
+  "Final angles in 0° to 360° (0 to 2π): subtract 360° if over, add if negative. Radians in, radians out.",
+  "**Isolate xⁿ** first: x³ + 8i = 0 → x³ = −8i, 270° not 90°."
+ ],
+ "outline": [
+  {
+   "w": 3,
+   "t": "Convert first: rectangular ↔ trig",
+   "d": "every question starts or ends here",
+   "p": [
+    "**Rectangular form** x + yi becomes r cis θ: r is the **modulus**, θ the **argument**."
+   ],
+   "rows": [
+    [
+     "r",
+     "√(x² + y²), simplified."
+    ],
+    [
+     "θ",
+     "tan θ = y/x. Sketch the quadrant; ref angle from |y/x|. QII: 180° − ref. QIII: 180° + ref. QIV: 360° − ref."
+    ],
+    [
+     "back",
+     "Reduce θ, exact cos and sin, distribute r to both parts."
+    ]
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 380 250' role='img' aria-label='Complex plane. The point −2 − 2i√3 is in quadrant III at distance r = 4. Its reference angle is 60° below the negative real axis, so θ = 240°. A dashed red arrow at 60° in quadrant I marks the wrong answer that tan⁻¹ alone gives.'><path class='ln' d='M20 125H362' marker-end='url(#ah)'/><path class='ln' d='M170 242V12' marker-end='url(#ah)'/><text class='tm end' x='362' y='143'>Re</text><text class='tm end' x='162' y='20'>Im</text><path class='lb dash' d='M170 125L222 34.93' marker-end='url(#ahb)'/><text class='tbd' x='230' y='40'>tan⁻¹(√3) = 60°</text><text class='tm' x='230' y='56'>wrong quadrant</text><path class='lc' d='M192 125A22 22 0 1 0 159 144.05'/><text class='tc end' x='158' y='98'>θ = 240°</text><path class='la' d='M132 125A38 38 0 0 0 151 157.91'/><text class='ta end' x='126' y='152'>ref 60°</text><path class='lc' d='M170 125L118 215.07' marker-end='url(#ahc)'/><text class='tb end' x='110' y='232'>−2 − 2i√3</text><text class='end' x='128' y='186'>r = 4</text></svg>",
+    "cap": "Both parts negative: QIII. r = √(4 + 12) = 4."
+   },
+   "ex": [
+    {
+     "q": "Write −√3 − i in trig form.",
+     "a": "2 cis 210°",
+     "why": "QIII: 180° + 30°, not 30°."
+    },
+    {
+     "q": "Write 6 cis 135° in rectangular form.",
+     "a": "−3√2 + 3√2 i",
+     "why": "QII: cos negative, sin positive."
+    }
+   ],
+   "watch": [
+    "tan⁻¹ only gives QI or QIV: −2 − 2i√3 is 240°, not the 60° tan⁻¹(√3) gives."
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Product & quotient theorems",
+   "d": "multiply and add, divide and subtract",
+   "rows": [
+    [
+     "product",
+     "**Product theorem**: multiply the r's, add the angles."
+    ],
+    [
+     "quotient",
+     "**Quotient theorem**: divide the r's, subtract the angles (top minus bottom)."
+    ],
+    [
+     "x + yi",
+     "Convert top and bottom first. 7 = 7 cis 0°."
+    ]
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 370 240' role='img' aria-label='Complex plane. √6 cis 165° points up and left; √2 cis 255° points down and slightly left. An arc adds 255° to 165°, sweeping a full turn to land at 60°. The product 2√3 cis 60° is the longest arrow, pointing up and right.'><path class='ln' d='M20 150H360' marker-end='url(#ah)'/><path class='ln' d='M170 236V10' marker-end='url(#ah)'/><text class='tm end' x='360' y='168'>Re</text><text class='tm end' x='162' y='18'>Im</text><path class='ln' d='M192 150A22 22 0 0 0 148.75 144.31'/><text class='mid' x='146' y='126'>165°</text><path class='la' d='M137.16 141.2A34 34 0 1 0 187 120.56' marker-end='url(#aha)'/><text class='ta' x='198' y='198'>+255°</text><path class='ln' d='M170 150L75.36 124.64' marker-end='url(#ah)'/><text class='tb mid' x='80' y='112'>√6 cis 165°</text><path class='la' d='M170 150L155.36 204.64' marker-end='url(#aha)'/><text class='ta mid' x='150' y='228'>√2 cis 255°</text><path class='lc' d='M170 150L239.28 30' marker-end='url(#ahc)'/><text class='tc' x='248' y='36'>2√3 cis 60°</text><text class='tm' x='248' y='54'>= √3 + 3i</text></svg>",
+    "cap": "√6 · √2 = √12 = 2√3; 420° → 60°."
+   },
+   "ex": [
+    {
+     "q": "(3 cis 305°) / (9 cis 65°) in rectangular form.",
+     "a": "−1/6 − (√3/6)i",
+     "why": "⅓ cis 240°: QIII."
+    },
+    {
+     "q": "7 / (√3 + i) in trig form.",
+     "a": "(7/2) cis 330°",
+     "why": "(7/2) cis(−30°): add 360°."
+    }
+   ],
+   "watch": [
+    "Sum over 360°: subtract 360°. Negative difference: add 360°."
+   ]
+  },
+  {
+   "w": 3,
+   "t": "De Moivre's theorem (powers)",
+   "d": "[r cis θ]ⁿ = rⁿ cis nθ",
+   "steps": [
+    "Convert to r cis θ.",
+    "**De Moivre's theorem**: rⁿ (simplified), nθ.",
+    "Subtract 360° (2π) until in range.",
+    "Exact cos and sin, times rⁿ."
+   ],
+   "flow": [
+    "(−1 − i)³",
+    "(√2 cis 225°)³",
+    "2√2 cis 675° → 315°",
+    "2 − 2i"
+   ],
+   "ex": [
+    {
+     "q": "(√3 + i)⁶ in rectangular form.",
+     "a": "−64",
+     "why": "64 cis 180°, not 64i."
+    },
+    {
+     "q": "(2 cis 50°)³ in rectangular form.",
+     "a": "−4√3 + 4i",
+     "why": "8 cis 150°: QII."
+    }
+   ]
+  },
+  {
+   "w": 3,
+   "t": "nth roots & solving xⁿ = c",
+   "d": "n answers, 360°/n apart",
+   "p": [
+    "The **nth root theorem**: every nonzero number has exactly n distinct nth roots."
+   ],
+   "steps": [
+    "Isolate xⁿ = c; write c as r cis θ.",
+    "First root: ⁿ√r cis(θ/n).",
+    "Add 360°/n (2π/n) until you have n.",
+    "Rectangular only if asked."
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 360 210' role='img' aria-label='The three cube roots of −8i on a dashed circle of radius 2: 2 cis 90° = 2i straight up, 2 cis 210° = −√3 − i down and left, 2 cis 330° = √3 − i down and right. Neighboring roots are 120° apart.'><circle class='ln dash' cx='180' cy='115' r='70'/><path class='ln' d='M30 115H342' marker-end='url(#ah)'/><path class='ln' d='M180 205V10' marker-end='url(#ah)'/><text class='tm end' x='342' y='133'>Re</text><text class='tm end' x='172' y='18'>Im</text><path class='la' d='M180 87A28 28 0 0 0 155.75 129'/><text class='ta mid' x='136' y='94'>120°</text><path class='lc' d='M180 115L180 45' marker-end='url(#ahc)'/><path class='lc' d='M180 115L119.38 150' marker-end='url(#ahc)'/><path class='lc' d='M180 115L240.62 150' marker-end='url(#ahc)'/><text class='tc' x='190' y='42'>2 cis 90° = 2i</text><text class='tm' x='238' y='62'>radius ∛8 = 2</text><text class='tb end' x='112' y='166'>2 cis 210°</text><text class='tm end' x='112' y='183'>= −√3 − i</text><text class='tb' x='248' y='166'>2 cis 330°</text><text class='tm' x='248' y='183'>= √3 − i</text></svg>",
+    "cap": "x³ + 8i = 0 → x³ = −8i = 8 cis 270°. Graph: equal arrows on one circle, first at 90°, then every 120°."
+   },
+   "ex": [
+    {
+     "q": "Solve x³ + 27 = 0 in trig form.",
+     "a": "3 cis 60°, 3 cis 180°, 3 cis 300°",
+     "why": "x = −3 is one of three."
+    },
+    {
+     "q": "Solve x² = −4i in rectangular form.",
+     "a": "−√2 + √2 i, √2 − √2 i",
+     "why": "4 cis 270° → 2 cis 135°, 2 cis 315°."
+    }
+   ],
+   "watch": [
+    "Isolate xⁿ before converting: −8i is 270°, not 90°.",
+    "x⁴ + 16 = 0 is not ±2i: (2i)⁴ = +16. Roots sit between the axes: 2 cis 45°, 135°, 225°, 315°."
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Odd angles that land on the unit circle",
+   "d": "do the theorem first, then look",
+   "p": [
+    "105°, 500° or 7π/12 aren't on the unit circle; the answer's angle is. Apply the theorem, then take the **coterminal** angle."
+   ],
+   "table": {
+    "cols": [
+     "",
+     "raw angle",
+     "lands on"
+    ],
+    "rows": [
+     [
+      "(√2 cis 105°)⁴",
+      "420°",
+      "60°: 2 + 2√3 i"
+     ],
+     [
+      "[√2 cis 7π/12]⁴",
+      "7π/3",
+      "π/3"
+     ],
+     [
+      "20 cis 500° ÷ 5 cis 140°",
+      "360°",
+      "0°: 4"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "[2 cis 5π/12]³ in rectangular form.",
+     "a": "−4√2 − 4√2 i",
+     "why": "8 cis 15π/12 = 8 cis 5π/4: QIII."
+    }
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Given one root, find the others",
+   "d": "same r, step by 360°/n",
+   "p": [
+    "All n **distinct roots** share one r, 360°/n apart: cube +120°, fourth +90°. Raise a root to the n (De Moivre) to get the number."
+   ],
+   "table": {
+    "h": "One cube root is 2 + 2i√3",
+    "cols": [
+     "",
+     "trig form",
+     "rectangular"
+    ],
+    "rows": [
+     [
+      "given",
+      "4 cis 60°",
+      "2 + 2i√3"
+     ],
+     [
+      "+120°",
+      "4 cis 180°",
+      "−4"
+     ],
+     [
+      "+240°",
+      "4 cis 300°",
+      "2 − 2i√3"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "One fourth root of a number is 2i. Find the others and the number.",
+     "a": "−2, −2i, 2. The number is 16.",
+     "why": "(2i)⁴ = +16, not −16."
+    }
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Mandelbrot set",
+   "d": "keep squaring and adding z",
+   "p": [
+    "**Mandelbrot set**: compute z, z² + z, (z² + z)² + z, … checking each absolute value √(a² + b²). Any over 2: not in the set. Repeats without passing 2: in."
+   ],
+   "table": {
+    "h": "z = i repeats, never over 2: in the set",
+    "cols": [
+     "",
+     "value",
+     "absolute value"
+    ],
+    "rows": [
+     [
+      "z",
+      "i",
+      "1"
+     ],
+     [
+      "z² + z",
+      "−1 + i",
+      "√2"
+     ],
+     [
+      "next",
+      "−i",
+      "1"
+     ],
+     [
+      "next",
+      "−1 + i",
+      "√2, repeats"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Is z = 1 + i in the Mandelbrot set?",
+     "a": "No: z² + z = 1 + 3i, and √10 is over 2.",
+     "why": "(1 + i)² = 1 + 2i + i² = 2i: square the whole number."
+    }
+   ],
+   "watch": [
+    "Exactly 2 is not over 2: z = −2 gives −2, 2, 2, … and is in the set."
+   ]
+  }
+ ],
+ "cram": [
+  {
+   "h": "the four theorems",
+   "items": [
+    {
+     "n": "product",
+     "y": "multiply · add",
+     "t": "(r₁ cis θ₁)(r₂ cis θ₂) = ==r₁r₂ cis(θ₁ + θ₂)==. Sum over 360°? Subtract 360°."
+    },
+    {
+     "n": "quotient",
+     "y": "divide · subtract",
+     "t": "(r₁ cis θ₁) / (r₂ cis θ₂) = ==(r₁/r₂) cis(θ₁ − θ₂)==. !!Negative angle: add 360°!!."
+    },
+    {
+     "n": "De Moivre (powers)",
+     "y": "[r cis θ]ⁿ",
+     "t": "= ==rⁿ cis(nθ)==. Then subtract 360° if it runs over: 675° − 360° = 315°."
+    },
+    {
+     "n": "nth roots",
+     "y": "k = 0, 1, … n − 1",
+     "t": "ⁿ√r cis(θ/n + 360°k/n). ==Exactly n roots==, same length, 360°/n apart. !!Stop at n!!: the next one repeats the first."
+    },
+    {
+     "n": "cis",
+     "y": "shorthand",
+     "t": "r cis θ = r(cos θ + i sin θ). Either way of writing it is fine."
+    }
+   ]
+  },
+  {
+   "h": "converting (every problem starts here)",
+   "items": [
+    {
+     "n": "rectangular → trig",
+     "y": "x + yi",
+     "t": "r = √(x² + y²), tan θ = y/x, then ==sketch for the quadrant==. QII: 180° − ref. QIII: 180° + ref. QIV: 360° − ref."
+    },
+    {
+     "n": "on an axis",
+     "y": "no tan needed",
+     "t": "5 → 0°, 5i → 90°, −5 → 180°, −5i → 270°. A real number like 7 is 7 cis 0°; −64 is 64 cis 180°."
+    },
+    {
+     "n": "trig → rectangular",
+     "y": "r cis θ",
+     "t": "Exact cos and sin, then ==distribute r to both parts==. 2√2(−√3/2 − ½i) = −√6 − √2 i."
+    },
+    {
+     "n": "quadrant trap",
+     "y": "tan⁻¹",
+     "t": "tan⁻¹ only gives QI or QIV. !!Both parts negative is QIII!!: −√3 − i is 210°, not 30°."
+    }
+   ]
+  },
+  {
+   "h": "arithmetic that costs points",
+   "items": [
+    {
+     "n": "radicals multiply",
+     "y": "√a·√b = √ab",
+     "t": "√2·√2 = 2. ==(√2)³ = 2√2==, (√2)⁴ = 4, √6·√2 = √12 = 2√3."
+    },
+    {
+     "n": "square the coefficient",
+     "y": "(a√b)² = a²b",
+     "t": "(−2√3)² = 4·3 = ==12==. !!Not 6, not −12!!."
+    },
+    {
+     "n": "simplify r",
+     "y": "pull out squares",
+     "t": "√8 = 2√2, √12 = 2√3, √18 = 3√2, √20 = 2√5."
+    },
+    {
+     "n": "rationalize",
+     "y": "no √ on the bottom",
+     "t": "3√2/√3 = √6, 2/√2 = √2, √2/(2√5) = √10/10."
+    },
+    {
+     "n": "roots of r",
+     "y": "ⁿ√r",
+     "t": "∛8 = 2, ∜16 = 2, ==∜4 = √2==. ∛4 and ⁵√2 ==stay as radicals==."
+    },
+    {
+     "n": "powers of i",
+     "y": "cycle of 4",
+     "t": "i² = −1, i³ = −i, i⁴ = 1. (2i)⁴ = 16, so !!x⁴ = −16 has no ±2i answers!!."
+    },
+    {
+     "n": "adding radians",
+     "y": "common denominator",
+     "t": "5π/4 + 11π/12 = 15π/12 + 11π/12 = 26π/12 = 13π/6, minus 2π (12π/6) = ==π/6==."
+    }
+   ]
+  },
+  {
+   "h": "graphing roots",
+   "items": [
+    {
+     "n": "the picture",
+     "y": "one circle",
+     "t": "All n roots sit on ==one circle of radius ⁿ√r==, evenly spaced 360°/n. Draw each as an arrow from the origin."
+    },
+    {
+     "n": "shapes",
+     "y": "quick check",
+     "t": "2 roots: a straight line. 3: the peace sign (120°). 4: an X or + (90°). 5: a star (72°)."
+    }
+   ]
+  },
+  {
+   "h": "before you turn it in",
+   "items": [
+    {
+     "n": "form",
+     "y": "read the direction",
+     "t": "Rectangular or trig form, whichever it asked. ==Exact values==, radicals simplified, denominators rationalized."
+    },
+    {
+     "n": "angles",
+     "y": "0 ≤ θ < 360°",
+     "t": "Every angle reduced into range. Radians in, radians out."
+    },
+    {
+     "n": "count",
+     "y": "n roots",
+     "t": "Cube roots: 3 answers. Fourth roots: 4. An equation xⁿ = c has n solutions."
+    }
+   ]
+  }
+ ],
+ "problems": [
+  {
+   "q": "**Quotient from rectangular**: (√2 − i√6) / (√3 + i)",
+   "steps": [
+    [
+     "r₁ = √((√2)² + (−√6)²) = √(2 + 6) = 2√2",
+     "Top first. √8 = 2√2."
+    ],
+    [
+     "θ₁ = tan⁻¹(−√6/√2) = tan⁻¹(−√3) = −60°",
+     "tan⁻¹ only gives QI or QIV."
+    ],
+    [
+     "θ₁ = −60° + 360° = ==300°==",
+     "x > 0, y < 0 is QIV: add 360°."
+    ],
+    [
+     "r₂ = √((√3)² + 1²) = √4 = 2",
+     "Bottom."
+    ],
+    [
+     "θ₂ = tan⁻¹(1/√3) = ==30°==",
+     "Both positive: QI, no fix."
+    ],
+    [
+     "(2√2 cis 300°) / (2 cis 30°) = (2√2/2) cis(300° − 30°)",
+     "**Quotient theorem**: divide the r's, subtract the θ's."
+    ],
+    [
+     "= √2 cis 270°",
+     ""
+    ],
+    [
+     "= √2(cos 270° + i sin 270°)",
+     "Write cis out."
+    ],
+    [
+     "= √2(0 − i) = −√2 i",
+     "270° points straight down: cos 0, sin −1."
+    ]
+   ],
+   "ans": "−√2 i"
+  },
+  {
+   "q": "**De Moivre from rectangular**: (−1 + i√3)⁴",
+   "steps": [
+    [
+     "r = √((−1)² + (√3)²) = √4 = 2",
+     "Convert first."
+    ],
+    [
+     "θ = tan⁻¹(√3/−1) = tan⁻¹(−√3) = −60°",
+     ""
+    ],
+    [
+     "θ = −60° + 180° = ==120°==",
+     "x < 0, y > 0 is QII: add 180°."
+    ],
+    [
+     "(−1 + i√3)⁴ = (2 cis 120°)⁴",
+     ""
+    ],
+    [
+     "= 2⁴ cis(4 · 120°) = 16 cis 480°",
+     "**De Moivre**: rⁿ and nθ."
+    ],
+    [
+     "= 16 cis 120°",
+     "480° − 360° = 120°."
+    ],
+    [
+     "= 16(−½ + (√3/2)i)",
+     "QII: cos −, sin +."
+    ],
+    [
+     "= −8 + 8√3 i",
+     ""
+    ]
+   ],
+   "ans": "−8 + 8√3 i"
+  },
+  {
+   "q": "**Fifth roots, degrees then radians** (warm-up): 1 + i√3, n = 5",
+   "steps": [
+    [
+     "r = √(1² + (√3)²) = √4 = 2",
+     "Convert first."
+    ],
+    [
+     "θ = tan⁻¹(√3/1) = 60°",
+     "Both positive: QI."
+    ],
+    [
+     "⁵√2 cis((60° + 360°k)/5)",
+     "**nth root theorem**, k = 0 to 4."
+    ],
+    [
+     "= ⁵√2 cis(12° + 72°k)",
+     "⁵√2 stays a radical. Fifth roots sit 72° apart."
+    ],
+    [
+     "= ⁵√2 cis 12°, 84°, 156°, 228°, 300°",
+     "Add 72° four times, then stop."
+    ],
+    [
+     "θ = π/3: first π/15, spacing 2π/5 = 6π/15",
+     "Radians: same steps."
+    ],
+    [
+     "= ⁵√2 cis π/15, 7π/15, 13π/15, 19π/15, 5π/3",
+     "25π/15 = 5π/3."
+    ]
+   ],
+   "ans": "⁵√2 cis 12°, 84°, 156°, 228°, 300°  (or π/15, 7π/15, 13π/15, 19π/15, 5π/3)"
+  },
+  {
+   "q": "**Solve, trig form**: x³ − (−4√2 + 4i√2) = 0",
+   "steps": [
+    [
+     "x³ = −4√2 + 4i√2",
+     "Isolate x³."
+    ],
+    [
+     "r = √((−4√2)² + (4√2)²) = √(32 + 32) = 8",
+     "(4√2)² = 16 · 2 = 32. √64 = 8."
+    ],
+    [
+     "θ = tan⁻¹(4√2/−4√2) = tan⁻¹(−1) = −45°",
+     ""
+    ],
+    [
+     "θ = −45° + 180° = ==135°==",
+     "x < 0, y > 0 is QII: add 180°."
+    ],
+    [
+     "x = ∛8 cis((135° + 360°k)/3)",
+     "**nth root theorem**, k = 0, 1, 2."
+    ],
+    [
+     "= 2 cis(45° + 120°k)",
+     "∛8 = 2. Cube roots sit 120° apart."
+    ],
+    [
+     "= 2 cis 45°, 2 cis 165°, 2 cis 285°",
+     ""
+    ]
+   ],
+   "ans": "2 cis 45°, 2 cis 165°, 2 cis 285°"
+  },
+  {
+   "q": "**Solve, rectangular form**: x⁴ + 16 = 0",
+   "steps": [
+    [
+     "x⁴ = −16",
+     "Isolate x⁴."
+    ],
+    [
+     "r = 16, θ = ==180°==",
+     "−16 + 0i sits on the negative real axis. !!Not ±2i!!: (2i)⁴ = +16."
+    ],
+    [
+     "x = ∜16 cis((180° + 360°k)/4)",
+     "**nth root theorem**, k = 0 to 3."
+    ],
+    [
+     "= 2 cis(45° + 90°k)",
+     "∜16 = 2. Fourth roots sit 90° apart."
+    ],
+    [
+     "k = 0: 2 cis 45° = 2(√2/2 + (√2/2)i) = √2 + √2 i",
+     "2 · √2/2 = √2."
+    ],
+    [
+     "k = 1: 2 cis 135° = 2(−√2/2 + (√2/2)i) = −√2 + √2 i",
+     "QII."
+    ],
+    [
+     "k = 2: 2 cis 225° = 2(−√2/2 − (√2/2)i) = −√2 − √2 i",
+     "QIII."
+    ],
+    [
+     "k = 3: 2 cis 315° = 2(√2/2 − (√2/2)i) = √2 − √2 i",
+     "QIV."
+    ]
+   ],
+   "ans": "√2 + √2 i, −√2 + √2 i, −√2 − √2 i, √2 − √2 i"
+  },
+  {
+   "q": "**Real number on top**: 7 / (√3 + i)",
+   "steps": [
+    [
+     "7 = 7 + 0i: r₁ = 7, θ₁ = ==0°==",
+     "A positive real number is its own r, at 0°."
+    ],
+    [
+     "r₂ = √((√3)² + 1²) = √4 = 2",
+     "Bottom."
+    ],
+    [
+     "θ₂ = tan⁻¹(1/√3) = 30°",
+     "Both positive: QI."
+    ],
+    [
+     "(7 cis 0°) / (2 cis 30°) = (7/2) cis(0° − 30°)",
+     "**Quotient theorem**."
+    ],
+    [
+     "= (7/2) cis(−30°)",
+     ""
+    ],
+    [
+     "= (7/2) cis 330°",
+     "!!Negative, so add 360°!!."
+    ],
+    [
+     "= (7/2)(√3/2 − ½ i)",
+     "QIV: cos +, sin −."
+    ],
+    [
+     "= 7√3/4 − (7/4)i",
+     ""
+    ]
+   ],
+   "ans": "7√3/4 − (7/4)i"
+  },
+  {
+   "q": "**De Moivre in radians**: [√2(cos 5π/6 + i sin 5π/6)]⁴",
+   "steps": [
+    [
+     "= (√2)⁴ cis(4 · 5π/6)",
+     "**De Moivre**: rⁿ and nθ."
+    ],
+    [
+     "= 4 cis 20π/6 = 4 cis 10π/3",
+     "(√2)⁴ = 4. Simplify."
+    ],
+    [
+     "= 4 cis 4π/3",
+     "10π/3 − 6π/3 = ==4π/3== (subtract 2π)."
+    ],
+    [
+     "= 4(−½ − (√3/2)i)",
+     "QIII: both negative."
+    ],
+    [
+     "= −2 − 2√3 i",
+     ""
+    ]
+   ],
+   "ans": "−2 − 2√3 i"
+  },
+  {
+   "q": "**Odd angle that lands on the circle**: (√2 cis 105°)⁴",
+   "steps": [
+    [
+     "= (√2)⁴ cis(4 · 105°)",
+     "**De Moivre**: rⁿ and nθ."
+    ],
+    [
+     "= 4 cis 420°",
+     "(√2)⁴ = 4."
+    ],
+    [
+     "= 4 cis 60°",
+     "420° − 360° = ==60°==. 105° isn't on the circle, but 4 · 105° lands on it."
+    ],
+    [
+     "= 4(½ + (√3/2)i)",
+     "Unit circle at 60°."
+    ],
+    [
+     "= 2 + 2√3 i",
+     ""
+    ]
+   ],
+   "ans": "2 + 2√3 i"
+  },
+  {
+   "q": "**One root given** (homework): one cube root of a number is 2 + 2i√3. Find the other two in rectangular form.",
+   "steps": [
+    [
+     "r = √(2² + (2√3)²) = √(4 + 12) = 4",
+     "Convert the given root."
+    ],
+    [
+     "θ = tan⁻¹(2√3/2) = tan⁻¹(√3) = 60°",
+     "Both positive: QI."
+    ],
+    [
+     "60° + 120° = 180°, 180° + 120° = 300°",
+     "All cube roots share r and sit ==120° apart==."
+    ],
+    [
+     "4 cis 180° = 4(−1 + 0i) = −4",
+     ""
+    ],
+    [
+     "4 cis 300° = 4(½ − (√3/2)i) = 2 − 2i√3",
+     "QIV: cos +, sin −."
+    ]
+   ],
+   "ans": "−4 and 2 − 2i√3"
+  },
+  {
+   "q": "**Mandelbrot set**: is z = −1 + i in the set?",
+   "steps": [
+    [
+     "|−1 + i| = √(1 + 1) = √2 ≈ 1.4",
+     "Not over 2."
+    ],
+    [
+     "z² + z = (−1 + i)² + (−1 + i)",
+     "Square, then add z."
+    ],
+    [
+     "= (1 − 2i + i²) − 1 + i = −1 − i",
+     "(−1 + i)² = 1 − 2i − 1 = −2i."
+    ],
+    [
+     "|−1 − i| = √2 ≈ 1.4",
+     "Still not over 2."
+    ],
+    [
+     "(−1 − i)² + (−1 + i) = (1 + 2i + i²) − 1 + i",
+     "Square the last result, add z."
+    ],
+    [
+     "= 2i − 1 + i = −1 + 3i",
+     ""
+    ],
+    [
+     "|−1 + 3i| = √(1 + 9) = √10 ≈ 3.2",
+     "==Over 2==: not in the set. !!Two checks passed, the third fails!!."
+    ]
+   ],
+   "ans": "Not in the set"
+  }
+ ],
+ "abbr": {
+  "QI–QIV": "quadrants I to IV",
+  "ref": "reference angle",
+  "cis θ": "cos θ + i sin θ"
+ }
 };
 
 /* ═══ machinery. nothing below needs editing. ═══ */
 const $=s=>document.querySelector(s);
 const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
 const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* markup: **term** bolds once per scope; legacy ==x== and !!x!! render as plain text */
+let SEEN=null;
+const scope=()=>{SEEN=new Set()};
+const fmt=s=>esc(s).replace(/==(.+?)==/g,"$1").replace(/!!(.+?)!!/g,"$1").replace(/\*\*(.+?)\*\*/g,(m,t)=>{const k=t.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();if(SEEN&&SEEN.has(k))return t;if(SEEN)SEEN.add(k);return `<b class="kw">${t}</b>`});
+const plain=s=>fmt(s).replace(/<b class="kw">(.*?)<\/b>/g,"$1");
 const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const I_TEST='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="1.8" width="9" height="10.6" rx="1.6"/><path d="M5 5h4M5 7.6h4M5 10.2h2"/></svg>';
+const I_WARN='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.8 12.6 11.8H1.4z"/><path d="M7 5.6v2.8M7 10.1h.01"/></svg>';
 const ICON={
  apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
  lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
@@ -440,7 +1350,8 @@ const ICON={
  csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
 const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
-const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables"};
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables",leq:"the leq",prompts:"prompts"};
+const has=v=>Array.isArray(v)?v.length>0:!!v;
 
 /* header */
 document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
@@ -467,162 +1378,262 @@ $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
   }
   if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
 })();
+const bar=$("#bar");
+const setBarH=()=>document.documentElement.style.setProperty("--barh",bar.offsetHeight+"px");
+setBarH(); addEventListener("resize",setBarH);
 
-/* panes */
-const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
-const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
-const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables};
-const tabs=[];
-PANES.forEach((id,i)=>{
-  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
-  builders[id](sec); root.appendChild(sec);
-  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
-  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
-});
-if(PANES.length<2)panesEl.classList.add("one");
-function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
-function show(id,user){
-  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
-  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
-  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
-}
-const want=location.hash.slice(1);
-show(PANES.includes(want)?want:PANES[0],false);
-requestAnimationFrame(moveP); addEventListener("resize",moveP);
+function shead(txt,extra){return el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""))}
 
-/* outline */
-function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
-function extras(s){
+/* ═══ outline blocks ═══ */
+const B={
+  p:v=>(Array.isArray(v)?v:[v]).map(x=>`<p>${fmt(x)}</p>`).join(""),
+  pts:v=>`<ul class="pts${v.length>=6&&v.every(x=>String(x).length<70)?" two":""}">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`,
+  rows:v=>`<dl class="rows">${v.map(([k,x])=>`<dt>${esc(k)}</dt><dd>${fmt(x)}</dd>`).join("")}</dl>`,
+  steps:v=>`<ol class="steps">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  flow:v=>`<ol class="flow">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  fig:v=>`<figure class="fig">${v.svg||""}${v.cap?`<figcaption>${fmt(v.cap)}</figcaption>`:""}</figure>`,
+  tiles:v=>`<div class="tiles">${v.map(x=>`<div><h5>${fmt(x.h)}</h5>${x.t?`<p>${fmt(x.t)}</p>`:""}${x.k?`<span class="tk">${esc(x.k)}</span>`:""}</div>`).join("")}</div>`,
+  tree:v=>{const n=x=>`<li><div class="nd"><b>${fmt(x.t)}</b>${x.d?`<span>${fmt(x.d)}</span>`:""}</div>${x.c?.length?`<ul>${x.c.map(n).join("")}</ul>`:""}</li>`;return `<div class="tree"><ul>${n(v)}</ul></div>`},
+  table:v=>{const cols=v.cols||[];return `${v.h?`<p class="tcap">${esc(v.h)}</p>`:""}<div class="tbw"><table class="tbl${cols.length===2?" two":""}">${cols.some(c=>c)?`<thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead>`:""}<tbody>${(v.rows||[]).map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`},
+  cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
+  watch:v=>`<div class="watch"><div class="wl">${I_WARN}watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
+  ex:v=>`<div class="exs">${v.map(x=>`<div class="tq"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>show answer</span>${CHEV}</button><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"example",ok:"rule",warn:"watch out"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join(""),
+  terms:v=>`<div class="terms"><span class="tl">key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
+};
+const VIS=["fig","tree","tiles"];
+function section(s,i){
+  scope();
+  const watch=[...(s.watch||[]),...(s.notes||[]).filter(n=>n.k==="warn").map(n=>n.t)];
+  const notes=(s.notes||[]).filter(n=>n.k!=="warn");
+  const mainKeys=["p","pts","rows","flow","steps"].filter(k=>has(s[k]));
+  const vis=VIS.filter(k=>has(s[k]));
+  let sideKey=vis[0]||null;
+  const main=mainKeys.map(k=>B[k](s[k])).join("")+(notes.length?B.notes(notes):"");
+  let side="", watchPlaced=false;
+  if(sideKey)side=B[sideKey](s[sideKey]);
+  else if(watch.length&&main){side=B.watch(watch);watchPlaced=true}
   let h="";
-  if(s.rows)h+=`<dl class="rows">${s.rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${fmt(v)}</dd>`).join("")}</dl>`;
-  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
-  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
-  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
-  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
-  return h;
+  if(main&&side)h+=`<div class="duo${sideKey==="tree"||sideKey==="fig"?" wide-side":""}"><div class="main">${main}</div><div class="side">${side}</div></div>`;
+  else if(main)h+=`<div class="main solo">${main}</div>`;
+  else if(side)h+=side;
+  const rest=vis.filter(k=>k!==sideKey).concat(["table","cmp"].filter(k=>has(s[k])));
+  if(sideKey&&!main){/* visual already placed alone */}
+  rest.forEach(k=>{h+=B[k](s[k])});
+  if(has(s.tables))s.tables.forEach(t=>{h+=B.table(t)});
+  if(has(s.ex))h+=B.ex(s.ex);
+  if(watch.length&&!watchPlaced)h+=B.watch(watch);
+  if(has(s.terms))h+=B.terms(s.terms);
+  const n=String(i+1).padStart(2,"0");
+  const badge=s.w===3?`<span class="w w3">tested most</span>`:s.w===2?`<span class="w w2">tested</span>`:"";
+  const node=el("section","sec",`<header><span class="num">${n}</span><div class="ht"><h3>${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</div>${badge}</header><div class="sb">${h}</div>`);
+  node.id="s-"+(i+1);
+  SEEN=null;
+  return node;
 }
+function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{const b=x.querySelector(".eb");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"})})}
 function buildOutline(sec){
-  if(GUIDE.top?.length){
-    sec.appendChild(shead("start here","the whole guide in one screen"));
-    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  const list=GUIDE.outline||[];
+  const wrap=el("div","ol"); const toc=el("nav","toc"); toc.setAttribute("aria-label","sections");
+  const col=el("div","olc");
+  toc.innerHTML=`<div class="tl">on this page</div>`;
+  if(has(GUIDE.top)){
+    scope();
+    const t=el("div","tops"); t.id="s-top";
+    t.innerHTML=GUIDE.top.map(x=>`<div class="tp">${fmt(x)}</div>`).join("");
+    col.appendChild(shead("start here","what decides the grade")); col.appendChild(t);
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-top"><i class="w3" style="border-radius:50%"></i><span>start here</span></a>`);
   }
-  const list=GUIDE.outline||[]; if(!list.length)return;
-  const n3=list.filter(s=>s.w===3).length;
-  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
-  const g=el("div","group");
   list.forEach((s,i)=>{
-    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
-    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
-    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
-    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
-    g.appendChild(row); g.appendChild(body);
+    col.appendChild(section(s,i));
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-${i+1}"><i class="w${s.w||1}"></i><span>${esc(s.t)}</span></a>`);
   });
-  sec.appendChild(g);
   if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
-    sec.appendChild(shead("abbreviations"));
-    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+    col.appendChild(shead("abbreviations"));
+    const a=el("div","abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")); a.id="s-abbr"; col.appendChild(a);
+  }
+  if(list.some(s=>s.w===3)||list.some(s=>s.w===2))toc.insertAdjacentHTML("beforeend",`<div class="leg"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`);
+  wrap.appendChild(toc); wrap.appendChild(col); sec.appendChild(wrap);
+  wireEx(col);
+  const links=[...toc.querySelectorAll("a")];
+  links.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}));
+  if("IntersectionObserver" in window){
+    const vis=new Map();
+    const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target.id,e.isIntersecting));
+      const first=links.find(a=>vis.get(a.getAttribute("href").slice(1)));
+      if(first){links.forEach(a=>a.classList.toggle("on",a===first));if(getComputedStyle(toc).display==="flex"){const l=first.offsetLeft-toc.clientWidth/2+first.offsetWidth/2;toc.scrollTo({left:l,behavior:REDUCED?"auto":"smooth"})}}
+    },{rootMargin:"-20% 0px -55% 0px"});
+    links.forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));if(t)io.observe(t)});
   }
 }
 
 /* practice mc */
+let SCORE={done:0,right:0,total:0};
+function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
-  const qs=GUIDE.practice||[]; let done=0, right=0;
-  sec.appendChild(shead("practice",`${qs.length} questions`));
-  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
+  sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
+  const g=el("div","qgrid");
   qs.forEach((q,i)=>{
     const card=el("div","group q");
-    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
-      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
-      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
     card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
       if(card.classList.contains("done"))return;
       card.classList.add("done"); const j=+b.dataset.i;
-      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
-      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+      if(j===q.a){b.classList.add("right");SCORE.right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      SCORE.done++; $("#scn").textContent=SCORE.right; scoreVis();
     }));
-    sec.appendChild(card);
+    g.appendChild(card);
   });
-  sec.appendChild(sc);
-  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  sec.appendChild(g);
+  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
 }
 
-/* problems / worked examples */
-/* steps: plain strings render numbered; [work, why] pairs render line by line, work left, why right */
-function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps" style="margin-top:0">${st.map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${fmt(m)}</div><div class="wy">${y?fmt(y):""}</div></li>`}).join("")}</ul>`}
+/* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
+function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps">${st.map(s=>`<li>${plain(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${plain(m)}</div><div class="wy">${y?plain(y):""}</div></li>`}).join("")}</ul>`}
 function buildProblems(sec){
   const ps=GUIDE.problems||[];
   sec.appendChild(shead("problems",`${ps.length} to work`));
+  const g=el("div","pgrid");
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
-    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
     const go=card.querySelector(".go");
     go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
-    sec.appendChild(card);
+    g.appendChild(card);
   });
+  sec.appendChild(g);
 }
 
 /* formulas */
 function buildFormulas(sec){
   const fs=GUIDE.formulas||[];
   sec.appendChild(shead("formulas",`${fs.length}`));
-  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+  sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
 }
 
-/* flashcards */
+/* flashcards: flip deck, plus the whole list */
 function buildCards(sec){
   const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
-  sec.appendChild(shead("cards",`${cs.length}`));
-  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
-  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
-  const cnt=nav.querySelector("#cnt");
-  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
-  const flip=()=>fc.classList.toggle("flip");
-  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
-  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
-  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
-  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
-  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
-  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  sec.appendChild(shead("cards",`${cs.length} · tap to flip, swipe for next`));
+  const dk=el("div","dk");
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  sec.appendChild(dk);
+  const cnt=nav.querySelector(".cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const go=d=>{i=(i+d+cs.length)%cs.length;draw()};
+  fc.addEventListener("click",()=>fc.classList.toggle("flip")); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();fc.classList.toggle("flip")}});
+  nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
+  nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
+  nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
+  sec.appendChild(shead("all cards",`${cs.length}`));
+  sec.appendChild(el("div","clist",cs.map(c=>`<div><b>${plain(c.f)}</b><span>${plain(c.b)}</span></div>`).join("")));
 }
 
 /* timeline */
 function buildTimeline(sec){
   const ts=GUIDE.timeline||[];
   sec.appendChild(shead("timeline",`${ts.length} events`));
-  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+  sec.appendChild(el("div","tln",ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${plain(t.t)}</div>${t.d?`<div class="d">${plain(t.d)}</div>`:"<div></div>"}</div>`).join("")));
 }
 
 /* checklist */
 function buildChecklist(sec){
   const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
   sec.appendChild(shead("checklist",`${cs.length} items`));
-  const g=el("div","group");
+  const g=el("div","ckg");
   cs.forEach((c,i)=>{
-    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${plain(c.t)}</span>${c.d?`<span class="d">${plain(c.d)}</span>`:""}</span>`);
     b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
     g.appendChild(b);
   });
   sec.appendChild(g);
 }
 
-/* cram sheet: [{h:"group", d:"optional", items:[{n:"name", y:"date", t:"one line"}]}] */
+/* cram sheet: [{h, d, items:[{n, y, t}]}] */
 function buildCram(sec){
-  (GUIDE.cram||[]).forEach(g=>{
-    const it=g.items||[];
-    sec.appendChild(shead(g.h||"cram sheet",g.d||`${it.length}`));
-    sec.appendChild(el("div","group",it.map(c=>`<div class="cr"><div class="n"><span>${fmt(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${fmt(c.t)}</div></div>`).join("")));
-  });
+  const gs=GUIDE.cram||[];
+  sec.appendChild(shead("cram sheet","one line each"));
+  sec.appendChild(el("div","cgrid",gs.map(g=>`<div class="group"><div class="gh">${esc(g.h||"")}<span>${esc(g.d||String((g.items||[]).length))}</span></div>${(g.items||[]).map(c=>`<div class="cr"><div class="n"><span>${plain(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${plain(c.t)}</div></div>`).join("")}</div>`).join("")));
 }
 
-/* tables: [{h:"title", d:"optional", cols:["a","b"], rows:[["..",".."]]}]. stacks into cards on a phone */
+/* tables pane: [{h, d, cols, rows}] */
 function buildTables(sec){
-  (GUIDE.tables||[]).forEach(tb=>{
-    const cols=tb.cols||[], rows=tb.rows||[];
-    sec.appendChild(shead(tb.h||"table",tb.d||`${rows.length}`));
-    sec.appendChild(el("div","group",`<table class="tbl"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table>`));
-  });
+  const w=el("div","tpane");
+  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
+  sec.appendChild(w);
 }
+
+/* essay panes (used by the LEQ guide): prompts + leq + fn */
+function buildPrompts(sec){
+  const ps=GUIDE.prompts||[];
+  if(has(GUIDE.prompts_note)){sec.appendChild(shead("how points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
+  sec.appendChild(shead("possible prompts",`${ps.length}`));
+  ps.forEach((p,i)=>{
+    scope();
+    const g=el("div","group");
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
+    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn">${esc(p.q)}</span></span>`+CHEV;
+    const inner=(p.tldr?`<div class="pl">tldr</div><ul class="bul">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
+      `<div class="pl">context</div><ul class="bul">${(p.ctx||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">thesis</div><div class="ans">${esc(p.thesis)}</div>`+
+      (p.body||[]).map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
+      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
+    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body); sec.appendChild(g);
+  });
+  SEEN=null;
+}
+function buildLeq(sec){
+  const L=GUIDE.leq;
+  sec.appendChild(shead("how it runs"));
+  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p>${L.math?`<p>${fmt(L.math)}</p>`:""}`));
+  if(has(L.rows)){
+    sec.appendChild(shead("the rubric",`${L.rows.length} rows`));
+    sec.appendChild(el("div","tbw",`<table class="tbl"><thead><tr><th>row</th><th>earns it</th><th>loses it</th><th>class tips</th></tr></thead><tbody>${L.rows.map(r=>`<tr><td data-l="row">${esc(r.n)}</td><td data-l="earns it">${plain(r.earn)}</td><td data-l="loses it">${plain(r.lose)}</td><td data-l="class tips">${plain(r.cls||"")}</td></tr>`).join("")}</tbody></table>`));
+  }
+  if(has(L.codes))sec.appendChild(el("div","card",`<div class="terms"><span class="tl">margin codes</span>${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
+  if(has(L.shape)){sec.appendChild(shead("the shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
+  if(has(L.pace)){
+    const tot=L.pace.reduce((a,p)=>a+p.m,0);
+    sec.appendChild(shead(`${tot} minutes`,"minute by minute"));
+    sec.appendChild(el("div","card",`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>${B.steps(L.pace.map(p=>`**${p.l} · ${p.m} min.** ${p.t}`))}`));
+  }
+  if(has(GUIDE.fn)){sec.appendChild(shead("notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
+}
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables,leq:buildLeq,prompts:buildPrompts};
+const PANES=(GUIDE.panes||[]).filter(id=>builders[id]&&(has(GUIDE[id])||(id==="outline"&&has(GUIDE.top))));
+const tabs=[];
+PANES.forEach(id=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  scope(); builders[id](sec); SEEN=null; root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+let CUR=null;
+function show(id,user){
+  CUR=id;
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); scoreVis();
+  if(user){try{history.replaceState(null,"","#"+id)}catch(e){}; const top=panesEl.getBoundingClientRect().top+scrollY-bar.offsetHeight-12; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"})}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
 
 /* theme (shared with the homepage via localStorage "theme") */
 const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
@@ -640,10 +1651,10 @@ segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
 })();
 requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
-document.fonts?.ready.then(()=>{moveThumb();moveP()});
+document.fonts?.ready.then(()=>{moveThumb();moveP();setBarH()});
 
-/* sticky bar shadow + staggered reveal */
-(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+/* sticky bar shadow, reading progress, staggered reveal */
+(function(){const p=$("#prog i");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6);const se=document.scrollingElement,h=se.scrollHeight-se.clientHeight;p.style.width=(h>0?Math.min(100,se.scrollTop/h*100):0)+"%"};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
 document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
 </script>
 <script defer src="/_vercel/insights/script.js"></script>

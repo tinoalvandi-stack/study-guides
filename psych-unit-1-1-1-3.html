@@ -14,7 +14,7 @@
 <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+/* ═══ valentino guides · guide template v2 (kinari, wide layout, sept 29 2026) ═══
    Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
 @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
 @font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
@@ -38,15 +38,21 @@
   --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--barh,56px) + 58px)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
-  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+  padding-bottom:calc(56px + env(safe-area-inset-bottom))}
 button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
-.lc{text-transform:lowercase}
+:root{--maxw:1180px;--gut:clamp(14px,3.4vw,36px)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* reading aids */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;background:var(--cls)}
 
 /* bar */
 .bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
@@ -62,86 +68,282 @@ a{color:inherit;text-decoration:none}
 .seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .bar .seg{margin-left:auto}
 
-/* intro */
+/* hero */
 main{padding-top:22px}
-.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t13);font-weight:600;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
 .cname svg{width:20px;height:20px;flex:none}
-.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
 .chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
 .chip.past{color:var(--ink3)}
-h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
-.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+h2.title{margin:0 0 8px;font-family:var(--display);font-size:clamp(30px,5.2vw,50px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.02;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 16px;font-size:var(--t16);line-height:1.5;color:var(--ink2);max-width:70ch}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
 
 /* pane switcher */
-.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes{display:inline-flex;max-width:100%;gap:2px;margin:6px 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none;vertical-align:top}
 .panes::-webkit-scrollbar{display:none}
-.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button{flex:0 0 auto;position:relative;z-index:2;padding:8px 16px;border-radius:8px;text-align:center;font-size:var(--t15);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
 .panes button[aria-selected="true"]{color:var(--on-accent)}
 .panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .panes.one{display:none}
-.pane{display:none}
+@media (max-width:599px){.panes{display:flex}.panes button{flex:1 0 auto;padding:7px 12px;font-size:var(--t13)}}
+.pane{display:none;container-type:inline-size}
 .pane.on{display:block;animation:rise .38s var(--spring) both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* section head */
-.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+/* small section label */
+.sh{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
 .sh:first-child{margin-top:0}
-.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;white-space:nowrap}
 .sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
-.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;white-space:nowrap}
 
-/* cards + groups */
-.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+/* ═══ outline: side menu + all-open sections ═══ */
+.ol{display:grid;grid-template-columns:1fr;gap:0 32px;align-items:start}
+@media (min-width:960px){.ol{grid-template-columns:212px minmax(0,1fr)}}
+.toc{position:sticky;top:var(--barh,56px);z-index:30;background:var(--paper);margin:0 calc(var(--gut) * -1) 14px;padding:6px var(--gut) 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.toc::-webkit-scrollbar{display:none}
+.toc .tl{display:none}
+.toc a{flex:none;display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:var(--r-chip);font-size:var(--t13);font-weight:500;color:var(--ink2);border:1px solid var(--line);background:var(--surface);white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.toc a.on{color:var(--on-accent);background:var(--ink);border-color:var(--ink)}
+.toc i{flex:none;width:8px;height:8px;border-radius:3px;border:1.5px solid var(--cls)}
+.toc i.w3{background:var(--cls)} .toc i.w2{background:color-mix(in srgb,var(--cls) 40%,transparent)}
+.toc a.on i{border-color:var(--on-accent)} .toc a.on i.w3{background:var(--on-accent)}
+@media (min-width:960px){
+  .toc{top:calc(var(--barh,56px) + 12px);margin:0;padding:0;display:block;overflow:visible;border:0;background:none;max-height:calc(100vh - var(--barh,56px) - 32px);overflow-y:auto}
+  .toc .tl{display:block;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;margin:2px 0 8px 10px}
+  .toc a{display:flex;align-items:flex-start;white-space:normal;border:0;background:none;padding:7px 10px;line-height:1.3;border-radius:8px}
+  .toc a i{margin-top:5px}
+  .toc a:hover{background:var(--surface)}
+  .toc a.on{background:var(--surface);color:var(--ink);box-shadow:inset 2px 0 0 var(--cls);border-radius:0 8px 8px 0}
+  .toc a.on i{border-color:var(--cls)} .toc a.on i.w3{background:var(--cls)}
+  .toc .leg{display:flex;flex-direction:column;gap:4px;margin:14px 0 0 10px;padding-top:12px;border-top:1px solid var(--line);font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
+  .toc .leg span{display:flex;align-items:center;gap:7px}
+}
+.toc .leg{display:none}
+@media (min-width:960px){.toc .leg{display:flex}}
+
+/* start here tiles */
+.tops{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:26px;counter-reset:tp}
+.tops .tp{counter-increment:tp;position:relative;padding:14px 16px 14px 48px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
+.tops .tp::before{content:counter(tp);position:absolute;left:14px;top:13px;width:24px;height:24px;border-radius:7px;background:var(--cls);color:var(--surface);font-weight:650;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+
+/* section card */
+.sec{container-type:inline-size;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);margin-bottom:16px;scroll-margin-top:calc(var(--barh,56px) + 60px);overflow:hidden}
+@media (min-width:960px){.sec{scroll-margin-top:calc(var(--barh,56px) + 16px)}}
+.sec > header{display:flex;align-items:flex-start;gap:12px;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.sec .num{flex:none;font-family:var(--display);font-weight:var(--w-d);font-size:var(--t15);color:var(--cls);font-variant-numeric:tabular-nums;padding-top:4px;min-width:1.4em}
+.sec .ht{flex:1;min-width:0}
+.sec h3{margin:0;font-family:var(--display);font-size:clamp(20px,2.4vw,24px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.sec .sd{margin:3px 0 0;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;white-space:nowrap;margin-top:3px}
+@container (max-width:520px){.sec > header{flex-wrap:wrap;row-gap:6px}.sec .ht{flex:1 1 calc(100% - 3em)}.sec > header .w{order:3;margin:0 0 0 calc(1.4em + 12px)}}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 14%,transparent);color:var(--cls)}
+.sb{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:16px 18px 18px}
+@container (min-width:700px){
+  .sb .duo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+  .sb .duo.wide-side{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+}
+.sb .duo{display:grid;gap:16px}
+.duo > .main,.duo > .side{container-type:inline-size;min-width:0}
+.sb .main > :first-child{margin-top:0}
+.sb .main.solo{max-width:72ch}
+.sb p{margin:0 0 10px;line-height:1.55}
+.sb p:last-child{margin-bottom:0}
+b.kw{font-weight:680;color:var(--ink)}
+
+/* bullets */
+.pts{margin:10px 0 0;padding:0;list-style:none}
+.pts:first-child{margin-top:0}
+.pts li{position:relative;padding:4px 0 4px 18px;line-height:1.5}
+.pts li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:2px;background:var(--cls)}
+.pts.two{columns:2 220px;column-gap:24px}
+.pts.two li{break-inside:avoid}
+
+/* label rows */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:14px}
+.rows:first-child{margin-top:0}
+.rows dt{padding:7px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:22px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:7px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* numbered steps */
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps:first-child{margin-top:0}
+.steps li{position:relative;padding:7px 0 7px 32px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:21px;height:21px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:650;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+
+/* flow: cause -> effect chain */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 0;margin:0;padding:0;list-style:none}
+.flow li{position:relative;flex:1 1 0;min-width:120px;display:flex;align-items:center;padding:10px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.35;margin-right:26px}
+.flow li:last-child{margin-right:0;border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:12px;height:12px;margin-top:-6px;background:var(--ink3);clip-path:polygon(0 15%,100% 50%,0 85%)}
+@container (max-width:519px){
+  .flow{flex-direction:column;gap:0}
+  .flow li{margin:0 0 22px;min-width:0}
+  .flow li:last-child{margin-bottom:0}
+  .flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;margin:0 0 0 -6px;clip-path:polygon(15% 0,85% 0,50% 100%)}
+}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tiles > div{padding:11px 13px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);border-top:3px solid var(--cls)}
+.tiles h5{margin:0 0 3px;font-size:var(--t15);font-weight:650;line-height:1.3}
+.tiles p{margin:0;font-size:var(--t13);line-height:1.45;color:var(--ink)}
+.tiles .tk{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--cls);text-transform:lowercase}
+
+/* tree (org chart; indented list on narrow cards) */
+.tree{overflow-x:auto}
+.tree ul{position:relative;display:flex;justify-content:center;margin:0;padding:16px 0 0;list-style:none}
+.tree > ul{padding-top:0}
+.tree li{position:relative;flex:1 1 0;padding:16px 4px 0;text-align:center;min-width:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:16px;border-top:1.5px solid var(--line2)}
+.tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line2)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:1.5px solid var(--line2);border-radius:0 6px 0 0}
+.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:16px;border-left:1.5px solid var(--line2)}
+.tree .nd{display:inline-block;max-width:100%;padding:7px 10px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t13);line-height:1.3;vertical-align:top}
+.tree .nd b{display:block;font-size:var(--t15);font-weight:650}
+.tree .nd span{display:block;color:var(--ink2);margin-top:2px}
+.tree > ul > li > .nd{background:var(--cls);border-color:var(--cls);color:var(--surface)}
+.tree > ul > li > .nd span{color:color-mix(in srgb,var(--surface) 85%,transparent)}
+.tree > ul > li > ul > li > .nd{border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+@container (max-width:379px){
+  .tree ul{display:block;padding:0 0 0 18px}
+  .tree > ul{padding-left:0}
+  .tree li{padding:6px 0 0 16px;text-align:left}
+  .tree > ul > li{padding-left:0}
+  .tree li::before{top:0;left:0;right:auto;width:12px;height:22px;border-top:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li::after{top:22px;left:0;right:auto;width:0;height:calc(100% - 22px);border:0;border-left:1.5px solid var(--line2);border-radius:0}
+  .tree li:last-child::after{display:none}
+  .tree li:first-child::before,.tree li:last-child::before{border-top:0;border-right:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li:first-child::after{border-radius:0}
+  .tree > ul > li::before,.tree > ul > li::after{display:none}
+  .tree ul ul::before{display:none}
+  .tree li:only-child::before{display:block}
+  .tree li:only-child{padding-top:6px}
+  .tree > ul > li:only-child{padding:0}
+  .tree > ul > li:only-child::before,.tree > ul > li:only-child::after{display:none}
+}
+
+/* figure (inline svg drawn per guide) */
+.fig{margin:0;padding:14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.fig svg{display:block;width:100%;height:auto;max-height:440px;font-family:var(--sans);overflow:visible}
+.fig figcaption{margin-top:8px;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.fig .ln{fill:none;stroke:var(--ink2);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .lc{fill:none;stroke:var(--cls);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .la{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .lb{fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+.fig .lg{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round}
+.fig .dash{stroke-dasharray:5 5}
+.fig .fc{fill:var(--cls)} .fig .fa{fill:var(--accent)} .fig .fb{fill:var(--bad)} .fig .fg{fill:var(--good)} .fig .fi{fill:var(--ink)}
+.fig .fs{fill:color-mix(in srgb,var(--cls) 18%,var(--surface))}
+.fig .fsa{fill:color-mix(in srgb,var(--accent) 16%,var(--surface))}
+.fig .fp{fill:var(--surface);stroke:var(--line2);stroke-width:1.2}
+.fig .fn{fill:none}
+.fig text{fill:var(--ink);font-size:14px}
+.fig .tm{fill:var(--ink2);font-size:12.5px}
+.fig .tb{font-weight:650}
+.fig .tc{fill:var(--cls);font-weight:650}
+.fig .ta{fill:var(--accent);font-weight:650}
+.fig .tw{fill:var(--surface);font-weight:650}
+.fig .tbd{fill:var(--bad);font-weight:650}
+.fig .mid{text-anchor:middle} .fig .end{text-anchor:end}
+.mk-ink{fill:var(--ink2)} .mk-cls{fill:var(--cls)} .mk-acc{fill:var(--accent)} .mk-bad{fill:var(--bad)}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.cmp > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.cmp h5{margin:0 0 6px;font-size:var(--t13);font-weight:650;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15);line-height:1.45} .cmp p:last-child{margin:0}
+
+/* tables */
+.tbw{overflow-x:auto;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:650}
+.tcap{margin:0 0 8px;font-size:var(--t13);font-weight:600;color:var(--ink2);text-transform:lowercase}
+@container (max-width:519px){
+  .tbw .tbl thead{display:none}
+  .tbw .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbw .tbl tbody tr:first-child{border-top:0}
+  .tbw .tbl td{display:block;padding:0;border:0}
+  .tbw .tbl.two td:not(:first-child)::before{display:none}
+  .tbw .tbl.two td:first-child{margin-bottom:2px}
+  .tbw .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* on the test (example) */
+.exs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.tq{border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.tq .el{display:flex;align-items:center;gap:6px;padding:10px 13px 0;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--accent);text-transform:lowercase}
+.tq .el svg{flex:none}
+.tq .eq{padding:4px 13px 12px;font-size:var(--t15);line-height:1.45;font-weight:500;flex:1}
+.tq .eb{display:flex;align-items:center;justify-content:space-between;width:100%;padding:9px 13px;border-top:1px solid var(--line);font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase}
+.tq .eb .chev{transition:transform .24s var(--spring)}
+.tq.on .eb .chev{transform:rotate(90deg)}
+.tq .ea{display:none;padding:10px 13px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.tq.on .ea{display:block;animation:rise .3s var(--spring) both}
+.tq .ea b.aa{display:block;font-weight:680;margin-bottom:3px}
+.tq .ea .why{color:var(--ink2)}
+
+/* watch out + callouts */
+.watch{border-radius:var(--r-btn);background:color-mix(in srgb,var(--bad) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 30%,var(--line));padding:11px 14px 12px}
+.watch .wl,.callout .cl{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--bad);text-transform:lowercase;margin-bottom:4px}
+.watch ul{margin:0;padding:0;list-style:none}
+.watch li{position:relative;padding:3px 0 3px 16px;font-size:var(--t15);line-height:1.45}
+.watch li::before{content:"";position:absolute;left:1px;top:11px;width:8px;height:2px;border-radius:1px;background:var(--bad)}
+.callout{border-radius:var(--r-btn);padding:10px 14px 11px;font-size:var(--t15);line-height:1.45;background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--cls)}
+.callout.ok{border-left-color:var(--good)} .callout.ok .cl{color:var(--good)}
+.callout.ex{border-left-color:var(--accent)} .callout.ex .cl{color:var(--accent)}
+.callout.cls .cl{color:var(--cls)}
+
+/* terms */
+.terms{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.terms .tl{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;margin-right:2px}
+.term{font-size:var(--t13);font-weight:500;padding:3px 9px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface2);color:var(--ink)}
+
+.abbr{padding:14px 16px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);color:var(--ink2);line-height:1.7}
+.abbr b{color:var(--ink);font-weight:650}
+
+/* generic cards / groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px}
 .card.top{border-left:4px solid var(--cls);padding-left:15px}
 .card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
-.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:12px}
 .row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
 .row + .row,.body + .row{border-top:1px solid var(--line)}
-.row:active{background:var(--surface2)}
 @media (hover:hover){.row:hover{background:var(--surface2)}}
 .rt{min-width:0;flex:1}
-.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rn{display:block;font-size:var(--t16);font-weight:550;line-height:1.3}
 .rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
 .chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
 .row[aria-expanded="true"] .chev{transform:rotate(90deg)}
-.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
-.w3{background:var(--cls);color:var(--surface)}
-.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
 .body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
 .body.on{grid-template-rows:1fr}
 .body > div{overflow:hidden}
-.body .in{padding:12px 16px 14px}
-.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
-.body p:last-child{margin-bottom:0}
-
-/* prose emphasis */
-.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
-.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.trap{color:var(--bad);font-weight:600}
-.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
-.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
-.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
-.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-@media (max-width:479px){.cmp{grid-template-columns:1fr}}
-.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
-.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
-.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
-.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
-.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
-.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
-.steps li + li{border-top:1px solid var(--line)}
-.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
-.abbr b{color:var(--ink);font-weight:600}
+.body .in{padding:12px 16px 14px;display:grid;gap:10px}
+.body p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
 
 /* practice mc */
-.q{margin-bottom:10px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:12px;align-items:start}
+.q{margin:0}
 .q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
-.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
 .opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
-.opt:active{background:var(--surface2)}
 @media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
 .opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
 .q.done .opt{cursor:default}
@@ -149,72 +351,145 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
 .opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
 .opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
-.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q .why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
 .q.done .why{display:block}
-.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
-.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.wide{width:100%}
-@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
-.btn:active{transform:scale(.987)}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease)}
+.scorepill.show{transform:translateX(-50%);opacity:1;pointer-events:auto}
+.scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
+.scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
 
-/* problems + worked examples */
-.prob .qt{padding:14px 16px}
-.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
-.prob.on .reveal{display:block}
-.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
-.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+/* problems */
+.pgrid{display:grid;gap:12px}
+.prob{container-type:inline-size;margin:0}
+.prob .pi{display:grid;grid-template-columns:minmax(0,1fr)}
+.prob .qt{padding:14px 16px;font-size:var(--t16);font-weight:500;line-height:1.45}
+.prob .go{border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.prob .reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block;animation:rise .3s var(--spring) both}
+.prob.on .go .chev{transform:rotate(90deg)}
+@container (min-width:820px){
+  .prob .pi{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .prob .qside{border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .prob .qside .qt{flex:1}
+  .prob .reveal{border-top:0;display:block;min-height:100%}
+  .prob:not(.on) .reveal::before{content:"work it first, then show the steps";display:grid;place-items:center;height:100%;min-height:120px;font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+  .prob:not(.on) .reveal > *{display:none}
+}
+.ans{margin-top:10px;padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);border-left:3px solid var(--good)}
 .ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+.work{margin:0;padding:0;list-style:none}
+.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
+.work li + li{border-top:1px solid var(--line)}
+.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.work .wm.cont{padding-left:1.1em}
+.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink2);padding-left:12px;border-left:2px solid var(--line)}
+.work .wy:empty{border-left-color:transparent}
+.work li.hd{padding:0 0 4px}
+.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
+.work li.hd .wh + .wh{padding-left:14px}
+@container (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0}.work li.hd{display:none}}
 
 /* formulas */
-.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
-.fx:first-child{border-top:0}
-.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
-.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
-.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.fx{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.fx .n{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t16);font-weight:500;overflow-wrap:anywhere}
+.fx .note{font-size:var(--t13);color:var(--ink2);line-height:1.45}
 
 /* flashcards */
-.deck{position:relative;perspective:1200px;margin-bottom:10px}
-.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.dk{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.deck{position:relative;perspective:1200px}
+.fc{position:relative;min-height:230px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
 .fc.flip{transform:rotateY(180deg)}
-.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
-.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:22px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t16);line-height:1.5;color:var(--ink)}
+.fc .tag{position:absolute;left:16px;top:13px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
 .fc .b .tag{color:var(--cls)}
-.dnav{display:flex;align-items:center;gap:8px}
+.dnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px;margin-top:6px}
+.clist > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.clist b{display:block;font-weight:650;margin-bottom:3px}
+.clist span{font-size:var(--t15);line-height:1.45;color:var(--ink)}
 
 /* timeline */
-.tl{position:relative;padding-left:22px}
-.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl .ev{position:relative;padding:6px 0 12px}
-.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
-.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
-.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
-.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+.tln{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.tln .ev{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 18px;padding:12px 16px;border-top:1px solid var(--line);position:relative}
+.tln .ev:first-child{border-top:0}
+.tln .y{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t16);color:var(--cls);font-variant-numeric:tabular-nums;line-height:1.35}
+.tln .t{font-size:var(--t16);font-weight:600;line-height:1.35}
+.tln .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+@media (min-width:900px){.tln .ev{grid-template-columns:110px minmax(0,.9fr) minmax(0,1.3fr)}.tln .d{margin-top:0}}
+@media (max-width:479px){.tln .ev{grid-template-columns:1fr;gap:2px}}
+
+/* cram */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:12px;align-items:start}
+.cgrid .group{margin:0}
+.cgrid .gh{padding:11px 14px;border-bottom:1px solid var(--line);font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;display:flex;justify-content:space-between;gap:10px}
+.cgrid .gh span{color:var(--ink3);font-weight:500}
+.cr{display:grid;grid-template-columns:minmax(0,10em) 1fr;gap:2px 14px;padding:9px 14px;border-top:1px solid var(--line)}
+.gh + .cr{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:650;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables pane */
+.tpane{display:grid;gap:22px}
+.tpane .tblk{container-type:inline-size}
 
 /* checklist */
-.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
-.ck:first-child{border-top:0}
+.ckg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:0 12px}
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:12px 14px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.4;background:var(--surface);border:1px solid var(--line);margin-bottom:8px}
 .ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
 .ck.on .box{background:var(--good);border-color:var(--good)}
 .ck.on .t{color:var(--ink3);text-decoration:line-through}
 .ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
 
+/* essay panes (leq / prompts) */
+.bul{margin:0;padding-left:18px}
+.bul li{margin:3px 0;line-height:1.45}
+.pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin-top:6px}
+.so{padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:var(--t15)}
+.so .cl{display:block;font-size:11.5px;font-weight:650;color:var(--accent);letter-spacing:.05em;text-transform:lowercase}
+.pace{display:flex;height:34px;border-radius:8px;overflow:hidden;gap:2px}
+.pace > div{display:grid;place-items:center;color:var(--surface);font-size:var(--t12);font-weight:650;background:var(--cls)}
+.pace > div:nth-child(2n){background:var(--accent)}
+.pace > div:nth-child(3n){background:var(--ink2)}
+.fnl{margin:0;padding-left:20px;font-size:var(--t15)}
+.fnl li{margin:4px 0}
+
 /* footer */
-footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
 footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
 footer .upd{display:block;margin-top:6px}
 
-/* reveal on load */
 .rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+
+@media print{
+  :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
+  .bar,.toc,.panes,.skipl,#prog,.scorepill,.tq .eb,.prob .go,.seg{display:none !important}
+  .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
+  .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
+  .prob:not(.on) .reveal::before{display:none}
+  .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
+  @page{margin:.6in}
+}
 </style>
 </head>
 <body>
+<a class="skipl" href="#main">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-ink"/></marker>
+  <marker id="ahc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-cls"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-acc"/></marker>
+  <marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-bad"/></marker>
+</defs></svg>
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="home" href="/" aria-label="all guides">
@@ -234,7 +509,8 @@ footer .upd{display:block;margin-top:6px}
   <div class="crow rv" id="crow"></div>
   <h2 class="title rv" id="title"></h2>
   <p class="sub rv" id="sub" hidden></p>
-  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div class="pdfs rv" id="pdfs" hidden></div>
+  <div class="rv"><div class="panes" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div></div>
   <div id="root" class="rv"></div>
   <footer>
     study guide written by a student, free to use. not affiliated with the school.
@@ -242,233 +518,908 @@ footer .upd{display:block;margin-top:6px}
     <span class="upd" id="upd"></span>
   </footer>
 </main>
+<div class="scorepill" id="score" aria-live="polite"><span><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
-   GUIDE — the only thing to edit. Delete panes you don't need from
-   `panes`; delete the matching data too. Prose accepts **term**,
-   ==fact== and !!trap!!. Everything is rendered from this object.
+   GUIDE: the only thing to edit. Everything renders from this object.
+   Rules (sept 29 2026, from reader feedback):
+   · bold a key term with **term** the first time it appears in a
+     section. Nothing else is marked inline: no highlights, no
+     underlines, no red text. (The renderer bolds each term once per
+     section and ignores legacy ==x== / !!x!! markers.)
+   · traps go in `watch`, never in the prose.
+   · two short paragraphs max per section; everything else is a shape:
+     pts, flow, steps, rows, tiles, tree, table, cmp, fig.
+   · every tested section gets at least one `ex` (see it on a test).
    ═══════════════════════════════════════════════════════════════════ */
 const GUIDE = {
-  id:    "psych",
-  cls:   "AP Psychology",
-  title: "Unit 1.1–1.3 study guide",
-  test:  "2026-09-15",
-  end:   "2026-09-16",
-  meta:  "25-point test · 3 mini FRQs + 10 MCQs · 20 practice MCQs here",
-  sub:   "practice questions, mini FRQ walkthroughs, and the material each one comes from",
-  updated: "sept 15, 2026",
-
-  panes: [ "outline", "problems", "practice", "cards" ],
-  labels: { problems:"mini frqs", practice:"practice", cards:"cards" },
-
-  top: [
-    "==The mini FRQs are 15 of the 25 points==, and they cover ==three topics==: natural selection in psychology, the nervous system's main divisions, and how the nervous and endocrine systems communicate.",
-    "**Main divisions**, in writing order: **CNS** decides, **PNS** carries. Inside the PNS, **somatic** moves skeletal muscle on purpose and **autonomic** runs organs. Inside autonomic, **sympathetic** arouses and **parasympathetic** calms.",
-    "The two systems meet at the **hypothalamus**, which signals the **pituitary**, the master gland. ==Nerves are fast and brief, hormones slow and long-lasting==. !!Neurons signal electrically along the axon and chemically across the synapse!!; hormones are chemical, carried in the blood.",
-    "The practice MCQs cluster in five places: twins and gene-environment interaction (6), the neuron and the action potential (5), the nervous system's divisions (4), evolutionary psychology (2), hormones (2).",
-    "Answer the FRQs ==fully==, in clear sentences: !!answer every requested part with the required explanation or example.!!"
-  ],
-
-  outline: [
-    { w:3, t:"Nature, nurture and twin studies", d:"6 of the 20 practice MCQs, the biggest cluster",
-      p:["**Behavior genetics** studies our differences and the relative power of heredity and environment. **Nature** means ==biological and genetic predispositions inherited from parents==; **nurture** is everything the environment supplies. !!Parental rearing style, socioeconomic status, cultural norms, peers and schooling are all nurture!!, and a study whose treatment is an intervention is manipulating nurture.",
-         "**Gene-environment interaction** requires ==both halves in the same scenario==: an inherited predisposition plus an environmental trigger. High cholesterol that runs in the family combined with a diet heavy in saturated fat is the interaction; an inherited condition alone is not, and food poisoning alone is not.",
-         "**Twin studies** hold one factor constant and vary the other. Identical (**monozygotic**) twins share ==100% of their genes==; fraternal (**dizygotic**) twins share about half, like any siblings. **Twin and adoption studies** compare patterns of similarity to estimate genetic and environmental contributions; results depend on the trait. Identical twins raised together are usually most alike. **Heritability** describes how much of the variation among people is attributable to genes, !!never how much of one person is genetic!!, and **epigenetics** covers environmental influences that switch gene expression on or off without changing the DNA.",
-         "**Family studies** compare relatives; **adoption studies** compare a child with biological vs adoptive relatives. **Eugenics** !!misused heredity claims to justify discrimination and controlling reproduction!!."],
-      notes:[{k:"ok",t:"**Fingerprints** are the standard answer to what identical twins do !!not!! share. They reflect both genes and prenatal development: twins' broad patterns can look alike, but the detailed ridges differ. Blood type, eye color and natural hair color match."}],
-      terms:["nature","nurture","behavior genetics","heritability","monozygotic","dizygotic","epigenetics","gene-environment interaction","family studies","adoption studies","eugenics"] },
-
-    { w:3, t:"The neuron and the action potential", d:"5 practice MCQs, and the most technical ones",
-      p:["Parts in order: **dendrites** receive messages from other cells, the **soma** or cell body is the life-support center, the **axon hillock** where the axon leaves the soma ==sums the incoming graded potentials and decides whether to fire==, the **axon** carries the impulse, the **myelin sheath** insulates it, and the **axon terminals** pass the message on.",
-         "At rest the neuron is **polarized**: ==negative inside the membrane, positive outside==. When the combined excitatory and inhibitory input reaches **threshold**, ==sodium channels open and Na⁺ rushes into the cell==. That is **depolarization**, and it is ==**all-or-none**: the neuron fires at full strength or not at all==. Potassium then moves out to repolarize. During the **absolute refractory period** the neuron cannot fire again; during the **relative refractory period** only a stronger stimulus can fire it.",
-         "**Myelin** speeds the impulse by leaving gaps. The **nodes of Ranvier** are bare patches between myelin segments, and the action potential ==jumps from one node to the next== rather than crawling down the whole membrane."],
-      notes:[{k:"warn",t:"Myelin does !!not!! insulate the entire length of the axon, does !!not!! widen the axon, and does !!not!! pump extra ions. The gaps are the whole mechanism, which is why **multiple sclerosis**, a degeneration of myelin, slows messages down the axon and produces motor impairment. Separately, **glial cells** ==support, protect and insulate neurons== and help with signaling; some (astrocytes) can release chemical messengers, but !!they do not fire action potentials like neurons!!."}],
-      terms:["dendrite","soma","axon hillock","axon","myelin sheath","nodes of Ranvier","threshold","action potential","depolarization","refractory period","all-or-none","glial cells"] },
-
-    { w:3, t:"The nervous system's main divisions", d:"4 practice MCQs, plus all of mini FRQ 2",
-      p:["The **nervous system** is the body's speedy electrochemical communication network. It splits into the **central nervous system (CNS)**, the brain and spinal cord, which ==processes information and makes the decisions==, and the **peripheral nervous system (PNS)**, the nerves that carry information in and commands out.",
-         "The PNS splits again. The **somatic nervous system** controls ==voluntary movement of skeletal muscle==, so walking down a street is somatic. The **autonomic nervous system** controls ==the self-regulated action of internal organs and glands==, which is why digestion and heartbeat never need a decision."],
-      cmp:{ a:{h:"sympathetic", p:["==Arouses and expends energy.==","Fight or flight: heart rate up, pupils dilate, digestion pauses."]},
-            b:{h:"parasympathetic", p:["==Calms and conserves energy.==","Rest and digest: takes over once the stressful event has passed."]} },
-      steps:["**CNS**: brain and spinal cord, the decision maker.",
-             "**PNS**: everything outside it, carrying messages both ways.",
-             "**Somatic**: voluntary skeletal muscle.",
-             "**Autonomic**: involuntary organs and glands.",
-             "Autonomic splits into **sympathetic** (arouse) and **parasympathetic** (calm)."],
-      notes:[{k:"warn",t:"The three types of neurons are !!sensory, motor and interneurons!!; a **dendrite** is a part of a neuron, not a type of one. **Sensory neurons** (afferent) carry input to the CNS (brain or spinal cord), **motor neurons** (efferent) carry commands to muscles and glands, and **interneurons** stay inside the CNS. In a **withdrawal reflex**, spinal interneurons link sensory to motor neurons before you're aware of it. Impairing the motor set breaks the brain-to-body direction."}],
-      terms:["central nervous system","peripheral nervous system","somatic nervous system","autonomic nervous system","sympathetic","parasympathetic","sensory neurons","motor neurons","interneurons"] },
-
-    { w:2, t:"Nervous system meets endocrine system", d:"2 practice MCQs, plus all of mini FRQ 3",
-      p:["The **endocrine system** is the body's ==slow chemical communication system==: a set of glands that secrete **hormones** into the bloodstream, where they travel to tissues, including the brain.",
-         "The two systems meet at the **hypothalamus**, which sits in the brain and signals the **pituitary gland**. The pituitary is the ==master gland==: it releases its own hormones and directs the thyroid, adrenals and gonads, whose hormones circulate back and influence the brain and behavior."],
-      steps:["The brain registers something: a threat, a need, a stressor.",
-             "The **hypothalamus** signals the **pituitary gland**.",
-             "The pituitary releases hormones (such as **ACTH**) that direct other glands.",
-             "Those glands release hormones into the blood (ACTH makes the **adrenal cortex** release **cortisol**). In stress, sympathetic nerves also trigger the **adrenal medulla** directly (epinephrine), bypassing the pituitary.",
-             "Hormones reach the brain, change behavior, and feed back to the hypothalamus."],
-      notes:[{k:"warn",t:"The nervous system is ==electrical along the neuron and chemical across the synapse==; the endocrine system is chemical only, with hormones in the blood. **Neurotransmitters** are fast and their effects are brief; **hormones** are slower and their effects last much longer. Some molecules do both jobs: **epinephrine**, **norepinephrine** and **oxytocin** act as neurotransmitters at a synapse and as hormones in the blood."},
-             {k:"ok",t:"**Oxytocin** is produced by the **hypothalamus** and stored and released by the ==posterior pituitary==. !!TSH, ACTH and prolactin are made by the anterior pituitary itself!!, so they are the wrong answer to that question."}],
-      terms:["endocrine system","hormones","hypothalamus","pituitary gland","adrenal glands","oxytocin","epinephrine","norepinephrine"] },
-
-    { w:2, t:"Natural selection and evolutionary psychology", d:"2 practice MCQs, plus all of mini FRQ 1",
-      p:["**Natural selection** is the principle that ==inherited traits that better enable an organism to survive and reproduce in a particular environment will be passed on to succeeding generations==. **Evolutionary psychology** applies that principle to behavior and mind.",
-         "It explains **human nature**: the tendencies that helped ancestors survive, such as a preference for sweet and fatty foods or a fast fear response to snakes and heights, are widely shared, though they vary with the individual and experience. Humans share ==about 99.9% of their DNA== through common ancestry, but that alone doesn't prove a behavior is an adaptation. **Mutations**, random errors in gene replication, supply the variation selection works on."],
-      cmp:{ a:{h:"proximate", p:["The immediate mechanism, the **how** right now.","Sugar activates taste receptor cells and triggers **dopamine** release."]},
-            b:{h:"ultimate", p:["The evolutionary **why**, the adaptive problem it solved.","Calories were scarce, so a sweet tooth kept ancestors alive long enough to reproduce."]} },
-      notes:[{k:"warn",t:"A question can use the word why and still be giving a **proximate explanation**. !!Judge the explanation, not the question word.!! Receptors, dopamine and brain circuitry are always proximate; only an answer about surviving and reproducing is an **ultimate explanation**."},
-             {k:"ok",t:"To count as a true **adaptation**, a psychological mechanism must have ==reliably solved a recurrent adaptive problem across evolutionary history==. !!It does not have to be consciously recognized, produce maximum reproductive success in the modern world, or be immune to environmental influence.!!"}],
-      terms:["natural selection","evolutionary psychology","adaptation","proximate explanation","ultimate explanation","mutation"] },
-
-    { w:1, t:"Neurotransmitters worth knowing", d:"1 practice MCQ, cheap insurance",
-      p:["Each **neurotransmitter** has a job and the question asks for the match. **Norepinephrine** controls ==alertness and arousal==. **Acetylcholine (ACh)** handles muscle action and memory. **Dopamine** influences movement, learning, attention and reward. **Serotonin** affects mood, hunger and sleep. **Substance P** carries pain signals. **GABA** is the major inhibitory messenger, **glutamate** the major excitatory one, and **endorphins** are the body's natural painkillers."],
-      notes:[{k:"ok",t:"Waking up feeling alert is **norepinephrine**. !!Dopamine is the tempting wrong answer!! because it gets called the reward chemical, but reward and pleasure are not the same thing as alertness."}],
-      terms:["norepinephrine","acetylcholine","dopamine","serotonin","GABA","glutamate","endorphins","Substance P"] },
-
-    { w:1, t:"Synapse, drugs and more 1.3 hormones", d:"not in the practice set, but in 1.3",
-      p:["**Synapse in order**: the action potential reaches the terminal, ==neurotransmitters are released==, cross the **synaptic cleft** and bind to receptors, then are cleared by **reuptake**, breakdown or diffusion. **Myasthenia gravis** disrupts the ==neuromuscular junction==, causing muscle weakness.",
-         "**Agonists** activate receptors (mimic), **antagonists** block them, **reuptake inhibitors** keep transmitter in the cleft longer. Drug types: **stimulants**, **depressants**, **hallucinogens**, **opioids**. Know **tolerance**, **addiction** and **withdrawal**.",
-         "More hormones: **leptin** = satiety (full), **ghrelin** = hunger, **melatonin** = sleep timing."],
-      terms:["synaptic cleft","reuptake","myasthenia gravis","agonist","antagonist","reuptake inhibitor","stimulants","depressants","hallucinogens","opioids","tolerance","addiction","withdrawal","leptin","ghrelin","melatonin"] }
-  ],
-
-  problems: [
-    { q:"Mini FRQ 1 · natural selection and psychology",
-      steps:["Define it. **Natural selection** is the principle that inherited traits which better enable an organism to survive and reproduce in a particular environment are passed on to succeeding generations.",
-             "Name the field. **Evolutionary psychology** studies behavior and mind using those principles, asking what adaptive problem a tendency solved.",
-             "Give a behavioral example, not a physical one: the preference for sweet and fatty foods, the fast fear response to snakes and heights, the drive to form social bonds.",
-             "Say what it explains: widely shared tendencies (human nature), which still vary by individual and experience.",
-             "Name the limit: **mutations** create variation, and selection changes how common variants are across generations. Populations evolve; an individual does not."],
-      ans:"Natural selection is the principle that inherited traits which better enable an organism to survive and reproduce in a particular environment get passed on to succeeding generations. Evolutionary psychology applies that principle to behavior and mental processes, treating a psychological tendency as something that persisted because it solved a recurring adaptive problem for our ancestors. A preference for sweet and fatty foods is the standard example: calories were scarce, so wanting them was an advantage, and the preference stayed even though the environment changed. The same logic explains a fast fear response to snakes and heights, and the human drive to form social bonds. Because selected tendencies are widely shared, evolutionary psychology uses selection to help explain human nature, though these tendencies still vary with the individual and experience. Mutations create new variants, and selection acts on existing heritable variation through differences in survival and reproduction, changing a population across generations; an individual does not evolve during their own lifetime." },
-
-    { q:"Mini FRQ 2 · the nervous system's main divisions and what each one does",
-      steps:["Open with the whole system: the **nervous system** is the body's speedy electrochemical communication network.",
-             "Name the two main divisions and give each a function: **CNS** (brain and spinal cord) processes and decides; **PNS** (the sensory and motor nerves) gathers information and carries commands out.",
-             "Split the PNS: **somatic** controls voluntary movement of skeletal muscle; **autonomic** controls the self-regulated action of internal organs and glands.",
-             "Split the autonomic: **sympathetic** arouses and expends energy for fight or flight; **parasympathetic** calms and conserves energy afterward.",
-             "Close with one concrete example so the functions are ==explained, not just listed==: a startle raises heart rate through the sympathetic division, and the parasympathetic division brings it back down."],
-      ans:"The nervous system is the body's speedy electrochemical communication network, and it has two main divisions. The central nervous system is the brain and the spinal cord; it receives sensory information, interprets it, and decides on a response. The peripheral nervous system is every nerve outside the brain and spinal cord; it carries sensory information in from the body and motor commands back out. The peripheral nervous system divides again. The somatic nervous system controls voluntary movement of the skeletal muscles, so it is what lets a person choose to walk. The autonomic nervous system controls the self-regulated action of internal organs and glands, so heart rate, digestion and glands run without a decision (breathing muscles are skeletal, run by somatic motor neurons). The autonomic system itself has two parts that work as a pair: the sympathetic division arouses the body and expends energy for fight or flight, raising heart rate and pausing digestion, while the parasympathetic division calms the body and conserves energy once the threat has passed. A sudden scare at a movie is the sympathetic division at work, and the settling down afterward is the parasympathetic division." },
-
-    { q:"Mini FRQ 3 · how the nervous and endocrine systems talk to each other",
-      steps:["Define the second system: the **endocrine system** is the body's slow chemical communication system, a set of glands that secrete **hormones** into the bloodstream.",
-             "Name the connection point: the **hypothalamus**, a brain structure, is where the nervous system reaches the endocrine system.",
-             "Trace the chain in order: hypothalamus signals the **pituitary**, the master gland; the pituitary releases hormones that direct the thyroid, adrenals and gonads.",
-             "Close the loop, which is what the word ==communicate== is asking for: those hormones travel through the blood back to the brain and influence behavior, and the brain adjusts its signals in response.",
-             "Give the stress example and the speed contrast: fast path, sympathetic nerves signal the **adrenal medulla** to release epinephrine and norepinephrine; slow path, hypothalamus to pituitary (**ACTH**) to adrenal cortex (**cortisol**); and the effects outlast the neural signal that started them."],
-      ans:"The endocrine system is the body's slow chemical communication system: glands that secrete hormones into the bloodstream, where they travel to tissues throughout the body, including the brain. The two systems connect at the hypothalamus, a structure in the brain that monitors the body's internal state. When the hypothalamus detects a need, it signals the pituitary gland sitting just below it. The pituitary is the master gland: it releases its own hormones and directs the other endocrine glands, including the thyroid, the adrenals and the gonads. Those glands release hormones into the blood, and because the blood reaches the brain, the hormones feed back and influence the brain's activity and the person's behavior, which changes what the hypothalamus signals next. That feedback loop is the communication running in both directions. Stress uses two paths: sympathetic nerves directly stimulate the adrenal medulla to release epinephrine and norepinephrine, raising heart rate, blood pressure and blood sugar, while the hypothalamus signals the pituitary to release ACTH, which makes the adrenal cortex release cortisol. Feedback helps regulate both. The difference between the systems is speed and duration, since neural messages are fast and brief while hormonal messages are slower but last much longer, and some chemicals such as epinephrine, norepinephrine and oxytocin serve as both neurotransmitters and hormones." }
-  ],
-
-  practice: [
-    { q:"In the context of behavioral genetics and psychology, to what does the term **nature** primarily refer?",
-      opts:["Biological and genetic predispositions inherited from parents.","The impact of parental rearing styles and socioeconomic status.","The cultural norms absorbed during childhood development.","Peer influence and schooling environments during adolescence."],
-      a:0, why:"Nature is what the genes supply. The other three are all **nurture**, meaning environment: rearing style, socioeconomic status, cultural norms, peers, schooling. !!Every wrong option here is the same wrong idea in a different costume.!!" },
-    { q:"Dr. Grant studied the extent to which humans share genes with each other and with other animals, and how genes contribute to behavior. Which conclusion would she most likely reach?",
-      opts:["Chimpanzees share very few genes with humans.","Complex behaviors are determined by specific individual genes.","Human genes are mostly the same across all people.","Genetic predispositions do not explain our shared human nature."],
-      a:2, why:"Humans are about ==99.9% genetically identical== to each other, and chimpanzees share 96% or more, so the first option is factually wrong. !!Complex behavior is polygenic!!, produced by many genes each with a small effect, never one gene. And genetic predispositions are exactly what does explain shared human nature." },
-    { q:"Which of the following is an example of gene-environment interaction?",
-      opts:["Yen Lin inherits an ALDH2 gene variant.","Alfonso gets food poisoning from eating undercooked meat.","Ted develops high cholesterol, which runs in his family, because his diet contains too much saturated fat.","Jordan has an autoimmune disorder that causes him to lose hair."],
-      a:2, why:"Interaction needs ==a genetic predisposition and an environmental trigger in the same sentence==. Only Ted has both: cholesterol that runs in the family plus a high-fat diet. !!Yen Lin's option names only a gene, Jordan's names no cause at all, and food poisoning is environment alone.!!" },
-    { q:"An evolutionary psychologist asks why humans prefer sweet tastes and explains that sugar activates taste receptor cells on the tongue and triggers dopamine release in the brain. That is which type of explanation?",
-      opts:["ultimate explanation","proximate explanation","by-product explanation","phylogenetic explanation"],
-      a:1, why:"**Proximate** explanations give the immediate mechanism, the how right now: receptors, dopamine, brain circuitry. **Ultimate** explanations give the evolutionary why, which here would be that calories were scarce and a sweet tooth kept ancestors alive. !!The word \"why\" in the stem is the trap!! — judge the explanation, not the question word." },
-    { q:"Which trait is unique and NOT shared by identical twins?",
-      opts:["blood type","eye color","fingerprints","natural hair color"],
-      a:2, why:"Identical twins are **monozygotic**, so anything coded directly by DNA matches: blood type, eye color, natural hair color. ==Fingerprints reflect genes plus prenatal development==, so twins' broad patterns may be similar but the detailed ridges differ. Fingerprints are still the best answer." },
-    { q:"Which part of a neuron is primarily responsible for the summation of graded potentials and the initiation of an action potential?",
-      opts:["dendrite","synaptic knob","axon hillock","Node of Ranvier"],
-      a:2, why:"The **axon hillock** is where the axon leaves the cell body, and it is the point that ==adds up the incoming signals and decides whether threshold was crossed==. !!Dendrites receive the signals but do not initiate!!, the synaptic knob releases neurotransmitters at the far end, and a Node of Ranvier propagates an impulse that already started." },
-    { q:"During the depolarization phase of an action potential, which ion channels open and what is the direction of ion movement?",
-      opts:["Sodium channels open, moving into the cell.","Potassium channels open, moving into the cell.","Sodium channels open, moving out of the cell.","Calcium channels open, moving out of the cell."],
-      a:0, why:"==Sodium (Na⁺) rushes in==, which flips the inside of the membrane from negative to positive. !!Potassium moving out is repolarization!!, the step after, and getting the direction backwards is the most common miss on this question." },
-    { q:"How does the myelin sheath increase the speed of nerve impulse propagation?",
-      opts:["By increasing the diameter of the axon significantly.","By actively pumping more sodium and potassium ions continuously across the membrane.","By completely insulating the entire length of the axon from any ion exchange.","By forcing the action potential to jump from one Node of Ranvier to the next."],
-      a:3, why:"That jumping is saltatory conduction, and ==the gaps are the mechanism==. !!Option c is the trap!!: myelin deliberately does not cover the entire axon, because an impulse that could not exchange ions anywhere would never propagate at all. Myelin is passive insulation, so it neither pumps ions nor widens the axon." },
-    { q:"Which hormone is produced by the hypothalamus and subsequently stored and released by the posterior pituitary gland?",
-      opts:["Oxytocin","Thyroid-stimulating hormone","Adrenocorticotropic hormone","Prolactin"],
-      a:0, why:"**Oxytocin** is made in the **hypothalamus** and shipped to the ==posterior pituitary== for storage and release. !!TSH, ACTH and prolactin are all produced by the anterior pituitary itself!!, so they fail the \"produced by the hypothalamus\" half of the question." },
-    { q:"Which of the following is NOT one of the 3 types of neurons?",
-      opts:["sensory neurons","motor neurons","dendrites","interneurons"],
-      a:2, why:"The three types are ==sensory, motor and interneurons==. A **dendrite** is a part of a neuron, !!not a category of neuron!!. Sensory run body to brain, motor run brain to body, interneurons stay inside the CNS." },
-    { q:"Dr. Yondu randomly assigns 100 children to two conditions: one group receives a social skills intervention, the other listens to a talk about how to whistle. Both complete an emotional stability questionnaire four weeks later. What does his independent variable measure?",
-      opts:["The impact of nature.","The impact of epigenetics.","The impact of nurture.","The impact of evolution."],
-      a:2, why:"The independent variable is the thing the researcher manipulates, and here that is ==an environmental intervention==, which is **nurture**. !!\"Nature\" is the trap!! because the outcome, emotional stability, sounds like a trait. **Epigenetics** would require an environmental factor switching gene expression on or off, which is not what is being measured." },
-    { q:"Which of the following criteria is essential for identifying a psychological mechanism as a true evolutionary adaptation?",
-      opts:["It must be consciously recognized by the individual possessing it.","It must lead to maximal reproductive success in the modern environment.","It must have reliably solved a recurrent adaptive problem across evolutionary history.","It must be immutable and impervious to environmental influence."],
-      a:2, why:"An adaptation is defined by ==what it solved, repeatedly, in ancestral environments==. !!Most adaptations are unconscious!!, the standard is the ancestral environment rather than the modern one, and !!nothing in psychology is impervious to the environment!!, which is the whole point of gene-environment interaction." },
-    { q:"Dr. Kent studied 1000 sets of identical and fraternal twins raised in the same household versus different households. Based on previous research, who should he expect to be most alike?",
-      opts:["Fraternal twins raised in the same households.","Identical twins raised in two different households.","Fraternal twins raised in two different households.","Identical twins raised in the same households."],
-      a:3, why:"==Same genes plus same environment is maximum similarity==. Identical twins share 100% of their genes and fraternal twins share about half, so identical pairs are generally more alike, and identical twins sharing a household add environment on top. This is a typical pattern, not a guarantee for every trait. !!Identical twins raised apart is the second-most alike, not the most.!!" },
-    { q:"Which division of the nervous system calms a person down once a stressful event has passed?",
-      opts:["Parasympathetic","Central","Somatic","Sympathetic"],
-      a:0, why:"**Parasympathetic** calms and conserves energy. !!Sympathetic is the trap!! because it is the division that actually appears in the scenario, but it caused the arousal rather than ending it. Somatic moves skeletal muscle and central is the brain and spinal cord, neither of which is the calming division." },
-    { q:"Thomas is walking down his favorite street in town. Which division of the nervous system enables him to move the muscles necessary to do this?",
-      opts:["Central","Sympathetic","Parasympathetic","Somatic"],
-      a:3, why:"**Somatic** controls ==voluntary movement of skeletal muscle==. !!\"Central\" is the tempting answer!! because the brain gave the order, but the question asks which division moves the muscle, and that is the somatic branch of the peripheral nervous system carrying the command out." },
-    { q:"If Drew's motor neurons were impaired, he would experience a disruption in the ability to",
-      opts:["send messages from specific body parts to the brain.","transmit and process information within the brain and spinal cord.","process neurotransmitters in the brain.","send messages from the brain to the body parts."],
-      a:3, why:"**Motor (efferent)** neurons carry instructions ==out from the CNS to the muscles and glands==. !!The first option describes sensory (afferent) neurons!! and the second describes interneurons, so both are the right idea pointed the wrong way." },
-    { q:"What must a neuron do to generate an action potential?",
-      opts:["The neuron must be in the refractory period.","Glial cells must release neurotransmitters into the axon.","Net input must depolarize the trigger region to threshold.","Dopamine and serotonin must be present in equal amounts."],
-      a:2, why:"Excitatory and inhibitory inputs combine; ==reaching threshold at the axon hillock triggers an all-or-none action potential==. !!The refractory period is the opposite!!, the window right after firing when the neuron cannot fire (absolute) or needs a stronger stimulus (relative). **Glial cells** do not trigger a neuron's action potential, and no neurotransmitter ratio is required." },
-    { q:"On the neuron diagram, A and B label the branches coming off the cell body, C labels the long fiber running away from it, and D labels the branches at the far end. Which letter corresponds to the neuron's axon?",
-      opts:["A","B","C","D"],
-      a:2, why:"The **axon** is ==the single long fiber that carries the impulse away from the cell body==, so it is C. !!A and B are dendrites!!, which receive messages, and D is the axon terminals, which pass the message on to the next cell." },
-    { q:"Andy woke up feeling alert. Which neurotransmitter impacted his alertness?",
-      opts:["Acetylcholine","Norepinephrine","Substance P","Dopamine"],
-      a:1, why:"**Norepinephrine** controls ==alertness and arousal==. **Acetylcholine** handles muscle action and memory, **Substance P** carries pain signals, and !!dopamine is the trap!! because it gets labeled the reward chemical, but reward is not the same thing as being alert." },
-    { q:"A friend says \"Hormones are the same thing as neurotransmitters.\" Which statement BEST modifies that claim to make it more accurate?",
-      opts:["Both are electrical messages, but neurotransmitters travel much more slowly than hormones and their effects last longer.","Both are chemical messages, but hormones travel much more slowly than neurotransmitters and their effects last longer.","Both are electrical messages, but neurotransmitters travel much more quickly than hormones and their effects last longer.","Both are chemical messages, but neurotransmitters travel much more quickly than hormones and their effects last longer."],
-      a:1, why:"Two things have to be right at once. ==Both are chemical messages, not electrical==, which eliminates half the options immediately. Then ==hormones are the slow ones with the long-lasting effects==, because they travel through the bloodstream, while neurotransmitters cross a synapse in an instant and are cleared just as fast. !!Option d gets the chemistry right and the speed backwards.!!" }
-  ],
-
-  cards: [
-    { f:"Central nervous system", b:"The **brain and the spinal cord**. Processes information and makes the decisions." },
-    { f:"Peripheral nervous system", b:"The **sensory and motor neurons** outside the brain and spinal cord. Carries information in and commands out." },
-    { f:"Somatic nervous system", b:"The branch of the PNS controlling ==voluntary movement of skeletal muscle==. Walking, writing, lifting." },
-    { f:"Autonomic nervous system", b:"The branch of the PNS controlling the ==self-regulated action of internal organs and glands==. Heart rate, digestion, glands (cardiac and smooth muscle). !!Breathing muscles are skeletal, so somatic.!!" },
-    { f:"Sympathetic division", b:"==Arouses and expends energy.== Fight or flight: heart rate up, pupils dilate, digestion pauses." },
-    { f:"Parasympathetic division", b:"==Calms and conserves energy.== Takes over once the stressful event has passed." },
-    { f:"Sensory (afferent) neurons", b:"Carry information from the body's tissues and sensory receptors ==to the brain and spinal cord==." },
-    { f:"Motor (efferent) neurons", b:"Carry instructions ==from the brain and spinal cord out to the muscles and glands==." },
-    { f:"Interneurons", b:"Neurons that stay ==inside the CNS==, communicating internally between sensory input and motor output." },
-    { f:"Axon hillock", b:"Where the axon leaves the cell body. ==Sums the incoming graded potentials and initiates the action potential== if threshold is crossed." },
-    { f:"Myelin sheath", b:"Fatty tissue insulating the axon. Speeds the impulse by making it ==jump from one node of Ranvier to the next==. Degraded in multiple sclerosis." },
-    { f:"Nodes of Ranvier", b:"The ==bare gaps between myelin segments==. The action potential jumps node to node, which is what makes myelinated axons fast." },
-    { f:"Depolarization", b:"==Sodium channels open and Na⁺ rushes into the cell==, flipping the inside of the membrane from negative to positive." },
-    { f:"Refractory period", b:"The pause right after firing. **Absolute**: ==cannot fire again== (sodium channels inactivated). **Relative**: a stronger stimulus can fire it. K⁺ flowing out repolarizes; the Na⁺/K⁺ pump keeps the gradients." },
-    { f:"Threshold", b:"The level of stimulation required to trigger a neural impulse. Reached when ==net input depolarizes the axon hillock enough==." },
-    { f:"Glial cells", b:"Cells that ==support, protect and insulate neurons== and help with signaling. Astrocytes can release chemical messengers; glia do not fire action potentials." },
-    { f:"Hypothalamus", b:"The brain structure where the nervous and endocrine systems meet. ==Signals the pituitary gland== and produces oxytocin." },
-    { f:"Pituitary gland", b:"The ==master gland==. Directed by the hypothalamus; releases hormones that control the thyroid, adrenals and gonads." },
-    { f:"Oxytocin", b:"Produced by the **hypothalamus**, stored and released by the ==posterior pituitary==. Involved in bonding and social attachment." },
-    { f:"Norepinephrine", b:"Neurotransmitter and hormone controlling ==alertness and arousal==. Undersupply is linked to depressed mood." },
-    { f:"Acetylcholine (ACh)", b:"Neurotransmitter for ==muscle action, learning and memory==. Deteriorating ACh-producing neurons are linked to Alzheimer's." },
-    { f:"Natural selection", b:"==Inherited traits that better enable an organism to survive and reproduce in a particular environment will be passed on to succeeding generations.==" },
-    { f:"Adaptation (evolutionary)", b:"A mechanism that ==reliably solved a recurrent adaptive problem across evolutionary history==. Not required to be conscious or optimal today." },
-    { f:"Proximate vs ultimate", b:"**Proximate** = the immediate mechanism (receptors, dopamine). **Ultimate** = the evolutionary reason the tendency was selected for." },
-    { f:"Heritability", b:"The proportion of ==variation among individuals== in a group that can be attributed to genes. !!Never how much of one person is genetic.!!" },
-    { f:"Gene-environment interaction", b:"A genetic predisposition ==plus== an environmental trigger producing the outcome. Both halves must be present." },
-    { f:"Monozygotic vs dizygotic", b:"**Monozygotic** (identical) twins share ==100% of their genes==; **dizygotic** (fraternal) twins share about half, like any siblings." },
-    { f:"Epigenetics", b:"The study of ==environmental influences on gene expression== that occur without changing the DNA itself." },
-    { f:"Family and adoption studies", b:"**Family**: compare relatives. **Adoption**: compare a child with ==biological vs adoptive relatives==." },
-    { f:"Eugenics", b:"Misused heredity claims to ==justify discrimination and controlling reproduction==." },
-    { f:"Reuptake", b:"The sending neuron ==reabsorbs leftover neurotransmitter== from the cleft. Breakdown and diffusion also clear it." },
-    { f:"Agonist vs antagonist", b:"**Agonist** ==activates== a receptor; **antagonist** ==blocks== it. Reuptake inhibitors keep transmitter in the cleft longer." },
-    { f:"Myasthenia gravis", b:"Disrupts signaling at the ==neuromuscular junction==, causing muscle weakness." },
-    { f:"Leptin, ghrelin, melatonin", b:"**Leptin** = full (satiety), **ghrelin** = hungry, **melatonin** = ==sleep timing==." },
-    { f:"Drug categories", b:"**Stimulants**, **depressants**, **hallucinogens**, **opioids**. Repeated use brings **tolerance**; stopping brings **withdrawal**." }
-  ],
-
-  abbr: { "CNS":"central nervous system", "PNS":"peripheral nervous system", "ANS":"autonomic nervous system", "ACh":"acetylcholine", "GABA":"gamma-aminobutyric acid", "Na⁺":"sodium ion", "MS":"multiple sclerosis", "TSH":"thyroid-stimulating hormone", "ACTH":"adrenocorticotropic hormone", "MCQ":"multiple choice question", "FRQ":"free response question" }
+ "id": "psych",
+ "cls": "AP Psychology",
+ "title": "Unit 1.1–1.3 study guide",
+ "test": "2026-09-15",
+ "end": "2026-09-16",
+ "meta": "25-point test · 3 mini FRQs + 10 MCQs · 20 practice MCQs here",
+ "sub": "practice questions, mini FRQ walkthroughs, and the material each one comes from",
+ "updated": "sept 29, 2026",
+ "panes": [
+  "outline",
+  "problems",
+  "practice",
+  "cards"
+ ],
+ "labels": {
+  "problems": "mini frqs",
+  "practice": "practice",
+  "cards": "cards"
+ },
+ "top": [
+  "Mini FRQs (15 of the quiz's 25 points): natural selection, the **main divisions**, nervous-endocrine communication. Answer every part, in full sentences.",
+  "**CNS** decides, PNS carries. Somatic: voluntary skeletal muscle. Autonomic: organs. Sympathetic arouses; parasympathetic calms.",
+  "The **hypothalamus** signals the pituitary, the master gland. Nerves are fast; hormones slow and long-lasting.",
+  "At threshold Na⁺ rushes in and the neuron fires **all-or-none**.",
+  "**Gene-environment interaction** needs both: inherited predisposition, environmental trigger."
+ ],
+ "outline": [
+  {
+   "w": 3,
+   "t": "Nature, nurture and twin studies",
+   "d": "6 of the 20 practice MCQs: the biggest cluster",
+   "p": [
+    "**Behavior genetics** weighs heredity vs environment; twin and adoption studies estimate each, trait by trait.",
+    "**Gene-environment interaction**: inherited predisposition plus environmental trigger, in one scenario."
+   ],
+   "rows": [
+    [
+     "nature",
+     "biological and genetic predispositions inherited from parents"
+    ],
+    [
+     "nurture",
+     "environment: rearing, socioeconomic status, culture, peers, school"
+    ],
+    [
+     "heritability",
+     "share of variation among people due to genes"
+    ],
+    [
+     "epigenetics",
+     "environment switches genes on or off; DNA unchanged"
+    ],
+    [
+     "family studies",
+     "compare relatives"
+    ],
+    [
+     "adoption studies",
+     "child vs biological, adoptive relatives"
+    ],
+    [
+     "eugenics",
+     "misused heredity to justify discrimination, control reproduction"
+    ]
+   ],
+   "tiles": [
+    {
+     "h": "Identical (monozygotic)",
+     "t": "100% of genes; same blood type, eye and natural hair color"
+    },
+    {
+     "h": "Fraternal (dizygotic)",
+     "t": "about half, like siblings"
+    },
+    {
+     "h": "Fingerprints",
+     "t": "genes plus prenatal development, so detailed ridges differ",
+     "k": "not shared"
+    },
+    {
+     "h": "Most alike",
+     "t": "identical twins raised together"
+    }
+   ],
+   "ex": [
+    {
+     "q": "High blood pressure runs in Jay's family; his salty diet sends his up. Which concept?",
+     "a": "Gene-environment interaction.",
+     "why": "Predisposition plus trigger; either alone isn't."
+    },
+    {
+     "q": "Kids get a social-skills program or a whistling talk. The program manipulates what?",
+     "a": "Nurture.",
+     "why": "An intervention is environment, even when the outcome sounds like a trait."
+    }
+   ],
+   "watch": [
+    "Heritability never describes one person, only variation among people.",
+    "An inherited condition alone, or food poisoning alone, isn't interaction."
+   ]
+  },
+  {
+   "w": 3,
+   "t": "The neuron and the action potential",
+   "d": "5 practice MCQs, the most technical",
+   "steps": [
+    "At rest: **polarized**, negative inside, positive outside.",
+    "Combined excitatory and inhibitory input reaches **threshold**.",
+    "Sodium channels open; Na⁺ rushes in: **depolarization**.",
+    "The **action potential** fires all-or-none: full strength or nothing.",
+    "Potassium moves out: repolarization.",
+    "Absolute refractory period: can't fire. Relative refractory period: needs a stronger stimulus."
+   ],
+   "fig": {
+    "svg": "<svg viewBox=\"0 0 480 200\" role=\"img\" aria-label=\"A neuron from left to right: dendrites, cell body (soma), axon hillock, axon wrapped in myelin with gaps called nodes of Ranvier, axon terminals, then the synaptic cleft before the next neuron\">\n<path class=\"lc\" d=\"M75,85 L46,62 L22,58 M46,62 L40,36 M70,100 L30,98 L16,112 M30,98 L14,86 M75,115 L48,140 L22,146 M48,140 L44,166 M90,72 L84,42 L66,28 M84,42 L100,24\"/>\n<circle class=\"lc fs\" cx=\"100\" cy=\"100\" r=\"30\"/>\n<circle class=\"fsa\" cx=\"96\" cy=\"100\" r=\"9\"/>\n<path class=\"fs\" d=\"M124,86 L150,97 L150,103 L124,114 Z\"/>\n<path class=\"lc\" d=\"M127,88 L150,97 M127,112 L150,103\"/>\n<path class=\"lc\" d=\"M150,100 L392,100\"/>\n<rect class=\"la fsa\" x=\"160\" y=\"90\" width=\"42\" height=\"20\" rx=\"9\"/>\n<rect class=\"la fsa\" x=\"210\" y=\"90\" width=\"42\" height=\"20\" rx=\"9\"/>\n<rect class=\"la fsa\" x=\"260\" y=\"90\" width=\"42\" height=\"20\" rx=\"9\"/>\n<rect class=\"la fsa\" x=\"310\" y=\"90\" width=\"42\" height=\"20\" rx=\"9\"/>\n<path class=\"lc\" d=\"M392,100 Q410,80 424,70 M392,100 L429,100 M392,100 Q410,120 424,130\"/>\n<circle class=\"fc\" cx=\"428\" cy=\"67\" r=\"6\"/>\n<circle class=\"fc\" cx=\"435\" cy=\"100\" r=\"6\"/>\n<circle class=\"fc\" cx=\"428\" cy=\"133\" r=\"6\"/>\n<path class=\"fp\" d=\"M458,44 Q446,100 458,156 L478,156 L478,44 Z\"/>\n<path class=\"ln\" d=\"M150,62 L140,90 M231,76 L231,88 M306,126 L306,105 M372,76 L372,97 M424,24 L427,58 M446,170 L446,110\"/>\n<path class=\"lc\" d=\"M170,132 L232,132\" marker-end=\"url(#ahc)\"/>\n<text x=\"6\" y=\"16\">dendrites</text>\n<text class=\"mid\" x=\"100\" y=\"156\">cell body</text>\n<text class=\"tm mid\" x=\"100\" y=\"172\">(soma)</text>\n<text class=\"mid\" x=\"150\" y=\"56\">axon hillock</text>\n<text class=\"mid\" x=\"231\" y=\"70\">myelin sheath</text>\n<text class=\"mid\" x=\"306\" y=\"142\">node of Ranvier</text>\n<text class=\"mid\" x=\"372\" y=\"70\">axon</text>\n<text class=\"mid\" x=\"420\" y=\"18\">axon terminals</text>\n<text class=\"end\" x=\"478\" y=\"188\">synaptic cleft</text>\n<text class=\"tm mid\" x=\"468\" y=\"104\" transform=\"rotate(90 468 100)\">next neuron</text>\n<text class=\"tm end\" x=\"164\" y=\"136\">impulse</text>\n</svg>",
+    "cap": "The impulse jumps node to node: myelin's speed trick."
+   },
+   "table": {
+    "h": "parts, in order",
+    "cols": [
+     "",
+     "job"
+    ],
+    "rows": [
+     [
+      "dendrites",
+      "receive messages"
+     ],
+     [
+      "soma",
+      "cell body: life support"
+     ],
+     [
+      "axon hillock",
+      "axon meets soma: sums graded potentials, decides to fire"
+     ],
+     [
+      "axon",
+      "carries the impulse away"
+     ],
+     [
+      "myelin sheath",
+      "insulates, with bare gaps (**nodes of Ranvier**) the impulse jumps between"
+     ],
+     [
+      "axon terminals",
+      "pass the message on"
+     ],
+     [
+      "glial cells",
+      "not neurons: support, protect, insulate, help signal"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Myelin degenerates; messages slow and movement suffers. Which disease?",
+     "a": "Multiple sclerosis.",
+     "why": "The impulse can't jump node to node."
+    },
+    {
+     "q": "During depolarization, which ion moves, which way?",
+     "a": "Sodium (Na⁺), in.",
+     "why": "Potassium out is repolarization: the usual wrong pick."
+    }
+   ],
+   "watch": [
+    "Myelin doesn't cover the whole axon, widen it, or pump ions.",
+    "Glia never fire action potentials (astrocytes can release messengers)."
+   ]
+  },
+  {
+   "w": 3,
+   "t": "The nervous system's main divisions",
+   "d": "4 practice MCQs, plus all of mini FRQ 2",
+   "p": [
+    "The **nervous system** (speedy, electrochemical) splits into the **central nervous system (CNS)** and **peripheral nervous system (PNS)**."
+   ],
+   "flow": [
+    "Sensory neurons (afferent): body to CNS",
+    "Interneurons: inside the CNS",
+    "Motor neurons (efferent): CNS to muscles, glands"
+   ],
+   "tree": {
+    "t": "Nervous system",
+    "c": [
+     {
+      "t": "CNS",
+      "d": "brain, spinal cord: decides"
+     },
+     {
+      "t": "PNS",
+      "d": "nerves: in and out",
+      "c": [
+       {
+        "t": "Somatic",
+        "d": "voluntary skeletal muscle: walking"
+       },
+       {
+        "t": "Autonomic",
+        "d": "organs, glands: heartbeat, digestion"
+       }
+      ]
+     }
+    ]
+   },
+   "table": {
+    "h": "autonomic: two halves",
+    "cols": [
+     "",
+     "sympathetic",
+     "parasympathetic"
+    ],
+    "rows": [
+     [
+      "job",
+      "arouses, expends energy: fight or flight",
+      "calms, conserves energy: rest and digest"
+     ],
+     [
+      "when",
+      "heart rate up, pupils dilate, digestion pauses",
+      "after the stressful event passes"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "After a near-miss, Lena's racing heart settles. Which division?",
+     "a": "Parasympathetic.",
+     "why": "Sympathetic caused the racing."
+    },
+    {
+     "q": "You jerk your hand off a hot pan before feeling it. What links sensory to motor neurons?",
+     "a": "Spinal interneurons: a withdrawal reflex.",
+     "why": "In the spinal cord, before awareness."
+    }
+   ],
+   "watch": [
+    "Walking is somatic, not central.",
+    "A dendrite is part of a neuron, not one of the three types."
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Nervous system meets endocrine system",
+   "d": "2 practice MCQs, plus all of mini FRQ 3",
+   "p": [
+    "In the **endocrine system**, glands secrete **hormones** into the blood. The **hypothalamus** signals the **pituitary gland**, the master gland, which directs the thyroid, adrenal glands and gonads."
+   ],
+   "pts": [
+    "Both neurotransmitter and hormone: epinephrine, norepinephrine, oxytocin."
+   ],
+   "fig": {
+    "svg": "<svg viewBox=\"0 0 404 314\" role=\"img\" aria-label=\"Stress response. The hypothalamus sends a fast path through sympathetic nerves to the adrenal medulla, which releases epinephrine, and a slow path through the pituitary gland, which releases ACTH so the adrenal cortex releases cortisol. Both hormones travel in the blood to the brain and feed back to the hypothalamus.\">\n<rect class=\"lc fs\" x=\"124\" y=\"6\" width=\"144\" height=\"46\" rx=\"10\"/>\n<text class=\"tb mid\" x=\"196\" y=\"26\">hypothalamus</text>\n<text class=\"tm mid\" x=\"196\" y=\"44\">in the brain</text>\n<path class=\"lc\" d=\"M158,52 L106,92\" marker-end=\"url(#ahc)\"/>\n<path class=\"la\" d=\"M234,52 L286,92\" marker-end=\"url(#aha)\"/>\n<text class=\"tc\" x=\"6\" y=\"68\">fast: nerves</text>\n<text class=\"ta end\" x=\"382\" y=\"68\">slow: hormones</text>\n<rect class=\"fp\" x=\"8\" y=\"96\" width=\"132\" height=\"46\" rx=\"10\"/>\n<text class=\"mid\" x=\"74\" y=\"116\">sympathetic</text>\n<text class=\"tm mid\" x=\"74\" y=\"134\">nerves</text>\n<path class=\"lc\" d=\"M74,142 L74,174\" marker-end=\"url(#ahc)\"/>\n<rect class=\"fp\" x=\"8\" y=\"178\" width=\"132\" height=\"46\" rx=\"10\"/>\n<text class=\"tb mid\" x=\"74\" y=\"198\">adrenal medulla</text>\n<text class=\"tm mid\" x=\"74\" y=\"216\">epinephrine</text>\n<rect class=\"fp\" x=\"252\" y=\"96\" width=\"132\" height=\"46\" rx=\"10\"/>\n<text class=\"tb mid\" x=\"318\" y=\"116\">pituitary gland</text>\n<text class=\"tm mid\" x=\"318\" y=\"134\">master gland</text>\n<path class=\"la\" d=\"M318,142 L318,174\" marker-end=\"url(#aha)\"/>\n<text class=\"ta\" x=\"326\" y=\"164\">ACTH</text>\n<rect class=\"fp\" x=\"252\" y=\"178\" width=\"132\" height=\"46\" rx=\"10\"/>\n<text class=\"tb mid\" x=\"318\" y=\"198\">adrenal cortex</text>\n<text class=\"tm mid\" x=\"318\" y=\"216\">cortisol</text>\n<path class=\"lc\" d=\"M74,224 L138,258\" marker-end=\"url(#ahc)\"/>\n<path class=\"la\" d=\"M318,224 L254,258\" marker-end=\"url(#aha)\"/>\n<rect class=\"fsa\" x=\"88\" y=\"262\" width=\"216\" height=\"46\" rx=\"10\"/>\n<text class=\"tb mid\" x=\"196\" y=\"282\">hormones in the blood</text>\n<text class=\"tm mid\" x=\"196\" y=\"300\">reach the brain, change behavior</text>\n<path class=\"ln dash\" d=\"M304,290 L396,290 L396,29 L272,29\" marker-end=\"url(#ah)\"/>\n<text class=\"tm mid\" x=\"350\" y=\"282\">feedback</text>\n</svg>",
+    "cap": "Stress: the fast path skips the pituitary."
+   },
+   "table": {
+    "cols": [
+     "",
+     "nervous",
+     "endocrine"
+    ],
+    "rows": [
+     [
+      "signal",
+      "electrical along the neuron, chemical across the synapse",
+      "chemical: hormones in the blood"
+     ],
+     [
+      "speed",
+      "**neurotransmitters**: fast, brief",
+      "hormones: slow, long-lasting"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Made by the hypothalamus, released by the posterior pituitary: which hormone?",
+     "a": "Oxytocin.",
+     "why": "TSH, ACTH, prolactin: made by the anterior pituitary."
+    },
+    {
+     "q": "A scare lasts seconds, but Jamal stays on edge for an hour. Which system?",
+     "a": "Endocrine: stress hormones linger.",
+     "why": "Neural signals are too brief."
+    }
+   ],
+   "watch": [
+    "Hormones and neurotransmitters are both chemical messengers."
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Natural selection and evolutionary psychology",
+   "d": "2 practice MCQs, plus all of mini FRQ 1",
+   "p": [
+    "**Natural selection**: inherited traits that better enable an organism to survive and reproduce in a particular environment are passed on to succeeding generations. **Evolutionary psychology** applies it to behavior and mind."
+   ],
+   "rows": [
+    [
+     "human nature",
+     "shared survival tendencies (craving sweet, fatty food; fearing snakes, heights); vary with person, experience"
+    ],
+    [
+     "mutations",
+     "random gene-copying errors: selection's raw material"
+    ],
+    [
+     "adaptation",
+     "reliably solved a recurrent adaptive problem across evolutionary history"
+    ],
+    [
+     "99.9%",
+     "DNA all humans share; alone, it doesn't prove an adaptation"
+    ]
+   ],
+   "table": {
+    "h": "the sweet tooth, two ways",
+    "cols": [
+     "",
+     "proximate",
+     "ultimate"
+    ],
+    "rows": [
+     [
+      "asks",
+      "how, right now",
+      "why it evolved"
+     ],
+     [
+      "answer",
+      "taste receptors fire, **dopamine** releases",
+      "scarce calories: craving them kept ancestors alive"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Why fear heights? A student cites fast brain circuits. Which explanation type?",
+     "a": "Proximate.",
+     "why": "The question says why; the answer is a mechanism."
+    }
+   ],
+   "watch": [
+    "Receptors, dopamine, circuitry: always proximate, whatever the question word.",
+    "Adaptations needn't be conscious, maximize reproduction today, or be immune to environment."
+   ]
+  },
+  {
+   "w": 1,
+   "t": "Neurotransmitters worth knowing",
+   "d": "1 practice MCQ, cheap insurance",
+   "table": {
+    "cols": [
+     "",
+     "job"
+    ],
+    "rows": [
+     [
+      "norepinephrine",
+      "alertness, arousal"
+     ],
+     [
+      "acetylcholine (ACh)",
+      "muscle action, memory"
+     ],
+     [
+      "dopamine",
+      "movement, learning, attention, reward"
+     ],
+     [
+      "serotonin",
+      "mood, hunger, sleep"
+     ],
+     [
+      "glutamate",
+      "major excitatory messenger"
+     ],
+     [
+      "GABA",
+      "major inhibitory messenger"
+     ],
+     [
+      "endorphins",
+      "natural painkillers"
+     ],
+     [
+      "Substance P",
+      "pain signals"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Mia wakes up alert. Which neurotransmitter?",
+     "a": "Norepinephrine.",
+     "why": "Dopamine is reward, not alertness."
+    }
+   ]
+  },
+  {
+   "w": 1,
+   "t": "Synapse, drugs and more 1.3 hormones",
+   "d": "synapse in order; in 1.3, not the practice set",
+   "flow": [
+    "Action potential reaches the terminal",
+    "Neurotransmitters released",
+    "Cross the synaptic cleft, bind to receptors",
+    "Cleared: reuptake, breakdown, diffusion"
+   ],
+   "tiles": [
+    {
+     "h": "Leptin",
+     "t": "satiety: full"
+    },
+    {
+     "h": "Ghrelin",
+     "t": "hunger"
+    },
+    {
+     "h": "Melatonin",
+     "t": "sleep timing"
+    }
+   ],
+   "table": {
+    "cols": [
+     "",
+     ""
+    ],
+    "rows": [
+     [
+      "agonists",
+      "activate receptors (mimic)"
+     ],
+     [
+      "antagonists",
+      "block receptors"
+     ],
+     [
+      "reuptake inhibitors",
+      "keep transmitter in the cleft longer"
+     ],
+     [
+      "myasthenia gravis",
+      "neuromuscular junction disrupted: muscle weakness"
+     ],
+     [
+      "drug types",
+      "stimulants, depressants, hallucinogens, opioids"
+     ],
+     [
+      "repeated use",
+      "tolerance, addiction; stopping: withdrawal"
+     ]
+    ]
+   }
+  }
+ ],
+ "problems": [
+  {
+   "q": "Mini FRQ 1 · natural selection and psychology",
+   "steps": [
+    "Define it. **Natural selection** is the principle that inherited traits which better enable an organism to survive and reproduce in a particular environment are passed on to succeeding generations.",
+    "Name the field. **Evolutionary psychology** studies behavior and mind using those principles, asking what adaptive problem a tendency solved.",
+    "Give a behavioral example, not a physical one: the preference for sweet and fatty foods, the fast fear response to snakes and heights, the drive to form social bonds.",
+    "Say what it explains: widely shared tendencies (human nature), which still vary by individual and experience.",
+    "Name the limit: **mutations** create variation, and selection changes how common variants are across generations. Populations evolve; an individual does not."
+   ],
+   "ans": "Natural selection is the principle that inherited traits which better enable an organism to survive and reproduce in a particular environment get passed on to succeeding generations. Evolutionary psychology applies that principle to behavior and mental processes, treating a psychological tendency as something that persisted because it solved a recurring adaptive problem for our ancestors. A preference for sweet and fatty foods is the standard example: calories were scarce, so wanting them was an advantage, and the preference stayed even though the environment changed. The same logic explains a fast fear response to snakes and heights, and the human drive to form social bonds. Because selected tendencies are widely shared, evolutionary psychology uses selection to help explain human nature, though these tendencies still vary with the individual and experience. Mutations create new variants, and selection acts on existing heritable variation through differences in survival and reproduction, changing a population across generations; an individual does not evolve during their own lifetime."
+  },
+  {
+   "q": "Mini FRQ 2 · the nervous system's main divisions and what each one does",
+   "steps": [
+    "Open with the whole system: the **nervous system** is the body's speedy electrochemical communication network.",
+    "Name the two main divisions and give each a function: **CNS** (brain and spinal cord) processes and decides; **PNS** (the sensory and motor nerves) gathers information and carries commands out.",
+    "Split the PNS: **somatic** controls voluntary movement of skeletal muscle; **autonomic** controls the self-regulated action of internal organs and glands.",
+    "Split the autonomic: **sympathetic** arouses and expends energy for fight or flight; **parasympathetic** calms and conserves energy afterward.",
+    "Close with one concrete example so the functions are ==explained, not just listed==: a startle raises heart rate through the sympathetic division, and the parasympathetic division brings it back down."
+   ],
+   "ans": "The nervous system is the body's speedy electrochemical communication network, and it has two main divisions. The central nervous system is the brain and the spinal cord; it receives sensory information, interprets it, and decides on a response. The peripheral nervous system is every nerve outside the brain and spinal cord; it carries sensory information in from the body and motor commands back out. The peripheral nervous system divides again. The somatic nervous system controls voluntary movement of the skeletal muscles, so it is what lets a person choose to walk. The autonomic nervous system controls the self-regulated action of internal organs and glands, so heart rate, digestion and glands run without a decision (breathing muscles are skeletal, run by somatic motor neurons). The autonomic system itself has two parts that work as a pair: the sympathetic division arouses the body and expends energy for fight or flight, raising heart rate and pausing digestion, while the parasympathetic division calms the body and conserves energy once the threat has passed. A sudden scare at a movie is the sympathetic division at work, and the settling down afterward is the parasympathetic division."
+  },
+  {
+   "q": "Mini FRQ 3 · how the nervous and endocrine systems talk to each other",
+   "steps": [
+    "Define the second system: the **endocrine system** is the body's slow chemical communication system, a set of glands that secrete **hormones** into the bloodstream.",
+    "Name the connection point: the **hypothalamus**, a brain structure, is where the nervous system reaches the endocrine system.",
+    "Trace the chain in order: hypothalamus signals the **pituitary**, the master gland; the pituitary releases hormones that direct the thyroid, adrenals and gonads.",
+    "Close the loop, which is what the word ==communicate== is asking for: those hormones travel through the blood back to the brain and influence behavior, and the brain adjusts its signals in response.",
+    "Give the stress example and the speed contrast: fast path, sympathetic nerves signal the **adrenal medulla** to release epinephrine and norepinephrine; slow path, hypothalamus to pituitary (**ACTH**) to adrenal cortex (**cortisol**); and the effects outlast the neural signal that started them."
+   ],
+   "ans": "The endocrine system is the body's slow chemical communication system: glands that secrete hormones into the bloodstream, where they travel to tissues throughout the body, including the brain. The two systems connect at the hypothalamus, a structure in the brain that monitors the body's internal state. When the hypothalamus detects a need, it signals the pituitary gland sitting just below it. The pituitary is the master gland: it releases its own hormones and directs the other endocrine glands, including the thyroid, the adrenals and the gonads. Those glands release hormones into the blood, and because the blood reaches the brain, the hormones feed back and influence the brain's activity and the person's behavior, which changes what the hypothalamus signals next. That feedback loop is the communication running in both directions. Stress uses two paths: sympathetic nerves directly stimulate the adrenal medulla to release epinephrine and norepinephrine, raising heart rate, blood pressure and blood sugar, while the hypothalamus signals the pituitary to release ACTH, which makes the adrenal cortex release cortisol. Feedback helps regulate both. The difference between the systems is speed and duration, since neural messages are fast and brief while hormonal messages are slower but last much longer, and some chemicals such as epinephrine, norepinephrine and oxytocin serve as both neurotransmitters and hormones."
+  }
+ ],
+ "practice": [
+  {
+   "q": "In the context of behavioral genetics and psychology, to what does the term **nature** primarily refer?",
+   "opts": [
+    "Biological and genetic predispositions inherited from parents.",
+    "The impact of parental rearing styles and socioeconomic status.",
+    "The cultural norms absorbed during childhood development.",
+    "Peer influence and schooling environments during adolescence."
+   ],
+   "a": 0,
+   "why": "Nature is what the genes supply. The other three are all **nurture**, meaning environment: rearing style, socioeconomic status, cultural norms, peers, schooling. !!Every wrong option here is the same wrong idea in a different costume.!!"
+  },
+  {
+   "q": "Dr. Grant studied the extent to which humans share genes with each other and with other animals, and how genes contribute to behavior. Which conclusion would she most likely reach?",
+   "opts": [
+    "Chimpanzees share very few genes with humans.",
+    "Complex behaviors are determined by specific individual genes.",
+    "Human genes are mostly the same across all people.",
+    "Genetic predispositions do not explain our shared human nature."
+   ],
+   "a": 2,
+   "why": "Humans are about ==99.9% genetically identical== to each other, and chimpanzees share 96% or more, so the first option is factually wrong. !!Complex behavior is polygenic!!, produced by many genes each with a small effect, never one gene. And genetic predispositions are exactly what does explain shared human nature."
+  },
+  {
+   "q": "Which of the following is an example of gene-environment interaction?",
+   "opts": [
+    "Yen Lin inherits an ALDH2 gene variant.",
+    "Alfonso gets food poisoning from eating undercooked meat.",
+    "Ted develops high cholesterol, which runs in his family, because his diet contains too much saturated fat.",
+    "Jordan has an autoimmune disorder that causes him to lose hair."
+   ],
+   "a": 2,
+   "why": "Interaction needs ==a genetic predisposition and an environmental trigger in the same sentence==. Only Ted has both: cholesterol that runs in the family plus a high-fat diet. !!Yen Lin's option names only a gene, Jordan's names no cause at all, and food poisoning is environment alone.!!"
+  },
+  {
+   "q": "An evolutionary psychologist asks why humans prefer sweet tastes and explains that sugar activates taste receptor cells on the tongue and triggers dopamine release in the brain. That is which type of explanation?",
+   "opts": [
+    "ultimate explanation",
+    "proximate explanation",
+    "by-product explanation",
+    "phylogenetic explanation"
+   ],
+   "a": 1,
+   "why": "**Proximate** explanations give the immediate mechanism, the how right now: receptors, dopamine, brain circuitry. **Ultimate** explanations give the evolutionary why, which here would be that calories were scarce and a sweet tooth kept ancestors alive. !!The word \"why\" in the stem is the trap!! — judge the explanation, not the question word."
+  },
+  {
+   "q": "Which trait is unique and NOT shared by identical twins?",
+   "opts": [
+    "blood type",
+    "eye color",
+    "fingerprints",
+    "natural hair color"
+   ],
+   "a": 2,
+   "why": "Identical twins are **monozygotic**, so anything coded directly by DNA matches: blood type, eye color, natural hair color. ==Fingerprints reflect genes plus prenatal development==, so twins' broad patterns may be similar but the detailed ridges differ. Fingerprints are still the best answer."
+  },
+  {
+   "q": "Which part of a neuron is primarily responsible for the summation of graded potentials and the initiation of an action potential?",
+   "opts": [
+    "dendrite",
+    "synaptic knob",
+    "axon hillock",
+    "Node of Ranvier"
+   ],
+   "a": 2,
+   "why": "The **axon hillock** is where the axon leaves the cell body, and it is the point that ==adds up the incoming signals and decides whether threshold was crossed==. !!Dendrites receive the signals but do not initiate!!, the synaptic knob releases neurotransmitters at the far end, and a Node of Ranvier propagates an impulse that already started."
+  },
+  {
+   "q": "During the depolarization phase of an action potential, which ion channels open and what is the direction of ion movement?",
+   "opts": [
+    "Sodium channels open, moving into the cell.",
+    "Potassium channels open, moving into the cell.",
+    "Sodium channels open, moving out of the cell.",
+    "Calcium channels open, moving out of the cell."
+   ],
+   "a": 0,
+   "why": "==Sodium (Na⁺) rushes in==, which flips the inside of the membrane from negative to positive. !!Potassium moving out is repolarization!!, the step after, and getting the direction backwards is the most common miss on this question."
+  },
+  {
+   "q": "How does the myelin sheath increase the speed of nerve impulse propagation?",
+   "opts": [
+    "By increasing the diameter of the axon significantly.",
+    "By actively pumping more sodium and potassium ions continuously across the membrane.",
+    "By completely insulating the entire length of the axon from any ion exchange.",
+    "By forcing the action potential to jump from one Node of Ranvier to the next."
+   ],
+   "a": 3,
+   "why": "That jumping is saltatory conduction, and ==the gaps are the mechanism==. !!Option c is the trap!!: myelin deliberately does not cover the entire axon, because an impulse that could not exchange ions anywhere would never propagate at all. Myelin is passive insulation, so it neither pumps ions nor widens the axon."
+  },
+  {
+   "q": "Which hormone is produced by the hypothalamus and subsequently stored and released by the posterior pituitary gland?",
+   "opts": [
+    "Oxytocin",
+    "Thyroid-stimulating hormone",
+    "Adrenocorticotropic hormone",
+    "Prolactin"
+   ],
+   "a": 0,
+   "why": "**Oxytocin** is made in the **hypothalamus** and shipped to the ==posterior pituitary== for storage and release. !!TSH, ACTH and prolactin are all produced by the anterior pituitary itself!!, so they fail the \"produced by the hypothalamus\" half of the question."
+  },
+  {
+   "q": "Which of the following is NOT one of the 3 types of neurons?",
+   "opts": [
+    "sensory neurons",
+    "motor neurons",
+    "dendrites",
+    "interneurons"
+   ],
+   "a": 2,
+   "why": "The three types are ==sensory, motor and interneurons==. A **dendrite** is a part of a neuron, !!not a category of neuron!!. Sensory run body to brain, motor run brain to body, interneurons stay inside the CNS."
+  },
+  {
+   "q": "Dr. Yondu randomly assigns 100 children to two conditions: one group receives a social skills intervention, the other listens to a talk about how to whistle. Both complete an emotional stability questionnaire four weeks later. What does his independent variable measure?",
+   "opts": [
+    "The impact of nature.",
+    "The impact of epigenetics.",
+    "The impact of nurture.",
+    "The impact of evolution."
+   ],
+   "a": 2,
+   "why": "The independent variable is the thing the researcher manipulates, and here that is ==an environmental intervention==, which is **nurture**. !!\"Nature\" is the trap!! because the outcome, emotional stability, sounds like a trait. **Epigenetics** would require an environmental factor switching gene expression on or off, which is not what is being measured."
+  },
+  {
+   "q": "Which of the following criteria is essential for identifying a psychological mechanism as a true evolutionary adaptation?",
+   "opts": [
+    "It must be consciously recognized by the individual possessing it.",
+    "It must lead to maximal reproductive success in the modern environment.",
+    "It must have reliably solved a recurrent adaptive problem across evolutionary history.",
+    "It must be immutable and impervious to environmental influence."
+   ],
+   "a": 2,
+   "why": "An adaptation is defined by ==what it solved, repeatedly, in ancestral environments==. !!Most adaptations are unconscious!!, the standard is the ancestral environment rather than the modern one, and !!nothing in psychology is impervious to the environment!!, which is the whole point of gene-environment interaction."
+  },
+  {
+   "q": "Dr. Kent studied 1000 sets of identical and fraternal twins raised in the same household versus different households. Based on previous research, who should he expect to be most alike?",
+   "opts": [
+    "Fraternal twins raised in the same households.",
+    "Identical twins raised in two different households.",
+    "Fraternal twins raised in two different households.",
+    "Identical twins raised in the same households."
+   ],
+   "a": 3,
+   "why": "==Same genes plus same environment is maximum similarity==. Identical twins share 100% of their genes and fraternal twins share about half, so identical pairs are generally more alike, and identical twins sharing a household add environment on top. This is a typical pattern, not a guarantee for every trait. !!Identical twins raised apart is the second-most alike, not the most.!!"
+  },
+  {
+   "q": "Which division of the nervous system calms a person down once a stressful event has passed?",
+   "opts": [
+    "Parasympathetic",
+    "Central",
+    "Somatic",
+    "Sympathetic"
+   ],
+   "a": 0,
+   "why": "**Parasympathetic** calms and conserves energy. !!Sympathetic is the trap!! because it is the division that actually appears in the scenario, but it caused the arousal rather than ending it. Somatic moves skeletal muscle and central is the brain and spinal cord, neither of which is the calming division."
+  },
+  {
+   "q": "Thomas is walking down his favorite street in town. Which division of the nervous system enables him to move the muscles necessary to do this?",
+   "opts": [
+    "Central",
+    "Sympathetic",
+    "Parasympathetic",
+    "Somatic"
+   ],
+   "a": 3,
+   "why": "**Somatic** controls ==voluntary movement of skeletal muscle==. !!\"Central\" is the tempting answer!! because the brain gave the order, but the question asks which division moves the muscle, and that is the somatic branch of the peripheral nervous system carrying the command out."
+  },
+  {
+   "q": "If Drew's motor neurons were impaired, he would experience a disruption in the ability to",
+   "opts": [
+    "send messages from specific body parts to the brain.",
+    "transmit and process information within the brain and spinal cord.",
+    "process neurotransmitters in the brain.",
+    "send messages from the brain to the body parts."
+   ],
+   "a": 3,
+   "why": "**Motor (efferent)** neurons carry instructions ==out from the CNS to the muscles and glands==. !!The first option describes sensory (afferent) neurons!! and the second describes interneurons, so both are the right idea pointed the wrong way."
+  },
+  {
+   "q": "What must a neuron do to generate an action potential?",
+   "opts": [
+    "The neuron must be in the refractory period.",
+    "Glial cells must release neurotransmitters into the axon.",
+    "Net input must depolarize the trigger region to threshold.",
+    "Dopamine and serotonin must be present in equal amounts."
+   ],
+   "a": 2,
+   "why": "Excitatory and inhibitory inputs combine; ==reaching threshold at the axon hillock triggers an all-or-none action potential==. !!The refractory period is the opposite!!, the window right after firing when the neuron cannot fire (absolute) or needs a stronger stimulus (relative). **Glial cells** do not trigger a neuron's action potential, and no neurotransmitter ratio is required."
+  },
+  {
+   "q": "On the neuron diagram, A and B label the branches coming off the cell body, C labels the long fiber running away from it, and D labels the branches at the far end. Which letter corresponds to the neuron's axon?",
+   "opts": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "a": 2,
+   "why": "The **axon** is ==the single long fiber that carries the impulse away from the cell body==, so it is C. !!A and B are dendrites!!, which receive messages, and D is the axon terminals, which pass the message on to the next cell."
+  },
+  {
+   "q": "Andy woke up feeling alert. Which neurotransmitter impacted his alertness?",
+   "opts": [
+    "Acetylcholine",
+    "Norepinephrine",
+    "Substance P",
+    "Dopamine"
+   ],
+   "a": 1,
+   "why": "**Norepinephrine** controls ==alertness and arousal==. **Acetylcholine** handles muscle action and memory, **Substance P** carries pain signals, and !!dopamine is the trap!! because it gets labeled the reward chemical, but reward is not the same thing as being alert."
+  },
+  {
+   "q": "A friend says \"Hormones are the same thing as neurotransmitters.\" Which statement BEST modifies that claim to make it more accurate?",
+   "opts": [
+    "Both are electrical messages, but neurotransmitters travel much more slowly than hormones and their effects last longer.",
+    "Both are chemical messages, but hormones travel much more slowly than neurotransmitters and their effects last longer.",
+    "Both are electrical messages, but neurotransmitters travel much more quickly than hormones and their effects last longer.",
+    "Both are chemical messages, but neurotransmitters travel much more quickly than hormones and their effects last longer."
+   ],
+   "a": 1,
+   "why": "Two things have to be right at once. ==Both are chemical messages, not electrical==, which eliminates half the options immediately. Then ==hormones are the slow ones with the long-lasting effects==, because they travel through the bloodstream, while neurotransmitters cross a synapse in an instant and are cleared just as fast. !!Option d gets the chemistry right and the speed backwards.!!"
+  }
+ ],
+ "cards": [
+  {
+   "f": "Central nervous system",
+   "b": "The **brain and the spinal cord**. Processes information and makes the decisions."
+  },
+  {
+   "f": "Peripheral nervous system",
+   "b": "The **sensory and motor neurons** outside the brain and spinal cord. Carries information in and commands out."
+  },
+  {
+   "f": "Somatic nervous system",
+   "b": "The branch of the PNS controlling ==voluntary movement of skeletal muscle==. Walking, writing, lifting."
+  },
+  {
+   "f": "Autonomic nervous system",
+   "b": "The branch of the PNS controlling the ==self-regulated action of internal organs and glands==. Heart rate, digestion, glands (cardiac and smooth muscle). !!Breathing muscles are skeletal, so somatic.!!"
+  },
+  {
+   "f": "Sympathetic division",
+   "b": "==Arouses and expends energy.== Fight or flight: heart rate up, pupils dilate, digestion pauses."
+  },
+  {
+   "f": "Parasympathetic division",
+   "b": "==Calms and conserves energy.== Takes over once the stressful event has passed."
+  },
+  {
+   "f": "Sensory (afferent) neurons",
+   "b": "Carry information from the body's tissues and sensory receptors ==to the brain and spinal cord==."
+  },
+  {
+   "f": "Motor (efferent) neurons",
+   "b": "Carry instructions ==from the brain and spinal cord out to the muscles and glands==."
+  },
+  {
+   "f": "Interneurons",
+   "b": "Neurons that stay ==inside the CNS==, communicating internally between sensory input and motor output."
+  },
+  {
+   "f": "Axon hillock",
+   "b": "Where the axon leaves the cell body. ==Sums the incoming graded potentials and initiates the action potential== if threshold is crossed."
+  },
+  {
+   "f": "Myelin sheath",
+   "b": "Fatty tissue insulating the axon. Speeds the impulse by making it ==jump from one node of Ranvier to the next==. Degraded in multiple sclerosis."
+  },
+  {
+   "f": "Nodes of Ranvier",
+   "b": "The ==bare gaps between myelin segments==. The action potential jumps node to node, which is what makes myelinated axons fast."
+  },
+  {
+   "f": "Depolarization",
+   "b": "==Sodium channels open and Na⁺ rushes into the cell==, flipping the inside of the membrane from negative to positive."
+  },
+  {
+   "f": "Refractory period",
+   "b": "The pause right after firing. **Absolute**: ==cannot fire again== (sodium channels inactivated). **Relative**: a stronger stimulus can fire it. K⁺ flowing out repolarizes; the Na⁺/K⁺ pump keeps the gradients."
+  },
+  {
+   "f": "Threshold",
+   "b": "The level of stimulation required to trigger a neural impulse. Reached when ==net input depolarizes the axon hillock enough==."
+  },
+  {
+   "f": "Glial cells",
+   "b": "Cells that ==support, protect and insulate neurons== and help with signaling. Astrocytes can release chemical messengers; glia do not fire action potentials."
+  },
+  {
+   "f": "Hypothalamus",
+   "b": "The brain structure where the nervous and endocrine systems meet. ==Signals the pituitary gland== and produces oxytocin."
+  },
+  {
+   "f": "Pituitary gland",
+   "b": "The ==master gland==. Directed by the hypothalamus; releases hormones that control the thyroid, adrenals and gonads."
+  },
+  {
+   "f": "Oxytocin",
+   "b": "Produced by the **hypothalamus**, stored and released by the ==posterior pituitary==. Involved in bonding and social attachment."
+  },
+  {
+   "f": "Norepinephrine",
+   "b": "Neurotransmitter and hormone controlling ==alertness and arousal==. Undersupply is linked to depressed mood."
+  },
+  {
+   "f": "Acetylcholine (ACh)",
+   "b": "Neurotransmitter for ==muscle action, learning and memory==. Deteriorating ACh-producing neurons are linked to Alzheimer's."
+  },
+  {
+   "f": "Natural selection",
+   "b": "==Inherited traits that better enable an organism to survive and reproduce in a particular environment will be passed on to succeeding generations.=="
+  },
+  {
+   "f": "Adaptation (evolutionary)",
+   "b": "A mechanism that ==reliably solved a recurrent adaptive problem across evolutionary history==. Not required to be conscious or optimal today."
+  },
+  {
+   "f": "Proximate vs ultimate",
+   "b": "**Proximate** = the immediate mechanism (receptors, dopamine). **Ultimate** = the evolutionary reason the tendency was selected for."
+  },
+  {
+   "f": "Heritability",
+   "b": "The proportion of ==variation among individuals== in a group that can be attributed to genes. !!Never how much of one person is genetic.!!"
+  },
+  {
+   "f": "Gene-environment interaction",
+   "b": "A genetic predisposition ==plus== an environmental trigger producing the outcome. Both halves must be present."
+  },
+  {
+   "f": "Monozygotic vs dizygotic",
+   "b": "**Monozygotic** (identical) twins share ==100% of their genes==; **dizygotic** (fraternal) twins share about half, like any siblings."
+  },
+  {
+   "f": "Epigenetics",
+   "b": "The study of ==environmental influences on gene expression== that occur without changing the DNA itself."
+  },
+  {
+   "f": "Family and adoption studies",
+   "b": "**Family**: compare relatives. **Adoption**: compare a child with ==biological vs adoptive relatives==."
+  },
+  {
+   "f": "Eugenics",
+   "b": "Misused heredity claims to ==justify discrimination and controlling reproduction==."
+  },
+  {
+   "f": "Reuptake",
+   "b": "The sending neuron ==reabsorbs leftover neurotransmitter== from the cleft. Breakdown and diffusion also clear it."
+  },
+  {
+   "f": "Agonist vs antagonist",
+   "b": "**Agonist** ==activates== a receptor; **antagonist** ==blocks== it. Reuptake inhibitors keep transmitter in the cleft longer."
+  },
+  {
+   "f": "Myasthenia gravis",
+   "b": "Disrupts signaling at the ==neuromuscular junction==, causing muscle weakness."
+  },
+  {
+   "f": "Leptin, ghrelin, melatonin",
+   "b": "**Leptin** = full (satiety), **ghrelin** = hungry, **melatonin** = ==sleep timing==."
+  },
+  {
+   "f": "Drug categories",
+   "b": "**Stimulants**, **depressants**, **hallucinogens**, **opioids**. Repeated use brings **tolerance**; stopping brings **withdrawal**."
+  }
+ ],
+ "abbr": {
+  "CNS": "central nervous system",
+  "PNS": "peripheral nervous system",
+  "ANS": "autonomic nervous system",
+  "ACh": "acetylcholine",
+  "GABA": "gamma-aminobutyric acid",
+  "Na⁺": "sodium ion",
+  "MS": "multiple sclerosis",
+  "TSH": "thyroid-stimulating hormone",
+  "ACTH": "adrenocorticotropic hormone",
+  "MCQ": "multiple choice question",
+  "FRQ": "free response question"
+ }
 };
 
 /* ═══ machinery. nothing below needs editing. ═══ */
 const $=s=>document.querySelector(s);
 const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
 const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* markup: **term** bolds once per scope; legacy ==x== and !!x!! render as plain text */
+let SEEN=null;
+const scope=()=>{SEEN=new Set()};
+const fmt=s=>esc(s).replace(/==(.+?)==/g,"$1").replace(/!!(.+?)!!/g,"$1").replace(/\*\*(.+?)\*\*/g,(m,t)=>{const k=t.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();if(SEEN&&SEEN.has(k))return t;if(SEEN)SEEN.add(k);return `<b class="kw">${t}</b>`});
+const plain=s=>fmt(s).replace(/<b class="kw">(.*?)<\/b>/g,"$1");
 const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const I_TEST='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="1.8" width="9" height="10.6" rx="1.6"/><path d="M5 5h4M5 7.6h4M5 10.2h2"/></svg>';
+const I_WARN='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.8 12.6 11.8H1.4z"/><path d="M7 5.6v2.8M7 10.1h.01"/></svg>';
 const ICON={
  apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
  lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
@@ -483,13 +1434,15 @@ const ICON={
  csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
 const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
-const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist"};
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables",leq:"the leq",prompts:"prompts"};
+const has=v=>Array.isArray(v)?v.length>0:!!v;
 
 /* header */
 document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
 document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
 $("#title").textContent=GUIDE.title;
 if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");
@@ -509,141 +1462,262 @@ $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
   }
   if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
 })();
+const bar=$("#bar");
+const setBarH=()=>document.documentElement.style.setProperty("--barh",bar.offsetHeight+"px");
+setBarH(); addEventListener("resize",setBarH);
 
-/* panes */
-const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
-const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
-const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist};
-const tabs=[];
-PANES.forEach((id,i)=>{
-  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
-  builders[id](sec); root.appendChild(sec);
-  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
-  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
-});
-if(PANES.length<2)panesEl.classList.add("one");
-function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
-function show(id,user){
-  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
-  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
-  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
-}
-const want=location.hash.slice(1);
-show(PANES.includes(want)?want:PANES[0],false);
-requestAnimationFrame(moveP); addEventListener("resize",moveP);
+function shead(txt,extra){return el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""))}
 
-/* outline */
-function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
-function extras(s){
+/* ═══ outline blocks ═══ */
+const B={
+  p:v=>(Array.isArray(v)?v:[v]).map(x=>`<p>${fmt(x)}</p>`).join(""),
+  pts:v=>`<ul class="pts${v.length>=6&&v.every(x=>String(x).length<70)?" two":""}">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`,
+  rows:v=>`<dl class="rows">${v.map(([k,x])=>`<dt>${esc(k)}</dt><dd>${fmt(x)}</dd>`).join("")}</dl>`,
+  steps:v=>`<ol class="steps">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  flow:v=>`<ol class="flow">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  fig:v=>`<figure class="fig">${v.svg||""}${v.cap?`<figcaption>${fmt(v.cap)}</figcaption>`:""}</figure>`,
+  tiles:v=>`<div class="tiles">${v.map(x=>`<div><h5>${fmt(x.h)}</h5>${x.t?`<p>${fmt(x.t)}</p>`:""}${x.k?`<span class="tk">${esc(x.k)}</span>`:""}</div>`).join("")}</div>`,
+  tree:v=>{const n=x=>`<li><div class="nd"><b>${fmt(x.t)}</b>${x.d?`<span>${fmt(x.d)}</span>`:""}</div>${x.c?.length?`<ul>${x.c.map(n).join("")}</ul>`:""}</li>`;return `<div class="tree"><ul>${n(v)}</ul></div>`},
+  table:v=>{const cols=v.cols||[];return `${v.h?`<p class="tcap">${esc(v.h)}</p>`:""}<div class="tbw"><table class="tbl${cols.length===2?" two":""}">${cols.some(c=>c)?`<thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead>`:""}<tbody>${(v.rows||[]).map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`},
+  cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
+  watch:v=>`<div class="watch"><div class="wl">${I_WARN}watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
+  ex:v=>`<div class="exs">${v.map(x=>`<div class="tq"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>show answer</span>${CHEV}</button><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"example",ok:"rule",warn:"watch out"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join(""),
+  terms:v=>`<div class="terms"><span class="tl">key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
+};
+const VIS=["fig","tree","tiles"];
+function section(s,i){
+  scope();
+  const watch=[...(s.watch||[]),...(s.notes||[]).filter(n=>n.k==="warn").map(n=>n.t)];
+  const notes=(s.notes||[]).filter(n=>n.k!=="warn");
+  const mainKeys=["p","pts","rows","flow","steps"].filter(k=>has(s[k]));
+  const vis=VIS.filter(k=>has(s[k]));
+  let sideKey=vis[0]||null;
+  const main=mainKeys.map(k=>B[k](s[k])).join("")+(notes.length?B.notes(notes):"");
+  let side="", watchPlaced=false;
+  if(sideKey)side=B[sideKey](s[sideKey]);
+  else if(watch.length&&main){side=B.watch(watch);watchPlaced=true}
   let h="";
-  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
-  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
-  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
-  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
-  return h;
+  if(main&&side)h+=`<div class="duo${sideKey==="tree"||sideKey==="fig"?" wide-side":""}"><div class="main">${main}</div><div class="side">${side}</div></div>`;
+  else if(main)h+=`<div class="main solo">${main}</div>`;
+  else if(side)h+=side;
+  const rest=vis.filter(k=>k!==sideKey).concat(["table","cmp"].filter(k=>has(s[k])));
+  if(sideKey&&!main){/* visual already placed alone */}
+  rest.forEach(k=>{h+=B[k](s[k])});
+  if(has(s.tables))s.tables.forEach(t=>{h+=B.table(t)});
+  if(has(s.ex))h+=B.ex(s.ex);
+  if(watch.length&&!watchPlaced)h+=B.watch(watch);
+  if(has(s.terms))h+=B.terms(s.terms);
+  const n=String(i+1).padStart(2,"0");
+  const badge=s.w===3?`<span class="w w3">tested most</span>`:s.w===2?`<span class="w w2">tested</span>`:"";
+  const node=el("section","sec",`<header><span class="num">${n}</span><div class="ht"><h3>${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</div>${badge}</header><div class="sb">${h}</div>`);
+  node.id="s-"+(i+1);
+  SEEN=null;
+  return node;
 }
+function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{const b=x.querySelector(".eb");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"})})}
 function buildOutline(sec){
-  if(GUIDE.top?.length){
-    sec.appendChild(shead("start here","the whole guide in one screen"));
-    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  const list=GUIDE.outline||[];
+  const wrap=el("div","ol"); const toc=el("nav","toc"); toc.setAttribute("aria-label","sections");
+  const col=el("div","olc");
+  toc.innerHTML=`<div class="tl">on this page</div>`;
+  if(has(GUIDE.top)){
+    scope();
+    const t=el("div","tops"); t.id="s-top";
+    t.innerHTML=GUIDE.top.map(x=>`<div class="tp">${fmt(x)}</div>`).join("");
+    col.appendChild(shead("start here","what decides the grade")); col.appendChild(t);
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-top"><i class="w3" style="border-radius:50%"></i><span>start here</span></a>`);
   }
-  const list=GUIDE.outline||[]; if(!list.length)return;
-  const n3=list.filter(s=>s.w===3).length;
-  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
-  const g=el("div","group");
   list.forEach((s,i)=>{
-    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
-    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
-    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
-    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
-    g.appendChild(row); g.appendChild(body);
+    col.appendChild(section(s,i));
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-${i+1}"><i class="w${s.w||1}"></i><span>${esc(s.t)}</span></a>`);
   });
-  sec.appendChild(g);
   if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
-    sec.appendChild(shead("abbreviations"));
-    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+    col.appendChild(shead("abbreviations"));
+    const a=el("div","abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")); a.id="s-abbr"; col.appendChild(a);
+  }
+  if(list.some(s=>s.w===3)||list.some(s=>s.w===2))toc.insertAdjacentHTML("beforeend",`<div class="leg"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`);
+  wrap.appendChild(toc); wrap.appendChild(col); sec.appendChild(wrap);
+  wireEx(col);
+  const links=[...toc.querySelectorAll("a")];
+  links.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}));
+  if("IntersectionObserver" in window){
+    const vis=new Map();
+    const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target.id,e.isIntersecting));
+      const first=links.find(a=>vis.get(a.getAttribute("href").slice(1)));
+      if(first){links.forEach(a=>a.classList.toggle("on",a===first));if(getComputedStyle(toc).display==="flex"){const l=first.offsetLeft-toc.clientWidth/2+first.offsetWidth/2;toc.scrollTo({left:l,behavior:REDUCED?"auto":"smooth"})}}
+    },{rootMargin:"-20% 0px -55% 0px"});
+    links.forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));if(t)io.observe(t)});
   }
 }
 
 /* practice mc */
+let SCORE={done:0,right:0,total:0};
+function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
-  const qs=GUIDE.practice||[]; let done=0, right=0;
-  sec.appendChild(shead("practice",`${qs.length} questions`));
-  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
+  sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
+  const g=el("div","qgrid");
   qs.forEach((q,i)=>{
     const card=el("div","group q");
-    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
-      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
-      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
     card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
       if(card.classList.contains("done"))return;
       card.classList.add("done"); const j=+b.dataset.i;
-      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
-      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+      if(j===q.a){b.classList.add("right");SCORE.right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      SCORE.done++; $("#scn").textContent=SCORE.right; scoreVis();
     }));
-    sec.appendChild(card);
+    g.appendChild(card);
   });
-  sec.appendChild(sc);
-  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  sec.appendChild(g);
+  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
 }
 
-/* problems / worked examples */
+/* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
+function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps">${st.map(s=>`<li>${plain(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${plain(m)}</div><div class="wy">${y?plain(y):""}</div></li>`}).join("")}</ul>`}
 function buildProblems(sec){
   const ps=GUIDE.problems||[];
   sec.appendChild(shead("problems",`${ps.length} to work`));
+  const g=el("div","pgrid");
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
-    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
     const go=card.querySelector(".go");
     go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
-    sec.appendChild(card);
+    g.appendChild(card);
   });
+  sec.appendChild(g);
 }
 
 /* formulas */
 function buildFormulas(sec){
   const fs=GUIDE.formulas||[];
   sec.appendChild(shead("formulas",`${fs.length}`));
-  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+  sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
 }
 
-/* flashcards */
+/* flashcards: flip deck, plus the whole list */
 function buildCards(sec){
   const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
-  sec.appendChild(shead("cards",`${cs.length}`));
-  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
-  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
-  const cnt=nav.querySelector("#cnt");
-  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
-  const flip=()=>fc.classList.toggle("flip");
-  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
-  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
-  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
-  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
-  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
-  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  sec.appendChild(shead("cards",`${cs.length} · tap to flip, swipe for next`));
+  const dk=el("div","dk");
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  sec.appendChild(dk);
+  const cnt=nav.querySelector(".cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const go=d=>{i=(i+d+cs.length)%cs.length;draw()};
+  fc.addEventListener("click",()=>fc.classList.toggle("flip")); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();fc.classList.toggle("flip")}});
+  nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
+  nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
+  nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
+  sec.appendChild(shead("all cards",`${cs.length}`));
+  sec.appendChild(el("div","clist",cs.map(c=>`<div><b>${plain(c.f)}</b><span>${plain(c.b)}</span></div>`).join("")));
 }
 
 /* timeline */
 function buildTimeline(sec){
   const ts=GUIDE.timeline||[];
   sec.appendChild(shead("timeline",`${ts.length} events`));
-  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+  sec.appendChild(el("div","tln",ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${plain(t.t)}</div>${t.d?`<div class="d">${plain(t.d)}</div>`:"<div></div>"}</div>`).join("")));
 }
 
 /* checklist */
 function buildChecklist(sec){
   const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
   sec.appendChild(shead("checklist",`${cs.length} items`));
-  const g=el("div","group");
+  const g=el("div","ckg");
   cs.forEach((c,i)=>{
-    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${plain(c.t)}</span>${c.d?`<span class="d">${plain(c.d)}</span>`:""}</span>`);
     b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
     g.appendChild(b);
   });
   sec.appendChild(g);
 }
+
+/* cram sheet: [{h, d, items:[{n, y, t}]}] */
+function buildCram(sec){
+  const gs=GUIDE.cram||[];
+  sec.appendChild(shead("cram sheet","one line each"));
+  sec.appendChild(el("div","cgrid",gs.map(g=>`<div class="group"><div class="gh">${esc(g.h||"")}<span>${esc(g.d||String((g.items||[]).length))}</span></div>${(g.items||[]).map(c=>`<div class="cr"><div class="n"><span>${plain(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${plain(c.t)}</div></div>`).join("")}</div>`).join("")));
+}
+
+/* tables pane: [{h, d, cols, rows}] */
+function buildTables(sec){
+  const w=el("div","tpane");
+  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
+  sec.appendChild(w);
+}
+
+/* essay panes (used by the LEQ guide): prompts + leq + fn */
+function buildPrompts(sec){
+  const ps=GUIDE.prompts||[];
+  if(has(GUIDE.prompts_note)){sec.appendChild(shead("how points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
+  sec.appendChild(shead("possible prompts",`${ps.length}`));
+  ps.forEach((p,i)=>{
+    scope();
+    const g=el("div","group");
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
+    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn">${esc(p.q)}</span></span>`+CHEV;
+    const inner=(p.tldr?`<div class="pl">tldr</div><ul class="bul">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
+      `<div class="pl">context</div><ul class="bul">${(p.ctx||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">thesis</div><div class="ans">${esc(p.thesis)}</div>`+
+      (p.body||[]).map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
+      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
+    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body); sec.appendChild(g);
+  });
+  SEEN=null;
+}
+function buildLeq(sec){
+  const L=GUIDE.leq;
+  sec.appendChild(shead("how it runs"));
+  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p>${L.math?`<p>${fmt(L.math)}</p>`:""}`));
+  if(has(L.rows)){
+    sec.appendChild(shead("the rubric",`${L.rows.length} rows`));
+    sec.appendChild(el("div","tbw",`<table class="tbl"><thead><tr><th>row</th><th>earns it</th><th>loses it</th><th>class tips</th></tr></thead><tbody>${L.rows.map(r=>`<tr><td data-l="row">${esc(r.n)}</td><td data-l="earns it">${plain(r.earn)}</td><td data-l="loses it">${plain(r.lose)}</td><td data-l="class tips">${plain(r.cls||"")}</td></tr>`).join("")}</tbody></table>`));
+  }
+  if(has(L.codes))sec.appendChild(el("div","card",`<div class="terms"><span class="tl">margin codes</span>${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
+  if(has(L.shape)){sec.appendChild(shead("the shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
+  if(has(L.pace)){
+    const tot=L.pace.reduce((a,p)=>a+p.m,0);
+    sec.appendChild(shead(`${tot} minutes`,"minute by minute"));
+    sec.appendChild(el("div","card",`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>${B.steps(L.pace.map(p=>`**${p.l} · ${p.m} min.** ${p.t}`))}`));
+  }
+  if(has(GUIDE.fn)){sec.appendChild(shead("notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
+}
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables,leq:buildLeq,prompts:buildPrompts};
+const PANES=(GUIDE.panes||[]).filter(id=>builders[id]&&(has(GUIDE[id])||(id==="outline"&&has(GUIDE.top))));
+const tabs=[];
+PANES.forEach(id=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  scope(); builders[id](sec); SEEN=null; root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+let CUR=null;
+function show(id,user){
+  CUR=id;
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); scoreVis();
+  if(user){try{history.replaceState(null,"","#"+id)}catch(e){}; const top=panesEl.getBoundingClientRect().top+scrollY-bar.offsetHeight-12; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"})}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
 
 /* theme (shared with the homepage via localStorage "theme") */
 const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
@@ -661,10 +1735,10 @@ segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
 })();
 requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
-document.fonts?.ready.then(()=>{moveThumb();moveP()});
+document.fonts?.ready.then(()=>{moveThumb();moveP();setBarH()});
 
-/* sticky bar shadow + staggered reveal */
-(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+/* sticky bar shadow, reading progress, staggered reveal */
+(function(){const p=$("#prog i");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6);const se=document.scrollingElement,h=se.scrollHeight-se.clientHeight;p.style.width=(h>0?Math.min(100,se.scrollTop/h*100):0)+"%"};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
 document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
 </script>
 <script defer src="/_vercel/insights/script.js"></script>

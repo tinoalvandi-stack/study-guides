@@ -14,7 +14,7 @@
 <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+/* ═══ valentino guides · guide template v2 (kinari, wide layout, sept 29 2026) ═══
    Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
 @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
 @font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
@@ -38,15 +38,21 @@
   --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--barh,56px) + 58px)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
-  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+  padding-bottom:calc(56px + env(safe-area-inset-bottom))}
 button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
-.lc{text-transform:lowercase}
+:root{--maxw:1180px;--gut:clamp(14px,3.4vw,36px)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* reading aids */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;background:var(--cls)}
 
 /* bar */
 .bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
@@ -62,86 +68,282 @@ a{color:inherit;text-decoration:none}
 .seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .bar .seg{margin-left:auto}
 
-/* intro */
+/* hero */
 main{padding-top:22px}
-.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t13);font-weight:600;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
 .cname svg{width:20px;height:20px;flex:none}
-.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
 .chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
 .chip.past{color:var(--ink3)}
-h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
-.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+h2.title{margin:0 0 8px;font-family:var(--display);font-size:clamp(30px,5.2vw,50px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.02;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 16px;font-size:var(--t16);line-height:1.5;color:var(--ink2);max-width:70ch}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
 
 /* pane switcher */
-.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes{display:inline-flex;max-width:100%;gap:2px;margin:6px 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none;vertical-align:top}
 .panes::-webkit-scrollbar{display:none}
-.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button{flex:0 0 auto;position:relative;z-index:2;padding:8px 16px;border-radius:8px;text-align:center;font-size:var(--t15);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
 .panes button[aria-selected="true"]{color:var(--on-accent)}
 .panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .panes.one{display:none}
-.pane{display:none}
+@media (max-width:599px){.panes{display:flex}.panes button{flex:1 0 auto;padding:7px 12px;font-size:var(--t13)}}
+.pane{display:none;container-type:inline-size}
 .pane.on{display:block;animation:rise .38s var(--spring) both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* section head */
-.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+/* small section label */
+.sh{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
 .sh:first-child{margin-top:0}
-.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;white-space:nowrap}
 .sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
-.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;white-space:nowrap}
 
-/* cards + groups */
-.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+/* ═══ outline: side menu + all-open sections ═══ */
+.ol{display:grid;grid-template-columns:1fr;gap:0 32px;align-items:start}
+@media (min-width:960px){.ol{grid-template-columns:212px minmax(0,1fr)}}
+.toc{position:sticky;top:var(--barh,56px);z-index:30;background:var(--paper);margin:0 calc(var(--gut) * -1) 14px;padding:6px var(--gut) 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.toc::-webkit-scrollbar{display:none}
+.toc .tl{display:none}
+.toc a{flex:none;display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:var(--r-chip);font-size:var(--t13);font-weight:500;color:var(--ink2);border:1px solid var(--line);background:var(--surface);white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.toc a.on{color:var(--on-accent);background:var(--ink);border-color:var(--ink)}
+.toc i{flex:none;width:8px;height:8px;border-radius:3px;border:1.5px solid var(--cls)}
+.toc i.w3{background:var(--cls)} .toc i.w2{background:color-mix(in srgb,var(--cls) 40%,transparent)}
+.toc a.on i{border-color:var(--on-accent)} .toc a.on i.w3{background:var(--on-accent)}
+@media (min-width:960px){
+  .toc{top:calc(var(--barh,56px) + 12px);margin:0;padding:0;display:block;overflow:visible;border:0;background:none;max-height:calc(100vh - var(--barh,56px) - 32px);overflow-y:auto}
+  .toc .tl{display:block;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;margin:2px 0 8px 10px}
+  .toc a{display:flex;align-items:flex-start;white-space:normal;border:0;background:none;padding:7px 10px;line-height:1.3;border-radius:8px}
+  .toc a i{margin-top:5px}
+  .toc a:hover{background:var(--surface)}
+  .toc a.on{background:var(--surface);color:var(--ink);box-shadow:inset 2px 0 0 var(--cls);border-radius:0 8px 8px 0}
+  .toc a.on i{border-color:var(--cls)} .toc a.on i.w3{background:var(--cls)}
+  .toc .leg{display:flex;flex-direction:column;gap:4px;margin:14px 0 0 10px;padding-top:12px;border-top:1px solid var(--line);font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
+  .toc .leg span{display:flex;align-items:center;gap:7px}
+}
+.toc .leg{display:none}
+@media (min-width:960px){.toc .leg{display:flex}}
+
+/* start here tiles */
+.tops{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:26px;counter-reset:tp}
+.tops .tp{counter-increment:tp;position:relative;padding:14px 16px 14px 48px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
+.tops .tp::before{content:counter(tp);position:absolute;left:14px;top:13px;width:24px;height:24px;border-radius:7px;background:var(--cls);color:var(--surface);font-weight:650;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+
+/* section card */
+.sec{container-type:inline-size;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);margin-bottom:16px;scroll-margin-top:calc(var(--barh,56px) + 60px);overflow:hidden}
+@media (min-width:960px){.sec{scroll-margin-top:calc(var(--barh,56px) + 16px)}}
+.sec > header{display:flex;align-items:flex-start;gap:12px;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.sec .num{flex:none;font-family:var(--display);font-weight:var(--w-d);font-size:var(--t15);color:var(--cls);font-variant-numeric:tabular-nums;padding-top:4px;min-width:1.4em}
+.sec .ht{flex:1;min-width:0}
+.sec h3{margin:0;font-family:var(--display);font-size:clamp(20px,2.4vw,24px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.sec .sd{margin:3px 0 0;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;white-space:nowrap;margin-top:3px}
+@container (max-width:520px){.sec > header{flex-wrap:wrap;row-gap:6px}.sec .ht{flex:1 1 calc(100% - 3em)}.sec > header .w{order:3;margin:0 0 0 calc(1.4em + 12px)}}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 14%,transparent);color:var(--cls)}
+.sb{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:16px 18px 18px}
+@container (min-width:700px){
+  .sb .duo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+  .sb .duo.wide-side{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+}
+.sb .duo{display:grid;gap:16px}
+.duo > .main,.duo > .side{container-type:inline-size;min-width:0}
+.sb .main > :first-child{margin-top:0}
+.sb .main.solo{max-width:72ch}
+.sb p{margin:0 0 10px;line-height:1.55}
+.sb p:last-child{margin-bottom:0}
+b.kw{font-weight:680;color:var(--ink)}
+
+/* bullets */
+.pts{margin:10px 0 0;padding:0;list-style:none}
+.pts:first-child{margin-top:0}
+.pts li{position:relative;padding:4px 0 4px 18px;line-height:1.5}
+.pts li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:2px;background:var(--cls)}
+.pts.two{columns:2 220px;column-gap:24px}
+.pts.two li{break-inside:avoid}
+
+/* label rows */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:14px}
+.rows:first-child{margin-top:0}
+.rows dt{padding:7px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:22px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:7px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* numbered steps */
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps:first-child{margin-top:0}
+.steps li{position:relative;padding:7px 0 7px 32px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:21px;height:21px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:650;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+
+/* flow: cause -> effect chain */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 0;margin:0;padding:0;list-style:none}
+.flow li{position:relative;flex:1 1 0;min-width:120px;display:flex;align-items:center;padding:10px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.35;margin-right:26px}
+.flow li:last-child{margin-right:0;border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:12px;height:12px;margin-top:-6px;background:var(--ink3);clip-path:polygon(0 15%,100% 50%,0 85%)}
+@container (max-width:519px){
+  .flow{flex-direction:column;gap:0}
+  .flow li{margin:0 0 22px;min-width:0}
+  .flow li:last-child{margin-bottom:0}
+  .flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;margin:0 0 0 -6px;clip-path:polygon(15% 0,85% 0,50% 100%)}
+}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tiles > div{padding:11px 13px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);border-top:3px solid var(--cls)}
+.tiles h5{margin:0 0 3px;font-size:var(--t15);font-weight:650;line-height:1.3}
+.tiles p{margin:0;font-size:var(--t13);line-height:1.45;color:var(--ink)}
+.tiles .tk{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--cls);text-transform:lowercase}
+
+/* tree (org chart; indented list on narrow cards) */
+.tree{overflow-x:auto}
+.tree ul{position:relative;display:flex;justify-content:center;margin:0;padding:16px 0 0;list-style:none}
+.tree > ul{padding-top:0}
+.tree li{position:relative;flex:1 1 0;padding:16px 4px 0;text-align:center;min-width:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:16px;border-top:1.5px solid var(--line2)}
+.tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line2)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:1.5px solid var(--line2);border-radius:0 6px 0 0}
+.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:16px;border-left:1.5px solid var(--line2)}
+.tree .nd{display:inline-block;max-width:100%;padding:7px 10px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t13);line-height:1.3;vertical-align:top}
+.tree .nd b{display:block;font-size:var(--t15);font-weight:650}
+.tree .nd span{display:block;color:var(--ink2);margin-top:2px}
+.tree > ul > li > .nd{background:var(--cls);border-color:var(--cls);color:var(--surface)}
+.tree > ul > li > .nd span{color:color-mix(in srgb,var(--surface) 85%,transparent)}
+.tree > ul > li > ul > li > .nd{border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+@container (max-width:379px){
+  .tree ul{display:block;padding:0 0 0 18px}
+  .tree > ul{padding-left:0}
+  .tree li{padding:6px 0 0 16px;text-align:left}
+  .tree > ul > li{padding-left:0}
+  .tree li::before{top:0;left:0;right:auto;width:12px;height:22px;border-top:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li::after{top:22px;left:0;right:auto;width:0;height:calc(100% - 22px);border:0;border-left:1.5px solid var(--line2);border-radius:0}
+  .tree li:last-child::after{display:none}
+  .tree li:first-child::before,.tree li:last-child::before{border-top:0;border-right:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li:first-child::after{border-radius:0}
+  .tree > ul > li::before,.tree > ul > li::after{display:none}
+  .tree ul ul::before{display:none}
+  .tree li:only-child::before{display:block}
+  .tree li:only-child{padding-top:6px}
+  .tree > ul > li:only-child{padding:0}
+  .tree > ul > li:only-child::before,.tree > ul > li:only-child::after{display:none}
+}
+
+/* figure (inline svg drawn per guide) */
+.fig{margin:0;padding:14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.fig svg{display:block;width:100%;height:auto;max-height:440px;font-family:var(--sans);overflow:visible}
+.fig figcaption{margin-top:8px;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.fig .ln{fill:none;stroke:var(--ink2);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .lc{fill:none;stroke:var(--cls);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .la{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .lb{fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+.fig .lg{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round}
+.fig .dash{stroke-dasharray:5 5}
+.fig .fc{fill:var(--cls)} .fig .fa{fill:var(--accent)} .fig .fb{fill:var(--bad)} .fig .fg{fill:var(--good)} .fig .fi{fill:var(--ink)}
+.fig .fs{fill:color-mix(in srgb,var(--cls) 18%,var(--surface))}
+.fig .fsa{fill:color-mix(in srgb,var(--accent) 16%,var(--surface))}
+.fig .fp{fill:var(--surface);stroke:var(--line2);stroke-width:1.2}
+.fig .fn{fill:none}
+.fig text{fill:var(--ink);font-size:14px}
+.fig .tm{fill:var(--ink2);font-size:12.5px}
+.fig .tb{font-weight:650}
+.fig .tc{fill:var(--cls);font-weight:650}
+.fig .ta{fill:var(--accent);font-weight:650}
+.fig .tw{fill:var(--surface);font-weight:650}
+.fig .tbd{fill:var(--bad);font-weight:650}
+.fig .mid{text-anchor:middle} .fig .end{text-anchor:end}
+.mk-ink{fill:var(--ink2)} .mk-cls{fill:var(--cls)} .mk-acc{fill:var(--accent)} .mk-bad{fill:var(--bad)}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.cmp > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.cmp h5{margin:0 0 6px;font-size:var(--t13);font-weight:650;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15);line-height:1.45} .cmp p:last-child{margin:0}
+
+/* tables */
+.tbw{overflow-x:auto;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:650}
+.tcap{margin:0 0 8px;font-size:var(--t13);font-weight:600;color:var(--ink2);text-transform:lowercase}
+@container (max-width:519px){
+  .tbw .tbl thead{display:none}
+  .tbw .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbw .tbl tbody tr:first-child{border-top:0}
+  .tbw .tbl td{display:block;padding:0;border:0}
+  .tbw .tbl.two td:not(:first-child)::before{display:none}
+  .tbw .tbl.two td:first-child{margin-bottom:2px}
+  .tbw .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* on the test (example) */
+.exs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.tq{border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.tq .el{display:flex;align-items:center;gap:6px;padding:10px 13px 0;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--accent);text-transform:lowercase}
+.tq .el svg{flex:none}
+.tq .eq{padding:4px 13px 12px;font-size:var(--t15);line-height:1.45;font-weight:500;flex:1}
+.tq .eb{display:flex;align-items:center;justify-content:space-between;width:100%;padding:9px 13px;border-top:1px solid var(--line);font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase}
+.tq .eb .chev{transition:transform .24s var(--spring)}
+.tq.on .eb .chev{transform:rotate(90deg)}
+.tq .ea{display:none;padding:10px 13px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.tq.on .ea{display:block;animation:rise .3s var(--spring) both}
+.tq .ea b.aa{display:block;font-weight:680;margin-bottom:3px}
+.tq .ea .why{color:var(--ink2)}
+
+/* watch out + callouts */
+.watch{border-radius:var(--r-btn);background:color-mix(in srgb,var(--bad) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 30%,var(--line));padding:11px 14px 12px}
+.watch .wl,.callout .cl{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--bad);text-transform:lowercase;margin-bottom:4px}
+.watch ul{margin:0;padding:0;list-style:none}
+.watch li{position:relative;padding:3px 0 3px 16px;font-size:var(--t15);line-height:1.45}
+.watch li::before{content:"";position:absolute;left:1px;top:11px;width:8px;height:2px;border-radius:1px;background:var(--bad)}
+.callout{border-radius:var(--r-btn);padding:10px 14px 11px;font-size:var(--t15);line-height:1.45;background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--cls)}
+.callout.ok{border-left-color:var(--good)} .callout.ok .cl{color:var(--good)}
+.callout.ex{border-left-color:var(--accent)} .callout.ex .cl{color:var(--accent)}
+.callout.cls .cl{color:var(--cls)}
+
+/* terms */
+.terms{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.terms .tl{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;margin-right:2px}
+.term{font-size:var(--t13);font-weight:500;padding:3px 9px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface2);color:var(--ink)}
+
+.abbr{padding:14px 16px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);color:var(--ink2);line-height:1.7}
+.abbr b{color:var(--ink);font-weight:650}
+
+/* generic cards / groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px}
 .card.top{border-left:4px solid var(--cls);padding-left:15px}
 .card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
-.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:12px}
 .row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
 .row + .row,.body + .row{border-top:1px solid var(--line)}
-.row:active{background:var(--surface2)}
 @media (hover:hover){.row:hover{background:var(--surface2)}}
 .rt{min-width:0;flex:1}
-.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rn{display:block;font-size:var(--t16);font-weight:550;line-height:1.3}
 .rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
 .chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
 .row[aria-expanded="true"] .chev{transform:rotate(90deg)}
-.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
-.w3{background:var(--cls);color:var(--surface)}
-.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
 .body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
 .body.on{grid-template-rows:1fr}
 .body > div{overflow:hidden}
-.body .in{padding:12px 16px 14px}
-.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
-.body p:last-child{margin-bottom:0}
-
-/* prose emphasis */
-.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
-.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.trap{color:var(--bad);font-weight:600}
-.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
-.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
-.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
-.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-@media (max-width:479px){.cmp{grid-template-columns:1fr}}
-.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
-.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
-.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
-.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
-.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
-.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
-.steps li + li{border-top:1px solid var(--line)}
-.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
-.abbr b{color:var(--ink);font-weight:600}
+.body .in{padding:12px 16px 14px;display:grid;gap:10px}
+.body p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
 
 /* practice mc */
-.q{margin-bottom:10px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:12px;align-items:start}
+.q{margin:0}
 .q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
-.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
 .opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
-.opt:active{background:var(--surface2)}
 @media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
 .opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
 .q.done .opt{cursor:default}
@@ -149,75 +351,145 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
 .opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
 .opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
-.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q .why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
 .q.done .why{display:block}
-.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
-.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.wide{width:100%}
-.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
-.pdfs a{text-decoration:none}
-.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
-@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
-.btn:active{transform:scale(.987)}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease)}
+.scorepill.show{transform:translateX(-50%);opacity:1;pointer-events:auto}
+.scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
+.scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
 
-/* problems + worked examples */
-.prob .qt{padding:14px 16px}
-.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
-.prob.on .reveal{display:block}
-.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
-.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+/* problems */
+.pgrid{display:grid;gap:12px}
+.prob{container-type:inline-size;margin:0}
+.prob .pi{display:grid;grid-template-columns:minmax(0,1fr)}
+.prob .qt{padding:14px 16px;font-size:var(--t16);font-weight:500;line-height:1.45}
+.prob .go{border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.prob .reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block;animation:rise .3s var(--spring) both}
+.prob.on .go .chev{transform:rotate(90deg)}
+@container (min-width:820px){
+  .prob .pi{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .prob .qside{border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .prob .qside .qt{flex:1}
+  .prob .reveal{border-top:0;display:block;min-height:100%}
+  .prob:not(.on) .reveal::before{content:"work it first, then show the steps";display:grid;place-items:center;height:100%;min-height:120px;font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+  .prob:not(.on) .reveal > *{display:none}
+}
+.ans{margin-top:10px;padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);border-left:3px solid var(--good)}
 .ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+.work{margin:0;padding:0;list-style:none}
+.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
+.work li + li{border-top:1px solid var(--line)}
+.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.work .wm.cont{padding-left:1.1em}
+.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink2);padding-left:12px;border-left:2px solid var(--line)}
+.work .wy:empty{border-left-color:transparent}
+.work li.hd{padding:0 0 4px}
+.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
+.work li.hd .wh + .wh{padding-left:14px}
+@container (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0}.work li.hd{display:none}}
 
 /* formulas */
-.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
-.fx:first-child{border-top:0}
-.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
-.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
-.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.fx{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.fx .n{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t16);font-weight:500;overflow-wrap:anywhere}
+.fx .note{font-size:var(--t13);color:var(--ink2);line-height:1.45}
 
 /* flashcards */
-.deck{position:relative;perspective:1200px;margin-bottom:10px}
-.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.dk{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.deck{position:relative;perspective:1200px}
+.fc{position:relative;min-height:230px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
 .fc.flip{transform:rotateY(180deg)}
-.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
-.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:22px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t16);line-height:1.5;color:var(--ink)}
+.fc .tag{position:absolute;left:16px;top:13px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
 .fc .b .tag{color:var(--cls)}
-.dnav{display:flex;align-items:center;gap:8px}
+.dnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px;margin-top:6px}
+.clist > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.clist b{display:block;font-weight:650;margin-bottom:3px}
+.clist span{font-size:var(--t15);line-height:1.45;color:var(--ink)}
 
 /* timeline */
-.tl{position:relative;padding-left:22px}
-.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl .ev{position:relative;padding:6px 0 12px}
-.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
-.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
-.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
-.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+.tln{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.tln .ev{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 18px;padding:12px 16px;border-top:1px solid var(--line);position:relative}
+.tln .ev:first-child{border-top:0}
+.tln .y{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t16);color:var(--cls);font-variant-numeric:tabular-nums;line-height:1.35}
+.tln .t{font-size:var(--t16);font-weight:600;line-height:1.35}
+.tln .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+@media (min-width:900px){.tln .ev{grid-template-columns:110px minmax(0,.9fr) minmax(0,1.3fr)}.tln .d{margin-top:0}}
+@media (max-width:479px){.tln .ev{grid-template-columns:1fr;gap:2px}}
+
+/* cram */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:12px;align-items:start}
+.cgrid .group{margin:0}
+.cgrid .gh{padding:11px 14px;border-bottom:1px solid var(--line);font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;display:flex;justify-content:space-between;gap:10px}
+.cgrid .gh span{color:var(--ink3);font-weight:500}
+.cr{display:grid;grid-template-columns:minmax(0,10em) 1fr;gap:2px 14px;padding:9px 14px;border-top:1px solid var(--line)}
+.gh + .cr{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:650;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables pane */
+.tpane{display:grid;gap:22px}
+.tpane .tblk{container-type:inline-size}
 
 /* checklist */
-.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
-.ck:first-child{border-top:0}
+.ckg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:0 12px}
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:12px 14px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.4;background:var(--surface);border:1px solid var(--line);margin-bottom:8px}
 .ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
 .ck.on .box{background:var(--good);border-color:var(--good)}
 .ck.on .t{color:var(--ink3);text-decoration:line-through}
 .ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
 
+/* essay panes (leq / prompts) */
+.bul{margin:0;padding-left:18px}
+.bul li{margin:3px 0;line-height:1.45}
+.pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin-top:6px}
+.so{padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:var(--t15)}
+.so .cl{display:block;font-size:11.5px;font-weight:650;color:var(--accent);letter-spacing:.05em;text-transform:lowercase}
+.pace{display:flex;height:34px;border-radius:8px;overflow:hidden;gap:2px}
+.pace > div{display:grid;place-items:center;color:var(--surface);font-size:var(--t12);font-weight:650;background:var(--cls)}
+.pace > div:nth-child(2n){background:var(--accent)}
+.pace > div:nth-child(3n){background:var(--ink2)}
+.fnl{margin:0;padding-left:20px;font-size:var(--t15)}
+.fnl li{margin:4px 0}
+
 /* footer */
-footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
 footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
 footer .upd{display:block;margin-top:6px}
 
-/* reveal on load */
 .rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+
+@media print{
+  :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
+  .bar,.toc,.panes,.skipl,#prog,.scorepill,.tq .eb,.prob .go,.seg{display:none !important}
+  .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
+  .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
+  .prob:not(.on) .reveal::before{display:none}
+  .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
+  @page{margin:.6in}
+}
 </style>
 </head>
 <body>
+<a class="skipl" href="#main">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-ink"/></marker>
+  <marker id="ahc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-cls"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-acc"/></marker>
+  <marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-bad"/></marker>
+</defs></svg>
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="home" href="/" aria-label="all guides">
@@ -238,7 +510,7 @@ footer .upd{display:block;margin-top:6px}
   <h2 class="title rv" id="title"></h2>
   <p class="sub rv" id="sub" hidden></p>
   <div class="pdfs rv" id="pdfs" hidden></div>
-  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div class="rv"><div class="panes" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div></div>
   <div id="root" class="rv"></div>
   <footer>
     study guide written by a student, free to use. not affiliated with the school.
@@ -246,256 +518,863 @@ footer .upd{display:block;margin-top:6px}
     <span class="upd" id="upd"></span>
   </footer>
 </main>
+<div class="scorepill" id="score" aria-live="polite"><span><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
-   GUIDE — the only thing to edit. Delete panes you don't need from
-   `panes`; delete the matching data too. Prose accepts **term**,
-   ==fact== and !!trap!!. Everything is rendered from this object.
+   GUIDE: the only thing to edit. Everything renders from this object.
+   Rules (sept 29 2026, from reader feedback):
+   · bold a key term with **term** the first time it appears in a
+     section. Nothing else is marked inline: no highlights, no
+     underlines, no red text. (The renderer bolds each term once per
+     section and ignores legacy ==x== / !!x!! markers.)
+   · traps go in `watch`, never in the prose.
+   · two short paragraphs max per section; everything else is a shape:
+     pts, flow, steps, rows, tiles, tree, table, cmp, fig.
+   · every tested section gets at least one `ex` (see it on a test).
    ═══════════════════════════════════════════════════════════════════ */
 const GUIDE = {
-  id:    "pre",
-  cls:   "Honors Precalculus BC",
-  title: "Complex numbers & trig form",
-  test:  "2026-09-18",
-  meta:  "11 questions · 30 min · no calculator",
-  sub:   "Worked problems for every type, then every formula. Print a practice quiz, set a 30-minute timer, check the key.",
-  pdfs:  [ { t:"all quizzes + memorize sheet", url:"/precalc-complex-trig-form-quizzes.pdf" },
-           { t:"practice quiz a", url:"/precalc-complex-trig-form-practice-a.pdf" },
-           { t:"practice quiz b", url:"/precalc-complex-trig-form-practice-b.pdf" },
-           { t:"practice quiz c", url:"/precalc-complex-trig-form-practice-c.pdf" } ],
-  pdfsNote: "PDFs open in Notability or GoodNotes, or print. Answer key follows each quiz.",
-  updated: "sept 17, 2026",
-
-  panes: [ "problems", "formulas" ],
-  labels: {},
-
-  top: [],
-  outline: [],
-  practice: [],
-  cards: [],
-  timeline: [],
-  checklist: [],
-
-  problems: [
-    { q:"**Rectangular → trig form**, θ in [0°, 360°): −4 + 4i",
-      steps:[
-        "Sketch it: x = −4, y = 4 puts it in ==quadrant II==.",
-        "r = √(x² + y²) = √(16 + 16) = √32 = **4√2**",
-        "tan θ = y/x = 4/(−4) = −1, so the reference angle is 45°.",
-        "Quadrant II: θ = 180° − 45° = **135°**. !!Not −45° or 315°!!; the sketch decides the quadrant, not the calculator."
-      ],
-      ans:"4√2(cos 135° + i sin 135°) = 4√2 cis 135°" },
-
-    { q:"**Rectangular → trig form**, θ in [0°, 360°): −1 + i√3",
-      steps:[
-        "x = −1, y = √3: ==quadrant II==.",
-        "r = √(1 + 3) = √4 = **2**",
-        "tan θ = √3/(−1) = −√3, reference angle 60°.",
-        "Quadrant II: θ = 180° − 60° = **120°**"
-      ],
-      ans:"2(cos 120° + i sin 120°) = 2 cis 120°" },
-
-    { q:"**Polar form** (warm-up): −2√3 − 2i",
-      steps:[
-        "x = −2√3, y = −2: both negative, ==quadrant III==.",
-        "r = √(12 + 4) = √16 = **4**",
-        "tan θ = (−2)/(−2√3) = 1/√3, reference angle 30°.",
-        "Quadrant III: θ = 180° + 30° = **210°**. !!tan⁻¹ alone gives 30°, which is quadrant I!!."
-      ],
-      ans:"4 cis 210°" },
-
-    { q:"**On an axis** (tan θ is undefined or 0): write 5i and −7 in trig form.",
-      steps:[
-        "5i = 0 + 5i sits on the ==positive imaginary axis==: r = 5, θ = **90°**.",
-        "−7 = −7 + 0i sits on the ==negative real axis==: r = 7, θ = **180°**.",
-        "Axis angles: +real 0°, +imag 90°, −real 180°, −imag 270°. No tan needed, just the sketch."
-      ],
-      ans:"5 cis 90°  and  7 cis 180°" },
-
-    { q:"**Trig → rectangular**: 2(cos 330° + i sin 330°)",
-      steps:[
-        "330° is quadrant IV, reference 30°: cos 330° = √3/2, sin 330° = −1/2.",
-        "Distribute r: 2(√3/2) + 2(−1/2)i",
-        "= √3 − i"
-      ],
-      ans:"√3 − i" },
-
-    { q:"**Trig → rectangular**: 6(cos 135° + i sin 135°)",
-      steps:[
-        "135° is quadrant II, reference 45°: cos = −√2/2, sin = √2/2.",
-        "6(−√2/2) + 6(√2/2)i",
-        "= −3√2 + 3√2 i"
-      ],
-      ans:"−3√2 + 3i√2" },
-
-    { q:"**Radians** (warm-up): write 3(cos 7π/4 + i sin 7π/4) in rectangular form, and give its **absolute value**.",
-      steps:[
-        "7π/4 = 315°, quadrant IV: cos = √2/2, sin = −√2/2.",
-        "3(√2/2) + 3(−√2/2)i = 3√2/2 − (3√2/2)i",
-        "==Absolute value of r cis θ is just r==: |z| = 3. No work needed."
-      ],
-      ans:"3√2/2 − (3√2/2)i,  |z| = 3" },
-
-    { q:"**Julia set**: is z = 1 + i in the Julia set?",
-      steps:[
-        "Rule: compute z² − 1, then square that and subtract 1 again, and so on. ==If any |result| exceeds 2, it is NOT in the set.==",
-        "z² = (1 + i)² = 1 + 2i + i² = 2i. So z² − 1 = −1 + 2i.",
-        "|−1 + 2i| = √(1 + 4) = √5 ≈ 2.24",
-        "√5 > 2, stop."
-      ],
-      ans:"Not in the Julia set" },
-
-    { q:"**Julia set**: is z = 0 + 0i in the Julia set? Is z = i?",
-      steps:[
-        "z = 0: 0² − 1 = −1, |−1| = 1 ✓. (−1)² − 1 = 0, |0| = 0 ✓. 0² − 1 = −1 ✓. It cycles 0, −1, 0 forever, so the whole orbit stays bounded (never past 2): **yes**.",
-        "z = i: i² − 1 = −2, |−2| = 2. !!Equal to 2 is not exceeding 2!!, keep going.",
-        "(−2)² − 1 = 3, |3| = 3 > 2: **not in the set**."
-      ],
-      ans:"0 + 0i: yes.  i: no." },
-
-    { q:"**Divide** (warm-up): (5 + 6i)/(5 − 4i)",
-      steps:[
-        "Multiply top and bottom by the ==conjugate of the bottom==, 5 + 4i.",
-        "Top: (5 + 6i)(5 + 4i) = 25 + 20i + 30i + 24i² = 25 + 50i − 24 = 1 + 50i",
-        "Bottom: (5 − 4i)(5 + 4i) = 25 + 16 = 41. !!+16, not −16!!: a² + b².",
-        "Split into standard form a + bi."
-      ],
-      ans:"1/41 + (50/41)i" },
-
-    { q:"**Divide by i**: 7/i  and  2/(3i)",
-      steps:[
-        "The conjugate of i is −i, and i(−i) = −i² = 1.",
-        "7/i · (−i)/(−i) = −7i/1 = −7i",
-        "2/(3i) · (−i)/(−i) = −2i/(−3i²) = −2i/3"
-      ],
-      ans:"−7i  and  −(2/3)i" },
-
-    { q:"**Multiply**: (8 − 9i)²  and  (−5i)(3 + i)",
-      steps:[
-        "(8 − 9i)² = (8 − 9i)(8 − 9i) = 64 − 72i − 72i + 81i²",
-        "= 64 − 144i − 81 = **−17 − 144i**. !!Never square each part separately!! (that gives 64 + 81i²).",
-        "(−5i)(3 + i) = −15i − 5i² = −15i + 5 = **5 − 15i**"
-      ],
-      ans:"−17 − 144i  and  5 − 15i" },
-
-    { q:"**Solve over the complex numbers** (warm-up): 4x² + 4 = 7x",
-      steps:[
-        "Set = 0 first: 4x² − 7x + 4 = 0. a = 4, b = −7, c = 4.",
-        "Discriminant: b² − 4ac = 49 − 64 = −15. Negative means ==two nonreal conjugate answers==.",
-        "x = (7 ± √−15)/8 = (7 ± i√15)/8",
-        "Split into a + bi form."
-      ],
-      ans:"x = 7/8 ± (√15/8)i" },
-
-    { q:"**Square roots** (warm-up): 5k² − 1 = −2",
-      steps:[
-        "Isolate k²: 5k² = −1, k² = −1/5.",
-        "k = ±√(−1/5) = ±i/√5",
-        "Rationalize: ±i√5/5. !!Don't forget ±!!."
-      ],
-      ans:"k = ±(√5/5)i" },
-
-    { q:"**Radicals of negatives**: √−12 · √−5  and  √−18/√2",
-      steps:[
-        "==Pull out i first==: √−12 = 2i√3, √−5 = i√5.",
-        "(2i√3)(i√5) = 2i²√15 = **−2√15**. !!√(−12 · −5) = √60 is wrong!!, the sign flips.",
-        "√−18/√2 = 3i√2/√2 = **3i**"
-      ],
-      ans:"−2√15  and  3i" },
-
-    { q:"**Powers of i**: i⁴³  and  1/i¹⁰",
-      steps:[
-        "Cycle of 4: i¹ = i, i² = −1, i³ = −i, i⁴ = 1. Divide the exponent by 4, keep the ==remainder==.",
-        "43 ÷ 4 = 10 r 3, so i⁴³ = i³ = **−i**",
-        "10 ÷ 4 = 2 r 2, so i¹⁰ = −1, and 1/i¹⁰ = 1/(−1) = **−1**"
-      ],
-      ans:"−i  and  −1" },
-
-    { q:"**Sum + graph**: add 4 − 6i and −4 + 2i, then graph both and the resultant.",
-      steps:[
-        "Add real to real, imaginary to imaginary: (4 − 4) + (−6 + 2)i = 0 − 4i.",
-        "Graph 4 − 6i as an arrow from the origin to (4, −6), and −4 + 2i to (−4, 2).",
-        "The resultant is the ==diagonal of the parallelogram== they make: an arrow from the origin to (0, −4)."
-      ],
-      ans:"−4i" },
-
-    { q:"**Absolute value** (warm-up): |−5√2/2 − (5√2/2)i|",
-      steps:[
-        "|a + bi| = √(a² + b²), the ==length of the vector==.",
-        "a² = 25·2/4 = 25/2, and b² = 25/2.",
-        "√(25/2 + 25/2) = √25 = 5"
-      ],
-      ans:"5" },
-
-    { q:"**Classify** (more than one can apply): 8i, 9 − 3i, 4, √−81",
-      steps:[
-        "Every number is **complex**. b = 0 → **real**. a = 0, b ≠ 0 → **pure imaginary**. b ≠ 0 → **nonreal complex**.",
-        "8i: complex, pure imaginary, nonreal complex.",
-        "9 − 3i: complex, nonreal complex. 4: complex, real.",
-        "√−81 = 9i: complex, pure imaginary, nonreal complex."
-      ],
-      ans:"see steps; always list \"complex\"" },
-
-    { q:"**Check a solution**: is 7 − i a solution of x² − 14x + 50 = 0?",
-      steps:[
-        "Plug in. (7 − i)² = 49 − 14i + i² = 48 − 14i",
-        "−14(7 − i) = −98 + 14i",
-        "Add: 48 − 14i − 98 + 14i + 50 = 0 ✓"
-      ],
-      ans:"Yes" },
-
-    { q:"**E = IZ**: find E when I = 5 + 7i and Z = 9 + 3i.",
-      steps:[
-        "E = (5 + 7i)(9 + 3i)",
-        "= 45 + 15i + 63i + 21i²",
-        "= 45 + 78i − 21"
-      ],
-      ans:"E = 24 + 78i" }
-  ],
-
-  formulas: [
-    { n:"i", f:"i² = −1", note:"i = √−1" },
-    { n:"negative radical", f:"√−a = i√a", note:"!!Convert to i before multiplying!!: for a, b ≥ 0, √−a · √−b = (i√a)(i√b) = −√(ab)" },
-    { n:"powers of i", f:"i, −1, −i, 1", note:"repeats every 4. Exponent ÷ 4, use the ==remainder==. For 1/iⁿ, simplify iⁿ, then flip." },
-    { n:"standard form", f:"a + bi", note:"real part a, imaginary part b. Final answers go in this form." },
-    { n:"conjugate", f:"a − bi", note:"of a + bi. Product: (a + bi)(a − bi) = ==a² + b²==" },
-    { n:"division", f:"× conj/conj", note:"multiply top and bottom by the **conjugate** of the bottom. 1/i = −i" },
-    { n:"quadratic", f:"(−b ± √D)/2a", note:"D = b² − 4ac. Set the equation = 0 first. ==D < 0 → two nonreal conjugates==." },
-    { n:"real", f:"b = 0", note:"every number is ==complex==, so always list it too" },
-    { n:"pure imaginary", f:"a = 0, b ≠ 0" },
-    { n:"nonreal complex", f:"b ≠ 0" },
-    { n:"absolute value", f:"√(a² + b²)", note:"|a + bi|, also the **modulus**: the ==length== of the vector" },
-    { n:"graphing", f:"(a, b)", note:"a + bi is the vector from the origin to (a, b). Horizontal = **real axis**, vertical = **imaginary axis**." },
-    { n:"sum", f:"(a+c) + (b+d)i", note:"graphed: the resultant is the ==diagonal of the parallelogram==" },
-    { n:"x and y", f:"r cos θ, r sin θ", note:"polar → rectangular" },
-    { n:"r", f:"√(x² + y²)" },
-    { n:"θ", f:"tan θ = y/x", note:"!!sketch first, then pick the quadrant!!" },
-    { n:"trig form", f:"r cis θ", note:"= r(cos θ + i sin θ), θ in ==[0°, 360°)==" },
-    { n:"quadrant I", f:"θ = α", note:"α = **reference angle**, from tan⁻¹|y/x|" },
-    { n:"quadrant II", f:"180° − α" },
-    { n:"quadrant III", f:"180° + α" },
-    { n:"quadrant IV", f:"360° − α" },
-    { n:"on an axis", f:"0°, 90°, 180°, 270°", note:"+real, +imaginary, −real, −imaginary. The number 0 has r = 0 and no angle." },
-    { n:"30°", f:"(√3/2, 1/2)", note:"(cos, sin); signs come from the quadrant" },
-    { n:"45°", f:"(√2/2, √2/2)" },
-    { n:"60°", f:"(1/2, √3/2)" },
-    { n:"radians", f:"× 180°/π", note:"7π/4 = 315°, 5π/6 = 150°, 11π/6 = 330°" },
-    { n:"Julia set", f:"z² − 1, repeat", note:"square the last result, subtract 1, check |result|. ==Any |result| over 2 → not in the set==. Exactly 2 keeps going. Mathematicians call this the **filled Julia set**: in it means the whole orbit stays bounded." },
-    { n:"product", f:"r₁r₂ cis(θ₁+θ₂)", note:"multiply the r's, add the angles" },
-    { n:"quotient", f:"r₁/r₂ cis(θ₁−θ₂)", note:"divide the r's (r₂ ≠ 0), subtract the angles" }
-  ],
-
-  abbr: {}
+ "id": "pre",
+ "cls": "Honors Precalculus BC",
+ "title": "Complex numbers & trig form",
+ "test": "2026-09-18",
+ "meta": "11 questions · 30 min · no calculator",
+ "sub": "Every question type at a glance, then worked problems and every formula. Print a practice quiz, set a 30-minute timer, check the key.",
+ "updated": "sept 29, 2026",
+ "pdfs": [
+  {
+   "t": "all quizzes + memorize sheet",
+   "url": "/precalc-complex-trig-form-quizzes.pdf"
+  },
+  {
+   "t": "practice quiz a",
+   "url": "/precalc-complex-trig-form-practice-a.pdf"
+  },
+  {
+   "t": "practice quiz b",
+   "url": "/precalc-complex-trig-form-practice-b.pdf"
+  },
+  {
+   "t": "practice quiz c",
+   "url": "/precalc-complex-trig-form-practice-c.pdf"
+  }
+ ],
+ "pdfsNote": "PDFs open in Notability or GoodNotes, or print. Answer key follows each quiz.",
+ "panes": [
+  "outline",
+  "problems",
+  "formulas"
+ ],
+ "labels": {},
+ "top": [
+  "**Trig form**: r cis θ = r(cos θ + i sin θ), θ in [0°, 360°). Sketch first: the quadrant decides θ, not tan⁻¹.",
+  "No calculator: know cos and sin of 30°, 45°, 60° cold. The quadrant sets the signs.",
+  "Divide by multiplying top and bottom by the **conjugate** of the bottom; the bottom becomes a² + b².",
+  "Pull out i before multiplying radicals: √−12 · √−5 = −2√15, never √60. Powers of i repeat every 4.",
+  "**Julia set**: square, subtract 1, repeat. Any |result| over 2 means not in the set; exactly 2 keeps going."
+ ],
+ "outline": [
+  {
+   "w": 3,
+   "t": "Rectangular → trig form",
+   "d": "write a + bi as r cis θ, θ in [0°, 360°)",
+   "p": [
+    "**Trig form** (polar form) is r(cos θ + i sin θ), written r cis θ. r is the vector's length; θ is the angle from the positive real axis."
+   ],
+   "steps": [
+    "Sketch (x, y) and name the quadrant.",
+    "r = √(x² + y²).",
+    "tan θ = y/x, so the **reference angle** is α = tan⁻¹|y/x|.",
+    "Turn α into θ with the table below.",
+    "Write r cis θ."
+   ],
+   "fig": {
+    "svg": "<svg viewBox=\"0 0 360 286\" role=\"img\" aria-label=\"Complex plane: z = −4 + 4i plotted in quadrant II as a vector from the origin to (−4, 4), with length r = 4√2, angle θ = 135° from the positive real axis, and reference angle α = 45° to the negative real axis\">\n<path class=\"ln\" d=\"M24,200 H350\" marker-end=\"url(#ah)\"/>\n<path class=\"ln\" d=\"M236,278 V16\" marker-end=\"url(#ah)\"/>\n<text class=\"tm end\" x=\"350\" y=\"222\">real</text>\n<text class=\"tm\" x=\"246\" y=\"24\">imaginary</text>\n<text class=\"tm mid\" x=\"318\" y=\"84\">I</text>\n<text class=\"tm mid\" x=\"40\" y=\"112\">II</text>\n<text class=\"tm mid\" x=\"130\" y=\"258\">III</text>\n<text class=\"tm mid\" x=\"318\" y=\"258\">IV</text>\n<path class=\"ln dash\" d=\"M76,46 V200 M82,40 H236\"/>\n<path class=\"ln\" d=\"M76,195 V205 M231,40 H241\"/>\n<text class=\"tm mid\" x=\"76\" y=\"222\">x = −4</text>\n<text class=\"tm\" x=\"246\" y=\"45\">y = 4</text>\n<path class=\"lc\" d=\"M236,200 L81.66,45.66\" marker-end=\"url(#ahc)\"/>\n<circle class=\"fc\" cx=\"76\" cy=\"40\" r=\"5\"/>\n<text class=\"tc mid\" x=\"76\" y=\"24\">−4 + 4i</text>\n<text class=\"tb\" x=\"160\" y=\"106\">r = 4√2</text>\n<path class=\"la\" d=\"M262,200 A26,26 0 0 0 217.62,181.62\"/>\n<text class=\"ta\" x=\"266\" y=\"180\">θ = 135°</text>\n<path class=\"ln\" d=\"M192,200 A44,44 0 0 1 204.89,168.89\"/>\n<text class=\"tm end\" x=\"186\" y=\"182\">α = 45°</text>\n</svg>",
+    "cap": "−4 + 4i: r = √(16 + 16) = 4√2. The reference angle is 45°; quadrant II makes θ = 180° − 45° = 135°."
+   },
+   "table": {
+    "h": "α to θ",
+    "cols": [
+     "",
+     "θ",
+     "example"
+    ],
+    "rows": [
+     [
+      "Quadrant I",
+      "α",
+      "1 + i√3 → 2 cis 60°"
+     ],
+     [
+      "Quadrant II",
+      "180° − α",
+      "−1 + i√3 → 2 cis 120°"
+     ],
+     [
+      "Quadrant III",
+      "180° + α",
+      "−2√3 − 2i → 4 cis 210°"
+     ],
+     [
+      "Quadrant IV",
+      "360° − α",
+      "√3 − i → 2 cis 330°"
+     ],
+     [
+      "On an axis",
+      "+real 0°, +imaginary 90°, −real 180°, −imaginary 270°. No tan needed.",
+      "5i → 5 cis 90°; −7 → 7 cis 180°. 0 has r = 0 and no angle."
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Write 5 − 5i in trig form, θ in [0°, 360°).",
+     "a": "5√2 cis 315°",
+     "why": "Quadrant IV: r = √50 = 5√2, α = 45°, θ = 360° − 45°. −45° is outside the interval."
+    },
+    {
+     "q": "Write −6i in trig form.",
+     "a": "6 cis 270°",
+     "why": "Negative imaginary axis, so no tan needed. 90° would be +6i."
+    }
+   ],
+   "watch": [
+    "tan⁻¹ gives only α: for −2√3 − 2i it gives 30°, a quadrant I angle, but θ = 210°. The sketch picks the quadrant.",
+    "Keep θ in [0°, 360°): −4 + 4i is 135°, not −45° or 315°."
+   ],
+   "terms": [
+    "trig form",
+    "polar form",
+    "r cis θ",
+    "reference angle"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Trig → rectangular form",
+   "d": "r cis θ back to a + bi, no calculator",
+   "p": [
+    "x = r cos θ and y = r sin θ, so r cis θ = r cos θ + (r sin θ)i."
+   ],
+   "steps": [
+    "Radians to degrees: × 180°/π (7π/4 = 315°, 5π/6 = 150°, 11π/6 = 330°).",
+    "Find the quadrant and the reference angle.",
+    "Take cos and sin of the reference angle; the quadrant sets each sign.",
+    "Distribute r and write a + bi."
+   ],
+   "table": {
+    "h": "memorize: reference angles",
+    "cols": [
+     "",
+     "cos",
+     "sin"
+    ],
+    "rows": [
+     [
+      "30°",
+      "√3/2",
+      "1/2"
+     ],
+     [
+      "45°",
+      "√2/2",
+      "√2/2"
+     ],
+     [
+      "60°",
+      "1/2",
+      "√3/2"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Write 4(cos 240° + i sin 240°) in rectangular form.",
+     "a": "−2 − 2i√3",
+     "why": "240° is quadrant III, reference 60°: cos = −1/2, sin = −√3/2. Both negative."
+    },
+    {
+     "q": "Write 6(cos 11π/6 + i sin 11π/6) in rectangular form, and give |z|.",
+     "a": "3√3 − 3i; |z| = 6",
+     "why": "11π/6 = 330°, quadrant IV: cos = √3/2, sin = −1/2. |r cis θ| is just r."
+    }
+   ],
+   "watch": [
+    "Signs come from the quadrant, not the table: cos 330° = √3/2 but sin 330° = −1/2."
+   ],
+   "terms": [
+    "radians",
+    "special angles"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Multiply, divide, add",
+   "d": "every answer in standard form a + bi",
+   "p": [
+    "Distribute like any binomial, then replace i² with −1. To divide, multiply top and bottom by the **conjugate** of the bottom."
+   ],
+   "table": {
+    "cols": [
+     "",
+     "how",
+     "example"
+    ],
+    "rows": [
+     [
+      "Add or subtract",
+      "real with real, imaginary with imaginary: (a + c) + (b + d)i",
+      "(4 − 6i) + (−4 + 2i) = −4i"
+     ],
+     [
+      "Multiply",
+      "distribute, then i² = −1",
+      "(−5i)(3 + i) = 5 − 15i"
+     ],
+     [
+      "Square",
+      "write it twice and distribute",
+      "(8 − 9i)² = −17 − 144i"
+     ],
+     [
+      "Conjugate",
+      "a − bi for a + bi; their product is a² + b²",
+      "(5 − 4i)(5 + 4i) = 41"
+     ],
+     [
+      "Divide",
+      "× conjugate of the bottom, over itself",
+      "(5 + 6i)/(5 − 4i) = 1/41 + (50/41)i"
+     ],
+     [
+      "Divide by i",
+      "× (−i)/(−i), since 1/i = −i",
+      "7/i = −7i"
+     ],
+     [
+      "E = IZ",
+      "just a product",
+      "(5 + 7i)(9 + 3i) = 24 + 78i"
+     ],
+     [
+      "Trig form ×",
+      "multiply the r's, add the angles",
+      "r₁r₂ cis(θ₁ + θ₂)"
+     ],
+     [
+      "Trig form ÷",
+      "divide the r's (r₂ ≠ 0), subtract the angles",
+      "(r₁/r₂) cis(θ₁ − θ₂)"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Divide: (3 + 2i)/(1 − i)",
+     "a": "1/2 + (5/2)i",
+     "why": "× (1 + i)/(1 + i): top 1 + 5i, bottom 1 + 1 = 2. Not 1 − 1 = 0."
+    },
+    {
+     "q": "Multiply: (4 + 3i)²",
+     "a": "7 + 24i",
+     "why": "16 + 24i + 9i². Squaring each part gives 16 + 9i² = 7 and loses the 24i."
+    }
+   ],
+   "watch": [
+    "Conjugate products add: (5 − 4i)(5 + 4i) = 25 + 16, not 25 − 16.",
+    "Never square each part separately: (8 − 9i)² is not 64 + 81i²."
+   ],
+   "terms": [
+    "conjugate",
+    "standard form",
+    "E = IZ"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Solve over the complex numbers",
+   "d": "quadratics with no real answer",
+   "steps": [
+    "Set the equation = 0 and read a, b, c.",
+    "**Discriminant** D = b² − 4ac. D < 0 means two nonreal conjugate answers.",
+    "x = (−b ± √D)/2a, writing √D with i.",
+    "Split into a + bi form."
+   ],
+   "cmp": [
+    {
+     "h": "No x term",
+     "p": [
+      "Isolate the square, then ±√: 5k² − 1 = −2 gives k² = −1/5, so k = ±(√5/5)i."
+     ]
+    },
+    {
+     "h": "Check a solution",
+     "p": [
+      "Plug it in and use i² = −1. It is a solution if the total is 0."
+     ]
+    }
+   ],
+   "ex": [
+    {
+     "q": "Solve x² + 5 = −2x over the complex numbers.",
+     "a": "x = −1 ± 2i",
+     "why": "x² + 2x + 5 = 0, D = 4 − 20 = −16, √−16 = 4i, so (−2 ± 4i)/2."
+    },
+    {
+     "q": "Is 2 + i a solution of x² − 4x + 5 = 0?",
+     "a": "Yes",
+     "why": "(2 + i)² = 3 + 4i and −4(2 + i) = −8 − 4i; 3 + 4i − 8 − 4i + 5 = 0."
+    }
+   ],
+   "watch": [
+    "Set = 0 before reading a, b, c: 4x² + 4 = 7x has b = −7.",
+    "Keep the ±: two answers."
+   ],
+   "terms": [
+    "discriminant",
+    "nonreal conjugates"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "i, radicals, powers of i",
+   "d": "pull out i first, then use the cycle",
+   "p": [
+    "**i** = √−1, so i² = −1. Final answers go in **standard form** a + bi: real part a, imaginary part b."
+   ],
+   "rows": [
+    [
+     "negative radical",
+     "√−a = i√a. Convert before multiplying."
+    ],
+    [
+     "product",
+     "√−12 · √−5 = (2i√3)(i√5) = −2√15"
+    ],
+    [
+     "quotient",
+     "√−18/√2 = 3i√2/√2 = 3i"
+    ],
+    [
+     "powers of i",
+     "exponent ÷ 4, use the remainder: i⁴³ = i³ = −i"
+    ],
+    [
+     "1/iⁿ",
+     "simplify iⁿ, then flip: 1/i¹⁰ = 1/(−1) = −1"
+    ]
+   ],
+   "tiles": [
+    {
+     "h": "i¹ = i",
+     "k": "remainder 1"
+    },
+    {
+     "h": "i² = −1",
+     "k": "remainder 2"
+    },
+    {
+     "h": "i³ = −i",
+     "k": "remainder 3"
+    },
+    {
+     "h": "i⁴ = 1",
+     "k": "remainder 0"
+    }
+   ],
+   "ex": [
+    {
+     "q": "√−8 · √−2",
+     "a": "−4",
+     "why": "(2i√2)(i√2) = 2i²(2) = −4. √16 = 4 is the trap: the sign flips."
+    },
+    {
+     "q": "Simplify i²⁶ and 1/i³.",
+     "a": "−1 and i",
+     "why": "26 ÷ 4 leaves 2, so i²⁶ = −1. i³ = −i, and 1/(−i) = i."
+    }
+   ],
+   "watch": [
+    "√−a · √−b = −√(ab), not √(ab): convert to i before multiplying."
+   ],
+   "terms": [
+    "i",
+    "standard form",
+    "powers of i"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Graph, add, absolute value",
+   "d": "a + bi on the complex plane",
+   "p": [
+    "a + bi is the vector from the origin to (a, b). Horizontal is the **real axis**, vertical the **imaginary axis**."
+   ],
+   "pts": [
+    "**Absolute value** (the modulus): |a + bi| = √(a² + b²), the vector's length.",
+    "Add, then graph: the **resultant** is the diagonal of the parallelogram the two vectors make.",
+    "|r cis θ| = r, no work needed."
+   ],
+   "fig": {
+    "svg": "<svg viewBox=\"0 0 360 252\" role=\"img\" aria-label=\"Complex plane: vectors to 4 − 6i and −4 + 2i form a parallelogram; its diagonal from the origin is the sum, −4i, on the negative imaginary axis\"><g transform=\"translate(-20 0)\">\n<path class=\"ln\" d=\"M36,76 H376\" marker-end=\"url(#ah)\"/>\n<path class=\"ln\" d=\"M200,246 V12\" marker-end=\"url(#ah)\"/>\n<text class=\"tm end\" x=\"376\" y=\"96\">real</text>\n<text class=\"tm\" x=\"210\" y=\"22\">imaginary</text>\n<path class=\"ln dash\" d=\"M296,220 L200,172 M104,28 L200,172\"/>\n<path class=\"lc\" d=\"M200,76 L291.84,213.76\" marker-end=\"url(#ahc)\"/>\n<path class=\"lc\" d=\"M200,76 L110.71,31.35\" marker-end=\"url(#ahc)\"/>\n<path class=\"la\" d=\"M200,76 V164.5\" marker-end=\"url(#aha)\"/>\n<circle class=\"fc\" cx=\"296\" cy=\"220\" r=\"4.5\"/>\n<circle class=\"fc\" cx=\"104\" cy=\"28\" r=\"4.5\"/>\n<circle class=\"fa\" cx=\"200\" cy=\"172\" r=\"4.5\"/>\n<text class=\"tc\" x=\"306\" y=\"225\">4 − 6i</text>\n<text class=\"tc end\" x=\"94\" y=\"33\">−4 + 2i</text>\n<text class=\"ta end\" x=\"190\" y=\"186\">sum: −4i</text>\n</g></svg>",
+    "cap": "(4 − 6i) + (−4 + 2i) = −4i: the diagonal of the parallelogram."
+   },
+   "ex": [
+    {
+     "q": "Add 1 + 3i and 2 + i, then find the absolute value of the sum.",
+     "a": "3 + 4i; |3 + 4i| = 5",
+     "why": "√(9 + 16) = √25. The resultant runs from the origin to (3, 4)."
+    },
+    {
+     "q": "Find |−6 + 8i|.",
+     "a": "10",
+     "why": "√(36 + 64) = √100. Squaring removes the signs."
+    }
+   ],
+   "terms": [
+    "real axis",
+    "imaginary axis",
+    "absolute value",
+    "modulus",
+    "resultant"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "The Julia set",
+   "d": "a yes/no question: show every step",
+   "p": [
+    "Square, subtract 1, repeat. Mathematicians call it the **filled Julia set**: z is in when its whole orbit stays bounded."
+   ],
+   "steps": [
+    "Compute z² − 1 and its absolute value.",
+    "Over 2: not in the set. Stop.",
+    "Otherwise square that result, subtract 1, check again.",
+    "Never over 2 (a repeating cycle proves it): in the set."
+   ],
+   "fig": {
+    "svg": "<svg viewBox=\"0 0 360 252\" role=\"img\" aria-label=\"Complex plane with the circle |z| = 2. Starting at z = i: i² − 1 = −2, exactly on the circle, then (−2)² − 1 = 3, outside, so i is not in the set. Starting at z = 0: −1, 0, −1, 0 forever inside the circle, so 0 is in the set\"><g transform=\"translate(-40 0)\">\n<circle class=\"fs\" cx=\"220\" cy=\"140\" r=\"80\"/>\n<circle class=\"lb dash\" cx=\"220\" cy=\"140\" r=\"80\"/>\n<path class=\"ln\" d=\"M52,140 H390\" marker-end=\"url(#ah)\"/>\n<path class=\"ln\" d=\"M220,246 V40\" marker-end=\"url(#ah)\"/>\n<text class=\"tm end\" x=\"390\" y=\"160\">real</text>\n<text class=\"tm\" x=\"228\" y=\"48\">imaginary</text>\n<text class=\"tbd\" x=\"282\" y=\"76\">|z| = 2</text>\n<text class=\"tbd\" x=\"52\" y=\"22\">z = i → −2 → 3: out</text>\n<text class=\"ta\" x=\"52\" y=\"44\">z = 0 → −1, 0, −1 …: in</text>\n<path class=\"lb\" d=\"M215.04,99.34 Q160,92 142.31,134.46\" marker-end=\"url(#ahb)\"/>\n<path class=\"lb\" d=\"M144,144.5 Q240,252 336,144.47\" marker-end=\"url(#ahb)\"/>\n<path class=\"la\" d=\"M216,134 Q200,110 184,134\" marker-end=\"url(#aha)\"/>\n<path class=\"la\" d=\"M184,146 Q200,170 216,146\" marker-end=\"url(#aha)\"/>\n<circle class=\"fb\" cx=\"220\" cy=\"100\" r=\"4.5\"/>\n<circle class=\"fb\" cx=\"140\" cy=\"140\" r=\"4.5\"/>\n<circle class=\"fb\" cx=\"340\" cy=\"140\" r=\"4.5\"/>\n<circle class=\"fa\" cx=\"220\" cy=\"140\" r=\"4.5\"/>\n<circle class=\"fa\" cx=\"180\" cy=\"140\" r=\"4.5\"/>\n<text class=\"tbd\" x=\"229\" y=\"96\">i</text>\n<text class=\"tbd end\" x=\"132\" y=\"132\">−2</text>\n<text class=\"tm end\" x=\"132\" y=\"160\">exactly 2:</text>\n<text class=\"tm end\" x=\"132\" y=\"175\">keep going</text>\n<text class=\"tbd mid\" x=\"340\" y=\"128\">3</text>\n<text class=\"ta\" x=\"226\" y=\"128\">0</text>\n<text class=\"ta end\" x=\"174\" y=\"128\">−1</text>\n</g></svg>",
+    "cap": "Past the circle |z| = 2 means out. On the circle (exactly 2) keeps going."
+   },
+   "ex": [
+    {
+     "q": "Is z = 1 in the Julia set?",
+     "a": "Yes",
+     "why": "1² − 1 = 0, then 0² − 1 = −1, then 0 again: it cycles and never passes 2."
+    },
+    {
+     "q": "Is z = √3 in the Julia set?",
+     "a": "No",
+     "why": "(√3)² − 1 = 2: exactly 2, keep going. 2² − 1 = 3 > 2."
+    }
+   ],
+   "watch": [
+    "Exactly 2 does not exceed 2: keep going."
+   ],
+   "terms": [
+    "Julia set",
+    "filled Julia set",
+    "orbit"
+   ]
+  },
+  {
+   "w": 1,
+   "t": "Classify a complex number",
+   "d": "more than one label can apply",
+   "p": [
+    "Simplify first (√−81 = 9i), then read a and b. Every number is **complex**."
+   ],
+   "tree": {
+    "t": "Complex",
+    "d": "every a + bi",
+    "c": [
+     {
+      "t": "Real",
+      "d": "b = 0"
+     },
+     {
+      "t": "Nonreal complex",
+      "d": "b ≠ 0",
+      "c": [
+       {
+        "t": "Pure imaginary",
+        "d": "a = 0, b ≠ 0"
+       }
+      ]
+     }
+    ]
+   },
+   "ex": [
+    {
+     "q": "Classify 3 + √−9 and i⁴.",
+     "a": "3 + 3i: complex, nonreal complex. i⁴ = 1: complex, real.",
+     "why": "a ≠ 0 rules out pure imaginary; b = 0 makes i⁴ real."
+    }
+   ],
+   "watch": [
+    "Always list complex too: 8i is complex, pure imaginary, and nonreal complex."
+   ],
+   "terms": [
+    "real",
+    "pure imaginary",
+    "nonreal complex"
+   ]
+  }
+ ],
+ "problems": [
+  {
+   "q": "**Rectangular → trig form**, θ in [0°, 360°): −4 + 4i",
+   "steps": [
+    "Sketch it: x = −4, y = 4 puts it in ==quadrant II==.",
+    "r = √(x² + y²) = √(16 + 16) = √32 = **4√2**",
+    "tan θ = y/x = 4/(−4) = −1, so the reference angle is 45°.",
+    "Quadrant II: θ = 180° − 45° = **135°**. !!Not −45° or 315°!!; the sketch decides the quadrant, not the calculator."
+   ],
+   "ans": "4√2(cos 135° + i sin 135°) = 4√2 cis 135°"
+  },
+  {
+   "q": "**Rectangular → trig form**, θ in [0°, 360°): −1 + i√3",
+   "steps": [
+    "x = −1, y = √3: ==quadrant II==.",
+    "r = √(1 + 3) = √4 = **2**",
+    "tan θ = √3/(−1) = −√3, reference angle 60°.",
+    "Quadrant II: θ = 180° − 60° = **120°**"
+   ],
+   "ans": "2(cos 120° + i sin 120°) = 2 cis 120°"
+  },
+  {
+   "q": "**Polar form** (warm-up): −2√3 − 2i",
+   "steps": [
+    "x = −2√3, y = −2: both negative, ==quadrant III==.",
+    "r = √(12 + 4) = √16 = **4**",
+    "tan θ = (−2)/(−2√3) = 1/√3, reference angle 30°.",
+    "Quadrant III: θ = 180° + 30° = **210°**. !!tan⁻¹ alone gives 30°, which is quadrant I!!."
+   ],
+   "ans": "4 cis 210°"
+  },
+  {
+   "q": "**On an axis** (tan θ is undefined or 0): write 5i and −7 in trig form.",
+   "steps": [
+    "5i = 0 + 5i sits on the ==positive imaginary axis==: r = 5, θ = **90°**.",
+    "−7 = −7 + 0i sits on the ==negative real axis==: r = 7, θ = **180°**.",
+    "Axis angles: +real 0°, +imag 90°, −real 180°, −imag 270°. No tan needed, just the sketch."
+   ],
+   "ans": "5 cis 90°  and  7 cis 180°"
+  },
+  {
+   "q": "**Trig → rectangular**: 2(cos 330° + i sin 330°)",
+   "steps": [
+    "330° is quadrant IV, reference 30°: cos 330° = √3/2, sin 330° = −1/2.",
+    "Distribute r: 2(√3/2) + 2(−1/2)i",
+    "= √3 − i"
+   ],
+   "ans": "√3 − i"
+  },
+  {
+   "q": "**Trig → rectangular**: 6(cos 135° + i sin 135°)",
+   "steps": [
+    "135° is quadrant II, reference 45°: cos = −√2/2, sin = √2/2.",
+    "6(−√2/2) + 6(√2/2)i",
+    "= −3√2 + 3√2 i"
+   ],
+   "ans": "−3√2 + 3i√2"
+  },
+  {
+   "q": "**Radians** (warm-up): write 3(cos 7π/4 + i sin 7π/4) in rectangular form, and give its **absolute value**.",
+   "steps": [
+    "7π/4 = 315°, quadrant IV: cos = √2/2, sin = −√2/2.",
+    "3(√2/2) + 3(−√2/2)i = 3√2/2 − (3√2/2)i",
+    "==Absolute value of r cis θ is just r==: |z| = 3. No work needed."
+   ],
+   "ans": "3√2/2 − (3√2/2)i,  |z| = 3"
+  },
+  {
+   "q": "**Julia set**: is z = 1 + i in the Julia set?",
+   "steps": [
+    "Rule: compute z² − 1, then square that and subtract 1 again, and so on. ==If any |result| exceeds 2, it is NOT in the set.==",
+    "z² = (1 + i)² = 1 + 2i + i² = 2i. So z² − 1 = −1 + 2i.",
+    "|−1 + 2i| = √(1 + 4) = √5 ≈ 2.24",
+    "√5 > 2, stop."
+   ],
+   "ans": "Not in the Julia set"
+  },
+  {
+   "q": "**Julia set**: is z = 0 + 0i in the Julia set? Is z = i?",
+   "steps": [
+    "z = 0: 0² − 1 = −1, |−1| = 1 ✓. (−1)² − 1 = 0, |0| = 0 ✓. 0² − 1 = −1 ✓. It cycles 0, −1, 0 forever, so the whole orbit stays bounded (never past 2): **yes**.",
+    "z = i: i² − 1 = −2, |−2| = 2. !!Equal to 2 is not exceeding 2!!, keep going.",
+    "(−2)² − 1 = 3, |3| = 3 > 2: **not in the set**."
+   ],
+   "ans": "0 + 0i: yes.  i: no."
+  },
+  {
+   "q": "**Divide** (warm-up): (5 + 6i)/(5 − 4i)",
+   "steps": [
+    "Multiply top and bottom by the ==conjugate of the bottom==, 5 + 4i.",
+    "Top: (5 + 6i)(5 + 4i) = 25 + 20i + 30i + 24i² = 25 + 50i − 24 = 1 + 50i",
+    "Bottom: (5 − 4i)(5 + 4i) = 25 + 16 = 41. !!+16, not −16!!: a² + b².",
+    "Split into standard form a + bi."
+   ],
+   "ans": "1/41 + (50/41)i"
+  },
+  {
+   "q": "**Divide by i**: 7/i  and  2/(3i)",
+   "steps": [
+    "The conjugate of i is −i, and i(−i) = −i² = 1.",
+    "7/i · (−i)/(−i) = −7i/1 = −7i",
+    "2/(3i) · (−i)/(−i) = −2i/(−3i²) = −2i/3"
+   ],
+   "ans": "−7i  and  −(2/3)i"
+  },
+  {
+   "q": "**Multiply**: (8 − 9i)²  and  (−5i)(3 + i)",
+   "steps": [
+    "(8 − 9i)² = (8 − 9i)(8 − 9i) = 64 − 72i − 72i + 81i²",
+    "= 64 − 144i − 81 = **−17 − 144i**. !!Never square each part separately!! (that gives 64 + 81i²).",
+    "(−5i)(3 + i) = −15i − 5i² = −15i + 5 = **5 − 15i**"
+   ],
+   "ans": "−17 − 144i  and  5 − 15i"
+  },
+  {
+   "q": "**Solve over the complex numbers** (warm-up): 4x² + 4 = 7x",
+   "steps": [
+    "Set = 0 first: 4x² − 7x + 4 = 0. a = 4, b = −7, c = 4.",
+    "Discriminant: b² − 4ac = 49 − 64 = −15. Negative means ==two nonreal conjugate answers==.",
+    "x = (7 ± √−15)/8 = (7 ± i√15)/8",
+    "Split into a + bi form."
+   ],
+   "ans": "x = 7/8 ± (√15/8)i"
+  },
+  {
+   "q": "**Square roots** (warm-up): 5k² − 1 = −2",
+   "steps": [
+    "Isolate k²: 5k² = −1, k² = −1/5.",
+    "k = ±√(−1/5) = ±i/√5",
+    "Rationalize: ±i√5/5. !!Don't forget ±!!."
+   ],
+   "ans": "k = ±(√5/5)i"
+  },
+  {
+   "q": "**Radicals of negatives**: √−12 · √−5  and  √−18/√2",
+   "steps": [
+    "==Pull out i first==: √−12 = 2i√3, √−5 = i√5.",
+    "(2i√3)(i√5) = 2i²√15 = **−2√15**. !!√(−12 · −5) = √60 is wrong!!, the sign flips.",
+    "√−18/√2 = 3i√2/√2 = **3i**"
+   ],
+   "ans": "−2√15  and  3i"
+  },
+  {
+   "q": "**Powers of i**: i⁴³  and  1/i¹⁰",
+   "steps": [
+    "Cycle of 4: i¹ = i, i² = −1, i³ = −i, i⁴ = 1. Divide the exponent by 4, keep the ==remainder==.",
+    "43 ÷ 4 = 10 r 3, so i⁴³ = i³ = **−i**",
+    "10 ÷ 4 = 2 r 2, so i¹⁰ = −1, and 1/i¹⁰ = 1/(−1) = **−1**"
+   ],
+   "ans": "−i  and  −1"
+  },
+  {
+   "q": "**Sum + graph**: add 4 − 6i and −4 + 2i, then graph both and the resultant.",
+   "steps": [
+    "Add real to real, imaginary to imaginary: (4 − 4) + (−6 + 2)i = 0 − 4i.",
+    "Graph 4 − 6i as an arrow from the origin to (4, −6), and −4 + 2i to (−4, 2).",
+    "The resultant is the ==diagonal of the parallelogram== they make: an arrow from the origin to (0, −4)."
+   ],
+   "ans": "−4i"
+  },
+  {
+   "q": "**Absolute value** (warm-up): |−5√2/2 − (5√2/2)i|",
+   "steps": [
+    "|a + bi| = √(a² + b²), the ==length of the vector==.",
+    "a² = 25·2/4 = 25/2, and b² = 25/2.",
+    "√(25/2 + 25/2) = √25 = 5"
+   ],
+   "ans": "5"
+  },
+  {
+   "q": "**Classify** (more than one can apply): 8i, 9 − 3i, 4, √−81",
+   "steps": [
+    "Every number is **complex**. b = 0 → **real**. a = 0, b ≠ 0 → **pure imaginary**. b ≠ 0 → **nonreal complex**.",
+    "8i: complex, pure imaginary, nonreal complex.",
+    "9 − 3i: complex, nonreal complex. 4: complex, real.",
+    "√−81 = 9i: complex, pure imaginary, nonreal complex."
+   ],
+   "ans": "see steps; always list \"complex\""
+  },
+  {
+   "q": "**Check a solution**: is 7 − i a solution of x² − 14x + 50 = 0?",
+   "steps": [
+    "Plug in. (7 − i)² = 49 − 14i + i² = 48 − 14i",
+    "−14(7 − i) = −98 + 14i",
+    "Add: 48 − 14i − 98 + 14i + 50 = 0 ✓"
+   ],
+   "ans": "Yes"
+  },
+  {
+   "q": "**E = IZ**: find E when I = 5 + 7i and Z = 9 + 3i.",
+   "steps": [
+    "E = (5 + 7i)(9 + 3i)",
+    "= 45 + 15i + 63i + 21i²",
+    "= 45 + 78i − 21"
+   ],
+   "ans": "E = 24 + 78i"
+  }
+ ],
+ "formulas": [
+  {
+   "n": "i",
+   "f": "i² = −1",
+   "note": "i = √−1"
+  },
+  {
+   "n": "negative radical",
+   "f": "√−a = i√a",
+   "note": "!!Convert to i before multiplying!!: for a, b ≥ 0, √−a · √−b = (i√a)(i√b) = −√(ab)"
+  },
+  {
+   "n": "powers of i",
+   "f": "i, −1, −i, 1",
+   "note": "repeats every 4. Exponent ÷ 4, use the ==remainder==. For 1/iⁿ, simplify iⁿ, then flip."
+  },
+  {
+   "n": "standard form",
+   "f": "a + bi",
+   "note": "real part a, imaginary part b. Final answers go in this form."
+  },
+  {
+   "n": "conjugate",
+   "f": "a − bi",
+   "note": "of a + bi. Product: (a + bi)(a − bi) = ==a² + b²=="
+  },
+  {
+   "n": "division",
+   "f": "× conj/conj",
+   "note": "multiply top and bottom by the **conjugate** of the bottom. 1/i = −i"
+  },
+  {
+   "n": "quadratic",
+   "f": "(−b ± √D)/2a",
+   "note": "D = b² − 4ac. Set the equation = 0 first. ==D < 0 → two nonreal conjugates==."
+  },
+  {
+   "n": "real",
+   "f": "b = 0",
+   "note": "every number is ==complex==, so always list it too"
+  },
+  {
+   "n": "pure imaginary",
+   "f": "a = 0, b ≠ 0"
+  },
+  {
+   "n": "nonreal complex",
+   "f": "b ≠ 0"
+  },
+  {
+   "n": "absolute value",
+   "f": "√(a² + b²)",
+   "note": "|a + bi|, also the **modulus**: the ==length== of the vector"
+  },
+  {
+   "n": "graphing",
+   "f": "(a, b)",
+   "note": "a + bi is the vector from the origin to (a, b). Horizontal = **real axis**, vertical = **imaginary axis**."
+  },
+  {
+   "n": "sum",
+   "f": "(a+c) + (b+d)i",
+   "note": "graphed: the resultant is the ==diagonal of the parallelogram=="
+  },
+  {
+   "n": "x and y",
+   "f": "r cos θ, r sin θ",
+   "note": "polar → rectangular"
+  },
+  {
+   "n": "r",
+   "f": "√(x² + y²)"
+  },
+  {
+   "n": "θ",
+   "f": "tan θ = y/x",
+   "note": "!!sketch first, then pick the quadrant!!"
+  },
+  {
+   "n": "trig form",
+   "f": "r cis θ",
+   "note": "= r(cos θ + i sin θ), θ in ==[0°, 360°)=="
+  },
+  {
+   "n": "quadrant I",
+   "f": "θ = α",
+   "note": "α = **reference angle**, from tan⁻¹|y/x|"
+  },
+  {
+   "n": "quadrant II",
+   "f": "180° − α"
+  },
+  {
+   "n": "quadrant III",
+   "f": "180° + α"
+  },
+  {
+   "n": "quadrant IV",
+   "f": "360° − α"
+  },
+  {
+   "n": "on an axis",
+   "f": "0°, 90°, 180°, 270°",
+   "note": "+real, +imaginary, −real, −imaginary. The number 0 has r = 0 and no angle."
+  },
+  {
+   "n": "30°",
+   "f": "(√3/2, 1/2)",
+   "note": "(cos, sin); signs come from the quadrant"
+  },
+  {
+   "n": "45°",
+   "f": "(√2/2, √2/2)"
+  },
+  {
+   "n": "60°",
+   "f": "(1/2, √3/2)"
+  },
+  {
+   "n": "radians",
+   "f": "× 180°/π",
+   "note": "7π/4 = 315°, 5π/6 = 150°, 11π/6 = 330°"
+  },
+  {
+   "n": "Julia set",
+   "f": "z² − 1, repeat",
+   "note": "square the last result, subtract 1, check |result|. ==Any |result| over 2 → not in the set==. Exactly 2 keeps going. Mathematicians call this the **filled Julia set**: in it means the whole orbit stays bounded."
+  },
+  {
+   "n": "product",
+   "f": "r₁r₂ cis(θ₁+θ₂)",
+   "note": "multiply the r's, add the angles"
+  },
+  {
+   "n": "quotient",
+   "f": "r₁/r₂ cis(θ₁−θ₂)",
+   "note": "divide the r's (r₂ ≠ 0), subtract the angles"
+  }
+ ],
+ "abbr": {}
 };
 
 /* ═══ machinery. nothing below needs editing. ═══ */
 const $=s=>document.querySelector(s);
 const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
 const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* markup: **term** bolds once per scope; legacy ==x== and !!x!! render as plain text */
+let SEEN=null;
+const scope=()=>{SEEN=new Set()};
+const fmt=s=>esc(s).replace(/==(.+?)==/g,"$1").replace(/!!(.+?)!!/g,"$1").replace(/\*\*(.+?)\*\*/g,(m,t)=>{const k=t.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();if(SEEN&&SEEN.has(k))return t;if(SEEN)SEEN.add(k);return `<b class="kw">${t}</b>`});
+const plain=s=>fmt(s).replace(/<b class="kw">(.*?)<\/b>/g,"$1");
 const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const I_TEST='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="1.8" width="9" height="10.6" rx="1.6"/><path d="M5 5h4M5 7.6h4M5 10.2h2"/></svg>';
+const I_WARN='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.8 12.6 11.8H1.4z"/><path d="M7 5.6v2.8M7 10.1h.01"/></svg>';
 const ICON={
  apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
  lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
@@ -510,7 +1389,8 @@ const ICON={
  csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
 const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
-const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist"};
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables",leq:"the leq",prompts:"prompts"};
+const has=v=>Array.isArray(v)?v.length>0:!!v;
 
 /* header */
 document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
@@ -537,141 +1417,262 @@ $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
   }
   if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
 })();
+const bar=$("#bar");
+const setBarH=()=>document.documentElement.style.setProperty("--barh",bar.offsetHeight+"px");
+setBarH(); addEventListener("resize",setBarH);
 
-/* panes */
-const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
-const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
-const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist};
-const tabs=[];
-PANES.forEach((id,i)=>{
-  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
-  builders[id](sec); root.appendChild(sec);
-  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
-  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
-});
-if(PANES.length<2)panesEl.classList.add("one");
-function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
-function show(id,user){
-  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
-  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
-  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
-}
-const want=location.hash.slice(1);
-show(PANES.includes(want)?want:PANES[0],false);
-requestAnimationFrame(moveP); addEventListener("resize",moveP);
+function shead(txt,extra){return el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""))}
 
-/* outline */
-function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
-function extras(s){
+/* ═══ outline blocks ═══ */
+const B={
+  p:v=>(Array.isArray(v)?v:[v]).map(x=>`<p>${fmt(x)}</p>`).join(""),
+  pts:v=>`<ul class="pts${v.length>=6&&v.every(x=>String(x).length<70)?" two":""}">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`,
+  rows:v=>`<dl class="rows">${v.map(([k,x])=>`<dt>${esc(k)}</dt><dd>${fmt(x)}</dd>`).join("")}</dl>`,
+  steps:v=>`<ol class="steps">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  flow:v=>`<ol class="flow">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  fig:v=>`<figure class="fig">${v.svg||""}${v.cap?`<figcaption>${fmt(v.cap)}</figcaption>`:""}</figure>`,
+  tiles:v=>`<div class="tiles">${v.map(x=>`<div><h5>${fmt(x.h)}</h5>${x.t?`<p>${fmt(x.t)}</p>`:""}${x.k?`<span class="tk">${esc(x.k)}</span>`:""}</div>`).join("")}</div>`,
+  tree:v=>{const n=x=>`<li><div class="nd"><b>${fmt(x.t)}</b>${x.d?`<span>${fmt(x.d)}</span>`:""}</div>${x.c?.length?`<ul>${x.c.map(n).join("")}</ul>`:""}</li>`;return `<div class="tree"><ul>${n(v)}</ul></div>`},
+  table:v=>{const cols=v.cols||[];return `${v.h?`<p class="tcap">${esc(v.h)}</p>`:""}<div class="tbw"><table class="tbl${cols.length===2?" two":""}">${cols.some(c=>c)?`<thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead>`:""}<tbody>${(v.rows||[]).map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`},
+  cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
+  watch:v=>`<div class="watch"><div class="wl">${I_WARN}watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
+  ex:v=>`<div class="exs">${v.map(x=>`<div class="tq"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>show answer</span>${CHEV}</button><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"example",ok:"rule",warn:"watch out"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join(""),
+  terms:v=>`<div class="terms"><span class="tl">key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
+};
+const VIS=["fig","tree","tiles"];
+function section(s,i){
+  scope();
+  const watch=[...(s.watch||[]),...(s.notes||[]).filter(n=>n.k==="warn").map(n=>n.t)];
+  const notes=(s.notes||[]).filter(n=>n.k!=="warn");
+  const mainKeys=["p","pts","rows","flow","steps"].filter(k=>has(s[k]));
+  const vis=VIS.filter(k=>has(s[k]));
+  let sideKey=vis[0]||null;
+  const main=mainKeys.map(k=>B[k](s[k])).join("")+(notes.length?B.notes(notes):"");
+  let side="", watchPlaced=false;
+  if(sideKey)side=B[sideKey](s[sideKey]);
+  else if(watch.length&&main){side=B.watch(watch);watchPlaced=true}
   let h="";
-  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
-  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
-  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
-  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
-  return h;
+  if(main&&side)h+=`<div class="duo${sideKey==="tree"||sideKey==="fig"?" wide-side":""}"><div class="main">${main}</div><div class="side">${side}</div></div>`;
+  else if(main)h+=`<div class="main solo">${main}</div>`;
+  else if(side)h+=side;
+  const rest=vis.filter(k=>k!==sideKey).concat(["table","cmp"].filter(k=>has(s[k])));
+  if(sideKey&&!main){/* visual already placed alone */}
+  rest.forEach(k=>{h+=B[k](s[k])});
+  if(has(s.tables))s.tables.forEach(t=>{h+=B.table(t)});
+  if(has(s.ex))h+=B.ex(s.ex);
+  if(watch.length&&!watchPlaced)h+=B.watch(watch);
+  if(has(s.terms))h+=B.terms(s.terms);
+  const n=String(i+1).padStart(2,"0");
+  const badge=s.w===3?`<span class="w w3">tested most</span>`:s.w===2?`<span class="w w2">tested</span>`:"";
+  const node=el("section","sec",`<header><span class="num">${n}</span><div class="ht"><h3>${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</div>${badge}</header><div class="sb">${h}</div>`);
+  node.id="s-"+(i+1);
+  SEEN=null;
+  return node;
 }
+function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{const b=x.querySelector(".eb");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"})})}
 function buildOutline(sec){
-  if(GUIDE.top?.length){
-    sec.appendChild(shead("start here","the whole guide in one screen"));
-    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  const list=GUIDE.outline||[];
+  const wrap=el("div","ol"); const toc=el("nav","toc"); toc.setAttribute("aria-label","sections");
+  const col=el("div","olc");
+  toc.innerHTML=`<div class="tl">on this page</div>`;
+  if(has(GUIDE.top)){
+    scope();
+    const t=el("div","tops"); t.id="s-top";
+    t.innerHTML=GUIDE.top.map(x=>`<div class="tp">${fmt(x)}</div>`).join("");
+    col.appendChild(shead("start here","what decides the grade")); col.appendChild(t);
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-top"><i class="w3" style="border-radius:50%"></i><span>start here</span></a>`);
   }
-  const list=GUIDE.outline||[]; if(!list.length)return;
-  const n3=list.filter(s=>s.w===3).length;
-  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
-  const g=el("div","group");
   list.forEach((s,i)=>{
-    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
-    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
-    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
-    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
-    g.appendChild(row); g.appendChild(body);
+    col.appendChild(section(s,i));
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-${i+1}"><i class="w${s.w||1}"></i><span>${esc(s.t)}</span></a>`);
   });
-  sec.appendChild(g);
   if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
-    sec.appendChild(shead("abbreviations"));
-    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+    col.appendChild(shead("abbreviations"));
+    const a=el("div","abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")); a.id="s-abbr"; col.appendChild(a);
+  }
+  if(list.some(s=>s.w===3)||list.some(s=>s.w===2))toc.insertAdjacentHTML("beforeend",`<div class="leg"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`);
+  wrap.appendChild(toc); wrap.appendChild(col); sec.appendChild(wrap);
+  wireEx(col);
+  const links=[...toc.querySelectorAll("a")];
+  links.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}));
+  if("IntersectionObserver" in window){
+    const vis=new Map();
+    const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target.id,e.isIntersecting));
+      const first=links.find(a=>vis.get(a.getAttribute("href").slice(1)));
+      if(first){links.forEach(a=>a.classList.toggle("on",a===first));if(getComputedStyle(toc).display==="flex"){const l=first.offsetLeft-toc.clientWidth/2+first.offsetWidth/2;toc.scrollTo({left:l,behavior:REDUCED?"auto":"smooth"})}}
+    },{rootMargin:"-20% 0px -55% 0px"});
+    links.forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));if(t)io.observe(t)});
   }
 }
 
 /* practice mc */
+let SCORE={done:0,right:0,total:0};
+function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
-  const qs=GUIDE.practice||[]; let done=0, right=0;
-  sec.appendChild(shead("practice",`${qs.length} questions`));
-  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
+  sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
+  const g=el("div","qgrid");
   qs.forEach((q,i)=>{
     const card=el("div","group q");
-    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
-      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
-      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
     card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
       if(card.classList.contains("done"))return;
       card.classList.add("done"); const j=+b.dataset.i;
-      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
-      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+      if(j===q.a){b.classList.add("right");SCORE.right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      SCORE.done++; $("#scn").textContent=SCORE.right; scoreVis();
     }));
-    sec.appendChild(card);
+    g.appendChild(card);
   });
-  sec.appendChild(sc);
-  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  sec.appendChild(g);
+  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
 }
 
-/* problems / worked examples */
+/* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
+function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps">${st.map(s=>`<li>${plain(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${plain(m)}</div><div class="wy">${y?plain(y):""}</div></li>`}).join("")}</ul>`}
 function buildProblems(sec){
   const ps=GUIDE.problems||[];
   sec.appendChild(shead("problems",`${ps.length} to work`));
+  const g=el("div","pgrid");
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
-    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
     const go=card.querySelector(".go");
     go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
-    sec.appendChild(card);
+    g.appendChild(card);
   });
+  sec.appendChild(g);
 }
 
 /* formulas */
 function buildFormulas(sec){
   const fs=GUIDE.formulas||[];
   sec.appendChild(shead("formulas",`${fs.length}`));
-  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+  sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
 }
 
-/* flashcards */
+/* flashcards: flip deck, plus the whole list */
 function buildCards(sec){
   const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
-  sec.appendChild(shead("cards",`${cs.length}`));
-  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
-  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
-  const cnt=nav.querySelector("#cnt");
-  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
-  const flip=()=>fc.classList.toggle("flip");
-  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
-  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
-  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
-  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
-  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
-  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  sec.appendChild(shead("cards",`${cs.length} · tap to flip, swipe for next`));
+  const dk=el("div","dk");
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  sec.appendChild(dk);
+  const cnt=nav.querySelector(".cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const go=d=>{i=(i+d+cs.length)%cs.length;draw()};
+  fc.addEventListener("click",()=>fc.classList.toggle("flip")); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();fc.classList.toggle("flip")}});
+  nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
+  nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
+  nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
+  sec.appendChild(shead("all cards",`${cs.length}`));
+  sec.appendChild(el("div","clist",cs.map(c=>`<div><b>${plain(c.f)}</b><span>${plain(c.b)}</span></div>`).join("")));
 }
 
 /* timeline */
 function buildTimeline(sec){
   const ts=GUIDE.timeline||[];
   sec.appendChild(shead("timeline",`${ts.length} events`));
-  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+  sec.appendChild(el("div","tln",ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${plain(t.t)}</div>${t.d?`<div class="d">${plain(t.d)}</div>`:"<div></div>"}</div>`).join("")));
 }
 
 /* checklist */
 function buildChecklist(sec){
   const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
   sec.appendChild(shead("checklist",`${cs.length} items`));
-  const g=el("div","group");
+  const g=el("div","ckg");
   cs.forEach((c,i)=>{
-    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${plain(c.t)}</span>${c.d?`<span class="d">${plain(c.d)}</span>`:""}</span>`);
     b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
     g.appendChild(b);
   });
   sec.appendChild(g);
 }
+
+/* cram sheet: [{h, d, items:[{n, y, t}]}] */
+function buildCram(sec){
+  const gs=GUIDE.cram||[];
+  sec.appendChild(shead("cram sheet","one line each"));
+  sec.appendChild(el("div","cgrid",gs.map(g=>`<div class="group"><div class="gh">${esc(g.h||"")}<span>${esc(g.d||String((g.items||[]).length))}</span></div>${(g.items||[]).map(c=>`<div class="cr"><div class="n"><span>${plain(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${plain(c.t)}</div></div>`).join("")}</div>`).join("")));
+}
+
+/* tables pane: [{h, d, cols, rows}] */
+function buildTables(sec){
+  const w=el("div","tpane");
+  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
+  sec.appendChild(w);
+}
+
+/* essay panes (used by the LEQ guide): prompts + leq + fn */
+function buildPrompts(sec){
+  const ps=GUIDE.prompts||[];
+  if(has(GUIDE.prompts_note)){sec.appendChild(shead("how points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
+  sec.appendChild(shead("possible prompts",`${ps.length}`));
+  ps.forEach((p,i)=>{
+    scope();
+    const g=el("div","group");
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
+    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn">${esc(p.q)}</span></span>`+CHEV;
+    const inner=(p.tldr?`<div class="pl">tldr</div><ul class="bul">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
+      `<div class="pl">context</div><ul class="bul">${(p.ctx||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">thesis</div><div class="ans">${esc(p.thesis)}</div>`+
+      (p.body||[]).map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
+      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
+    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body); sec.appendChild(g);
+  });
+  SEEN=null;
+}
+function buildLeq(sec){
+  const L=GUIDE.leq;
+  sec.appendChild(shead("how it runs"));
+  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p>${L.math?`<p>${fmt(L.math)}</p>`:""}`));
+  if(has(L.rows)){
+    sec.appendChild(shead("the rubric",`${L.rows.length} rows`));
+    sec.appendChild(el("div","tbw",`<table class="tbl"><thead><tr><th>row</th><th>earns it</th><th>loses it</th><th>class tips</th></tr></thead><tbody>${L.rows.map(r=>`<tr><td data-l="row">${esc(r.n)}</td><td data-l="earns it">${plain(r.earn)}</td><td data-l="loses it">${plain(r.lose)}</td><td data-l="class tips">${plain(r.cls||"")}</td></tr>`).join("")}</tbody></table>`));
+  }
+  if(has(L.codes))sec.appendChild(el("div","card",`<div class="terms"><span class="tl">margin codes</span>${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
+  if(has(L.shape)){sec.appendChild(shead("the shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
+  if(has(L.pace)){
+    const tot=L.pace.reduce((a,p)=>a+p.m,0);
+    sec.appendChild(shead(`${tot} minutes`,"minute by minute"));
+    sec.appendChild(el("div","card",`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>${B.steps(L.pace.map(p=>`**${p.l} · ${p.m} min.** ${p.t}`))}`));
+  }
+  if(has(GUIDE.fn)){sec.appendChild(shead("notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
+}
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables,leq:buildLeq,prompts:buildPrompts};
+const PANES=(GUIDE.panes||[]).filter(id=>builders[id]&&(has(GUIDE[id])||(id==="outline"&&has(GUIDE.top))));
+const tabs=[];
+PANES.forEach(id=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  scope(); builders[id](sec); SEEN=null; root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+let CUR=null;
+function show(id,user){
+  CUR=id;
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); scoreVis();
+  if(user){try{history.replaceState(null,"","#"+id)}catch(e){}; const top=panesEl.getBoundingClientRect().top+scrollY-bar.offsetHeight-12; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"})}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
 
 /* theme (shared with the homepage via localStorage "theme") */
 const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
@@ -689,10 +1690,10 @@ segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
 })();
 requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
-document.fonts?.ready.then(()=>{moveThumb();moveP()});
+document.fonts?.ready.then(()=>{moveThumb();moveP();setBarH()});
 
-/* sticky bar shadow + staggered reveal */
-(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+/* sticky bar shadow, reading progress, staggered reveal */
+(function(){const p=$("#prog i");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6);const se=document.scrollingElement,h=se.scrollHeight-se.clientHeight;p.style.width=(h>0?Math.min(100,se.scrollTop/h*100):0)+"%"};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
 document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
 </script>
 <script defer src="/_vercel/insights/script.js"></script>

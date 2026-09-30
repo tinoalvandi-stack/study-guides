@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>unit 1 leq study guide · ap us history · valentino guides</title>
-<meta name="description" content="AP US History Unit 1 LEQ study guide: English colonization to King William&#39;s War, the six-row rubric, four possible prompts with context, thesis, evidence and reasoning moves, and a 40-minute pacing plan.">
+<title>study guide · valentino guides</title>
+<meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
@@ -14,7 +14,7 @@
 <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+/* ═══ valentino guides · guide template v2 (kinari, wide layout, sept 29 2026) ═══
    Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
 @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
 @font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
@@ -38,15 +38,21 @@
   --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--barh,56px) + 58px)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
-  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+  padding-bottom:calc(56px + env(safe-area-inset-bottom))}
 button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
-.lc{text-transform:lowercase}
+:root{--maxw:1180px;--gut:clamp(14px,3.4vw,36px)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* reading aids */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;background:var(--cls)}
 
 /* bar */
 .bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
@@ -62,86 +68,282 @@ a{color:inherit;text-decoration:none}
 .seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .bar .seg{margin-left:auto}
 
-/* intro */
+/* hero */
 main{padding-top:22px}
-.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t13);font-weight:600;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
 .cname svg{width:20px;height:20px;flex:none}
-.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
 .chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
 .chip.past{color:var(--ink3)}
-h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
-.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+h2.title{margin:0 0 8px;font-family:var(--display);font-size:clamp(30px,5.2vw,50px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.02;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 16px;font-size:var(--t16);line-height:1.5;color:var(--ink2);max-width:70ch}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
 
 /* pane switcher */
-.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes{display:inline-flex;max-width:100%;gap:2px;margin:6px 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none;vertical-align:top}
 .panes::-webkit-scrollbar{display:none}
-.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button{flex:0 0 auto;position:relative;z-index:2;padding:8px 16px;border-radius:8px;text-align:center;font-size:var(--t15);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
 .panes button[aria-selected="true"]{color:var(--on-accent)}
 .panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .panes.one{display:none}
-.pane{display:none}
+@media (max-width:599px){.panes{display:flex}.panes button{flex:1 0 auto;padding:7px 12px;font-size:var(--t13)}}
+.pane{display:none;container-type:inline-size}
 .pane.on{display:block;animation:rise .38s var(--spring) both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* section head */
-.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+/* small section label */
+.sh{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
 .sh:first-child{margin-top:0}
-.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;white-space:nowrap}
 .sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
-.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;white-space:nowrap}
 
-/* cards + groups */
-.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+/* ═══ outline: side menu + all-open sections ═══ */
+.ol{display:grid;grid-template-columns:1fr;gap:0 32px;align-items:start}
+@media (min-width:960px){.ol{grid-template-columns:212px minmax(0,1fr)}}
+.toc{position:sticky;top:var(--barh,56px);z-index:30;background:var(--paper);margin:0 calc(var(--gut) * -1) 14px;padding:6px var(--gut) 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.toc::-webkit-scrollbar{display:none}
+.toc .tl{display:none}
+.toc a{flex:none;display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:var(--r-chip);font-size:var(--t13);font-weight:500;color:var(--ink2);border:1px solid var(--line);background:var(--surface);white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.toc a.on{color:var(--on-accent);background:var(--ink);border-color:var(--ink)}
+.toc i{flex:none;width:8px;height:8px;border-radius:3px;border:1.5px solid var(--cls)}
+.toc i.w3{background:var(--cls)} .toc i.w2{background:color-mix(in srgb,var(--cls) 40%,transparent)}
+.toc a.on i{border-color:var(--on-accent)} .toc a.on i.w3{background:var(--on-accent)}
+@media (min-width:960px){
+  .toc{top:calc(var(--barh,56px) + 12px);margin:0;padding:0;display:block;overflow:visible;border:0;background:none;max-height:calc(100vh - var(--barh,56px) - 32px);overflow-y:auto}
+  .toc .tl{display:block;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;margin:2px 0 8px 10px}
+  .toc a{display:flex;align-items:flex-start;white-space:normal;border:0;background:none;padding:7px 10px;line-height:1.3;border-radius:8px}
+  .toc a i{margin-top:5px}
+  .toc a:hover{background:var(--surface)}
+  .toc a.on{background:var(--surface);color:var(--ink);box-shadow:inset 2px 0 0 var(--cls);border-radius:0 8px 8px 0}
+  .toc a.on i{border-color:var(--cls)} .toc a.on i.w3{background:var(--cls)}
+  .toc .leg{display:flex;flex-direction:column;gap:4px;margin:14px 0 0 10px;padding-top:12px;border-top:1px solid var(--line);font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
+  .toc .leg span{display:flex;align-items:center;gap:7px}
+}
+.toc .leg{display:none}
+@media (min-width:960px){.toc .leg{display:flex}}
+
+/* start here tiles */
+.tops{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:26px;counter-reset:tp}
+.tops .tp{counter-increment:tp;position:relative;padding:14px 16px 14px 48px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
+.tops .tp::before{content:counter(tp);position:absolute;left:14px;top:13px;width:24px;height:24px;border-radius:7px;background:var(--cls);color:var(--surface);font-weight:650;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+
+/* section card */
+.sec{container-type:inline-size;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);margin-bottom:16px;scroll-margin-top:calc(var(--barh,56px) + 60px);overflow:hidden}
+@media (min-width:960px){.sec{scroll-margin-top:calc(var(--barh,56px) + 16px)}}
+.sec > header{display:flex;align-items:flex-start;gap:12px;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.sec .num{flex:none;font-family:var(--display);font-weight:var(--w-d);font-size:var(--t15);color:var(--cls);font-variant-numeric:tabular-nums;padding-top:4px;min-width:1.4em}
+.sec .ht{flex:1;min-width:0}
+.sec h3{margin:0;font-family:var(--display);font-size:clamp(20px,2.4vw,24px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.sec .sd{margin:3px 0 0;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;white-space:nowrap;margin-top:3px}
+@container (max-width:520px){.sec > header{flex-wrap:wrap;row-gap:6px}.sec .ht{flex:1 1 calc(100% - 3em)}.sec > header .w{order:3;margin:0 0 0 calc(1.4em + 12px)}}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 14%,transparent);color:var(--cls)}
+.sb{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:16px 18px 18px}
+@container (min-width:700px){
+  .sb .duo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+  .sb .duo.wide-side{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+}
+.sb .duo{display:grid;gap:16px}
+.duo > .main,.duo > .side{container-type:inline-size;min-width:0}
+.sb .main > :first-child{margin-top:0}
+.sb .main.solo{max-width:72ch}
+.sb p{margin:0 0 10px;line-height:1.55}
+.sb p:last-child{margin-bottom:0}
+b.kw{font-weight:680;color:var(--ink)}
+
+/* bullets */
+.pts{margin:10px 0 0;padding:0;list-style:none}
+.pts:first-child{margin-top:0}
+.pts li{position:relative;padding:4px 0 4px 18px;line-height:1.5}
+.pts li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:2px;background:var(--cls)}
+.pts.two{columns:2 220px;column-gap:24px}
+.pts.two li{break-inside:avoid}
+
+/* label rows */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:14px}
+.rows:first-child{margin-top:0}
+.rows dt{padding:7px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:22px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:7px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* numbered steps */
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps:first-child{margin-top:0}
+.steps li{position:relative;padding:7px 0 7px 32px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:21px;height:21px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:650;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+
+/* flow: cause -> effect chain */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 0;margin:0;padding:0;list-style:none}
+.flow li{position:relative;flex:1 1 0;min-width:120px;display:flex;align-items:center;padding:10px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.35;margin-right:26px}
+.flow li:last-child{margin-right:0;border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:12px;height:12px;margin-top:-6px;background:var(--ink3);clip-path:polygon(0 15%,100% 50%,0 85%)}
+@container (max-width:519px){
+  .flow{flex-direction:column;gap:0}
+  .flow li{margin:0 0 22px;min-width:0}
+  .flow li:last-child{margin-bottom:0}
+  .flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;margin:0 0 0 -6px;clip-path:polygon(15% 0,85% 0,50% 100%)}
+}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tiles > div{padding:11px 13px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);border-top:3px solid var(--cls)}
+.tiles h5{margin:0 0 3px;font-size:var(--t15);font-weight:650;line-height:1.3}
+.tiles p{margin:0;font-size:var(--t13);line-height:1.45;color:var(--ink)}
+.tiles .tk{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--cls);text-transform:lowercase}
+
+/* tree (org chart; indented list on narrow cards) */
+.tree{overflow-x:auto}
+.tree ul{position:relative;display:flex;justify-content:center;margin:0;padding:16px 0 0;list-style:none}
+.tree > ul{padding-top:0}
+.tree li{position:relative;flex:1 1 0;padding:16px 4px 0;text-align:center;min-width:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:16px;border-top:1.5px solid var(--line2)}
+.tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line2)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:1.5px solid var(--line2);border-radius:0 6px 0 0}
+.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:16px;border-left:1.5px solid var(--line2)}
+.tree .nd{display:inline-block;max-width:100%;padding:7px 10px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t13);line-height:1.3;vertical-align:top}
+.tree .nd b{display:block;font-size:var(--t15);font-weight:650}
+.tree .nd span{display:block;color:var(--ink2);margin-top:2px}
+.tree > ul > li > .nd{background:var(--cls);border-color:var(--cls);color:var(--surface)}
+.tree > ul > li > .nd span{color:color-mix(in srgb,var(--surface) 85%,transparent)}
+.tree > ul > li > ul > li > .nd{border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+@container (max-width:379px){
+  .tree ul{display:block;padding:0 0 0 18px}
+  .tree > ul{padding-left:0}
+  .tree li{padding:6px 0 0 16px;text-align:left}
+  .tree > ul > li{padding-left:0}
+  .tree li::before{top:0;left:0;right:auto;width:12px;height:22px;border-top:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li::after{top:22px;left:0;right:auto;width:0;height:calc(100% - 22px);border:0;border-left:1.5px solid var(--line2);border-radius:0}
+  .tree li:last-child::after{display:none}
+  .tree li:first-child::before,.tree li:last-child::before{border-top:0;border-right:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li:first-child::after{border-radius:0}
+  .tree > ul > li::before,.tree > ul > li::after{display:none}
+  .tree ul ul::before{display:none}
+  .tree li:only-child::before{display:block}
+  .tree li:only-child{padding-top:6px}
+  .tree > ul > li:only-child{padding:0}
+  .tree > ul > li:only-child::before,.tree > ul > li:only-child::after{display:none}
+}
+
+/* figure (inline svg drawn per guide) */
+.fig{margin:0;padding:14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.fig svg{display:block;width:100%;height:auto;max-height:440px;font-family:var(--sans);overflow:visible}
+.fig figcaption{margin-top:8px;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.fig .ln{fill:none;stroke:var(--ink2);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .lc{fill:none;stroke:var(--cls);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .la{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .lb{fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+.fig .lg{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round}
+.fig .dash{stroke-dasharray:5 5}
+.fig .fc{fill:var(--cls)} .fig .fa{fill:var(--accent)} .fig .fb{fill:var(--bad)} .fig .fg{fill:var(--good)} .fig .fi{fill:var(--ink)}
+.fig .fs{fill:color-mix(in srgb,var(--cls) 18%,var(--surface))}
+.fig .fsa{fill:color-mix(in srgb,var(--accent) 16%,var(--surface))}
+.fig .fp{fill:var(--surface);stroke:var(--line2);stroke-width:1.2}
+.fig .fn{fill:none}
+.fig text{fill:var(--ink);font-size:14px}
+.fig .tm{fill:var(--ink2);font-size:12.5px}
+.fig .tb{font-weight:650}
+.fig .tc{fill:var(--cls);font-weight:650}
+.fig .ta{fill:var(--accent);font-weight:650}
+.fig .tw{fill:var(--surface);font-weight:650}
+.fig .tbd{fill:var(--bad);font-weight:650}
+.fig .mid{text-anchor:middle} .fig .end{text-anchor:end}
+.mk-ink{fill:var(--ink2)} .mk-cls{fill:var(--cls)} .mk-acc{fill:var(--accent)} .mk-bad{fill:var(--bad)}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.cmp > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.cmp h5{margin:0 0 6px;font-size:var(--t13);font-weight:650;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15);line-height:1.45} .cmp p:last-child{margin:0}
+
+/* tables */
+.tbw{overflow-x:auto;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:650}
+.tcap{margin:0 0 8px;font-size:var(--t13);font-weight:600;color:var(--ink2);text-transform:lowercase}
+@container (max-width:519px){
+  .tbw .tbl thead{display:none}
+  .tbw .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbw .tbl tbody tr:first-child{border-top:0}
+  .tbw .tbl td{display:block;padding:0;border:0}
+  .tbw .tbl.two td:not(:first-child)::before{display:none}
+  .tbw .tbl.two td:first-child{margin-bottom:2px}
+  .tbw .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* on the test (example) */
+.exs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.tq{border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.tq .el{display:flex;align-items:center;gap:6px;padding:10px 13px 0;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--accent);text-transform:lowercase}
+.tq .el svg{flex:none}
+.tq .eq{padding:4px 13px 12px;font-size:var(--t15);line-height:1.45;font-weight:500;flex:1}
+.tq .eb{display:flex;align-items:center;justify-content:space-between;width:100%;padding:9px 13px;border-top:1px solid var(--line);font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase}
+.tq .eb .chev{transition:transform .24s var(--spring)}
+.tq.on .eb .chev{transform:rotate(90deg)}
+.tq .ea{display:none;padding:10px 13px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.tq.on .ea{display:block;animation:rise .3s var(--spring) both}
+.tq .ea b.aa{display:block;font-weight:680;margin-bottom:3px}
+.tq .ea .why{color:var(--ink2)}
+
+/* watch out + callouts */
+.watch{border-radius:var(--r-btn);background:color-mix(in srgb,var(--bad) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 30%,var(--line));padding:11px 14px 12px}
+.watch .wl,.callout .cl{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--bad);text-transform:lowercase;margin-bottom:4px}
+.watch ul{margin:0;padding:0;list-style:none}
+.watch li{position:relative;padding:3px 0 3px 16px;font-size:var(--t15);line-height:1.45}
+.watch li::before{content:"";position:absolute;left:1px;top:11px;width:8px;height:2px;border-radius:1px;background:var(--bad)}
+.callout{border-radius:var(--r-btn);padding:10px 14px 11px;font-size:var(--t15);line-height:1.45;background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--cls)}
+.callout.ok{border-left-color:var(--good)} .callout.ok .cl{color:var(--good)}
+.callout.ex{border-left-color:var(--accent)} .callout.ex .cl{color:var(--accent)}
+.callout.cls .cl{color:var(--cls)}
+
+/* terms */
+.terms{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.terms .tl{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;margin-right:2px}
+.term{font-size:var(--t13);font-weight:500;padding:3px 9px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface2);color:var(--ink)}
+
+.abbr{padding:14px 16px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);color:var(--ink2);line-height:1.7}
+.abbr b{color:var(--ink);font-weight:650}
+
+/* generic cards / groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px}
 .card.top{border-left:4px solid var(--cls);padding-left:15px}
 .card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
-.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:12px}
 .row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
 .row + .row,.body + .row{border-top:1px solid var(--line)}
-.row:active{background:var(--surface2)}
 @media (hover:hover){.row:hover{background:var(--surface2)}}
 .rt{min-width:0;flex:1}
-.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rn{display:block;font-size:var(--t16);font-weight:550;line-height:1.3}
 .rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
 .chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
 .row[aria-expanded="true"] .chev{transform:rotate(90deg)}
-.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
-.w3{background:var(--cls);color:var(--surface)}
-.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
 .body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
 .body.on{grid-template-rows:1fr}
 .body > div{overflow:hidden}
-.body .in{padding:12px 16px 14px}
-.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
-.body p:last-child{margin-bottom:0}
-
-/* prose emphasis */
-.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
-.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.trap{color:var(--bad);font-weight:600}
-.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
-.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
-.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
-.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-@media (max-width:479px){.cmp{grid-template-columns:1fr}}
-.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
-.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
-.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
-.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
-.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
-.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
-.steps li + li{border-top:1px solid var(--line)}
-.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
-.abbr b{color:var(--ink);font-weight:600}
+.body .in{padding:12px 16px 14px;display:grid;gap:10px}
+.body p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
 
 /* practice mc */
-.q{margin-bottom:10px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:12px;align-items:start}
+.q{margin:0}
 .q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
-.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
 .opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
-.opt:active{background:var(--surface2)}
 @media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
 .opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
 .q.done .opt{cursor:default}
@@ -149,103 +351,145 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
 .opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
 .opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
-.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q .why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
 .q.done .why{display:block}
-.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
-.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.wide{width:100%}
-@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
-.btn:active{transform:scale(.987)}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease)}
+.scorepill.show{transform:translateX(-50%);opacity:1;pointer-events:auto}
+.scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
+.scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
 
-/* problems + worked examples */
-.prob .qt{padding:14px 16px}
-.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
-.prob.on .reveal{display:block}
-.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
-.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+/* problems */
+.pgrid{display:grid;gap:12px}
+.prob{container-type:inline-size;margin:0}
+.prob .pi{display:grid;grid-template-columns:minmax(0,1fr)}
+.prob .qt{padding:14px 16px;font-size:var(--t16);font-weight:500;line-height:1.45}
+.prob .go{border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.prob .reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block;animation:rise .3s var(--spring) both}
+.prob.on .go .chev{transform:rotate(90deg)}
+@container (min-width:820px){
+  .prob .pi{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .prob .qside{border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .prob .qside .qt{flex:1}
+  .prob .reveal{border-top:0;display:block;min-height:100%}
+  .prob:not(.on) .reveal::before{content:"work it first, then show the steps";display:grid;place-items:center;height:100%;min-height:120px;font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+  .prob:not(.on) .reveal > *{display:none}
+}
+.ans{margin-top:10px;padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);border-left:3px solid var(--good)}
 .ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+.work{margin:0;padding:0;list-style:none}
+.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
+.work li + li{border-top:1px solid var(--line)}
+.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.work .wm.cont{padding-left:1.1em}
+.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink2);padding-left:12px;border-left:2px solid var(--line)}
+.work .wy:empty{border-left-color:transparent}
+.work li.hd{padding:0 0 4px}
+.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
+.work li.hd .wh + .wh{padding-left:14px}
+@container (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0}.work li.hd{display:none}}
 
 /* formulas */
-.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
-.fx:first-child{border-top:0}
-.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
-.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
-.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.fx{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.fx .n{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t16);font-weight:500;overflow-wrap:anywhere}
+.fx .note{font-size:var(--t13);color:var(--ink2);line-height:1.45}
 
 /* flashcards */
-.deck{position:relative;perspective:1200px;margin-bottom:10px}
-.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.dk{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.deck{position:relative;perspective:1200px}
+.fc{position:relative;min-height:230px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
 .fc.flip{transform:rotateY(180deg)}
-.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
-.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:22px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t16);line-height:1.5;color:var(--ink)}
+.fc .tag{position:absolute;left:16px;top:13px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
 .fc .b .tag{color:var(--cls)}
-.dnav{display:flex;align-items:center;gap:8px}
+.dnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px;margin-top:6px}
+.clist > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.clist b{display:block;font-weight:650;margin-bottom:3px}
+.clist span{font-size:var(--t15);line-height:1.45;color:var(--ink)}
 
 /* timeline */
-.tl{position:relative;padding-left:22px}
-.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl .ev{position:relative;padding:6px 0 12px}
-.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
-.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
-.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
-.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+.tln{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.tln .ev{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 18px;padding:12px 16px;border-top:1px solid var(--line);position:relative}
+.tln .ev:first-child{border-top:0}
+.tln .y{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t16);color:var(--cls);font-variant-numeric:tabular-nums;line-height:1.35}
+.tln .t{font-size:var(--t16);font-weight:600;line-height:1.35}
+.tln .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+@media (min-width:900px){.tln .ev{grid-template-columns:110px minmax(0,.9fr) minmax(0,1.3fr)}.tln .d{margin-top:0}}
+@media (max-width:479px){.tln .ev{grid-template-columns:1fr;gap:2px}}
+
+/* cram */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:12px;align-items:start}
+.cgrid .group{margin:0}
+.cgrid .gh{padding:11px 14px;border-bottom:1px solid var(--line);font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;display:flex;justify-content:space-between;gap:10px}
+.cgrid .gh span{color:var(--ink3);font-weight:500}
+.cr{display:grid;grid-template-columns:minmax(0,10em) 1fr;gap:2px 14px;padding:9px 14px;border-top:1px solid var(--line)}
+.gh + .cr{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:650;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables pane */
+.tpane{display:grid;gap:22px}
+.tpane .tblk{container-type:inline-size}
 
 /* checklist */
-.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
-.ck:first-child{border-top:0}
+.ckg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:0 12px}
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:12px 14px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.4;background:var(--surface);border:1px solid var(--line);margin-bottom:8px}
 .ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
 .ck.on .box{background:var(--good);border-color:var(--good)}
 .ck.on .t{color:var(--ink3);text-decoration:line-through}
 .ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
 
+/* essay panes (leq / prompts) */
+.bul{margin:0;padding-left:18px}
+.bul li{margin:3px 0;line-height:1.45}
+.pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin-top:6px}
+.so{padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:var(--t15)}
+.so .cl{display:block;font-size:11.5px;font-weight:650;color:var(--accent);letter-spacing:.05em;text-transform:lowercase}
+.pace{display:flex;height:34px;border-radius:8px;overflow:hidden;gap:2px}
+.pace > div{display:grid;place-items:center;color:var(--surface);font-size:var(--t12);font-weight:650;background:var(--cls)}
+.pace > div:nth-child(2n){background:var(--accent)}
+.pace > div:nth-child(3n){background:var(--ink2)}
+.fnl{margin:0;padding-left:20px;font-size:var(--t15)}
+.fnl li{margin:4px 0}
+
 /* footer */
-footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
 footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
 footer .upd{display:block;margin-top:6px}
 
-/* reveal on load */
 .rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
 
-/* leq guide additions */
-sup.fn{font-size:.7em;font-weight:600;color:var(--cls);vertical-align:super;line-height:0;margin-left:1px}
-.fnl{margin:0;padding:0 0 0 22px;font-size:var(--t15);line-height:1.5;display:grid;gap:6px}
-.fnl li::marker{font-weight:600;color:var(--cls)}
-.pp{margin-top:10px} .pp p{margin:0 0 8px} .pp p:last-child{margin:0}
-.steps + .pp{margin-top:12px}
-.callout.cls{border-left-color:var(--c-pre)}
-.callout + .callout{margin-top:8px}
-.card.prompt{padding:14px 16px 16px}
-.pn{display:flex;align-items:center;gap:8px;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;margin-bottom:6px}
-.pn .tag{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:var(--r-chip);background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
-.pq{font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.2;text-wrap:balance}
-.row .rn.pq{font-size:17px;line-height:1.25;white-space:normal}
-.prompt .row{align-items:flex-start;padding:14px 14px 14px 16px}
-.prompt .row .chev{margin-top:4px}
-.prompt .body .in{padding:4px 16px 16px}
-.pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin:14px 0 6px}
-.bul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
-.bul li{position:relative;padding:8px 12px 8px 26px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
-.bul.tldr li{background:color-mix(in srgb,var(--cls) 9%,var(--surface2));border-color:color-mix(in srgb,var(--cls) 35%,var(--line));font-weight:500}
-.bul li::before{content:"";position:absolute;left:11px;top:15px;width:7px;height:7px;border-radius:2px;background:var(--cls)}
-.ans.thesis{margin-top:0;border-left:3px solid var(--good);font-size:var(--t16);line-height:1.5}
-.ans.thesis b{display:block;margin:0 0 3px}
-.cmp.four{margin-top:0}
-.pace{display:flex;gap:3px;height:32px;border-radius:8px;overflow:hidden}
-.pace div{display:grid;place-items:center;min-width:14px;color:var(--surface);font-size:var(--t12);font-weight:600;font-variant-numeric:tabular-nums}
-.pl2{font-size:var(--t13);font-weight:600;text-transform:lowercase}
-.so{margin:6px 0 0;padding:6px 12px;font-size:var(--t13);color:var(--ink);border-left:2px solid var(--good)}
-.so .cl{display:block;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;margin-bottom:2px}
-.tl .d{font-size:var(--t12);color:var(--ink3);text-transform:lowercase;margin-top:0}
+@media print{
+  :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
+  .bar,.toc,.panes,.skipl,#prog,.scorepill,.tq .eb,.prob .go,.seg{display:none !important}
+  .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
+  .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
+  .prob:not(.on) .reveal::before{display:none}
+  .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
+  @page{margin:.6in}
+}
 </style>
 </head>
 <body>
+<a class="skipl" href="#main">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-ink"/></marker>
+  <marker id="ahc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-cls"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-acc"/></marker>
+  <marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-bad"/></marker>
+</defs></svg>
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="home" href="/" aria-label="all guides">
@@ -265,7 +509,8 @@ sup.fn{font-size:.7em;font-weight:600;color:var(--cls);vertical-align:super;line
   <div class="crow rv" id="crow"></div>
   <h2 class="title rv" id="title"></h2>
   <p class="sub rv" id="sub" hidden></p>
-  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div class="pdfs rv" id="pdfs" hidden></div>
+  <div class="rv"><div class="panes" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div></div>
   <div id="root" class="rv"></div>
   <footer>
     study guide written by a student, free to use. not affiliated with the school.
@@ -273,12 +518,20 @@ sup.fn{font-size:.7em;font-weight:600;color:var(--cls);vertical-align:super;line
     <span class="upd" id="upd"></span>
   </footer>
 </main>
+<div class="scorepill" id="score" aria-live="polite"><span><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
-   GUIDE — the only thing to edit. Delete panes you don't need from
-   `panes`; delete the matching data too. Prose accepts **term**,
-   ==fact== and !!trap!!. Everything is rendered from this object.
+   GUIDE: the only thing to edit. Everything renders from this object.
+   Rules (sept 29 2026, from reader feedback):
+   · bold a key term with **term** the first time it appears in a
+     section. Nothing else is marked inline: no highlights, no
+     underlines, no red text. (The renderer bolds each term once per
+     section and ignores legacy ==x== / !!x!! markers.)
+   · traps go in `watch`, never in the prose.
+   · two short paragraphs max per section; everything else is a shape:
+     pts, flow, steps, rows, tiles, tree, table, cmp, fig.
+   · every tested section gets at least one `ex` (see it on a test).
    ═══════════════════════════════════════════════════════════════════ */
 const GUIDE = {
  "id": "apush",
@@ -286,10 +539,10 @@ const GUIDE = {
  "title": "Unit 1 LEQ study guide",
  "test": "2026-09-15",
  "meta": "40 min · one prompt · blue book",
- "updated": "sept 15, 2026",
+ "updated": "sept 29, 2026",
  "panes": [
-  "prompts",
   "outline",
+  "prompts",
   "leq",
   "timeline"
  ],
@@ -299,324 +552,607 @@ const GUIDE = {
   "leq": "rubric"
  },
  "top": [
-  "!!Most likely territory: **servants to slaves**.!! Prep both directions: what the economy did to slavery and what slavery did to the economy.",
-  "**Class rubric**: ==six rows, 0 to 10 each, 60 total, straight to a percentage.== Class rule: thesis = ==last sentence of a 4+ sentence contextualization paragraph==. !!Anywhere else loses class points.!!",
-  "**AP LEQ rubric** is separate: 6 points total (thesis 1, contextualization 1, evidence 2, analysis and reasoning 2). AP accepts a thesis in the intro or conclusion, and it can be more than one sentence.",
-  "Evidence gets **linked**, not listed. Every body sentence ties back to the thesis. ==Four linked pieces instead of two help earn complexity== when they build a more complex argument; count alone is not enough.",
-  "Class rubric: comparison needs **balance**. !!All similarities or all differences loses the analysis row.!! (AP: an argument may emphasize one side; cover both when the prompt asks for both.)",
-  "Where the points live: **Chesapeake vs. New England**, **servants to slaves**, **England's crises** driving the **Navigation Acts** and the Restoration colonies.",
-  "Say **thesis** (class wording; AP says thesis or claim). !!No always or never.!! Class rule: context = within about 20 years of the prompt (AP sets no cutoff; it wants relevant broader context tied to the prompt)."
+  "Most likely prompt: **servants to slaves**, both ways: what the economy did to slavery, and what slavery did to the economy.",
+  "Also heavy: Chesapeake vs. New England, and England's crises driving the Navigation Acts and Restoration colonies.",
+  "Class rubric: six rows of 10 = 60. The **thesis** is the last sentence of a 4+ sentence context paragraph; anywhere else loses points.",
+  "**Link** each piece of evidence to the thesis. Comparison needs similarities and differences. Four linked pieces help earn complexity.",
+  "No always or never. Context stays within about 20 years of the prompt (class rule; AP sets no cutoff)."
  ],
  "outline": [
   {
    "w": 3,
    "t": "From servants to slaves; Bacon's Rebellion",
-   "d": "The Chesapeake ran out of servants and switched to enslaved Africans. Know both directions: what the economy did to slavery, what slavery did to the economy.",
-   "steps": [
-    "==Fewer indentured servants after the 1650s==: good land gone, life in England better. Planters still need hands.",
-    "==European Christians believed enslaving heathen peoples was justifiable.==",
-    "**\"Society with slaves\"**: slavery exists, economy doesn't depend on it. **\"Slave society\"**: economy runs on it. ==Chesapeake and South Carolina become slave societies; Africans about 20% of the Chesapeake.==",
-    "Supply comes both straight from Africa and through the Caribbean. **Barbados** planters' younger sons move to **Charles Town** and bring enslaved people, shaping South Carolina.",
-    "Slaves cost more but ==children were born enslaved==. Small planters sell out; ==rich-poor gap widens==.",
-    "**South Carolina rice** grown on ==skills brought by enslaved Africans==; **indigo** from West Indian knowledge.[[7]]",
-    "**Middle Passage**: voyages varied, ==averaging just over two months; about 14 to 15% died at sea==, shackled below deck; fattened in the Caribbean, sold for life."
-   ],
+   "d": "the likeliest prompt, both directions",
    "p": [
-    "**Bacon's Rebellion** ==1676==: **Nathaniel Bacon**, a wealthy planter and council member, demands war on Native peoples; **Governor Berkeley** refuses. Frontier conflict, trade interests and political grievances all feed it. Bacon raises his own army, marches on Jamestown, ==dies of dysentery==.",
-    "Why it matters: rich vs. poor exposed; ==encouraged greater reliance on enslaved labor==.[[8]]"
+    "A **society with slaves** has slavery; a **slave society** runs on it. The Chesapeake and South Carolina became slave societies (Africans about 20% of the Chesapeake)."
    ],
-   "cmp": {
-    "a": {
+   "pts": [
+    "Non-economic push: **Bacon's Rebellion** (below), and European Christians held enslaving heathen peoples justifiable."
+   ],
+   "flow": [
+    "Bacon's Rebellion, 1676: frontier conflict, trade, political grievances",
+    "Nathaniel Bacon, wealthy planter and council member, demands war on Natives; Governor William Berkeley refuses",
+    "Bacon's own army marches on Jamestown; he dies of dysentery",
+    "Rich vs. poor exposed; more reliance on enslaved labor"
+   ],
+   "tree": {
+    "t": "Thesis",
+    "d": "economics drove it, to a large extent",
+    "c": [
+     {
+      "t": "Body 1",
+      "d": "servant supply shrank"
+     },
+     {
+      "t": "Body 2",
+      "d": "crops need permanent labor"
+     },
+     {
+      "t": "Body 3",
+      "d": "slaves pay off for generations"
+     },
+     {
+      "t": "Complexity",
+      "d": "Bacon's; religion"
+     }
+    ]
+   },
+   "cmp": [
+    {
      "h": "economy shaped slavery",
      "p": [
-      "tobacco and rice demand, servant supply fails after the 1650s, hereditary labor pays off, Barbados ties and direct African shipments, Navigation Acts make tobacco an enumerated cash crop"
+      "Fewer **indentured servants** after the 1650s: good land gone, England better off.",
+      "Slaves cost more, but their children are born enslaved: permanent control, no term to finish.",
+      "Tobacco and rice demand. South Carolina rice (high priority) grew on enslaved Africans' skills, indigo on West Indian knowledge: rice first, indigo second, almost no sugar.",
+      "Supply direct from Africa and via **Barbados**, whose planters' younger sons settle **Charles Town**.",
+      "Navigation Acts make tobacco an enumerated cash crop."
      ]
     },
-    "b": {
+    {
      "h": "slavery shaped the economy",
      "p": [
-      "plantation scale, planter elite and a wider rich-poor gap, slave societies in the Chesapeake and SC, New England rum and shipping in the triangular trade, port cities"
+      "Plantation scale. Small planters sell out: a planter elite, a wider rich-poor gap, slave societies.",
+      "Racial laws divide enslaved Africans from free and indentured Europeans; the enslaved resist (escape, rebellion).",
+      "New England rum and shipping (triangular trade); port cities."
      ]
     }
-   },
-   "notes": [
+   ],
+   "ex": [
     {
-     "k": "ex",
-     "t": "The servants-to-slaves chain is a whole essay: economic causes plus a non-economic push (Bacon's, religion) is the complexity move built in."
+     "q": "Which evidence best supports a thesis that economics drove the switch to slavery?",
+     "a": "Fewer servants after the 1650s; enslaved people's children were born enslaved.",
+     "why": "Bacon's is the non-economic push: save it for complexity."
+    },
+    {
+     "q": "Planters leaned harder on enslaved labor after 1676. Which event best explains why?",
+     "a": "Bacon's Rebellion: poor colonists had turned on the elite.",
+     "why": "Not King Philip's War (New England)."
     }
    ],
    "terms": [
     "society with slaves",
     "slave society",
-    "Barbados",
-    "Charles Town",
-    "rice",
-    "indigo",
-    "Middle Passage",
     "Bacon's Rebellion",
-    "William Berkeley"
+    "Barbados"
    ]
   },
   {
    "w": 3,
    "t": "The Chesapeake: Jamestown, tobacco, labor",
-   "d": "A business venture that nearly died, then found a crop that demanded land and bodies.",
-   "steps": [
-    "==1607==: **Virginia Company**, a **joint-stock company**,[[1]] plants **Jamestown** for profit. !!Not religion.!!",
-    "**Powhatan** helps for leverage: **edged weapons**, power over rival tribes.[[2]]",
-    "**John Smith**: \"if you do not work, you do not eat.\" ==Starving Time, 1609 to 1610.==",
-    "**John Rolfe**, **tobacco**, ==1612==. It ==guaranteed the colony's survival==,[[2]] strips soil, so planters need **land** and **labor**. Plantations spread along rivers, ==few towns==.",
-    "**Headright**: ==50 acres== to whoever paid a person's passage, often a planter bringing servants. Land hunger pushes onto Native ground.",
-    "==1619==: **House of Burgesses**, Virginia's elected assembly; its earliest voter rules are uncertain and changed often. **Franchise** = the sum total of all voters (class definition; strictly, the right to vote). Same year, ==first Africans==; status fluid, !!not hereditary slavery until the 1660s and 70s.!!",
-    "==March 22, 1622==: **Opechancanough** (fears **encroachment**) kills ==about 347== at outlying settlements, roughly a quarter of the colonists; a warning saves Jamestown. Ends in the **subjugation of the Powhatan Confederacy**.",
-    "==1624==: charter revoked, Virginia a **royal colony**."
-   ],
+   "d": "a body paragraph for any Chesapeake or comparison prompt",
    "p": [
-    "**Indentured servants**: the settled labor answer, ==four to seven year terms== (longer as a penalty), many died first.[[3]]",
-    "**Male majority**, poor conditions, ==life expectancy 40 to 45==: fewer, smaller, shorter-lived families.",
-    "**Immigrant majority** = **political instability**; no native-born elite until the 1700s.",
-    "**Maryland** (==1634==, **Lord Baltimore**): **Catholic haven**, fills with Protestants, second tobacco colony."
+    "The **Virginia Company**, a **joint-stock company** (shareholders spread risk, no royal money), planted Jamestown in 1607 for profit. It never made one."
    ],
-   "notes": [
+   "flow": [
+    "Tobacco (John Rolfe, 1612) guarantees survival",
+    "It strips the soil: planters need land and labor",
+    "Headright: 50 acres per passage paid, often for servants",
+    "Plantations spread along rivers onto Native land; few towns"
+   ],
+   "tiles": [
     {
-     "k": "ex",
-     "t": "Economic founding, tobacco causing land and labor demand, headright, servants, 1622: one full body paragraph on any Chesapeake or comparison prompt."
+     "h": "Powhatan",
+     "t": "helps Jamestown for leverage: edged weapons, power over rival tribes",
+     "k": "1607"
+    },
+    {
+     "h": "Indentured servants",
+     "t": "the labor answer: 4–7 years (longer as a penalty); many died first. Finishers had some opportunity"
+    },
+    {
+     "h": "Franchise",
+     "t": "class definition: the sum total of all voters (strictly, the right to vote)"
     }
    ],
+   "table": {
+    "h": "Jamestown to royal colony",
+    "cols": [
+     "",
+     "what happened"
+    ],
+    "rows": [
+     [
+      "1609–10",
+      "Starving Time. **John Smith**: \"if you do not work, you do not eat\""
+     ],
+     [
+      "1619",
+      "**House of Burgesses**, the elected assembly (early voter rules unclear, often changed). First Africans; status fluid"
+     ],
+     [
+      "1622",
+      "March 22: **Opechancanough**, fearing encroachment, kills about 347 at outlying settlements, a quarter of the colonists; a warning saves Jamestown. Ends in the subjugation of the Powhatan Confederacy"
+     ],
+     [
+      "1624",
+      "charter revoked: a **royal colony**"
+     ],
+     [
+      "1634",
+      "**Maryland**, Lord Baltimore: a Catholic haven that fills with Protestants; the second tobacco colony"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "\"If you do not work, you do not eat.\" John Smith's rule at Jamestown best reflects which fact?",
+     "a": "The Starving Time (1609–10) in a colony planted for profit, short on willing labor.",
+     "why": "Not a Puritan covenant rule: that is New England."
+    },
+    {
+     "q": "Which best explains Chesapeake expansion onto Native land after 1612?",
+     "a": "Tobacco exhausted the soil; the headright rewarded importing servants.",
+     "why": "Not religion. The 1622 attack answered this encroachment."
+    }
+   ],
+   "watch": [
+    "Profit, not religion.",
+    "Africans from 1619, but hereditary slavery only in the 1660s–70s.",
+    "Algonquian aid got Jamestown through its first years; tobacco guaranteed the venture. Use the claim the prompt asks for."
+   ],
    "terms": [
-    "Virginia Company",
-    "joint-stock company",
-    "Powhatan",
-    "John Smith",
-    "John Rolfe",
-    "tobacco",
     "headright",
     "House of Burgesses",
-    "franchise",
-    "Opechancanough",
-    "royal colony",
-    "indentured servants",
-    "Lord Baltimore"
+    "indentured servants"
    ]
   },
   {
    "w": 3,
    "t": "Mercantilism and the Navigation Acts",
-   "d": "Colonies exist to make the mother country rich; the Navigation Acts make it so. High priority.",
-   "steps": [
-    "**Mercantilism**: ==colonies exist to benefit the mother country==. Wealth = finite **gold and silver**. Keep a **favorable balance of trade** and **trapped markets**.",
-    "**Trapped market**: ==foreign goods go to England first, then to the colonies==. Colonial lumber becomes English furniture sold back; England profits at every step.",
-    "**Tariffs**: **protectionist** (mainly shields domestic producers) vs. **revenue** (mainly raises money). Purpose, not a set price.[[6]]",
-    "**Navigation Acts** ==1651, 1660, 1663==: **English ships** only; **enumerated goods** (tobacco, sugar, later rice, indigo) sell only inside the empire; European goods stop in England first; smugglers face **vice-admiralty courts**, no jury. Later laws limit certain manufacturing: **Wool Act** 1699, **Hat Act** 1732, **Iron Act** 1750.",
-    "**Triangular trade**: goods to Africa, people to the Americas (**Middle Passage**), raw materials to Europe. New England loop: molasses and sugar in, **rum** out.",
-    "**Salutary neglect**: lax enforcement, smuggling common. ==Serious enforcement only after 1763, and colonists refuse.=="
-   ],
+   "d": "high priority: colonies exist to enrich England",
    "p": [
-    "**Boston, Newport, Philadelphia, New York** grow as ports; shipbuilding; a **merchant elite**. Colonies tied to the Atlantic economy, !!not self-sufficient farms.!!",
-    "==Some African kings consolidated power from slave-trade profits.=="
+    "**Mercantilism**: colonies exist to benefit the mother country. Wealth is finite gold and silver, so keep a **favorable balance of trade** and **trapped markets**."
    ],
-   "notes": [
+   "rows": [
+    [
+     "trapped market",
+     "foreign goods reach the colonies only via England; colonial lumber is sold back as English furniture, profit each step"
+    ],
+    [
+     "tariffs",
+     "**protectionist** mainly shields domestic producers; **revenue** mainly raises money. Purpose decides, not price"
+    ],
+    [
+     "economies",
+     "command (government runs it) vs. market (free markets)"
+    ],
+    [
+     "ports",
+     "Boston, Newport, Philadelphia, New York: shipbuilding, a **merchant elite**"
+    ],
+    [
+     "Africa",
+     "some kings consolidate power from slave-trade profits"
+    ],
+    [
+     "essay",
+     "cause: the Restoration needs revenue and control. Effect: enumerated goods, ports, smuggling, resentment. Pairs with the Dominion"
+    ]
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 340 262' role='img' aria-label='Triangular trade. Manufactured goods sail from England and Europe south to West Africa. Enslaved people cross the Middle Passage from West Africa to the Americas: just over two months on average, 14 to 15 percent died at sea. Raw materials sail from the Americas to Europe. New England loop: molasses and sugar in, rum out.'><rect x='210' y='6' width='124' height='40' rx='10' class='fp'/><text x='272' y='31' class='tb mid'>England, Europe</text><rect x='210' y='214' width='124' height='40' rx='10' class='fp'/><text x='272' y='239' class='tb mid'>West Africa</text><rect x='6' y='100' width='128' height='54' rx='10' class='fs'/><text x='70' y='123' class='tc mid'>Americas</text><text x='70' y='141' class='tm mid'>Caribbean, colonies</text><path d='M272 50V208' class='ln' marker-end='url(#ah)'/><text x='264' y='124' class='end'>manufactured</text><text x='264' y='140' class='end'>goods</text><path d='M138 98L204 36' class='ln' marker-end='url(#ah)'/><text x='150' y='50' class='end'>raw</text><text x='150' y='66' class='end'>materials</text><path d='M206 226L140 158' class='lc' marker-end='url(#ahc)'/><text x='6' y='182' class='tc'>Middle Passage</text><text x='6' y='198' class='tm'>just over 2 months</text><text x='6' y='213' class='tm'>14–15% died at sea</text><text x='6' y='238' class='tm'>New England loop: molasses,</text><text x='6' y='253' class='tm'>sugar in; rum out</text></svg>",
+    "cap": "**Triangular trade**. Middle Passage voyages varied; people were shackled below deck, fattened in the Caribbean, sold for life."
+   },
+   "table": {
+    "h": "Navigation Acts: 1651, 1660, 1663",
+    "cols": [
+     "",
+     "rule"
+    ],
+    "rows": [
+     [
+      "ships",
+      "English ships only"
+     ],
+     [
+      "enumerated goods",
+      "tobacco, sugar, later rice and indigo: sold only inside the empire"
+     ],
+     [
+      "imports",
+      "European goods stop in England first"
+     ],
+     [
+      "smugglers",
+      "**vice-admiralty courts**, no jury"
+     ],
+     [
+      "later",
+      "Wool Act 1699, Hat Act 1732, Iron Act 1750 limit certain manufacturing"
+     ],
+     [
+      "enforcement",
+      "**salutary neglect**: lax, smuggling common. Serious enforcement only after 1763, and colonists refuse"
+     ]
+    ]
+   },
+   "ex": [
     {
-     "k": "ex",
-     "t": "Cause (Restoration government needs revenue and control) and effect (enumerated goods, ports, smuggling, resentment). Pairs with the Dominion of New England on an imperial-control prompt."
+     "q": "Which best explains the purpose of the Navigation Acts?",
+     "a": "Mercantilism: route colonial trade through England for England's profit.",
+     "why": "Not colonial industry: the Wool, Hat, Iron Acts limited it."
+    },
+    {
+     "q": "Which evidence best supports a thesis that the slave trade shaped New England?",
+     "a": "The triangular trade (molasses in, rum out) and a port-city merchant elite.",
+     "why": "Enumerated tobacco is Southern evidence."
     }
+   ],
+   "watch": [
+    "The colonies were tied to the Atlantic economy, not self-sufficient farms."
    ],
    "terms": [
     "mercantilism",
-    "favorable balance of trade",
-    "trapped markets",
-    "tariffs",
-    "Navigation Acts",
     "enumerated goods",
-    "vice-admiralty courts",
-    "triangular trade",
-    "Middle Passage",
-    "rum",
     "salutary neglect"
    ]
   },
   {
    "w": 3,
    "t": "New England: Puritan society and self-government",
-   "d": "Religious families governed by covenant and church members. Long lives, short tempers with neighbors.",
-   "steps": [
-    "**Separatists** first: ==Plymouth, 1620==. **Mayflower Compact**: self-government, a **civil body politic** under God, signed because they landed outside their grant.[[4]]",
-    "**Massasoit** and the **Pokanokets** ally with Plymouth after the ==1616 to 1618 epidemic==; they need a counterweight to the Narragansetts.",
-    "**Charles I** (==1625==) pushes the **Massachusetts Bay Company** to move its headquarters to America; the company meeting becomes the government. **John Winthrop** (==1629==), the **Arbella** (==1630==), **\"A Model of Christian Charity\"**: the **City upon a Hill**, common good first.",
-    "**Families** migrate with goods and neighbors. Land to **groups**, so towns not plantations. The **covenant** runs politics: **mutual consent**.",
-    "==Church membership required to vote== (Massachusetts, New Haven). Strict codes; **religious intolerance** is the design.",
-    "**Roger Williams** (Native rights, **separation of church and state**, tolerance) banished, founds **Providence** (==1636==). **Anne Hutchinson** (**covenant of grace**) banished ==1638==.",
-    "**Pequot War** (==1637==): English push into the Connecticut valley. **John Eliot**'s **praying towns** convert few.",
-    "**King Philip's War** (==1675 to 1676==): Pokanokets, Narragansett, Nipmucks vs. New England. Colonists win; ==10% of able-bodied white men killed or wounded==."
-   ],
+   "d": "covenant, church members, long lives",
    "p": [
-    "==Life expectancy 60 to 65== vs. 40 to 45. Large families, farms for **subsistence and local sale**.",
-    "Slavery existed here too, Native and African, small. !!\"No slavery in New England\" is wrong.!!"
+    "Families came with goods and neighbors, and land went to **groups**: towns, not plantations. The **covenant** ran politics by **mutual consent**."
    ],
-   "cmp": {
-    "a": {
-     "h": "chesapeake",
-     "p": [
-      "tobacco, plantations, no towns, male majority, bound labor, landowner franchise, life 40 to 45, immigrant instability"
-     ]
-    },
-    "b": {
-     "h": "new england",
-     "p": [
-      "subsistence farms, towns, families, church-member franchise, covenant, life 60 to 65, intolerance of dissent"
-     ]
-    }
-   },
-   "notes": [
+   "rows": [
+    [
+     "1620",
+     "**Separatists** land at Plymouth outside their grant, so they sign the **Mayflower Compact** (high priority): self-rule as a **civil body politic** under God"
+    ],
+    [
+     "ally",
+     "**Massasoit**'s Pokanokets back Plymouth after the 1616–18 epidemic, against the Narragansetts"
+    ],
+    [
+     "1630",
+     "**Charles I** (1625) pushes the Massachusetts Bay Company to move over; its meeting becomes the government. **John Winthrop** (1629), the Arbella: \"A Model of Christian Charity,\" a **City upon a Hill**, common good first"
+    ],
+    [
+     "votes",
+     "church members only (Massachusetts, New Haven). Strict codes: **religious intolerance** by design"
+    ]
+   ],
+   "tiles": [
     {
-     "k": "ok",
-     "t": "Both regions: Native wars (1622, 1637, 1675), representative bodies (Burgesses 1619, town meetings), slavery. That is the balance paragraph."
+     "h": "Roger Williams",
+     "t": "Native rights, separation of church and state, tolerance. Banished: Providence",
+     "k": "1636"
+    },
+    {
+     "h": "Anne Hutchinson",
+     "t": "covenant of grace. Banished",
+     "k": "1638"
+    },
+    {
+     "h": "Pequot War",
+     "t": "English push into the Connecticut valley",
+     "k": "1637"
+    },
+    {
+     "h": "King Philip's War",
+     "t": "Pokanokets, Narragansett, Nipmucks vs. New England. Colonists win; 10% of able-bodied white men killed or wounded",
+     "k": "1675–76"
+    },
+    {
+     "h": "Praying towns",
+     "t": "John Eliot's; few converts"
     }
+   ],
+   "table": {
+    "h": "Chesapeake vs. New England",
+    "cols": [
+     "",
+     "Chesapeake",
+     "New England"
+    ],
+    "rows": [
+     [
+      "economy",
+      "tobacco plantations",
+      "farms for subsistence and local sale"
+     ],
+     [
+      "settlement",
+      "along rivers, few towns",
+      "towns"
+     ],
+     [
+      "people",
+      "male majority, poor conditions, bound labor",
+      "families, large"
+     ],
+     [
+      "life expectancy",
+      "40–45: fewer, smaller, shorter-lived families",
+      "60–65"
+     ],
+     [
+      "politics",
+      "immigrant majority = political instability; no native-born elite until the 1700s. Landowners vote",
+      "church members vote; intolerance of dissent"
+     ],
+     [
+      "both (balance)",
+      "Native war 1622; Burgesses 1619; slavery",
+      "Native wars 1637, 1675; town meetings; slavery"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Which evidence best supports a thesis that New England governed itself from the start?",
+     "a": "The Mayflower Compact (1620).",
+     "why": "The House of Burgesses (1619) is self-rule too, but in the Chesapeake."
+    },
+    {
+     "q": "Comparing the two regions, which evidence shows a similarity?",
+     "a": "Both fought Native wars, had representative bodies and held slaves.",
+     "why": "Tobacco vs. farms is a difference; all differences loses the analysis row."
+    }
+   ],
+   "watch": [
+    "\"No slavery in New England\" is wrong: Native and African slavery existed there, on a small scale."
    ],
    "terms": [
-    "Separatists",
     "Mayflower Compact",
-    "Massasoit",
-    "John Winthrop",
-    "City upon a Hill",
     "covenant",
-    "Roger Williams",
-    "Anne Hutchinson",
-    "Pequot War",
-    "praying towns",
-    "King Philip's War"
+    "City upon a Hill"
    ]
   },
   {
    "w": 3,
    "t": "England's crisis and the Restoration colonies",
-   "d": "King fights Parliament, loses his head; the son comes home broke and pays debts with American land.",
-   "steps": [
-    "**Charles I**, **divine right**, needs money. **Magna Carta**: taxes need Parliament. Parliament (Puritan-heavy) says limit your power first. He dissolves it (1629). The **Rump Parliament** comes later: after Pride's Purge (1648), dissolved by Cromwell in 1653.",
-    "**Civil War** ==1642==: **Cavaliers** (king) vs. **Roundheads** (**Oliver Cromwell**). Charles I ==executed 1649==.",
-    "**Interregnum** ==1649 to 1660==: no king, Cromwell as **Lord Protector**. ==Colonies gain room to govern themselves==, though the Commonwealth still asserts authority (**Navigation Act** ==1651==).",
-    "**Restoration** ==1660==: **Charles II** back, owing everyone. He pays with land: the **Restoration colonies**, each a **proprietorship**.",
-    "**New York** ==1664==: **Duke of York** takes Dutch New Netherland. **Duke's Laws**: Dutch keep land, taxes go to England.",
-    "**New Jersey** ==1664==: the Duke grants it jointly to **Sir George Carteret** and **Lord John Berkeley**; great farmland, grows fast.",
-    "**Carolina** ==1663==: group of proprietors, constitution by **John Locke**; splits ==1729==, North = tobacco, South = rice.",
-    "**Pennsylvania** ==1681==: **William Penn**, **Quakers**,[[5]] a Stuart debt settled. Treaties with Natives, diversity; non-Quakers take over politics. **Delaware** splits off.",
-    "**Georgia** ==1732==, **James Oglethorpe**, settled 1733: **buffer** vs. Spanish Florida, meant to help poor and indebted people (no imprisoned debtors among the first settlers). !!Not a Restoration colony.!!"
-   ],
+   "d": "the king loses his head; his broke son pays in land",
    "p": [
-    "Most colonies loosely copy England: **governor** (king), **council** (Lords), **legislative assembly** (Commons); who appoints or elects varies (royal, proprietary, charter). Assemblies act **negatively**: block the governor.",
-    "**Proprietary** colonies drift to **royal colonies** over time."
+    "**Magna Carta**: taxes need Parliament. Charles I claimed **divine right** and needed money; the Puritan-heavy Parliament demanded limits first, so he dissolved it (1629)."
    ],
-   "notes": [
+   "pts": [
+    "Who appoints or elects each part varies: royal, proprietary, charter.",
+    "Proprietary colonies drift to royal colonies."
+   ],
+   "flow": [
+    "Civil War 1642: Cavaliers (king) vs. Roundheads (Oliver Cromwell)",
+    "Charles I executed 1649",
+    "Interregnum 1649–60, no king, Cromwell Lord Protector: colonies gain room to govern themselves",
+    "Restoration 1660: Charles II, owing everyone, pays with land"
+   ],
+   "tree": {
+    "t": "Colonial government",
+    "d": "most loosely copy England",
+    "c": [
+     {
+      "t": "Governor",
+      "d": "like the king"
+     },
+     {
+      "t": "Council",
+      "d": "like the Lords"
+     },
+     {
+      "t": "Legislative assembly",
+      "d": "like the Commons; acts negatively: blocks the governor"
+     }
+    ]
+   },
+   "table": {
+    "h": "Restoration colonies (each a proprietorship), plus Georgia",
+    "cols": [
+     "",
+     "year",
+     "granted to",
+     "key facts"
+    ],
+    "rows": [
+     [
+      "New York",
+      "1664",
+      "Duke of York",
+      "takes Dutch New Netherland. **Duke's Laws**: Dutch keep land, taxes go to England"
+     ],
+     [
+      "New Jersey",
+      "1664",
+      "Sir George Carteret and Lord John Berkeley, jointly, from the Duke",
+      "great farmland, grows fast"
+     ],
+     [
+      "Carolina",
+      "1663",
+      "a group of proprietors",
+      "John Locke's constitution; splits 1729: North tobacco, South rice"
+     ],
+     [
+      "Pennsylvania",
+      "1681",
+      "William Penn, for a Stuart debt",
+      "**Quakers**: all equal before God, no priests, hated in England. Native treaties, diversity; non-Quakers take over politics. Delaware splits off"
+     ],
+     [
+      "Georgia",
+      "1732",
+      "James Oglethorpe",
+      "settled 1733: a buffer vs. Spanish Florida, to help poor and indebted people (no imprisoned debtors among the first settlers)"
+     ]
+    ]
+   },
+   "ex": [
     {
-     "k": "ex",
-     "t": "Events in England producing colonies (NY, NJ, Carolina, PA) and self-rule habits (Interregnum neglect, assemblies modeled on Parliament)."
+     "q": "Which best explains the founding of New York, New Jersey, Carolina and Pennsylvania?",
+     "a": "The Restoration: Charles II paid debts in American land.",
+     "why": "Not persecution: even Penn's colony settled a Stuart debt."
+    },
+    {
+     "q": "Which evidence best supports a thesis that England's crises widened colonial self-rule?",
+     "a": "The Interregnum (1649–60): no king, so Parliament-style assemblies ran things.",
+     "why": "The 1651 Navigation Act (London still in charge) is your complexity."
     }
+   ],
+   "watch": [
+    "Georgia (1732) is not a Restoration colony.",
+    "Two Berkeleys: Governor William (Virginia, Bacon's) vs. Lord John (New Jersey).",
+    "The Rump Parliament is later: after Pride's Purge (1648), dissolved by Cromwell in 1653."
    ],
    "terms": [
     "divine right",
-    "Civil War",
-    "Cavaliers",
-    "Roundheads",
-    "Oliver Cromwell",
     "Interregnum",
     "Restoration",
-    "proprietorship",
-    "Duke of York",
-    "Duke's Laws",
-    "George Carteret",
-    "John Locke",
-    "William Penn",
-    "Quakers",
-    "James Oglethorpe",
-    "legislative assembly"
+    "proprietorship"
    ]
   },
   {
    "w": 2,
    "t": "Imperial reorganization to King William's War",
-   "d": "James II tightens the reins, loses his throne, and the colonies get a war with France. Unit 2 starts here.",
-   "steps": [
-    "**James II** turns Catholic; Parliament waits because daughter **Mary** is Protestant and next. Then a Catholic son is born.",
-    "**Dominion of New England** ==1686==: colonies merged under **Sir Edmund Andros**, assemblies suspended.",
-    "**Glorious Revolution** ==1688==: James out, Parliament stronger. **William III** and **Mary II**, **joint sovereigns**.",
-    "==1689==: New England throws out Andros. No Dominion returns, but royal control keeps growing.",
-    "**King William's War** ==1689 to 1697==: first of three England-vs-France colonial wars; it ended ==without a decisive North American settlement== (Queen Anne's War, 1713, did give Britain Acadia).[[9]]"
+   "d": "direct rule fails. Unit 2 starts here",
+   "p": [
+    "Parliament tolerated Catholic **James II** while his Protestant daughter Mary was next, until a Catholic son was born.",
+    "For a 1640–1700 prompt: London tries direct control and fails; loose control plus assemblies survives."
    ],
-   "notes": [
+   "flow": [
+    "Dominion of New England 1686: colonies merged under Sir Edmund Andros, assemblies suspended",
+    "Glorious Revolution 1688: James out, Parliament stronger; William III and Mary II, joint sovereigns",
+    "1689: New England ousts Andros. No Dominion returns; royal control keeps growing"
+   ],
+   "tiles": [
     {
-     "k": "ok",
-     "t": "For a 1640 to 1700 prompt: London tries direct control, fails, loose control plus assemblies survives."
+     "h": "King William's War",
+     "t": "first England vs. France colonial war; no decisive North American settlement",
+     "k": "1689–97"
+    },
+    {
+     "h": "Queen Anne's War",
+     "t": "gives Britain Acadia",
+     "k": "1713"
+    },
+    {
+     "h": "King George's War",
+     "t": "the third. Across the three, Britain gains Acadia and Port Royal; the French and Indian War settles it"
+    }
+   ],
+   "ex": [
+    {
+     "q": "Which best explains why New Englanders overthrew Andros in 1689?",
+     "a": "The Glorious Revolution removed James II, whose Dominion had suspended their assemblies.",
+     "why": "Not King William's War: same year, different cause."
     }
    ],
    "terms": [
-    "James II",
     "Dominion of New England",
-    "Edmund Andros",
-    "Glorious Revolution",
-    "William III",
-    "Mary II",
-    "King William's War"
+    "Glorious Revolution"
    ]
   },
   {
    "w": 2,
    "t": "Why the English left: Reformation to the Stuarts",
-   "d": "Contextualization material. Religious split plus population boom made dissenters and surplus people.",
-   "steps": [
-    "**Henry VIII** breaks with Rome, **Act of Supremacy** ==1534==.[[10]] King replaces Pope, little else changes: the Puritan grievance.",
-    "**Elizabethan Settlement**: a middle way. Calvinists want three things: abolish the **hierarchy**, church free of **political interference**, membership for the **elect** only.",
-    "**Puritans** reform the Church from inside; **Separatists** say it can't be saved. ==One question splits them.== **Predestination** under both: anxious, self-examining culture.",
-    "**James I** ==1603==: **divine right**, intolerant of Puritans, Separatists, Catholics. **Charles I** ==1625== worse; dissenters leave ==by the thousands in the 1630s==.",
-    "Population ==doubles 1530 to 1680==; **enclosure** and **primogeniture** push people off land; America as a **siphon for surplus population**.",
-    "**Roanoke** ==1585 to 1590== fails. Lesson: the next try has to pay."
+   "d": "contextualization for a 1607 prompt",
+   "rows": [
+    [
+     "1534",
+     "**Henry VIII**'s **Act of Supremacy**: the king replaces the Pope, little else changes (the Puritan grievance)"
+    ],
+    [
+     "1559",
+     "**Elizabethan Settlement**, a middle way. Calvinists want: no hierarchy, no political interference, only the elect as members"
+    ],
+    [
+     "1603",
+     "**James I**: divine right, intolerant of Puritans, Separatists, Catholics"
+    ],
+    [
+     "1625",
+     "Charles I, worse: dissenters leave by the thousands in the 1630s"
+    ],
+    [
+     "1530–1680",
+     "population doubles; **enclosure** and **primogeniture** push people off the land. America is a siphon for surplus population"
+    ],
+    [
+     "1585–90",
+     "**Roanoke** fails: the next try has to pay"
+    ]
    ],
-   "notes": [
+   "cmp": [
     {
-     "k": "ok",
-     "t": "Any 1607 prompt: Reformation, Stuart intolerance, population pressure, joint-stock funding, then the thesis."
+     "h": "Puritans",
+     "p": [
+      "reform the Church of England from inside"
+     ]
+    },
+    {
+     "h": "Separatists",
+     "p": [
+      "it can't be saved: leave. **Predestination** under both: an anxious, self-examining culture"
+     ]
     }
    ],
+   "ex": [
+    {
+     "q": "A prompt starts in 1607. Which contextualization fits best?",
+     "a": "Reformation, Stuart intolerance, population pressure, joint-stock funding, then the thesis.",
+     "why": "Not the Navigation Acts or Bacon's: decades too late."
+    }
+   ],
+   "watch": [
+    "Use 1534 for this test (the textbook says 1533)."
+   ],
    "terms": [
-    "Act of Supremacy",
-    "Elizabethan Settlement",
     "Puritans",
     "Separatists",
-    "predestination",
-    "James I",
-    "Charles I",
-    "enclosure",
-    "primogeniture",
-    "Roanoke"
+    "enclosure"
    ]
   },
   {
    "w": 1,
    "t": "France and Spain, as context only",
-   "d": "Two rival models. Contrast or wars, not a body paragraph.",
-   "p": [
-    "**New France**: huge claims, tiny population, **fur-trading outposts**, better at converting Natives; **New Orleans** controls the river.",
-    "**Spain**: **presidio** + **mission** + **pueblo**. **Spanish Florida** freed runaway slaves who converted.",
-    "Spain: slave society. French **Louisiana**: society with slaves."
-   ],
+   "d": "for contrast or wars, not a body paragraph",
+   "table": {
+    "cols": [
+     "",
+     "New France",
+     "Spain"
+    ],
+    "rows": [
+     [
+      "model",
+      "huge claims, tiny population, fur-trading outposts; better at converting Natives",
+      "presidio + mission + pueblo"
+     ],
+     [
+      "key place",
+      "New Orleans controls the river",
+      "Spanish Florida freed runaway slaves who converted"
+     ],
+     [
+      "slavery",
+      "Louisiana: a society with slaves",
+      "a slave society"
+     ]
+    ]
+   },
    "terms": [
     "New France",
-    "missions",
-    "Spanish Florida",
-    "New Orleans"
+    "missions"
    ]
   }
- ],
- "fn": [
-  "Shareholders spread the risk; no royal money. The Virginia Company never turned a profit.",
-  "Two different claims: Algonquian aid got Jamestown through its first years (the textbook's wording); tobacco guaranteed the venture. Use the one the prompt asks for.",
-  "The textbook adds that opportunity existed for servants who finished their contracts.",
-  "High priority: the Mayflower Compact, an example of colonial self-government.",
-  "Quakers: egalitarians, everyone equal before God, no priests. Hated in England.",
-  "Command economy (government runs it) vs. market economy (free markets) came up alongside.",
-  "Rice first, indigo second, almost no sugar. High priority.",
-  "Planters wanted permanent control: enslaved people had no term to finish. They still resisted (escape, rebellion), and racial laws aimed to divide enslaved Africans from free and indentured Europeans.",
-  "King William's, Queen Anne's, King George's. Across them Britain gains Acadia and Port Royal; the French and Indian War finally settles it.",
-  "Use 1534 for this test; the textbook dates the break to 1533."
  ],
  "abbr": {
   "NE": "New England",
@@ -636,48 +1172,48 @@ const GUIDE = {
   "LE+ / LE-": "large error, wrong date early or late"
  },
  "leq": {
-  "format": "40 minutes from when materials are handed out. Blue book. One prompt, whole unit. Stems vary: extent, extent of change or continuity, most significant, relative importance, similarities and differences. The class rubric handout (60 points) is your checklist for this test.",
-  "math": "Class rubric: six rows, 0 to 10 each = 60, straight to a percentage. 54/60 = 90. Length is not the metric; illegible is ungradable. AP LEQ rubric (different system): 6 points total, thesis 1, contextualization 1, evidence 2, analysis and reasoning 2.",
+  "format": "40 minutes from when materials are handed out. Blue book, one prompt on the whole unit. Stems vary: extent, extent of change or continuity, most significant, relative importance, similarities and differences. The 60-point class rubric below is the checklist.",
+  "math": "Class rubric: six rows, 0 to 10 each = 60, straight to a percentage (54/60 = 90). Length is not the metric; illegible is ungradable. The AP LEQ rubric is a different system: 6 points total (thesis 1, contextualization 1, evidence 2, analysis and reasoning 2).",
   "rows": [
    {
     "n": "1 · thesis",
-    "earn": "One sentence (class rule; AP allows more): defensible position, previews the body points, uses the prompt's reasoning word. ==Last sentence of the contextualization paragraph.==",
-    "lose": "Thesis anywhere else (class rule; AP accepts the intro or conclusion). Restated prompt. Vague (\"there were many differences\"). Calling it a claim (class wording).",
+    "earn": "One sentence (class rule; AP allows more): a defensible position that previews the body points and uses the prompt's reasoning word. Last sentence of the contextualization paragraph.",
+    "lose": "Thesis anywhere else (class rule; AP accepts the intro or conclusion). Restated prompt. Vague (\"there were many differences\"). Calling it a claim (class wording; AP says thesis or claim).",
     "cls": "Most common margin notes: thesis not at the end of contextualization, weak thesis."
    },
    {
     "n": "2 · contextualization",
-    "earn": "==Four or more sentences== on American history within about 20 years of the prompt, flowing into the thesis. (Class rule. AP sets no sentence minimum or 20-year cutoff: give relevant broader context and connect it to the prompt.)",
+    "earn": "Four or more sentences on American history within about 20 years of the prompt, flowing into the thesis. (Class rule. AP sets no sentence minimum or 20-year cutoff: give relevant broader context and connect it to the prompt.)",
     "lose": "One throwaway sentence. Wrong century. A fact list with no link to the question.",
     "cls": "1607 prompts: Reformation, Stuart intolerance, population, joint-stock. 1660 prompts: Civil War, Interregnum."
    },
    {
     "n": "3 · evidence, specific",
-    "earn": "Named and dated: ==1619 Burgesses, 1622 attack, 1651 Navigation Act, 1676 Bacon's==. Class target: two per body paragraph. (AP scores evidence across the whole essay, not per paragraph; explain how each piece supports the argument.)",
+    "earn": "Named and dated: 1619 Burgesses, 1622 attack, 1651 Navigation Act, 1676 Bacon's. Class target: two per body paragraph. (AP scores evidence across the whole essay, not per paragraph; explain how each piece supports the argument.)",
     "lose": "Generalities (\"the colonists farmed\"). Wrong dates (LE+ / LE-). Evidence outside the prompt's window.",
     "cls": "Never write always or never."
    },
    {
     "n": "4 · evidence, linked",
-    "earn": "Each piece gets a sentence saying how it proves the thesis. ==Every body sentence ties back.==",
-    "lose": "==Listing without linking== loses the row outright. Narrating instead of arguing.",
+    "earn": "Each piece gets a sentence saying how it proves the thesis. Every body sentence ties back.",
+    "lose": "Listing without linking loses the row outright. Narrating instead of arguing.",
     "cls": "OA, GA, SA in the margin = outstanding, good, satisfactory analysis."
    },
    {
     "n": "5 · analysis, reasoning",
-    "earn": "Process matches the prompt: **comparison** = similarities AND differences; **causation** = causes AND effects; **CCOT** = what changed and what stayed.",
-    "lose": "Wrong process (\"no excuse\"). !!No balance.!! No structure: paragraphs that don't map to the thesis.",
+    "earn": "Process matches the prompt: comparison = similarities AND differences; causation = causes AND effects; CCOT = what changed and what stayed.",
+    "lose": "Wrong process (\"no excuse\"). No balance: all similarities or all differences (class rule; AP lets an argument emphasize one side, but cover both when the prompt asks for both). No structure: paragraphs that don't map to the thesis.",
     "cls": "Conclusion optional. Structure is not."
    },
    {
     "n": "6 · analysis, complexity",
-    "earn": "==Four linked pieces instead of two==, plus a move that complicates the thesis: other side, exception, change over time, another period.",
+    "earn": "Four linked pieces instead of two, plus a move that complicates the thesis: other side, exception, change over time, another period. Count alone is not enough.",
     "lose": "A token \"however\" with nothing behind it. Complexity promised in the thesis, never delivered.",
     "cls": "Cheapest version: a fifth paragraph arguing the extent with two more dated examples."
    }
   ],
   "shape": [
-   "Paragraph 1: ==four or more sentences of context==, ending in the thesis.",
+   "Paragraph 1: four or more sentences of context, ending in the thesis.",
    "One body paragraph per thesis point, in the order the thesis lists them.",
    "Each body paragraph: topic sentence tied to the thesis, two dated pieces of evidence, a link sentence for each.",
    "A complexity paragraph: the other side or the extent, with two more examples.",
@@ -688,7 +1224,7 @@ const GUIDE = {
     "m": 4,
     "l": "read and outline",
     "c": "var(--accent)",
-    "t": "Underline the reasoning word. Write thesis skeleton and three body points. List at least four dated pieces of evidence before writing a word."
+    "t": "Underline the reasoning word. Write the thesis skeleton and three body points. List at least four dated pieces of evidence before writing a word."
    },
    {
     "m": 5,
@@ -718,7 +1254,7 @@ const GUIDE = {
     "m": 8,
     "l": "body 3",
     "c": "var(--good)",
-    "t": "Same shape. If time is tight, this is the paragraph to shorten, not skip."
+    "t": "Same shape. If time is tight, shorten this paragraph; don't skip it."
    },
    {
     "m": 4,
@@ -1281,14 +1817,19 @@ const GUIDE = {
  ]
 };
 
-
 /* ═══ machinery. nothing below needs editing. ═══ */
 const $=s=>document.querySelector(s);
 const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
 const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>').replace(/\[\[(\d+)\]\]/g,'<sup class="fn">$1</sup>');
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* markup: **term** bolds once per scope; legacy ==x== and !!x!! render as plain text */
+let SEEN=null;
+const scope=()=>{SEEN=new Set()};
+const fmt=s=>esc(s).replace(/==(.+?)==/g,"$1").replace(/!!(.+?)!!/g,"$1").replace(/\*\*(.+?)\*\*/g,(m,t)=>{const k=t.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();if(SEEN&&SEEN.has(k))return t;if(SEEN)SEEN.add(k);return `<b class="kw">${t}</b>`});
+const plain=s=>fmt(s).replace(/<b class="kw">(.*?)<\/b>/g,"$1");
 const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const I_TEST='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="1.8" width="9" height="10.6" rx="1.6"/><path d="M5 5h4M5 7.6h4M5 10.2h2"/></svg>';
+const I_WARN='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.8 12.6 11.8H1.4z"/><path d="M7 5.6v2.8M7 10.1h.01"/></svg>';
 const ICON={
  apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
  lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
@@ -1303,13 +1844,15 @@ const ICON={
  csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
 const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
-const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",leq:"rubric",prompts:"prompts"};
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables",leq:"the leq",prompts:"prompts"};
+const has=v=>Array.isArray(v)?v.length>0:!!v;
 
 /* header */
 document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
 document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
 $("#title").textContent=GUIDE.title;
 if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");
@@ -1329,197 +1872,262 @@ $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
   }
   if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
 })();
+const bar=$("#bar");
+const setBarH=()=>document.documentElement.style.setProperty("--barh",bar.offsetHeight+"px");
+setBarH(); addEventListener("resize",setBarH);
 
-/* panes */
-const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
-const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length)||(id==="leq"&&GUIDE.leq));
-const builders={prompts:buildPrompts,leq:buildLeq,outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist};
-const tabs=[];
-PANES.forEach((id,i)=>{
-  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
-  builders[id](sec); root.appendChild(sec);
-  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
-  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
-});
-if(PANES.length<2)panesEl.classList.add("one");
-function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
-function show(id,user){
-  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
-  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
-  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
-}
-const want=location.hash.slice(1);
-show(PANES.includes(want)?want:PANES[0],false);
-requestAnimationFrame(moveP); addEventListener("resize",moveP);
+function shead(txt,extra){return el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""))}
 
-/* outline */
-function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
-function extras(s){
+/* ═══ outline blocks ═══ */
+const B={
+  p:v=>(Array.isArray(v)?v:[v]).map(x=>`<p>${fmt(x)}</p>`).join(""),
+  pts:v=>`<ul class="pts${v.length>=6&&v.every(x=>String(x).length<70)?" two":""}">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`,
+  rows:v=>`<dl class="rows">${v.map(([k,x])=>`<dt>${esc(k)}</dt><dd>${fmt(x)}</dd>`).join("")}</dl>`,
+  steps:v=>`<ol class="steps">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  flow:v=>`<ol class="flow">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  fig:v=>`<figure class="fig">${v.svg||""}${v.cap?`<figcaption>${fmt(v.cap)}</figcaption>`:""}</figure>`,
+  tiles:v=>`<div class="tiles">${v.map(x=>`<div><h5>${fmt(x.h)}</h5>${x.t?`<p>${fmt(x.t)}</p>`:""}${x.k?`<span class="tk">${esc(x.k)}</span>`:""}</div>`).join("")}</div>`,
+  tree:v=>{const n=x=>`<li><div class="nd"><b>${fmt(x.t)}</b>${x.d?`<span>${fmt(x.d)}</span>`:""}</div>${x.c?.length?`<ul>${x.c.map(n).join("")}</ul>`:""}</li>`;return `<div class="tree"><ul>${n(v)}</ul></div>`},
+  table:v=>{const cols=v.cols||[];return `${v.h?`<p class="tcap">${esc(v.h)}</p>`:""}<div class="tbw"><table class="tbl${cols.length===2?" two":""}">${cols.some(c=>c)?`<thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead>`:""}<tbody>${(v.rows||[]).map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`},
+  cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
+  watch:v=>`<div class="watch"><div class="wl">${I_WARN}watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
+  ex:v=>`<div class="exs">${v.map(x=>`<div class="tq"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>show answer</span>${CHEV}</button><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"example",ok:"rule",warn:"watch out"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join(""),
+  terms:v=>`<div class="terms"><span class="tl">key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
+};
+const VIS=["fig","tree","tiles"];
+function section(s,i){
+  scope();
+  const watch=[...(s.watch||[]),...(s.notes||[]).filter(n=>n.k==="warn").map(n=>n.t)];
+  const notes=(s.notes||[]).filter(n=>n.k!=="warn");
+  const mainKeys=["p","pts","rows","flow","steps"].filter(k=>has(s[k]));
+  const vis=VIS.filter(k=>has(s[k]));
+  let sideKey=vis[0]||null;
+  const main=mainKeys.map(k=>B[k](s[k])).join("")+(notes.length?B.notes(notes):"");
+  let side="", watchPlaced=false;
+  if(sideKey)side=B[sideKey](s[sideKey]);
+  else if(watch.length&&main){side=B.watch(watch);watchPlaced=true}
   let h="";
-  if(s.steps)h+=`<ol class="steps" style="margin-top:0">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
-  if(s.p)h+=`<div class="pp">${s.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`;
-  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
-  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"leq use",ok:"rule",cls:"class tips"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
-  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
-  return h;
+  if(main&&side)h+=`<div class="duo${sideKey==="tree"||sideKey==="fig"?" wide-side":""}"><div class="main">${main}</div><div class="side">${side}</div></div>`;
+  else if(main)h+=`<div class="main solo">${main}</div>`;
+  else if(side)h+=side;
+  const rest=vis.filter(k=>k!==sideKey).concat(["table","cmp"].filter(k=>has(s[k])));
+  if(sideKey&&!main){/* visual already placed alone */}
+  rest.forEach(k=>{h+=B[k](s[k])});
+  if(has(s.tables))s.tables.forEach(t=>{h+=B.table(t)});
+  if(has(s.ex))h+=B.ex(s.ex);
+  if(watch.length&&!watchPlaced)h+=B.watch(watch);
+  if(has(s.terms))h+=B.terms(s.terms);
+  const n=String(i+1).padStart(2,"0");
+  const badge=s.w===3?`<span class="w w3">tested most</span>`:s.w===2?`<span class="w w2">tested</span>`:"";
+  const node=el("section","sec",`<header><span class="num">${n}</span><div class="ht"><h3>${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</div>${badge}</header><div class="sb">${h}</div>`);
+  node.id="s-"+(i+1);
+  SEEN=null;
+  return node;
 }
+function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{const b=x.querySelector(".eb");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"})})}
 function buildOutline(sec){
-  if(GUIDE.top?.length){
-    sec.appendChild(shead("start here","the whole guide in one screen"));
-    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  const list=GUIDE.outline||[];
+  const wrap=el("div","ol"); const toc=el("nav","toc"); toc.setAttribute("aria-label","sections");
+  const col=el("div","olc");
+  toc.innerHTML=`<div class="tl">on this page</div>`;
+  if(has(GUIDE.top)){
+    scope();
+    const t=el("div","tops"); t.id="s-top";
+    t.innerHTML=GUIDE.top.map(x=>`<div class="tp">${fmt(x)}</div>`).join("");
+    col.appendChild(shead("start here","what decides the grade")); col.appendChild(t);
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-top"><i class="w3" style="border-radius:50%"></i><span>start here</span></a>`);
   }
-  const list=GUIDE.outline||[]; if(!list.length)return;
-  const n3=list.filter(s=>s.w===3).length;
-  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
-  const g=el("div","group");
   list.forEach((s,i)=>{
-    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
-    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
-    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${extras(s)}</div></div>`);
-    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
-    g.appendChild(row); g.appendChild(body);
+    col.appendChild(section(s,i));
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-${i+1}"><i class="w${s.w||1}"></i><span>${esc(s.t)}</span></a>`);
   });
-  sec.appendChild(g);
   if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
-    sec.appendChild(shead("abbreviations"));
-    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+    col.appendChild(shead("abbreviations"));
+    const a=el("div","abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")); a.id="s-abbr"; col.appendChild(a);
   }
-  if(GUIDE.fn?.length){
-    sec.appendChild(shead("notes",`${GUIDE.fn.length}`));
-    sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`));
-  }
-}
-
-/* prompts */
-function buildPrompts(sec){
-  const ps=GUIDE.prompts||[];
-  sec.appendChild(shead("how points are earned"));
-  sec.appendChild(el("div","card top",(GUIDE.prompts_note||[]).map(x=>`<p>${fmt(x)}</p>`).join("")));
-  sec.appendChild(shead("possible prompts",`${ps.length} · ap wording`));
-  ps.forEach((p,i)=>{
-    const g=el("div","group prompt");
-    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
-    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn pq">${esc(p.q)}</span></span>`+CHEV;
-    const inner=(p.tldr?`<div class="pl" style="margin-top:2px">tldr</div><ul class="bul tldr">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
-      `<div class="pl">context</div><ul class="bul">${p.ctx.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
-      `<div class="pl">thesis · three prongs</div><div class="ans thesis"><b>last sentence of paragraph one</b>${esc(p.thesis)}</div>`+
-      p.body.map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">analysis · what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
-      `<div class="pl">conclusion</div><ul class="bul">${p.concl.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
-    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
-    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on));if(on&&!REDUCED)setTimeout(()=>row.scrollIntoView({block:"start",behavior:"smooth"}),60)});
-    g.appendChild(row); g.appendChild(body);
-    sec.appendChild(g);
-  });
-}
-
-/* leq */
-function buildLeq(sec){
-  const L=GUIDE.leq;
-  sec.appendChild(shead("how it runs"));
-  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p><p>${fmt(L.math)}</p>`));
-  sec.appendChild(shead("the class rubric","six rows · 0 to 10 each · 60 total"));
-  const g=el("div","group");
-  L.rows.forEach(r=>{
-    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","true");
-    row.innerHTML=`<span class="rt"><span class="rn">${esc(r.n)}</span></span>`+CHEV;
-    const body=el("div","body on",`<div><div class="in"><div class="callout ok" style="margin-top:0"><span class="cl">earns it</span>${fmt(r.earn)}</div><div class="callout warn"><span class="cl">loses it</span>${fmt(r.lose)}</div><div class="callout cls"><span class="cl">class tips</span>${fmt(r.cls)}</div></div></div>`);
-    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
-    g.appendChild(row); g.appendChild(body);
-  });
-  sec.appendChild(g);
-  sec.appendChild(el("div","card",`<div class="terms" style="margin-top:0">${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
-  sec.appendChild(shead("the shape"));
-  sec.appendChild(el("div","card",`<ol class="steps" style="margin-top:0">${L.shape.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`));
-  sec.appendChild(shead("40 minutes","minute by minute"));
-  const pc=el("div","card");
-  pc.innerHTML=`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m};background:${p.c}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>`+
-    `<ol class="steps">${L.pace.map(p=>`<li><b class="pl2" style="color:${p.c}">${esc(p.l)} · ${p.m} min</b><br>${fmt(p.t)}</li>`).join("")}</ol>`;
-  sec.appendChild(pc);
-  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
-    sec.appendChild(shead("abbreviations"));
-    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+  if(list.some(s=>s.w===3)||list.some(s=>s.w===2))toc.insertAdjacentHTML("beforeend",`<div class="leg"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`);
+  wrap.appendChild(toc); wrap.appendChild(col); sec.appendChild(wrap);
+  wireEx(col);
+  const links=[...toc.querySelectorAll("a")];
+  links.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}));
+  if("IntersectionObserver" in window){
+    const vis=new Map();
+    const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target.id,e.isIntersecting));
+      const first=links.find(a=>vis.get(a.getAttribute("href").slice(1)));
+      if(first){links.forEach(a=>a.classList.toggle("on",a===first));if(getComputedStyle(toc).display==="flex"){const l=first.offsetLeft-toc.clientWidth/2+first.offsetWidth/2;toc.scrollTo({left:l,behavior:REDUCED?"auto":"smooth"})}}
+    },{rootMargin:"-20% 0px -55% 0px"});
+    links.forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));if(t)io.observe(t)});
   }
 }
 
 /* practice mc */
+let SCORE={done:0,right:0,total:0};
+function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
-  const qs=GUIDE.practice||[]; let done=0, right=0;
-  sec.appendChild(shead("practice",`${qs.length} questions`));
-  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
+  sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
+  const g=el("div","qgrid");
   qs.forEach((q,i)=>{
     const card=el("div","group q");
-    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
-      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
-      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
     card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
       if(card.classList.contains("done"))return;
       card.classList.add("done"); const j=+b.dataset.i;
-      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
-      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+      if(j===q.a){b.classList.add("right");SCORE.right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      SCORE.done++; $("#scn").textContent=SCORE.right; scoreVis();
     }));
-    sec.appendChild(card);
+    g.appendChild(card);
   });
-  sec.appendChild(sc);
-  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  sec.appendChild(g);
+  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
 }
 
-/* problems / worked examples */
+/* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
+function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps">${st.map(s=>`<li>${plain(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${plain(m)}</div><div class="wy">${y?plain(y):""}</div></li>`}).join("")}</ul>`}
 function buildProblems(sec){
   const ps=GUIDE.problems||[];
   sec.appendChild(shead("problems",`${ps.length} to work`));
+  const g=el("div","pgrid");
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
-    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal"><ol class="steps" style="margin-top:0">${(p.steps||[]).map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
     const go=card.querySelector(".go");
     go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
-    sec.appendChild(card);
+    g.appendChild(card);
   });
+  sec.appendChild(g);
 }
 
 /* formulas */
 function buildFormulas(sec){
   const fs=GUIDE.formulas||[];
   sec.appendChild(shead("formulas",`${fs.length}`));
-  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+  sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
 }
 
-/* flashcards */
+/* flashcards: flip deck, plus the whole list */
 function buildCards(sec){
   const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
-  sec.appendChild(shead("cards",`${cs.length}`));
-  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
-  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
-  const cnt=nav.querySelector("#cnt");
-  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
-  const flip=()=>fc.classList.toggle("flip");
-  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
-  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
-  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
-  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
-  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
-  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  sec.appendChild(shead("cards",`${cs.length} · tap to flip, swipe for next`));
+  const dk=el("div","dk");
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  sec.appendChild(dk);
+  const cnt=nav.querySelector(".cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const go=d=>{i=(i+d+cs.length)%cs.length;draw()};
+  fc.addEventListener("click",()=>fc.classList.toggle("flip")); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();fc.classList.toggle("flip")}});
+  nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
+  nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
+  nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
+  sec.appendChild(shead("all cards",`${cs.length}`));
+  sec.appendChild(el("div","clist",cs.map(c=>`<div><b>${plain(c.f)}</b><span>${plain(c.b)}</span></div>`).join("")));
 }
 
 /* timeline */
 function buildTimeline(sec){
   const ts=GUIDE.timeline||[];
   sec.appendChild(shead("timeline",`${ts.length} events`));
-  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+  sec.appendChild(el("div","tln",ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${plain(t.t)}</div>${t.d?`<div class="d">${plain(t.d)}</div>`:"<div></div>"}</div>`).join("")));
 }
 
 /* checklist */
 function buildChecklist(sec){
   const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
   sec.appendChild(shead("checklist",`${cs.length} items`));
-  const g=el("div","group");
+  const g=el("div","ckg");
   cs.forEach((c,i)=>{
-    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${plain(c.t)}</span>${c.d?`<span class="d">${plain(c.d)}</span>`:""}</span>`);
     b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
     g.appendChild(b);
   });
   sec.appendChild(g);
 }
+
+/* cram sheet: [{h, d, items:[{n, y, t}]}] */
+function buildCram(sec){
+  const gs=GUIDE.cram||[];
+  sec.appendChild(shead("cram sheet","one line each"));
+  sec.appendChild(el("div","cgrid",gs.map(g=>`<div class="group"><div class="gh">${esc(g.h||"")}<span>${esc(g.d||String((g.items||[]).length))}</span></div>${(g.items||[]).map(c=>`<div class="cr"><div class="n"><span>${plain(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${plain(c.t)}</div></div>`).join("")}</div>`).join("")));
+}
+
+/* tables pane: [{h, d, cols, rows}] */
+function buildTables(sec){
+  const w=el("div","tpane");
+  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
+  sec.appendChild(w);
+}
+
+/* essay panes (used by the LEQ guide): prompts + leq + fn */
+function buildPrompts(sec){
+  const ps=GUIDE.prompts||[];
+  if(has(GUIDE.prompts_note)){sec.appendChild(shead("how points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
+  sec.appendChild(shead("possible prompts",`${ps.length}`));
+  ps.forEach((p,i)=>{
+    scope();
+    const g=el("div","group");
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
+    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn">${esc(p.q)}</span></span>`+CHEV;
+    const inner=(p.tldr?`<div class="pl">tldr</div><ul class="bul">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
+      `<div class="pl">context</div><ul class="bul">${(p.ctx||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">thesis</div><div class="ans">${esc(p.thesis)}</div>`+
+      (p.body||[]).map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
+      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
+    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body); sec.appendChild(g);
+  });
+  SEEN=null;
+}
+function buildLeq(sec){
+  const L=GUIDE.leq;
+  sec.appendChild(shead("how it runs"));
+  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p>${L.math?`<p>${fmt(L.math)}</p>`:""}`));
+  if(has(L.rows)){
+    sec.appendChild(shead("the rubric",`${L.rows.length} rows`));
+    sec.appendChild(el("div","tbw",`<table class="tbl"><thead><tr><th>row</th><th>earns it</th><th>loses it</th><th>class tips</th></tr></thead><tbody>${L.rows.map(r=>`<tr><td data-l="row">${esc(r.n)}</td><td data-l="earns it">${plain(r.earn)}</td><td data-l="loses it">${plain(r.lose)}</td><td data-l="class tips">${plain(r.cls||"")}</td></tr>`).join("")}</tbody></table>`));
+  }
+  if(has(L.codes))sec.appendChild(el("div","card",`<div class="terms"><span class="tl">margin codes</span>${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
+  if(has(L.shape)){sec.appendChild(shead("the shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
+  if(has(L.pace)){
+    const tot=L.pace.reduce((a,p)=>a+p.m,0);
+    sec.appendChild(shead(`${tot} minutes`,"minute by minute"));
+    sec.appendChild(el("div","card",`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>${B.steps(L.pace.map(p=>`**${p.l} · ${p.m} min.** ${p.t}`))}`));
+  }
+  if(has(GUIDE.fn)){sec.appendChild(shead("notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
+}
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables,leq:buildLeq,prompts:buildPrompts};
+const PANES=(GUIDE.panes||[]).filter(id=>builders[id]&&(has(GUIDE[id])||(id==="outline"&&has(GUIDE.top))));
+const tabs=[];
+PANES.forEach(id=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  scope(); builders[id](sec); SEEN=null; root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+let CUR=null;
+function show(id,user){
+  CUR=id;
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); scoreVis();
+  if(user){try{history.replaceState(null,"","#"+id)}catch(e){}; const top=panesEl.getBoundingClientRect().top+scrollY-bar.offsetHeight-12; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"})}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
 
 /* theme (shared with the homepage via localStorage "theme") */
 const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
@@ -1537,10 +2145,10 @@ segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
 })();
 requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
-document.fonts?.ready.then(()=>{moveThumb();moveP()});
+document.fonts?.ready.then(()=>{moveThumb();moveP();setBarH()});
 
-/* sticky bar shadow + staggered reveal */
-(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+/* sticky bar shadow, reading progress, staggered reveal */
+(function(){const p=$("#prog i");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6);const se=document.scrollingElement,h=se.scrollHeight-se.clientHeight;p.style.width=(h>0?Math.min(100,se.scrollTop/h*100):0)+"%"};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
 document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
 </script>
 <script defer src="/_vercel/insights/script.js"></script>

@@ -14,7 +14,7 @@
 <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template (kinari, sept 2026) ═══
+/* ═══ valentino guides · guide template v2 (kinari, wide layout, sept 29 2026) ═══
    Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
 @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
 @font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
@@ -38,15 +38,21 @@
   --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--barh,56px) + 58px)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
-  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+  padding-bottom:calc(56px + env(safe-area-inset-bottom))}
 button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
-.lc{text-transform:lowercase}
+:root{--maxw:1180px;--gut:clamp(14px,3.4vw,36px)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* reading aids */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;background:var(--cls)}
 
 /* bar */
 .bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
@@ -62,98 +68,282 @@ a{color:inherit;text-decoration:none}
 .seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .bar .seg{margin-left:auto}
 
-/* intro */
+/* hero */
 main{padding-top:22px}
-.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.cname{display:flex;align-items:center;gap:7px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t13);font-weight:600;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
 .cname svg{width:20px;height:20px;flex:none}
-.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
 .chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
 .chip.past{color:var(--ink3)}
-h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.05;text-transform:lowercase;text-wrap:balance}
-.sub{margin:0 0 18px;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:52ch;text-transform:lowercase}
+h2.title{margin:0 0 8px;font-family:var(--display);font-size:clamp(30px,5.2vw,50px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.02;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 16px;font-size:var(--t16);line-height:1.5;color:var(--ink2);max-width:70ch}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
 
 /* pane switcher */
-.panes{display:flex;gap:2px;margin:0 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none}
+.panes{display:inline-flex;max-width:100%;gap:2px;margin:6px 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none;vertical-align:top}
 .panes::-webkit-scrollbar{display:none}
-.panes button{flex:1 0 auto;position:relative;z-index:2;padding:7px 12px;border-radius:8px;text-align:center;font-size:var(--t13);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button{flex:0 0 auto;position:relative;z-index:2;padding:8px 16px;border-radius:8px;text-align:center;font-size:var(--t15);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
 .panes button[aria-selected="true"]{color:var(--on-accent)}
 .panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
 .panes.one{display:none}
-.pane{display:none}
+@media (max-width:599px){.panes{display:flex}.panes button{flex:1 0 auto;padding:7px 12px;font-size:var(--t13)}}
+.pane{display:none;container-type:inline-size}
 .pane.on{display:block;animation:rise .38s var(--spring) both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* section head */
-.sh{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+/* small section label */
+.sh{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
 .sh:first-child{margin-top:0}
-.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;white-space:nowrap}
 .sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
-.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;white-space:nowrap}
 
-/* cards + groups */
-.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+/* ═══ outline: side menu + all-open sections ═══ */
+.ol{display:grid;grid-template-columns:1fr;gap:0 32px;align-items:start}
+@media (min-width:960px){.ol{grid-template-columns:212px minmax(0,1fr)}}
+.toc{position:sticky;top:var(--barh,56px);z-index:30;background:var(--paper);margin:0 calc(var(--gut) * -1) 14px;padding:6px var(--gut) 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.toc::-webkit-scrollbar{display:none}
+.toc .tl{display:none}
+.toc a{flex:none;display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:var(--r-chip);font-size:var(--t13);font-weight:500;color:var(--ink2);border:1px solid var(--line);background:var(--surface);white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.toc a.on{color:var(--on-accent);background:var(--ink);border-color:var(--ink)}
+.toc i{flex:none;width:8px;height:8px;border-radius:3px;border:1.5px solid var(--cls)}
+.toc i.w3{background:var(--cls)} .toc i.w2{background:color-mix(in srgb,var(--cls) 40%,transparent)}
+.toc a.on i{border-color:var(--on-accent)} .toc a.on i.w3{background:var(--on-accent)}
+@media (min-width:960px){
+  .toc{top:calc(var(--barh,56px) + 12px);margin:0;padding:0;display:block;overflow:visible;border:0;background:none;max-height:calc(100vh - var(--barh,56px) - 32px);overflow-y:auto}
+  .toc .tl{display:block;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;margin:2px 0 8px 10px}
+  .toc a{display:flex;align-items:flex-start;white-space:normal;border:0;background:none;padding:7px 10px;line-height:1.3;border-radius:8px}
+  .toc a i{margin-top:5px}
+  .toc a:hover{background:var(--surface)}
+  .toc a.on{background:var(--surface);color:var(--ink);box-shadow:inset 2px 0 0 var(--cls);border-radius:0 8px 8px 0}
+  .toc a.on i{border-color:var(--cls)} .toc a.on i.w3{background:var(--cls)}
+  .toc .leg{display:flex;flex-direction:column;gap:4px;margin:14px 0 0 10px;padding-top:12px;border-top:1px solid var(--line);font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
+  .toc .leg span{display:flex;align-items:center;gap:7px}
+}
+.toc .leg{display:none}
+@media (min-width:960px){.toc .leg{display:flex}}
+
+/* start here tiles */
+.tops{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:26px;counter-reset:tp}
+.tops .tp{counter-increment:tp;position:relative;padding:14px 16px 14px 48px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
+.tops .tp::before{content:counter(tp);position:absolute;left:14px;top:13px;width:24px;height:24px;border-radius:7px;background:var(--cls);color:var(--surface);font-weight:650;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+
+/* section card */
+.sec{container-type:inline-size;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);margin-bottom:16px;scroll-margin-top:calc(var(--barh,56px) + 60px);overflow:hidden}
+@media (min-width:960px){.sec{scroll-margin-top:calc(var(--barh,56px) + 16px)}}
+.sec > header{display:flex;align-items:flex-start;gap:12px;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.sec .num{flex:none;font-family:var(--display);font-weight:var(--w-d);font-size:var(--t15);color:var(--cls);font-variant-numeric:tabular-nums;padding-top:4px;min-width:1.4em}
+.sec .ht{flex:1;min-width:0}
+.sec h3{margin:0;font-family:var(--display);font-size:clamp(20px,2.4vw,24px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.sec .sd{margin:3px 0 0;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;white-space:nowrap;margin-top:3px}
+@container (max-width:520px){.sec > header{flex-wrap:wrap;row-gap:6px}.sec .ht{flex:1 1 calc(100% - 3em)}.sec > header .w{order:3;margin:0 0 0 calc(1.4em + 12px)}}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 14%,transparent);color:var(--cls)}
+.sb{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:16px 18px 18px}
+@container (min-width:700px){
+  .sb .duo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+  .sb .duo.wide-side{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+}
+.sb .duo{display:grid;gap:16px}
+.duo > .main,.duo > .side{container-type:inline-size;min-width:0}
+.sb .main > :first-child{margin-top:0}
+.sb .main.solo{max-width:72ch}
+.sb p{margin:0 0 10px;line-height:1.55}
+.sb p:last-child{margin-bottom:0}
+b.kw{font-weight:680;color:var(--ink)}
+
+/* bullets */
+.pts{margin:10px 0 0;padding:0;list-style:none}
+.pts:first-child{margin-top:0}
+.pts li{position:relative;padding:4px 0 4px 18px;line-height:1.5}
+.pts li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:2px;background:var(--cls)}
+.pts.two{columns:2 220px;column-gap:24px}
+.pts.two li{break-inside:avoid}
+
+/* label rows */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:14px}
+.rows:first-child{margin-top:0}
+.rows dt{padding:7px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:22px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:7px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* numbered steps */
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps:first-child{margin-top:0}
+.steps li{position:relative;padding:7px 0 7px 32px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:21px;height:21px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:650;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+
+/* flow: cause -> effect chain */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 0;margin:0;padding:0;list-style:none}
+.flow li{position:relative;flex:1 1 0;min-width:120px;display:flex;align-items:center;padding:10px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.35;margin-right:26px}
+.flow li:last-child{margin-right:0;border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:12px;height:12px;margin-top:-6px;background:var(--ink3);clip-path:polygon(0 15%,100% 50%,0 85%)}
+@container (max-width:519px){
+  .flow{flex-direction:column;gap:0}
+  .flow li{margin:0 0 22px;min-width:0}
+  .flow li:last-child{margin-bottom:0}
+  .flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;margin:0 0 0 -6px;clip-path:polygon(15% 0,85% 0,50% 100%)}
+}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tiles > div{padding:11px 13px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);border-top:3px solid var(--cls)}
+.tiles h5{margin:0 0 3px;font-size:var(--t15);font-weight:650;line-height:1.3}
+.tiles p{margin:0;font-size:var(--t13);line-height:1.45;color:var(--ink)}
+.tiles .tk{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--cls);text-transform:lowercase}
+
+/* tree (org chart; indented list on narrow cards) */
+.tree{overflow-x:auto}
+.tree ul{position:relative;display:flex;justify-content:center;margin:0;padding:16px 0 0;list-style:none}
+.tree > ul{padding-top:0}
+.tree li{position:relative;flex:1 1 0;padding:16px 4px 0;text-align:center;min-width:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:16px;border-top:1.5px solid var(--line2)}
+.tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line2)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:1.5px solid var(--line2);border-radius:0 6px 0 0}
+.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:16px;border-left:1.5px solid var(--line2)}
+.tree .nd{display:inline-block;max-width:100%;padding:7px 10px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t13);line-height:1.3;vertical-align:top}
+.tree .nd b{display:block;font-size:var(--t15);font-weight:650}
+.tree .nd span{display:block;color:var(--ink2);margin-top:2px}
+.tree > ul > li > .nd{background:var(--cls);border-color:var(--cls);color:var(--surface)}
+.tree > ul > li > .nd span{color:color-mix(in srgb,var(--surface) 85%,transparent)}
+.tree > ul > li > ul > li > .nd{border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+@container (max-width:379px){
+  .tree ul{display:block;padding:0 0 0 18px}
+  .tree > ul{padding-left:0}
+  .tree li{padding:6px 0 0 16px;text-align:left}
+  .tree > ul > li{padding-left:0}
+  .tree li::before{top:0;left:0;right:auto;width:12px;height:22px;border-top:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li::after{top:22px;left:0;right:auto;width:0;height:calc(100% - 22px);border:0;border-left:1.5px solid var(--line2);border-radius:0}
+  .tree li:last-child::after{display:none}
+  .tree li:first-child::before,.tree li:last-child::before{border-top:0;border-right:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li:first-child::after{border-radius:0}
+  .tree > ul > li::before,.tree > ul > li::after{display:none}
+  .tree ul ul::before{display:none}
+  .tree li:only-child::before{display:block}
+  .tree li:only-child{padding-top:6px}
+  .tree > ul > li:only-child{padding:0}
+  .tree > ul > li:only-child::before,.tree > ul > li:only-child::after{display:none}
+}
+
+/* figure (inline svg drawn per guide) */
+.fig{margin:0;padding:14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.fig svg{display:block;width:100%;height:auto;max-height:440px;font-family:var(--sans);overflow:visible}
+.fig figcaption{margin-top:8px;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.fig .ln{fill:none;stroke:var(--ink2);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .lc{fill:none;stroke:var(--cls);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .la{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .lb{fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+.fig .lg{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round}
+.fig .dash{stroke-dasharray:5 5}
+.fig .fc{fill:var(--cls)} .fig .fa{fill:var(--accent)} .fig .fb{fill:var(--bad)} .fig .fg{fill:var(--good)} .fig .fi{fill:var(--ink)}
+.fig .fs{fill:color-mix(in srgb,var(--cls) 18%,var(--surface))}
+.fig .fsa{fill:color-mix(in srgb,var(--accent) 16%,var(--surface))}
+.fig .fp{fill:var(--surface);stroke:var(--line2);stroke-width:1.2}
+.fig .fn{fill:none}
+.fig text{fill:var(--ink);font-size:14px}
+.fig .tm{fill:var(--ink2);font-size:12.5px}
+.fig .tb{font-weight:650}
+.fig .tc{fill:var(--cls);font-weight:650}
+.fig .ta{fill:var(--accent);font-weight:650}
+.fig .tw{fill:var(--surface);font-weight:650}
+.fig .tbd{fill:var(--bad);font-weight:650}
+.fig .mid{text-anchor:middle} .fig .end{text-anchor:end}
+.mk-ink{fill:var(--ink2)} .mk-cls{fill:var(--cls)} .mk-acc{fill:var(--accent)} .mk-bad{fill:var(--bad)}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.cmp > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.cmp h5{margin:0 0 6px;font-size:var(--t13);font-weight:650;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15);line-height:1.45} .cmp p:last-child{margin:0}
+
+/* tables */
+.tbw{overflow-x:auto;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:650}
+.tcap{margin:0 0 8px;font-size:var(--t13);font-weight:600;color:var(--ink2);text-transform:lowercase}
+@container (max-width:519px){
+  .tbw .tbl thead{display:none}
+  .tbw .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbw .tbl tbody tr:first-child{border-top:0}
+  .tbw .tbl td{display:block;padding:0;border:0}
+  .tbw .tbl.two td:not(:first-child)::before{display:none}
+  .tbw .tbl.two td:first-child{margin-bottom:2px}
+  .tbw .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* on the test (example) */
+.exs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.tq{border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.tq .el{display:flex;align-items:center;gap:6px;padding:10px 13px 0;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--accent);text-transform:lowercase}
+.tq .el svg{flex:none}
+.tq .eq{padding:4px 13px 12px;font-size:var(--t15);line-height:1.45;font-weight:500;flex:1}
+.tq .eb{display:flex;align-items:center;justify-content:space-between;width:100%;padding:9px 13px;border-top:1px solid var(--line);font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase}
+.tq .eb .chev{transition:transform .24s var(--spring)}
+.tq.on .eb .chev{transform:rotate(90deg)}
+.tq .ea{display:none;padding:10px 13px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.tq.on .ea{display:block;animation:rise .3s var(--spring) both}
+.tq .ea b.aa{display:block;font-weight:680;margin-bottom:3px}
+.tq .ea .why{color:var(--ink2)}
+
+/* watch out + callouts */
+.watch{border-radius:var(--r-btn);background:color-mix(in srgb,var(--bad) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 30%,var(--line));padding:11px 14px 12px}
+.watch .wl,.callout .cl{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--bad);text-transform:lowercase;margin-bottom:4px}
+.watch ul{margin:0;padding:0;list-style:none}
+.watch li{position:relative;padding:3px 0 3px 16px;font-size:var(--t15);line-height:1.45}
+.watch li::before{content:"";position:absolute;left:1px;top:11px;width:8px;height:2px;border-radius:1px;background:var(--bad)}
+.callout{border-radius:var(--r-btn);padding:10px 14px 11px;font-size:var(--t15);line-height:1.45;background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--cls)}
+.callout.ok{border-left-color:var(--good)} .callout.ok .cl{color:var(--good)}
+.callout.ex{border-left-color:var(--accent)} .callout.ex .cl{color:var(--accent)}
+.callout.cls .cl{color:var(--cls)}
+
+/* terms */
+.terms{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.terms .tl{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;margin-right:2px}
+.term{font-size:var(--t13);font-weight:500;padding:3px 9px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface2);color:var(--ink)}
+
+.abbr{padding:14px 16px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);color:var(--ink2);line-height:1.7}
+.abbr b{color:var(--ink);font-weight:650}
+
+/* generic cards / groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px}
 .card.top{border-left:4px solid var(--cls);padding-left:15px}
 .card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
-.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:12px}
 .row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
 .row + .row,.body + .row{border-top:1px solid var(--line)}
-.row:active{background:var(--surface2)}
 @media (hover:hover){.row:hover{background:var(--surface2)}}
 .rt{min-width:0;flex:1}
-.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3}
+.rn{display:block;font-size:var(--t16);font-weight:550;line-height:1.3}
 .rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
 .chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
 .row[aria-expanded="true"] .chev{transform:rotate(90deg)}
-.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;letter-spacing:0}
-.w3{background:var(--cls);color:var(--surface)}
-.w2{background:color-mix(in srgb,var(--cls) 16%,transparent);color:var(--cls)}
 .body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
 .body.on{grid-template-rows:1fr}
 .body > div{overflow:hidden}
-.body .in{padding:12px 16px 14px}
-.body p{margin:0 0 10px;color:var(--ink);line-height:1.5}
-.body p:last-child{margin-bottom:0}
-
-/* prose emphasis */
-.kw{font-weight:650;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cls);text-decoration-thickness:2px;text-underline-offset:3px}
-.hl{background:color-mix(in srgb,var(--cls) 20%,transparent);color:var(--ink);border-radius:4px;padding:1px 4px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.trap{color:var(--bad);font-weight:600}
-.terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.term{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);border:1px solid color-mix(in srgb,var(--cls) 40%,var(--line));background:color-mix(in srgb,var(--cls) 10%,transparent);color:var(--ink)}
-.callout{margin:10px 0 0;padding:9px 12px 9px 13px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cls);color:var(--ink)}
-.callout.warn{border-left-color:var(--bad)} .callout.ex{border-left-color:var(--accent)} .callout.ok{border-left-color:var(--good)}
-.callout .cl{font-size:11.5px;font-weight:600;text-transform:lowercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:2px}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-@media (max-width:479px){.cmp{grid-template-columns:1fr}}
-.cmp > div{padding:10px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
-.cmp h5{margin:0 0 4px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
-.cmp p{margin:0 0 6px;font-size:var(--t15)} .cmp p:last-child{margin:0}
-.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
-.steps li{position:relative;padding:6px 0 6px 30px;font-size:var(--t15);line-height:1.45;counter-increment:s}
-.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:600;display:grid;place-items:center}
-.steps li + li{border-top:1px solid var(--line)}
-/* line-by-line work | why (math and physics worked steps) */
-.work{margin:0;padding:0;list-style:none}
-.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
-.work li + li{border-top:1px solid var(--line)}
-.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
-.work .wm.cont{padding-left:1.1em}
-.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink);padding-left:12px;border-left:2px solid var(--line)}
-.work .wy:empty{border-left-color:transparent}
-.work li.hd{padding:0 0 4px}
-.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
-.work li.hd .wh + .wh{padding-left:14px}
-@media (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0;color:var(--ink2)}.work li.hd{display:none}}
-.abbr{font-size:var(--t13);color:var(--ink2);line-height:1.6}
-.abbr b{color:var(--ink);font-weight:600}
+.body .in{padding:12px 16px 14px;display:grid;gap:10px}
+.body p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
 
 /* practice mc */
-.q{margin-bottom:10px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:12px;align-items:start}
+.q{margin:0}
 .q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
-.q .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
 .opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
-.opt:active{background:var(--surface2)}
 @media (hover:hover){.q:not(.done) .opt:hover{background:var(--surface2)}}
 .opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
 .q.done .opt{cursor:default}
@@ -161,103 +351,145 @@ h2.title{margin:0 0 6px;font-family:var(--display);font-size:clamp(28px,7.6vw,38
 .opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
 .opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
 .opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
-.why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q .why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
 .q.done .why{display:block}
-.score{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:var(--t15)}
-.score b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t26);letter-spacing:var(--ls-d);font-variant-numeric:tabular-nums}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.wide{width:100%}
-.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
-.pdfs a{text-decoration:none}
-.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
-@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
-.btn:active{transform:scale(.987)}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease)}
+.scorepill.show{transform:translateX(-50%);opacity:1;pointer-events:auto}
+.scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
+.scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
 
-/* problems + worked examples */
-.prob .qt{padding:14px 16px}
-.reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
-.prob.on .reveal{display:block}
-.prob .go{border-top:1px solid var(--line);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
-.ans{margin-top:10px;padding:8px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15)}
+/* problems */
+.pgrid{display:grid;gap:12px}
+.prob{container-type:inline-size;margin:0}
+.prob .pi{display:grid;grid-template-columns:minmax(0,1fr)}
+.prob .qt{padding:14px 16px;font-size:var(--t16);font-weight:500;line-height:1.45}
+.prob .go{border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.prob .reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block;animation:rise .3s var(--spring) both}
+.prob.on .go .chev{transform:rotate(90deg)}
+@container (min-width:820px){
+  .prob .pi{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .prob .qside{border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .prob .qside .qt{flex:1}
+  .prob .reveal{border-top:0;display:block;min-height:100%}
+  .prob:not(.on) .reveal::before{content:"work it first, then show the steps";display:grid;place-items:center;height:100%;min-height:120px;font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+  .prob:not(.on) .reveal > *{display:none}
+}
+.ans{margin-top:10px;padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);border-left:3px solid var(--good)}
 .ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+.work{margin:0;padding:0;list-style:none}
+.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
+.work li + li{border-top:1px solid var(--line)}
+.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.work .wm.cont{padding-left:1.1em}
+.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink2);padding-left:12px;border-left:2px solid var(--line)}
+.work .wy:empty{border-left-color:transparent}
+.work li.hd{padding:0 0 4px}
+.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
+.work li.hd .wh + .wh{padding-left:14px}
+@container (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0}.work li.hd{display:none}}
 
 /* formulas */
-.fx{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
-.fx:first-child{border-top:0}
-.fx .n{font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
-.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t15);font-weight:500;letter-spacing:0;text-align:right;white-space:nowrap}
-.fx .note{grid-column:1/-1;font-size:var(--t12);color:var(--ink3);line-height:1.45}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.fx{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.fx .n{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t16);font-weight:500;overflow-wrap:anywhere}
+.fx .note{font-size:var(--t13);color:var(--ink2);line-height:1.45}
 
 /* flashcards */
-.deck{position:relative;perspective:1200px;margin-bottom:10px}
-.fc{position:relative;min-height:190px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.dk{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.deck{position:relative;perspective:1200px}
+.fc{position:relative;min-height:230px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
 .fc.flip{transform:rotateY(180deg)}
-.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.fc .f{font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
-.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t15);line-height:1.45;color:var(--ink)}
-.fc .tag{position:absolute;left:14px;top:12px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:22px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t16);line-height:1.5;color:var(--ink)}
+.fc .tag{position:absolute;left:16px;top:13px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
 .fc .b .tag{color:var(--cls)}
-.dnav{display:flex;align-items:center;gap:8px}
+.dnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px;margin-top:6px}
+.clist > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.clist b{display:block;font-weight:650;margin-bottom:3px}
+.clist span{font-size:var(--t15);line-height:1.45;color:var(--ink)}
 
 /* timeline */
-.tl{position:relative;padding-left:22px}
-.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl .ev{position:relative;padding:6px 0 12px}
-.tl .ev::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:3px;background:var(--cls)}
-.tl .y{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);font-variant-numeric:tabular-nums;text-transform:lowercase}
-.tl .t{font-size:var(--t16);font-weight:500;line-height:1.35}
-.tl .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+.tln{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.tln .ev{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 18px;padding:12px 16px;border-top:1px solid var(--line);position:relative}
+.tln .ev:first-child{border-top:0}
+.tln .y{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t16);color:var(--cls);font-variant-numeric:tabular-nums;line-height:1.35}
+.tln .t{font-size:var(--t16);font-weight:600;line-height:1.35}
+.tln .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+@media (min-width:900px){.tln .ev{grid-template-columns:110px minmax(0,.9fr) minmax(0,1.3fr)}.tln .d{margin-top:0}}
+@media (max-width:479px){.tln .ev{grid-template-columns:1fr;gap:2px}}
+
+/* cram */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:12px;align-items:start}
+.cgrid .group{margin:0}
+.cgrid .gh{padding:11px 14px;border-bottom:1px solid var(--line);font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;display:flex;justify-content:space-between;gap:10px}
+.cgrid .gh span{color:var(--ink3);font-weight:500}
+.cr{display:grid;grid-template-columns:minmax(0,10em) 1fr;gap:2px 14px;padding:9px 14px;border-top:1px solid var(--line)}
+.gh + .cr{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:650;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables pane */
+.tpane{display:grid;gap:22px}
+.tpane .tblk{container-type:inline-size}
 
 /* checklist */
-.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4}
-.ck:first-child{border-top:0}
+.ckg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:0 12px}
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:12px 14px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.4;background:var(--surface);border:1px solid var(--line);margin-bottom:8px}
 .ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
 .ck.on .box{background:var(--good);border-color:var(--good)}
 .ck.on .t{color:var(--ink3);text-decoration:line-through}
 .ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
 
-/* label rows inside an outline section: [["why","..."],["what","..."]] */
-.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px}
-.rows dt{padding:6px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:21.75px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
-.rows dd{margin:0;padding:6px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
-.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
-
-/* cram sheet */
-.cr{display:grid;grid-template-columns:minmax(0,11em) 1fr;gap:2px 14px;padding:10px 14px;border-top:1px solid var(--line)}
-.cr:first-child{border-top:0}
-.cr .n{font-size:var(--t15);font-weight:600;line-height:1.35}
-.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
-.cr .t{font-size:var(--t15);line-height:1.45}
-@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
-
-/* tables */
-.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
-.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line)}
-.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
-.tbl tbody tr:first-child td{border-top:0}
-.tbl td:first-child{font-weight:600}
-@media (max-width:599px){
-  .tbl thead{display:none}
-  .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
-  .tbl tbody tr:first-child{border-top:0}
-  .tbl td{display:block;padding:0;border:0}
-  .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
-}
+/* essay panes (leq / prompts) */
+.bul{margin:0;padding-left:18px}
+.bul li{margin:3px 0;line-height:1.45}
+.pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin-top:6px}
+.so{padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:var(--t15)}
+.so .cl{display:block;font-size:11.5px;font-weight:650;color:var(--accent);letter-spacing:.05em;text-transform:lowercase}
+.pace{display:flex;height:34px;border-radius:8px;overflow:hidden;gap:2px}
+.pace > div{display:grid;place-items:center;color:var(--surface);font-size:var(--t12);font-weight:650;background:var(--cls)}
+.pace > div:nth-child(2n){background:var(--accent)}
+.pace > div:nth-child(3n){background:var(--ink2)}
+.fnl{margin:0;padding-left:20px;font-size:var(--t15)}
+.fnl li{margin:4px 0}
 
 /* footer */
-footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
 footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
 footer .upd{display:block;margin-top:6px}
 
-/* reveal on load */
 .rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+
+@media print{
+  :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
+  .bar,.toc,.panes,.skipl,#prog,.scorepill,.tq .eb,.prob .go,.seg{display:none !important}
+  .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
+  .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
+  .prob:not(.on) .reveal::before{display:none}
+  .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
+  @page{margin:.6in}
+}
 </style>
 </head>
 <body>
+<a class="skipl" href="#main">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-ink"/></marker>
+  <marker id="ahc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-cls"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-acc"/></marker>
+  <marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-bad"/></marker>
+</defs></svg>
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="home" href="/" aria-label="all guides">
@@ -278,7 +510,7 @@ footer .upd{display:block;margin-top:6px}
   <h2 class="title rv" id="title"></h2>
   <p class="sub rv" id="sub" hidden></p>
   <div class="pdfs rv" id="pdfs" hidden></div>
-  <div class="panes rv" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+  <div class="rv"><div class="panes" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div></div>
   <div id="root" class="rv"></div>
   <footer>
     study guide written by a student, free to use. not affiliated with the school.
@@ -286,12 +518,20 @@ footer .upd{display:block;margin-top:6px}
     <span class="upd" id="upd"></span>
   </footer>
 </main>
+<div class="scorepill" id="score" aria-live="polite"><span><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
-   GUIDE — the only thing to edit. Delete panes you don't need from
-   `panes`; delete the matching data too. Prose accepts **term**,
-   ==fact== and !!trap!!. Everything is rendered from this object.
+   GUIDE: the only thing to edit. Everything renders from this object.
+   Rules (sept 29 2026, from reader feedback):
+   · bold a key term with **term** the first time it appears in a
+     section. Nothing else is marked inline: no highlights, no
+     underlines, no red text. (The renderer bolds each term once per
+     section and ignores legacy ==x== / !!x!! markers.)
+   · traps go in `watch`, never in the prose.
+   · two short paragraphs max per section; everything else is a shape:
+     pts, flow, steps, rows, tiles, tree, table, cmp, fig.
+   · every tested section gets at least one `ex` (see it on a test).
    ═══════════════════════════════════════════════════════════════════ */
 const GUIDE = {
  "id": "biz",
@@ -304,16 +544,15 @@ const GUIDE = {
  "updated": "sept 29, 2026",
  "panes": [
   "outline",
-  "tables",
   "practice",
   "cards"
  ],
  "top": [
-  "**Gross profit** = sales revenue − COGS (==$20 − $8 = $12==). **Gross margin %** = gross profit ÷ sales revenue (==$12 ÷ $20 = 60%==). !!Never divide by COGS.!!",
-  "COGS up means gross profit and margin go ==down==. Typical margins: manufacturers ==25-35%==, tech ==70%==.",
-  "**Information management** turns relevant data into ==informed decisions==. **Relevant data** is only the useful data; **raw data** isn’t useful yet.",
-  "Ownership types differ on ==taxes, liability, decision making==. **LLP** vs **LLC**: ==P for partners== (a law firm), ==C for company==.",
-  "Competition helps ==the economy (jobs) and the consumer==. **Operations** is ==where strategy gets executed==."
+  "**Gross profit** = sales revenue − COGS ($20 − $8 = $12). Gross margin % = $12 ÷ $20 = 60%. Never divide by COGS.",
+  "COGS up: gross profit and margin go down. Standard margins: manufacturers 25–35%, tech 70%.",
+  "**Relevant data** is only the useful data; raw data isn’t useful yet. Information management turns it into informed decisions.",
+  "Ownership types differ on taxes, liability, decision making. **LLP** = P for partners (a law firm); LLC = C for company.",
+  "Competition helps the economy (jobs) and the consumer. **Operations** is where strategy gets executed."
  ],
  "outline": [
   {
@@ -321,70 +560,114 @@ const GUIDE = {
    "t": "How the test asks",
    "d": "the formats Exam #1 used",
    "p": [
-    "Know each term both ways: from its name and from its definition. Exam #1 mixed ==matching, true/false, fill-in, multiple choice and short answer==."
+    "Know each term both ways: name to definition and back. Exam #1 mixed these formats with multiple choice."
    ],
-   "rows": [
-    [
-     "matching",
-     "A word bank of terms, then definitions to label with them."
-    ],
-    [
-     "true/false",
-     "A real definition attached to the ==wrong term==, or a ==wrong number== (37% where the fact is 57%). Check both."
-    ],
-    [
-     "fill in",
-     "Name the term from its definition."
-    ],
-    [
-     "short answer",
-     "Explain it and ==give a real example== (about 2 points each), or list a set (“name 4…”)."
-    ]
+   "tiles": [
+    {
+     "h": "Matching",
+     "t": "A word bank of terms; label the definitions."
+    },
+    {
+     "h": "True/false",
+     "t": "A real definition on the wrong term, or a wrong number (37% where the fact is 57%). Check both."
+    },
+    {
+     "h": "Fill in",
+     "t": "Name the term from its definition."
+    },
+    {
+     "h": "Short answer",
+     "t": "Explain it and give a real example (about 2 points each), or list a set (“name 4…”)."
+    }
    ],
-   "terms": []
+   "ex": [
+    {
+     "q": "True or false: the industry standard gross margin for manufacturers is 70%.",
+     "a": "False: 25–35%.",
+     "why": "70% is tech. Swapped numbers are the trap."
+    },
+    {
+     "q": "True or false: an oligopoly is when one company controls supply.",
+     "a": "False: that’s a monopoly.",
+     "why": "Oligopoly = a few companies. Real definition, wrong term."
+    }
+   ]
   },
   {
    "w": 3,
    "t": "Gross profit equation",
    "d": "LP 1-6 · worked two ways",
    "p": [
-    "**COGS** (cost of goods sold) is what the goods you sell cost you: materials, labor and parts. For a shoe: material, labor, rubber, glue.",
-    "**Gross margin %** and **gross profit margin** are ==the same thing==: gross profit expressed as a percent."
+    "**COGS** (cost of goods sold): what the goods you sell cost you: materials, labor, parts. A shoe: material, labor, rubber, glue.",
+    "Sales revenue − COGS = **gross profit**. Gross profit ÷ sales revenue × 100 = **gross margin %** (same as **gross profit margin**)."
    ],
-   "steps": [
-    "Sales revenue − COGS = **gross profit**: ==$20 − $8 = $12==. (Aliyah’s Candles sells the candle to Jimmy’s Candle Store for $8; Jimmy’s sells it for $20.)",
-    "Gross profit ÷ sales revenue = gross margin %: ==$12 ÷ $20 = 0.6 × 100 = 60%==.",
-    "Nike shoe: ==$100 − $25 = $75== gross profit, a 75% gross margin."
-   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 330 184' role='img' aria-label='Two $20 sales revenue bars. COGS $8 leaves $12 gross profit, a 60% margin. COGS $10 leaves $10, a 50% margin.'><text x='62' y='20' class='tm'>$20 candle, COGS $8</text><rect x='62' y='28' width='102' height='40' rx='6' class='fp'/><text x='113' y='53' class='mid'>COGS $8</text><rect x='166' y='28' width='156' height='40' rx='6' class='fc'/><text x='244' y='53' class='tw mid'>gross profit $12</text><text x='54' y='48' class='tc end'>60%</text><text x='54' y='63' class='tm end'>margin</text><text x='62' y='94' class='tm'>COGS rises to $10</text><rect x='62' y='102' width='128' height='40' rx='6' class='fp'/><text x='126' y='127' class='mid'>COGS $10</text><rect x='192' y='102' width='130' height='40' rx='6' class='fc'/><text x='257' y='127' class='tw mid'>profit $10</text><text x='54' y='122' class='tc end'>50%</text><text x='54' y='137' class='tm end'>margin</text><path d='M62 152v7h260v-7' class='ln'/><text x='192' y='178' class='tm mid'>divide by the whole bar: $20 revenue</text></svg>",
+    "cap": "Same $20 price: COGS up from $8 to $10 drops the margin from 60% to 50%."
+   },
    "rows": [
     [
      "COGS goes up",
-     "Gross profit ==goes down== and gross margin % ==goes down==. ($8 to $10: the margin drops from 60% to 50%.)"
+     "Gross profit and gross margin % both go down."
     ],
     [
      "COGS goes down",
-     "Gross profit ==goes up== and gross margin % ==goes up==."
+     "Both go up: cheaper materials raise gross profit."
     ],
     [
      "industry standard",
-     "Manufacturers ==25-35%==. Tech companies ==70%==, thanks to efficient production and strong price power relative to COGS."
+     "Manufacturers 25–35%. Tech 70%: efficient production, strong price power relative to COGS."
     ],
     [
      "why it matters",
-     "Gross margin % shows how the business is doing ==against its industry standard==. Nike at 60% vs the manufacturer standard of 25-35% is doing great, so it might launch more products. ==Cut COGS== (cheaper materials) and gross profit goes up."
+     "Compare to the standard: Nike at 60% vs 25–35% is doing great and might launch more products."
     ]
    ],
-   "notes": [
+   "table": {
+    "h": "worked",
+    "cols": [
+     "",
+     "candle",
+     "Nike shoe"
+    ],
+    "rows": [
+     [
+      "Sales revenue",
+      "$20",
+      "$100"
+     ],
+     [
+      "− COGS",
+      "$8",
+      "$25"
+     ],
+     [
+      "= Gross profit",
+      "$12",
+      "$75"
+     ],
+     [
+      "Gross margin %",
+      "60%",
+      "75%"
+     ]
+    ]
+   },
+   "ex": [
     {
-     "k": "warn",
-     "t": "!!Divide by sales revenue, never by COGS!!: $12 ÷ $8 gives 150%, which is wrong."
+     "q": "Aliyah’s Candles sells a candle to Jimmy’s Candle Store for $8; Jimmy’s sells it for $20. Jimmy’s gross profit and margin?",
+     "a": "$12; 60%.",
+     "why": "$12 ÷ $20. Dividing by COGS gives 150%: wrong."
+    },
+    {
+     "q": "A Nike shoe sells for $100 and costs $25 to make. Gross profit?",
+     "a": "$75.",
+     "why": "75% is the gross margin, not the gross profit."
     }
    ],
-   "terms": [
-    "COGS",
-    "gross profit",
-    "gross margin %",
-    "gross profit margin"
+   "watch": [
+    "Divide by sales revenue, never by COGS.",
+    "Gross profit is dollars; gross margin % is a percent."
    ]
   },
   {
@@ -392,58 +675,56 @@ const GUIDE = {
    "t": "Information management",
    "d": "LP 1-5",
    "p": [
-    "**Information management** is 1 of the 6 business functions: ==people, processes, systems== that collect, organize, store and secure relevant data and info, and make it accessible and usable ==to make informed decisions==.",
-    "It **organizes** (search, retrieve, archive) and **stores** (database, servers, hard drives, clouds). A **management information system (MIS)** is the computerized system that supports it."
+    "**Information management**, 1 of the 6 business functions: people, processes and systems that collect, organize, store and secure relevant data, making it accessible and usable for informed decisions.",
+    "It **organizes** (search, retrieve, archive) and **stores** (database, servers, hard drives, clouds). A **management information system (MIS)** is its computerized system."
    ],
-   "rows": [
-    [
-     "trade secret",
-     "==Not known outside the company==, with economic value (the Coke formula)."
-    ],
-    [
-     "intangible asset",
-     "Of value but ==not physical==. A trade secret is one."
-    ],
-    [
-     "intellectual property",
-     "==Ideas, inventions, methods==."
-    ],
-    [
-     "risk management",
-     "Predict what could go wrong and act ahead: ==audits, safety, integrity, accuracy==. It prevents injuries and embezzlement; an **audit** (inside staff or an outside firm) finds missing money."
-    ],
-    [
-     "cyber security",
-     "Protects ==trade secrets== from competitors and the ==personal info of employees and customers== (birthdates, account numbers) from hackers and identity theft."
-    ],
-    [
-     "audit",
-     "An ==independent and unbiased inspection== of information, systems and processes."
-    ],
-    [
-     "data integrity",
-     "The ==accuracy and validity of data== over its lifecycle."
-    ]
+   "pts": [
+    "Six functions: Human Resources, **Strategy**, Operations, Marketing, **Finance/Accounting**, Information Management.",
+    "Jobs here: data analyst, systems analyst, database manager.",
+    "Closing weak stores: pull sales numbers from information management, operations, accounting and **marketing**; decide with the data.",
+    "Apply it to a school: what data it collects, how it stores and secures it, who gets access, what it decides."
    ],
-   "notes": [
+   "tiles": [
     {
-     "k": "ex",
-     "t": "The six business functions: Human Resources, **Strategy**, **Operations**, Marketing, Finance/Accounting, Information Management. Data analysts, systems analysts and database managers work in ==information management==."
+     "h": "Trade secret",
+     "t": "Not known outside the company, with economic value (the Coke formula)."
     },
     {
-     "k": "ex",
-     "t": "IM feeds decisions across the functions. Launching a new shoe line: check **finance/accounting** (is there money?) and **marketing** sales data. Closing weak stores: pull the sales numbers from IM, operations, accounting and marketing, then ==decide with the data==."
+     "h": "Intangible asset",
+     "t": "Of value but not physical. A trade secret is one."
     },
     {
-     "k": "ok",
-     "t": "Be ready to apply it to a real organization, like a school: what data it collects, how it stores and secures it, who gets access, and ==what decisions it makes with it==."
+     "h": "Intellectual property",
+     "t": "Ideas, inventions, methods."
+    },
+    {
+     "h": "Risk management",
+     "t": "Predict what could go wrong, act ahead: audits, safety, integrity, accuracy. Prevents injuries, embezzlement."
+    },
+    {
+     "h": "Audit",
+     "t": "Independent, unbiased inspection of information, systems, processes; inside staff or an outside firm. Finds missing money."
+    },
+    {
+     "h": "Cyber security",
+     "t": "Protects trade secrets from competitors, and employee and customer info (birthdates, account numbers) from hackers, identity theft."
+    },
+    {
+     "h": "Data integrity",
+     "t": "Accuracy and validity of data over its lifecycle."
     }
    ],
-   "terms": [
-    "information management",
-    "organizes",
-    "stores",
-    "MIS"
+   "ex": [
+    {
+     "q": "A shoe company plans a new line. Whose data does it check?",
+     "a": "Finance/accounting (is there money?) and marketing’s sales data.",
+     "why": "Information management feeds decisions across functions."
+    },
+    {
+     "q": "A bakery’s frosting recipe is unknown outside the shop and draws customers. What is it?",
+     "a": "A trade secret (an intangible asset).",
+     "why": "Like the Coke formula."
+    }
    ]
   },
   {
@@ -451,27 +732,40 @@ const GUIDE = {
    "t": "Relevant data vs raw data",
    "d": "LP 1-5",
    "p": [
-    "Raw data becomes relevant once it is organized to answer a question. “26 students in this class” is ==raw==; “how many are passing” or “how many bought from the bookstore” is ==relevant==."
+    "Raw data becomes relevant once it’s organized to answer a question."
    ],
-   "cmp": {
-    "a": {
+   "flow": [
+    "Raw: 26 students in this class",
+    "Organize it to answer a question",
+    "Relevant: how many are passing, or bought from the bookstore"
+   ],
+   "cmp": [
+    {
      "h": "relevant data",
      "p": [
-      "**Relevant data** is “accessible + useful”: ==only useful data is collected and stored==, then used to make decisions.",
-      "Example: of 100 people, ==50 are 40-60, 30 are 20-30, 20 are 18 and under==."
+      "**Relevant data**: “accessible + useful.” Only useful data is collected and stored, then used to decide.",
+      "Of 100 people, 50 are 40–60, 30 are 20–30, 20 are 18 and under."
      ]
     },
-    "b": {
+    {
      "h": "raw data",
      "p": [
-      "**Raw data** is info ==before it becomes useful info==.",
-      "Example: ==100 people attended a movie premiere==."
+      "**Raw data** is info before it becomes useful info.",
+      "100 people attended a movie premiere."
      ]
     }
-   },
-   "terms": [
-    "relevant data",
-    "raw data"
+   ],
+   "ex": [
+    {
+     "q": "A food truck logs “300 customers this month.” Raw or relevant?",
+     "a": "Raw.",
+     "why": "Not yet organized to answer a question."
+    },
+    {
+     "q": "It sorts them: 180 at lunch, 120 at dinner. Raw or relevant?",
+     "a": "Relevant.",
+     "why": "Organized to help decide, like when to open."
+    }
    ]
   },
   {
@@ -479,43 +773,120 @@ const GUIDE = {
    "t": "Types of business ownership",
    "d": "LP 1-10 · the biggest lesson quiz",
    "p": [
-    "**Liability** is the legal responsibility of a person or business for ==1) actions 2) debt 3) obligations== (a lawsuit when an employee slips, a loan to repay, a promised donation).",
-    "**Unlimited liability**: they can come after your ==personal assets==. **Limited liability**: they can only take ==what you invested==.",
-    "The four types (sole proprietor, partnership, LLC, corporation) differ on ==taxes, liability, decision making==."
+    "**Liability**: legal responsibility for 1) actions 2) debt 3) obligations (an employee slips and sues, a loan, a promised donation).",
+    "**Unlimited liability**: they can take your personal assets. **Limited liability**: only what you invested."
    ],
-   "rows": [
-    [
-     "sole proprietorship",
-     "One owner who ==pays all the taxes==, makes ==all the decisions==, and has ==unlimited liability==. Easy to start; minimizes overhead expenses."
-    ],
-    [
-     "general partnership",
-     "Two or more owners who all manage, with ==unlimited liability for all partners==. Write a **partnership agreement**."
-    ],
-    [
-     "limited partnership",
-     "Limited partners are liable only for ==what they invested==, and have ==no decision-making power==."
-    ],
-    [
-     "LLP",
-     "Partners are ==not responsible for each other’s actions==, with limited liability. Law firms, medical and accounting practices."
-    ],
-    [
-     "LLC",
-     "A ==company==, not a small set of partners. Owners can only lose ==what they invested==; taxes pass to the owners, who are called members."
+   "pts": [
+    "The four types (sole proprietor, partnership, LLC, corporation) differ on taxes, liability, decision making."
+   ],
+   "tree": {
+    "t": "Liability",
+    "c": [
+     {
+      "t": "Unlimited",
+      "d": "sole proprietorship, general partnership"
+     },
+     {
+      "t": "Hybrid",
+      "d": "limited partnership"
+     },
+     {
+      "t": "Limited",
+      "d": "LLP, LLC, all corporations"
+     }
     ]
-   ],
-   "notes": [
+   },
+   "table": {
+    "cols": [
+     "",
+     "owners",
+     "to start",
+     "liability",
+     "taxes",
+     "know"
+    ],
+    "rows": [
+     [
+      "Sole proprietorship",
+      "1",
+      "Easy",
+      "Unlimited",
+      "Pass-through",
+      "Pays all taxes, makes all decisions; minimal overhead"
+     ],
+     [
+      "General partnership",
+      "2+, all manage",
+      "Easy",
+      "Unlimited, all partners",
+      "Pass-through",
+      "Write a **partnership agreement**"
+     ],
+     [
+      "Limited partnership (LP)",
+      "2+",
+      "Easy",
+      "Hybrid",
+      "Pass-through",
+      "Limited partners risk only their investment, no decision-making power"
+     ],
+     [
+      "LLP",
+      "2+",
+      "Easy",
+      "Limited",
+      "Pass-through",
+      "Not liable for each other’s actions; law, medical, accounting firms; registered with Secretary of State"
+     ],
+     [
+      "LLC",
+      "1+",
+      "Easy",
+      "Limited",
+      "Pass-through",
+      "A company, not a set of partners; owners are members"
+     ],
+     [
+      "C corp",
+      "1+",
+      "Difficult",
+      "Limited",
+      "Double",
+      "Heavily regulated, unlimited shares"
+     ],
+     [
+      "S corp",
+      "Up to 100 U.S. citizens",
+      "Difficult",
+      "Limited",
+      "Pass-through",
+      "Limited shares and owners"
+     ],
+     [
+      "B corp",
+      "1+",
+      "Difficult",
+      "Limited",
+      "Double",
+      "Balances profit and purpose"
+     ]
+    ]
+   },
+   "ex": [
     {
-     "k": "warn",
-     "t": "LLP vs LLC gets confused on the exam: **LLP** = ==P for partners==, **LLC** = ==C for company==. And in an **LP**, only the limited partners are protected, and !!they give up decision-making power!!."
+     "q": "Two friends run a food truck as a general partnership and get sued for more than it’s worth. What can they lose?",
+     "a": "Personal assets.",
+     "why": "Unlimited liability for all partners. An LLC caps it at their investment."
+    },
+    {
+     "q": "Three partners open a law firm and want protection from each other’s mistakes. Which structure?",
+     "a": "LLP.",
+     "why": "P for partners. LLC is a company."
     }
    ],
-   "terms": [
-    "liability",
-    "unlimited liability",
-    "limited liability",
-    "partnership agreement"
+   "watch": [
+    "LLP vs LLC: P for partners, C for company.",
+    "In an LP only limited partners are protected, and they give up decision-making power."
    ]
   },
   {
@@ -523,90 +894,174 @@ const GUIDE = {
    "t": "Corporations: C, S, B",
    "d": "LP 1-10",
    "p": [
-    "A **corporation** is a ==legal entity separate from its owners==, run by a **board of directors**, with limited liability. It must file **Articles of Incorporation**. Public corporations sell stock/shares; private ones don’t."
+    "A **corporation** is a legal entity separate from its owners, run by a **board of directors**, with limited liability. It must file **Articles of Incorporation**.",
+    "Choosing any structure: analyze each type’s pros and cons."
    ],
-   "rows": [
-    [
-     "C corporation",
-     "==Double taxation==: the company pays tax on its profits, then shareholders pay tax on their dividend checks. Cracker Barrel, Amazon, Ford."
-    ],
-    [
-     "S corporation",
-     "==S for shareholders==: taxes ==pass through== to shareholders’ personal returns, and it’s capped at ==100 shareholders== (U.S. citizens). Small businesses: pizza, coffee."
-    ],
-    [
-     "B corporation",
-     "==B for benefit==: benefit to society over profit, though it still earns profit for shareholders. Patagonia, Ben & Jerry’s."
-    ],
-    [
-     "public corporation",
-     "==Sells shares to the public== on a stock exchange to raise capital, so it ==must report its finances publicly==."
-    ],
-    [
-     "private corporation",
-     "No stock sold to the public, and ==no public financial reporting== (Mars, IKEA, Lego)."
-    ]
-   ],
-   "notes": [
+   "tiles": [
     {
-     "k": "ok",
-     "t": "Going public = ==raise capital by selling shares==. Staying private = ==avoid publicly reporting financial information==. Picking any structure: ==analyze the pros and cons of each type==."
+     "h": "C corporation",
+     "t": "Double taxation: company pays tax on profits, shareholders again on dividend checks. Cracker Barrel, Amazon, Ford."
     },
     {
-     "k": "warn",
-     "t": "The review said the S corporation is limited to “100 shares”; the board and notes say ==100 shareholders==. Same fact: pick whichever the question uses."
+     "h": "S corporation",
+     "t": "S for shareholders: taxes pass through to their personal returns. Up to 100, U.S. citizens. Small pizza, coffee shops."
+    },
+    {
+     "h": "B corporation",
+     "t": "B for benefit: society over profit, still profits shareholders; double taxation. Patagonia, Ben & Jerry’s."
     }
    ],
-   "terms": [
-    "corporation",
-    "board of directors",
-    "Articles of Incorporation"
+   "cmp": [
+    {
+     "h": "public corporation",
+     "p": [
+      "Sells shares on a stock exchange to raise capital.",
+      "Must report its finances publicly."
+     ]
+    },
+    {
+     "h": "private corporation",
+     "p": [
+      "No stock sold to the public (Mars, IKEA, Lego).",
+      "Stays private to avoid public financial reporting."
+     ]
+    }
+   ],
+   "ex": [
+    {
+     "q": "A small pizza shop’s taxes pass through to its shareholders’ returns. Which type?",
+     "a": "S corporation.",
+     "why": "Taxed twice would be a C corp."
+    },
+    {
+     "q": "A family candy company wants its sales numbers private. Public or private corporation?",
+     "a": "Private.",
+     "why": "Only public ones must report finances."
+    }
+   ],
+   "watch": [
+    "S corp: “100 shares” and “100 shareholders” both appear. Same fact: use the question’s wording."
    ]
   },
   {
    "w": 3,
    "t": "Effects of competition",
-   "d": "LP 1-8",
+   "d": "LP 1-8 · the six effects",
    "p": [
-    "The U.S. economy is built on **capitalism**: ==privately owned companies==, driven by profit, with prices set by supply and demand.",
-    "Why it helps the economy: competing keeps a company growing, so it expands, builds plants and ==hires people==. Working people earn and spend, and ==unemployment goes down==."
+    "The U.S. economy is built on **capitalism**: privately owned companies, driven by profit, with prices set by supply and demand."
    ],
-   "steps": [
-    "**Pricing control**: Nike, Puma and Adidas compete on price; similar quality, lower price.",
-    "**Choice/variety**: customers don’t get stuck with one or two models or colors.",
-    "**Innovation**: new products and technology.",
-    "**Quality**: consistent products (quality control) that meet customers’ needs.",
-    "**The economy**: competition creates ==jobs==.",
-    "**The consumer**: ==society benefits==."
+   "flow": [
+    "Competing keeps a company growing",
+    "It expands, builds plants, hires",
+    "People earn and spend",
+    "Unemployment goes down"
    ],
-   "terms": [
-    "capitalism",
-    "pricing control",
-    "innovation"
+   "tiles": [
+    {
+     "h": "Pricing control",
+     "t": "Nike, Puma, Adidas compete on price: similar quality, lower price."
+    },
+    {
+     "h": "Choice/variety",
+     "t": "Customers aren’t stuck with one or two models or colors."
+    },
+    {
+     "h": "Innovation",
+     "t": "New products and technology."
+    },
+    {
+     "h": "Quality",
+     "t": "Consistent products (quality control) that meet customers’ needs."
+    },
+    {
+     "h": "The economy",
+     "t": "Competition creates jobs."
+    },
+    {
+     "h": "The consumer",
+     "t": "Society benefits."
+    }
+   ],
+   "ex": [
+    {
+     "q": "A rival taco truck matches your quality at a lower price, so you cut yours. Which effect?",
+     "a": "Pricing control.",
+     "why": "Similar quality, lower price."
+    },
+    {
+     "q": "Short answer: why does competition help the economy?",
+     "a": "Growing companies expand and hire, so unemployment goes down.",
+     "why": "Working people earn and spend."
+    }
    ]
   },
   {
    "w": 3,
    "t": "Market models",
    "d": "LP 1-8 · most sellers to one",
-   "steps": [
-    "**Pure competition**: same product, about the same price, ==low barriers== (easy for a new seller to start). Corn, wheat, agriculture. Consumers have the most buying power.",
-    "**Monopolistic competition**: the same kind of product at ==different prices== (health and beauty: department-store makeup vs drugstore makeup). Gives consumers options.",
-    "**Oligopoly**: ==a few companies== and ==high barriers== because it takes huge money to compete (wireless carriers: AT&T, T-Mobile, Verizon). They can control pricing.",
-    "**Monopoly**: one company ==corners the market==, with no competition."
+   "p": [
+    "Consumers have the most buying power in **pure competition**; monopolistic competition gives them options."
    ],
-   "notes": [
+   "table": {
+    "cols": [
+     "",
+     "sellers",
+     "product and price",
+     "barriers to entry",
+     "example"
+    ],
+    "rows": [
+     [
+      "Pure competition",
+      "Many",
+      "Same product, about the same price",
+      "Low: easy to start",
+      "Corn, wheat, agriculture"
+     ],
+     [
+      "Monopolistic competition",
+      "Many",
+      "Same kind, different prices (differentiated)",
+      "Low",
+      "Health and beauty: department-store vs drugstore makeup"
+     ],
+     [
+      "Oligopoly",
+      "A few",
+      "Control supply and pricing",
+      "High: huge money to compete",
+      "AT&T, T-Mobile, Verizon; airlines"
+     ],
+     [
+      "Monopoly",
+      "One",
+      "Corners the market",
+      "High",
+      "Standard Oil (broken up)"
+     ],
+     [
+      "Regulated monopoly",
+      "One, supervised",
+      "Government limits its prices",
+      "Set by government",
+      "Nevada Power (utility)"
+     ]
+    ]
+   },
+   "ex": [
     {
-     "k": "warn",
-     "t": "A monopoly is ==illegal==: the FTC does not allow it, to protect the consumer. The exception is a **regulated monopoly**, like ==Nevada Power==, where the government limits what it can charge."
+     "q": "Dozens of salons sell the same kinds of products at different prices. Which model?",
+     "a": "Monopolistic competition.",
+     "why": "Oligopoly is only a few companies."
+    },
+    {
+     "q": "Hundreds of farms sell wheat at about one price; anyone can start. Which model?",
+     "a": "Pure competition.",
+     "why": "Same product, low barriers."
     }
    ],
-   "terms": [
-    "pure competition",
-    "monopolistic competition",
-    "oligopoly",
-    "monopoly",
-    "regulated monopoly"
+   "watch": [
+    "A monopoly is illegal: the FTC bans it to protect consumers. Exception: a regulated monopoly (Nevada Power)."
    ]
   },
   {
@@ -614,37 +1069,27 @@ const GUIDE = {
    "t": "Competitive analysis",
    "d": "LP 1-8 · the Tesla grid",
    "p": [
-    "A **competitive analysis** only works on a ==specific product== (Tesla, not “cars”). It identifies the ==strengths and weaknesses of your competitors and of your own company==, and it’s not so expensive to do."
+    "A **competitive analysis** works only on a specific product (Tesla, not “cars”). It finds strengths and weaknesses of your competitors and your own company, and isn’t expensive.",
+    "You won’t build one on the exam; know why companies do."
    ],
-   "rows": [
-    [
-     "the axes",
-     "Lack of quality (selection) to ==high quality (choices)==; not so expensive to ==expensive=="
-    ],
-    [
-     "Toyota, Honda",
-     "Least expensive; quality about equal to Tesla."
-    ],
-    [
-     "BMW, Mercedes",
-     "Most expensive, highest quality."
-    ],
-    [
-     "Tesla",
-     "==Cheaper than BMW and Mercedes== but pricier than Toyota and Honda; quality ==behind BMW and Mercedes==."
-    ]
-   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 360 272' role='img' aria-label='Tesla grid: price across, quality up. Toyota and Honda are cheapest with quality equal to Tesla. BMW and Mercedes are most expensive and highest quality. Tesla sits between them on price. Move 1 goes straight up: more quality, same price. Move 2 goes up and right: a luxury Tesla at a higher price.'><path d='M40 236V14' class='ln' marker-end='url(#ah)'/><path d='M40 236H350' class='ln' marker-end='url(#ah)'/><text x='50' y='22' class='tm'>high quality (choices)</text><text x='50' y='226' class='tm'>lack of quality (selection)</text><text x='40' y='256' class='tm'>not so expensive</text><text x='350' y='256' class='tm end'>expensive</text><circle cx='92' cy='150' r='8' class='fp'/><text x='92' y='176' class='mid'>Toyota, Honda</text><circle cx='300' cy='56' r='8' class='fp'/><text x='350' y='36' class='end'>BMW, Mercedes</text><circle cx='196' cy='150' r='9' class='fc'/><text x='196' y='176' class='tc mid'>Tesla</text><path d='M196 136V74' class='la' marker-end='url(#aha)'/><text x='186' y='94' class='ta end'>1</text><text x='186' y='110' class='tm end'>more quality,</text><text x='186' y='124' class='tm end'>same price</text><path d='M207 139L270 78' class='la dash' marker-end='url(#aha)'/><text x='240' y='122' class='ta'>2</text><text x='252' y='122' class='tm'>luxury Tesla,</text><text x='240' y='136' class='tm'>higher price</text></svg>",
+    "cap": "Tesla: cheaper than BMW and Mercedes, pricier than Toyota and Honda; quality behind BMW and Mercedes."
+   },
    "steps": [
-    "To compete with BMW and Mercedes, Tesla can improve quality and give more choice but ==maintain pricing==.",
-    "Or offer a ==“higher end” luxury Tesla==, raise the price, and compete directly. Finance checks the numbers; marketing and operations carry it out."
+    "Improve quality and give more choice, but maintain pricing.",
+    "Or offer a luxury Tesla at a higher price and compete directly. Finance checks the numbers; marketing and operations carry it out."
    ],
-   "terms": [
-    "competitive analysis"
-   ],
-   "notes": [
+   "ex": [
     {
-     "k": "ok",
-     "t": "You ==won’t build one on the exam==. Know why a company does one: to find the strengths and weaknesses of its competitors and its own company."
+     "q": "A burger truck wants a competitive analysis of “restaurants.” What’s wrong?",
+     "a": "Too broad.",
+     "why": "It only works on a specific product, not a category."
+    },
+    {
+     "q": "Tesla wants to compete with BMW and Mercedes without raising its price. Best move?",
+     "a": "Improve quality and choice, maintain pricing.",
+     "why": "A luxury model means a higher price."
     }
    ]
   },
@@ -653,69 +1098,175 @@ const GUIDE = {
    "t": "Business models",
    "d": "LP 1-7 · know bricks-and-clicks cold",
    "p": [
-    "A **business model** is ==how a company sells its products to customers and its plan for making a profit==. A **business plan** is the roadmap: the strategy for ==how== you’ll reach your goals and objectives. Pick the model that best achieves the plan.",
-    "To explain any model: ==what it does, who it reaches, why it works, and an example==. Know **e-commerce** best: buying through a website (==Amazon==), the most used model today."
+    "A **business model** is how a company sells and plans to profit. A **business plan** is the roadmap: how you’ll reach your goals and objectives. Pick the model that best achieves it.",
+    "To explain any model: what it does, who it reaches, why it works, and an example."
    ],
    "steps": [
-    "**Manufacturer** makes finished products from ==raw materials==.",
-    "**Distributor** buys from manufacturers and resells to ==wholesalers, retailers or the public==.",
-    "**Wholesaler** buys ==large quantities==, warehouses them, and resells to retailers.",
-    "**Retailer** ==sells directly to the consuming public==."
+    "**Manufacturer**: finished products from raw materials.",
+    "**Distributor**: buys from manufacturers; resells to wholesalers, retailers or the public.",
+    "**Wholesaler**: buys large quantities, warehouses, resells to retailers.",
+    "**Retailer**: sells directly to the consuming public."
    ],
-   "notes": [
+   "table": {
+    "h": "look-alike models, most tested first",
+    "cols": [
+     "",
+     "key phrase",
+     "example"
+    ],
+    "rows": [
+     [
+      "E-commerce",
+      "Buying through a website; most used today, know it best",
+      "Amazon"
+     ],
+     [
+      "Direct sales",
+      "Non-retail environment, door to door",
+      "Mary Kay, Pampered Chef"
+     ],
+     [
+      "D2C",
+      "To the end user, no middlemen",
+      "Tesla"
+     ],
+     [
+      "Bricks-and-clicks",
+      "Stores plus online ordering (Target added e-commerce to its stores)",
+      "Target, Walmart, Kohl’s"
+     ],
+     [
+      "Crowdfunding",
+      "Small amounts of capital from many people",
+      "Kickstarter, GoFundMe"
+     ],
+     [
+      "MLM",
+      "Income from sales and recruiting others",
+      "Mary Kay, Pampered Chef"
+     ],
+     [
+      "Bricks-and-mortar",
+      "Physical street-side locations only",
+      "Local bank, hardware store"
+     ],
+     [
+      "Nickel-and-dime",
+      "Buy cheap, sell cheap",
+      "Dollar Tree, low-cost airlines"
+     ],
+     [
+      "Crowdsourcing",
+      "Services, ideas or content from a large group",
+      "Wikipedia"
+     ],
+     [
+      "Aggregator",
+      "Sells through its own platform",
+      "Airbnb, Uber, Hotels.com"
+     ],
+     [
+      "Online marketplace",
+      "Suppliers compete on one platform",
+      "Amazon marketplace, Alibaba"
+     ],
+     [
+      "Freemium",
+      "Free to get you hooked, then pay",
+      "Dropbox, Slack"
+     ],
+     [
+      "Subscription",
+      "Regular fee: steady revenue stream",
+      "Netflix (also freemium), Spotify"
+     ],
+     [
+      "Dropshipping",
+      "No inventory; a third party ships",
+      "Online web stores"
+     ],
+     [
+      "Auction",
+      "Commission for selling to the highest bidder",
+      "eBay"
+     ],
+     [
+      "Peer-to-peer",
+      "People sell to each other, no middleman",
+      "Craigslist, Depop"
+     ],
+     [
+      "Advertisement",
+      "Free service, sells ad space",
+      "YouTube, Instagram"
+     ],
+     [
+      "Affiliate marketing",
+      "Pays a promoter per click, lead or sale (PPC, PPL, PPS)",
+      "Online merchants"
+     ],
+     [
+      "Agency",
+      "Fee for handling others’ business activities",
+      "Ogilvy & Mather"
+     ],
+     [
+      "Data licensing / selling",
+      "Sells or licenses its data",
+      "Twitter"
+     ]
+    ]
+   },
+   "ex": [
     {
-     "k": "ex",
-     "t": "**Bricks-and-clicks**: a physical store plus online ordering, for pickup or delivery (==Target, Walmart==). Why: ==more convenience, a bigger audience, more sales==. It reaches people who shop online, like someone without a car."
+     "q": "Short answer: explain bricks-and-clicks with an example.",
+     "a": "Stores plus online ordering for pickup or delivery (Target, Walmart). Reaches online shoppers, like someone without a car: more convenience, customers and sales.",
+     "why": "What it does, who it reaches, why it works, an example."
     },
     {
-     "k": "warn",
-     "t": "**D2C** sells to the end user ==without any middlemen== (Tesla). **Direct sales** is selling in a !!non-retail environment!!, door to door (Mary Kay). Different models."
+     "q": "Two friends sell hot sauce only on their own website, no middlemen. Which model?",
+     "a": "D2C.",
+     "why": "Direct sales means door to door."
     }
    ],
-   "terms": [
-    "business model",
-    "business plan",
-    "e-commerce",
-    "bricks-and-clicks",
-    "direct sales",
-    "D2C"
-   ],
-   "rows": [
-    [
-     "e-commerce",
-     "Online store; ==Amazon==. Target added it to its bricks-and-mortar stores and became bricks-and-clicks."
-    ],
-    [
-     "subscription",
-     "A regular fee (Netflix, Spotify) for a ==steady revenue stream==."
-    ],
-    [
-     "freemium",
-     "Free at first to ==get you hooked==, then you pay. Netflix used freemium and subscription together."
-    ],
-    [
-     "nickel-and-dime",
-     "Buy cheap, ==sell cheap== to price-sensitive customers (Dollar Tree, low-cost airlines)."
-    ],
-    [
-     "peer-to-peer",
-     "People sell ==directly to each other== on a platform, no middleman (Craigslist, Depop)."
-    ]
+   "watch": [
+    "D2C = no middlemen (Tesla). Direct sales = non-retail environment (Mary Kay).",
+    "Business model = how you sell and profit; business plan = the roadmap."
    ]
   },
   {
    "w": 3,
    "t": "Types of competition",
    "d": "LP 1-8",
-   "p": [
-    "**Direct competition**: the same product or service (==Target vs Walmart==, Coke vs Pepsi). **Indirect competition**: a different product that ==satisfies the same need== (Burger King vs Pizza Hut both satisfy hunger; to get to LA you can drive, fly, or take a Greyhound bus).",
-    "**Price competition** uses lower prices to attract customers. **Non-price competition** competes on ==features and attributes other than price== (Apple: the iPhone is “easier and smarter”)."
+   "tiles": [
+    {
+     "h": "Direct competition",
+     "t": "The same product or service. Target vs Walmart, Coke vs Pepsi."
+    },
+    {
+     "h": "Indirect competition",
+     "t": "Different product, same need. Burger King vs Pizza Hut (hunger); drive, fly or bus (Greyhound) to LA."
+    },
+    {
+     "h": "Price competition",
+     "t": "Lower prices to attract customers."
+    },
+    {
+     "h": "Non-price competition",
+     "t": "Features other than price. iPhone: “easier and smarter.”"
+    }
    ],
-   "terms": [
-    "direct competition",
-    "indirect competition",
-    "price competition",
-    "non-price competition"
+   "ex": [
+    {
+     "q": "A taco truck parks near a taco restaurant and a pizza place. Which is direct competition?",
+     "a": "The taco restaurant.",
+     "why": "The pizza place (same need) is indirect."
+    },
+    {
+     "q": "A coffee cart can’t beat the chain’s prices, so it pushes local beans. Which type?",
+     "a": "Non-price competition.",
+     "why": "Features, not price."
+    }
    ]
   },
   {
@@ -723,28 +1274,37 @@ const GUIDE = {
    "t": "Cyber breach example: MGM (2023)",
    "d": "LP 1-5 · what data, who, how many, effects",
    "p": [
-    "Be ready to explain a real **cyber breach** with four answers: ==what data, who was affected, how many, and the effects==. In September 2023, hackers got into MGM Resorts by tricking employees (social engineering) and ran ransomware."
+    "Explain a real **cyber breach** with four answers. In September 2023, hackers got into MGM Resorts by tricking employees (social engineering) and ran ransomware."
    ],
-   "rows": [
-    [
-     "what data",
-     "Names, phone numbers, emails, addresses, birthdates, driver’s license numbers, and for some customers Social Security or passport numbers. ==No passwords or card numbers.=="
-    ],
-    [
-     "who",
-     "MGM customers who did business with the company ==before March 2019==."
-    ],
-    [
-     "how many",
-     "==Never disclosed.=="
-    ],
-    [
-     "effects",
-     "Gaming floors, hotel check-in, guest services, email and websites down for ==about 8 days==; about ==$100 million== in losses."
-    ]
+   "tiles": [
+    {
+     "h": "What data",
+     "t": "Names, phone numbers, emails, addresses, birthdates, driver’s license numbers; for some, Social Security or passport numbers. No passwords or card numbers."
+    },
+    {
+     "h": "Who",
+     "t": "Customers who did business with MGM before March 2019."
+    },
+    {
+     "h": "How many",
+     "t": "Never disclosed."
+    },
+    {
+     "h": "Effects",
+     "t": "Gaming floors, hotel check-in, guest services, email and websites down about 8 days; about $100 million lost."
+    }
    ],
-   "terms": [
-    "cyber breach"
+   "ex": [
+    {
+     "q": "Short answer: which four things explain a real cyber breach?",
+     "a": "What data, who, how many, the effects.",
+     "why": "MGM: personal info, pre-2019 customers, never disclosed, 8 days and $100 million."
+    },
+    {
+     "q": "Were passwords or card numbers taken from MGM?",
+     "a": "No.",
+     "why": "Personal info was, plus Social Security or passport numbers for some."
+    }
    ]
   },
   {
@@ -752,42 +1312,42 @@ const GUIDE = {
    "t": "Operations",
    "d": "LP 1-6",
    "p": [
-    "**Operations** is ==the daily functioning of an organization==, managing inputs (raw materials like rubber and glass) and outputs (the finished car): 1) manufacture 2) purchase 3) logistics. It is ==where the execution of strategy happens==.",
-    "The 8 activities: **manufacturing**, **transportation**, **purchasing**, **distribution**, **logistics**, **inventory management**, **quality control**, **supply chain management**."
+    "**Operations** is the daily functioning of an organization, managing inputs and outputs: 1) manufacture 2) purchase 3) logistics. It’s where the execution of strategy happens.",
+    "8 activities: manufacturing, transportation, purchasing, distribution, logistics, inventory management, quality control, supply chain management."
    ],
-   "rows": [
-    [
-     "manufacturing",
-     "Making products from ==raw materials and other inputs== like labor, machinery and tools."
-    ],
-    [
-     "mass production",
-     "Using ==technology and assembly lines== to make large quantities of the same product."
-    ],
-    [
-     "quality control",
-     "Measuring and testing against ==quality benchmarks==, on ==every product, every day==, so each one is consistent."
-    ],
-    [
-     "purchasing",
-     "The organized ==acquisition of goods and services== on behalf of a business."
-    ],
-    [
-     "logistics",
-     "==Coordinating the flow== of inputs and outputs: materials to the loading dock and the line, products out to customers (FedEx, Amazon)."
-    ],
-    [
-     "distribution",
-     "Part of logistics: ==categorize, sort, and transport== goods to all their destinations."
-    ],
-    [
-     "transportation",
-     "Part of distribution: ==move goods or assets== from one place to another."
-    ],
-    [
-     "supply chain",
-     "The network of people, suppliers, activities and resources that moves a product ==from suppliers to the end consumer==."
-    ]
+   "flow": [
+    "Inputs: raw materials like rubber and glass",
+    "Operations",
+    "Output: the finished car"
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 320 214' role='img' aria-label='Nested boxes: transportation is part of distribution, which is part of logistics.'><rect x='2' y='2' width='316' height='210' rx='14' class='fs'/><text x='18' y='28' class='tc'>Logistics</text><text x='18' y='46' class='tm'>coordinates inputs and outputs</text><rect x='16' y='60' width='288' height='138' rx='11' class='fp'/><text x='32' y='86' class='tb'>Distribution</text><text x='32' y='104' class='tm'>categorize, sort, transport goods</text><rect x='30' y='118' width='260' height='64' rx='8' class='fsa'/><text x='46' y='144' class='ta'>Transportation</text><text x='46' y='166' class='tm'>move goods place to place</text></svg>",
+    "cap": "Each is part of the one around it. Logistics: materials to the loading dock and line, products out to customers (FedEx, Amazon)."
+   },
+   "tiles": [
+    {
+     "h": "Manufacturing",
+     "t": "Products from raw materials plus labor, machinery, tools. Mass production: technology and assembly lines, large quantities."
+    },
+    {
+     "h": "Purchasing",
+     "t": "Organized acquisition of goods and services for a business."
+    },
+    {
+     "h": "Quality control",
+     "t": "Testing against quality benchmarks on every product, every day, so each is consistent."
+    },
+    {
+     "h": "Supply chain",
+     "t": "The network of people, suppliers, activities, resources moving a product from suppliers to the end consumer."
+    }
+   ],
+   "ex": [
+    {
+     "q": "A furniture maker’s trucks carry chairs to a store. Narrowest term?",
+     "a": "Transportation.",
+     "why": "Part of distribution, which is part of logistics."
+    }
    ]
   },
   {
@@ -795,42 +1355,38 @@ const GUIDE = {
    "t": "Business and technology trends",
    "d": "LP 1-9",
    "p": [
-    "A **trend** is a general change or movement, a prevailing tendency, a current style or preference (Adidas Sambas). A **business trend** is ==a general change in the way business develops==, and today it is driven by ==technology==: A.I., cyber security, e-commerce, telemedicine, social media, remote work.",
-    "Change is the only ==constant==: businesses must adapt and innovate to keep ==returning and new customers==. The **gig economy** is contract or side work, often remote, booked through an app (==Uber, Uber Eats, Lyft, dog walkers, tutoring==)."
+    "A **trend**: a general change, prevailing tendency or current style (Adidas Sambas). A **business trend** is a general change in how business develops, now driven by tech: A.I., cyber security, e-commerce, telemedicine, social media, remote work.",
+    "Change is the only constant: adapt and innovate to keep returning and new customers."
    ],
-   "rows": [
-    [
-     "artificial intelligence",
-     "A computer program or machine that ==thinks and learns like humans==, reasoning and making decisions."
-    ],
-    [
-     "machine learning",
-     "==The way of achieving A.I.==: machines receive info and make decisions (face recognition, GPS, purchase suggestions)."
-    ],
-    [
-     "Internet of Things",
-     "Devices on the internet that ==identify themselves and communicate==. Amazon: order tracking that updates your phone, watch and Ring doorbell."
-    ],
-    [
-     "ambient intelligence",
-     "That connectivity when ==many objects act in unison==: automated checkout, FedEx, Amazon, telemedicine."
-    ],
-    [
-     "other tech",
-     "Cryptocurrency, virtual reality, ==augmented reality== (IKEA’s app shows furniture in a photo of your room)."
-    ]
+   "pts": [
+    "**Gig economy**: contract or side work, often remote, booked through an app (Uber, Uber Eats, Lyft, dog walkers, tutoring).",
+    "IoT and machine learning fuel hyperlocal, personal ads for a target audience. **Generation Z** follows Millennials.",
+    "Other tech: cryptocurrency, virtual reality, augmented reality (IKEA’s app shows furniture in a photo of your room)."
    ],
-   "notes": [
+   "tiles": [
     {
-     "k": "ex",
-     "t": "Hyperlocal, personal ads fueled by the Internet of Things and machine learning reach your ==target audience== more precisely. **Generation Z** comes after Millennials."
+     "h": "Artificial intelligence",
+     "t": "A program or machine that thinks and learns like humans, reasoning and deciding."
+    },
+    {
+     "h": "Machine learning",
+     "t": "The way of achieving A.I.: machines receive info and decide (face recognition, GPS, purchase suggestions)."
+    },
+    {
+     "h": "Internet of Things",
+     "t": "Devices that identify themselves and communicate: Amazon tracking updates your phone, watch, Ring doorbell."
+    },
+    {
+     "h": "Ambient intelligence",
+     "t": "Many objects acting in unison: automated checkout, FedEx, Amazon, telemedicine."
     }
    ],
-   "terms": [
-    "trend",
-    "business trend",
-    "gig economy",
-    "Generation Z"
+   "ex": [
+    {
+     "q": "A café’s app suggests add-ons from your past orders. Which technology?",
+     "a": "Machine learning.",
+     "why": "A machine receives info and decides."
+    }
    ]
   },
   {
@@ -838,78 +1394,88 @@ const GUIDE = {
    "t": "Collecting competitor info",
    "d": "LP 1-8",
    "p": [
-    "Know each direct competitor’s products, 4Ps, target markets, size, market share, marketing, ==strengths and weaknesses==, threats and media."
+    "Know each direct competitor’s products, 4Ps, target markets, size, market share, marketing, strengths and weaknesses, threats and media."
    ],
-   "cmp": {
-    "a": {
+   "cmp": [
+    {
      "h": "primary data",
      "p": [
-      "**Primary data** is collected ==first-hand== by you.",
-      "Customer interviews, questionnaires, ==price surveys you conduct==."
+      "**Primary data**: collected first-hand by you. Customer interviews, questionnaires, price surveys you run."
      ]
     },
-    "b": {
+    {
      "h": "secondary data",
      "p": [
-      "**Secondary data** was ==already collected by others==.",
-      "==Industry publications, press releases==, news stories, annual reports."
+      "**Secondary data**: already collected by others. Industry publications, press releases, news stories, annual reports."
      ]
     }
-   },
-   "terms": [
-    "primary data",
-    "secondary data"
+   ],
+   "ex": [
+    {
+     "q": "A smoothie shop owner runs her own price survey of nearby shops. What data?",
+     "a": "Primary.",
+     "why": "First-hand. A press release would be secondary."
+    }
    ]
   },
   {
    "w": 1,
    "t": "Franchises and growth terms",
-   "d": "LP 1-10 · bolded on the review sheet",
-   "rows": [
-    [
-     "franchise",
-     "The franchisee legally uses the franchisor’s ==brand, expertise, practices and systems== (McDonald’s, Subway)."
-    ],
-    [
-     "business format franchise",
-     "Name and products ==plus the whole system== for running the business (most fast food)."
-    ],
-    [
-     "product trade name franchise",
-     "Sells the franchisor’s products under its name, ==no full system== (car dealerships, gas stations)."
-    ],
-    [
-     "piggyback franchise",
-     "A franchise ==inside another business’s store== (a Starbucks inside a Target)."
-    ],
-    [
-     "merger",
-     "Two companies ==join into one== (Exxon and Mobil became ExxonMobil)."
-    ],
-    [
-     "consolidation",
-     "Two or more companies form a ==brand-new company==; the originals stop existing."
-    ],
-    [
-     "joint venture",
-     "Businesses team up on ==one project==, sharing cost, risk and profit, and stay separate."
-    ],
-    [
-     "licensing",
-     "One company lets another ==use its intellectual property== for a fee or royalty."
-    ],
-    [
-     "expansion",
-     "Growing by adding ==locations, products, markets or employees==."
-    ],
-    [
-     "non-profit corporation",
-     "Serves a ==mission, not owners’ profit==; usually tax-exempt."
-    ],
-    [
-     "pyramid scheme",
-     "!!Illegal!!: money comes from recruiting members who pay to join, not from selling real products. A legal MLM earns from ==real sales==."
+   "d": "LP 1-10 · review-sheet terms",
+   "p": [
+    "A **franchise** lets the franchisee legally use the franchisor’s brand, expertise, practices and systems (McDonald’s, Subway)."
+   ],
+   "tree": {
+    "t": "Franchise",
+    "c": [
+     {
+      "t": "Business format",
+      "d": "name, products and the whole system (most fast food)"
+     },
+     {
+      "t": "Product trade name",
+      "d": "products under its name, no full system (car dealerships, gas stations)"
+     },
+     {
+      "t": "Piggyback",
+      "d": "inside another business’s store (Starbucks inside Target)"
+     }
     ]
+   },
+   "table": {
+    "cols": [
+     "",
+     "what it is"
+    ],
+    "rows": [
+     [
+      "Merger",
+      "Two companies join into one (Exxon and Mobil became ExxonMobil)"
+     ],
+     [
+      "Consolidation",
+      "Two or more form a brand-new company; the originals stop existing"
+     ],
+     [
+      "Joint venture",
+      "Team up on one project, sharing cost, risk and profit; stay separate"
+     ],
+     [
+      "Licensing",
+      "One company lets another use its intellectual property for a fee or royalty"
+     ],
+     [
+      "Expansion",
+      "Adding locations, products, markets or employees"
+     ],
+     [
+      "Non-profit corporation",
+      "Serves a mission, not owners’ profit; usually tax-exempt"
+     ]
+    ]
+   },
+   "watch": [
+    "A pyramid scheme is illegal: money comes from recruits paying to join, not real product sales. A legal MLM earns from real sales."
    ]
   },
   {
@@ -917,333 +1483,33 @@ const GUIDE = {
    "t": "Government and fair competition",
    "d": "LP 1-8",
    "p": [
-    "The government regulates business, enforces fair competition and protects consumers through ==antitrust laws== (Sherman Antitrust Act, Clayton Act, Federal Trade Commission Act). The **FTC** keeps monopolies from forming or breaks them up, as with Standard Oil.",
-    "Competition helps consumers with ==lower prices, better quality, more variety, and innovation==."
+    "Government regulates business, enforces fair competition and protects consumers with **antitrust laws**. The **FTC** stops monopolies forming or breaks them up (Standard Oil).",
+    "Competition gives consumers lower prices, better quality, more variety and innovation."
    ],
    "rows": [
     [
      "price fixing",
-     "!!Illegal!!: talking to your competitors about prices."
+     "Illegal: talking to competitors about prices."
     ],
     [
      "truth-in-advertising",
-     "A business ==can’t knowingly make false claims==. Red Bull settled lawsuits because it doesn’t actually “give you wings.”"
+     "No knowingly false claims. Red Bull settled lawsuits: it doesn’t “give you wings.”"
     ]
    ],
-   "terms": [
-    "FTC"
-   ]
-  }
- ],
- "tables": [
-  {
-   "h": "gross profit, worked",
-   "cols": [
-    "",
-    "candle",
-    "Nike shoe"
-   ],
-   "rows": [
-    [
-     "Sales revenue",
-     "$20",
-     "$100"
-    ],
-    [
-     "− COGS",
-     "$8",
-     "$25"
-    ],
-    [
-     "= Gross profit",
-     "==$12==",
-     "==$75=="
-    ],
-    [
-     "Gross margin %",
-     "==60%==",
-     "==75%=="
+   "tree": {
+    "t": "Antitrust laws",
+    "c": [
+     {
+      "t": "Sherman Antitrust Act"
+     },
+     {
+      "t": "Clayton Act"
+     },
+     {
+      "t": "Federal Trade Commission Act"
+     }
     ]
-   ]
-  },
-  {
-   "h": "when COGS changes",
-   "cols": [
-    "COGS",
-    "gross profit",
-    "gross margin %"
-   ],
-   "rows": [
-    [
-     "Goes up",
-     "==Goes down==",
-     "==Goes down=="
-    ],
-    [
-     "Goes down",
-     "==Goes up==",
-     "==Goes up=="
-    ]
-   ]
-  },
-  {
-   "h": "ownership types",
-   "cols": [
-    "type",
-    "owners",
-    "to start",
-    "liability",
-    "taxes",
-    "know"
-   ],
-   "rows": [
-    [
-     "Sole proprietor",
-     "1",
-     "Easy",
-     "==Unlimited==",
-     "Pass through",
-     "You are your own boss"
-    ],
-    [
-     "General partnership",
-     "2+",
-     "Easy",
-     "==Unlimited==",
-     "Pass through",
-     "Partnership agreement"
-    ],
-    [
-     "Limited partnership",
-     "2+",
-     "Easy",
-     "Hybrid",
-     "Pass through",
-     "Active partners manage"
-    ],
-    [
-     "LLP",
-     "2+",
-     "Easy",
-     "Limited",
-     "Pass through",
-     "Registered with Secretary of State"
-    ],
-    [
-     "LLC",
-     "1+",
-     "Easy",
-     "Limited",
-     "Pass through",
-     "Owners are **members**"
-    ],
-    [
-     "C corp",
-     "1+",
-     "Difficult",
-     "Limited",
-     "==Double taxation==",
-     "Heavily regulated, unlimited shares"
-    ],
-    [
-     "B corp",
-     "1+",
-     "Difficult",
-     "Limited",
-     "==Double taxation==",
-     "Balancing profit and purpose"
-    ],
-    [
-     "S corp",
-     "Up to 100 U.S. residents",
-     "Difficult",
-     "Limited",
-     "Pass through",
-     "Limited shares and owners"
-    ]
-   ]
-  },
-  {
-   "h": "corporations",
-   "cols": [
-    "type",
-    "taxes",
-    "owners",
-    "examples"
-   ],
-   "rows": [
-    [
-     "**C corp**",
-     "==Double taxation==",
-     "Unlimited shares",
-     "Cracker Barrel, Amazon, Ford"
-    ],
-    [
-     "**S corp**",
-     "==Pass through== to shareholders",
-     "Up to 100, U.S. citizens",
-     "Small businesses: pizza, coffee"
-    ],
-    [
-     "**B corp**",
-     "Double taxation",
-     "Balance profit + benefit",
-     "Ben & Jerry’s, Patagonia"
-    ]
-   ]
-  },
-  {
-   "h": "market models",
-   "cols": [
-    "model",
-    "sellers",
-    "product",
-    "barriers to entry",
-    "example"
-   ],
-   "rows": [
-    [
-     "**Pure competition**",
-     "Large number",
-     "Same product, same price",
-     "Low",
-     "Corn, wheat"
-    ],
-    [
-     "**Monopolistic competition**",
-     "Many",
-     "==Differentiated==",
-     "Low",
-     "Health and beauty"
-    ],
-    [
-     "**Oligopoly**",
-     "==Small number==",
-     "They control supply",
-     "High",
-     "Airlines, wireless carriers"
-    ],
-    [
-     "**Monopoly**",
-     "==One==",
-     "Corners the market",
-     "High",
-     "Standard Oil (broken up)"
-    ],
-    [
-     "**Regulated monopoly**",
-     "One, supervised",
-     "A utility",
-     "Set by government",
-     "Nevada Power"
-    ]
-   ]
-  },
-  {
-   "h": "business models people mix up",
-   "d": "the seven most tested first",
-   "cols": [
-    "model",
-    "key phrase",
-    "example"
-   ],
-   "rows": [
-    [
-     "**Direct sales**",
-     "Sells in a ==non-retail environment==",
-     "Mary Kay, Pampered Chef"
-    ],
-    [
-     "**Direct to consumer (D2C)**",
-     "Sells to the end user, ==no middlemen==",
-     "Tesla"
-    ],
-    [
-     "**Bricks-and-clicks**",
-     "Buy at the stores ==and also online==",
-     "Target, Kohl’s, Walmart"
-    ],
-    [
-     "**Crowdfunding**",
-     "Small amounts of ==capital== from many individuals",
-     "Kickstarter, GoFundMe"
-    ],
-    [
-     "**Multilevel marketing (MLM)**",
-     "Income from sales ==and recruiting others==",
-     "Mary Kay, Pampered Chef"
-    ],
-    [
-     "**Bricks-and-mortar**",
-     "Traditional ==physical street-side locations==",
-     "Local bank, hardware store"
-    ],
-    [
-     "**Nickel-and-dime**",
-     "==Low price points==, low cost providers",
-     "Dollar Tree, low cost airlines"
-    ],
-    [
-     "**Crowdsourcing**",
-     "==Services, ideas, or content== from a large group",
-     "Wikipedia"
-    ],
-    [
-     "**Aggregator**",
-     "Sells aggregated products through ==its own platform==",
-     "Airbnb, Uber, Hotels.com"
-    ],
-    [
-     "**Online marketplace**",
-     "Suppliers ==compete against each other== on one platform",
-     "Amazon marketplace, Alibaba"
-    ],
-    [
-     "**Freemium**",
-     "Basic services free, ==pay for extra features==",
-     "Dropbox, Slack"
-    ],
-    [
-     "**Subscription**",
-     "A ==regularly scheduled fee==, monthly or annually",
-     "Netflix, Spotify"
-    ],
-    [
-     "**Dropshipping**",
-     "==No inventory==; a third party ships to the customer",
-     "Online web stores"
-    ],
-    [
-     "**Auction**",
-     "Commission for selling to the ==highest bidder==",
-     "eBay"
-    ],
-    [
-     "**Peer-to-peer**",
-     "Two individuals deal directly, ==no third party==",
-     "Craigslist"
-    ],
-    [
-     "**Advertisement**",
-     "Service free, ==sells advertising space==",
-     "YouTube, Instagram"
-    ],
-    [
-     "**Affiliate marketing**",
-     "Pays a promoter for an ad and link: ==PPC, PPL, PPS==",
-     "Online merchants"
-    ],
-    [
-     "**Agency**",
-     "Earns a ==fee for handling business activities== for others",
-     "Ogilvy & Mather"
-    ],
-    [
-     "**Data licensing / selling**",
-     "==Sells or licenses the data it collects==",
-     "Twitter"
-    ]
-   ]
+   }
   }
  ],
  "practice": [
@@ -2533,9 +2799,15 @@ const GUIDE = {
 const $=s=>document.querySelector(s);
 const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
 const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="kw">$1</b>').replace(/==(.+?)==/g,'<mark class="hl">$1</mark>').replace(/!!(.+?)!!/g,'<span class="trap">$1</span>');
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* markup: **term** bolds once per scope; legacy ==x== and !!x!! render as plain text */
+let SEEN=null;
+const scope=()=>{SEEN=new Set()};
+const fmt=s=>esc(s).replace(/==(.+?)==/g,"$1").replace(/!!(.+?)!!/g,"$1").replace(/\*\*(.+?)\*\*/g,(m,t)=>{const k=t.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();if(SEEN&&SEEN.has(k))return t;if(SEEN)SEEN.add(k);return `<b class="kw">${t}</b>`});
+const plain=s=>fmt(s).replace(/<b class="kw">(.*?)<\/b>/g,"$1");
 const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const I_TEST='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="1.8" width="9" height="10.6" rx="1.6"/><path d="M5 5h4M5 7.6h4M5 10.2h2"/></svg>';
+const I_WARN='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.8 12.6 11.8H1.4z"/><path d="M7 5.6v2.8M7 10.1h.01"/></svg>';
 const ICON={
  apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
  lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
@@ -2550,7 +2822,8 @@ const ICON={
  csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
 const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
-const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables"};
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables",leq:"the leq",prompts:"prompts"};
+const has=v=>Array.isArray(v)?v.length>0:!!v;
 
 /* header */
 document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
@@ -2577,162 +2850,262 @@ $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
   }
   if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
 })();
+const bar=$("#bar");
+const setBarH=()=>document.documentElement.style.setProperty("--barh",bar.offsetHeight+"px");
+setBarH(); addEventListener("resize",setBarH);
 
-/* panes */
-const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
-const PANES=(GUIDE.panes||[]).filter(id=>Array.isArray(GUIDE[id])&&GUIDE[id].length||(id==="outline"&&GUIDE.top?.length));
-const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables};
-const tabs=[];
-PANES.forEach((id,i)=>{
-  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
-  builders[id](sec); root.appendChild(sec);
-  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
-  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
-});
-if(PANES.length<2)panesEl.classList.add("one");
-function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
-function show(id,user){
-  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
-  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
-  moveP(); if(user){try{history.replaceState(null,"","#"+id)}catch(e){}}
-}
-const want=location.hash.slice(1);
-show(PANES.includes(want)?want:PANES[0],false);
-requestAnimationFrame(moveP); addEventListener("resize",moveP);
+function shead(txt,extra){return el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""))}
 
-/* outline */
-function shead(txt,extra){const h=el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""));return h}
-function extras(s){
+/* ═══ outline blocks ═══ */
+const B={
+  p:v=>(Array.isArray(v)?v:[v]).map(x=>`<p>${fmt(x)}</p>`).join(""),
+  pts:v=>`<ul class="pts${v.length>=6&&v.every(x=>String(x).length<70)?" two":""}">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`,
+  rows:v=>`<dl class="rows">${v.map(([k,x])=>`<dt>${esc(k)}</dt><dd>${fmt(x)}</dd>`).join("")}</dl>`,
+  steps:v=>`<ol class="steps">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  flow:v=>`<ol class="flow">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  fig:v=>`<figure class="fig">${v.svg||""}${v.cap?`<figcaption>${fmt(v.cap)}</figcaption>`:""}</figure>`,
+  tiles:v=>`<div class="tiles">${v.map(x=>`<div><h5>${fmt(x.h)}</h5>${x.t?`<p>${fmt(x.t)}</p>`:""}${x.k?`<span class="tk">${esc(x.k)}</span>`:""}</div>`).join("")}</div>`,
+  tree:v=>{const n=x=>`<li><div class="nd"><b>${fmt(x.t)}</b>${x.d?`<span>${fmt(x.d)}</span>`:""}</div>${x.c?.length?`<ul>${x.c.map(n).join("")}</ul>`:""}</li>`;return `<div class="tree"><ul>${n(v)}</ul></div>`},
+  table:v=>{const cols=v.cols||[];return `${v.h?`<p class="tcap">${esc(v.h)}</p>`:""}<div class="tbw"><table class="tbl${cols.length===2?" two":""}">${cols.some(c=>c)?`<thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead>`:""}<tbody>${(v.rows||[]).map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`},
+  cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
+  watch:v=>`<div class="watch"><div class="wl">${I_WARN}watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
+  ex:v=>`<div class="exs">${v.map(x=>`<div class="tq"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>show answer</span>${CHEV}</button><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"example",ok:"rule",warn:"watch out"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join(""),
+  terms:v=>`<div class="terms"><span class="tl">key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
+};
+const VIS=["fig","tree","tiles"];
+function section(s,i){
+  scope();
+  const watch=[...(s.watch||[]),...(s.notes||[]).filter(n=>n.k==="warn").map(n=>n.t)];
+  const notes=(s.notes||[]).filter(n=>n.k!=="warn");
+  const mainKeys=["p","pts","rows","flow","steps"].filter(k=>has(s[k]));
+  const vis=VIS.filter(k=>has(s[k]));
+  let sideKey=vis[0]||null;
+  const main=mainKeys.map(k=>B[k](s[k])).join("")+(notes.length?B.notes(notes):"");
+  let side="", watchPlaced=false;
+  if(sideKey)side=B[sideKey](s[sideKey]);
+  else if(watch.length&&main){side=B.watch(watch);watchPlaced=true}
   let h="";
-  if(s.rows)h+=`<dl class="rows">${s.rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${fmt(v)}</dd>`).join("")}</dl>`;
-  if(s.cmp)h+=`<div class="cmp"><div><h5>${esc(s.cmp.a.h)}</h5>${s.cmp.a.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div><div><h5>${esc(s.cmp.b.h)}</h5>${s.cmp.b.p.map(x=>`<p>${fmt(x)}</p>`).join("")}</div></div>`;
-  if(s.steps)h+=`<ol class="steps">${s.steps.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`;
-  if(s.notes)h+=s.notes.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({warn:"watch out",ex:"example",ok:"rule"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join("");
-  if(s.terms?.length)h+=`<div class="terms">${s.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`;
-  return h;
+  if(main&&side)h+=`<div class="duo${sideKey==="tree"||sideKey==="fig"?" wide-side":""}"><div class="main">${main}</div><div class="side">${side}</div></div>`;
+  else if(main)h+=`<div class="main solo">${main}</div>`;
+  else if(side)h+=side;
+  const rest=vis.filter(k=>k!==sideKey).concat(["table","cmp"].filter(k=>has(s[k])));
+  if(sideKey&&!main){/* visual already placed alone */}
+  rest.forEach(k=>{h+=B[k](s[k])});
+  if(has(s.tables))s.tables.forEach(t=>{h+=B.table(t)});
+  if(has(s.ex))h+=B.ex(s.ex);
+  if(watch.length&&!watchPlaced)h+=B.watch(watch);
+  if(has(s.terms))h+=B.terms(s.terms);
+  const n=String(i+1).padStart(2,"0");
+  const badge=s.w===3?`<span class="w w3">tested most</span>`:s.w===2?`<span class="w w2">tested</span>`:"";
+  const node=el("section","sec",`<header><span class="num">${n}</span><div class="ht"><h3>${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</div>${badge}</header><div class="sb">${h}</div>`);
+  node.id="s-"+(i+1);
+  SEEN=null;
+  return node;
 }
+function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{const b=x.querySelector(".eb");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"})})}
 function buildOutline(sec){
-  if(GUIDE.top?.length){
-    sec.appendChild(shead("start here","the whole guide in one screen"));
-    sec.appendChild(el("div","card top",GUIDE.top.map(x=>`<p>${fmt(x)}</p>`).join("")));
+  const list=GUIDE.outline||[];
+  const wrap=el("div","ol"); const toc=el("nav","toc"); toc.setAttribute("aria-label","sections");
+  const col=el("div","olc");
+  toc.innerHTML=`<div class="tl">on this page</div>`;
+  if(has(GUIDE.top)){
+    scope();
+    const t=el("div","tops"); t.id="s-top";
+    t.innerHTML=GUIDE.top.map(x=>`<div class="tp">${fmt(x)}</div>`).join("");
+    col.appendChild(shead("start here","what decides the grade")); col.appendChild(t);
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-top"><i class="w3" style="border-radius:50%"></i><span>start here</span></a>`);
   }
-  const list=GUIDE.outline||[]; if(!list.length)return;
-  const n3=list.filter(s=>s.w===3).length;
-  sec.appendChild(shead("the unit",`${list.length} sections`+(n3?` · ${n3} tested most`:"")));
-  const g=el("div","group");
   list.forEach((s,i)=>{
-    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded",String(s.w===3));
-    row.innerHTML=`<span class="rt"><span class="rn">${esc(s.t)}</span>${s.d?`<span class="rd">${esc(s.d)}</span>`:""}</span>`+(s.w>=2?`<span class="w w${s.w}">${s.w===3?"tested most":"tested"}</span>`:"")+CHEV;
-    const body=el("div","body"+(s.w===3?" on":""),`<div><div class="in">${(s.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}${extras(s)}</div></div>`);
-    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
-    g.appendChild(row); g.appendChild(body);
+    col.appendChild(section(s,i));
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-${i+1}"><i class="w${s.w||1}"></i><span>${esc(s.t)}</span></a>`);
   });
-  sec.appendChild(g);
   if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
-    sec.appendChild(shead("abbreviations"));
-    sec.appendChild(el("div","card abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")));
+    col.appendChild(shead("abbreviations"));
+    const a=el("div","abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")); a.id="s-abbr"; col.appendChild(a);
+  }
+  if(list.some(s=>s.w===3)||list.some(s=>s.w===2))toc.insertAdjacentHTML("beforeend",`<div class="leg"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`);
+  wrap.appendChild(toc); wrap.appendChild(col); sec.appendChild(wrap);
+  wireEx(col);
+  const links=[...toc.querySelectorAll("a")];
+  links.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}));
+  if("IntersectionObserver" in window){
+    const vis=new Map();
+    const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target.id,e.isIntersecting));
+      const first=links.find(a=>vis.get(a.getAttribute("href").slice(1)));
+      if(first){links.forEach(a=>a.classList.toggle("on",a===first));if(getComputedStyle(toc).display==="flex"){const l=first.offsetLeft-toc.clientWidth/2+first.offsetWidth/2;toc.scrollTo({left:l,behavior:REDUCED?"auto":"smooth"})}}
+    },{rootMargin:"-20% 0px -55% 0px"});
+    links.forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));if(t)io.observe(t)});
   }
 }
 
 /* practice mc */
+let SCORE={done:0,right:0,total:0};
+function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
-  const qs=GUIDE.practice||[]; let done=0, right=0;
-  sec.appendChild(shead("practice",`${qs.length} questions`));
-  const sc=el("div","group score"); sc.innerHTML=`<b id="scn">0</b><span>of ${qs.length} right</span><button type="button" class="btn ghost" id="reset" style="margin-left:auto">start over</button>`; sc.hidden=true; const scn=sc.querySelector("#scn");
+  const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
+  sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
+  const g=el("div","qgrid");
   qs.forEach((q,i)=>{
     const card=el("div","group q");
-    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${fmt(q.q)}</div>`+
-      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcd"[j]||j+1}</span><span>${fmt(o)}</span></button>`).join("")+
-      `<div class="why"><b>${"why"}</b>${fmt(q.why||"")}</div>`;
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
     card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
       if(card.classList.contains("done"))return;
       card.classList.add("done"); const j=+b.dataset.i;
-      if(j===q.a){b.classList.add("right");right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
-      done++; scn.textContent=right; sc.hidden=false; if(done===qs.length)sc.scrollIntoView({block:"nearest",behavior:REDUCED?"auto":"smooth"});
+      if(j===q.a){b.classList.add("right");SCORE.right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
+      SCORE.done++; $("#scn").textContent=SCORE.right; scoreVis();
     }));
-    sec.appendChild(card);
+    g.appendChild(card);
   });
-  sec.appendChild(sc);
-  sc.querySelector("#reset").addEventListener("click",()=>{done=0;right=0;scn.textContent=0;sc.hidden=true;sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  sec.appendChild(g);
+  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
 }
 
-/* problems / worked examples */
-/* steps: plain strings render numbered; [work, why] pairs render line by line, work left, why right */
-function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps" style="margin-top:0">${st.map(s=>`<li>${fmt(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${fmt(m)}</div><div class="wy">${y?fmt(y):""}</div></li>`}).join("")}</ul>`}
+/* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
+function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps">${st.map(s=>`<li>${plain(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${plain(m)}</div><div class="wy">${y?plain(y):""}</div></li>`}).join("")}</ul>`}
 function buildProblems(sec){
   const ps=GUIDE.problems||[];
   sec.appendChild(shead("problems",`${ps.length} to work`));
+  const g=el("div","pgrid");
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
-    card.innerHTML=`<div class="qt"><div class="qn">problem ${i+1}</div>${fmt(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${fmt(p.ans)}</div>`:""}</div>`;
+    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
     const go=card.querySelector(".go");
     go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
-    sec.appendChild(card);
+    g.appendChild(card);
   });
+  sec.appendChild(g);
 }
 
 /* formulas */
 function buildFormulas(sec){
   const fs=GUIDE.formulas||[];
   sec.appendChild(shead("formulas",`${fs.length}`));
-  sec.appendChild(el("div","group",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${fmt(f.note)}</span>`:""}</div>`).join("")));
+  sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
 }
 
-/* flashcards */
+/* flashcards: flip deck, plus the whole list */
 function buildCards(sec){
   const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
-  sec.appendChild(shead("cards",`${cs.length}`));
-  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); sec.appendChild(deck);
-  const nav=el("div","dnav",`<button type="button" class="btn ghost" id="prev">back</button><button type="button" class="btn" id="next">next</button><button type="button" class="btn ghost" id="shuf">shuffle</button><span class="cnt" id="cnt"></span>`); sec.appendChild(nav);
-  const cnt=nav.querySelector("#cnt");
-  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${esc(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${fmt(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
-  const flip=()=>fc.classList.toggle("flip");
-  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
-  nav.querySelector("#next").addEventListener("click",()=>{i=(i+1)%cs.length;draw()});
-  nav.querySelector("#prev").addEventListener("click",()=>{i=(i-1+cs.length)%cs.length;draw()});
-  nav.querySelector("#shuf").addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
-  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"){i=(i+1)%cs.length;draw()}if(e.key==="ArrowLeft"){i=(i-1+cs.length)%cs.length;draw()}});
-  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40){i=(i+1)%cs.length;draw()}else if(dx>40){i=(i-1+cs.length)%cs.length;draw()}},{passive:true});
+  sec.appendChild(shead("cards",`${cs.length} · tap to flip, swipe for next`));
+  const dk=el("div","dk");
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  sec.appendChild(dk);
+  const cnt=nav.querySelector(".cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const go=d=>{i=(i+d+cs.length)%cs.length;draw()};
+  fc.addEventListener("click",()=>fc.classList.toggle("flip")); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();fc.classList.toggle("flip")}});
+  nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
+  nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
+  nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
+  sec.appendChild(shead("all cards",`${cs.length}`));
+  sec.appendChild(el("div","clist",cs.map(c=>`<div><b>${plain(c.f)}</b><span>${plain(c.b)}</span></div>`).join("")));
 }
 
 /* timeline */
 function buildTimeline(sec){
   const ts=GUIDE.timeline||[];
   sec.appendChild(shead("timeline",`${ts.length} events`));
-  sec.appendChild(el("div","card",`<div class="tl">${ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${fmt(t.t)}</div>${t.d?`<div class="d">${fmt(t.d)}</div>`:""}</div>`).join("")}</div>`));
+  sec.appendChild(el("div","tln",ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${plain(t.t)}</div>${t.d?`<div class="d">${plain(t.d)}</div>`:"<div></div>"}</div>`).join("")));
 }
 
 /* checklist */
 function buildChecklist(sec){
   const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
   sec.appendChild(shead("checklist",`${cs.length} items`));
-  const g=el("div","group");
+  const g=el("div","ckg");
   cs.forEach((c,i)=>{
-    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${fmt(c.t)}</span>${c.d?`<span class="d">${fmt(c.d)}</span>`:""}</span>`);
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${plain(c.t)}</span>${c.d?`<span class="d">${plain(c.d)}</span>`:""}</span>`);
     b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
     g.appendChild(b);
   });
   sec.appendChild(g);
 }
 
-/* cram sheet: [{h:"group", d:"optional", items:[{n:"name", y:"date", t:"one line"}]}] */
+/* cram sheet: [{h, d, items:[{n, y, t}]}] */
 function buildCram(sec){
-  (GUIDE.cram||[]).forEach(g=>{
-    const it=g.items||[];
-    sec.appendChild(shead(g.h||"cram sheet",g.d||`${it.length}`));
-    sec.appendChild(el("div","group",it.map(c=>`<div class="cr"><div class="n"><span>${fmt(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${fmt(c.t)}</div></div>`).join("")));
-  });
+  const gs=GUIDE.cram||[];
+  sec.appendChild(shead("cram sheet","one line each"));
+  sec.appendChild(el("div","cgrid",gs.map(g=>`<div class="group"><div class="gh">${esc(g.h||"")}<span>${esc(g.d||String((g.items||[]).length))}</span></div>${(g.items||[]).map(c=>`<div class="cr"><div class="n"><span>${plain(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${plain(c.t)}</div></div>`).join("")}</div>`).join("")));
 }
 
-/* tables: [{h:"title", d:"optional", cols:["a","b"], rows:[["..",".."]]}]. stacks into cards on a phone */
+/* tables pane: [{h, d, cols, rows}] */
 function buildTables(sec){
-  (GUIDE.tables||[]).forEach(tb=>{
-    const cols=tb.cols||[], rows=tb.rows||[];
-    sec.appendChild(shead(tb.h||"table",tb.d||`${rows.length}`));
-    sec.appendChild(el("div","group",`<table class="tbl"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table>`));
-  });
+  const w=el("div","tpane");
+  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
+  sec.appendChild(w);
 }
+
+/* essay panes (used by the LEQ guide): prompts + leq + fn */
+function buildPrompts(sec){
+  const ps=GUIDE.prompts||[];
+  if(has(GUIDE.prompts_note)){sec.appendChild(shead("how points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
+  sec.appendChild(shead("possible prompts",`${ps.length}`));
+  ps.forEach((p,i)=>{
+    scope();
+    const g=el("div","group");
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
+    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn">${esc(p.q)}</span></span>`+CHEV;
+    const inner=(p.tldr?`<div class="pl">tldr</div><ul class="bul">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
+      `<div class="pl">context</div><ul class="bul">${(p.ctx||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">thesis</div><div class="ans">${esc(p.thesis)}</div>`+
+      (p.body||[]).map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
+      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
+    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body); sec.appendChild(g);
+  });
+  SEEN=null;
+}
+function buildLeq(sec){
+  const L=GUIDE.leq;
+  sec.appendChild(shead("how it runs"));
+  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p>${L.math?`<p>${fmt(L.math)}</p>`:""}`));
+  if(has(L.rows)){
+    sec.appendChild(shead("the rubric",`${L.rows.length} rows`));
+    sec.appendChild(el("div","tbw",`<table class="tbl"><thead><tr><th>row</th><th>earns it</th><th>loses it</th><th>class tips</th></tr></thead><tbody>${L.rows.map(r=>`<tr><td data-l="row">${esc(r.n)}</td><td data-l="earns it">${plain(r.earn)}</td><td data-l="loses it">${plain(r.lose)}</td><td data-l="class tips">${plain(r.cls||"")}</td></tr>`).join("")}</tbody></table>`));
+  }
+  if(has(L.codes))sec.appendChild(el("div","card",`<div class="terms"><span class="tl">margin codes</span>${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
+  if(has(L.shape)){sec.appendChild(shead("the shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
+  if(has(L.pace)){
+    const tot=L.pace.reduce((a,p)=>a+p.m,0);
+    sec.appendChild(shead(`${tot} minutes`,"minute by minute"));
+    sec.appendChild(el("div","card",`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>${B.steps(L.pace.map(p=>`**${p.l} · ${p.m} min.** ${p.t}`))}`));
+  }
+  if(has(GUIDE.fn)){sec.appendChild(shead("notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
+}
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables,leq:buildLeq,prompts:buildPrompts};
+const PANES=(GUIDE.panes||[]).filter(id=>builders[id]&&(has(GUIDE[id])||(id==="outline"&&has(GUIDE.top))));
+const tabs=[];
+PANES.forEach(id=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  scope(); builders[id](sec); SEEN=null; root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+let CUR=null;
+function show(id,user){
+  CUR=id;
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); scoreVis();
+  if(user){try{history.replaceState(null,"","#"+id)}catch(e){}; const top=panesEl.getBoundingClientRect().top+scrollY-bar.offsetHeight-12; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"})}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
 
 /* theme (shared with the homepage via localStorage "theme") */
 const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
@@ -2750,10 +3123,10 @@ segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
 })();
 requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
-document.fonts?.ready.then(()=>{moveThumb();moveP()});
+document.fonts?.ready.then(()=>{moveThumb();moveP();setBarH()});
 
-/* sticky bar shadow + staggered reveal */
-(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+/* sticky bar shadow, reading progress, staggered reveal */
+(function(){const p=$("#prog i");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6);const se=document.scrollingElement,h=se.scrollHeight-se.clientHeight;p.style.width=(h>0?Math.min(100,se.scrollTop/h*100):0)+"%"};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
 document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
