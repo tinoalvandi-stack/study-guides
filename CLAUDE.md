@@ -131,15 +131,27 @@ ahead of earlier-dated entries; it still drops off after its date.
 ## Guide pages themselves
 
 Each guide is a standalone self-contained HTML file. Conventions that must
-hold, because they are what the site's readers rely on:
+hold, because they are what the site's readers rely on (reader feedback,
+September 2026; the second round on the 29th said the first guides were
+over-highlighted and hard to follow):
 
-- Body text at full contrast (white on dark). Highlights, bolds, and varied
-  weights carry the emphasis, not dimmed text.
+- Easy to read first. Less to read, more to look at: tables, flows, trees,
+  tiles, drawn figures and maps instead of paragraphs. A section has at most
+  two short paragraphs; everything else is a shape.
+- Key terms are **bold once**, where they are defined or first used. Nothing
+  else is marked inline: no highlight boxes, no underlines, no red text. Traps
+  and common wrong answers go in the section's one "watch out" box.
+- Every tested section carries "on the test" examples: a question in the style
+  the class actually tests (a scenario for psych, a stimulus-style question for
+  APUSH, a small-business case, a short problem for math and physics), with a
+  tap-to-reveal answer and a one-line why.
+- Body text at full contrast (white on dark). Weight and color carry the
+  emphasis, never dimmed text.
 - Whatever weighs most on the test goes first, in the guide and in the study
   order.
-- Key vocabulary and terms are bolded or marked, never left in plain weight.
-- Visual and colorful, with less to read. Timelines and maps beat paragraphs.
-- Colors vary guide to guide. Dark neutral is an option, not the default.
+- Colors vary guide to guide: each class carries its own color through the
+  page. Dark neutral is an option (the theme switch), not the default. Site
+  indigo stays on buttons and examples.
 - Universal for classmates: nothing that assumes a resource only Valentino
   has, no artifacts of his own process. Someone landing cold should think
   "this is all I need to study."
@@ -149,38 +161,70 @@ hold, because they are what the site's readers rely on:
 - Any abbreviation used gets a key at the bottom listing every one.
 - No statistics presented as something to memorize; give the idea in words.
 
-## Guide template (new guides)
+## Guide template (v2, September 29, 2026)
 
-New guides start from `template/guide-template.html`. Everything renders from
-one `GUIDE` object: `id` (class token: apush psych phys pre sem biz mor lang
-span apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`,
-`pdfs` (optional `{t, url}` buttons under the title for printable practice quizzes/tests; first is filled, the rest ghost; optional `pdfsNote` line), `updated`, `panes` (tab order; a pane only shows when its data exists), `top`
-(start-here lines), `outline` (`w:3/2/1`, `t`, `p[]`, `terms[]`, optional
-`notes[]`, `cmp`, `steps[]`, `rows[]` of `[label, line]` pairs for why/what/result chains, `d`), `practice` (`q`, `opts[]`, `a`, `why`),
-`problems` (`q`, `steps[]`, `ans`; for math and physics every step is a `[work, why]` pair, one line of work as it goes on paper plus the reason beside it, rendered as a two-column work | why list; plain strings still render as numbered steps), `formulas` (`n`, `f`, `note`), `cards`
-(`f`, `b`), `timeline` (`y`, `t`, `d`), `checklist` (`t`, `d`), `cram` (groups `{h, d, items:[{n, y, t}]}`, a one-line-per-item cram tab),
-`tables` (`{h, d, cols[], rows[[]]}`, compare/who's-who tables that stack into cards on a phone), `abbr` (map).
-Prose accepts `**term**`, `==fact==`, `!!trap!!`. The class color is `--cls`
-(set from `id`); site indigo `--accent` stays on buttons. The header bar links
-home and shares the theme choice with the homepage (`localStorage` "theme").
-Nothing in the CSS or machinery needs editing per guide.
+Every guide is built from `template/guide-template.html`: one `GUIDE` object
+renders the whole page; the CSS and the machinery below the object are never
+edited per guide. If a guide needs something the template lacks, change the
+template and rebuild every guide.
 
-## Guide re-theme (guides built before the template, September 2026)
+Layout: the page is up to 1180px wide. On desktop and iPad (960px and up) a
+sticky "on this page" menu sits left of the sections and highlights the one
+being read; on phones the same menu is a sticky jump bar under the header.
+Every section is open (no collapsing). Practice, formulas and cram lay out in
+two columns on wide screens; the practice score is a floating pill.
 
-Every guide carries a `<style id="stone">` block right after its first
-`</style>`: the three `@font-face` rules, the kinari tokens mapped onto the old
-glass token names (`--ground`, `--glass`, `--rim-*`, `--amb: 0`, and so on),
-`#amb` hidden, `.g` flattened to a 1px line. The guide's own layout is
-untouched, but every declaration block that uses `var(--display)` was retuned
-in place to weight 650 and `letter-spacing: -.02em` (sizes as the glass
-template had them). A new guide built from the old glass template gets the
-same block; `retheme.py` in the project notes generates it and does the
-retune (it strips an existing block first, so it is safe to rerun).
-The same block also injects the homepage bar (mark, wordmark, "all guides"),
-turns the gradient glyph tile into a line icon, and restyles chips, tabs,
-corners and badges to the homepage's components, so old guides read as the
-same site without their content being touched. `precalc-quizzes.html` is a
-print sheet and is left alone.
+Header fields: `id` (class token: apush psych phys pre sem biz mor lang span
+apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`, `pdfs`
+(`{t, url}` buttons for printable practice; optional `pdfsNote`), `updated`,
+`panes` (tab order; a pane shows only when its data exists), `labels` (tab
+renames), `abbr`.
+
+`top`: three to five start-here lines (numbered tiles).
+
+`outline`: sections, heaviest first. Each has `w` (3 tested most, 2 tested,
+1 know it), `t`, `d` (one line on what the test asks) and any of these blocks:
+- text: `p` (at most two short paragraphs), `pts` (bullets; six or more short
+  ones go two-column), `rows` (`[label, line]` pairs), `flow` (an arrow chain,
+  up to six short boxes), `steps` (numbered procedure)
+- visuals: `tiles` (`{h, t, k}` cards for parallel items), `tree` (`{t, d, c:[]}`
+  hierarchy, stacks into an indented list on narrow cards), `fig` (`{svg, cap}`,
+  an inline SVG), `table` (`{h, cols, rows}`), `cmp` (two or three side-by-side
+  columns `{h, p:[]}`)
+- `ex`: `{q, a, why}` "on the test" cards
+- `watch`: the traps, one line each
+- `terms`: key-term chips
+The engine puts text blocks left and the first `fig`/`tree`/`tiles` right, then
+the other visuals, tables and comparisons full width, then examples, the watch
+box and the chips.
+
+Figures never hard-code a color. They use the engine's classes so light and
+dark both work: strokes `ln lc la lb lg` (+ `dash`), fills `fs fsa fp fc fa fb fg
+fi fn`, text `tm tb tc ta tw tbd` (+ `mid`, `end`), arrowheads
+`url(#ah) #ahc #aha #ahb`. Keep viewBox widths at 320 to 560 and labels at 12+
+units so they stay readable on a phone. A figure must be exactly right; when in
+doubt use a table.
+
+Other panes: `practice` (`q`, `opts[]`, `a` index, `why` that also explains the
+tempting wrong answer), `problems` (`q`, `steps[]`, `ans`; math and physics steps
+are `[work, why]` pairs), `formulas` (`n`, `f` plain text, `note`), `cards`
+(`f`, `b`; the pane also lists every card), `timeline` (`y`, `t`, `d`),
+`checklist` (`t`, `d`), `cram` (`{h, d, items:[{n, y, t}]}`), `tables`
+(`{h, d, cols[], rows[[]]}`), and for essay guides `prompts` and `leq`.
+
+Markup: `**term**` only. The engine bolds a term once per section and renders
+any legacy `==x==` or `!!x!!` as plain text.
+
+## Guide history
+
+The first guides (August) were hand-built "glass" pages; in September they were
+re-themed onto the kinari tokens, then moved onto the first template. On
+September 29, 2026 all eighteen guides were rebuilt on template v2 from their
+own content (same sections, weights, practice, cards and problems; prose cut,
+visuals and examples added). `precalc-quizzes.html` is a print sheet,
+`morality-ch3-jeopardy.html` a game, and the two cram pages
+(`bus-unit-1-cram`, `morality-ch1-2-cram`) are print-style sheets; those four
+stay on their own layouts.
 
 ## Content Security Policy
 
