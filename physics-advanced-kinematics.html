@@ -553,6 +553,7 @@ const GUIDE = {
   "problems": "worked problems",
   "formulas": "equations"
  },
+ "topTable": {"h": "What stays constant", "cols": ["situation", "what's constant", "always equals"], "rows": [["**Free fall** (dropped object)", "vertical acceleration aᵧ", "−g (−9.80 m/s²) with up as +, or +g with down as +"], ["**Projectile** (kicked ball)", "vertical acceleration aᵧ", "−g, the whole flight, even at the peak"], ["**Projectile** (kicked ball)", "horizontal acceleration aₓ", "0"], ["**Projectile** (kicked ball)", "horizontal velocity vₓ", "v₀ cos θ, from launch to landing"], ["**Braking** (car slowing to a stop)", "acceleration a", "the given braking acceleration, negative, until it stops"], ["**a-t graph** from a v-t graph", "acceleration on each straight piece", "the slope of that piece (a flat piece means a = 0)"]]},
  "top": [
   "Four parts, 25% each: **sketch a graph**, two problems, derive an expression (letters, no numbers).",
   "Algebra first, numbers last. t from another equation? Substitute its expression, not its value.",
@@ -1237,6 +1238,7 @@ function buildOutline(sec){
     const t=el("div","tops"); t.id="s-top";
     t.innerHTML=GUIDE.top.map(x=>`<div class="tp">${fmt(x)}</div>`).join("");
     col.appendChild(shead("start here","what decides the grade")); col.appendChild(t);
+    if(GUIDE.topTable){const tt=el("div","toptbl");tt.style.margin="14px 0 22px";tt.innerHTML=B.table(GUIDE.topTable);col.appendChild(tt)}
     toc.insertAdjacentHTML("beforeend",`<a href="#s-top"><i class="w3" style="border-radius:50%"></i><span>start here</span></a>`);
   }
   list.forEach((s,i)=>{
