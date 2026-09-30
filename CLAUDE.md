@@ -191,7 +191,9 @@ renames), `abbr`.
   hierarchy, stacks into an indented list on narrow cards), `fig` (`{svg, cap}`,
   an inline SVG), `table` (`{h, cols, rows}`), `cmp` (two or three side-by-side
   columns `{h, p:[]}`)
-- `ex`: `{q, a, why}` "on the test" cards
+- `ex`: `{q, a, why}` "on the test" cards (tap to show the answer), or
+  `{q, opts, a, why}` with `a` the right option's index for tap-to-answer
+  multiple choice; use that form whenever the test is multiple choice
 - `watch`: the traps, one line each
 - `terms`: key-term chips
 The engine puts text blocks left and the first `fig`/`tree`/`tiles` right, then

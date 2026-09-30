@@ -332,6 +332,10 @@ b.kw{font-weight:680;color:var(--ink)}
 .tq.on .ea{display:block;animation:rise .3s var(--spring) both}
 .tq .ea b.aa{display:block;font-weight:680;margin-bottom:3px}
 .tq .ea .why{color:var(--ink2)}
+/* multiple-choice "on the test" card: {q, opts, a, why} */
+.tq .opt{padding:10px 13px}
+.tq.done .opt{cursor:default}
+.tq.mc .ea .why{color:var(--ink)}
 
 /* watch out + callouts */
 .watch{border-radius:var(--r-btn);background:color-mix(in srgb,var(--bad) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 30%,var(--line));padding:11px 14px 12px}
@@ -381,7 +385,7 @@ b.kw{font-weight:680;color:var(--ink)}
 .q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
 .qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
 .opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
-@media (hover:hover){#root:not(.showall) .q:not(.done) .opt:hover{background:var(--surface2)}}
+@media (hover:hover){#root:not(.showall) .q:not(.done) .opt:hover,#root:not(.showall) .tq:not(.done) .opt:hover{background:var(--surface2)}}
 .opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
 .q.done .opt{cursor:default}
 .opt.right{background:color-mix(in srgb,var(--good) 14%,transparent)}
@@ -392,9 +396,9 @@ b.kw{font-weight:680;color:var(--ink)}
 .q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
 .q.done .why{display:block}
 /* show all answers */
-.showall .q .opt{cursor:default}
-.showall .q .opt[data-c]{background:color-mix(in srgb,var(--good) 14%,transparent)}
-.showall .q .opt[data-c] .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.showall .q .opt,.showall .tq .opt{cursor:default}
+.showall .q .opt[data-c],.showall .tq .opt[data-c]{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.showall .q .opt[data-c] .k,.showall .tq .opt[data-c] .k{background:var(--good);border-color:var(--good);color:var(--surface)}
 .showall .q .why,.showall .tq .ea{display:block}
 .showall .tq .eb,.showall .prob .go{display:none}
 .showall .prob .reveal{display:block}
@@ -1453,7 +1457,7 @@ const B={
   table:v=>{const cols=v.cols||[];return `${v.h?`<p class="tcap">${esc(v.h)}</p>`:""}<div class="tbw"><table class="tbl${cols.length===2?" two":""}">${cols.some(c=>c)?`<thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead>`:""}<tbody>${(v.rows||[]).map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`},
   cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
   watch:v=>`<div class="watch"><div class="wl">${I_WARN}watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
-  ex:v=>`<div class="exs">${v.map(x=>`<div class="tq"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>show answer</span>${CHEV}</button><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  ex:v=>`<div class="exs">${v.map(x=>Array.isArray(x.opts)?`<div class="tq mc"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div>${x.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${j===x.a?" data-c":""}><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")}<div class="ea">${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`:`<div class="tq"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>show answer</span>${CHEV}</button><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
   notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"example",ok:"rule",warn:"watch out"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join(""),
   terms:v=>`<div class="terms"><span class="tl">key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
 };
@@ -1487,7 +1491,15 @@ function section(s,i){
   SEEN=null;
   return node;
 }
-function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{const b=x.querySelector(".eb");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"})})}
+function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{
+  const b=x.querySelector(".eb");
+  if(b){b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"});return}
+  x.querySelectorAll(".opt").forEach(o=>o.addEventListener("click",()=>{
+    if(x.classList.contains("done")||$("#root").classList.contains("showall"))return;
+    x.classList.add("done","on");
+    if(o.hasAttribute("data-c"))o.classList.add("right");else{o.classList.add("wrong");const c=x.querySelector(".opt[data-c]");if(c)c.classList.add("right")}
+  }));
+})}
 function buildOutline(sec){
   const list=GUIDE.outline||[];
   const wrap=el("div","ol"); const toc=el("nav","toc"); toc.setAttribute("aria-label","sections");
