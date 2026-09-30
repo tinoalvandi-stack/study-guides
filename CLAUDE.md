@@ -215,6 +215,13 @@ are `[work, why]` pairs), `formulas` (`n`, `f` plain text, `note`), `cards`
 Markup: `**term**` only. The engine bolds a term once per section and renders
 any legacy `==x==` or `!!x!!` as plain text.
 
+Every guide also gets, from the template alone (nothing to set in `GUIDE`):
+a search box beside the tabs (filters every pane as you type, marks the hits,
+shows per-tab counts; `/` or the header magnifier jumps to it) and a
+"show all answers" toggle (practice keys and whys, problem steps, every "on
+the test" answer), shown whenever the guide has any of those. `topTable`
+(`{h, cols, rows}`) renders one table under the start-here tiles.
+
 ## Guide history
 
 The first guides (August) were hand-built "glass" pages; in September they were
