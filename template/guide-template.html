@@ -395,6 +395,12 @@ b.kw{font-weight:680;color:var(--ink)}
 .q .why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
 .q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
 .q.done .why{display:block}
+/* select-all questions: a is an array of right indexes */
+.opt.sel{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.opt.sel .k{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.mchk{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border-top:1px solid var(--line);font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+.mchk .btn{padding:6px 12px;font-size:var(--t13)}
+.q.done .mchk,.showall .mchk{display:none}
 /* show all answers */
 .showall .q .opt,.showall .tq .opt{cursor:default}
 .showall .q .opt[data-c],.showall .tq .opt[data-c]{background:color-mix(in srgb,var(--good) 14%,transparent)}
@@ -816,20 +822,30 @@ function buildPractice(sec){
   sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
   const g=el("div","qgrid");
   qs.forEach((q,i)=>{
-    const card=el("div","group q");
+    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a];
     card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
-      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${j===q.a?" data-c":""}><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${keys.includes(j)?" data-c":""}><span class="k">${"abcdef"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      (multi?`<div class="mchk"><span>select all that apply</span><button type="button" class="btn ghost">check</button></div>`:"")+
       `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
-    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
-      if(card.classList.contains("done")||$("#root").classList.contains("showall"))return;
-      card.classList.add("done"); const j=+b.dataset.i;
-      if(j===q.a){b.classList.add("right");SCORE.right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
-      SCORE.done++; $("#scn").textContent=SCORE.right; scoreVis();
+    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall");
+    const finish=ok=>{card.classList.add("done");if(ok)SCORE.right++;SCORE.done++;$("#scn").textContent=SCORE.right;scoreVis()};
+    opts.forEach(b=>b.addEventListener("click",()=>{
+      if(locked())return;
+      if(multi){b.classList.toggle("sel");return}
+      const j=+b.dataset.i;
+      if(j===q.a)b.classList.add("right");else{b.classList.add("wrong");opts[q.a].classList.add("right")}
+      finish(j===q.a);
     }));
+    if(multi)card.querySelector(".mchk .btn").addEventListener("click",()=>{
+      if(locked())return;
+      let ok=true;
+      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c)o.classList.add("right");else if(s)o.classList.add("wrong");if(s!==c)ok=false});
+      finish(ok);
+    });
     g.appendChild(card);
   });
   sec.appendChild(g);
-  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
 }
 
 /* problems: steps are strings (numbered) or [work, why] pairs (line by line) */

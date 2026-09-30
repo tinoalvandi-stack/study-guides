@@ -395,6 +395,12 @@ b.kw{font-weight:680;color:var(--ink)}
 .q .why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
 .q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
 .q.done .why{display:block}
+/* select-all questions: a is an array of right indexes */
+.opt.sel{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.opt.sel .k{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.mchk{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border-top:1px solid var(--line);font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+.mchk .btn{padding:6px 12px;font-size:var(--t13)}
+.q.done .mchk,.showall .mchk{display:none}
 /* show all answers */
 .showall .q .opt,.showall .tq .opt{cursor:default}
 .showall .q .opt[data-c],.showall .tq .opt[data-c]{background:color-mix(in srgb,var(--good) 14%,transparent)}
@@ -600,7 +606,7 @@ const GUIDE = {
  "test": "2026-09-29",
  "end": "2026-10-01",
  "meta": "AAQ + 50 MCQs · modules 1.1–1.6, plus unit 0",
- "sub": "every concept on the unit 1 Quizizz, ordered by how often it gets asked, a cram sheet, and 94 practice questions with the why",
+ "sub": "every concept on the unit 1 Quizizz, ordered by how often it gets asked, a cram sheet, and all 97 Quizizz questions with the why",
  "updated": "sept 29, 2026",
  "panes": [
   "outline",
@@ -667,26 +673,27 @@ const GUIDE = {
    },
    "ex": [
     {
-     "q": "A skateboarder hits the back of his head and afterward can't stay steady on the board. Which structure?",
-     "why": "The cerebellum runs balance and coordination. Not the medulla (breathing) or reticular formation (arousal).",
+     "q": "A gymnast falls and hits her head on the floor. She attempts to continue practicing, but has trouble maintaining balance. What part of her brain has probably been affected?",
      "opts": [
-      "Medulla",
-      "Cerebellum",
       "Reticular formation",
-      "Amygdala"
+      "Cerebellum",
+      "Amygdala",
+      "Frontal lobe",
+      "Brainstem"
      ],
-     "a": 1
+     "a": 1,
+     "why": "Balance trouble after a head injury is the ==cerebellum==. !!The reticular formation controls arousal, not balance.!!"
     },
     {
-     "q": "A man remembers his childhood but cannot form new conscious memories. Which structure was damaged?",
-     "why": "The hippocampus forms new conscious memories. Not the amygdala next to it: that is fear.",
+     "q": "After suffering damage to his bilateral medial temporal lobes, a patient can remember his past childhood experiences but is completely unable to form new, conscious long-term memories. Which structure was compromised?",
      "opts": [
       "Amygdala",
       "Hypothalamus",
-      "Cerebellum",
-      "Hippocampus"
+      "Hippocampus",
+      "Cerebellum"
      ],
-     "a": 3
+     "a": 2,
+     "why": "The **hippocampus** forms ==new conscious long-term memories==. !!The amygdala sits nearby but handles fear.!!"
     }
    ],
    "watch": [
@@ -732,26 +739,26 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "An electrode touches a strip of cortex and the patient's arm lifts. Which area?",
-     "why": "Stimulating the motor cortex makes the limbs move. Somatosensory cortex is the look-alike wrong answer.",
+     "q": "Stimulation of this area of the brain may cause involuntary movements of the limbs.",
      "opts": [
-      "Motor cortex",
-      "Somatosensory cortex",
-      "Visual cortex",
-      "Cerebellum"
+      "somatosensory cortex",
+      "motor cortex",
+      "Glial cells",
+      "visual cortex"
      ],
-     "a": 0
+     "a": 1,
+     "why": "Stimulating the **motor cortex** ==moves the limbs==. !!Somatosensory cortex is the look-alike wrong answer.!!"
     },
     {
-     "q": "A stroke patient understands everything but can barely speak. Which area?",
-     "why": "Broca = broken speech. Wernicke's breaks understanding.",
+     "q": "In general, damage to _____ disrupts speaking, while damage to ______ understanding of language.",
      "opts": [
-      "Wernicke's area",
-      "Occipital lobe",
-      "Broca's area",
-      "Motor cortex"
+      "Broca’s area; Wernicke’s area",
+      "the frontal lobe; the occipital lobe",
+      "the occipital lobe; the temporal lobe",
+      "Wernicke’s area; Broca’s area"
      ],
-     "a": 2
+     "a": 0,
+     "why": "**Broca's area** damage breaks ==speaking==; **Wernicke's area** damage breaks ==understanding==. !!The swapped order is the trap.!! Memory hook: Broca = broken speech."
     }
    ],
    "watch": [
@@ -836,26 +843,26 @@ const GUIDE = {
    },
    "ex": [
     {
-     "q": "School A's scores: 87, 89, 84, 88, 77, 91. Mean, median and range?",
-     "why": "Sort first (77, 84, 87, 88, 89, 91), then average 87 and 88. Picking one middle number is the classic miss.",
+     "q": "School A scores: 87, 89, 84, 88, 77, 91. What was the MEAN SCORE for School A?",
      "opts": [
-      "86, 87.5, 14",
-      "86, 87, 14",
-      "84, 87.5, 12",
-      "86, 88, 14"
+      "86",
+      "82",
+      "84",
+      "83"
      ],
-     "a": 0
+     "a": 0,
+     "why": "Add them (==516==) and divide by 6: ==86==. !!87.5 is the median, not the mean.!!"
     },
     {
-     "q": "A scientist exposes pregnant rats to cocaine and measures how hyperactive their pups are. What is the independent variable?",
-     "why": "The researcher sets the cocaine exposure; hyperactivity is measured, the DV. Prenatal exposure counts as nurture.",
+     "q": "Dr. Frances conducted a study on the impact of prenatal exposure to cocaine on hyperactivity in rats. WOTF is an accurate statement about this research study?",
      "opts": [
-      "Hyperactivity",
-      "Cocaine exposure",
-      "The rats' genes",
-      "The number of pups"
+      "The independent variable is hyperactivity, which reflects the impact on nurture.",
+      "The independent variable is exposure to cocaine, which reflects the impact on nature.",
+      "The independent variable is hyperactivity, which reflects the impact of nature.",
+      "The independent variable is exposure to cocaine, which reflects the impact of nurture."
      ],
-     "a": 1
+     "a": 3,
+     "why": "The researcher manipulates ==cocaine exposure==, so that is the IV; hyperactivity is measured (DV). Prenatal exposure is ==environment==, so it is **nurture**. !!\"Before birth\" does not make it genetic.!!"
     }
    ],
    "watch": [
@@ -918,26 +925,26 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "Diabetes runs in Dana's family; she develops it after years of a high-sugar diet. Which concept?",
-     "why": "Inherited risk plus a trigger (the diet). Family history alone would be heredity.",
+     "q": "WOTF is an example of gene-environment interaction?",
      "opts": [
-      "Heredity alone",
-      "Natural selection",
-      "Polygenic inheritance",
-      "Gene-environment interaction"
+      "Yen Lin experiences flushing syndrome, which often occurs in people of Asian heritage.",
+      "Alfonso gets food poisoning from eating undercooked meat.",
+      "Ted develops high cholesterol, which runs in his family, because his diet contains too much saturated fat.",
+      "Jordan has an autoimmune disorder that causes him to lose hair."
      ],
-     "a": 3
+     "a": 2,
+     "why": "Interaction needs ==an inherited risk and an environmental trigger== together. Only Ted has both: family cholesterol plus a fatty diet. !!Food poisoning is environment alone.!!"
     },
     {
-     "q": "Identical and fraternal twins, raised together or apart, are compared on athletic ability. Which pairs should be most alike?",
-     "why": "Same genes plus the same home gives the most similarity. Identical twins raised apart come second.",
+     "q": "Dr. Smith conducted a study on 1000 sets of identical and fraternal twin pairs being raised in the same household versus in different households to determine which twin pairs were most similar in their athletic abilities. Based on previous research, who should Dr. Smith expect to be most alike?",
      "opts": [
-      "Identical twins raised apart",
-      "Fraternal twins raised together",
-      "Identical twins raised together",
-      "Fraternal twins raised apart"
+      "Fraternal twins raised in the same household.",
+      "Identical twins raised in different households.",
+      "Fraternal twins raised in different households.",
+      "Identical twins raised in the same households."
      ],
-     "a": 2
+     "a": 3,
+     "why": "==Same genes plus same home== gives maximum similarity. !!Identical twins raised apart come second, not first.!!"
     }
    ],
    "watch": [
@@ -1002,26 +1009,26 @@ const GUIDE = {
    },
    "ex": [
     {
-     "q": "A jump scare makes your heart race and your pupils widen. Which division?",
-     "why": "The sympathetic division arouses. Parasympathetic calms you afterward.",
+     "q": "If an individual experiences a sudden, alarming scare, which division of the nervous system coordinates the increase in heart rate, dilation of pupils, and inhibition of digestion?",
      "opts": [
-      "Sympathetic",
-      "Parasympathetic",
-      "Somatic",
-      "Central"
+      "Parasympathetic nervous system",
+      "Sympathetic nervous system",
+      "Somatic nervous system",
+      "Central nervous system"
      ],
-     "a": 0
+     "a": 1,
+     "why": "The **sympathetic** division ==arouses== the body after a scare. Parasympathetic is the one that calms you afterward."
     },
     {
-     "q": "Reaching up to scratch your nose is controlled by which division of the PNS?",
-     "why": "Voluntary movement is the somatic nervous system; the autonomic is self-regulating. Central isn't part of the PNS.",
+     "q": "Voluntary movements, such as reaching out your hand to scratch your nose, are controlled by which specific division of the peripheral nervous system?",
      "opts": [
-      "Autonomic",
-      "Somatic",
-      "Sympathetic",
-      "Central"
+      "Autonomic nervous system",
+      "Somatic nervous system",
+      "Sympathetic nervous system",
+      "Central nervous system"
      ],
-     "a": 1
+     "a": 1,
+     "why": "==Voluntary movement of skeletal muscle== is the **somatic** system. !!Central is not a division of the peripheral system!!."
     }
    ],
    "watch": [
@@ -1049,15 +1056,16 @@ const GUIDE = {
    },
    "ex": [
     {
-     "q": "Multiple sclerosis comes from the breakdown of which part of the neuron?",
-     "why": "MS is the myelin sheath breaking down, so impulses lose the fast node-to-node jump.",
+     "q": "Multiple sclerosis is a result of degeneration in the",
      "opts": [
-      "Dendrites",
-      "Synaptic gap",
-      "Axon hillock",
-      "Myelin sheath"
+      "myelin sheath",
+      "dendrite",
+      "axon",
+      "terminal button",
+      "neuron"
      ],
-     "a": 3
+     "a": 0,
+     "why": "**MS** is the ==breakdown of the myelin sheath==."
     }
    ],
    "watch": [
@@ -1115,15 +1123,15 @@ const GUIDE = {
    },
    "ex": [
     {
-     "q": "To see which brain regions burn the most glucose during hard math, use a(n)",
-     "why": "PET tracks radioactive glucose. fMRI tracks blood flow and oxygen, not glucose.",
+     "q": "To view which specific regions of the brain are consuming the most glucose while a participant performs a complex mathematical task, a researcher would use a(n):",
      "opts": [
-      "fMRI",
-      "MRI",
-      "PET scan",
-      "CT scan"
+      "PET scan.",
+      "MRI.",
+      "CT scan.",
+      "X-ray."
      ],
-     "a": 2
+     "a": 0,
+     "why": "**PET** tracks where ==radioactive glucose== goes during a task. Memory hook: Please Eat Treats."
     }
    ],
    "watch": [
@@ -1195,15 +1203,15 @@ const GUIDE = {
    },
    "ex": [
     {
-     "q": "A patient is newly diagnosed with depression. Too little of which neurotransmitters?",
-     "why": "Low serotonin and norepinephrine are linked to depression. Dopamine is the tempting pick, but low dopamine is Parkinson's.",
+     "q": "Holly was recently diagnosed with major depressive disorder. Which neurotransmitters are most likely in under supply in Holly’s brain?",
      "opts": [
-      "Dopamine and acetylcholine",
-      "Serotonin and norepinephrine",
-      "Oxytocin and GABA",
-      "Acetylcholine and histamine"
+      "Oxytocin and gamma-aminobutyric acid (GABA).",
+      "Acetylcholine (ACh) and histamine.",
+      "Dopamine and Acetylcholine (ACh).",
+      "Serotonin and norepinephrine."
      ],
-     "a": 1
+     "a": 3,
+     "why": "Low **serotonin** and low **norepinephrine** are both ==linked to depression==. Dopamine is the tempting pick, but low dopamine is Parkinson's."
     }
    ],
    "watch": [
@@ -1225,15 +1233,15 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "Which hormone is made by the hypothalamus but stored and released by the posterior pituitary?",
-     "why": "Oxytocin is the one made in the hypothalamus and released by the posterior pituitary.",
+     "q": "WOTF hormones are produced by the hypothalamus and subsequently stored and released by the posterior pituitary gland?",
      "opts": [
       "Oxytocin",
-      "Prolactin",
       "Thyroid-stimulating hormone",
-      "Adrenocorticotropic hormone"
+      "Adrenocorticotropic hormone",
+      "Prolactin"
      ],
-     "a": 0
+     "a": 0,
+     "why": "**Oxytocin** is made in the hypothalamus and released from the ==posterior pituitary==."
     }
    ],
    "watch": [
@@ -1272,15 +1280,15 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "A man's breathing stops again and again at night, waking him briefly. Which disorder?",
-     "why": "Sleep apnea = breathing stops, brief awakenings. Narcolepsy is sudden REM attacks from waking.",
+     "q": "Sleep apnea is a potentially serious sleep disorder characterized by:",
      "opts": [
-      "Narcolepsy",
-      "Insomnia",
-      "Night terrors",
-      "Sleep apnea"
+      "sudden walking and talking during deep NREM-3 sleep.",
+      "temporary cessations of breathing during sleep and repeated momentary awakenings.",
+      "consistent difficulty falling or staying asleep every night.",
+      "vivid, frightening nightmares that cause the individual to wake up screaming."
      ],
-     "a": 3
+     "a": 1,
+     "why": "**Apnea** = ==breathing stops== again and again, with brief awakenings."
     }
    ],
    "watch": [
@@ -1290,7 +1298,7 @@ const GUIDE = {
  ],
  "practice": [
   {
-   "q": "Which limbic structure is most tied to spotting threats and producing fear and aggression?",
+   "q": "Which limbic system structure is heavily involved in processing emotions, particularly fear, aggression, and threat detection?",
    "opts": [
     "Amygdala",
     "Hippocampus",
@@ -1301,318 +1309,331 @@ const GUIDE = {
    "why": "The **amygdala** handles ==fear, aggression and threat detection==. !!The hippocampus is new memories!!, and the thalamus relays the senses."
   },
   {
-   "q": "After a concussion, a tennis player's swings turn jerky and she keeps losing her balance on the court. Which structure most likely took the damage?",
+   "q": "Following a severe head injury, an individual has difficulty maintaining their balance and coordinating smooth, precise movements while playing tennis. Which structure was most likely damaged?",
    "opts": [
+    "Medulla",
     "Cerebellum",
-    "Corpus callosum",
     "Pons",
-    "Medulla"
+    "Corpus callosum"
    ],
-   "a": 0,
+   "a": 1,
    "why": "The **cerebellum** coordinates ==smooth movement and balance==. !!The medulla handles breathing and heartbeat.!!"
   },
   {
-   "q": "A skateboarder falls on the back of his head and afterward can't stay steady on the board. Which area was most likely affected?",
+   "q": "A gymnast falls and hits her head on the floor. She attempts to continue practicing, but has trouble maintaining balance. What part of her brain has probably been affected?",
    "opts": [
+    "Reticular formation",
+    "Cerebellum",
     "Amygdala",
     "Frontal lobe",
-    "Reticular formation",
-    "Cerebellum"
+    "Brainstem"
    ],
-   "a": 3,
-   "why": "Balance trouble after a hit to the back of the head is the ==cerebellum== every time. The reticular formation controls arousal, !!not balance!!."
+   "a": 1,
+   "why": "Balance trouble after a head injury is the ==cerebellum==. !!The reticular formation controls arousal, not balance.!!"
   },
   {
-   "q": "Which structure routes incoming signals from every sense except smell to the right receiving area of the cortex?",
+   "q": "Which brain structure acts as the primary sensory relay station, routing incoming traffic from all senses except smell to the appropriate areas of the cerebral cortex?",
    "opts": [
+    "Thalamus",
     "Hypothalamus",
-    "Hippocampus",
     "Amygdala",
-    "Thalamus"
+    "Hippocampus"
    ],
-   "a": 3,
+   "a": 0,
    "why": "The **thalamus** is the ==sensory relay station==; smell is the one sense that bypasses it. !!Hypothalamus is the look-alike name!!, but it runs hunger, thirst and temperature."
   },
   {
-   "q": "After damage to both medial temporal lobes, a man still remembers his childhood but cannot form any new conscious long-term memories. Which structure was damaged?",
+   "q": "After suffering damage to his bilateral medial temporal lobes, a patient can remember his past childhood experiences but is completely unable to form new, conscious long-term memories. Which structure was compromised?",
    "opts": [
     "Amygdala",
     "Hypothalamus",
-    "Cerebellum",
-    "Hippocampus"
+    "Hippocampus",
+    "Cerebellum"
    ],
-   "a": 3,
+   "a": 2,
    "why": "The **hippocampus** forms ==new conscious long-term memories==. !!The amygdala sits nearby but handles fear.!!"
   },
   {
-   "q": "The nerve network running through the brainstem plays a central role in",
+   "q": "The reticular formation is a nerve network running through the brainstem that plays a critical role in controlling:",
    "opts": [
-    "arousal and alertness",
-    "hunger and thirst",
-    "storing long-term memories",
-    "releasing hormones"
+    "memory consolidation.",
+    "hunger and thirst.",
+    "arousal and alertness.",
+    "endocrine regulation."
    ],
-   "a": 0,
+   "a": 2,
    "why": "The **reticular formation** controls ==arousal and alertness==."
   },
   {
-   "q": "The hypothalamus handles many maintenance jobs. Which of these is NOT one of them?",
+   "q": "The hypothalamus regulates several maintenance behaviors. Which of the following is NOT primarily regulated by the hypothalamus?",
    "opts": [
-    "Making sense of what the eyes see",
     "Hunger and thirst",
-    "Regulating body temperature",
-    "Sexual behavior"
+    "Body temperature",
+    "Sexual behavior",
+    "Interpretation of visual stimuli"
    ],
-   "a": 0,
+   "a": 3,
    "why": "The hypothalamus runs ==hunger, thirst, body temperature and sexual behavior==. !!Interpreting what you see is not one of its jobs.!!"
   },
   {
-   "q": "Why is damage to the medulla so often fatal?",
+   "q": "Damage to the medulla oblongata would be life-threatening primarily because it regulates:",
    "opts": [
-    "It controls heartbeat and breathing",
-    "It stores explicit memories",
-    "It processes visual input",
-    "It produces fear responses"
+    "conscious thought and decision-making.",
+    "visual perception.",
+    "autonomic functions (breathing and heart rate).",
+    "emotional responses to fear."
    ],
-   "a": 0,
+   "a": 2,
    "why": "The **medulla**, at the base of the brainstem, runs ==heartbeat and breathing== automatically. Lose it and the body cannot keep itself alive."
   },
   {
-   "q": "Marco keeps missing deadlines and says, \"My occipital lobe must be broken, I can't plan anything.\" Which correction makes his claim accurate?",
+   "q": "After being late to work for the 5th time, Heather declared, “My occipital lobes must not be working properly! I have a hard time planning my day to be here on time!” If you were Heather’s boss, what might you say to her to modify her claim to make it accurate?",
    "opts": [
-    "\"It's your frontal lobes, which handle planning.\"",
-    "\"It's your temporal lobes, which handle planning.\"",
-    "\"It's your parietal lobes, which handle planning.\"",
-    "\"It's your somatosensory cortex, which handles planning.\""
+    "“Heather, it’s your frontal lobes that are not working optimally.”",
+    "“Heather, it’s your temporal lobes that are not working optimally.”",
+    "“Heather, it’s your parietal lobes that are not working optimally.”",
+    "“Heather, it’s your somatosensory cortex that is not working optimally.”"
    ],
    "a": 0,
-   "why": "==Planning== lives in the **frontal lobes**. !!Every other lobe in the options is a planted wrong answer.!!"
+   "why": "==Planning== lives in the **frontal lobes**. !!Every other option is a planted wrong answer.!!"
   },
   {
-   "q": "A stroke patient understands everything said to her but can barely get words out. Which area was likely damaged, and which area handles understanding?",
+   "q": "In general, damage to _____ disrupts speaking, while damage to ______ understanding of language.",
    "opts": [
-    "Broca's area; understanding is Wernicke's area",
-    "Wernicke's area; understanding is Broca's area",
-    "The occipital lobe; understanding is the temporal lobe",
-    "The motor cortex; understanding is the parietal lobe"
+    "Broca’s area; Wernicke’s area",
+    "the frontal lobe; the occipital lobe",
+    "the occipital lobe; the temporal lobe",
+    "Wernicke’s area; Broca’s area"
    ],
    "a": 0,
    "why": "**Broca's area** damage breaks ==speaking==; **Wernicke's area** damage breaks ==understanding==. !!The swapped order is the trap.!! Memory hook: Broca = broken speech."
   },
   {
-   "q": "Which man survived an iron rod through his head in 1848, and whose personality changed afterward?",
+   "q": "An iron rod shot through this man’s head in 1848, and he survived, but his personality was changed due to the damage to the prefrontal lobes of his brain.",
    "opts": [
-    "Paul Broca",
+    "Franz Mesmer",
     "Franz Joseph Gall",
-    "Phineas Gage",
-    "Franz Mesmer"
+    "Mary Whiton Calkins",
+    "Paul Broca",
+    "Phineas Gage"
    ],
-   "a": 2,
+   "a": 4,
    "why": "**Phineas Gage** damaged his ==prefrontal cortex== in 1848, and his personality changed."
   },
   {
-   "q": "What changed most dramatically after Gage's frontal lobe injury?",
+   "q": "Phineas Gage sustained extensive damage to his frontal lobe when an iron rod blasted through his skull. As a result of the accident, he experienced dramatic changes in:",
    "opts": [
-    "His vision",
-    "His ability to understand spoken language",
-    "His personality, emotional control and impulse control",
-    "His fine motor coordination and balance"
+    "his visual acuity",
+    "his ability to understand spoken language",
+    "his personality, emotional regulation, and impulse control",
+    "his fine motor coordination and balance."
    ],
    "a": 2,
    "why": "Gage's frontal lobe damage changed his ==personality, emotional regulation and impulse control==."
   },
   {
-   "q": "During brain surgery, an electrode touches one strip of cortex and the patient's arm lifts on its own. Which area was stimulated?",
+   "q": "Stimulation of this area of the brain may cause involuntary movements of the limbs.",
    "opts": [
-    "Somatosensory cortex",
-    "Visual cortex",
+    "somatosensory cortex",
+    "motor cortex",
     "Glial cells",
-    "Motor cortex"
+    "visual cortex"
    ],
-   "a": 3,
+   "a": 1,
    "why": "Stimulating the **motor cortex** ==moves the limbs==. !!Somatosensory cortex is the look-alike wrong answer.!!"
   },
   {
-   "q": "The thin, wrinkled outer layer of interconnected neurons is the",
+   "q": "The wrinkled, outer surface layer of interconnected neural cells is called the:",
    "opts": [
-    "cerebral cortex",
-    "limbic system",
-    "reticular activating system",
-    "somatosensory strip"
+    "limbic system.",
+    "cerebral cortex.",
+    "reticular activating system.",
+    "somatosensory strip."
    ],
-   "a": 0,
+   "a": 1,
    "why": "The **cerebral cortex** is the ==wrinkled outer layer== of interconnected neurons."
   },
   {
-   "q": "School A's six scores are 87, 89, 84, 88, 77 and 91. What is the mean?",
+   "q": "School A scores: 87, 89, 84, 88, 77, 91. What was the MEAN SCORE for School A?",
    "opts": [
-    "83",
-    "84",
     "86",
-    "87.5"
+    "82",
+    "84",
+    "83"
    ],
-   "a": 2,
+   "a": 0,
    "why": "Add them (==516==) and divide by 6: ==86==. !!87.5 is the median, not the mean.!!"
   },
   {
-   "q": "Using the same School A scores (87, 89, 84, 88, 77, 91), what is the median?",
+   "q": "School A scores: 87, 89, 84, 88, 77, 91. The MEDIAN for School A is ________.",
    "opts": [
-    "86",
+    "85",
+    "89",
     "87",
-    "87.5",
-    "88"
+    "88",
+    "87.5"
    ],
-   "a": 2,
-   "why": "Sort first: 77, 84, ==87, 88==, 89, 91. With an even count, the median is ==the average of the two middle numbers==: 87.5. !!Picking just 87 or 88 is the classic miss.!!"
+   "a": 4,
+   "why": "Sort: 77, 84, ==87, 88==, 89, 91. Average the middle two: ==87.5==. !!The Quizizz key said 87!!; if 87.5 isn't a choice on the exam, pick 87."
   },
   {
-   "q": "What is the range of School A's scores (87, 89, 84, 88, 77, 91)?",
+   "q": "School A scores: 87, 89, 84, 88, 77, 91. The RANGE for School A is __________.",
    "opts": [
-    "9",
-    "14",
     "17",
-    "24"
+    "14",
+    "24",
+    "9"
    ],
    "a": 1,
    "why": "Range = highest minus lowest: ==91 − 77 = 14==."
   },
   {
-   "q": "School B's six scores are 85, 67, 88, 76, 86 and 94. Its mean is closest to",
+   "q": "School B scores: 85, 67, 88, 76, 86, 94. What was the MEAN SCORE for School B?",
    "opts": [
+    "86",
     "82",
-    "83",
     "84",
-    "86"
+    "83"
    ],
-   "a": 1,
+   "a": 3,
    "why": "The total is ==496==; 496 ÷ 6 ≈ ==82.7==, which rounds to 83. The low 67 drags School B's mean below School A's."
   },
   {
-   "q": "What is the median of School B's scores (85, 67, 88, 76, 86, 94)?",
+   "q": "School B scores: 85, 67, 88, 76, 86, 94. The MEDIAN for School B is ________.",
    "opts": [
     "85",
-    "85.5",
-    "86",
-    "87"
+    "89",
+    "87",
+    "88",
+    "85.5"
    ],
-   "a": 1,
-   "why": "Sorted: 67, 76, ==85, 86==, 88, 94. Average the two middle scores: ==85.5==."
+   "a": 4,
+   "why": "Sort: 67, 76, ==85, 86==, 88, 94. Average the middle two: ==85.5==. !!The Quizizz key said 85!!; if 85.5 isn't a choice on the exam, pick 85."
   },
   {
-   "q": "What is the range of School B's scores (85, 67, 88, 76, 86, 94)?",
+   "q": "School B scores: 85, 67, 88, 76, 86, 94. The RANGE for School B is __________.",
    "opts": [
-    "14",
     "17",
+    "14",
     "24",
+    "9",
     "27"
    ],
-   "a": 3,
-   "why": "==94 − 67 = 27==. !!14 is School A's range!!; always check which school the question names."
+   "a": 4,
+   "why": "94 − 67 = ==27==. !!The Quizizz key said 14, which is School A's range!!; the exam versions were fixed, so go with 27."
   },
   {
-   "q": "Which early school of psychology asked how our mental and behavioral processes help us adapt, survive and flourish?",
+   "q": "An early school of psychology, which focused on how our mental and behavioral processes operate: how they enable us to adapt, survive, and flourish.",
    "opts": [
+    "Functionalism",
     "Structuralism",
-    "Psychodynamic",
     "Behaviorism",
-    "Functionalism"
+    "Psychodynamic",
+    "Humanistic"
    ],
-   "a": 3,
+   "a": 0,
    "why": "**Functionalism** asked how the mind helps us ==adapt, survive and flourish==."
   },
   {
-   "q": "Modern behaviorists generally describe psychology as",
+   "q": "The Modern Behaviorists generally view psychology as the",
    "opts": [
-    "the objective, scientific study of behavior",
-    "the study of the biology of behavior",
-    "the study of behavior with no reference to thinking",
-    "the study of the unconscious mind"
+    "study of the biology of behavior.",
+    "objective and scientific study of human behavior.",
+    "study of behavior without any reference to the cognitive process",
+    "all of the choices"
    ],
-   "a": 0,
-   "why": "Modern behaviorists call psychology the ==objective, scientific study of behavior==. !!The \"no reference to thinking\" option is the trap.!!"
+   "a": 1,
+   "why": "Modern behaviorists call psychology the ==objective, scientific study of behavior==. !!The \"without any reference to the cognitive process\" option is the trap.!!"
   },
   {
-   "q": "Phrenology claimed that",
+   "q": "Phrenology is the unscientific study of:",
    "opts": [
-    "the bumps on a person's skull reveal their abilities and character",
-    "dreams reveal unconscious wishes",
-    "all behavior is learned through rewards",
-    "the mind can be studied through careful introspection"
+    "deviant behavior.",
+    "the shape and lumps of a person’s skull to reveal one’s intelligence and character traits.",
+    "unconscious sexual desires towards one’s parents.",
+    "Humanistic psychology."
    ],
-   "a": 0,
+   "a": 1,
    "why": "**Phrenology** read ==skull bumps== to reveal intelligence and character. It was !!unscientific!!."
   },
   {
-   "q": "Psychology is best defined as the",
+   "q": "Psychology is the:",
    "opts": [
-    "study of the mind",
-    "study of the soul",
-    "scientific study of behavior and mental processes",
-    "study and treatment of mental illness"
+    "study of the mind.",
+    "systematic study of the mind and body.",
+    "scientific study of the human mind and behaviors.",
+    "systematic and scientific study of human behavior and mental processes."
    ],
    "a": 2,
-   "why": "Both halves matter: ==behavior== and ==mental processes==, studied ==scientifically==."
+   "why": "The Quizizz key takes this one. !!\"Systematic and scientific study of human behavior and mental processes\" is the textbook wording!!; if both show up on the exam, match the key."
   },
   {
-   "q": "The American Psychological Association, the oldest psychology organization in America, was founded in 1892 by",
+   "q": "Select ALL that apply. The APA is the:",
    "opts": [
-    "Wilhelm Wundt",
-    "Sigmund Freud",
-    "William James",
-    "G. Stanley Hall"
+    "American Psychological Association.",
+    "oldest psychological organization in America.",
+    "group founded by G. Stanley Hall in 1892.",
+    "organization which publishes the DSM-5."
    ],
-   "a": 3,
-   "why": "==G. Stanley Hall== founded the **APA** in 1892. !!It does not publish the DSM-5.!!"
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "True: ==American Psychological Association==, the ==oldest in America==, founded by ==G. Stanley Hall in 1892==. !!It does not publish the DSM-5.!!"
   },
   {
-   "q": "A therapist explains a man's angry outbursts as an outlet for unconscious hostility toward his parents left over from childhood. Which perspective is that?",
+   "q": "Which of the following would most likely explain a person’s anger as “an outlet for unconscious hostility towards their parents, leftover from their childhood”?",
    "opts": [
+    "Social-Cultural",
     "Psychodynamic",
-    "Social-cultural",
     "Behavioral",
+    "Functionalist",
     "Biological"
    ],
-   "a": 0,
+   "a": 1,
    "why": "==Unconscious hostility left over from childhood== is the signature of the **psychodynamic** perspective."
   },
   {
-   "q": "A cognitive psychologist would most want to investigate how people",
+   "q": "A Cognitive Psychologist researcher would want to investigate how people:",
    "opts": [
-    "think",
-    "feel emotions",
-    "react to rewards",
-    "evolved"
+    "think.",
+    "feel.",
+    "react to a stimulus.",
+    "have evolved.",
+    "Reproduce."
    ],
    "a": 0,
    "why": "**Cognitive** psychology studies how people ==think==."
   },
   {
-   "q": "Psychometrics is",
+   "q": "Psychometrics is:",
    "opts": [
-    "a learning theory",
-    "a branch of pure science only",
-    "the study and treatment of mental illness",
-    "the measurement of human abilities, attitudes and traits"
+    "a pure science and applied science",
+    "learning theory",
+    "the measuring of human abilities, attitudes and traits",
+    "the study of mental illness and treatment"
    ],
-   "a": 3,
+   "a": 2,
    "why": "**Psychometrics** is ==measuring== human abilities, attitudes and traits."
   },
   {
-   "q": "Darwin's On the Origin of Species is the foundation of which psychological perspective?",
+   "q": "Charles Darwin’s book, On the Origin of Species by Means of Natural Selection, is the conceptual foundation of which of the following psychology perspectives?",
    "opts": [
-    "Evolutionary",
     "Biological",
+    "Evolutionary",
     "Psychodynamic",
-    "Behavioral"
+    "Behavioral",
+    "Cognitive"
    ],
-   "a": 0,
+   "a": 1,
    "why": "**Natural selection** is the core of the ==evolutionary perspective==."
   },
   {
-   "q": "A sleep lab records the electrical activity across volunteers' brains every night for a week to learn which wave patterns appear. The dependent variable is operationally defined as",
+   "q": "Researchers wanted to determine the brain waves present when individuals were sleeping. They placed electrodes on the scalps of 100 volunteers. The researchers then asked the volunteers to sleep in the laboratory each night for one week. The researchers obtained recordings of the electrical activity across the volunteers’ brain surfaces. What represents the operational definition of the dependent variable in this study?",
    "opts": [
-    "MRI images",
-    "CT images",
+    "MRI readings",
+    "CT readings",
     "MEG readings",
     "EEG readings"
    ],
@@ -1620,238 +1641,238 @@ const GUIDE = {
    "why": "==Electrical activity picked up by scalp electrodes== is an **EEG**. MRI and CT show structure, and !!MEG measures magnetic fields!!."
   },
   {
-   "q": "A researcher wants to study how the central nervous system affects emotional expression in young children. Which is an appropriate independent variable?",
+   "q": "Dr. Velasco wants to conduct a study on how the central nervous system affects emotional expression in young children. WOTF is an appropriate independent variable for her study?",
    "opts": [
-    "Motor neuron activity",
-    "Somatic nervous system activity",
-    "Sensory neuron activity",
-    "Brain activity"
+    "motor neuron activity",
+    "brain activity",
+    "sensory neuron activity",
+    "somatic nervous system activity"
    ],
-   "a": 3,
+   "a": 1,
    "why": "The CNS is ==the brain and spinal cord==, so brain activity fits. !!The somatic system is part of the peripheral nervous system.!!"
   },
   {
-   "q": "A scientist exposes pregnant rats to cocaine and later measures how hyperactive their pups are. Which statement is accurate?",
+   "q": "Dr. Frances conducted a study on the impact of prenatal exposure to cocaine on hyperactivity in rats. WOTF is an accurate statement about this research study?",
    "opts": [
-    "The IV is hyperactivity, which reflects nurture.",
-    "The IV is cocaine exposure, which reflects nature.",
-    "The IV is hyperactivity, which reflects nature.",
-    "The IV is cocaine exposure, which reflects nurture."
+    "The independent variable is hyperactivity, which reflects the impact on nurture.",
+    "The independent variable is exposure to cocaine, which reflects the impact on nature.",
+    "The independent variable is hyperactivity, which reflects the impact of nature.",
+    "The independent variable is exposure to cocaine, which reflects the impact of nurture."
    ],
    "a": 3,
    "why": "The researcher manipulates ==cocaine exposure==, so that is the IV; hyperactivity is measured (DV). Prenatal exposure is ==environment==, so it is **nurture**. !!\"Before birth\" does not make it genetic.!!"
   },
   {
-   "q": "Identical twins match on nearly everything their DNA codes for. Which do they NOT share?",
+   "q": "Dr. Quinn wants to conduct a study on how heredity may influence musical ability. WOTF would be the best operational definition for her independent variable?",
    "opts": [
-    "Blood type",
-    "Eye color",
-    "Fingerprints",
-    "Natural hair color"
-   ],
-   "a": 2,
-   "why": "**Fingerprints** differ even in identical twins; ==blood type, eye color and natural hair color match==."
-  },
-  {
-   "q": "Evolutionary psychologists explain tendencies like fearing heights or craving sweets by pointing to how those traits",
-   "opts": [
-    "were classically conditioned in early childhood",
-    "come from specific chromosomal abnormalities",
-    "helped ancestors survive and reproduce",
-    "can be changed through daily choices"
-   ],
-   "a": 2,
-   "why": "**Natural selection** keeps traits that ==promoted survival and reproduction== for our ancestors."
-  },
-  {
-   "q": "A study compares 1,000 twin pairs, identical or fraternal, raised together or apart, on athletic ability. Which pairs should be most alike?",
-   "opts": [
-    "Fraternal twins raised together",
-    "Identical twins raised apart",
-    "Fraternal twins raised apart",
-    "Identical twins raised together"
-   ],
-   "a": 3,
-   "why": "==Same genes plus same home== gives maximum similarity. !!Identical twins raised apart come second, not first.!!"
-  },
-  {
-   "q": "Which is an example of gene-environment interaction?",
-   "opts": [
-    "Priya has blue eyes like both of her parents.",
-    "Luis catches the flu from a classmate.",
-    "Dana, whose family has a history of type 2 diabetes, develops it after years of a high-sugar diet.",
-    "Omar inherits a rare blood disorder."
-   ],
-   "a": 2,
-   "why": "Interaction needs ==an inherited risk and an environmental trigger== together. Only Dana has both. Priya and Omar are heredity alone; !!the flu is environment alone!!."
-  },
-  {
-   "q": "Asked why people like sugar, a researcher answers that sugar activates taste receptors on the tongue and triggers dopamine release. That is which type of explanation?",
-   "opts": [
-    "Ultimate",
-    "Phylogenetic",
-    "By-product",
-    "Proximate"
-   ],
-   "a": 3,
-   "why": "Receptors and dopamine are the ==immediate mechanism==, so it is **proximate**. An ultimate explanation would say sweets helped ancestors survive. !!The word \"why\" does not make it ultimate.!!"
-  },
-  {
-   "q": "A researcher wants to test how heredity influences musical ability. Which is the best operational definition of her independent variable?",
-   "opts": [
-    "Comparing the DNA of professional musicians with that of people with little musical skill",
-    "Scoring each performance on a 1 to 5 quality scale",
-    "Handing instruments to half the children and none to the rest",
-    "Having some expectant mothers play music daily while others avoid it"
+    "Compare the genes of master musicians to the genes of individuals without musical aptitude.",
+    "Rate the quality of musical performance from 1 (indicating poor performance) to 5 (indicating superior performance).",
+    "Provide musical instruments to one group of children. Provide no musical instruments to a second group of children.",
+    "Assign one group of pregnant women to listen to music daily and assign a second group of pregnant women to avoid music altogether."
    ],
    "a": 0,
    "why": "To study **heredity** the IV has to vary ==genes==. The rating scale is a !!dependent variable!!, and giving instruments or prenatal music manipulates environment (nurture)."
   },
   {
-   "q": "Which study examines the influence of nature on behavior?",
+   "q": "Which trait is unique and NOT shared by identical twins?",
    "opts": [
-    "The effect of genes on teenagers' academic performance",
-    "The effect of parenting style on children's food choices",
-    "The effect of media exposure on college students' career choices",
-    "The effect of exercise on middle schoolers' attention"
+    "blood type",
+    "eye color",
+    "fingerprints",
+    "natural hair color"
    ],
-   "a": 0,
-   "why": "**Nature** = ==genes==. Parenting, media and exercise are all environment, so they are **nurture**."
+   "a": 2,
+   "why": "**Fingerprints** differ even in identical twins; ==blood type, eye color and natural hair color match==."
   },
   {
-   "q": "In behavior genetics, the term \"nature\" refers mainly to",
+   "q": "Evolutionary psychologists explain human behavior tendencies, such as fear of heights or preferences for sweet foods, by looking at how these traits:",
    "opts": [
-    "biological and genetic predispositions inherited from parents",
-    "parenting style and socioeconomic status",
-    "cultural norms absorbed in childhood",
-    "peer and school influences"
+    "were learned through classical conditioning during early childhood.",
+    "are hardwired via specific chromosomal abnormalities.",
+    "promoted survival and reproductive success among our ancient ancestors.",
+    "can be altered dynamically through daily behavioral choices."
+   ],
+   "a": 2,
+   "why": "**Natural selection** keeps traits that ==promoted survival and reproduction== for our ancestors."
+  },
+  {
+   "q": "Dr. Smith conducted a study on 1000 sets of identical and fraternal twin pairs being raised in the same household versus in different households to determine which twin pairs were most similar in their athletic abilities. Based on previous research, who should Dr. Smith expect to be most alike?",
+   "opts": [
+    "Fraternal twins raised in the same household.",
+    "Identical twins raised in different households.",
+    "Fraternal twins raised in different households.",
+    "Identical twins raised in the same households."
+   ],
+   "a": 3,
+   "why": "==Same genes plus same home== gives maximum similarity. !!Identical twins raised apart come second, not first.!!"
+  },
+  {
+   "q": "WOTF is an example of gene-environment interaction?",
+   "opts": [
+    "Yen Lin experiences flushing syndrome, which often occurs in people of Asian heritage.",
+    "Alfonso gets food poisoning from eating undercooked meat.",
+    "Ted develops high cholesterol, which runs in his family, because his diet contains too much saturated fat.",
+    "Jordan has an autoimmune disorder that causes him to lose hair."
+   ],
+   "a": 2,
+   "why": "Interaction needs ==an inherited risk and an environmental trigger== together. Only Ted has both: family cholesterol plus a fatty diet. !!Food poisoning is environment alone.!!"
+  },
+  {
+   "q": "When an evolutionary psychologist asks why humans experience a sweet taste preference, explaining that sugar activates specific taste receptor cells on the tongue and triggers dopamine release in the brain, describes which type of explanation?",
+   "opts": [
+    "ultimate explanation",
+    "proximate explanation",
+    "by-product explanation",
+    "phylogenetic explanation"
+   ],
+   "a": 1,
+   "why": "Receptors and dopamine are the ==immediate mechanism==, so it is **proximate**. An ultimate explanation would say sweets helped ancestors survive. !!The word \"why\" does not make it ultimate.!!"
+  },
+  {
+   "q": "WOTF illustrates how a researcher might examine the influence of nature on behavior?",
+   "opts": [
+    "Dr. Hakayama examined the influence of parenting on eating choices in children.",
+    "Dr. Rojas examined the influence of genes on academic performance on teenagers.",
+    "Dr. Williams examined the influence of media exposure on occupational choice in college students.",
+    "Dr. Oliver examined the influence of exercise on attention in middle-schoolers."
+   ],
+   "a": 1,
+   "why": "**Nature** = ==genes==. Parenting, media exposure and exercise are all environment, so they are **nurture**."
+  },
+  {
+   "q": "In the context of behavioral genetics and psychology, to what does the term nature primarily refer?",
+   "opts": [
+    "Biological and genetic predispositions inherited from parents.",
+    "The impact of parental rearing styles and socioeconomic status.",
+    "The cultural norms absorbed during childhood development.",
+    "Peer influence and schooling environments during adolescence."
    ],
    "a": 0,
    "why": "Nature is ==what the genes supply==. !!Every other option is nurture in a different costume.!!"
   },
   {
-   "q": "Most human traits are polygenic, meaning they",
+   "q": "The biochemical units of heredity that make up chromosomes are called genes. Most human traits are polygenic, meaning they are:",
    "opts": [
-    "are controlled by one dominant allele",
-    "pass down only through the mother's side",
-    "are set entirely by the environment after birth",
-    "come from many genes interacting"
+    "controlled entirely by a single dominant allele.",
+    "influenced by the interaction of multiple genes working together.",
+    "determined exclusively by environmental pressures after birth.",
+    "passed down only from the maternal lineage."
    ],
-   "a": 3,
+   "a": 1,
    "why": "**Polygenic** = ==multiple genes working together==. !!No single gene determines a complex behavior.!!"
   },
   {
-   "q": "A researcher comparing human genes with each other's and with other animals' would most likely conclude that",
+   "q": "Dr. Grant conducted a study examining the extent to which humans share genes with each other and with other animals. She is also interested in understanding how genes contribute to behavior. Which conclusion would Dr. Grant most likely reach based on her research and the results of previous research?",
    "opts": [
-    "chimpanzees share very few genes with humans",
-    "each complex behavior is controlled by one specific gene",
-    "human genes are mostly the same from person to person",
-    "genes don't explain our shared human nature"
+    "Chimpanzees share very few genes with humans",
+    "Complex behaviors are determined by specific individual genes.",
+    "Human genes are mostly the same across all people.",
+    "Genetic predispositions do not explain our shared human nature."
    ],
    "a": 2,
    "why": "Human genes are ==mostly the same across all people==. !!Chimps share many genes with us too!!, and complex behaviors are not set by single genes."
   },
   {
-   "q": "Children are randomly assigned to a social-skills program or a lesson on how to whistle, then take an emotional-stability questionnaire a month later. The independent variable measures the impact of",
+   "q": "Dr. Yamamoto believes that having good social skills improves emotional stability. She conducted an experiment in which 100 children are randomly assigned to one of two conditions. One group of children receives a social skills intervention, while the second group of children listens to an instructional talk about how to whistle. Both groups complete an emotional stability questionnaire four weeks later. What does Dr. Yamamoto’s independent variable measure?",
    "opts": [
-    "nature",
-    "epigenetics",
-    "nurture",
-    "evolution"
+    "The impact of nature.",
+    "The impact of epigenetics.",
+    "The impact of nurture.",
+    "The impact of evolution."
    ],
    "a": 2,
    "why": "The researcher manipulates ==an environmental experience==, which is **nurture**. !!\"Nature\" tempts because emotional stability sounds like a trait.!!"
   },
   {
-   "q": "For separating nature from nurture, the ideal research subjects are",
+   "q": "When studying Nature vs. Nurture debate, the best research subjects to examine are:",
    "opts": [
-    "fraternal twins",
-    "identical twins",
-    "identical twins separated at birth",
-    "fraternal twins separated at birth"
+    "fraternal twins.",
+    "identical twins.",
+    "identical twins separated at birth.",
+    "fraternal twins separated at birth."
    ],
    "a": 2,
    "why": "Identical twins raised apart have ==identical genes and different environments==, so their differences point to environment and their similarities to genes."
   },
   {
-   "q": "Why do behavior geneticists value identical twins raised apart more than identical twins raised together?",
+   "q": "Behavioral geneticists frequently study identical twins separated at birth rather than identical twins raised together because it allows them to __________.",
    "opts": [
-    "It holds the environment constant while the genes vary.",
-    "It better separates the effects of genes from the effects of environment.",
-    "It shows mutations happen faster when twins live apart.",
-    "It removes prenatal hormones as a confound."
+    "hold the environment constant while varying the genetic makeup.",
+    "better isolate the relative contributions of genetic inheritance (nature) versus environmental factors (nurture).",
+    "prove that mutations occur more rapidly when twins are kept apart.",
+    "eliminate the confounding variable of prenatal hormone exposure."
    ],
    "a": 1,
    "why": "Genes are held constant and ==environment varies==, which isolates nature from nurture. !!The first option has it backwards.!!"
   },
   {
-   "q": "Which of these is NOT one of the three types of neurons?",
+   "q": "WOTF IS NOT one of the 3 types of neurons?",
    "opts": [
-    "Interneurons",
-    "Motor neurons",
-    "Sensory neurons",
-    "Dendrites"
+    "sensory neurons",
+    "motor neurons",
+    "dendrites",
+    "Interneurons"
    ],
-   "a": 3,
+   "a": 2,
    "why": "The three types are ==sensory, motor and interneurons==. A **dendrite** is !!a part of a neuron!!, not a type."
   },
   {
-   "q": "The central nervous system is made up of the",
+   "q": "The central nervous system (CNS) consists of the:",
    "opts": [
-    "brain and cranial nerves",
-    "brain and spinal cord",
-    "cranial and spinal nerves",
-    "spinal cord and spinal nerves"
+    "Brain and cranial nerves",
+    "Brain and spinal cord",
+    "Cranial and spinal nerves",
+    "Spinal cord and spinal nerves"
    ],
    "a": 1,
    "why": "**CNS** = ==brain and spinal cord==. Every nerve that branches off them is peripheral."
   },
   {
-   "q": "A jump scare in a movie makes your heart race, your pupils widen and your digestion pause. Which division is responsible?",
+   "q": "If an individual experiences a sudden, alarming scare, which division of the nervous system coordinates the increase in heart rate, dilation of pupils, and inhibition of digestion?",
    "opts": [
-    "Parasympathetic",
-    "Sympathetic",
-    "Somatic",
-    "Central"
+    "Parasympathetic nervous system",
+    "Sympathetic nervous system",
+    "Somatic nervous system",
+    "Central nervous system"
    ],
    "a": 1,
    "why": "The **sympathetic** division ==arouses== the body after a scare. Parasympathetic is the one that calms you afterward."
   },
   {
-   "q": "Reaching up to scratch your nose is controlled by which division of the peripheral nervous system?",
+   "q": "Voluntary movements, such as reaching out your hand to scratch your nose, are controlled by which specific division of the peripheral nervous system?",
    "opts": [
-    "Autonomic",
-    "Somatic",
-    "Sympathetic",
-    "Central"
+    "Autonomic nervous system",
+    "Somatic nervous system",
+    "Sympathetic nervous system",
+    "Central nervous system"
    ],
    "a": 1,
    "why": "==Voluntary movement of skeletal muscle== is the **somatic** system. !!Central is not a division of the peripheral system!!."
   },
   {
-   "q": "If Jordan's motor neurons stopped working, he would lose the ability to",
+   "q": "If Drew’s motor neurons were impaired, he would experience a disruption in the ability to",
    "opts": [
-    "send messages from body parts to the brain",
-    "process information inside the brain and spinal cord",
-    "process neurotransmitters in the brain",
-    "send messages from the brain to body parts"
+    "send messages from specific body parts to the brain.",
+    "transmit and process information within the brain and the spinal cord.",
+    "process neurotransmitters in the brain.",
+    "send messages from the brain to body parts."
    ],
    "a": 3,
    "why": "**Motor** neurons carry commands ==from the brain to body parts==. !!The first option describes sensory neurons!!, the second interneurons."
   },
   {
-   "q": "What are the nervous system's basic functions?",
+   "q": "What are the basic functions of the nervous system?",
    "opts": [
     "Sensory input and motor output only",
     "Integration and memory storage only",
-    "Sensory input, integration and motor output",
-    "Reflexes and gland secretion"
+    "Sensory input, integration, and motor output",
+    "Reflex actions and glandular secretion"
    ],
    "a": 2,
    "why": "Take information in, ==process it (integration)==, and send a response out. Two-item options leave out a step."
   },
   {
-   "q": "Once a threat has passed, which system slows the heart, shrinks the pupils and returns the body to homeostasis?",
+   "q": "After a threat has passed, which system works to slow the heart rate, constrict the pupils, and return the body to a state of homeostasis?",
    "opts": [
     "Sympathetic nervous system",
     "Parasympathetic nervous system",
@@ -1862,78 +1883,91 @@ const GUIDE = {
    "why": "The **parasympathetic** division ==calms and conserves energy==. !!Sympathetic is the tempting pick because it appears in the story!!, but it caused the arousal."
   },
   {
-   "q": "The word \"autonomic\" means",
+   "q": "Which division of the nervous system calms a person down once a stressful event has passed?",
+   "opts": [
+    "Parasympathetic",
+    "Central",
+    "Somatic",
+    "Sympathetic"
+   ],
+   "a": 0,
+   "why": "The **parasympathetic** division ==calms== the body once the stress is over. !!Sympathetic is what caused the arousal.!!"
+  },
+  {
+   "q": "Maddox correctly defined autonomic as meaning",
    "opts": [
     "calming",
     "voluntary",
     "self-regulating",
-    "arousing"
+    "arousing."
    ],
    "a": 2,
    "why": "The **autonomic** system is ==self-regulating==. !!Calming and arousing describe its two divisions, not the word itself.!!"
   },
   {
-   "q": "Interneurons",
+   "q": "Interneurons are said to",
    "opts": [
     "send messages from the brain to body parts",
-    "send messages from body parts to the brain",
-    "transmit and process information within the brain and spinal cord",
-    "control the pituitary gland"
+    "send messages from specific body parts to the brain",
+    "act as connectors, supporting other neurons in the brain",
+    "transmit and process information within the brain",
+    "influence the pituitary gland"
    ],
-   "a": 2,
+   "a": 3,
    "why": "**Interneurons** stay ==inside the CNS==, linking sensory input to motor output. The first two options are motor and sensory neurons."
   },
   {
-   "q": "You yank your hand off a hot pan. Which kind of neuron carries the command that actually moves the hand?",
+   "q": "What carries the information necessary to activate withdrawal of the hand from a hot object?",
    "opts": [
+    "Reflex",
     "Sensory neuron",
     "Interneuron",
     "Receptor neuron",
     "Motor neuron"
    ],
-   "a": 3,
+   "a": 4,
    "why": "Sensory neurons carry \"hot\" in and interneurons process it, but the ==motor neuron== carries the movement command out to the muscle."
   },
   {
-   "q": "How does the myelin sheath speed up a nerve impulse?",
+   "q": "How does the myelin sheath increase the speed of nerve impulse propagation?",
    "opts": [
-    "By widening the axon",
-    "By pumping extra sodium and potassium across the membrane",
-    "By insulating the entire axon so no ions cross anywhere",
-    "By making the action potential jump from one node of Ranvier to the next"
+    "By increasing the diameter of the axon significantly.",
+    "By actively pumping more sodium and potassium ions continuously across the membrane.",
+    "By completely insulating the entire length of the axon from any ion exchange.",
+    "By forcing the action potential to jump from one Node of Ranvier to the next."
    ],
    "a": 3,
    "why": "The impulse ==jumps from one node of Ranvier to the next==. !!Myelin does not insulate the whole axon.!!"
   },
   {
-   "q": "During depolarization, which ion channels open, and which way do the ions move?",
+   "q": "During the depolarization phase of an action potential, which ion channels open and what is the direction of ion movement?",
    "opts": [
-    "Potassium channels open; ions move in",
-    "Sodium channels open; ions move in",
-    "Sodium channels open; ions move out",
-    "Calcium channels open; ions move out"
+    "Sodium channels open, moving into the cell.",
+    "Potassium channels open, moving into the cell.",
+    "Sodium channels open, moving out of the cell.",
+    "Calcium channels open, moving out of the cell"
    ],
-   "a": 1,
+   "a": 0,
    "why": "==Sodium (Na⁺) channels open and sodium moves into the cell==."
   },
   {
-   "q": "Which part of a neuron adds up incoming signals and starts the action potential?",
+   "q": "Which part of a neuron is primarily responsible for the summation of graded potentials and the initiation of an action potential?",
    "opts": [
-    "Dendrite",
-    "Synaptic knob",
-    "Axon hillock",
+    "dendrite",
+    "synaptic knob",
+    "axon hillock",
     "Node of Ranvier"
    ],
    "a": 2,
    "why": "The **axon hillock** ==sums the incoming signals== and starts the action potential. Dendrites receive but do not start it."
   },
   {
-   "q": "Which part of the neuron mainly receives chemical signals from other neurons?",
+   "q": "Which part of the neuron is primarily responsible for receiving incoming chemical signals from other neurons?",
    "opts": [
     "Axon",
     "Dendrite",
     "Myelin sheath",
-    "Axon terminal"
+    "Axon Terminal"
    ],
    "a": 1,
    "why": "**Dendrites** ==receive== incoming chemical signals."
@@ -1941,115 +1975,127 @@ const GUIDE = {
   {
    "q": "The myelin sheath",
    "opts": [
-    "supports, nourishes and protects neurons",
-    "contains the cell's life-support center",
-    "blocks neurotransmitters",
-    "lets impulses hop node to node for much faster transmission"
+    "supports, nourishes, and protects neurons.",
+    "contains the cell’s life support center.",
+    "blocks the neurotransmitter’s action.",
+    "enables vastly greater transmission speed as neural impulses hop from one node to the next."
    ],
    "a": 3,
    "why": "Myelin makes impulses ==hop node to node==, far faster."
   },
   {
-   "q": "An action potential is best described as",
+   "q": "A neuron’s action potential is best described as __________.",
    "opts": [
-    "a chemical message crossing the synaptic gap",
-    "a gradual warming of the cell body",
-    "an all-or-none electrical impulse that travels down the axon",
-    "the recovery during the refractory period"
+    "a chemical transmission across the synaptic gap.",
+    "a gradual warming of the cell body before a signal sends.",
+    "an all-or-none electrical impulse that travels down the axon.",
+    "the structural recovery process during the refractory period."
    ],
    "a": 2,
    "why": "==Electrical, down the axon, all-or-none==. !!Crossing the gap is chemical!! and belongs to neurotransmitters."
   },
   {
-   "q": "A researcher timing how fast neurotransmitters cross from one neuron to the next is studying the",
+   "q": "Dr. Hansel studied the speed of neurotransmitters crossing the space between neurons. WOTF did Dr. Hansel study?",
    "opts": [
-    "synaptic gap",
-    "axon",
-    "myelin sheath",
-    "dendrites"
+    "Synaptic Gap",
+    "Axon",
+    "Myelin Sheath",
+    "Dendrites"
    ],
    "a": 0,
    "why": "The space ==between== neurons is the **synaptic gap (cleft)**. !!Myelin affects speed inside one axon, not between neurons.!!"
   },
   {
-   "q": "Multiple sclerosis results from the breakdown of the",
+   "q": "Multiple sclerosis is a result of degeneration in the",
    "opts": [
     "myelin sheath",
-    "dendrites",
-    "axon hillock",
-    "terminal buttons"
+    "dendrite",
+    "axon",
+    "terminal button",
+    "neuron"
    ],
    "a": 0,
    "why": "**MS** is the ==breakdown of the myelin sheath==."
   },
   {
-   "q": "During a neuron's refractory period,",
+   "q": "During the refractory period of a neuron, which of the following occurs?",
    "opts": [
-    "the neuron fires at half strength",
-    "the cell pumps sodium back out of the membrane to reset",
-    "neurotransmitters are reabsorbed by the receiving neuron's dendrites",
-    "the myelin sheath breaks down"
+    "The neuron fires at half its normal strength.",
+    "The cell pumps positively charged sodium ions back outside the membrane to reset.",
+    "Neurotransmitters are reabsorbed into the dendrites of the receiving neuron.",
+    "The myelin sheath degrades to allow faster chemical diffusion."
    ],
    "a": 1,
    "why": "It is the ==reset==: sodium goes back out, and the neuron cannot fire until it is done. !!All-or-none means there is no half-strength firing.!!"
   },
   {
-   "q": "For a neuron to fire an action potential, what must be true?",
+   "q": "For a neuron to generate an action potential, WOTF must be true?",
    "opts": [
-    "It must be in the refractory period.",
+    "The neuron must be in the refractory period.",
     "Glial cells must release neurotransmitters into the axon.",
-    "Excitatory signals must outnumber inhibitory signals.",
-    "Dopamine and serotonin must be equal."
+    "Excitatory impulses must outnumber the inhibitory impulses.",
+    "Dopamine and serotonin must be present in equal amounts."
    ],
    "a": 2,
    "why": "When ==excitatory minus inhibitory crosses threshold==, it fires. !!The refractory period is when it can't fire.!!"
   },
   {
-   "q": "After neurotransmitters trigger a neighboring neuron, what happens to the extra ones in the synapse?",
+   "q": "Dr. Gretel asked her students to identify what happens after neurotransmitters are released and trigger an action potential in a neighboring neuron. Which student response is accurate?",
    "opts": [
-    "The synaptic cleft closes to end the signal.",
-    "The myelin sheath absorbs them.",
-    "The receiving neuron absorbs them to pass along.",
-    "The sending neuron reabsorbs them for reuse."
+    "The synaptic cleft closes temporarily to terminate the action potential.",
+    "The myelin sheath absorbs the excess neurotransmitters.",
+    "The receiving neuron absorbs the neurotransmitter to send to the next neuron.",
+    "The sending neuron reabsorbs the neurotransmitter for reuse."
    ],
    "a": 3,
    "why": "That is **reuptake**: ==the sender takes them back==. !!The receiving neuron releases its own neurotransmitters!!; it does not pass along the ones it got."
   },
   {
-   "q": "What does an fMRI show that a standard MRI does not?",
+   "q": "An functional MRI (fMRI) differs from a standard MRI because an fMRI:",
    "opts": [
-    "Impulses traveling along peripheral nerves",
-    "Blood flow and oxygen use, revealing function as well as structure",
-    "A static 3-D view of bone only",
-    "Where radioactive glucose collects"
+    "tracks electrical impulses along individual peripheral nerves.",
+    "tracks blood flow and oxygen consumption to reveal both brain structure and real-time brain function.",
+    "provides a static, three-dimensional view of dense bone structure only.",
+    "requires the injection of a radioactive glucose tracer into the bloodstream."
    ],
    "a": 1,
    "why": "The f is for **functional**: ==activity plus structure==. !!Radioactive glucose is a PET scan.!!"
   },
   {
-   "q": "Destroyed or damaged brain tissue, whether from injury or done on purpose in a lab, is called a",
+   "q": "Destruction or damage to a localized area of brain tissue, whether caused naturally by injury or intentionally in a laboratory setting, is called a:",
    "opts": [
-    "synapse",
-    "plasticity",
-    "lateralization",
-    "lesion"
+    "synapse.",
+    "plastic transform.",
+    "lateralization.",
+    "lesion."
    ],
    "a": 3,
    "why": "A **lesion** is ==destroyed or damaged tissue==, from injury or done in a lab."
   },
   {
-   "q": "To see which regions burn the most glucose while someone solves hard math problems, a researcher would use a(n)",
+   "q": "To view which specific regions of the brain are consuming the most glucose while a participant performs a complex mathematical task, a researcher would use a(n):",
    "opts": [
-    "PET scan",
-    "MRI",
-    "CT scan",
-    "X-ray"
+    "PET scan.",
+    "MRI.",
+    "CT scan.",
+    "X-ray."
    ],
    "a": 0,
    "why": "**PET** tracks where ==radioactive glucose== goes during a task. Memory hook: Please Eat Treats."
   },
   {
-   "q": "Which technique uses magnetic fields and radio waves to make detailed images of soft brain tissue without radiation?",
+   "q": "Dr. Ulysses employs a technique to measure glucose consumption as an indicator of brain activity. What is the name of his technique?",
+   "opts": [
+    "MRI",
+    "fMRI",
+    "PET",
+    "EEG"
+   ],
+   "a": 2,
+   "why": "**PET** measures ==glucose use== as a sign of brain activity."
+  },
+  {
+   "q": "Which brain imaging technique utilizes magnetic fields and radio waves to provide high-resolution, structural images of soft brain tissue without exposing the patient to radiation?",
    "opts": [
     "EEG",
     "PET scan",
@@ -2060,40 +2106,40 @@ const GUIDE = {
    "why": "**MRI** = ==magnetic fields + radio waves==, structure only. !!PET uses a radioactive tracer.!!"
   },
   {
-   "q": "After a car crash, a doctor suspects damage to the back of a patient's brain. Why is an EEG a poor way to check?",
+   "q": "When Anita was in a car accident, her neurologist, Dr. Lang suspected that Anita sustained an injury to the back of her brain. “Can you check with an EEG?” asked Anita’s brother. Dr. Lang explained that an EEG is not the best method for assessing this injury because",
    "opts": [
-    "It only shows glucose use.",
-    "It only shows brain-wave activity.",
-    "It only produces still images.",
-    "It only stimulates one region."
+    "an EEG only provides images of how the brain consumes glucose.",
+    "an EEG only provides images of brain wave activity.",
+    "an EEG only provides still images of the brain.",
+    "an EEG only provides stimulation to one region of the brain."
    ],
    "a": 1,
    "why": "An **EEG** records ==brain-wave activity==, not a picture of the tissue. CT and MRI show structure."
   },
   {
-   "q": "To record the brain's overall electrical activity during different sleep stages, use a(n)",
+   "q": "A researcher wants to record the overall electrical activity of a participant’s brain during different stages of sleep. Which neuroimaging technique is best suited for this task?",
    "opts": [
-    "CT scan",
-    "EEG",
-    "PET scan",
-    "MRI"
+    "Computerized Tomography (CT) scan",
+    "Electroencephalogram (EEG)",
+    "Positron Emission Tomography (PET) scan",
+    "Magnetic Resonance Imaging (MRI)"
    ],
    "a": 1,
    "why": "Sleep stages are defined by ==brain waves==, so the **EEG** is the tool."
   },
   {
-   "q": "Computer-combined X-ray images of a slice of the brain are",
+   "q": "Computer-enhanced X-rays used to create brain images are known as",
    "opts": [
-    "PET scans",
-    "fMRI images",
-    "CT scans",
-    "MRI images"
+    "positron emission tomography scans",
+    "functional magnetic resonance images",
+    "computed tomography scans",
+    "magnetic resonance images"
    ],
    "a": 2,
    "why": "**CT** = ==computer-enhanced X-rays==. It shows structure."
   },
   {
-   "q": "Measuring the brain's activity through the magnetic fields its electrical activity gives off is done with",
+   "q": "Dr. Ghent measures the brain’s electrical activity via magnetic fields, using a(n)",
    "opts": [
     "CT",
     "EEG",
@@ -2104,18 +2150,18 @@ const GUIDE = {
    "why": "**MEG** measures ==magnetic fields==. !!EEG measures the electrical waves themselves.!!"
   },
   {
-   "q": "SSRIs treat depression by blocking the reuptake of serotonin. The result is",
+   "q": "Prozac and other SSRI medications treat depression by blocking the reuptake of serotonin. This mechanism results in __________.",
    "opts": [
-    "more serotonin produced in the cell body",
-    "receptors that bind serotonin less",
-    "more serotonin staying in the synapse to bind receptors",
-    "faster breakdown of serotonin by enzymes"
+    "an increase in the production of serotonin in the cell body.",
+    "a decrease in the binding affinity of post-synaptic receptors.",
+    "more serotonin remaining available in the synaptic cleft to bind to receptors.",
+    "the immediate degradation of monoamine oxidase enzymes."
    ],
    "a": 2,
    "why": "Blocking reuptake ==keeps serotonin in the synapse longer==. !!SSRIs do not make new serotonin.!!"
   },
   {
-   "q": "Alcohol, barbiturates and opiates reduce neural activity and slow body functions. They belong to which class?",
+   "q": "Drugs such as alcohol, barbiturates, and opiates reduce neural activity and slow body functions. These substances belong to which class of psychoactive drugs?",
    "opts": [
     "Stimulants",
     "Hallucinogens",
@@ -2126,53 +2172,53 @@ const GUIDE = {
    "why": "**Depressants** ==slow things down==. \"Antagonist\" describes how a molecule acts at a receptor, !!not a drug class!!."
   },
   {
-   "q": "A chemical that mimics or strengthens a neurotransmitter by binding to its receptor is a(n)",
+   "q": "A chemical substance that mimics or enhances the effects of a neurotransmitter by binding to its receptor site is called a(n) __________.",
    "opts": [
-    "antagonist",
-    "agonist",
-    "reuptake inhibitor",
-    "enzyme inhibitor"
+    "antagonist.",
+    "agonist.",
+    "reuptake inhibitor.",
+    "enzyme inhibitor."
    ],
    "a": 1,
    "why": "**Agonist** = ==mimics or boosts==. **Antagonist** = ==blocks==."
   },
   {
-   "q": "With regular use, a person needs bigger and bigger doses of a drug to feel the same effect. That is",
+   "q": "As a person continues to use a psychoactive drug regularly, their brain adapts to the drug's chemistry, requiring larger and larger doses to achieve the same initial psychological effect. This process is known as:",
    "opts": [
-    "withdrawal",
-    "physical dependence",
-    "tolerance",
-    "addiction"
+    "withdrawal.",
+    "physical dependence.",
+    "tolerance.",
+    "addiction."
    ],
    "a": 2,
    "why": "**Tolerance** is ==needing more for the same effect==, because the brain adapts."
   },
   {
-   "q": "A patient newly diagnosed with major depressive disorder most likely has too little",
+   "q": "Holly was recently diagnosed with major depressive disorder. Which neurotransmitters are most likely in under supply in Holly’s brain?",
    "opts": [
-    "oxytocin and GABA",
-    "acetylcholine and histamine",
-    "dopamine and acetylcholine",
-    "serotonin and norepinephrine"
+    "Oxytocin and gamma-aminobutyric acid (GABA).",
+    "Acetylcholine (ACh) and histamine.",
+    "Dopamine and Acetylcholine (ACh).",
+    "Serotonin and norepinephrine."
    ],
    "a": 3,
    "why": "Low **serotonin** and low **norepinephrine** are both ==linked to depression==. Dopamine is the tempting pick, but low dopamine is Parkinson's."
   },
   {
-   "q": "The motor symptoms of Parkinson's disease are most directly linked to a shortage of",
+   "q": "Severe depletion of which neurotransmitter is most directly associated with the motor symptoms of Parkinson's disease?",
    "opts": [
-    "serotonin",
-    "acetylcholine",
-    "dopamine",
-    "endorphins"
+    "Serotonin",
+    "Acetylcholine",
+    "Dopamine",
+    "Endorphins"
    ],
    "a": 2,
    "why": "Too little **dopamine** causes Parkinson's ==motor symptoms==."
   },
   {
-   "q": "Maya wakes up feeling sharp and alert. Which neurotransmitter is most responsible?",
+   "q": "Adam woke up feeling alert. Which neurotransmitter impacted his alertness?",
    "opts": [
-    "Acetylcholine",
+    "Acetylcholine (ACh)",
     "Norepinephrine",
     "Substance P",
     "Dopamine"
@@ -2181,23 +2227,23 @@ const GUIDE = {
    "why": "**Norepinephrine** drives ==alertness==. !!Dopamine is the tempting pick, not the alertness one.!!"
   },
   {
-   "q": "Curare paralyzes by blocking acetylcholine receptors on muscle cells. Curare acts as a(n)",
+   "q": "Curare is a poison that blocks acetylcholine (ACh) receptors on muscle cells, causing paralysis. Curare acts as a(n):",
    "opts": [
-    "agonist",
-    "antagonist",
-    "hormone",
-    "neuromodulator"
+    "agonist.",
+    "antagonist.",
+    "hormone.",
+    "neuromodulator."
    ],
    "a": 1,
    "why": "It ==blocks== the receptor, so it is an **antagonist**. With ACh blocked, muscles can't contract."
   },
   {
-   "q": "Nicotine, cocaine and amphetamines excite neural activity, speed up body functions and lift energy and mood. They are",
+   "q": "Nicotine, cocaine, and amphetamines excite neural activity, speed up bodily functions, and cause a rise in energy and mood. They are classified as:",
    "opts": [
-    "depressants",
-    "stimulants",
-    "hallucinogens",
-    "opiates"
+    "depressants.",
+    "stimulants.",
+    "hallucinogens.",
+    "opiates."
    ],
    "a": 1,
    "why": "**Stimulants** ==speed things up==. Opiates are depressants."
@@ -2206,7 +2252,7 @@ const GUIDE = {
    "q": "Hormones are ___ released into the ___.",
    "opts": [
     "chemical messengers; bloodstream",
-    "neurons; synapse",
+    "neurons; neurotransmitters",
     "electrical messengers; bloodstream",
     "electrical messengers; synapse"
    ],
@@ -2214,7 +2260,18 @@ const GUIDE = {
    "why": "Endocrine glands release ==chemical messengers into the blood==. !!Hormones are never electrical.!!"
   },
   {
-   "q": "Which hormone is produced by the hypothalamus but stored and released by the posterior pituitary?",
+   "q": "The endocrine system communicates throughout the body by secreting chemical messengers called __________ directly into the __________.",
+   "opts": [
+    "neurotransmitters; synaptic cleft",
+    "hormones; bloodstream",
+    "endorphins; cerebrospinal fluid",
+    "agonists; lymphatic system"
+   ],
+   "a": 1,
+   "why": "The endocrine system uses ==hormones== carried in the ==bloodstream==. !!Neurotransmitters cross the synaptic cleft instead.!!"
+  },
+  {
+   "q": "WOTF hormones are produced by the hypothalamus and subsequently stored and released by the posterior pituitary gland?",
    "opts": [
     "Oxytocin",
     "Thyroid-stimulating hormone",
@@ -2225,62 +2282,63 @@ const GUIDE = {
    "why": "**Oxytocin** is made in the hypothalamus and released from the ==posterior pituitary==."
   },
   {
-   "q": "Which gland, controlled directly by the hypothalamus, regulates growth and directs the other endocrine glands?",
+   "q": "Which master gland of the endocrine system is controlled directly by the hypothalamus and regulates growth as well as other endocrine glands?",
    "opts": [
-    "Adrenal gland",
-    "Pituitary gland",
-    "Thyroid gland",
-    "Pineal gland"
+    "adrenal gland",
+    "pituitary gland",
+    "thyroid gland",
+    "pineal gland"
    ],
    "a": 1,
    "why": "The **pituitary** is the ==master gland==: growth, and it directs the other glands."
   },
   {
-   "q": "Which structure signals the pituitary, which in turn directs the endocrine system?",
+   "q": "What communicates with the pituitary, which in turn controls the endocrine system?",
    "opts": [
     "Parathyroids",
     "Hypothalamus",
-    "Autonomic nervous system",
-    "Spinal cord"
+    "Autonomic Nervous System",
+    "Spinal Cord"
    ],
    "a": 1,
    "why": "The **hypothalamus** ==communicates with the pituitary==, which directs the endocrine system."
   },
   {
-   "q": "Which gland would best explain an unusually tall 12-year-old?",
+   "q": "Which of the following endocrine glands may explain unusually tall height in a 12-year-old?",
    "opts": [
+    "Testes",
     "Adrenal",
     "Pancreas",
     "Parathyroid",
     "Pituitary"
    ],
-   "a": 3,
+   "a": 4,
    "why": "The **pituitary** controls ==growth==."
   },
   {
-   "q": "Sleep apnea is a disorder marked by",
+   "q": "Sleep apnea is a potentially serious sleep disorder characterized by:",
    "opts": [
-    "walking and talking during deep sleep",
-    "breathing that stops repeatedly, with brief awakenings",
-    "trouble falling or staying asleep every night",
-    "terrifying nightmares that wake the sleeper screaming"
+    "sudden walking and talking during deep NREM-3 sleep.",
+    "temporary cessations of breathing during sleep and repeated momentary awakenings.",
+    "consistent difficulty falling or staying asleep every night.",
+    "vivid, frightening nightmares that cause the individual to wake up screaming."
    ],
    "a": 1,
    "why": "**Apnea** = ==breathing stops== again and again, with brief awakenings."
   },
   {
-   "q": "According to activation-synthesis theory, dreams are",
+   "q": "The activation–synthesis theory suggests that dreams are:",
    "opts": [
-    "the brain building a story out of random neural firing that starts in the brainstem",
-    "practice for surviving threats",
-    "disguised versions of unfulfilled wishes",
-    "the brain filing memories into long-term storage"
+    "the brain's attempt to synthesize random neural static originating in the brainstem into a meaningful narrative.",
+    "simulated training grounds designed to help humans practice survival techniques.",
+    "direct manifestations of unfulfilled wishes and unconscious desires.",
+    "cognitive filing processes intended to move short-term memories into long-term cortical storage."
    ],
    "a": 0,
    "why": "**Activation-synthesis**: ==random brainstem firing, then the brain builds a story from it==."
   },
   {
-   "q": "Which sleep disorder involves sudden, uncontrollable attacks of REM sleep straight from being awake?",
+   "q": "Which of the following sleep disorders is characterized by uncontrollable, sudden attacks of REM sleep directly from waking consciousness?",
    "opts": [
     "Sleep apnea",
     "Insomnia",
@@ -2291,18 +2349,18 @@ const GUIDE = {
    "why": "**Narcolepsy** = sudden ==REM attacks straight from being awake==."
   },
   {
-   "q": "Vivid dreams, darting eyes, a highly active brain and paralyzed voluntary muscles describe which stage?",
+   "q": "During which stage of sleep do vivid dreams most frequently occur, accompanied by sporadic eye movements and a paradoxically active brain but paralyzed voluntary muscles?",
    "opts": [
-    "N1",
-    "N2",
-    "N3",
-    "REM"
+    "NREM-1",
+    "NREM-2",
+    "NREM-3",
+    "REM sleep"
    ],
    "a": 3,
    "why": "**REM** is ==paradoxical sleep==: brain active, body nearly paralyzed."
   },
   {
-   "q": "In Freud's theory, the remembered storyline of a dream is its ___ content, and its hidden meaning is its ___ content.",
+   "q": "According to Sigmund Freud’s dream theory, the remembered, symbolic story line of a dream is its __________ content, while its underlying, censored psychological meaning is its __________ content.",
    "opts": [
     "latent; manifest",
     "manifest; latent",
@@ -2313,12 +2371,12 @@ const GUIDE = {
    "why": "==Manifest = what you remember==; ==latent = what it supposedly means==. !!Swapping them is the trap.!!"
   },
   {
-   "q": "The roughly 24-hour clock that sets our sleep-wake cycle, body temperature and hormone release in response to light is the",
+   "q": "The 24-hour biological clock that regulates our sleep–wake cycle, body temperature, and hormone secretion based on light exposure is known as the:",
    "opts": [
-    "circadian rhythm",
-    "infradian rhythm",
-    "REM cycle",
-    "endocrine rhythm"
+    "circadian rhythm.",
+    "infradian rhythm.",
+    "REM cycle.",
+    "endocrine rhythm."
    ],
    "a": 0,
    "why": "**Circadian rhythm** = the ==24-hour biological clock==, set by light."
@@ -2590,7 +2648,8 @@ const GUIDE = {
   "IV": "independent variable",
   "DV": "dependent variable",
   "APA": "American Psychological Association",
-  "DSM-5": "the diagnostic manual of mental disorders"
+  "DSM-5": "the diagnostic manual of mental disorders",
+  "WOTF": "which of the following"
  },
  "cram": [
   {
@@ -3159,20 +3218,30 @@ function buildPractice(sec){
   sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
   const g=el("div","qgrid");
   qs.forEach((q,i)=>{
-    const card=el("div","group q");
+    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a];
     card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
-      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${j===q.a?" data-c":""}><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${keys.includes(j)?" data-c":""}><span class="k">${"abcdef"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      (multi?`<div class="mchk"><span>select all that apply</span><button type="button" class="btn ghost">check</button></div>`:"")+
       `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
-    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
-      if(card.classList.contains("done")||$("#root").classList.contains("showall"))return;
-      card.classList.add("done"); const j=+b.dataset.i;
-      if(j===q.a){b.classList.add("right");SCORE.right++}else{b.classList.add("wrong");card.querySelectorAll(".opt")[q.a].classList.add("right")}
-      SCORE.done++; $("#scn").textContent=SCORE.right; scoreVis();
+    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall");
+    const finish=ok=>{card.classList.add("done");if(ok)SCORE.right++;SCORE.done++;$("#scn").textContent=SCORE.right;scoreVis()};
+    opts.forEach(b=>b.addEventListener("click",()=>{
+      if(locked())return;
+      if(multi){b.classList.toggle("sel");return}
+      const j=+b.dataset.i;
+      if(j===q.a)b.classList.add("right");else{b.classList.add("wrong");opts[q.a].classList.add("right")}
+      finish(j===q.a);
     }));
+    if(multi)card.querySelector(".mchk .btn").addEventListener("click",()=>{
+      if(locked())return;
+      let ok=true;
+      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c)o.classList.add("right");else if(s)o.classList.add("wrong");if(s!==c)ok=false});
+      finish(ok);
+    });
     g.appendChild(card);
   });
   sec.appendChild(g);
-  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
 }
 
 /* problems: steps are strings (numbered) or [work, why] pairs (line by line) */

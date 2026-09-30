@@ -208,7 +208,8 @@ units so they stay readable on a phone. A figure must be exactly right; when in
 doubt use a table.
 
 Other panes: `practice` (`q`, `opts[]`, `a` index, `why` that also explains the
-tempting wrong answer), `problems` (`q`, `steps[]`, `ans`; math and physics steps
+tempting wrong answer; `a` as an array of indexes makes a select-all question
+with a check button), `problems` (`q`, `steps[]`, `ans`; math and physics steps
 are `[work, why]` pairs), `formulas` (`n`, `f` plain text, `note`), `cards`
 (`f`, `b`; the pane also lists every card), `timeline` (`y`, `t`, `d`),
 `checklist` (`t`, `d`), `cram` (`{h, d, items:[{n, y, t}]}`), `tables`
