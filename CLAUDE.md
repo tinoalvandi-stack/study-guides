@@ -69,8 +69,8 @@ Add to the `FEATURES` array at the top of the script, in test-date order:
   test: "2026-09-04", note: "the test covers sections 6.1 to 6.3 and the unit circle" }
 ```
 
-The "up next" card shows the soonest test that has not passed; the others list
-under it as "also coming up". `note` (optional) is one line on what the test
+"Up next" shows every test that has not passed, each as its own full card,
+soonest first. `note` (optional) is one line on what the test
 covers. `end` (optional) is the last day of a multi-day test. Expired entries
 drop off on their own; leave them in the array.
 `pin: true` (optional) puts that entry first in "up next" while it is live,

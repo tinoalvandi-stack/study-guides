@@ -359,12 +359,6 @@ body.searching #inline{display:block}
 body.searching #upnext,body.searching #recent,body.searching #yearhd,body.searching #year,body.searching .compat{display:none}
 #inline .none{padding:18px 14px;color:var(--ink3);font-size:var(--t15);text-transform:lowercase}
 
-.also{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:2px 2px 0;
-  font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
-.also a{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);padding:3px 0}
-.also a b{font-weight:600;color:var(--c,var(--ink))}
-.also a i{font-style:normal;font-variant-numeric:tabular-nums;color:var(--ink3)}
-@media (hover:hover){.also a:hover{color:var(--ink)}}
 .hnote{display:block;font-size:var(--t13);color:var(--ink2);margin:-8px 0 14px;text-transform:lowercase}
 
 .rx{margin-left:auto;width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;
@@ -499,7 +493,6 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
   <section id="upnext" hidden>
     <div class="sh"><h3>up next</h3></div>
     <div id="feat"></div>
-    <div class="also" id="also"></div>
   </section>
 
   <section id="recent" hidden>
@@ -764,23 +757,18 @@ function glyphSvgWrap(c){const s=el("span");s.innerHTML=glyphSvg(c.glyph,c.c,20)
   const md=x=>(x.getMonth()+1)+"/"+x.getDate();
   const when=f=>{const d=new Date(f.test+"T12:00:00"),now=new Date(TODAY+"T12:00:00");const days=Math.round((d-now)/864e5);
     return days<=0?"today":days===1?"tomorrow":"in "+days+" days"};
-  const f=live[0], c=byId(f.classId);
+  live.forEach(f=>{const c=byId(f.classId);
   const a=el("a","hero"); a.href=abs(f.url); a.target="_blank"; a.rel="noopener noreferrer";
   a.style.setProperty("--accent-ink",c.c);
   a.innerHTML='<span class="hrow">'+glyphSvg(c.glyph,c.c,22)+'<span class="hmeta"><span class="hk"></span><span class="hc">'+when(f)+'</span></span>'+
-    '<span class="chip due">'+md(new Date(f.test+"T12:00:00"))+'</span></span><span class="htitle"></span>'+
+    '<span class="chip due">'+md(new Date((f.test<TODAY&&f.end?f.end:f.test)+"T12:00:00"))+'</span></span><span class="htitle"></span>'+
     (f.note?'<span class="hnote"></span>':'')+
     '<span class="go">open the guide<svg width="7" height="12" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span>';
   a.querySelector(".hk").textContent=c.name; a.querySelector(".htitle").textContent=f.title;
   if(f.note)a.querySelector(".hnote").textContent=f.note;
   a.addEventListener("click",()=>recordOpen(c,{url:f.url,t:f.title}));
   $("#feat").append(a);
-  const also=$("#also");
-  if(live.length>1){also.append(el("span",null,"also coming up:"));
-    live.slice(1).forEach(g=>{const cc=byId(g.classId);const l=el("a");l.href=abs(g.url);l.target="_blank";l.rel="noopener noreferrer";
-      l.style.setProperty("--c",cc.c);l.innerHTML='<b></b><i>'+md(new Date(g.test+"T12:00:00"))+'</i>';l.querySelector("b").textContent=(cc.abbr||cc.name).toLowerCase();
-      l.addEventListener("click",()=>recordOpen(cc,{url:g.url,t:g.title}));also.append(l)});
-  }else also.remove();
+  });
 })();
 
 /* ═══════════ RECENT ═══════════ */

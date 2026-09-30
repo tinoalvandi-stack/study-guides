@@ -42,9 +42,9 @@ domain.
 ## New test coming up
 
 Add an entry to the `FEATURES` array at the top of the script, in test-date
-order: `classId`, `title`, `url`, and `test` as `YYYY-MM-DD`. The card shows the
-soonest test that has not passed and moves to the next one on its own the day
-after, so several can be queued at once. The date chip hides itself the same
+order: `classId`, `title`, `url`, and `test` as `YYYY-MM-DD`. Up next shows a
+full card for every test that has not passed, soonest first, and each drops off
+on its own the day after, so several can be queued at once. The date chip hides itself the same
 way. Leave the rest alone.
 
 ## Rules baked in
