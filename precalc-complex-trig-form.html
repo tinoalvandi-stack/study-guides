@@ -405,13 +405,29 @@ b.kw{font-weight:680;color:var(--ink)}
 .showall .q .opt,.showall .tq .opt{cursor:default}
 .showall .q .opt[data-c],.showall .tq .opt[data-c]{background:color-mix(in srgb,var(--good) 14%,transparent)}
 .showall .q .opt[data-c] .k,.showall .tq .opt[data-c] .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+/* answer feedback in words, not only color (engine, 2026-09-30) */
+.opt .ftag{margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:650;white-space:nowrap;text-transform:lowercase}
+.opt.right .ftag{color:var(--good)} .opt.wrong .ftag{color:var(--bad)}
+.showall .q:not(.done) .opt[data-c]::after,.showall .tq:not(.done) .opt[data-c]::after{content:"\2713  answer";margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:650;color:var(--good);white-space:nowrap}
+.vh{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .showall .q .why,.showall .tq .ea{display:block}
 .showall .tq .eb,.showall .prob .go{display:none}
 .showall .prob .reveal{display:block}
-.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease)}
-.scorepill.show{transform:translateX(-50%);opacity:1;pointer-events:auto}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;visibility:hidden;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease),visibility 0s linear .4s}
+.scorepill.show{transform:translateX(-50%);opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
 .scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
 .scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
+/* retry missed questions (engine, 2026-09-30) */
+.scorepill{flex-wrap:wrap;justify-content:center;width:max-content;max-width:calc(100vw - 24px)}
+.scorepill button[hidden]{display:none}
+.scorepill button:focus-visible{outline-color:var(--paper)}
+.rbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;padding:10px 12px 10px 16px;border-radius:var(--r-card);border:1px solid var(--line);background:var(--surface)}
+.rbar[hidden],.rbar [hidden]{display:none !important}
+.rbar:focus,.qgrid:focus{outline:none}
+.rbar .rst{margin:0;flex:1 1 220px;font-size:var(--t15);line-height:1.4;text-transform:lowercase}
+.rbar .rbtns{display:flex;flex-wrap:wrap;gap:8px}
+.rbar .btn{padding:6px 12px;font-size:var(--t13)}
+@media screen{.q.rx{display:none}}
 
 /* problems */
 .pgrid{display:grid;gap:12px}
@@ -525,9 +541,10 @@ footer .upd{display:block;margin-top:6px}
 
 @media print{
   :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
-  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.tq .eb,.prob .go,.seg{display:none !important}
+  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg{display:none !important}
   .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
   .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .q:not(.done) .opt[data-c]::after,.tq:not(.done) .opt[data-c]::after{content:"\2713  correct answer";margin-left:auto;padding-left:10px;font-size:var(--t12);font-weight:700;white-space:nowrap}
   .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
   .prob:not(.on) .reveal::before{display:none}
   .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
@@ -584,7 +601,7 @@ footer .upd{display:block;margin-top:6px}
     <span class="upd" id="upd"></span>
   </footer>
 </main>
-<div class="scorepill" id="score" aria-live="polite"><span><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
+<div class="scorepill" id="score"><span aria-live="polite"><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
@@ -1092,196 +1109,430 @@ const GUIDE = {
   {
    "q": "**Rectangular → trig form**, θ in [0°, 360°): −4 + 4i",
    "steps": [
-    "Sketch it: x = −4, y = 4 puts it in ==quadrant II==.",
-    "r = √(x² + y²) = √(16 + 16) = √32 = **4√2**",
-    "tan θ = y/x = 4/(−4) = −1, so the reference angle is 45°.",
-    "Quadrant II: θ = 180° − 45° = **135°**. !!Not −45° or 315°!!; the sketch decides the quadrant, not the calculator."
+    [
+     "x = −4, y = 4: ==quadrant II==",
+     "Sketch it first."
+    ],
+    [
+     "r = √(x² + y²) = √(16 + 16) = √32 = **4√2**",
+     ""
+    ],
+    [
+     "tan θ = y/x = 4/(−4) = −1",
+     "The reference angle is 45°."
+    ],
+    [
+     "θ = 180° − 45° = **135°**",
+     "Quadrant II. !!Not −45° or 315°!!; the sketch decides the quadrant, not the calculator."
+    ]
    ],
    "ans": "4√2(cos 135° + i sin 135°) = 4√2 cis 135°"
   },
   {
    "q": "**Rectangular → trig form**, θ in [0°, 360°): −1 + i√3",
    "steps": [
-    "x = −1, y = √3: ==quadrant II==.",
-    "r = √(1 + 3) = √4 = **2**",
-    "tan θ = √3/(−1) = −√3, reference angle 60°.",
-    "Quadrant II: θ = 180° − 60° = **120°**"
+    [
+     "x = −1, y = √3: ==quadrant II==",
+     "Sketch it first."
+    ],
+    [
+     "r = √(1 + 3) = √4 = **2**",
+     ""
+    ],
+    [
+     "tan θ = √3/(−1) = −√3",
+     "Reference angle 60°."
+    ],
+    [
+     "θ = 180° − 60° = **120°**",
+     "Quadrant II: 180° − ref."
+    ]
    ],
    "ans": "2(cos 120° + i sin 120°) = 2 cis 120°"
   },
   {
    "q": "**Polar form** (warm-up): −2√3 − 2i",
    "steps": [
-    "x = −2√3, y = −2: both negative, ==quadrant III==.",
-    "r = √(12 + 4) = √16 = **4**",
-    "tan θ = (−2)/(−2√3) = 1/√3, reference angle 30°.",
-    "Quadrant III: θ = 180° + 30° = **210°**. !!tan⁻¹ alone gives 30°, which is quadrant I!!."
+    [
+     "x = −2√3, y = −2: ==quadrant III==",
+     "Both negative."
+    ],
+    [
+     "r = √(12 + 4) = √16 = **4**",
+     "(−2√3)² = 12."
+    ],
+    [
+     "tan θ = (−2)/(−2√3) = 1/√3",
+     "Reference angle 30°."
+    ],
+    [
+     "θ = 180° + 30° = **210°**",
+     "Quadrant III: 180° + ref. !!tan⁻¹ alone gives 30°, which is quadrant I!!."
+    ]
    ],
    "ans": "4 cis 210°"
   },
   {
    "q": "**On an axis** (tan θ is undefined or 0): write 5i and −7 in trig form.",
    "steps": [
-    "5i = 0 + 5i sits on the ==positive imaginary axis==: r = 5, θ = **90°**.",
-    "−7 = −7 + 0i sits on the ==negative real axis==: r = 7, θ = **180°**.",
-    "Axis angles: +real 0°, +imag 90°, −real 180°, −imag 270°. No tan needed, just the sketch."
+    [
+     "5i = 0 + 5i: r = 5, θ = **90°**",
+     "It sits on the ==positive imaginary axis==."
+    ],
+    [
+     "−7 = −7 + 0i: r = 7, θ = **180°**",
+     "It sits on the ==negative real axis==."
+    ],
+    [
+     "Axis angles: +real 0°, +imag 90°, −real 180°, −imag 270°",
+     "No tan needed, just the sketch."
+    ]
    ],
    "ans": "5 cis 90°  and  7 cis 180°"
   },
   {
    "q": "**Trig → rectangular**: 2(cos 330° + i sin 330°)",
    "steps": [
-    "330° is quadrant IV, reference 30°: cos 330° = √3/2, sin 330° = −1/2.",
-    "Distribute r: 2(√3/2) + 2(−1/2)i",
-    "= √3 − i"
+    [
+     "cos 330° = √3/2, sin 330° = −1/2",
+     "330° is quadrant IV, reference 30°."
+    ],
+    [
+     "2(√3/2) + 2(−1/2)i",
+     "Distribute r."
+    ],
+    [
+     "= √3 − i",
+     ""
+    ]
    ],
    "ans": "√3 − i"
   },
   {
    "q": "**Trig → rectangular**: 6(cos 135° + i sin 135°)",
    "steps": [
-    "135° is quadrant II, reference 45°: cos = −√2/2, sin = √2/2.",
-    "6(−√2/2) + 6(√2/2)i",
-    "= −3√2 + 3√2 i"
+    [
+     "cos 135° = −√2/2, sin 135° = √2/2",
+     "135° is quadrant II, reference 45°."
+    ],
+    [
+     "6(−√2/2) + 6(√2/2)i",
+     "Distribute r."
+    ],
+    [
+     "= −3√2 + 3√2 i",
+     ""
+    ]
    ],
    "ans": "−3√2 + 3i√2"
   },
   {
    "q": "**Radians** (warm-up): write 3(cos 7π/4 + i sin 7π/4) in rectangular form, and give its **absolute value**.",
    "steps": [
-    "7π/4 = 315°, quadrant IV: cos = √2/2, sin = −√2/2.",
-    "3(√2/2) + 3(−√2/2)i = 3√2/2 − (3√2/2)i",
-    "==Absolute value of r cis θ is just r==: |z| = 3. No work needed."
+    [
+     "7π/4 = 315°: cos = √2/2, sin = −√2/2",
+     "Quadrant IV."
+    ],
+    [
+     "3(√2/2) + 3(−√2/2)i = 3√2/2 − (3√2/2)i",
+     "Distribute r."
+    ],
+    [
+     "|z| = 3",
+     "==Absolute value of r cis θ is just r==. No work needed."
+    ]
    ],
    "ans": "3√2/2 − (3√2/2)i,  |z| = 3"
   },
   {
    "q": "**Julia set**: is z = 1 + i in the Julia set?",
    "steps": [
-    "Rule: compute z² − 1, then square that and subtract 1 again, and so on. ==If any |result| exceeds 2, it is NOT in the set.==",
-    "z² = (1 + i)² = 1 + 2i + i² = 2i. So z² − 1 = −1 + 2i.",
-    "|−1 + 2i| = √(1 + 4) = √5 ≈ 2.24",
-    "√5 > 2, stop."
+    [
+     "Rule: z² − 1, then square that and subtract 1 again, and so on",
+     "==If any |result| exceeds 2, it is NOT in the set.=="
+    ],
+    [
+     "z² = (1 + i)² = 1 + 2i + i² = 2i",
+     "i² = −1."
+    ],
+    [
+     "z² − 1 = −1 + 2i",
+     "Subtract 1."
+    ],
+    [
+     "|−1 + 2i| = √(1 + 4) = √5 ≈ 2.24",
+     ""
+    ],
+    [
+     "√5 > 2",
+     "Over 2: stop."
+    ]
    ],
    "ans": "Not in the Julia set"
   },
   {
    "q": "**Julia set**: is z = 0 + 0i in the Julia set? Is z = i?",
    "steps": [
-    "z = 0: 0² − 1 = −1, |−1| = 1 ✓. (−1)² − 1 = 0, |0| = 0 ✓. 0² − 1 = −1 ✓. It cycles 0, −1, 0 forever, so the whole orbit stays bounded (never past 2): **yes**.",
-    "z = i: i² − 1 = −2, |−2| = 2. !!Equal to 2 is not exceeding 2!!, keep going.",
-    "(−2)² − 1 = 3, |3| = 3 > 2: **not in the set**."
+    [
+     "z = 0: 0² − 1 = −1, |−1| = 1 ✓",
+     ""
+    ],
+    [
+     "(−1)² − 1 = 0, |0| = 0 ✓; 0² − 1 = −1 ✓",
+     "It cycles 0, −1, 0 forever, so the whole orbit stays bounded (never past 2): **yes**."
+    ],
+    [
+     "z = i: i² − 1 = −2, |−2| = 2",
+     "!!Equal to 2 is not exceeding 2!!, keep going."
+    ],
+    [
+     "(−2)² − 1 = 3, |3| = 3 > 2",
+     "Over 2: **not in the set**."
+    ]
    ],
    "ans": "0 + 0i: yes.  i: no."
   },
   {
    "q": "**Divide** (warm-up): (5 + 6i)/(5 − 4i)",
    "steps": [
-    "Multiply top and bottom by the ==conjugate of the bottom==, 5 + 4i.",
-    "Top: (5 + 6i)(5 + 4i) = 25 + 20i + 30i + 24i² = 25 + 50i − 24 = 1 + 50i",
-    "Bottom: (5 − 4i)(5 + 4i) = 25 + 16 = 41. !!+16, not −16!!: a² + b².",
-    "Split into standard form a + bi."
+    [
+     "(5 + 6i)/(5 − 4i) · (5 + 4i)/(5 + 4i)",
+     "Multiply top and bottom by the ==conjugate of the bottom==, 5 + 4i."
+    ],
+    [
+     "Top: (5 + 6i)(5 + 4i) = 25 + 20i + 30i + 24i²",
+     "FOIL."
+    ],
+    [
+     "= 25 + 50i − 24 = 1 + 50i",
+     "24i² = −24."
+    ],
+    [
+     "Bottom: (5 − 4i)(5 + 4i) = 25 + 16 = 41",
+     "!!+16, not −16!!: a² + b²."
+    ],
+    [
+     "= 1/41 + (50/41)i",
+     "Split into standard form a + bi."
+    ]
    ],
    "ans": "1/41 + (50/41)i"
   },
   {
    "q": "**Divide by i**: 7/i  and  2/(3i)",
    "steps": [
-    "The conjugate of i is −i, and i(−i) = −i² = 1.",
-    "7/i · (−i)/(−i) = −7i/1 = −7i",
-    "2/(3i) · (−i)/(−i) = −2i/(−3i²) = −2i/3"
+    [
+     "i(−i) = −i² = 1",
+     "The conjugate of i is −i."
+    ],
+    [
+     "7/i · (−i)/(−i) = −7i/1 = −7i",
+     ""
+    ],
+    [
+     "2/(3i) · (−i)/(−i) = −2i/(−3i²) = −2i/3",
+     "−3i² = 3."
+    ]
    ],
    "ans": "−7i  and  −(2/3)i"
   },
   {
    "q": "**Multiply**: (8 − 9i)²  and  (−5i)(3 + i)",
    "steps": [
-    "(8 − 9i)² = (8 − 9i)(8 − 9i) = 64 − 72i − 72i + 81i²",
-    "= 64 − 144i − 81 = **−17 − 144i**. !!Never square each part separately!! (that gives 64 + 81i²).",
-    "(−5i)(3 + i) = −15i − 5i² = −15i + 5 = **5 − 15i**"
+    [
+     "(8 − 9i)² = (8 − 9i)(8 − 9i) = 64 − 72i − 72i + 81i²",
+     "!!Never square each part separately!! (that gives 64 + 81i²)."
+    ],
+    [
+     "= 64 − 144i − 81 = **−17 − 144i**",
+     "81i² = −81."
+    ],
+    [
+     "(−5i)(3 + i) = −15i − 5i²",
+     "Distribute."
+    ],
+    [
+     "= −15i + 5 = **5 − 15i**",
+     "−5i² = +5; real part first."
+    ]
    ],
    "ans": "−17 − 144i  and  5 − 15i"
   },
   {
    "q": "**Solve over the complex numbers** (warm-up): 4x² + 4 = 7x",
    "steps": [
-    "Set = 0 first: 4x² − 7x + 4 = 0. a = 4, b = −7, c = 4.",
-    "Discriminant: b² − 4ac = 49 − 64 = −15. Negative means ==two nonreal conjugate answers==.",
-    "x = (7 ± √−15)/8 = (7 ± i√15)/8",
-    "Split into a + bi form."
+    [
+     "4x² − 7x + 4 = 0",
+     "Set = 0 first. a = 4, b = −7, c = 4."
+    ],
+    [
+     "b² − 4ac = 49 − 64 = −15",
+     "Discriminant. Negative means ==two nonreal conjugate answers==."
+    ],
+    [
+     "x = (7 ± √−15)/8 = (7 ± i√15)/8",
+     "Quadratic formula; √−15 = i√15."
+    ],
+    [
+     "x = 7/8 ± (√15/8)i",
+     "Split into a + bi form."
+    ]
    ],
    "ans": "x = 7/8 ± (√15/8)i"
   },
   {
    "q": "**Square roots** (warm-up): 5k² − 1 = −2",
    "steps": [
-    "Isolate k²: 5k² = −1, k² = −1/5.",
-    "k = ±√(−1/5) = ±i/√5",
-    "Rationalize: ±i√5/5. !!Don't forget ±!!."
+    [
+     "5k² = −1, k² = −1/5",
+     "Isolate k²."
+    ],
+    [
+     "k = ±√(−1/5) = ±i/√5",
+     "√−a = i√a."
+    ],
+    [
+     "= ±i√5/5",
+     "Rationalize. !!Don't forget ±!!."
+    ]
    ],
    "ans": "k = ±(√5/5)i"
   },
   {
    "q": "**Radicals of negatives**: √−12 · √−5  and  √−18/√2",
    "steps": [
-    "==Pull out i first==: √−12 = 2i√3, √−5 = i√5.",
-    "(2i√3)(i√5) = 2i²√15 = **−2√15**. !!√(−12 · −5) = √60 is wrong!!, the sign flips.",
-    "√−18/√2 = 3i√2/√2 = **3i**"
+    [
+     "√−12 = 2i√3, √−5 = i√5",
+     "==Pull out i first==."
+    ],
+    [
+     "(2i√3)(i√5) = 2i²√15 = **−2√15**",
+     "!!√(−12 · −5) = √60 is wrong!!, the sign flips."
+    ],
+    [
+     "√−18/√2 = 3i√2/√2 = **3i**",
+     "√−18 = 3i√2; √2 cancels."
+    ]
    ],
    "ans": "−2√15  and  3i"
   },
   {
    "q": "**Powers of i**: i⁴³  and  1/i¹⁰",
    "steps": [
-    "Cycle of 4: i¹ = i, i² = −1, i³ = −i, i⁴ = 1. Divide the exponent by 4, keep the ==remainder==.",
-    "43 ÷ 4 = 10 r 3, so i⁴³ = i³ = **−i**",
-    "10 ÷ 4 = 2 r 2, so i¹⁰ = −1, and 1/i¹⁰ = 1/(−1) = **−1**"
+    [
+     "i¹ = i, i² = −1, i³ = −i, i⁴ = 1",
+     "Cycle of 4. Divide the exponent by 4, keep the ==remainder==."
+    ],
+    [
+     "43 ÷ 4 = 10 r 3, so i⁴³ = i³ = **−i**",
+     ""
+    ],
+    [
+     "10 ÷ 4 = 2 r 2, so i¹⁰ = −1",
+     ""
+    ],
+    [
+     "1/i¹⁰ = 1/(−1) = **−1**",
+     ""
+    ]
    ],
    "ans": "−i  and  −1"
   },
   {
    "q": "**Sum + graph**: add 4 − 6i and −4 + 2i, then graph both and the resultant.",
    "steps": [
-    "Add real to real, imaginary to imaginary: (4 − 4) + (−6 + 2)i = 0 − 4i.",
-    "Graph 4 − 6i as an arrow from the origin to (4, −6), and −4 + 2i to (−4, 2).",
-    "The resultant is the ==diagonal of the parallelogram== they make: an arrow from the origin to (0, −4)."
+    [
+     "(4 − 4) + (−6 + 2)i = 0 − 4i",
+     "Add real to real, imaginary to imaginary."
+    ],
+    [
+     "4 − 6i: arrow from the origin to (4, −6). −4 + 2i: arrow to (−4, 2)",
+     "Graph each as a vector."
+    ],
+    [
+     "Resultant: arrow from the origin to (0, −4)",
+     "The ==diagonal of the parallelogram== they make."
+    ]
    ],
    "ans": "−4i"
   },
   {
    "q": "**Absolute value** (warm-up): |−5√2/2 − (5√2/2)i|",
    "steps": [
-    "|a + bi| = √(a² + b²), the ==length of the vector==.",
-    "a² = 25·2/4 = 25/2, and b² = 25/2.",
-    "√(25/2 + 25/2) = √25 = 5"
+    [
+     "|a + bi| = √(a² + b²)",
+     "The ==length of the vector==."
+    ],
+    [
+     "a² = 25·2/4 = 25/2, and b² = 25/2",
+     "(5√2/2)² = 25 · 2 / 4."
+    ],
+    [
+     "√(25/2 + 25/2) = √25 = 5",
+     ""
+    ]
    ],
    "ans": "5"
   },
   {
    "q": "**Classify** (more than one can apply): 8i, 9 − 3i, 4, √−81",
    "steps": [
-    "Every number is **complex**. b = 0 → **real**. a = 0, b ≠ 0 → **pure imaginary**. b ≠ 0 → **nonreal complex**.",
-    "8i: complex, pure imaginary, nonreal complex.",
-    "9 − 3i: complex, nonreal complex. 4: complex, real.",
-    "√−81 = 9i: complex, pure imaginary, nonreal complex."
+    [
+     "b = 0 → **real**. a = 0, b ≠ 0 → **pure imaginary**. b ≠ 0 → **nonreal complex**",
+     "Every number is **complex**."
+    ],
+    [
+     "8i: complex, pure imaginary, nonreal complex",
+     "a = 0, b = 8."
+    ],
+    [
+     "9 − 3i: complex, nonreal complex",
+     "a ≠ 0, b ≠ 0."
+    ],
+    [
+     "4: complex, real",
+     "b = 0."
+    ],
+    [
+     "√−81 = 9i: complex, pure imaginary, nonreal complex",
+     "Simplify first."
+    ]
    ],
    "ans": "see steps; always list \"complex\""
   },
   {
    "q": "**Check a solution**: is 7 − i a solution of x² − 14x + 50 = 0?",
    "steps": [
-    "Plug in. (7 − i)² = 49 − 14i + i² = 48 − 14i",
-    "−14(7 − i) = −98 + 14i",
-    "Add: 48 − 14i − 98 + 14i + 50 = 0 ✓"
+    [
+     "(7 − i)² = 49 − 14i + i² = 48 − 14i",
+     "Plug in x = 7 − i."
+    ],
+    [
+     "−14(7 − i) = −98 + 14i",
+     ""
+    ],
+    [
+     "48 − 14i − 98 + 14i + 50 = 0 ✓",
+     "Add the three terms: 0 means it is a solution."
+    ]
    ],
    "ans": "Yes"
   },
   {
    "q": "**E = IZ**: find E when I = 5 + 7i and Z = 9 + 3i.",
    "steps": [
-    "E = (5 + 7i)(9 + 3i)",
-    "= 45 + 15i + 63i + 21i²",
-    "= 45 + 78i − 21"
+    [
+     "E = (5 + 7i)(9 + 3i)",
+     "E = IZ."
+    ],
+    [
+     "= 45 + 15i + 63i + 21i²",
+     "FOIL."
+    ],
+    [
+     "= 45 + 78i − 21",
+     "21i² = −21."
+    ]
    ],
    "ans": "E = 24 + 78i"
   }
@@ -1463,7 +1714,9 @@ document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
 document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
 $("#title").textContent=GUIDE.title;
 if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
-if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
+/* link targets from GUIDE data: site-relative or http(s), never other schemes or user:pass@ (engine, 2026-09-30) */
+const safeUrl=u=>{const s=String(u??"").trim();if(!s||/[\x00-\x20\\]/.test(s))return null;const m=/^([a-z][a-z0-9+.-]*):/i.exec(s);if(m&&!/^https?$/i.test(m[1]))return null;try{const x=new URL(s,"https://valentinoguides.com/");if(x.username||x.password)return null}catch(e){return null}return s};
+if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(ok.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");if(ok.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+ok.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}}
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");
@@ -1538,11 +1791,12 @@ function section(s,i){
 }
 function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{
   const b=x.querySelector(".eb");
-  if(b){b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"});return}
+  if(b){b.setAttribute("aria-expanded","false");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer";b.setAttribute("aria-expanded",String(on))});return}
+  x.insertAdjacentHTML("beforeend",'<p class="vh" role="status" aria-live="polite"></p>');
   x.querySelectorAll(".opt").forEach(o=>o.addEventListener("click",()=>{
     if(x.classList.contains("done")||$("#root").classList.contains("showall"))return;
     x.classList.add("done","on");
-    if(o.hasAttribute("data-c"))o.classList.add("right");else{o.classList.add("wrong");const c=x.querySelector(".opt[data-c]");if(c)c.classList.add("right")}
+    if(o.hasAttribute("data-c")){o.classList.add("right");tagOpt(o,"\u2713 correct");say(x,"Correct.")}else{o.classList.add("wrong");tagOpt(o,"\u2717 your answer");const c=x.querySelector(".opt[data-c]");if(c){c.classList.add("right");tagOpt(c,"\u2713 correct")}say(x,"Not quite. The answer is ("+(c?c.querySelector(".k").textContent:"?")+").")}
   }));
 })}
 function buildOutline(sec){
@@ -1582,37 +1836,88 @@ function buildOutline(sec){
 }
 
 /* practice mc */
-let SCORE={done:0,right:0,total:0};
+let SCORE={done:0,right:0,total:0}, RESEARCH=()=>{};
+/* feedback in words for sighted and screen-reader users (engine, 2026-09-30) */
+function tagOpt(o,t){if(!o.querySelector(".ftag"))o.insertAdjacentHTML("beforeend",`<span class="ftag">${t}</span>`)}
+function say(card,t){const s=card.querySelector(".vh[role=status]");if(s)s.textContent=t}
 function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
   const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
   sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
-  const g=el("div","qgrid");
+  /* retry missed questions (engine, 2026-09-30): in memory for this page visit only, nothing stored or sent.
+     SCORE counts first tries only. Retries change the missed set and the round progress, never SCORE.
+     HOLD ignores a second click for half a second after a retry step, so a double click can't hit the control that moved under it. */
+  const FIRST=new Map(), MISSED=new Set(); let RT=null, ROUND=0, HOLD=-1e9;
+  const hold=()=>{const t=performance.now();if(t-HOLD<500)return true;HOLD=t;return false};
+  const rbar=el("div","rbar"); rbar.hidden=true; rbar.tabIndex=-1; rbar.setAttribute("role","group"); rbar.setAttribute("aria-label","retry missed questions");
+  rbar.innerHTML=`<p class="rst"></p><p class="vh" role="status" aria-live="polite"></p><div class="rbtns"><button type="button" class="btn" data-r="again" hidden></button><button type="button" class="btn ghost" data-r="all">all questions</button><button type="button" class="btn ghost" data-r="over">start over</button></div>`;
+  sec.insertBefore(rbar,sec.firstChild);
+  $("#reset").insertAdjacentHTML("beforebegin",'<button type="button" id="retry" hidden></button>');
+  const rbtn=$("#retry"), rst=rbar.querySelector(".rst"), rsay=rbar.querySelector(".vh"), ragain=rbar.querySelector('[data-r="again"]');
+  const g=el("div","qgrid"); g.tabIndex=-1;
+  const clearCard=c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"));c.querySelectorAll(".ftag").forEach(t=>t.remove());say(c,"")};
+  const firstTxt=()=>`first-try score stays ${SCORE.right} of ${SCORE.total}.`;
+  function rsync(){
+    const n=MISSED.size; rbar.hidden=!RT;
+    if(!RT){rbtn.hidden=!n;rbtn.textContent=`retry missed (${n})`;return}
+    const all=RT.set.length, end=RT.done>=all;
+    rbtn.hidden=false; rbtn.textContent=!end?`round ${RT.round}: ${RT.done} of ${all}`:n?`retry the ${n} still missed`:"all fixed · all questions";
+    ragain.hidden=!(end&&n); ragain.textContent=`retry the ${n} still missed`;
+    rst.textContent=!end?`retry round ${RT.round}: ${RT.done} of ${all} answered, ${RT.fixed} now right. ${firstTxt()}`
+      :n?`round ${RT.round} done: ${RT.fixed} of ${all} now right, ${n} still missed. ${firstTxt()}`:`all fixed: every missed question is now right. ${firstTxt()}`;
+    if(end&&!RT.said){RT.said=1;rsay.textContent=rst.textContent}
+  }
+  function record(i,ok){
+    if(!FIRST.has(i)){FIRST.set(i,ok);if(ok)SCORE.right++;else MISSED.add(i);SCORE.done++;$("#scn").textContent=SCORE.right}
+    else{if(ok)MISSED.delete(i);else MISSED.add(i);if(RT&&RT.set.includes(i)){RT.done++;if(ok)RT.fixed++}}
+    scoreVis(); rsync();
+  }
+  function startRetry(){
+    if(!MISSED.size||hold())return;
+    if($("#root").classList.contains("showall"))$("#showall").click();
+    RT={round:++ROUND,set:[...MISSED].sort((a,b)=>a-b),done:0,fixed:0,said:0};
+    g.querySelectorAll(".q").forEach(c=>{const on=RT.set.includes(+c.dataset.qi);c.classList.toggle("rx",!on);if(on)clearCard(c)});
+    rsay.textContent=""; rsync(); RESEARCH();
+    const r=rbar.getBoundingClientRect(); if(r.top<$("#bar").offsetHeight||r.bottom>innerHeight)sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});
+    rbar.focus({preventScroll:true});
+    const msg=`retry round ${RT.round}: ${RT.set.length} missed question${RT.set.length===1?"":"s"}. ${firstTxt()}`; setTimeout(()=>{if(RT&&RT.round===ROUND&&!RT.said)rsay.textContent=msg},120);
+  }
+  function endRetry(){if(hold())return;RT=null;rsay.textContent="";g.querySelectorAll(".q.rx").forEach(c=>c.classList.remove("rx"));rsync();RESEARCH();g.focus({preventScroll:true})}
   qs.forEach((q,i)=>{
-    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a];
+    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a]; card.dataset.qi=i;
     card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
       q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${keys.includes(j)?" data-c":""}><span class="k">${"abcdef"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
       (multi?`<div class="mchk"><span>select all that apply</span><button type="button" class="btn ghost">check</button></div>`:"")+
-      `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
-    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall");
-    const finish=ok=>{card.classList.add("done");if(ok)SCORE.right++;SCORE.done++;$("#scn").textContent=SCORE.right;scoreVis()};
+      `<p class="vh" role="status" aria-live="polite"></p><div class="why"><b>why</b>${plain(q.why||"")}</div>`;
+    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall")||performance.now()-HOLD<500;
+    const finish=ok=>{card.classList.add("done");record(i,ok)};
     opts.forEach(b=>b.addEventListener("click",()=>{
       if(locked())return;
       if(multi){b.classList.toggle("sel");return}
       const j=+b.dataset.i;
-      if(j===q.a)b.classList.add("right");else{b.classList.add("wrong");opts[q.a].classList.add("right")}
+      if(j===q.a){b.classList.add("right");tagOpt(b,"\u2713 correct");say(card,"Correct.")}else{b.classList.add("wrong");tagOpt(b,"\u2717 your answer");opts[q.a].classList.add("right");tagOpt(opts[q.a],"\u2713 correct");say(card,"Not quite. The answer is ("+("abcdef"[q.a]||q.a+1)+").")}
       finish(j===q.a);
     }));
-    if(multi)card.querySelector(".mchk .btn").addEventListener("click",()=>{
+    if(multi)card.querySelector(".mchk .btn").addEventListener("click",e=>{
       if(locked())return;
-      let ok=true;
-      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c)o.classList.add("right");else if(s)o.classList.add("wrong");if(s!==c)ok=false});
+      let ok=true; const had=document.activeElement===e.currentTarget;
+      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c){o.classList.add("right");tagOpt(o,"\u2713 correct")}else if(s){o.classList.add("wrong");tagOpt(o,"\u2717 your answer")}if(s!==c)ok=false});
+      say(card,ok?"Correct.":"Not quite. The correct choices are marked.");
       finish(ok);
+      if(had)(card.querySelector(".opt.right")||opts[0]).focus({preventScroll:true});
     });
     g.appendChild(card);
   });
   sec.appendChild(g);
-  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  rbtn.addEventListener("click",()=>{
+    if(!RT)return startRetry();
+    if(RT.done<RT.set.length){sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});rbar.focus({preventScroll:true});return}
+    if(MISSED.size)startRetry();else endRetry();
+  });
+  ragain.addEventListener("click",startRetry);
+  rbar.querySelector('[data-r="all"]').addEventListener("click",endRetry);
+  rbar.querySelector('[data-r="over"]').addEventListener("click",()=>$("#reset").click());
+  $("#reset").addEventListener("click",()=>{if(hold())return;SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
 }
 
 /* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
@@ -1624,8 +1929,8 @@ function buildProblems(sec){
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
     card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
-    const go=card.querySelector(".go");
-    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    const go=card.querySelector(".go");go.setAttribute("aria-expanded","false");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps";go.setAttribute("aria-expanded",String(on))});
     g.appendChild(card);
   });
   sec.appendChild(g);
@@ -1763,7 +2068,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
 (function(){
   const q=$("#q"), box=$("#srch"), stat=$("#sstat"), sall=$("#showall");
   const ITEMS={outline:".tp,.toptbl,.sec,#s-abbr",practice:".q",problems:".prob",formulas:".fx",cards:".clist > div",timeline:".ev",checklist:".ck",cram:".cr",tables:".tblk tbody tr",prompts:".group",leq:".card,.tbw"};
-  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x";
+  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x,.ftag,.vh";
   const fold=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\s+/g," ");
   const lab=id=>(GUIDE.labels||{})[id]||LABEL[id]||id;
   const IDX=PANES.map(id=>{
@@ -1802,7 +2107,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
     const re=on?new RegExp(terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/'/g,"['\u2018\u2019]")).sort((a,b)=>b.length-a.length).join("|"),"gi"):null;
     IDX.forEach(P=>{
       let c=0;
-      P.items.forEach(it=>{const hit=!on||terms.every(t=>it.t.includes(t));it.n.classList.toggle("sx",!hit);if(on&&hit){c++;mark(it.n,re)}});
+      P.items.forEach(it=>{const hit=!on||terms.every(t=>it.t.includes(t));it.n.classList.toggle("sx",!hit);if(on&&hit&&!it.n.classList.contains("rx")){c++;mark(it.n,re)}});
       COUNTS[P.id]=c;
       const p=P.p;
       p.querySelectorAll(".tops,.clist,.cgrid,.cgrid > .group,.tblk,.qgrid,.pgrid,.fgrid,.tln,.ckg").forEach(g=>flip(g,on&&!g.querySelector(P.vis)));
@@ -1819,6 +2124,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
   const go=e=>{const b=e.target.closest("button[data-p]");if(b)show(b.dataset.p,true)};
   stat.addEventListener("click",go); root.addEventListener("click",e=>{if(e.target.closest(".nores"))go(e)});
   afterShow=status;
+  RESEARCH=()=>{if(LAST&&LAST.length){LAST=null;run()}};
   const focusQ=()=>{const top=$("#tools").getBoundingClientRect().top+scrollY-bar.offsetHeight-16;if(scrollY>top+4)scrollTo({top:Math.max(0,top),behavior:REDUCED?"auto":"smooth"});q.focus({preventScroll:true})};
   $("#sbtn").addEventListener("click",focusQ);
   addEventListener("keydown",e=>{if(e.key==="/"&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();focusQ()}});

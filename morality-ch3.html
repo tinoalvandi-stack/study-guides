@@ -405,13 +405,29 @@ b.kw{font-weight:680;color:var(--ink)}
 .showall .q .opt,.showall .tq .opt{cursor:default}
 .showall .q .opt[data-c],.showall .tq .opt[data-c]{background:color-mix(in srgb,var(--good) 14%,transparent)}
 .showall .q .opt[data-c] .k,.showall .tq .opt[data-c] .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+/* answer feedback in words, not only color (engine, 2026-09-30) */
+.opt .ftag{margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:650;white-space:nowrap;text-transform:lowercase}
+.opt.right .ftag{color:var(--good)} .opt.wrong .ftag{color:var(--bad)}
+.showall .q:not(.done) .opt[data-c]::after,.showall .tq:not(.done) .opt[data-c]::after{content:"\2713  answer";margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:650;color:var(--good);white-space:nowrap}
+.vh{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .showall .q .why,.showall .tq .ea{display:block}
 .showall .tq .eb,.showall .prob .go{display:none}
 .showall .prob .reveal{display:block}
-.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease)}
-.scorepill.show{transform:translateX(-50%);opacity:1;pointer-events:auto}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;visibility:hidden;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease),visibility 0s linear .4s}
+.scorepill.show{transform:translateX(-50%);opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
 .scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
 .scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
+/* retry missed questions (engine, 2026-09-30) */
+.scorepill{flex-wrap:wrap;justify-content:center;width:max-content;max-width:calc(100vw - 24px)}
+.scorepill button[hidden]{display:none}
+.scorepill button:focus-visible{outline-color:var(--paper)}
+.rbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;padding:10px 12px 10px 16px;border-radius:var(--r-card);border:1px solid var(--line);background:var(--surface)}
+.rbar[hidden],.rbar [hidden]{display:none !important}
+.rbar:focus,.qgrid:focus{outline:none}
+.rbar .rst{margin:0;flex:1 1 220px;font-size:var(--t15);line-height:1.4;text-transform:lowercase}
+.rbar .rbtns{display:flex;flex-wrap:wrap;gap:8px}
+.rbar .btn{padding:6px 12px;font-size:var(--t13)}
+@media screen{.q.rx{display:none}}
 
 /* problems */
 .pgrid{display:grid;gap:12px}
@@ -525,9 +541,10 @@ footer .upd{display:block;margin-top:6px}
 
 @media print{
   :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
-  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.tq .eb,.prob .go,.seg{display:none !important}
+  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg{display:none !important}
   .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
   .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .q:not(.done) .opt[data-c]::after,.tq:not(.done) .opt[data-c]::after{content:"\2713  correct answer";margin-left:auto;padding-left:10px;font-size:var(--t12);font-weight:700;white-space:nowrap}
   .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
   .prob:not(.on) .reveal::before{display:none}
   .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
@@ -584,7 +601,7 @@ footer .upd{display:block;margin-top:6px}
     <span class="upd" id="upd"></span>
   </footer>
 </main>
-<div class="scorepill" id="score" aria-live="polite"><span><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
+<div class="scorepill" id="score"><span aria-live="polite"><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
@@ -617,11 +634,11 @@ const GUIDE = {
   "cards": "vocab"
  },
  "top": [
-  "**True freedom** is choosing the good responsibly. License (doing whatever you want) is not freedom.",
+  "**True freedom** is choosing the good responsibly. License (doing whatever you want) is not true freedom.",
   "Five impediments lower **culpability**: ignorance, inadvertence, duress, inordinate attachment, habit.",
-  "A just law is reasonable, for the common good, and from competent authority.",
-  "Law types, from the source down: divine, natural, revealed (Old and New), civil and Church.",
-  "The quiz is heavy on vocab. Drill the vocab tab."
+  "Law flows from divine law: natural, revealed (Old and New), civil and Church. A just law is reasonable, for the common good, from competent authority.",
+  "Grace: **sanctifying** (habitual) is the lasting gift; actual grace helps a specific act; plus sacramental graces, charisms, and graces of state.",
+  "The quiz is vocab heavy, including chapter terms never said in class. Drill the vocab tab."
  ],
  "outline": [
   {
@@ -672,10 +689,20 @@ const GUIDE = {
     }
    ],
    "terms": [
+    "freedom",
     "determinism",
     "license",
     "moral relativism",
-    "true freedom"
+    "true freedom",
+    "external freedom",
+    "internal freedom"
+   ],
+   "p": [
+    "**Freedom** (CCC 1731) is \"the power, rooted in reason and will, to act or not to act,\" performing deliberate actions on your own responsibility.",
+    "Proof you're free: you could stop reading right now, and you feel pride, embarrassment, or guilt after you act. Physical, intellectual, and emotional limits are real, but they don't erase freedom."
+   ],
+   "watch": [
+    "No one can take away your freedom completely: freedom of thought stays."
    ]
   },
   {
@@ -683,7 +710,7 @@ const GUIDE = {
    "t": "Impediments to freedom",
    "d": "name it from a case",
    "p": [
-    "**Culpability** means deserving blame. The more voluntary the choice, the more you're responsible. Five things lower it:"
+    "**Culpability** means deserving blame. To the degree a choice is voluntary, you're responsible: every act directly willed is **imputable** (attributable) to you. Five things can lower it:"
    ],
    "table": {
     "cols": [
@@ -726,16 +753,18 @@ const GUIDE = {
      "why": "Forced by threat, not an accident."
     },
     {
-     "q": "Texting, a driver runs a stop sign. Which impediment?",
-     "a": "Inadvertence.",
-     "why": "Distraction, not force (duress)."
+     "q": "One driver swerves because a toddler throws a toy at the windshield; another crashes while texting. Whose blame does inadvertence lower?",
+     "a": "Only the first driver's.",
+     "why": "An unchosen distraction lowers guilt. Choosing to text is voluntary, which is the textbook's own contrast."
     }
    ],
    "watch": [
-    "Ignorance lowers blame, but you have a duty to overcome it."
+    "Ignorance lowers blame, but you have a duty to overcome it.",
+    "Impediments limit you but don't have to enslave you: learn, build good habits, pay attention, cooperate with grace."
    ],
    "terms": [
     "culpability",
+    "imputable",
     "ignorance",
     "inadvertence",
     "duress",
@@ -748,7 +777,8 @@ const GUIDE = {
    "t": "Types of law",
    "d": "what each one is",
    "p": [
-    "**Natural law** has three drives: preserve life, grow as people and communities, share life with others."
+    "**Natural law** has three drives: preserve life, grow as people and communities, share life with others.",
+    "**Moral law** covers the three kinds with their source in God: natural law, revealed law, and civil and Church law. All of it finds unity in Jesus Christ."
    ],
    "tree": {
     "t": "Divine (eternal) law",
@@ -788,7 +818,7 @@ const GUIDE = {
      ],
      [
       "Natural law",
-      "written into the soul; universal, never changes"
+      "written into the soul, the \"original moral sense\"; universal, permanent, unchanging; basis of human rights"
      ],
      [
       "Revealed law",
@@ -796,7 +826,7 @@ const GUIDE = {
      ],
      [
       "Civil law",
-      "natural law applied to one society"
+      "natural law applied to one society: the U.S. drives on the right, Britain on the left, both from \"do not kill\""
      ],
      [
       "Church (canon) law",
@@ -817,14 +847,16 @@ const GUIDE = {
     }
    ],
    "watch": [
-    "We misread natural law because of Original Sin, not actual sin."
+    "We misread natural law because of Original Sin, not actual sin.",
+    "Natural law can be known by reason, even by atheists. Revelation completes what Original Sin clouds."
    ],
    "terms": [
     "divine law",
     "natural law",
     "revealed law",
     "civil law",
-    "Church law"
+    "Church law",
+    "moral law"
    ]
   },
   {
@@ -843,7 +875,7 @@ const GUIDE = {
     "rows": [
      [
       "core",
-      "the **Ten Commandments**",
+      "the **Ten Commandments** (the Decalogue)",
       "the **Sermon on the Mount**, plus the **evangelical counsels** (poverty, chastity, obedience)"
      ],
      [
@@ -855,6 +887,16 @@ const GUIDE = {
       "effect",
       "names sin, can't remove it: a \"law of bondage\"",
       "no new rules; changes your attitude"
+     ],
+     [
+      "purpose",
+      "prepares Jews and Christians for conversion and faith in Christ; as God's Word, its teaching lasts forever",
+      "perfects divine law, natural and revealed, here on earth"
+     ],
+     [
+      "you become",
+      "a servant keeping rules",
+      "a friend of God, and a child and heir of God"
      ]
     ]
    },
@@ -882,17 +924,93 @@ const GUIDE = {
    ]
   },
   {
+   "w": 3,
+   "t": "Grace, justification, merit",
+   "d": "kinds of grace: the chapter asks you to name and define them",
+   "p": [
+    "**Grace** is God's free, undeserved help. It never takes away freedom: the more you cooperate, the more inner freedom you gain.",
+    "It lets you call God \"Father,\" makes you his adopted child and an heir of heaven, and unites you to Christ."
+   ],
+   "flow": [
+    "**Justification**: sin cleansed through conversion, faith, and Baptism",
+    "Grace makes you holy; faith, hope, and charity come with it",
+    "**Merit**: the reward God offers those who cooperate"
+   ],
+   "table": {
+    "h": "kinds of grace",
+    "cols": [
+     "",
+     "what it is"
+    ],
+    "rows": [
+     [
+      "**Sanctifying grace**",
+      "also called **habitual grace**: a stable, supernatural gift that perfects the soul to live with God. Given at Baptism, it permanently disposes you to live like God."
+     ],
+     [
+      "**Actual grace**",
+      "God's intervention: help to convert from sin, or to keep living as a disciple. Help for a good act you couldn't do otherwise, like forgiving an enemy."
+     ],
+     [
+      "**Sacramental graces**",
+      "gifts proper to each sacrament: Penance brings God's forgiveness and mercy, Anointing of the Sick brings healing."
+     ],
+     [
+      "**Charisms** (special graces)",
+      "graces for the common good of the Church, at the service of love; ordinary or extraordinary, like miracles or praying in tongues."
+     ],
+     [
+      "**Graces of state**",
+      "one kind of special grace: distinct helps for particular ministries and ministers in the Church."
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "A student prays, then finds the courage to apologize. Which grace?",
+     "a": "Actual grace.",
+     "why": "Help for one good act. Sanctifying (habitual) grace is the lasting gift."
+    },
+    {
+     "q": "After the Anointing of the Sick, a patient receives healing strength. What are gifts like this called?",
+     "a": "Sacramental graces.",
+     "why": "Each sacrament brings gifts proper to it. Charisms serve the whole Church."
+    },
+    {
+     "q": "Name four kinds of grace besides sanctifying grace.",
+     "a": "Actual grace, sacramental graces, charisms (special graces), and graces of state.",
+     "why": "Graces of state are one kind of special grace. Habitual grace is just another name for sanctifying grace."
+    }
+   ],
+   "watch": [
+    "Sanctifying = habitual. Actual grace is not another name for it.",
+    "Merit's source is the love of Jesus Christ, not the Holy Spirit.",
+    "Every sacrament gives sanctifying and actual grace, plus its own sacramental grace."
+   ],
+   "terms": [
+    "grace",
+    "justification",
+    "merit",
+    "sanctifying grace",
+    "habitual grace",
+    "actual grace",
+    "sacramental grace",
+    "charism",
+    "graces of state"
+   ]
+  },
+  {
    "w": 2,
    "t": "What makes a law just",
    "d": "three elements",
    "p": [
     "Aquinas: law is \"an ordinance of reason for the common good\" from whoever leads the community.",
-    "A law that breaks natural law is an **unjust law**: \"an unjust law is no law at all\" (St. Augustine). No one must obey it; work to change it."
+    "A law that breaks natural law is an **unjust law**: \"an unjust law is no law at all\" (St. Augustine). No one is required to obey it; work to change it."
    ],
    "tiles": [
     {
      "h": "Reasonable",
-     "t": "no campfires in a drought"
+     "t": "shares in God's providence: no campfires in a drought"
     },
     {
      "h": "For the common good",
@@ -921,57 +1039,12 @@ const GUIDE = {
   },
   {
    "w": 2,
-   "t": "Grace, justification, merit",
-   "d": "kinds of grace",
-   "p": [
-    "**Grace** is God's free, unearned help. It doesn't take away freedom; cooperating with it makes you freer."
-   ],
-   "flow": [
-    "**Justification**: sin washed away by faith and Baptism",
-    "Grace makes you holy",
-    "**Merit**: living it out"
-   ],
-   "tiles": [
-    {
-     "h": "Sanctifying grace",
-     "t": "permanent; also called habitual"
-    },
-    {
-     "h": "Actual grace",
-     "t": "help for one specific moment"
-    },
-    {
-     "h": "Charism",
-     "t": "special gift for the Church, like tongues"
-    }
-   ],
-   "ex": [
-    {
-     "q": "A student prays, then finds the courage to apologize. Which grace?",
-     "a": "Actual grace.",
-     "why": "One moment; sanctifying is permanent."
-    }
-   ],
-   "watch": [
-    "Merit's source is the love of Jesus Christ, not the Holy Spirit."
-   ],
-   "terms": [
-    "grace",
-    "justification",
-    "merit",
-    "sanctifying grace",
-    "actual grace",
-    "charism"
-   ]
-  },
-  {
-   "w": 2,
    "t": "Precepts of the Church",
    "d": "five minimum rules for every Catholic",
    "tiles": [
     {
      "h": "Mass",
-     "t": "Sundays and holy days"
+     "t": "Sundays and holy days; rest from servile labor"
     },
     {
      "h": "Confession",
@@ -979,7 +1052,7 @@ const GUIDE = {
     },
     {
      "h": "Eucharist",
-     "t": "at least during Easter"
+     "t": "at least during the Easter season"
     },
     {
      "h": "Fasting and abstinence",
@@ -1002,6 +1075,53 @@ const GUIDE = {
    ]
   },
   {
+   "w": 2,
+   "t": "Spot the mistake",
+   "d": "each card quotes a plausible wrong explanation; find the error before you reveal",
+   "ex": [
+    {
+     "q": "A classmate writes: \"Sanctifying grace is the help God gives for one specific good act, like finding the courage to apologize.\"",
+     "a": "Mistake: that's actual grace. Fix: sanctifying (habitual) grace is the stable gift that perfects the soul to live with God.",
+     "why": "Actual grace helps a particular act; sanctifying grace lasts."
+    },
+    {
+     "q": "\"Graces of state are the graces you get from receiving a sacrament.\"",
+     "a": "Mistake: that describes sacramental graces. Fix: graces of state are special graces, distinct helps for particular ministries and ministers in the Church.",
+     "why": "Sacramental graces are proper to each sacrament; graces of state serve a ministry."
+    },
+    {
+     "q": "\"Charisms are given mainly to make the person who has them holy.\"",
+     "a": "Mistake: making you holy is sanctifying grace's work. Fix: charisms are special graces for the common good of the Church, at the service of love.",
+     "why": "Gifts like tongues and miracles build up the Church."
+    },
+    {
+     "q": "\"A driver who crashes while texting acted with inadvertence, so there's little or no guilt.\"",
+     "a": "Mistake: texting was a choice. Fix: little or no guilt fits a driver distracted by a toddler's thrown toy, in contrast to one who chooses to text.",
+     "why": "Inadvertence lowers blame only when the distraction wasn't chosen."
+    },
+    {
+     "q": "\"The New Law cancelled the Old Law, so the Ten Commandments no longer apply.\"",
+     "a": "Mistake: the Old Law isn't cancelled. Fix: it's holy, good, and spiritual but imperfect; as God's Word its teaching lasts forever, and the New Law perfects it without adding precepts.",
+     "why": "The New Law changes the attitude behind the rules."
+    },
+    {
+     "q": "\"Civil law always binds our conscience, because all authority comes from God.\"",
+     "a": "Mistake: only just laws bind. Fix: civil law is morally good only insofar as it conforms to God's eternal law; Catholics must not follow directives contrary to the moral order, and must work to change unjust laws.",
+     "why": "An unjust law is no law at all."
+    },
+    {
+     "q": "\"We misread natural law because of the sins we personally commit.\"",
+     "a": "Mistake: the book's cause is Original Sin. Fix: Original Sin weakens the intellect, and God's Revelation completes what reason can know of natural law.",
+     "why": "Natural law is still knowable by reason, even by atheists."
+    },
+    {
+     "q": "\"True freedom means doing whatever you want, as long as nobody stops you.\"",
+     "a": "Mistake: that's license. Fix: true freedom is the power to act responsibly toward the good; license abuses freedom and leads to moral relativism.",
+     "why": "The more you do good, the freer you become."
+    }
+   ]
+  },
+  {
    "w": 1,
    "t": "Relativism in politics",
    "d": "truth doesn't change by setting",
@@ -1012,6 +1132,36 @@ const GUIDE = {
    ],
    "terms": [
     "moral relativism"
+   ]
+  },
+  {
+   "w": 1,
+   "t": "Freedom, responsibility, and law (the intro)",
+   "d": "why the chapter opens with a lawsuit",
+   "rows": [
+    [
+     "responsibility",
+     "response + ability: freedom to answer God's covenant in faith and love, and the grace-given ability to do it"
+    ],
+    [
+     "three responses",
+     "to any rule: obey, ignore, or defy. The law stays true either way, like a \"Dangerous Curve Ahead\" sign"
+    ],
+    [
+     "civil law",
+     "its main purpose is order; good civil law is grounded in natural law and points out the boundaries to freedom"
+    ],
+    [
+     "opening story",
+     "Mary Anne Yep sued over the federal contraceptive mandate: when civil law violates conscience, disobedience and formal protest are required"
+    ]
+   ],
+   "ex": [
+    {
+     "q": "True or false: sometimes moral laws violate the human conscience.",
+     "a": "False: sometimes civil laws do.",
+     "why": "The intro says civil laws. Civil law is one kind of moral law, but a civil law that breaks natural law is unjust."
+    }
    ]
   }
  ],
@@ -1160,6 +1310,61 @@ const GUIDE = {
    "why": "Sanctifying = habitual. Actual grace is God's help for a specific action."
   },
   {
+   "q": "Gifts proper to each sacrament, like healing from the Anointing of the Sick, are",
+   "opts": [
+    "charisms",
+    "graces of state",
+    "sacramental graces",
+    "merit"
+   ],
+   "a": 2,
+   "why": "Each sacrament brings its own graces. Charisms and graces of state are special graces that serve the Church's common good."
+  },
+  {
+   "q": "Graces of state are",
+   "opts": [
+    "distinct helps for particular ministries and ministers in the Church",
+    "another name for sanctifying grace",
+    "the gifts every sacrament gives",
+    "the reward God owes the faithful"
+   ],
+   "a": 0,
+   "why": "They're one kind of special grace. Sanctifying grace is the habitual one, and God strictly owes us nothing."
+  },
+  {
+   "q": "Charisms, such as praying in tongues, are directed mainly toward",
+   "opts": [
+    "the holiness of the one who receives them",
+    "the common good of the Church",
+    "forgiving sins",
+    "earning merit"
+   ],
+   "a": 1,
+   "why": "Special graces build up the Church in love. Sanctifying grace is what makes the person holy."
+  },
+  {
+   "q": "Besides sanctifying grace, the chapter names four kinds of grace. Which is NOT one of them?",
+   "opts": [
+    "actual grace",
+    "sacramental grace",
+    "habitual grace",
+    "graces of state"
+   ],
+   "a": 2,
+   "why": "Habitual grace is sanctifying grace itself. The four are actual grace, sacramental graces, charisms (special graces), and graces of state."
+  },
+  {
+   "q": "All the sacraments give",
+   "opts": [
+    "only a charism",
+    "merit that God owes you",
+    "graces of state, only to clergy",
+    "sanctifying grace to make you holy and actual grace to help you do good"
+   ],
+   "a": 3,
+   "why": "Each also brings its own sacramental grace. God strictly owes no one merit."
+  },
+  {
    "q": "When a civil law violates natural law, Catholics should",
    "opts": [
     "obey it anyway",
@@ -1168,7 +1373,7 @@ const GUIDE = {
     "wait for a new election"
    ],
    "a": 2,
-   "why": "An unjust law is no law at all. No one must obey it, and everyone must work to change it."
+   "why": "An unjust law is no law at all. No one is required to obey it, and everyone must work to change it."
   },
   {
    "q": "\"An unjust law is no law at all\" comes from",
@@ -1240,7 +1445,7 @@ const GUIDE = {
  "cards": [
   {
    "f": "True freedom",
-   "b": "The power, rooted in reason and will, to act or not act; to act responsibly toward the good (CCC 1731)."
+   "b": "Freedom (CCC 1731): the power, rooted in reason and will, to act or not to act and to perform deliberate actions on your own responsibility. True freedom serves the good; license abuses it."
   },
   {
    "f": "License",
@@ -1253,6 +1458,10 @@ const GUIDE = {
   {
    "f": "Determinism",
    "b": "Belief that every choice results from something independent of human will: fate, stars, genes, environment."
+  },
+  {
+   "f": "Greatest power of free will",
+   "b": "The ability to love, which lets you see the Triune God and unite with him for eternal happiness."
   },
   {
    "f": "External freedom",
@@ -1300,15 +1509,35 @@ const GUIDE = {
   },
   {
    "f": "Sanctifying (habitual) grace",
-   "b": "A stable, supernatural gift that perfects the soul to live with God."
+   "b": "A stable, supernatural gift that perfects the soul to live with God and act by his love; it permanently disposes you to live like God."
   },
   {
    "f": "Actual grace",
-   "b": "God's intervention to help you convert or perform a specific good act."
+   "b": "God's intervention to help you convert from sin or keep living as a disciple; help for a good act you couldn't do otherwise."
   },
   {
    "f": "Charism",
-   "b": "A special grace for the common good of the Church (miracles, tongues, graces of state)."
+   "b": "A special grace directed to the common good of the Church, at the service of love; ordinary or extraordinary (miracles, praying in tongues)."
+  },
+  {
+   "f": "Sacramental grace",
+   "b": "Gifts proper to each sacrament: Penance brings God's forgiveness and mercy; Anointing of the Sick brings healing."
+  },
+  {
+   "f": "Graces of state",
+   "b": "One kind of special grace: distinct helps for particular ministries and ministers in the Church."
+  },
+  {
+   "f": "Praying in tongues",
+   "b": "A charism. Aquinas: a sign that Christ came to save the whole world, undoing the confusion of languages at Babel."
+  },
+  {
+   "f": "Theological virtues",
+   "b": "Faith, hope, and charity, given with justification; they enable you to obey God's will."
+  },
+  {
+   "f": "Living a holy life requires",
+   "b": "Strength from God's grace, self-denial, hard decisions and their consequences, and prayer, which strengthens hope."
   },
   {
    "f": "Merit",
@@ -1317,6 +1546,14 @@ const GUIDE = {
   {
    "f": "Divine (eternal) law",
    "b": "God's wise and loving plan; the source of all law."
+  },
+  {
+   "f": "Divine providence",
+   "b": "God's wisdom, power, and goodness guiding creation toward its perfection. Law shares in it, which is why law is reasonable."
+  },
+  {
+   "f": "Moral law",
+   "b": "The three kinds of law with their source in God: natural law, revealed law (Old and New), and civil and Church law."
   },
   {
    "f": "Natural law",
@@ -1396,7 +1633,9 @@ document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
 document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
 $("#title").textContent=GUIDE.title;
 if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
-if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
+/* link targets from GUIDE data: site-relative or http(s), never other schemes or user:pass@ (engine, 2026-09-30) */
+const safeUrl=u=>{const s=String(u??"").trim();if(!s||/[\x00-\x20\\]/.test(s))return null;const m=/^([a-z][a-z0-9+.-]*):/i.exec(s);if(m&&!/^https?$/i.test(m[1]))return null;try{const x=new URL(s,"https://valentinoguides.com/");if(x.username||x.password)return null}catch(e){return null}return s};
+if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(ok.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");if(ok.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+ok.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}}
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");
@@ -1471,11 +1710,12 @@ function section(s,i){
 }
 function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{
   const b=x.querySelector(".eb");
-  if(b){b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"});return}
+  if(b){b.setAttribute("aria-expanded","false");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer";b.setAttribute("aria-expanded",String(on))});return}
+  x.insertAdjacentHTML("beforeend",'<p class="vh" role="status" aria-live="polite"></p>');
   x.querySelectorAll(".opt").forEach(o=>o.addEventListener("click",()=>{
     if(x.classList.contains("done")||$("#root").classList.contains("showall"))return;
     x.classList.add("done","on");
-    if(o.hasAttribute("data-c"))o.classList.add("right");else{o.classList.add("wrong");const c=x.querySelector(".opt[data-c]");if(c)c.classList.add("right")}
+    if(o.hasAttribute("data-c")){o.classList.add("right");tagOpt(o,"\u2713 correct");say(x,"Correct.")}else{o.classList.add("wrong");tagOpt(o,"\u2717 your answer");const c=x.querySelector(".opt[data-c]");if(c){c.classList.add("right");tagOpt(c,"\u2713 correct")}say(x,"Not quite. The answer is ("+(c?c.querySelector(".k").textContent:"?")+").")}
   }));
 })}
 function buildOutline(sec){
@@ -1515,37 +1755,88 @@ function buildOutline(sec){
 }
 
 /* practice mc */
-let SCORE={done:0,right:0,total:0};
+let SCORE={done:0,right:0,total:0}, RESEARCH=()=>{};
+/* feedback in words for sighted and screen-reader users (engine, 2026-09-30) */
+function tagOpt(o,t){if(!o.querySelector(".ftag"))o.insertAdjacentHTML("beforeend",`<span class="ftag">${t}</span>`)}
+function say(card,t){const s=card.querySelector(".vh[role=status]");if(s)s.textContent=t}
 function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
   const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
   sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
-  const g=el("div","qgrid");
+  /* retry missed questions (engine, 2026-09-30): in memory for this page visit only, nothing stored or sent.
+     SCORE counts first tries only. Retries change the missed set and the round progress, never SCORE.
+     HOLD ignores a second click for half a second after a retry step, so a double click can't hit the control that moved under it. */
+  const FIRST=new Map(), MISSED=new Set(); let RT=null, ROUND=0, HOLD=-1e9;
+  const hold=()=>{const t=performance.now();if(t-HOLD<500)return true;HOLD=t;return false};
+  const rbar=el("div","rbar"); rbar.hidden=true; rbar.tabIndex=-1; rbar.setAttribute("role","group"); rbar.setAttribute("aria-label","retry missed questions");
+  rbar.innerHTML=`<p class="rst"></p><p class="vh" role="status" aria-live="polite"></p><div class="rbtns"><button type="button" class="btn" data-r="again" hidden></button><button type="button" class="btn ghost" data-r="all">all questions</button><button type="button" class="btn ghost" data-r="over">start over</button></div>`;
+  sec.insertBefore(rbar,sec.firstChild);
+  $("#reset").insertAdjacentHTML("beforebegin",'<button type="button" id="retry" hidden></button>');
+  const rbtn=$("#retry"), rst=rbar.querySelector(".rst"), rsay=rbar.querySelector(".vh"), ragain=rbar.querySelector('[data-r="again"]');
+  const g=el("div","qgrid"); g.tabIndex=-1;
+  const clearCard=c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"));c.querySelectorAll(".ftag").forEach(t=>t.remove());say(c,"")};
+  const firstTxt=()=>`first-try score stays ${SCORE.right} of ${SCORE.total}.`;
+  function rsync(){
+    const n=MISSED.size; rbar.hidden=!RT;
+    if(!RT){rbtn.hidden=!n;rbtn.textContent=`retry missed (${n})`;return}
+    const all=RT.set.length, end=RT.done>=all;
+    rbtn.hidden=false; rbtn.textContent=!end?`round ${RT.round}: ${RT.done} of ${all}`:n?`retry the ${n} still missed`:"all fixed · all questions";
+    ragain.hidden=!(end&&n); ragain.textContent=`retry the ${n} still missed`;
+    rst.textContent=!end?`retry round ${RT.round}: ${RT.done} of ${all} answered, ${RT.fixed} now right. ${firstTxt()}`
+      :n?`round ${RT.round} done: ${RT.fixed} of ${all} now right, ${n} still missed. ${firstTxt()}`:`all fixed: every missed question is now right. ${firstTxt()}`;
+    if(end&&!RT.said){RT.said=1;rsay.textContent=rst.textContent}
+  }
+  function record(i,ok){
+    if(!FIRST.has(i)){FIRST.set(i,ok);if(ok)SCORE.right++;else MISSED.add(i);SCORE.done++;$("#scn").textContent=SCORE.right}
+    else{if(ok)MISSED.delete(i);else MISSED.add(i);if(RT&&RT.set.includes(i)){RT.done++;if(ok)RT.fixed++}}
+    scoreVis(); rsync();
+  }
+  function startRetry(){
+    if(!MISSED.size||hold())return;
+    if($("#root").classList.contains("showall"))$("#showall").click();
+    RT={round:++ROUND,set:[...MISSED].sort((a,b)=>a-b),done:0,fixed:0,said:0};
+    g.querySelectorAll(".q").forEach(c=>{const on=RT.set.includes(+c.dataset.qi);c.classList.toggle("rx",!on);if(on)clearCard(c)});
+    rsay.textContent=""; rsync(); RESEARCH();
+    const r=rbar.getBoundingClientRect(); if(r.top<$("#bar").offsetHeight||r.bottom>innerHeight)sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});
+    rbar.focus({preventScroll:true});
+    const msg=`retry round ${RT.round}: ${RT.set.length} missed question${RT.set.length===1?"":"s"}. ${firstTxt()}`; setTimeout(()=>{if(RT&&RT.round===ROUND&&!RT.said)rsay.textContent=msg},120);
+  }
+  function endRetry(){if(hold())return;RT=null;rsay.textContent="";g.querySelectorAll(".q.rx").forEach(c=>c.classList.remove("rx"));rsync();RESEARCH();g.focus({preventScroll:true})}
   qs.forEach((q,i)=>{
-    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a];
+    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a]; card.dataset.qi=i;
     card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
       q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${keys.includes(j)?" data-c":""}><span class="k">${"abcdef"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
       (multi?`<div class="mchk"><span>select all that apply</span><button type="button" class="btn ghost">check</button></div>`:"")+
-      `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
-    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall");
-    const finish=ok=>{card.classList.add("done");if(ok)SCORE.right++;SCORE.done++;$("#scn").textContent=SCORE.right;scoreVis()};
+      `<p class="vh" role="status" aria-live="polite"></p><div class="why"><b>why</b>${plain(q.why||"")}</div>`;
+    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall")||performance.now()-HOLD<500;
+    const finish=ok=>{card.classList.add("done");record(i,ok)};
     opts.forEach(b=>b.addEventListener("click",()=>{
       if(locked())return;
       if(multi){b.classList.toggle("sel");return}
       const j=+b.dataset.i;
-      if(j===q.a)b.classList.add("right");else{b.classList.add("wrong");opts[q.a].classList.add("right")}
+      if(j===q.a){b.classList.add("right");tagOpt(b,"\u2713 correct");say(card,"Correct.")}else{b.classList.add("wrong");tagOpt(b,"\u2717 your answer");opts[q.a].classList.add("right");tagOpt(opts[q.a],"\u2713 correct");say(card,"Not quite. The answer is ("+("abcdef"[q.a]||q.a+1)+").")}
       finish(j===q.a);
     }));
-    if(multi)card.querySelector(".mchk .btn").addEventListener("click",()=>{
+    if(multi)card.querySelector(".mchk .btn").addEventListener("click",e=>{
       if(locked())return;
-      let ok=true;
-      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c)o.classList.add("right");else if(s)o.classList.add("wrong");if(s!==c)ok=false});
+      let ok=true; const had=document.activeElement===e.currentTarget;
+      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c){o.classList.add("right");tagOpt(o,"\u2713 correct")}else if(s){o.classList.add("wrong");tagOpt(o,"\u2717 your answer")}if(s!==c)ok=false});
+      say(card,ok?"Correct.":"Not quite. The correct choices are marked.");
       finish(ok);
+      if(had)(card.querySelector(".opt.right")||opts[0]).focus({preventScroll:true});
     });
     g.appendChild(card);
   });
   sec.appendChild(g);
-  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  rbtn.addEventListener("click",()=>{
+    if(!RT)return startRetry();
+    if(RT.done<RT.set.length){sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});rbar.focus({preventScroll:true});return}
+    if(MISSED.size)startRetry();else endRetry();
+  });
+  ragain.addEventListener("click",startRetry);
+  rbar.querySelector('[data-r="all"]').addEventListener("click",endRetry);
+  rbar.querySelector('[data-r="over"]').addEventListener("click",()=>$("#reset").click());
+  $("#reset").addEventListener("click",()=>{if(hold())return;SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
 }
 
 /* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
@@ -1557,8 +1848,8 @@ function buildProblems(sec){
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
     card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
-    const go=card.querySelector(".go");
-    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    const go=card.querySelector(".go");go.setAttribute("aria-expanded","false");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps";go.setAttribute("aria-expanded",String(on))});
     g.appendChild(card);
   });
   sec.appendChild(g);
@@ -1696,7 +1987,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
 (function(){
   const q=$("#q"), box=$("#srch"), stat=$("#sstat"), sall=$("#showall");
   const ITEMS={outline:".tp,.toptbl,.sec,#s-abbr",practice:".q",problems:".prob",formulas:".fx",cards:".clist > div",timeline:".ev",checklist:".ck",cram:".cr",tables:".tblk tbody tr",prompts:".group",leq:".card,.tbw"};
-  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x";
+  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x,.ftag,.vh";
   const fold=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\s+/g," ");
   const lab=id=>(GUIDE.labels||{})[id]||LABEL[id]||id;
   const IDX=PANES.map(id=>{
@@ -1735,7 +2026,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
     const re=on?new RegExp(terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/'/g,"['\u2018\u2019]")).sort((a,b)=>b.length-a.length).join("|"),"gi"):null;
     IDX.forEach(P=>{
       let c=0;
-      P.items.forEach(it=>{const hit=!on||terms.every(t=>it.t.includes(t));it.n.classList.toggle("sx",!hit);if(on&&hit){c++;mark(it.n,re)}});
+      P.items.forEach(it=>{const hit=!on||terms.every(t=>it.t.includes(t));it.n.classList.toggle("sx",!hit);if(on&&hit&&!it.n.classList.contains("rx")){c++;mark(it.n,re)}});
       COUNTS[P.id]=c;
       const p=P.p;
       p.querySelectorAll(".tops,.clist,.cgrid,.cgrid > .group,.tblk,.qgrid,.pgrid,.fgrid,.tln,.ckg").forEach(g=>flip(g,on&&!g.querySelector(P.vis)));
@@ -1752,6 +2043,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
   const go=e=>{const b=e.target.closest("button[data-p]");if(b)show(b.dataset.p,true)};
   stat.addEventListener("click",go); root.addEventListener("click",e=>{if(e.target.closest(".nores"))go(e)});
   afterShow=status;
+  RESEARCH=()=>{if(LAST&&LAST.length){LAST=null;run()}};
   const focusQ=()=>{const top=$("#tools").getBoundingClientRect().top+scrollY-bar.offsetHeight-16;if(scrollY>top+4)scrollTo({top:Math.max(0,top),behavior:REDUCED?"auto":"smooth"});q.focus({preventScroll:true})};
   $("#sbtn").addEventListener("click",focusQ);
   addEventListener("keydown",e=>{if(e.key==="/"&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();focusQ()}});

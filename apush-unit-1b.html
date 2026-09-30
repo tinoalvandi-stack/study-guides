@@ -405,13 +405,29 @@ b.kw{font-weight:680;color:var(--ink)}
 .showall .q .opt,.showall .tq .opt{cursor:default}
 .showall .q .opt[data-c],.showall .tq .opt[data-c]{background:color-mix(in srgb,var(--good) 14%,transparent)}
 .showall .q .opt[data-c] .k,.showall .tq .opt[data-c] .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+/* answer feedback in words, not only color (engine, 2026-09-30) */
+.opt .ftag{margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:650;white-space:nowrap;text-transform:lowercase}
+.opt.right .ftag{color:var(--good)} .opt.wrong .ftag{color:var(--bad)}
+.showall .q:not(.done) .opt[data-c]::after,.showall .tq:not(.done) .opt[data-c]::after{content:"\2713  answer";margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:650;color:var(--good);white-space:nowrap}
+.vh{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .showall .q .why,.showall .tq .ea{display:block}
 .showall .tq .eb,.showall .prob .go{display:none}
 .showall .prob .reveal{display:block}
-.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease)}
-.scorepill.show{transform:translateX(-50%);opacity:1;pointer-events:auto}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;visibility:hidden;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease),visibility 0s linear .4s}
+.scorepill.show{transform:translateX(-50%);opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
 .scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
 .scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
+/* retry missed questions (engine, 2026-09-30) */
+.scorepill{flex-wrap:wrap;justify-content:center;width:max-content;max-width:calc(100vw - 24px)}
+.scorepill button[hidden]{display:none}
+.scorepill button:focus-visible{outline-color:var(--paper)}
+.rbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;padding:10px 12px 10px 16px;border-radius:var(--r-card);border:1px solid var(--line);background:var(--surface)}
+.rbar[hidden],.rbar [hidden]{display:none !important}
+.rbar:focus,.qgrid:focus{outline:none}
+.rbar .rst{margin:0;flex:1 1 220px;font-size:var(--t15);line-height:1.4;text-transform:lowercase}
+.rbar .rbtns{display:flex;flex-wrap:wrap;gap:8px}
+.rbar .btn{padding:6px 12px;font-size:var(--t13)}
+@media screen{.q.rx{display:none}}
 
 /* problems */
 .pgrid{display:grid;gap:12px}
@@ -525,9 +541,10 @@ footer .upd{display:block;margin-top:6px}
 
 @media print{
   :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
-  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.tq .eb,.prob .go,.seg{display:none !important}
+  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg{display:none !important}
   .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
   .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .q:not(.done) .opt[data-c]::after,.tq:not(.done) .opt[data-c]::after{content:"\2713  correct answer";margin-left:auto;padding-left:10px;font-size:var(--t12);font-weight:700;white-space:nowrap}
   .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
   .prob:not(.on) .reveal::before{display:none}
   .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
@@ -584,7 +601,7 @@ footer .upd{display:block;margin-top:6px}
     <span class="upd" id="upd"></span>
   </footer>
 </main>
-<div class="scorepill" id="score" aria-live="polite"><span><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
+<div class="scorepill" id="score"><span aria-live="polite"><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
@@ -1978,7 +1995,9 @@ document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
 document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
 $("#title").textContent=GUIDE.title;
 if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
-if(GUIDE.pdfs?.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+GUIDE.pdfs.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}
+/* link targets from GUIDE data: site-relative or http(s), never other schemes or user:pass@ (engine, 2026-09-30) */
+const safeUrl=u=>{const s=String(u??"").trim();if(!s||/[\x00-\x20\\]/.test(s))return null;const m=/^([a-z][a-z0-9+.-]*):/i.exec(s);if(m&&!/^https?$/i.test(m[1]))return null;try{const x=new URL(s,"https://valentinoguides.com/");if(x.username||x.password)return null}catch(e){return null}return s};
+if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(ok.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");if(ok.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+ok.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}}
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");
@@ -2053,11 +2072,12 @@ function section(s,i){
 }
 function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{
   const b=x.querySelector(".eb");
-  if(b){b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer"});return}
+  if(b){b.setAttribute("aria-expanded","false");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer";b.setAttribute("aria-expanded",String(on))});return}
+  x.insertAdjacentHTML("beforeend",'<p class="vh" role="status" aria-live="polite"></p>');
   x.querySelectorAll(".opt").forEach(o=>o.addEventListener("click",()=>{
     if(x.classList.contains("done")||$("#root").classList.contains("showall"))return;
     x.classList.add("done","on");
-    if(o.hasAttribute("data-c"))o.classList.add("right");else{o.classList.add("wrong");const c=x.querySelector(".opt[data-c]");if(c)c.classList.add("right")}
+    if(o.hasAttribute("data-c")){o.classList.add("right");tagOpt(o,"\u2713 correct");say(x,"Correct.")}else{o.classList.add("wrong");tagOpt(o,"\u2717 your answer");const c=x.querySelector(".opt[data-c]");if(c){c.classList.add("right");tagOpt(c,"\u2713 correct")}say(x,"Not quite. The answer is ("+(c?c.querySelector(".k").textContent:"?")+").")}
   }));
 })}
 function buildOutline(sec){
@@ -2097,37 +2117,88 @@ function buildOutline(sec){
 }
 
 /* practice mc */
-let SCORE={done:0,right:0,total:0};
+let SCORE={done:0,right:0,total:0}, RESEARCH=()=>{};
+/* feedback in words for sighted and screen-reader users (engine, 2026-09-30) */
+function tagOpt(o,t){if(!o.querySelector(".ftag"))o.insertAdjacentHTML("beforeend",`<span class="ftag">${t}</span>`)}
+function say(card,t){const s=card.querySelector(".vh[role=status]");if(s)s.textContent=t}
 function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
   const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
   sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
-  const g=el("div","qgrid");
+  /* retry missed questions (engine, 2026-09-30): in memory for this page visit only, nothing stored or sent.
+     SCORE counts first tries only. Retries change the missed set and the round progress, never SCORE.
+     HOLD ignores a second click for half a second after a retry step, so a double click can't hit the control that moved under it. */
+  const FIRST=new Map(), MISSED=new Set(); let RT=null, ROUND=0, HOLD=-1e9;
+  const hold=()=>{const t=performance.now();if(t-HOLD<500)return true;HOLD=t;return false};
+  const rbar=el("div","rbar"); rbar.hidden=true; rbar.tabIndex=-1; rbar.setAttribute("role","group"); rbar.setAttribute("aria-label","retry missed questions");
+  rbar.innerHTML=`<p class="rst"></p><p class="vh" role="status" aria-live="polite"></p><div class="rbtns"><button type="button" class="btn" data-r="again" hidden></button><button type="button" class="btn ghost" data-r="all">all questions</button><button type="button" class="btn ghost" data-r="over">start over</button></div>`;
+  sec.insertBefore(rbar,sec.firstChild);
+  $("#reset").insertAdjacentHTML("beforebegin",'<button type="button" id="retry" hidden></button>');
+  const rbtn=$("#retry"), rst=rbar.querySelector(".rst"), rsay=rbar.querySelector(".vh"), ragain=rbar.querySelector('[data-r="again"]');
+  const g=el("div","qgrid"); g.tabIndex=-1;
+  const clearCard=c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"));c.querySelectorAll(".ftag").forEach(t=>t.remove());say(c,"")};
+  const firstTxt=()=>`first-try score stays ${SCORE.right} of ${SCORE.total}.`;
+  function rsync(){
+    const n=MISSED.size; rbar.hidden=!RT;
+    if(!RT){rbtn.hidden=!n;rbtn.textContent=`retry missed (${n})`;return}
+    const all=RT.set.length, end=RT.done>=all;
+    rbtn.hidden=false; rbtn.textContent=!end?`round ${RT.round}: ${RT.done} of ${all}`:n?`retry the ${n} still missed`:"all fixed · all questions";
+    ragain.hidden=!(end&&n); ragain.textContent=`retry the ${n} still missed`;
+    rst.textContent=!end?`retry round ${RT.round}: ${RT.done} of ${all} answered, ${RT.fixed} now right. ${firstTxt()}`
+      :n?`round ${RT.round} done: ${RT.fixed} of ${all} now right, ${n} still missed. ${firstTxt()}`:`all fixed: every missed question is now right. ${firstTxt()}`;
+    if(end&&!RT.said){RT.said=1;rsay.textContent=rst.textContent}
+  }
+  function record(i,ok){
+    if(!FIRST.has(i)){FIRST.set(i,ok);if(ok)SCORE.right++;else MISSED.add(i);SCORE.done++;$("#scn").textContent=SCORE.right}
+    else{if(ok)MISSED.delete(i);else MISSED.add(i);if(RT&&RT.set.includes(i)){RT.done++;if(ok)RT.fixed++}}
+    scoreVis(); rsync();
+  }
+  function startRetry(){
+    if(!MISSED.size||hold())return;
+    if($("#root").classList.contains("showall"))$("#showall").click();
+    RT={round:++ROUND,set:[...MISSED].sort((a,b)=>a-b),done:0,fixed:0,said:0};
+    g.querySelectorAll(".q").forEach(c=>{const on=RT.set.includes(+c.dataset.qi);c.classList.toggle("rx",!on);if(on)clearCard(c)});
+    rsay.textContent=""; rsync(); RESEARCH();
+    const r=rbar.getBoundingClientRect(); if(r.top<$("#bar").offsetHeight||r.bottom>innerHeight)sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});
+    rbar.focus({preventScroll:true});
+    const msg=`retry round ${RT.round}: ${RT.set.length} missed question${RT.set.length===1?"":"s"}. ${firstTxt()}`; setTimeout(()=>{if(RT&&RT.round===ROUND&&!RT.said)rsay.textContent=msg},120);
+  }
+  function endRetry(){if(hold())return;RT=null;rsay.textContent="";g.querySelectorAll(".q.rx").forEach(c=>c.classList.remove("rx"));rsync();RESEARCH();g.focus({preventScroll:true})}
   qs.forEach((q,i)=>{
-    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a];
+    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a]; card.dataset.qi=i;
     card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
       q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${keys.includes(j)?" data-c":""}><span class="k">${"abcdef"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
       (multi?`<div class="mchk"><span>select all that apply</span><button type="button" class="btn ghost">check</button></div>`:"")+
-      `<div class="why"><b>why</b>${plain(q.why||"")}</div>`;
-    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall");
-    const finish=ok=>{card.classList.add("done");if(ok)SCORE.right++;SCORE.done++;$("#scn").textContent=SCORE.right;scoreVis()};
+      `<p class="vh" role="status" aria-live="polite"></p><div class="why"><b>why</b>${plain(q.why||"")}</div>`;
+    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall")||performance.now()-HOLD<500;
+    const finish=ok=>{card.classList.add("done");record(i,ok)};
     opts.forEach(b=>b.addEventListener("click",()=>{
       if(locked())return;
       if(multi){b.classList.toggle("sel");return}
       const j=+b.dataset.i;
-      if(j===q.a)b.classList.add("right");else{b.classList.add("wrong");opts[q.a].classList.add("right")}
+      if(j===q.a){b.classList.add("right");tagOpt(b,"\u2713 correct");say(card,"Correct.")}else{b.classList.add("wrong");tagOpt(b,"\u2717 your answer");opts[q.a].classList.add("right");tagOpt(opts[q.a],"\u2713 correct");say(card,"Not quite. The answer is ("+("abcdef"[q.a]||q.a+1)+").")}
       finish(j===q.a);
     }));
-    if(multi)card.querySelector(".mchk .btn").addEventListener("click",()=>{
+    if(multi)card.querySelector(".mchk .btn").addEventListener("click",e=>{
       if(locked())return;
-      let ok=true;
-      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c)o.classList.add("right");else if(s)o.classList.add("wrong");if(s!==c)ok=false});
+      let ok=true; const had=document.activeElement===e.currentTarget;
+      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c){o.classList.add("right");tagOpt(o,"\u2713 correct")}else if(s){o.classList.add("wrong");tagOpt(o,"\u2717 your answer")}if(s!==c)ok=false});
+      say(card,ok?"Correct.":"Not quite. The correct choices are marked.");
       finish(ok);
+      if(had)(card.querySelector(".opt.right")||opts[0]).focus({preventScroll:true});
     });
     g.appendChild(card);
   });
   sec.appendChild(g);
-  $("#reset").addEventListener("click",()=>{SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;scoreVis();sec.querySelectorAll(".q").forEach(c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"))});sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"})});
+  rbtn.addEventListener("click",()=>{
+    if(!RT)return startRetry();
+    if(RT.done<RT.set.length){sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});rbar.focus({preventScroll:true});return}
+    if(MISSED.size)startRetry();else endRetry();
+  });
+  ragain.addEventListener("click",startRetry);
+  rbar.querySelector('[data-r="all"]').addEventListener("click",endRetry);
+  rbar.querySelector('[data-r="over"]').addEventListener("click",()=>$("#reset").click());
+  $("#reset").addEventListener("click",()=>{if(hold())return;SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
 }
 
 /* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
@@ -2139,8 +2210,8 @@ function buildProblems(sec){
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
     card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
-    const go=card.querySelector(".go");
-    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps"});
+    const go=card.querySelector(".go");go.setAttribute("aria-expanded","false");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps";go.setAttribute("aria-expanded",String(on))});
     g.appendChild(card);
   });
   sec.appendChild(g);
@@ -2278,7 +2349,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
 (function(){
   const q=$("#q"), box=$("#srch"), stat=$("#sstat"), sall=$("#showall");
   const ITEMS={outline:".tp,.toptbl,.sec,#s-abbr",practice:".q",problems:".prob",formulas:".fx",cards:".clist > div",timeline:".ev",checklist:".ck",cram:".cr",tables:".tblk tbody tr",prompts:".group",leq:".card,.tbw"};
-  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x";
+  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x,.ftag,.vh";
   const fold=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\s+/g," ");
   const lab=id=>(GUIDE.labels||{})[id]||LABEL[id]||id;
   const IDX=PANES.map(id=>{
@@ -2317,7 +2388,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
     const re=on?new RegExp(terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/'/g,"['\u2018\u2019]")).sort((a,b)=>b.length-a.length).join("|"),"gi"):null;
     IDX.forEach(P=>{
       let c=0;
-      P.items.forEach(it=>{const hit=!on||terms.every(t=>it.t.includes(t));it.n.classList.toggle("sx",!hit);if(on&&hit){c++;mark(it.n,re)}});
+      P.items.forEach(it=>{const hit=!on||terms.every(t=>it.t.includes(t));it.n.classList.toggle("sx",!hit);if(on&&hit&&!it.n.classList.contains("rx")){c++;mark(it.n,re)}});
       COUNTS[P.id]=c;
       const p=P.p;
       p.querySelectorAll(".tops,.clist,.cgrid,.cgrid > .group,.tblk,.qgrid,.pgrid,.fgrid,.tln,.ckg").forEach(g=>flip(g,on&&!g.querySelector(P.vis)));
@@ -2334,6 +2405,7 @@ requestAnimationFrame(moveP); addEventListener("resize",moveP);
   const go=e=>{const b=e.target.closest("button[data-p]");if(b)show(b.dataset.p,true)};
   stat.addEventListener("click",go); root.addEventListener("click",e=>{if(e.target.closest(".nores"))go(e)});
   afterShow=status;
+  RESEARCH=()=>{if(LAST&&LAST.length){LAST=null;run()}};
   const focusQ=()=>{const top=$("#tools").getBoundingClientRect().top+scrollY-bar.offsetHeight-16;if(scrollY>top+4)scrollTo({top:Math.max(0,top),behavior:REDUCED?"auto":"smooth"});q.focus({preventScroll:true})};
   $("#sbtn").addEventListener("click",focusQ);
   addEventListener("keydown",e=>{if(e.key==="/"&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();focusQ()}});

@@ -1,0 +1,2542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>study guide · valentino guides</title>
+<meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ═══ valentino guides · guide template v2 (kinari, wide layout, sept 29 2026) ═══
+   Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+
+:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1);--ink3:rgba(94,90,82,.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--good:#4C6A48;--bad:#8E3F4C;
+  --c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}}
+:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
+  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}
+
+:root{
+  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:600; --ls-d:-.025em;
+  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px;
+  --r-card:14px; --r-btn:10px; --r-chip:8px;
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --gap:16px;
+  --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--barh,56px) + 62px)}
+@media (min-width:960px){html{scroll-padding-top:calc(var(--barh,56px) + 16px)}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+:root{--maxw:1180px;--gut:clamp(14px,3.4vw,36px)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* reading aids */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;background:var(--cls)}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:40;background:var(--paper);padding:max(10px,env(safe-area-inset-top)) 0 10px;transition:box-shadow .3s var(--ease)}
+.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px}
+.home{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:26px;height:26px;border-radius:5px;flex:none;display:block}
+.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase;white-space:nowrap}
+@media (max-width:379px){.bar h1{display:none}}
+.seg{position:relative;display:flex;border:1px solid var(--line);border-radius:8px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
+.seg button{position:relative;z-index:2;padding:4px 9px;border-radius:6px;font-size:var(--t12);font-weight:500;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
+.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.bar .seg{margin-left:auto}
+.sbtn{flex:none;margin-left:auto;width:36px;height:32px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink2);transition:color .16s var(--ease)}
+@media (hover:hover){.sbtn:hover{color:var(--ink)}}
+@media (max-width:439px){.bar .wrap{gap:8px}.bar h1{font-size:18px}.sbtn{width:32px}.seg button{padding:4px 7px}}
+.bar .sbtn + .seg{margin-left:0}
+[hidden]{display:none !important}
+
+/* hero */
+main{padding-top:22px}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.cname{display:flex;align-items:center;gap:7px;font-size:var(--t13);font-weight:600;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
+.cname svg{width:20px;height:20px;flex:none}
+.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);background:var(--surface);color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;border:1px solid var(--line);text-transform:lowercase}
+.chip.due{color:var(--cls);border-color:var(--cls);background:transparent}
+.chip.past{color:var(--ink3)}
+h2.title{margin:0 0 8px;font-family:var(--display);font-size:clamp(30px,5.2vw,50px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.02;text-transform:lowercase;text-wrap:balance}
+.sub{margin:0 0 16px;font-size:var(--t16);line-height:1.5;color:var(--ink2);max-width:70ch}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.pdfs .pn{font-size:var(--t13);color:var(--ink2);width:100%;margin:0 0 2px;text-transform:lowercase}
+
+/* pane switcher */
+.panes{display:inline-flex;max-width:100%;gap:2px;margin:6px 0 22px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);position:relative;isolation:isolate;overflow-x:auto;scrollbar-width:none;vertical-align:top}
+.panes::-webkit-scrollbar{display:none}
+.panes button{flex:0 0 auto;position:relative;z-index:2;padding:8px 16px;border-radius:8px;text-align:center;font-size:var(--t15);font-weight:500;color:var(--ink3);text-transform:lowercase;white-space:nowrap;transition:color .2s var(--ease)}
+.panes button[aria-selected="true"]{color:var(--on-accent)}
+.panes .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--ink);transition:left .36s var(--spring),width .36s var(--spring)}
+.panes.one{display:none}
+@media (max-width:599px){.panes{display:flex}.panes button{flex:1 0 auto;padding:7px 12px;font-size:var(--t13)}}
+
+/* tools row: search + show all answers (every guide, nothing to set in GUIDE) */
+.panerow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:6px 0 22px}
+.panerow .panes{margin:0}
+.tools{flex:1 1 300px;display:flex;align-items:center;justify-content:flex-end;gap:8px;min-width:0}
+.srch{position:relative;flex:1 1 auto;max-width:360px;min-width:0}
+.srch > svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink3);pointer-events:none}
+.srch input{display:block;width:100%;height:40px;padding:0 38px 0 36px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:var(--t16);-webkit-appearance:none;appearance:none}
+.srch input::placeholder{color:var(--ink3);text-transform:lowercase;opacity:1}
+.srch input::-webkit-search-cancel-button,.srch input::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
+.srch input:focus{outline:none;border-color:var(--accent)}
+.srch input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.srch .x{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:7px;display:none;place-items:center;color:var(--ink3)}
+.srch.has .x{display:grid}
+@media (hover:hover){.srch .x:hover{color:var(--ink);background:var(--surface2)}}
+.sall{flex:none;height:40px;white-space:nowrap}
+.sall svg{flex:none}
+@media (max-width:599px){.panerow .panes{flex:1 1 100%}.tools{flex-basis:100%}.srch{max-width:none}.sall{padding:9px 12px}}
+.sstat{display:none;align-items:center;flex-wrap:wrap;gap:6px 8px;margin:-10px 0 18px;font-size:var(--t13);color:var(--ink2);text-transform:lowercase}
+.sstat.on{display:flex}
+.sstat > span{margin-right:2px}
+.sstat q{text-transform:none;color:var(--ink)}
+.sstat button,.nores button{padding:4px 10px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface);font-size:var(--t12);font-weight:500;color:var(--ink2);text-transform:lowercase}
+.sstat button[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:var(--on-accent)}
+.sstat b,.nores b{font-weight:650;font-variant-numeric:tabular-nums;margin-left:4px}
+.nores + .sh{margin-top:0}
+.nores{margin:0 0 16px;padding:16px 18px;border:1px dashed var(--line2);border-radius:var(--r-card);color:var(--ink2);font-size:var(--t15);text-transform:lowercase}
+.nores p{margin:0}
+.nores div{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.sx{display:none !important}
+mark.hit{background:color-mix(in srgb,var(--cls) 26%,transparent);color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pane{display:none;container-type:inline-size}
+.pane.on{display:block;animation:rise .38s var(--spring) both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* small section label */
+.sh{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
+.sh:first-child{margin-top:0}
+.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;white-space:nowrap}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
+.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ═══ outline: side menu + all-open sections ═══ */
+.ol{display:grid;grid-template-columns:1fr;gap:0 32px;align-items:start}
+@media (min-width:960px){.ol{grid-template-columns:212px minmax(0,1fr)}}
+.toc{position:sticky;top:var(--barh,56px);z-index:30;background:var(--paper);margin:0 calc(var(--gut) * -1) 14px;padding:6px var(--gut) 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.toc::-webkit-scrollbar{display:none}
+.toc .tl{display:none}
+.toc a{flex:none;display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:var(--r-chip);font-size:var(--t13);font-weight:500;color:var(--ink2);border:1px solid var(--line);background:var(--surface);white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.toc a.on{color:var(--on-accent);background:var(--ink);border-color:var(--ink)}
+.toc i{flex:none;width:8px;height:8px;border-radius:3px;border:1.5px solid var(--cls)}
+.toc i.w3{background:var(--cls)} .toc i.w2{background:color-mix(in srgb,var(--cls) 40%,transparent)}
+.toc a.on i{border-color:var(--on-accent)} .toc a.on i.w3{background:var(--on-accent)}
+@media (min-width:960px){
+  .toc{top:calc(var(--barh,56px) + 12px);margin:0;padding:0;display:block;overflow:visible;border:0;background:none;max-height:calc(100vh - var(--barh,56px) - 32px);overflow-y:auto}
+  .toc .tl{display:block;font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--ink3);text-transform:lowercase;margin:2px 0 8px 10px}
+  .toc a{display:flex;align-items:flex-start;white-space:normal;border:0;background:none;padding:7px 10px;line-height:1.3;border-radius:8px}
+  .toc a i{margin-top:5px}
+  .toc a:hover{background:var(--surface)}
+  .toc a.on{background:var(--surface);color:var(--ink);box-shadow:inset 2px 0 0 var(--cls);border-radius:0 8px 8px 0}
+  .toc a.on i{border-color:var(--cls)} .toc a.on i.w3{background:var(--cls)}
+  .toc .leg{display:flex;flex-direction:column;gap:4px;margin:14px 0 0 10px;padding-top:12px;border-top:1px solid var(--line);font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
+  .toc .leg span{display:flex;align-items:center;gap:7px}
+}
+.toc .leg{display:none}
+@media (min-width:960px){.toc .leg{display:flex}}
+
+/* start here tiles */
+.tops{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:26px;counter-reset:tp}
+.tops .tp{counter-increment:tp;position:relative;padding:14px 16px 14px 48px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);line-height:1.45}
+.toptbl{margin:14px 0 22px}
+.tops .tp::before{content:counter(tp);position:absolute;left:14px;top:13px;width:24px;height:24px;border-radius:7px;background:var(--cls);color:var(--surface);font-weight:650;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+
+/* section card */
+.sec{container-type:inline-size;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);margin-bottom:16px;overflow:hidden}
+.sec > header{display:flex;align-items:flex-start;gap:12px;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.sec .num{flex:none;font-family:var(--display);font-weight:var(--w-d);font-size:var(--t15);color:var(--cls);font-variant-numeric:tabular-nums;padding-top:4px;min-width:1.4em}
+.sec .ht{flex:1;min-width:0}
+.sec h3{margin:0;font-family:var(--display);font-size:clamp(20px,2.4vw,24px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.sec .sd{margin:3px 0 0;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.w{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:var(--r-chip);text-transform:lowercase;white-space:nowrap;margin-top:3px}
+@container (max-width:520px){.sec > header{flex-wrap:wrap;row-gap:6px}.sec .ht{flex:1 1 calc(100% - 3em)}.sec > header .w{order:3;margin:0 0 0 calc(1.4em + 12px)}}
+.w3{background:var(--cls);color:var(--surface)}
+.w2{background:color-mix(in srgb,var(--cls) 14%,transparent);color:var(--cls)}
+.sb{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:16px 18px 18px}
+@container (min-width:700px){
+  .sb .duo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+  .sb .duo.wide-side{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+}
+.sb .duo{display:grid;gap:16px}
+.duo > .main,.duo > .side{container-type:inline-size;min-width:0}
+.sb .main > :first-child{margin-top:0}
+.sb .main.solo{max-width:72ch}
+.sb p{margin:0 0 10px;line-height:1.55}
+.sb p:last-child{margin-bottom:0}
+b.kw{font-weight:680;color:var(--ink)}
+
+/* bullets */
+.pts{margin:10px 0 0;padding:0;list-style:none}
+.pts:first-child{margin-top:0}
+.pts li{position:relative;padding:4px 0 4px 18px;line-height:1.5}
+.pts li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:2px;background:var(--cls)}
+.pts.two{columns:2 220px;column-gap:24px}
+.pts.two li{break-inside:avoid}
+
+/* label rows */
+.rows{margin:10px 0 0;display:grid;grid-template-columns:max-content 1fr;column-gap:14px}
+.rows:first-child{margin-top:0}
+.rows dt{padding:7px 0;font-size:var(--t12);font-weight:600;letter-spacing:.04em;line-height:22px;color:var(--cls);text-transform:lowercase;border-top:1px solid var(--line)}
+.rows dd{margin:0;padding:7px 0;font-size:var(--t15);line-height:1.45;border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+
+/* numbered steps */
+.steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps:first-child{margin-top:0}
+.steps li{position:relative;padding:7px 0 7px 32px;font-size:var(--t15);line-height:1.45;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:21px;height:21px;border-radius:6px;background:var(--cls);color:var(--surface);font-size:11.5px;font-weight:650;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+
+/* flow: cause -> effect chain */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 0;margin:0;padding:0;list-style:none}
+.flow li{position:relative;flex:1 1 0;min-width:120px;display:flex;align-items:center;padding:10px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t15);line-height:1.35;margin-right:26px}
+.flow li:last-child{margin-right:0;border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:12px;height:12px;margin-top:-6px;background:var(--ink3);clip-path:polygon(0 15%,100% 50%,0 85%)}
+@container (max-width:519px){
+  .flow{flex-direction:column;gap:0}
+  .flow li{margin:0 0 22px;min-width:0}
+  .flow li:last-child{margin-bottom:0}
+  .flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;margin:0 0 0 -6px;clip-path:polygon(15% 0,85% 0,50% 100%)}
+}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tiles > div{padding:11px 13px 12px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);border-top:3px solid var(--cls)}
+.tiles h5{margin:0 0 3px;font-size:var(--t15);font-weight:650;line-height:1.3}
+.tiles p{margin:0;font-size:var(--t13);line-height:1.45;color:var(--ink)}
+.tiles .tk{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--cls);text-transform:lowercase}
+
+/* tree (org chart; indented list on narrow cards) */
+.tree{overflow-x:auto}
+.tree ul{position:relative;display:flex;justify-content:center;margin:0;padding:16px 0 0;list-style:none}
+.tree > ul{padding-top:0}
+.tree li{position:relative;flex:1 1 0;padding:16px 4px 0;text-align:center;min-width:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:16px;border-top:1.5px solid var(--line2)}
+.tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line2)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:1.5px solid var(--line2);border-radius:0 6px 0 0}
+.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:16px;border-left:1.5px solid var(--line2)}
+.tree .nd{display:inline-block;max-width:100%;padding:7px 10px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line);font-size:var(--t13);line-height:1.3;vertical-align:top}
+.tree .nd b{display:block;font-size:var(--t15);font-weight:650}
+.tree .nd span{display:block;color:var(--ink2);margin-top:2px}
+.tree > ul > li > .nd{background:var(--cls);border-color:var(--cls);color:var(--surface)}
+.tree > ul > li > .nd span{color:color-mix(in srgb,var(--surface) 85%,transparent)}
+.tree > ul > li > ul > li > .nd{border-color:var(--cls);background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+@container (max-width:379px){
+  .tree ul{display:block;padding:0 0 0 18px}
+  .tree > ul{padding-left:0}
+  .tree li{padding:6px 0 0 16px;text-align:left}
+  .tree > ul > li{padding-left:0}
+  .tree li::before{top:0;left:0;right:auto;width:12px;height:22px;border-top:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li::after{top:22px;left:0;right:auto;width:0;height:calc(100% - 22px);border:0;border-left:1.5px solid var(--line2);border-radius:0}
+  .tree li:last-child::after{display:none}
+  .tree li:first-child::before,.tree li:last-child::before{border-top:0;border-right:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li:first-child::after{border-radius:0}
+  .tree > ul > li::before,.tree > ul > li::after{display:none}
+  .tree ul ul::before{display:none}
+  .tree li:only-child::before{display:block}
+  .tree li:only-child{padding-top:6px}
+  .tree > ul > li:only-child{padding:0}
+  .tree > ul > li:only-child::before,.tree > ul > li:only-child::after{display:none}
+}
+
+/* figure (inline svg drawn per guide) */
+.fig{margin:0;padding:14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.fig svg{display:block;width:100%;height:auto;max-height:440px;font-family:var(--sans);overflow:visible}
+.fig figcaption{margin-top:8px;font-size:var(--t13);color:var(--ink2);line-height:1.4}
+.fig .ln{fill:none;stroke:var(--ink2);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .lc{fill:none;stroke:var(--cls);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .la{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .lb{fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+.fig .lg{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round}
+.fig .dash{stroke-dasharray:5 5}
+.fig .fc{fill:var(--cls)} .fig .fa{fill:var(--accent)} .fig .fb{fill:var(--bad)} .fig .fg{fill:var(--good)} .fig .fi{fill:var(--ink)}
+.fig .fs{fill:color-mix(in srgb,var(--cls) 18%,var(--surface))}
+.fig .fsa{fill:color-mix(in srgb,var(--accent) 16%,var(--surface))}
+.fig .fp{fill:var(--surface);stroke:var(--line2);stroke-width:1.2}
+.fig .fn{fill:none}
+.fig text{fill:var(--ink);font-size:14px}
+.fig .tm{fill:var(--ink2);font-size:12.5px}
+.fig .tb{font-weight:650}
+.fig .tc{fill:var(--cls);font-weight:650}
+.fig .ta{fill:var(--accent);font-weight:650}
+.fig .tw{fill:var(--surface);font-weight:650}
+.fig .tbd{fill:var(--bad);font-weight:650}
+.fig .mid{text-anchor:middle} .fig .end{text-anchor:end}
+.mk-ink{fill:var(--ink2)} .mk-cls{fill:var(--cls)} .mk-acc{fill:var(--accent)} .mk-bad{fill:var(--bad)}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.cmp > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface2);border:1px solid var(--line)}
+.cmp h5{margin:0 0 6px;font-size:var(--t13);font-weight:650;letter-spacing:.03em;color:var(--cls);text-transform:lowercase}
+.cmp p{margin:0 0 6px;font-size:var(--t15);line-height:1.45} .cmp p:last-child{margin:0}
+
+/* tables */
+.tbw{overflow-x:auto;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.45}
+.tbl th{padding:9px 12px;text-align:left;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;background:var(--surface2);border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:9px 12px;vertical-align:top;border-top:1px solid var(--line)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:650}
+.tcap{margin:0 0 8px;font-size:var(--t13);font-weight:600;color:var(--ink2);text-transform:lowercase}
+@container (max-width:519px){
+  .tbw .tbl thead{display:none}
+  .tbw .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbw .tbl tbody tr:first-child{border-top:0}
+  .tbw .tbl td{display:block;padding:0;border:0}
+  .tbw .tbl.two td:not(:first-child)::before{display:none}
+  .tbw .tbl.two td:first-child{margin-bottom:2px}
+  .tbw .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+}
+
+/* on the test (example) */
+.exs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.tq{border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.tq .el{display:flex;align-items:center;gap:6px;padding:10px 13px 0;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--accent);text-transform:lowercase}
+.tq .el svg{flex:none}
+.tq .eq{padding:4px 13px 12px;font-size:var(--t15);line-height:1.45;font-weight:500;flex:1}
+.tq .eb{display:flex;align-items:center;justify-content:space-between;width:100%;padding:9px 13px;border-top:1px solid var(--line);font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase}
+.tq .eb .chev{transition:transform .24s var(--spring)}
+.tq.on .eb .chev{transform:rotate(90deg)}
+.tq .ea{display:none;padding:10px 13px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.tq.on .ea{display:block;animation:rise .3s var(--spring) both}
+.tq .ea b.aa{display:block;font-weight:680;margin-bottom:3px}
+.tq .ea .why{color:var(--ink2)}
+/* multiple-choice "on the test" card: {q, opts, a, why} */
+.tq .opt{padding:10px 13px}
+.tq.done .opt{cursor:default}
+.tq.mc .ea .why{color:var(--ink)}
+
+/* watch out + callouts */
+.watch{border-radius:var(--r-btn);background:color-mix(in srgb,var(--bad) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 30%,var(--line));padding:11px 14px 12px}
+.watch .wl,.callout .cl{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:650;letter-spacing:.05em;color:var(--bad);text-transform:lowercase;margin-bottom:4px}
+.watch ul{margin:0;padding:0;list-style:none}
+.watch li{position:relative;padding:3px 0 3px 16px;font-size:var(--t15);line-height:1.45}
+.watch li::before{content:"";position:absolute;left:1px;top:11px;width:8px;height:2px;border-radius:1px;background:var(--bad)}
+.callout{border-radius:var(--r-btn);padding:10px 14px 11px;font-size:var(--t15);line-height:1.45;background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--cls)}
+.callout.ok{border-left-color:var(--good)} .callout.ok .cl{color:var(--good)}
+.callout.ex{border-left-color:var(--accent)} .callout.ex .cl{color:var(--accent)}
+.callout.cls .cl{color:var(--cls)}
+
+/* terms */
+.terms{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.terms .tl{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--ink3);text-transform:lowercase;margin-right:2px}
+.term{font-size:var(--t13);font-weight:500;padding:3px 9px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface2);color:var(--ink)}
+
+.abbr{padding:14px 16px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);color:var(--ink2);line-height:1.7}
+.abbr b{color:var(--ink);font-weight:650}
+
+/* generic cards / groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px}
+.card.top{border-left:4px solid var(--cls);padding-left:15px}
+.card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:12px}
+.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
+.row + .row,.body + .row{border-top:1px solid var(--line)}
+@media (hover:hover){.row:hover{background:var(--surface2)}}
+.rt{min-width:0;flex:1}
+.rn{display:block;font-size:var(--t16);font-weight:550;line-height:1.3}
+.rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
+.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
+.row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
+.body.on{grid-template-rows:1fr}
+.body > div{overflow:hidden}
+.body .in{padding:12px 16px 14px;display:grid;gap:10px}
+.body p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:600;text-transform:lowercase;transition:filter .18s var(--ease)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (hover:hover){.btn:hover{filter:brightness(1.06)}}
+.btn:active{transform:scale(.987)}
+
+/* practice mc */
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:12px;align-items:start}
+.q{margin:0}
+.q .qt{padding:14px 16px 10px;font-size:var(--t16);font-weight:500;line-height:1.4}
+.qn{font-size:var(--t12);color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 14px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.4;transition:background .16s var(--ease)}
+@media (hover:hover){#root:not(.showall) .q:not(.done) .opt:hover,#root:not(.showall) .tq:not(.done) .opt:hover{background:var(--surface2)}}
+.opt .k{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:1px}
+.q.done .opt{cursor:default}
+.opt.right{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.q .why{display:none;padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.45}
+.q .why b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q.done .why{display:block}
+/* select-all questions: a is an array of right indexes */
+.opt.sel{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.opt.sel .k{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.mchk{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border-top:1px solid var(--line);font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+.mchk .btn{padding:6px 12px;font-size:var(--t13)}
+.q.done .mchk,.showall .mchk{display:none}
+/* show all answers */
+.showall .q .opt,.showall .tq .opt{cursor:default}
+.showall .q .opt[data-c],.showall .tq .opt[data-c]{background:color-mix(in srgb,var(--good) 14%,transparent)}
+.showall .q .opt[data-c] .k,.showall .tq .opt[data-c] .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+/* answer feedback in words, not only color (engine, 2026-09-30) */
+.opt .ftag{margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:650;white-space:nowrap;text-transform:lowercase}
+.opt.right .ftag{color:var(--good)} .opt.wrong .ftag{color:var(--bad)}
+.showall .q:not(.done) .opt[data-c]::after,.showall .tq:not(.done) .opt[data-c]::after{content:"\2713  answer";margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:650;color:var(--good);white-space:nowrap}
+.vh{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.showall .q .why,.showall .tq .ea{display:block}
+.showall .tq .eb,.showall .prob .go{display:none}
+.showall .prob .reveal{display:block}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;visibility:hidden;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease),visibility 0s linear .4s}
+.scorepill.show{transform:translateX(-50%);opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
+.scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
+.scorepill button{padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:600;text-transform:lowercase}
+/* retry missed questions (engine, 2026-09-30) */
+.scorepill{flex-wrap:wrap;justify-content:center;width:max-content;max-width:calc(100vw - 24px)}
+.scorepill button[hidden]{display:none}
+.scorepill button:focus-visible{outline-color:var(--paper)}
+.rbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;padding:10px 12px 10px 16px;border-radius:var(--r-card);border:1px solid var(--line);background:var(--surface)}
+.rbar[hidden],.rbar [hidden]{display:none !important}
+.rbar:focus,.qgrid:focus{outline:none}
+.rbar .rst{margin:0;flex:1 1 220px;font-size:var(--t15);line-height:1.4;text-transform:lowercase}
+.rbar .rbtns{display:flex;flex-wrap:wrap;gap:8px}
+.rbar .btn{padding:6px 12px;font-size:var(--t13)}
+@media screen{.q.rx{display:none}}
+
+/* problems */
+.pgrid{display:grid;gap:12px}
+.prob{container-type:inline-size;margin:0}
+.prob .pi{display:grid;grid-template-columns:minmax(0,1fr)}
+.prob .qt{padding:14px 16px;font-size:var(--t16);font-weight:500;line-height:1.45}
+.prob .go{border-top:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t13);font-weight:600;color:var(--accent);text-transform:lowercase;width:100%}
+.prob .reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:12px 16px 14px}
+.prob.on .reveal{display:block;animation:rise .3s var(--spring) both}
+.prob.on .go .chev{transform:rotate(90deg)}
+@container (min-width:820px){
+  .prob .pi{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .prob .qside{border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .prob .qside .qt{flex:1}
+  .prob .reveal{border-top:0;display:block;min-height:100%}
+  #root:not(.showall) .prob:not(.on) .reveal::before{content:"work it first, then show the steps";display:grid;place-items:center;height:100%;min-height:120px;font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+  #root:not(.showall) .prob:not(.on) .reveal > *{display:none}
+}
+.ans{margin-top:10px;padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);border-left:3px solid var(--good)}
+.ans b{color:var(--ink3);font-weight:600;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+.work{margin:0;padding:0;list-style:none}
+.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
+.work li + li{border-top:1px solid var(--line)}
+.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.work .wm.cont{padding-left:1.1em}
+.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink2);padding-left:12px;border-left:2px solid var(--line)}
+.work .wy:empty{border-left-color:transparent}
+.work li.hd{padding:0 0 4px}
+.work .wh{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
+.work li.hd .wh + .wh{padding-left:14px}
+@container (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0}.work li.hd{display:none}}
+
+/* formulas */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.fx{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.fx .n{font-size:var(--t12);font-weight:600;letter-spacing:.04em;color:var(--cls);text-transform:lowercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t16);font-weight:500;overflow-wrap:anywhere}
+.fx .note{font-size:var(--t13);color:var(--ink2);line-height:1.45}
+
+/* flashcards */
+.dk{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.deck{position:relative;perspective:1200px}
+.fc{position:relative;min-height:230px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.fc.flip{transform:rotateY(180deg)}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:22px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .f{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t16);line-height:1.5;color:var(--ink)}
+.fc .tag{position:absolute;left:16px;top:13px;font-size:11.5px;font-weight:600;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc .b .tag{color:var(--cls)}
+.dnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px;margin-top:6px}
+.clist > div{padding:12px 14px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line)}
+.clist b{display:block;font-weight:650;margin-bottom:3px}
+.clist span{font-size:var(--t15);line-height:1.45;color:var(--ink)}
+
+/* timeline */
+.tln{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.tln .ev{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 18px;padding:12px 16px;border-top:1px solid var(--line);position:relative}
+.tln .ev:first-child{border-top:0}
+.tln .y{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t16);color:var(--cls);font-variant-numeric:tabular-nums;line-height:1.35}
+.tln .t{font-size:var(--t16);font-weight:600;line-height:1.35}
+.tln .d{font-size:var(--t15);color:var(--ink);line-height:1.45;margin-top:2px}
+@media (min-width:900px){.tln .ev{grid-template-columns:110px minmax(0,.9fr) minmax(0,1.3fr)}.tln .d{margin-top:0}}
+@media (max-width:479px){.tln .ev{grid-template-columns:1fr;gap:2px}}
+
+/* cram */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:12px;align-items:start}
+.cgrid .group{margin:0}
+.cgrid .gh{padding:11px 14px;border-bottom:1px solid var(--line);font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;display:flex;justify-content:space-between;gap:10px}
+.cgrid .gh span{color:var(--ink3);font-weight:500}
+.cr{display:grid;grid-template-columns:minmax(0,10em) 1fr;gap:2px 14px;padding:9px 14px;border-top:1px solid var(--line)}
+.gh + .cr{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:650;line-height:1.35}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:600;color:var(--cls);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.45}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables pane */
+.tpane{display:grid;gap:22px}
+.tpane .tblk{container-type:inline-size}
+
+/* checklist */
+.ckg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:0 12px}
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:12px 14px;border-radius:var(--r-btn);font-size:var(--t15);line-height:1.4;background:var(--surface);border:1px solid var(--line);margin-bottom:8px}
+.ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
+.ck.on .box{background:var(--good);border-color:var(--good)}
+.ck.on .t{color:var(--ink3);text-decoration:line-through}
+.ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
+
+/* essay panes (leq / prompts) */
+.bul{margin:0;padding-left:18px}
+.bul li{margin:3px 0;line-height:1.45}
+.pl{font-size:var(--t12);font-weight:600;letter-spacing:.05em;color:var(--cls);text-transform:lowercase;margin-top:6px}
+.so{padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:var(--t15)}
+.so .cl{display:block;font-size:11.5px;font-weight:650;color:var(--accent);letter-spacing:.05em;text-transform:lowercase}
+.pace{display:flex;height:34px;border-radius:8px;overflow:hidden;gap:2px}
+.pace > div{display:grid;place-items:center;color:var(--surface);font-size:var(--t12);font-weight:650;background:var(--cls)}
+.pace > div:nth-child(2n){background:var(--accent)}
+.pace > div:nth-child(3n){background:var(--ink2)}
+.fnl{margin:0;padding-left:20px;font-size:var(--t15)}
+.fnl li{margin:4px 0}
+
+/* footer */
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+footer .upd{display:block;margin-top:6px}
+
+.rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+
+@media print{
+  :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
+  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg{display:none !important}
+  .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
+  .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .q:not(.done) .opt[data-c]::after,.tq:not(.done) .opt[data-c]::after{content:"\2713  correct answer";margin-left:auto;padding-left:10px;font-size:var(--t12);font-weight:700;white-space:nowrap}
+  .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
+  .prob:not(.on) .reveal::before{display:none}
+  .sec,.group,.card,.tq,.fig,.tiles > div{break-inside:avoid}
+  @page{margin:.6in}
+}
+</style>
+</head>
+<body>
+<a class="skipl" href="#main">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-ink"/></marker>
+  <marker id="ahc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-cls"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-acc"/></marker>
+  <marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-bad"/></marker>
+</defs></svg>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="home" href="/" aria-label="all guides">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg>
+      <h1>valentino guides</h1>
+    </a>
+    <button type="button" class="sbtn" id="sbtn" aria-label="search this guide" title="search ( / )"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg></button>
+    <div class="seg" role="group" aria-label="theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">auto</button>
+      <button type="button" data-set="light" aria-pressed="false">light</button>
+      <button type="button" data-set="dark" aria-pressed="false">dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="crow rv" id="crow"></div>
+  <h2 class="title rv" id="title"></h2>
+  <p class="sub rv" id="sub" hidden></p>
+  <div class="pdfs rv" id="pdfs" hidden></div>
+  <div class="rv panerow">
+    <div class="panes" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
+    <div class="tools" id="tools">
+      <div class="srch" id="srch" role="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg>
+        <input id="q" type="search" placeholder="search" aria-label="search this guide" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+        <button type="button" class="x" id="qx" aria-label="clear search"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg></button>
+      </div>
+      <button type="button" class="btn ghost sall" id="showall" aria-pressed="false" hidden><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg><span>show all answers</span></button>
+    </div>
+  </div>
+  <div class="sstat" id="sstat" aria-live="polite"></div>
+  <div id="root" class="rv"></div>
+  <footer>
+    study guide written by a student, free to use. not affiliated with the school.
+    check anything that matters against your own notes. <a href="/">all guides</a>
+    <span class="upd" id="upd"></span>
+  </footer>
+</main>
+<div class="scorepill" id="score"><span aria-live="polite"><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   GUIDE: the only thing to edit. Everything renders from this object.
+   Rules (sept 29 2026, from reader feedback):
+   · bold a key term with **term** the first time it appears in a
+     section. Nothing else is marked inline: no highlights, no
+     underlines, no red text. (The renderer bolds each term once per
+     section and ignores legacy ==x== / !!x!! markers.)
+   · traps go in `watch`, never in the prose.
+   · two short paragraphs max per section; everything else is a shape:
+     pts, flow, steps, rows, tiles, tree, table, cmp, fig.
+   · every tested section gets at least one `ex` (see it on a test).
+   ═══════════════════════════════════════════════════════════════════ */
+const GUIDE = {
+ "id": "pre",
+ "cls": "Honors Precalculus BC",
+ "title": "Polar unit test",
+ "test": "2026-10-01",
+ "meta": "25 problems · 2 with a calculator",
+ "sub": "Polar points, equations and graphs first, then a recap of the complex-number half of the unit. The test covers all of it.",
+ "updated": "sept 29, 2026",
+ "panes": [
+  "outline",
+  "problems",
+  "formulas"
+ ],
+ "labels": {
+  "outline": "lesson",
+  "problems": "worked examples"
+ },
+ "top": [
+  "The test is the whole unit: complex numbers, trig form, the theorems, and polar. **25 problems**, only 2 with a calculator.",
+  "**Negative r** walks backward: (−r, θ) is the same point as (r, θ + 180°).",
+  "Convert with x = r cos θ, y = r sin θ, r² = x² + y². Sketch the quadrant before trusting tan⁻¹.",
+  "Name graphs from the equation: circle, cardioid (a = b), limaçon, rose (n odd: n petals, n even: 2n), lemniscate (r²).",
+  "Intersections: set r = r and solve for θ, then check whether both curves reach the pole."
+ ],
+ "topTable": {
+  "h": "what the test covers",
+  "cols": [
+   "",
+   "what they ask",
+   "where"
+  ],
+  "rows": [
+   [
+    "polar points",
+    "quadrant, other names for a point, rectangular coordinates",
+    "sections 1 and 2"
+   ],
+   [
+    "polar equations",
+    "convert both ways, name the graph, sketch it",
+    "sections 3 to 5, 8"
+   ],
+   [
+    "complex numbers, trig form",
+    "classify, radicals, divide, powers of i, quadratics, r cis θ, Julia set",
+    "section 6"
+   ],
+   [
+    "theorems",
+    "product, quotient, De Moivre, nth roots, Mandelbrot set",
+    "section 7"
+   ],
+   [
+    "intersections",
+    "set r = r, then check the pole",
+    "section 9"
+   ],
+   [
+    "calculator (2 problems)",
+    "polar mode, angle mode, window, trace",
+    "section 10"
+   ]
+  ]
+ },
+ "outline": [
+  {
+   "w": 3,
+   "t": "Polar points and negative r",
+   "d": "quadrant, other names for the point, rectangular coordinates",
+   "p": [
+    "A polar point (r, θ) says: face θ, then walk r. **Negative r** walks backward, so (−r, θ) lands at (r, θ + 180°)."
+   ],
+   "rows": [
+    [
+     "quadrant",
+     "r > 0: θ's quadrant. r < 0: the opposite quadrant."
+    ],
+    [
+     "same point",
+     "(r, θ ± 360°) keeps r. (−r, θ ± 180°) flips r."
+    ],
+    [
+     "to x, y",
+     "x = r cos θ, y = r sin θ. Keep the sign of r."
+    ]
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 360 300' role='img' aria-label='Polar grid with rings 1 to 3. The point (3, 60°) sits 3 units out along the 60° ray in quadrant I. The point (−3, 60°) sits 3 units the opposite way, on the 240° ray in quadrant III, which is the same point as (3, 240°).'><circle class='fp' cx='180' cy='150' r='108'/><circle class='fp' cx='180' cy='150' r='72'/><circle class='fp' cx='180' cy='150' r='36'/><path class='fp' d='M180 150L288 150'/><path class='fp' d='M180 150L273.53 96'/><path class='fp' d='M180 150L234 56.47'/><path class='fp' d='M180 150L180 42'/><path class='fp' d='M180 150L126 56.47'/><path class='fp' d='M180 150L86.47 96'/><path class='fp' d='M180 150L72 150'/><path class='fp' d='M180 150L86.47 204'/><path class='fp' d='M180 150L126 243.53'/><path class='fp' d='M180 150L180 258'/><path class='fp' d='M180 150L234 243.53'/><path class='fp' d='M180 150L273.53 204'/><path class='ln' d='M48 150H312'/><path class='ln' d='M180 282V18'/><text class='tm' x='298' y='144'>0°</text><text class='tm' x='186' y='26'>90°</text><text class='tm end' x='62' y='144'>180°</text><text class='tm' x='186' y='282'>270°</text><path class='ln' d='M202 150A22 22 0 0 0 191 130.95'/><text class='tm' x='206' y='140'>60°</text><path class='la' d='M180 150L234 56.47' marker-end='url(#aha)'/><circle class='fa' cx='234' cy='56.47' r='5'/><text class='ta' x='244' y='54.47'>(3, 60°)</text><path class='lc' d='M180 150L126 243.53' marker-end='url(#ahc)'/><circle class='fc' cx='126' cy='243.53' r='5'/><text class='tc end' x='116' y='237.53'>(−3, 60°)</text><text class='tm end' x='116' y='254.53'>= (3, 240°)</text><text class='tm' x='224' y='250'>face 60°,</text><text class='tm' x='224' y='266'>walk 3 backward</text></svg>",
+    "cap": "(3, 60°) and (−3, 60°) sit on opposite sides of the **pole**."
+   },
+   "ex": [
+    {
+     "q": "In which quadrant is (−4, 135°)?",
+     "a": "Quadrant IV",
+     "why": "135° is in QII; negative r sends the point to 315°. QII ignores the sign."
+    },
+    {
+     "q": "Give the rectangular coordinates of (−2, 30°).",
+     "a": "(−√3, −1)",
+     "why": "x = −2 cos 30° = −√3, y = −2 sin 30° = −1. Dropping the negative gives (√3, 1), the wrong side."
+    },
+    {
+     "q": "(5, 7π/4): give the pair with r > 0 and 2π < θ < 4π, then the pair with r < 0 and 0 < θ < 2π.",
+     "a": "(5, 15π/4) and (−5, 3π/4)",
+     "why": "Add 2π to keep r. Subtract π and flip r for the second."
+    }
+   ],
+   "watch": [
+    "Flipping only the sign of r, or only adding 180°, moves the point. Do both or neither."
+   ],
+   "terms": [
+    "pole",
+    "polar axis",
+    "negative r"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Rectangular point to polar",
+   "d": "r first, θ from a sketch, then a second pair",
+   "steps": [
+    "Sketch (x, y) and name the quadrant.",
+    "r = √(x² + y²).",
+    "Reference angle from tan⁻¹|y/x|, then place it: QII 180° − ref, QIII 180° + ref, QIV 360° − ref.",
+    "Second pair: (−r, θ ± 180°), kept inside the interval asked."
+   ],
+   "table": {
+    "h": "worked the same way",
+    "cols": [
+     "point",
+     "r",
+     "quadrant, θ",
+     "two pairs"
+    ],
+    "rows": [
+     [
+      "(−2√3, −2)",
+      "4",
+      "QIII: 180° + 30° = 210°",
+      "(4, 210°), (−4, 30°)"
+     ],
+     [
+      "(−√3, 1)",
+      "2",
+      "QII: 180° − 30° = 150°",
+      "(2, 150°), (−2, 330°)"
+     ],
+     [
+      "(0, −5)",
+      "5",
+      "on the axis: 270°",
+      "(5, 270°), (−5, 90°)"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Give two polar pairs for (6, −6), 0° ≤ θ < 360°.",
+     "a": "(6√2, 315°) and (−6√2, 135°)",
+     "why": "QIV: 360° − 45°. tan⁻¹ gives −45°, which is outside the interval."
+    },
+    {
+     "q": "Convert (−5, −5) to polar, 0° ≤ θ < 360°.",
+     "a": "(5√2, 225°)",
+     "why": "tan⁻¹(1) = 45° is a QI angle; both parts negative puts it in QIII, so add 180°."
+    }
+   ],
+   "watch": [
+    "tan⁻¹ only answers in QI or QIV. Both parts negative is QIII, so add 180°."
+   ],
+   "terms": [
+    "reference angle"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Equations: rectangular to polar",
+   "d": "swap in r cos θ and r sin θ, factor out r, divide",
+   "p": [
+    "Replace x with **r cos θ** and y with r sin θ, factor r out, and solve for r."
+   ],
+   "flow": [
+    "3x + y = 6",
+    "3r cos θ + r sin θ = 6",
+    "r(3 cos θ + sin θ) = 6",
+    "r = 6 / (3 cos θ + sin θ)"
+   ],
+   "table": {
+    "cols": [
+     "rectangular",
+     "polar",
+     "graph"
+    ],
+    "rows": [
+     [
+      "ax + by = c",
+      "r = c / (a cos θ + b sin θ)",
+      "line"
+     ],
+     [
+      "x² + y² = a²",
+      "r = a (or r = −a)",
+      "circle centered at the pole"
+     ],
+     [
+      "x = k",
+      "r = k sec θ = k / cos θ",
+      "vertical line"
+     ],
+     [
+      "y = k",
+      "r = k csc θ = k / sin θ",
+      "horizontal line"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Write x + 2y = 10 in polar form.",
+     "a": "r = 10 / (cos θ + 2 sin θ)",
+     "why": "r cos θ + 2r sin θ = 10; factor out r. An answer with r on both sides isn't solved."
+    },
+    {
+     "q": "Find the polar equation of the line through (5, 0°) and (4, 90°).",
+     "a": "r = 20 / (4 cos θ + 5 sin θ)",
+     "why": "The points are (5, 0) and (0, 4), so the line is 4x + 5y = 20. Check: θ = 0° gives 5, θ = 90° gives 4."
+    }
+   ],
+   "watch": [
+    "Line through two polar points: convert both to (x, y) first. Slope formulas don't work on (r, θ)."
+   ],
+   "terms": [
+    "rectangular equation",
+    "polar equation"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Equations: polar to rectangular",
+   "d": "build r cos θ and r sin θ, then name the graph",
+   "steps": [
+    "Fraction? Multiply both sides by the denominator.",
+    "No r beside cos θ or sin θ? Multiply both sides by r.",
+    "Swap: r cos θ → x, r sin θ → y, r² → x² + y², a lone r → √(x² + y²).",
+    "A lone √: isolate it, then square. A circle: **complete the square**."
+   ],
+   "table": {
+    "cols": [
+     "polar",
+     "rectangular",
+     "graph"
+    ],
+    "rows": [
+     [
+      "r = −10 cos θ",
+      "(x + 5)² + y² = 25",
+      "circle, center (−5, 0), radius 5"
+     ],
+     [
+      "r = 4 cos θ − 2 sin θ",
+      "(x − 2)² + (y + 1)² = 5",
+      "circle, center (2, −1), radius √5"
+     ],
+     [
+      "r = 3 sec θ",
+      "x = 3",
+      "vertical line"
+     ],
+     [
+      "r = −2 csc θ",
+      "y = −2",
+      "horizontal line"
+     ],
+     [
+      "r = 5 / (cos θ − sin θ)",
+      "x − y = 5",
+      "line, slope 1"
+     ],
+     [
+      "r = 2 / (1 − sin θ)",
+      "x² = 4y + 4",
+      "parabola opening up, vertex (0, −1)"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Convert r = 6 cos θ + 8 sin θ and name the graph.",
+     "a": "(x − 3)² + (y − 4)² = 25: circle, center (3, 4), radius 5",
+     "why": "Multiply by r first. Completing the square adds 9 and 16 to both sides."
+    },
+    {
+     "q": "Convert r = 3 / (1 − cos θ).",
+     "a": "y² = 6x + 9, a parabola opening right",
+     "why": "r − r cos θ = 3, so √(x² + y²) = 3 + x. Square it and x² cancels."
+    }
+   ],
+   "watch": [
+    "cos θ alone is not x. Only r cos θ is x.",
+    "Every circle r = a cos θ + b sin θ passes through the pole."
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Graph families and the word bank",
+   "d": "name the graph from its equation, or match the picture",
+   "p": [
+    "The test gives a **word bank**: circle, cardioid, limaçon, rose curve, lemniscate. The cardioid is the one limaçon with its own name."
+   ],
+   "rows": [
+    [
+     "limaçon",
+     "r = a ± b cos θ or a ± b sin θ; the ratio a/b sets the shape"
+    ],
+    [
+     "rose",
+     "r = a cos nθ or a sin nθ; |a| is the petal length"
+    ],
+    [
+     "lemniscate",
+     "r² = a² cos 2θ or r² = a² sin 2θ: a figure eight"
+    ],
+    [
+     "which way",
+     "+cos opens right, −cos left, +sin up, −sin down"
+    ]
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 480 416' role='img' aria-label='Four polar graphs. Top left: r = 4 cos θ, a circle through the pole sitting on the positive x-axis. Top right: r = 2 + 2 cos θ, a cardioid opening right with its dent at the pole. Bottom left: r = 3 cos 2θ, a four-petal rose with petals along both axes. Bottom right: r² = 9 cos 2θ, a figure-eight lemniscate along the x-axis.'><path class='ln' d='M22 82H218'/><path class='ln' d='M82 156V8'/><path class='lc' d='M156 82 L156 81.45 L155.98 80.89 L155.96 80.34 L155.93 79.79 L155.9 79.23 L155.85 78.68 L155.8 78.13 L155.74 77.58 L155.67 77.03 L155.59 76.49 L155.5 75.94 L155.41 75.39 L155.3 74.85 L155.19 74.31 L155.07 73.77 L154.95 73.23 L154.81 72.69 L154.67 72.16 L154.52 71.62 L154.36 71.09 L154.19 70.57 L154.01 70.04 L153.83 69.52 L153.64 69 L153.44 68.48 L153.24 67.97 L153.02 67.46 L152.8 66.95 L152.57 66.45 L152.34 65.95 L152.09 65.45 L151.84 64.96 L151.58 64.47 L151.32 63.98 L151.04 63.5 L150.76 63.02 L150.48 62.55 L150.18 62.08 L149.88 61.62 L149.57 61.16 L149.26 60.7 L148.93 60.25 L148.6 59.81 L148.27 59.37 L147.93 58.93 L147.58 58.5 L147.22 58.08 L146.86 57.66 L146.5 57.24 L146.12 56.83 L145.74 56.43 L145.36 56.03 L144.97 55.64 L144.57 55.26 L144.17 54.88 L143.76 54.5 L143.34 54.14 L142.92 53.78 L142.5 53.42 L142.07 53.07 L141.63 52.73 L141.19 52.4 L140.75 52.07 L140.3 51.74 L139.84 51.43 L139.38 51.12 L138.92 50.82 L138.45 50.52 L137.98 50.24 L137.5 49.96 L137.02 49.68 L136.53 49.42 L136.04 49.16 L135.55 48.91 L135.05 48.66 L134.55 48.43 L134.05 48.2 L133.54 47.98 L133.03 47.76 L132.52 47.56 L132 47.36 L131.48 47.17 L130.96 46.99 L130.43 46.81 L129.91 46.64 L129.38 46.48 L128.84 46.33 L128.31 46.19 L127.77 46.05 L127.23 45.93 L126.69 45.81 L126.15 45.7 L125.61 45.59 L125.06 45.5 L124.51 45.41 L123.97 45.33 L123.42 45.26 L122.87 45.2 L122.32 45.15 L121.77 45.1 L121.21 45.07 L120.66 45.04 L120.11 45.02 L119.55 45 L119 45 L118.45 45 L117.89 45.02 L117.34 45.04 L116.79 45.07 L116.23 45.1 L115.68 45.15 L115.13 45.2 L114.58 45.26 L114.03 45.33 L113.49 45.41 L112.94 45.5 L112.39 45.59 L111.85 45.7 L111.31 45.81 L110.77 45.93 L110.23 46.05 L109.69 46.19 L109.16 46.33 L108.62 46.48 L108.09 46.64 L107.57 46.81 L107.04 46.99 L106.52 47.17 L106 47.36 L105.48 47.56 L104.97 47.76 L104.46 47.98 L103.95 48.2 L103.45 48.43 L102.95 48.66 L102.45 48.91 L101.96 49.16 L101.47 49.42 L100.98 49.68 L100.5 49.96 L100.02 50.24 L99.55 50.52 L99.08 50.82 L98.62 51.12 L98.16 51.43 L97.7 51.74 L97.25 52.07 L96.81 52.4 L96.37 52.73 L95.93 53.07 L95.5 53.42 L95.08 53.78 L94.66 54.14 L94.24 54.5 L93.83 54.88 L93.43 55.26 L93.03 55.64 L92.64 56.03 L92.26 56.43 L91.88 56.83 L91.5 57.24 L91.14 57.66 L90.78 58.08 L90.42 58.5 L90.07 58.93 L89.73 59.37 L89.4 59.81 L89.07 60.25 L88.74 60.7 L88.43 61.16 L88.12 61.62 L87.82 62.08 L87.52 62.55 L87.24 63.02 L86.96 63.5 L86.68 63.98 L86.42 64.47 L86.16 64.96 L85.91 65.45 L85.66 65.95 L85.43 66.45 L85.2 66.95 L84.98 67.46 L84.76 67.97 L84.56 68.48 L84.36 69 L84.17 69.52 L83.99 70.04 L83.81 70.57 L83.64 71.09 L83.48 71.62 L83.33 72.16 L83.19 72.69 L83.05 73.23 L82.93 73.77 L82.81 74.31 L82.7 74.85 L82.59 75.39 L82.5 75.94 L82.41 76.49 L82.33 77.03 L82.26 77.58 L82.2 78.13 L82.15 78.68 L82.1 79.23 L82.07 79.79 L82.04 80.34 L82.02 80.89 L82 81.45 L82 82 L82 82.55 L82.02 83.11 L82.04 83.66 L82.07 84.21 L82.1 84.77 L82.15 85.32 L82.2 85.87 L82.26 86.42 L82.33 86.97 L82.41 87.51 L82.5 88.06 L82.59 88.61 L82.7 89.15 L82.81 89.69 L82.93 90.23 L83.05 90.77 L83.19 91.31 L83.33 91.84 L83.48 92.38 L83.64 92.91 L83.81 93.43 L83.99 93.96 L84.17 94.48 L84.36 95 L84.56 95.52 L84.76 96.03 L84.98 96.54 L85.2 97.05 L85.43 97.55 L85.66 98.05 L85.91 98.55 L86.16 99.04 L86.42 99.53 L86.68 100.02 L86.96 100.5 L87.24 100.98 L87.52 101.45 L87.82 101.92 L88.12 102.38 L88.43 102.84 L88.74 103.3 L89.07 103.75 L89.4 104.19 L89.73 104.63 L90.07 105.07 L90.42 105.5 L90.78 105.92 L91.14 106.34 L91.5 106.76 L91.88 107.17 L92.26 107.57 L92.64 107.97 L93.03 108.36 L93.43 108.74 L93.83 109.12 L94.24 109.5 L94.66 109.86 L95.08 110.22 L95.5 110.58 L95.93 110.93 L96.37 111.27 L96.81 111.6 L97.25 111.93 L97.7 112.26 L98.16 112.57 L98.62 112.88 L99.08 113.18 L99.55 113.48 L100.02 113.76 L100.5 114.04 L100.98 114.32 L101.47 114.58 L101.96 114.84 L102.45 115.09 L102.95 115.34 L103.45 115.57 L103.95 115.8 L104.46 116.02 L104.97 116.24 L105.48 116.44 L106 116.64 L106.52 116.83 L107.04 117.01 L107.57 117.19 L108.09 117.36 L108.62 117.52 L109.16 117.67 L109.69 117.81 L110.23 117.95 L110.77 118.07 L111.31 118.19 L111.85 118.3 L112.39 118.41 L112.94 118.5 L113.49 118.59 L114.03 118.67 L114.58 118.74 L115.13 118.8 L115.68 118.85 L116.23 118.9 L116.79 118.93 L117.34 118.96 L117.89 118.98 L118.45 119 L119 119 L119.55 119 L120.11 118.98 L120.66 118.96 L121.21 118.93 L121.77 118.9 L122.32 118.85 L122.87 118.8 L123.42 118.74 L123.97 118.67 L124.51 118.59 L125.06 118.5 L125.61 118.41 L126.15 118.3 L126.69 118.19 L127.23 118.07 L127.77 117.95 L128.31 117.81 L128.84 117.67 L129.38 117.52 L129.91 117.36 L130.43 117.19 L130.96 117.01 L131.48 116.83 L132 116.64 L132.52 116.44 L133.03 116.24 L133.54 116.02 L134.05 115.8 L134.55 115.57 L135.05 115.34 L135.55 115.09 L136.04 114.84 L136.53 114.58 L137.02 114.32 L137.5 114.04 L137.98 113.76 L138.45 113.48 L138.92 113.18 L139.38 112.88 L139.84 112.57 L140.3 112.26 L140.75 111.93 L141.19 111.6 L141.63 111.27 L142.07 110.93 L142.5 110.58 L142.92 110.22 L143.34 109.86 L143.76 109.5 L144.17 109.12 L144.57 108.74 L144.97 108.36 L145.36 107.97 L145.74 107.57 L146.12 107.17 L146.5 106.76 L146.86 106.34 L147.22 105.92 L147.58 105.5 L147.93 105.07 L148.27 104.63 L148.6 104.19 L148.93 103.75 L149.26 103.3 L149.57 102.84 L149.88 102.38 L150.18 101.92 L150.48 101.45 L150.76 100.98 L151.04 100.5 L151.32 100.02 L151.58 99.53 L151.84 99.04 L152.09 98.55 L152.34 98.05 L152.57 97.55 L152.8 97.05 L153.02 96.54 L153.24 96.03 L153.44 95.52 L153.64 95 L153.83 94.48 L154.01 93.96 L154.19 93.43 L154.36 92.91 L154.52 92.38 L154.67 91.84 L154.81 91.31 L154.95 90.77 L155.07 90.23 L155.19 89.69 L155.3 89.15 L155.41 88.61 L155.5 88.06 L155.59 87.51 L155.67 86.97 L155.74 86.42 L155.8 85.87 L155.85 85.32 L155.9 84.77 L155.93 84.21 L155.96 83.66 L155.98 83.11 L156 82.55 L156 82'/><text class='tb mid' x='120' y='180'>circle through the pole</text><text class='mid' x='120' y='197'>r = 4 cos θ</text><path class='ln' d='M262 82H458'/><path class='ln' d='M324 156V8'/><path class='lc' d='M398 82 L397.99 80.89 L397.95 79.79 L397.89 78.68 L397.8 77.58 L397.69 76.48 L397.55 75.38 L397.39 74.29 L397.21 73.2 L397 72.11 L396.76 71.03 L396.51 69.96 L396.23 68.89 L395.92 67.83 L395.59 66.78 L395.24 65.74 L394.87 64.71 L394.47 63.68 L394.05 62.67 L393.61 61.66 L393.14 60.67 L392.66 59.69 L392.15 58.72 L391.62 57.77 L391.07 56.83 L390.5 55.9 L389.92 54.99 L389.31 54.09 L388.68 53.2 L388.03 52.33 L387.37 51.48 L386.69 50.65 L385.99 49.83 L385.27 49.03 L384.54 48.24 L383.79 47.48 L383.03 46.73 L382.25 46 L381.46 45.29 L380.65 44.61 L379.83 43.94 L379 43.29 L378.15 42.66 L377.29 42.05 L376.42 41.46 L375.54 40.89 L374.65 40.35 L373.76 39.83 L372.85 39.32 L371.93 38.84 L371.01 38.39 L370.07 37.95 L369.13 37.54 L368.19 37.14 L367.24 36.78 L366.28 36.43 L365.32 36.1 L364.36 35.8 L363.39 35.53 L362.42 35.27 L361.45 35.04 L360.48 34.83 L359.51 34.64 L358.53 34.47 L357.56 34.33 L356.58 34.21 L355.61 34.11 L354.64 34.03 L353.68 33.98 L352.71 33.95 L351.75 33.94 L350.79 33.95 L349.84 33.98 L348.89 34.03 L347.95 34.11 L347.02 34.2 L346.09 34.32 L345.17 34.45 L344.26 34.61 L343.35 34.78 L342.46 34.97 L341.57 35.19 L340.69 35.42 L339.82 35.67 L338.97 35.94 L338.12 36.22 L337.29 36.53 L336.46 36.84 L335.65 37.18 L334.85 37.53 L334.07 37.9 L333.29 38.28 L332.53 38.68 L331.79 39.09 L331.05 39.52 L330.34 39.96 L329.63 40.41 L328.95 40.88 L328.27 41.36 L327.61 41.85 L326.97 42.35 L326.35 42.86 L325.73 43.38 L325.14 43.91 L324.56 44.45 L324 45 L323.45 45.56 L322.93 46.12 L322.41 46.7 L321.92 47.28 L321.44 47.86 L320.98 48.45 L320.54 49.05 L320.11 49.65 L319.7 50.26 L319.31 50.87 L318.93 51.48 L318.57 52.1 L318.23 52.71 L317.91 53.33 L317.6 53.95 L317.31 54.58 L317.03 55.2 L316.78 55.82 L316.53 56.44 L316.31 57.07 L316.1 57.68 L315.91 58.3 L315.73 58.92 L315.57 59.53 L315.42 60.14 L315.29 60.75 L315.17 61.35 L315.07 61.95 L314.98 62.54 L314.91 63.13 L314.85 63.71 L314.81 64.29 L314.78 64.86 L314.76 65.42 L314.75 65.98 L314.76 66.53 L314.77 67.07 L314.8 67.61 L314.85 68.13 L314.9 68.65 L314.96 69.16 L315.04 69.66 L315.12 70.15 L315.21 70.64 L315.31 71.11 L315.43 71.57 L315.55 72.03 L315.67 72.47 L315.81 72.9 L315.95 73.33 L316.1 73.74 L316.26 74.14 L316.42 74.53 L316.59 74.91 L316.76 75.28 L316.94 75.64 L317.12 75.99 L317.31 76.33 L317.5 76.65 L317.69 76.97 L317.88 77.27 L318.08 77.56 L318.28 77.85 L318.48 78.12 L318.69 78.38 L318.89 78.63 L319.1 78.87 L319.3 79.1 L319.5 79.31 L319.71 79.52 L319.91 79.72 L320.11 79.91 L320.31 80.08 L320.5 80.25 L320.7 80.41 L320.89 80.56 L321.08 80.7 L321.26 80.83 L321.44 80.95 L321.62 81.07 L321.79 81.17 L321.96 81.27 L322.12 81.36 L322.28 81.44 L322.43 81.52 L322.57 81.58 L322.71 81.65 L322.85 81.7 L322.98 81.75 L323.1 81.79 L323.21 81.83 L323.32 81.87 L323.41 81.89 L323.51 81.92 L323.59 81.94 L323.67 81.96 L323.74 81.97 L323.8 81.98 L323.85 81.99 L323.9 81.99 L323.93 82 L323.96 82 L323.98 82 L324 82 L324 82 L324 82 L323.98 82 L323.96 82 L323.93 82 L323.9 82.01 L323.85 82.01 L323.8 82.02 L323.74 82.03 L323.67 82.04 L323.59 82.06 L323.51 82.08 L323.41 82.11 L323.32 82.13 L323.21 82.17 L323.1 82.21 L322.98 82.25 L322.85 82.3 L322.71 82.35 L322.57 82.42 L322.43 82.48 L322.28 82.56 L322.12 82.64 L321.96 82.73 L321.79 82.83 L321.62 82.93 L321.44 83.05 L321.26 83.17 L321.08 83.3 L320.89 83.44 L320.7 83.59 L320.5 83.75 L320.31 83.92 L320.11 84.09 L319.91 84.28 L319.71 84.48 L319.5 84.69 L319.3 84.9 L319.1 85.13 L318.89 85.37 L318.69 85.62 L318.48 85.88 L318.28 86.15 L318.08 86.44 L317.88 86.73 L317.69 87.03 L317.5 87.35 L317.31 87.67 L317.12 88.01 L316.94 88.36 L316.76 88.72 L316.59 89.09 L316.42 89.47 L316.26 89.86 L316.1 90.26 L315.95 90.67 L315.81 91.1 L315.67 91.53 L315.55 91.97 L315.43 92.43 L315.31 92.89 L315.21 93.36 L315.12 93.85 L315.04 94.34 L314.96 94.84 L314.9 95.35 L314.85 95.87 L314.8 96.39 L314.77 96.93 L314.76 97.47 L314.75 98.02 L314.76 98.58 L314.78 99.14 L314.81 99.71 L314.85 100.29 L314.91 100.87 L314.98 101.46 L315.07 102.05 L315.17 102.65 L315.29 103.25 L315.42 103.86 L315.57 104.47 L315.73 105.08 L315.91 105.7 L316.1 106.32 L316.31 106.93 L316.53 107.56 L316.78 108.18 L317.03 108.8 L317.31 109.42 L317.6 110.05 L317.91 110.67 L318.23 111.29 L318.57 111.9 L318.93 112.52 L319.31 113.13 L319.7 113.74 L320.11 114.35 L320.54 114.95 L320.98 115.55 L321.44 116.14 L321.92 116.72 L322.41 117.3 L322.93 117.88 L323.45 118.44 L324 119 L324.56 119.55 L325.14 120.09 L325.73 120.62 L326.35 121.14 L326.97 121.65 L327.61 122.15 L328.27 122.64 L328.95 123.12 L329.63 123.59 L330.34 124.04 L331.05 124.48 L331.79 124.91 L332.53 125.32 L333.29 125.72 L334.07 126.1 L334.85 126.47 L335.65 126.82 L336.46 127.16 L337.29 127.47 L338.12 127.78 L338.97 128.06 L339.82 128.33 L340.69 128.58 L341.57 128.81 L342.46 129.03 L343.35 129.22 L344.26 129.39 L345.17 129.55 L346.09 129.68 L347.02 129.8 L347.95 129.89 L348.89 129.97 L349.84 130.02 L350.79 130.05 L351.75 130.06 L352.71 130.05 L353.68 130.02 L354.64 129.97 L355.61 129.89 L356.58 129.79 L357.56 129.67 L358.53 129.53 L359.51 129.36 L360.48 129.17 L361.45 128.96 L362.42 128.73 L363.39 128.47 L364.36 128.2 L365.32 127.9 L366.28 127.57 L367.24 127.22 L368.19 126.86 L369.13 126.46 L370.07 126.05 L371.01 125.61 L371.93 125.16 L372.85 124.68 L373.76 124.17 L374.65 123.65 L375.54 123.11 L376.42 122.54 L377.29 121.95 L378.15 121.34 L379 120.71 L379.83 120.06 L380.65 119.39 L381.46 118.71 L382.25 118 L383.03 117.27 L383.79 116.52 L384.54 115.76 L385.27 114.97 L385.99 114.17 L386.69 113.35 L387.37 112.52 L388.03 111.67 L388.68 110.8 L389.31 109.91 L389.92 109.01 L390.5 108.1 L391.07 107.17 L391.62 106.23 L392.15 105.28 L392.66 104.31 L393.14 103.33 L393.61 102.34 L394.05 101.33 L394.47 100.32 L394.87 99.29 L395.24 98.26 L395.59 97.22 L395.92 96.17 L396.23 95.11 L396.51 94.04 L396.76 92.97 L397 91.89 L397.21 90.8 L397.39 89.71 L397.55 88.62 L397.69 87.52 L397.8 86.42 L397.89 85.32 L397.95 84.21 L397.99 83.11 L398 82'/><text class='tb mid' x='360' y='180'>cardioid (a = b)</text><text class='mid' x='360' y='197'>r = 2 + 2 cos θ</text><path class='ln' d='M22 292H218'/><path class='ln' d='M120 366V218'/><path class='lc' d='M194 292 L193.96 290.89 L193.83 289.79 L193.63 288.69 L193.34 287.61 L192.97 286.53 L192.52 285.47 L191.99 284.43 L191.38 283.42 L190.69 282.42 L189.92 281.46 L189.08 280.53 L188.17 279.63 L187.18 278.77 L186.13 277.94 L185 277.16 L183.81 276.43 L182.55 275.74 L181.24 275.1 L179.86 274.51 L178.43 273.98 L176.94 273.5 L175.4 273.08 L173.81 272.72 L172.17 272.42 L170.5 272.18 L168.78 272.01 L167.02 271.9 L165.23 271.86 L163.42 271.89 L161.57 271.98 L159.7 272.15 L157.81 272.38 L155.9 272.68 L153.98 273.06 L152.04 273.5 L150.1 274.01 L148.16 274.6 L146.21 275.25 L144.27 275.98 L142.34 276.77 L140.41 277.63 L138.5 278.56 L136.6 279.55 L134.73 280.61 L132.87 281.73 L131.05 282.92 L129.25 284.16 L127.48 285.46 L125.75 286.82 L124.05 288.24 L122.4 289.71 L120.79 291.22 L119.22 292.79 L117.71 294.4 L116.24 296.05 L114.82 297.75 L113.46 299.48 L112.16 301.25 L110.92 303.05 L109.73 304.87 L108.61 306.73 L107.55 308.6 L106.56 310.5 L105.63 312.41 L104.77 314.34 L103.98 316.27 L103.25 318.21 L102.6 320.16 L102.01 322.1 L101.5 324.04 L101.06 325.98 L100.68 327.9 L100.38 329.81 L100.15 331.7 L99.98 333.57 L99.89 335.42 L99.86 337.23 L99.9 339.02 L100.01 340.78 L100.18 342.5 L100.42 344.17 L100.72 345.81 L101.08 347.4 L101.5 348.94 L101.98 350.43 L102.51 351.86 L103.1 353.24 L103.74 354.55 L104.43 355.81 L105.16 357 L105.94 358.13 L106.77 359.18 L107.63 360.17 L108.53 361.08 L109.46 361.92 L110.42 362.69 L111.42 363.38 L112.43 363.99 L113.47 364.52 L114.53 364.97 L115.61 365.34 L116.69 365.63 L117.79 365.83 L118.89 365.96 L120 366 L121.11 365.96 L122.21 365.83 L123.31 365.63 L124.39 365.34 L125.47 364.97 L126.53 364.52 L127.57 363.99 L128.58 363.38 L129.58 362.69 L130.54 361.92 L131.47 361.08 L132.37 360.17 L133.23 359.18 L134.06 358.13 L134.84 357 L135.57 355.81 L136.26 354.55 L136.9 353.24 L137.49 351.86 L138.02 350.43 L138.5 348.94 L138.92 347.4 L139.28 345.81 L139.58 344.17 L139.82 342.5 L139.99 340.78 L140.1 339.02 L140.14 337.23 L140.11 335.42 L140.02 333.57 L139.85 331.7 L139.62 329.81 L139.32 327.9 L138.94 325.98 L138.5 324.04 L137.99 322.1 L137.4 320.16 L136.75 318.21 L136.02 316.27 L135.23 314.34 L134.37 312.41 L133.44 310.5 L132.45 308.6 L131.39 306.73 L130.27 304.87 L129.08 303.05 L127.84 301.25 L126.54 299.48 L125.18 297.75 L123.76 296.05 L122.29 294.4 L120.78 292.79 L119.21 291.22 L117.6 289.71 L115.95 288.24 L114.25 286.82 L112.52 285.46 L110.75 284.16 L108.95 282.92 L107.13 281.73 L105.27 280.61 L103.4 279.55 L101.5 278.56 L99.59 277.63 L97.66 276.77 L95.73 275.98 L93.79 275.25 L91.84 274.6 L89.9 274.01 L87.96 273.5 L86.02 273.06 L84.1 272.68 L82.19 272.38 L80.3 272.15 L78.43 271.98 L76.58 271.89 L74.77 271.86 L72.98 271.9 L71.22 272.01 L69.5 272.18 L67.83 272.42 L66.19 272.72 L64.6 273.08 L63.06 273.5 L61.57 273.98 L60.14 274.51 L58.76 275.1 L57.45 275.74 L56.19 276.43 L55 277.16 L53.87 277.94 L52.82 278.77 L51.83 279.63 L50.92 280.53 L50.08 281.46 L49.31 282.42 L48.62 283.42 L48.01 284.43 L47.48 285.47 L47.03 286.53 L46.66 287.61 L46.37 288.69 L46.17 289.79 L46.04 290.89 L46 292 L46.04 293.11 L46.17 294.21 L46.37 295.31 L46.66 296.39 L47.03 297.47 L47.48 298.53 L48.01 299.57 L48.62 300.58 L49.31 301.58 L50.08 302.54 L50.92 303.47 L51.83 304.37 L52.82 305.23 L53.87 306.06 L55 306.84 L56.19 307.57 L57.45 308.26 L58.76 308.9 L60.14 309.49 L61.57 310.02 L63.06 310.5 L64.6 310.92 L66.19 311.28 L67.83 311.58 L69.5 311.82 L71.22 311.99 L72.98 312.1 L74.77 312.14 L76.58 312.11 L78.43 312.02 L80.3 311.85 L82.19 311.62 L84.1 311.32 L86.02 310.94 L87.96 310.5 L89.9 309.99 L91.84 309.4 L93.79 308.75 L95.73 308.02 L97.66 307.23 L99.59 306.37 L101.5 305.44 L103.4 304.45 L105.27 303.39 L107.13 302.27 L108.95 301.08 L110.75 299.84 L112.52 298.54 L114.25 297.18 L115.95 295.76 L117.6 294.29 L119.21 292.78 L120.78 291.21 L122.29 289.6 L123.76 287.95 L125.18 286.25 L126.54 284.52 L127.84 282.75 L129.08 280.95 L130.27 279.13 L131.39 277.27 L132.45 275.4 L133.44 273.5 L134.37 271.59 L135.23 269.66 L136.02 267.73 L136.75 265.79 L137.4 263.84 L137.99 261.9 L138.5 259.96 L138.94 258.02 L139.32 256.1 L139.62 254.19 L139.85 252.3 L140.02 250.43 L140.11 248.58 L140.14 246.77 L140.1 244.98 L139.99 243.22 L139.82 241.5 L139.58 239.83 L139.28 238.19 L138.92 236.6 L138.5 235.06 L138.02 233.57 L137.49 232.14 L136.9 230.76 L136.26 229.45 L135.57 228.19 L134.84 227 L134.06 225.87 L133.23 224.82 L132.37 223.83 L131.47 222.92 L130.54 222.08 L129.58 221.31 L128.58 220.62 L127.57 220.01 L126.53 219.48 L125.47 219.03 L124.39 218.66 L123.31 218.37 L122.21 218.17 L121.11 218.04 L120 218 L118.89 218.04 L117.79 218.17 L116.69 218.37 L115.61 218.66 L114.53 219.03 L113.47 219.48 L112.43 220.01 L111.42 220.62 L110.42 221.31 L109.46 222.08 L108.53 222.92 L107.63 223.83 L106.77 224.82 L105.94 225.87 L105.16 227 L104.43 228.19 L103.74 229.45 L103.1 230.76 L102.51 232.14 L101.98 233.57 L101.5 235.06 L101.08 236.6 L100.72 238.19 L100.42 239.83 L100.18 241.5 L100.01 243.22 L99.9 244.98 L99.86 246.77 L99.89 248.58 L99.98 250.43 L100.15 252.3 L100.38 254.19 L100.68 256.1 L101.06 258.02 L101.5 259.96 L102.01 261.9 L102.6 263.84 L103.25 265.79 L103.98 267.73 L104.77 269.66 L105.63 271.59 L106.56 273.5 L107.55 275.4 L108.61 277.27 L109.73 279.13 L110.92 280.95 L112.16 282.75 L113.46 284.52 L114.82 286.25 L116.24 287.95 L117.71 289.6 L119.22 291.21 L120.79 292.78 L122.4 294.29 L124.05 295.76 L125.75 297.18 L127.48 298.54 L129.25 299.84 L131.05 301.08 L132.87 302.27 L134.73 303.39 L136.6 304.45 L138.5 305.44 L140.41 306.37 L142.34 307.23 L144.27 308.02 L146.21 308.75 L148.16 309.4 L150.1 309.99 L152.04 310.5 L153.98 310.94 L155.9 311.32 L157.81 311.62 L159.7 311.85 L161.57 312.02 L163.42 312.11 L165.23 312.14 L167.02 312.1 L168.78 311.99 L170.5 311.82 L172.17 311.58 L173.81 311.28 L175.4 310.92 L176.94 310.5 L178.43 310.02 L179.86 309.49 L181.24 308.9 L182.55 308.26 L183.81 307.57 L185 306.84 L186.13 306.06 L187.18 305.23 L188.17 304.37 L189.08 303.47 L189.92 302.54 L190.69 301.58 L191.38 300.58 L191.99 299.57 L192.52 298.53 L192.97 297.47 L193.34 296.39 L193.63 295.31 L193.83 294.21 L193.96 293.11 L194 292'/><text class='tb mid' x='120' y='390'>rose: n = 2, 4 petals</text><text class='mid' x='120' y='407'>r = 3 cos 2θ</text><path class='ln' d='M262 292H458'/><path class='ln' d='M360 366V218'/><path class='lc' d='M434 292 L433.99 291.35 L433.97 290.71 L433.92 290.06 L433.86 289.42 L433.79 288.78 L433.7 288.14 L433.59 287.5 L433.46 286.86 L433.32 286.23 L433.16 285.6 L432.98 284.97 L432.79 284.35 L432.58 283.73 L432.35 283.12 L432.11 282.51 L431.85 281.9 L431.57 281.3 L431.28 280.71 L430.97 280.12 L430.64 279.54 L430.3 278.97 L429.95 278.4 L429.57 277.85 L429.18 277.29 L428.78 276.75 L428.36 276.22 L427.92 275.69 L427.47 275.18 L427 274.67 L426.52 274.18 L426.02 273.69 L425.51 273.22 L424.98 272.75 L424.43 272.3 L423.88 271.86 L423.3 271.43 L422.71 271.02 L422.11 270.61 L421.49 270.22 L420.86 269.85 L420.22 269.49 L419.56 269.14 L418.88 268.81 L418.19 268.49 L417.49 268.19 L416.77 267.9 L416.04 267.63 L415.3 267.38 L414.54 267.14 L413.77 266.93 L412.99 266.73 L412.19 266.55 L411.38 266.39 L410.55 266.24 L409.71 266.12 L408.86 266.02 L407.99 265.94 L407.11 265.88 L406.22 265.85 L405.32 265.84 L404.4 265.85 L403.46 265.89 L402.51 265.95 L401.55 266.04 L400.57 266.15 L399.58 266.3 L398.57 266.47 L397.55 266.67 L396.51 266.91 L395.45 267.18 L394.37 267.48 L393.28 267.82 L392.16 268.2 L391.03 268.62 L389.87 269.08 L388.68 269.59 L387.47 270.15 L386.22 270.77 L384.94 271.44 L383.62 272.18 L382.26 272.99 L380.83 273.89 L379.35 274.88 L377.78 275.99 L376.11 277.24 L374.29 278.67 L372.28 280.35 L369.94 282.4 L366.97 285.15 L360 292M360 292 L353.03 285.15 L350.06 282.4 L347.72 280.35 L345.71 278.67 L343.89 277.24 L342.22 275.99 L340.65 274.88 L339.17 273.89 L337.74 272.99 L336.38 272.18 L335.06 271.44 L333.78 270.77 L332.53 270.15 L331.32 269.59 L330.13 269.08 L328.97 268.62 L327.84 268.2 L326.72 267.82 L325.63 267.48 L324.55 267.18 L323.49 266.91 L322.45 266.67 L321.43 266.47 L320.42 266.3 L319.43 266.15 L318.45 266.04 L317.49 265.95 L316.54 265.89 L315.6 265.85 L314.68 265.84 L313.78 265.85 L312.89 265.88 L312.01 265.94 L311.14 266.02 L310.29 266.12 L309.45 266.24 L308.62 266.39 L307.81 266.55 L307.01 266.73 L306.23 266.93 L305.46 267.14 L304.7 267.38 L303.96 267.63 L303.23 267.9 L302.51 268.19 L301.81 268.49 L301.12 268.81 L300.44 269.14 L299.78 269.49 L299.14 269.85 L298.51 270.22 L297.89 270.61 L297.29 271.02 L296.7 271.43 L296.12 271.86 L295.57 272.3 L295.02 272.75 L294.49 273.22 L293.98 273.69 L293.48 274.18 L293 274.67 L292.53 275.18 L292.08 275.69 L291.64 276.22 L291.22 276.75 L290.82 277.29 L290.43 277.85 L290.05 278.4 L289.7 278.97 L289.36 279.54 L289.03 280.12 L288.72 280.71 L288.43 281.3 L288.15 281.9 L287.89 282.51 L287.65 283.12 L287.42 283.73 L287.21 284.35 L287.02 284.97 L286.84 285.6 L286.68 286.23 L286.54 286.86 L286.41 287.5 L286.3 288.14 L286.21 288.78 L286.14 289.42 L286.08 290.06 L286.03 290.71 L286.01 291.35 L286 292 L286.01 292.65 L286.03 293.29 L286.08 293.94 L286.14 294.58 L286.21 295.22 L286.3 295.86 L286.41 296.5 L286.54 297.14 L286.68 297.77 L286.84 298.4 L287.02 299.03 L287.21 299.65 L287.42 300.27 L287.65 300.88 L287.89 301.49 L288.15 302.1 L288.43 302.7 L288.72 303.29 L289.03 303.88 L289.36 304.46 L289.7 305.03 L290.05 305.6 L290.43 306.15 L290.82 306.71 L291.22 307.25 L291.64 307.78 L292.08 308.31 L292.53 308.82 L293 309.33 L293.48 309.82 L293.98 310.31 L294.49 310.78 L295.02 311.25 L295.57 311.7 L296.12 312.14 L296.7 312.57 L297.29 312.98 L297.89 313.39 L298.51 313.78 L299.14 314.15 L299.78 314.51 L300.44 314.86 L301.12 315.19 L301.81 315.51 L302.51 315.81 L303.23 316.1 L303.96 316.37 L304.7 316.62 L305.46 316.86 L306.23 317.07 L307.01 317.27 L307.81 317.45 L308.62 317.61 L309.45 317.76 L310.29 317.88 L311.14 317.98 L312.01 318.06 L312.89 318.12 L313.78 318.15 L314.68 318.16 L315.6 318.15 L316.54 318.11 L317.49 318.05 L318.45 317.96 L319.43 317.85 L320.42 317.7 L321.43 317.53 L322.45 317.33 L323.49 317.09 L324.55 316.82 L325.63 316.52 L326.72 316.18 L327.84 315.8 L328.97 315.38 L330.13 314.92 L331.32 314.41 L332.53 313.85 L333.78 313.23 L335.06 312.56 L336.38 311.82 L337.74 311.01 L339.17 310.11 L340.65 309.12 L342.22 308.01 L343.89 306.76 L345.71 305.33 L347.72 303.65 L350.06 301.6 L353.03 298.85 L360 292M360 292 L366.97 298.85 L369.94 301.6 L372.28 303.65 L374.29 305.33 L376.11 306.76 L377.78 308.01 L379.35 309.12 L380.83 310.11 L382.26 311.01 L383.62 311.82 L384.94 312.56 L386.22 313.23 L387.47 313.85 L388.68 314.41 L389.87 314.92 L391.03 315.38 L392.16 315.8 L393.28 316.18 L394.37 316.52 L395.45 316.82 L396.51 317.09 L397.55 317.33 L398.57 317.53 L399.58 317.7 L400.57 317.85 L401.55 317.96 L402.51 318.05 L403.46 318.11 L404.4 318.15 L405.32 318.16 L406.22 318.15 L407.11 318.12 L407.99 318.06 L408.86 317.98 L409.71 317.88 L410.55 317.76 L411.38 317.61 L412.19 317.45 L412.99 317.27 L413.77 317.07 L414.54 316.86 L415.3 316.62 L416.04 316.37 L416.77 316.1 L417.49 315.81 L418.19 315.51 L418.88 315.19 L419.56 314.86 L420.22 314.51 L420.86 314.15 L421.49 313.78 L422.11 313.39 L422.71 312.98 L423.3 312.57 L423.88 312.14 L424.43 311.7 L424.98 311.25 L425.51 310.78 L426.02 310.31 L426.52 309.82 L427 309.33 L427.47 308.82 L427.92 308.31 L428.36 307.78 L428.78 307.25 L429.18 306.71 L429.57 306.15 L429.95 305.6 L430.3 305.03 L430.64 304.46 L430.97 303.88 L431.28 303.29 L431.57 302.7 L431.85 302.1 L432.11 301.49 L432.35 300.88 L432.58 300.27 L432.79 299.65 L432.98 299.03 L433.16 298.4 L433.32 297.77 L433.46 297.14 L433.59 296.5 L433.7 295.86 L433.79 295.22 L433.86 294.58 L433.92 293.94 L433.97 293.29 L433.99 292.65 L434 292'/><text class='tb mid' x='360' y='390'>lemniscate</text><text class='mid' x='360' y='407'>r² = 9 cos 2θ</text></svg>",
+    "cap": "The shapes to know on sight."
+   },
+   "table": {
+    "h": "the chart to memorize",
+    "cols": [
+     "family",
+     "equation",
+     "how to read it"
+    ],
+    "rows": [
+     [
+      "circle",
+      "r = a",
+      "centered at the pole, radius |a|"
+     ],
+     [
+      "circle",
+      "r = a cos θ, r = a sin θ",
+      "through the pole; diameter |a| on the x-axis (cos) or y-axis (sin)"
+     ],
+     [
+      "**cardioid**",
+      "r = a ± b cos θ (or sin) with a = b",
+      "heart shape; the dent touches the pole"
+     ],
+     [
+      "**limaçon**",
+      "a/b < 1",
+      "inner loop"
+     ],
+     [
+      "limaçon",
+      "1 < a/b < 2",
+      "dimple, no loop"
+     ],
+     [
+      "limaçon",
+      "a/b ≥ 2",
+      "round, no dent"
+     ],
+     [
+      "**rose curve**",
+      "r = a cos nθ, r = a sin nθ",
+      "n odd: n petals. n even: 2n petals"
+     ],
+     [
+      "**lemniscate**",
+      "r² = a² cos 2θ, r² = a² sin 2θ",
+      "tips at |a|; cos lies on the x-axis, sin on the 45° line"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Name the graph: r = 2 + 5 cos θ.",
+     "a": "Limaçon with an inner loop",
+     "why": "a/b = 2/5 < 1. A cardioid needs a = b."
+    },
+    {
+     "q": "How many petals: r = 6 cos 4θ? r = 3 sin 5θ?",
+     "a": "8 petals; 5 petals",
+     "why": "An even n doubles (2 · 4 = 8); an odd n doesn't."
+    }
+   ],
+   "watch": [
+    "r = 7 is a circle of radius 7, not a line.",
+    "Spirals (r = aθ) won't be on this test."
+   ],
+   "terms": [
+    "word bank",
+    "circle",
+    "cardioid",
+    "limaçon",
+    "rose curve",
+    "lemniscate"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Complex numbers and trig form (recap)",
+   "d": "first half of the unit; the complex numbers & trig form guide has the full lessons",
+   "p": [
+    "Every real number and every imaginary number is **complex**. Pull i out before touching radicals, and divide with the **conjugate**."
+   ],
+   "table": {
+    "cols": [
+     "type",
+     "do this",
+     "example"
+    ],
+    "rows": [
+     [
+      "classify",
+      "real: b = 0. Pure imaginary: a = 0, b ≠ 0. Nonreal: b ≠ 0. All are complex.",
+      "3i: pure imaginary, nonreal, complex"
+     ],
+     [
+      "radicals",
+      "√−a = i√a first, then multiply",
+      "√−45 · √−5 = −15"
+     ],
+     [
+      "divide",
+      "times the conjugate over the conjugate",
+      "(2 + 5i)/(3 − 4i) = −14/25 + (23/25)i"
+     ],
+     [
+      "powers of i",
+      "exponent mod 4: i, −1, −i, 1",
+      "i⁻¹⁴ = i² = −1"
+     ],
+     [
+      "quadratics",
+      "set = 0, quadratic formula, √(negative) = i√",
+      "5x² + 2x + 1 = 0: x = −1/5 ± (2/5)i"
+     ],
+     [
+      "to trig form",
+      "r = √(x² + y²), θ from a sketch",
+      "−7i = 7 cis 270°"
+     ],
+     [
+      "to rectangular",
+      "exact cos and sin, then distribute r",
+      "12 cis(−60°) = 6 − 6√3 i"
+     ],
+     [
+      "Julia set",
+      "square, subtract 1, repeat; any |z| over 2 means out",
+      "z = 0: −1, 0, −1, … stays under 2, so in"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Simplify √−48 / √3.",
+     "a": "4i",
+     "why": "4i√3 / √3 = 4i. Pull i out first every time; for products, skipping that step flips the sign."
+    },
+    {
+     "q": "Simplify 1 / i⁻²³.",
+     "a": "−i",
+     "why": "1 / i⁻²³ = i²³. 23 leaves remainder 3 after dividing by 4, and i³ = −i."
+    }
+   ],
+   "watch": [
+    "√−a · √−b is −√(ab), not √(ab).",
+    "Real numbers are complex too: list complex for every number."
+   ],
+   "terms": [
+    "complex",
+    "pure imaginary",
+    "nonreal complex",
+    "conjugate",
+    "r cis θ"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Product, quotient, De Moivre, roots (recap)",
+   "d": "same skills as the theorems quiz; that guide has the full lessons",
+   "rows": [
+    [
+     "product",
+     "multiply the r's, add the angles"
+    ],
+    [
+     "quotient",
+     "divide the r's, subtract the angles"
+    ],
+    [
+     "power",
+     "[r cis θ]ⁿ = rⁿ cis nθ (**De Moivre's theorem**)"
+    ],
+    [
+     "roots",
+     "ⁿ√r cis((θ + 360°k)/n), k = 0 to n − 1"
+    ]
+   ],
+   "table": {
+    "cols": [
+     "problem",
+     "trig form",
+     "answer"
+    ],
+    "rows": [
+     [
+      "(4 cis 200°)(3 cis 130°)",
+      "12 cis 330°",
+      "6√3 − 6i"
+     ],
+     [
+      "(3√2 + 3√6 i) / (√2 − √6 i)",
+      "6√2 cis 60° ÷ 2√2 cis 300° = 3 cis 120°",
+      "−3/2 + (3√3/2)i"
+     ],
+     [
+      "(2 − 2i)⁵",
+      "(2√2)⁵ cis 1575° = 128√2 cis 135°",
+      "−128 + 128i"
+     ],
+     [
+      "x³ = 4 + 4√3 i",
+      "8 cis 60°: cube root of 8 is 2, 60° ÷ 3 = 20°",
+      "2 cis 20°, 2 cis 140°, 2 cis 260°"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Is z = −1 + i in the Mandelbrot set?",
+     "a": "No",
+     "why": "z² + z = −1 − i, then (−1 − i)² + z = −1 + 3i, and √10 is over 2."
+    },
+    {
+     "q": "Solve x³ + 64 = 0 in trig form.",
+     "a": "4 cis 60°, 4 cis 180°, 4 cis 300°",
+     "why": "x³ = −64 = 64 cis 180°. x = −4 is only one of the three."
+    }
+   ],
+   "watch": [
+    "Isolate xⁿ first; the constant changes sign when it moves.",
+    "Angle over 360°: subtract 360°. Negative angle: add 360°."
+   ],
+   "terms": [
+    "product theorem",
+    "quotient theorem",
+    "De Moivre's theorem",
+    "nth roots",
+    "Mandelbrot set"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Sketching by hand",
+   "d": "plot the axis crossings, then connect",
+   "p": [
+    "Plug in θ = 0°, 90°, 180°, 270°, and add 30° steps if the shape is unclear. A sketch needs the right crossings and the right maximum, not perfect curves."
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 420 250' role='img' aria-label='Graph of r = 2 + 4 sin θ, a limaçon with an inner loop opening upward. The outer loop reaches 6 on the positive y-axis and crosses the x-axis at 2 and −2. At 270° r = −2, which plots at the point (0, 2), the top of the small inner loop.'><path class='ln' d='M20 196H320' marker-end='url(#ah)'/><path class='ln' d='M170 240V10' marker-end='url(#ah)'/><text class='tm end' x='320' y='214'>x</text><text class='tm end' x='162' y='22'>y</text><path class='lc' d='M224 196 L224.94 195.52 L225.88 195.02 L226.81 194.51 L227.73 193.98 L228.66 193.44 L229.57 192.88 L230.48 192.3 L231.38 191.71 L232.28 191.1 L233.17 190.47 L234.06 189.83 L234.93 189.18 L235.8 188.5 L236.66 187.82 L237.51 187.11 L238.36 186.39 L239.19 185.66 L240.02 184.91 L240.84 184.15 L241.65 183.37 L242.45 182.57 L243.24 181.76 L244.02 180.94 L244.78 180.1 L245.54 179.25 L246.29 178.39 L247.02 177.51 L247.75 176.62 L248.46 175.71 L249.16 174.79 L249.85 173.86 L250.52 172.91 L251.19 171.95 L251.84 170.98 L252.47 170 L253.1 169 L253.71 167.99 L254.3 166.97 L254.89 165.94 L255.45 164.9 L256.01 163.84 L256.55 162.78 L257.07 161.7 L257.58 160.62 L258.07 159.52 L258.55 158.41 L259.01 157.3 L259.46 156.17 L259.89 155.03 L260.31 153.89 L260.71 152.74 L261.09 151.57 L261.45 150.4 L261.8 149.22 L262.13 148.04 L262.45 146.84 L262.74 145.64 L263.02 144.44 L263.29 143.22 L263.53 142 L263.76 140.77 L263.97 139.54 L264.16 138.3 L264.33 137.06 L264.48 135.81 L264.62 134.55 L264.74 133.29 L264.84 132.03 L264.92 130.77 L264.98 129.5 L265.02 128.22 L265.04 126.95 L265.05 125.67 L265.03 124.39 L265 123.1 L264.95 121.82 L264.88 120.53 L264.79 119.24 L264.68 117.96 L264.55 116.67 L264.4 115.38 L264.23 114.09 L264.04 112.8 L263.83 111.51 L263.61 110.22 L263.36 108.94 L263.1 107.65 L262.81 106.37 L262.51 105.09 L262.18 103.82 L261.84 102.54 L261.48 101.27 L261.1 100 L260.7 98.74 L260.28 97.48 L259.84 96.23 L259.38 94.98 L258.9 93.73 L258.41 92.49 L257.89 91.26 L257.36 90.03 L256.8 88.81 L256.23 87.59 L255.64 86.38 L255.03 85.18 L254.41 83.99 L253.76 82.8 L253.1 81.63 L252.42 80.46 L251.72 79.3 L251 78.15 L250.26 77 L249.51 75.87 L248.74 74.75 L247.95 73.64 L247.15 72.53 L246.33 71.44 L245.49 70.36 L244.64 69.29 L243.77 68.23 L242.88 67.19 L241.97 66.15 L241.05 65.13 L240.12 64.12 L239.17 63.13 L238.2 62.15 L237.22 61.18 L236.22 60.22 L235.21 59.28 L234.19 58.35 L233.15 57.43 L232.09 56.54 L231.03 55.65 L229.94 54.78 L228.85 53.93 L227.74 53.09 L226.62 52.26 L225.48 51.46 L224.34 50.67 L223.18 49.89 L222.01 49.13 L220.83 48.39 L219.63 47.66 L218.43 46.96 L217.21 46.27 L215.98 45.59 L214.75 44.94 L213.5 44.3 L212.24 43.68 L210.98 43.07 L209.7 42.49 L208.42 41.92 L207.12 41.38 L205.82 40.85 L204.51 40.34 L203.19 39.85 L201.87 39.38 L200.53 38.92 L199.19 38.49 L197.85 38.08 L196.49 37.68 L195.13 37.31 L193.77 36.95 L192.4 36.62 L191.02 36.3 L189.64 36.01 L188.26 35.73 L186.87 35.48 L185.48 35.24 L184.08 35.03 L182.68 34.83 L181.28 34.66 L179.88 34.5 L178.47 34.37 L177.06 34.26 L175.65 34.16 L174.24 34.09 L172.83 34.04 L171.41 34.01 L170 34 L168.59 34.01 L167.17 34.04 L165.76 34.09 L164.35 34.16 L162.94 34.26 L161.53 34.37 L160.12 34.5 L158.72 34.66 L157.32 34.83 L155.92 35.03 L154.52 35.24 L153.13 35.48 L151.74 35.73 L150.36 36.01 L148.98 36.3 L147.6 36.62 L146.23 36.95 L144.87 37.31 L143.51 37.68 L142.15 38.08 L140.81 38.49 L139.47 38.92 L138.13 39.38 L136.81 39.85 L135.49 40.34 L134.18 40.85 L132.88 41.38 L131.58 41.92 L130.3 42.49 L129.02 43.07 L127.76 43.68 L126.5 44.3 L125.25 44.94 L124.02 45.59 L122.79 46.27 L121.57 46.96 L120.37 47.66 L119.17 48.39 L117.99 49.13 L116.82 49.89 L115.66 50.67 L114.52 51.46 L113.38 52.26 L112.26 53.09 L111.15 53.93 L110.06 54.78 L108.97 55.65 L107.91 56.54 L106.85 57.43 L105.81 58.35 L104.79 59.28 L103.78 60.22 L102.78 61.18 L101.8 62.15 L100.83 63.13 L99.88 64.12 L98.95 65.13 L98.03 66.15 L97.12 67.19 L96.23 68.23 L95.36 69.29 L94.51 70.36 L93.67 71.44 L92.85 72.53 L92.05 73.64 L91.26 74.75 L90.49 75.87 L89.74 77 L89 78.15 L88.28 79.3 L87.58 80.46 L86.9 81.63 L86.24 82.8 L85.59 83.99 L84.97 85.18 L84.36 86.38 L83.77 87.59 L83.2 88.81 L82.64 90.03 L82.11 91.26 L81.59 92.49 L81.1 93.73 L80.62 94.98 L80.16 96.23 L79.72 97.48 L79.3 98.74 L78.9 100 L78.52 101.27 L78.16 102.54 L77.82 103.82 L77.49 105.09 L77.19 106.37 L76.9 107.65 L76.64 108.94 L76.39 110.22 L76.17 111.51 L75.96 112.8 L75.77 114.09 L75.6 115.38 L75.45 116.67 L75.32 117.96 L75.21 119.24 L75.12 120.53 L75.05 121.82 L75 123.1 L74.97 124.39 L74.95 125.67 L74.96 126.95 L74.98 128.22 L75.02 129.5 L75.08 130.77 L75.16 132.03 L75.26 133.29 L75.38 134.55 L75.52 135.81 L75.67 137.06 L75.84 138.3 L76.03 139.54 L76.24 140.77 L76.47 142 L76.71 143.22 L76.98 144.44 L77.26 145.64 L77.55 146.84 L77.87 148.04 L78.2 149.22 L78.55 150.4 L78.91 151.57 L79.29 152.74 L79.69 153.89 L80.11 155.03 L80.54 156.17 L80.99 157.3 L81.45 158.41 L81.93 159.52 L82.42 160.62 L82.93 161.7 L83.45 162.78 L83.99 163.84 L84.55 164.9 L85.11 165.94 L85.7 166.97 L86.29 167.99 L86.9 169 L87.53 170 L88.16 170.98 L88.81 171.95 L89.48 172.91 L90.15 173.86 L90.84 174.79 L91.54 175.71 L92.25 176.62 L92.98 177.51 L93.71 178.39 L94.46 179.25 L95.22 180.1 L95.98 180.94 L96.76 181.76 L97.55 182.57 L98.35 183.37 L99.16 184.15 L99.98 184.91 L100.81 185.66 L101.64 186.39 L102.49 187.11 L103.34 187.82 L104.2 188.5 L105.07 189.18 L105.94 189.83 L106.83 190.47 L107.72 191.1 L108.62 191.71 L109.52 192.3 L110.43 192.88 L111.34 193.44 L112.27 193.98 L113.19 194.51 L114.12 195.02 L115.06 195.52 L116 196 L116.94 196.46 L117.89 196.91 L118.84 197.34 L119.8 197.75 L120.76 198.15 L121.72 198.53 L122.68 198.89 L123.65 199.24 L124.61 199.57 L125.58 199.89 L126.55 200.18 L127.52 200.46 L128.49 200.73 L129.47 200.98 L130.44 201.21 L131.41 201.42 L132.38 201.62 L133.35 201.8 L134.32 201.97 L135.29 202.12 L136.26 202.25 L137.22 202.37 L138.18 202.47 L139.14 202.56 L140.1 202.63 L141.06 202.68 L142.01 202.72 L142.96 202.74 L143.9 202.75 L144.84 202.74 L145.78 202.72 L146.71 202.68 L147.63 202.63 L148.56 202.56 L149.47 202.47 L150.38 202.37 L151.29 202.26 L152.19 202.13 L153.08 201.99 L153.97 201.84 L154.85 201.67 L155.72 201.48 L156.59 201.28 L157.44 201.07 L158.29 200.85 L159.14 200.61 L159.97 200.36 L160.8 200.1 L161.62 199.82 L162.43 199.53 L163.23 199.23 L164.02 198.92 L164.8 198.59 L165.57 198.26 L166.34 197.91 L167.09 197.55 L167.83 197.18 L168.57 196.8 L169.29 196.4 L170 196 L170.7 195.59 L171.39 195.16 L172.07 194.73 L172.74 194.29 L173.4 193.84 L174.04 193.37 L174.68 192.9 L175.3 192.43 L175.91 191.94 L176.51 191.44 L177.1 190.94 L177.67 190.43 L178.23 189.91 L178.78 189.38 L179.32 188.85 L179.84 188.31 L180.36 187.76 L180.85 187.21 L181.34 186.65 L181.81 186.09 L182.27 185.52 L182.72 184.94 L183.15 184.36 L183.57 183.78 L183.98 183.19 L184.38 182.59 L184.76 182 L185.12 181.4 L185.48 180.79 L185.82 180.18 L186.14 179.57 L186.46 178.96 L186.75 178.34 L187.04 177.73 L187.31 177.11 L187.57 176.49 L187.82 175.86 L188.05 175.24 L188.26 174.61 L188.47 173.99 L188.66 173.36 L188.84 172.74 L189 172.11 L189.15 171.49 L189.29 170.86 L189.41 170.24 L189.52 169.62 L189.62 169 L189.7 168.38 L189.77 167.77 L189.83 167.15 L189.87 166.54 L189.9 165.93 L189.92 165.32 L189.93 164.72 L189.92 164.12 L189.9 163.53 L189.87 162.94 L189.82 162.35 L189.77 161.77 L189.7 161.19 L189.61 160.61 L189.52 160.05 L189.42 159.48 L189.3 158.93 L189.17 158.37 L189.03 157.83 L188.88 157.29 L188.72 156.76 L188.55 156.23 L188.36 155.71 L188.17 155.2 L187.96 154.69 L187.74 154.2 L187.52 153.71 L187.28 153.22 L187.04 152.75 L186.78 152.28 L186.52 151.83 L186.24 151.38 L185.96 150.94 L185.67 150.51 L185.36 150.08 L185.05 149.67 L184.74 149.27 L184.41 148.87 L184.07 148.49 L183.73 148.11 L183.38 147.75 L183.02 147.39 L182.66 147.05 L182.29 146.72 L181.91 146.39 L181.52 146.08 L181.13 145.78 L180.74 145.49 L180.33 145.21 L179.93 144.94 L179.51 144.68 L179.09 144.44 L178.67 144.2 L178.24 143.98 L177.81 143.77 L177.37 143.57 L176.93 143.38 L176.48 143.2 L176.03 143.04 L175.58 142.88 L175.13 142.74 L174.67 142.61 L174.21 142.5 L173.75 142.39 L173.28 142.3 L172.82 142.22 L172.35 142.15 L171.88 142.1 L171.41 142.06 L170.94 142.02 L170.47 142.01 L170 142 L169.53 142.01 L169.06 142.02 L168.59 142.06 L168.12 142.1 L167.65 142.15 L167.18 142.22 L166.72 142.3 L166.25 142.39 L165.79 142.5 L165.33 142.61 L164.87 142.74 L164.42 142.88 L163.97 143.04 L163.52 143.2 L163.07 143.38 L162.63 143.57 L162.19 143.77 L161.76 143.98 L161.33 144.2 L160.91 144.44 L160.49 144.68 L160.07 144.94 L159.67 145.21 L159.26 145.49 L158.87 145.78 L158.48 146.08 L158.09 146.39 L157.71 146.72 L157.34 147.05 L156.98 147.39 L156.62 147.75 L156.27 148.11 L155.93 148.49 L155.59 148.87 L155.26 149.27 L154.95 149.67 L154.64 150.08 L154.33 150.51 L154.04 150.94 L153.76 151.38 L153.48 151.83 L153.22 152.28 L152.96 152.75 L152.72 153.22 L152.48 153.71 L152.26 154.2 L152.04 154.69 L151.83 155.2 L151.64 155.71 L151.45 156.23 L151.28 156.76 L151.12 157.29 L150.97 157.83 L150.83 158.37 L150.7 158.93 L150.58 159.48 L150.48 160.05 L150.39 160.61 L150.3 161.19 L150.23 161.77 L150.18 162.35 L150.13 162.94 L150.1 163.53 L150.08 164.12 L150.07 164.72 L150.08 165.32 L150.1 165.93 L150.13 166.54 L150.17 167.15 L150.23 167.77 L150.3 168.38 L150.38 169 L150.48 169.62 L150.59 170.24 L150.71 170.86 L150.85 171.49 L151 172.11 L151.16 172.74 L151.34 173.36 L151.53 173.99 L151.74 174.61 L151.95 175.24 L152.18 175.86 L152.43 176.49 L152.69 177.11 L152.96 177.73 L153.25 178.34 L153.54 178.96 L153.86 179.57 L154.18 180.18 L154.52 180.79 L154.88 181.4 L155.24 182 L155.62 182.59 L156.02 183.19 L156.43 183.78 L156.85 184.36 L157.28 184.94 L157.73 185.52 L158.19 186.09 L158.66 186.65 L159.15 187.21 L159.64 187.76 L160.16 188.31 L160.68 188.85 L161.22 189.38 L161.77 189.91 L162.33 190.43 L162.9 190.94 L163.49 191.44 L164.09 191.94 L164.7 192.43 L165.32 192.9 L165.96 193.37 L166.6 193.84 L167.26 194.29 L167.93 194.73 L168.61 195.16 L169.3 195.59 L170 196 L170.71 196.4 L171.43 196.8 L172.17 197.18 L172.91 197.55 L173.66 197.91 L174.43 198.26 L175.2 198.59 L175.98 198.92 L176.77 199.23 L177.57 199.53 L178.38 199.82 L179.2 200.1 L180.03 200.36 L180.86 200.61 L181.71 200.85 L182.56 201.07 L183.41 201.28 L184.28 201.48 L185.15 201.67 L186.03 201.84 L186.92 201.99 L187.81 202.13 L188.71 202.26 L189.62 202.37 L190.53 202.47 L191.44 202.56 L192.37 202.63 L193.29 202.68 L194.22 202.72 L195.16 202.74 L196.1 202.75 L197.04 202.74 L197.99 202.72 L198.94 202.68 L199.9 202.63 L200.86 202.56 L201.82 202.47 L202.78 202.37 L203.74 202.25 L204.71 202.12 L205.68 201.97 L206.65 201.8 L207.62 201.62 L208.59 201.42 L209.56 201.21 L210.53 200.98 L211.51 200.73 L212.48 200.46 L213.45 200.18 L214.42 199.89 L215.39 199.57 L216.35 199.24 L217.32 198.89 L218.28 198.53 L219.24 198.15 L220.2 197.75 L221.16 197.34 L222.11 196.91 L223.06 196.46 L224 196'/><circle class='fi' cx='170' cy='34' r='4'/><text class='tb' x='182' y='28'>r = 6 at 90°</text><circle class='fi' cx='224' cy='196' r='4'/><text class='tm' x='230' y='212'>2 at 0°</text><circle class='fi' cx='116' cy='196' r='4'/><text class='tm end' x='110' y='212'>2 at 180°</text><circle class='fa' cx='170' cy='142' r='5'/><path class='la' d='M178 140L266 126'/><text class='ta' x='270' y='124'>r = −2 at 270°</text><text class='tm' x='270' y='140'>plots at (0, 2):</text><text class='tm' x='270' y='156'>the inner loop</text></svg>",
+    "cap": "a/b = 1/2 < 1, so a **limaçon** with an inner loop. The loop is where r is negative, from 210° to 330°."
+   },
+   "table": {
+    "h": "r = 2 + 4 sin θ",
+    "cols": [
+     "θ",
+     "0°",
+     "90°",
+     "180°",
+     "270°"
+    ],
+    "rows": [
+     [
+      "r",
+      "2",
+      "6",
+      "2",
+      "−2"
+     ],
+     [
+      "plots at",
+      "(2, 0)",
+      "(0, 6)",
+      "(−2, 0)",
+      "(0, 2)"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Where does r = 4 + 8 cos θ cross the positive x-axis?",
+     "a": "At 12 and at 4",
+     "why": "θ = 0° gives 12. θ = 180° gives r = −4, which plots on the right side at 4."
+    }
+   ],
+   "watch": [
+    "A negative r in the table plots on the opposite side. That's where inner loops come from."
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Intersections, including the pole",
+   "d": "set r = r, then check r = 0 on each curve",
+   "steps": [
+    "Set the two equations equal and solve for θ in the interval.",
+    "Plug each θ into either equation to get r.",
+    "Pole check: solve r = 0 for each curve. If both can reach 0, at any θ, they also meet at the **pole**.",
+    "Write (r, θ) in the interval's units."
+   ],
+   "p": [
+    "The posted keys for the unit review's #66 and the Day 2 worksheet's #28 each list two points, where r = r at the same θ: (12, π/6), (12, 5π/6) for #66 and (24, π/4), (24, 3π/4) for #28. Both curves in each problem also reach r = 0, so they also meet at the pole: the complete answer to each is its two listed points plus the pole."
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 340 250' role='img' aria-label='The circle r = 6 sin θ and the cardioid r = 2 + 2 sin θ. They cross at (3, π/6) and (3, 5π/6), both 1.5 above the x-axis, and they also both pass through the pole: the circle at θ = 0 and the cardioid at θ = 3π/2.'><path class='ln' d='M20 200H320' marker-end='url(#ah)'/><path class='ln' d='M170 244V14' marker-end='url(#ah)'/><text class='tm end' x='320' y='218'>x</text><text class='tm' x='178' y='24'>y</text><path class='la' d='M170 200 L170.73 200 L171.47 199.99 L172.2 199.97 L172.93 199.95 L173.66 199.92 L174.4 199.88 L175.13 199.84 L175.86 199.8 L176.59 199.74 L177.32 199.68 L178.05 199.61 L178.78 199.54 L179.51 199.46 L180.24 199.37 L180.96 199.28 L181.69 199.18 L182.42 199.08 L183.14 198.97 L183.86 198.85 L184.59 198.72 L185.31 198.59 L186.03 198.46 L186.75 198.31 L187.46 198.16 L188.18 198.01 L188.9 197.85 L189.61 197.68 L190.32 197.5 L191.03 197.32 L191.74 197.14 L192.45 196.94 L193.15 196.75 L193.86 196.54 L194.56 196.33 L195.26 196.11 L195.96 195.89 L196.65 195.66 L197.35 195.42 L198.04 195.18 L198.73 194.93 L199.42 194.68 L200.1 194.42 L200.79 194.16 L201.47 193.88 L202.15 193.61 L202.82 193.32 L203.49 193.03 L204.17 192.74 L204.83 192.44 L205.5 192.13 L206.16 191.82 L206.82 191.5 L207.48 191.17 L208.14 190.84 L208.79 190.51 L209.44 190.17 L210.08 189.82 L210.72 189.47 L211.36 189.11 L212 188.75 L212.63 188.38 L213.26 188 L213.89 187.62 L214.51 187.24 L215.13 186.84 L215.75 186.45 L216.36 186.05 L216.97 185.64 L217.58 185.23 L218.18 184.81 L218.78 184.39 L219.37 183.96 L219.97 183.52 L220.55 183.09 L221.14 182.64 L221.72 182.19 L222.29 181.74 L222.86 181.28 L223.43 180.82 L223.99 180.35 L224.55 179.87 L225.11 179.4 L225.66 178.91 L226.21 178.42 L226.75 177.93 L227.29 177.43 L227.82 176.93 L228.35 176.42 L228.88 175.91 L229.4 175.4 L229.91 174.88 L230.42 174.35 L230.93 173.82 L231.43 173.29 L231.93 172.75 L232.42 172.21 L232.91 171.66 L233.4 171.11 L233.87 170.55 L234.35 169.99 L234.82 169.43 L235.28 168.86 L235.74 168.29 L236.19 167.72 L236.64 167.14 L237.09 166.55 L237.52 165.97 L237.96 165.37 L238.39 164.78 L238.81 164.18 L239.23 163.58 L239.64 162.97 L240.05 162.36 L240.45 161.75 L240.84 161.13 L241.24 160.51 L241.62 159.89 L242 159.26 L242.38 158.63 L242.75 158 L243.11 157.36 L243.47 156.72 L243.82 156.08 L244.17 155.44 L244.51 154.79 L244.84 154.14 L245.17 153.48 L245.5 152.82 L245.82 152.16 L246.13 151.5 L246.44 150.83 L246.74 150.17 L247.03 149.49 L247.32 148.82 L247.61 148.15 L247.88 147.47 L248.16 146.79 L248.42 146.1 L248.68 145.42 L248.93 144.73 L249.18 144.04 L249.42 143.35 L249.66 142.65 L249.89 141.96 L250.11 141.26 L250.33 140.56 L250.54 139.86 L250.75 139.15 L250.94 138.45 L251.14 137.74 L251.32 137.03 L251.5 136.32 L251.68 135.61 L251.85 134.9 L252.01 134.18 L252.16 133.46 L252.31 132.75 L252.46 132.03 L252.59 131.31 L252.72 130.59 L252.85 129.86 L252.97 129.14 L253.08 128.42 L253.18 127.69 L253.28 126.96 L253.37 126.24 L253.46 125.51 L253.54 124.78 L253.61 124.05 L253.68 123.32 L253.74 122.59 L253.8 121.86 L253.84 121.13 L253.88 120.4 L253.92 119.66 L253.95 118.93 L253.97 118.2 L253.99 117.47 L254 116.73 L254 116 L254 115.27 L253.99 114.53 L253.97 113.8 L253.95 113.07 L253.92 112.34 L253.88 111.6 L253.84 110.87 L253.8 110.14 L253.74 109.41 L253.68 108.68 L253.61 107.95 L253.54 107.22 L253.46 106.49 L253.37 105.76 L253.28 105.04 L253.18 104.31 L253.08 103.58 L252.97 102.86 L252.85 102.14 L252.72 101.41 L252.59 100.69 L252.46 99.97 L252.31 99.25 L252.16 98.54 L252.01 97.82 L251.85 97.1 L251.68 96.39 L251.5 95.68 L251.32 94.97 L251.14 94.26 L250.94 93.55 L250.75 92.85 L250.54 92.14 L250.33 91.44 L250.11 90.74 L249.89 90.04 L249.66 89.35 L249.42 88.65 L249.18 87.96 L248.93 87.27 L248.68 86.58 L248.42 85.9 L248.16 85.21 L247.88 84.53 L247.61 83.85 L247.32 83.18 L247.03 82.51 L246.74 81.83 L246.44 81.17 L246.13 80.5 L245.82 79.84 L245.5 79.18 L245.17 78.52 L244.84 77.86 L244.51 77.21 L244.17 76.56 L243.82 75.92 L243.47 75.28 L243.11 74.64 L242.75 74 L242.38 73.37 L242 72.74 L241.62 72.11 L241.24 71.49 L240.84 70.87 L240.45 70.25 L240.05 69.64 L239.64 69.03 L239.23 68.42 L238.81 67.82 L238.39 67.22 L237.96 66.63 L237.52 66.03 L237.09 65.45 L236.64 64.86 L236.19 64.28 L235.74 63.71 L235.28 63.14 L234.82 62.57 L234.35 62.01 L233.87 61.45 L233.4 60.89 L232.91 60.34 L232.42 59.79 L231.93 59.25 L231.43 58.71 L230.93 58.18 L230.42 57.65 L229.91 57.12 L229.4 56.6 L228.88 56.09 L228.35 55.58 L227.82 55.07 L227.29 54.57 L226.75 54.07 L226.21 53.58 L225.66 53.09 L225.11 52.6 L224.55 52.13 L223.99 51.65 L223.43 51.18 L222.86 50.72 L222.29 50.26 L221.72 49.81 L221.14 49.36 L220.55 48.91 L219.97 48.48 L219.37 48.04 L218.78 47.61 L218.18 47.19 L217.58 46.77 L216.97 46.36 L216.36 45.95 L215.75 45.55 L215.13 45.16 L214.51 44.76 L213.89 44.38 L213.26 44 L212.63 43.62 L212 43.25 L211.36 42.89 L210.72 42.53 L210.08 42.18 L209.44 41.83 L208.79 41.49 L208.14 41.16 L207.48 40.83 L206.82 40.5 L206.16 40.18 L205.5 39.87 L204.83 39.56 L204.17 39.26 L203.49 38.97 L202.82 38.68 L202.15 38.39 L201.47 38.12 L200.79 37.84 L200.1 37.58 L199.42 37.32 L198.73 37.07 L198.04 36.82 L197.35 36.58 L196.65 36.34 L195.96 36.11 L195.26 35.89 L194.56 35.67 L193.86 35.46 L193.15 35.25 L192.45 35.06 L191.74 34.86 L191.03 34.68 L190.32 34.5 L189.61 34.32 L188.9 34.15 L188.18 33.99 L187.46 33.84 L186.75 33.69 L186.03 33.54 L185.31 33.41 L184.59 33.28 L183.86 33.15 L183.14 33.03 L182.42 32.92 L181.69 32.82 L180.96 32.72 L180.24 32.63 L179.51 32.54 L178.78 32.46 L178.05 32.39 L177.32 32.32 L176.59 32.26 L175.86 32.2 L175.13 32.16 L174.4 32.12 L173.66 32.08 L172.93 32.05 L172.2 32.03 L171.47 32.01 L170.73 32 L170 32 L169.27 32 L168.53 32.01 L167.8 32.03 L167.07 32.05 L166.34 32.08 L165.6 32.12 L164.87 32.16 L164.14 32.2 L163.41 32.26 L162.68 32.32 L161.95 32.39 L161.22 32.46 L160.49 32.54 L159.76 32.63 L159.04 32.72 L158.31 32.82 L157.58 32.92 L156.86 33.03 L156.14 33.15 L155.41 33.28 L154.69 33.41 L153.97 33.54 L153.25 33.69 L152.54 33.84 L151.82 33.99 L151.1 34.15 L150.39 34.32 L149.68 34.5 L148.97 34.68 L148.26 34.86 L147.55 35.06 L146.85 35.25 L146.14 35.46 L145.44 35.67 L144.74 35.89 L144.04 36.11 L143.35 36.34 L142.65 36.58 L141.96 36.82 L141.27 37.07 L140.58 37.32 L139.9 37.58 L139.21 37.84 L138.53 38.12 L137.85 38.39 L137.18 38.68 L136.51 38.97 L135.83 39.26 L135.17 39.56 L134.5 39.87 L133.84 40.18 L133.18 40.5 L132.52 40.83 L131.86 41.16 L131.21 41.49 L130.56 41.83 L129.92 42.18 L129.28 42.53 L128.64 42.89 L128 43.25 L127.37 43.62 L126.74 44 L126.11 44.38 L125.49 44.76 L124.87 45.16 L124.25 45.55 L123.64 45.95 L123.03 46.36 L122.42 46.77 L121.82 47.19 L121.22 47.61 L120.63 48.04 L120.03 48.48 L119.45 48.91 L118.86 49.36 L118.28 49.81 L117.71 50.26 L117.14 50.72 L116.57 51.18 L116.01 51.65 L115.45 52.13 L114.89 52.6 L114.34 53.09 L113.79 53.58 L113.25 54.07 L112.71 54.57 L112.18 55.07 L111.65 55.58 L111.12 56.09 L110.6 56.6 L110.09 57.12 L109.58 57.65 L109.07 58.18 L108.57 58.71 L108.07 59.25 L107.58 59.79 L107.09 60.34 L106.6 60.89 L106.13 61.45 L105.65 62.01 L105.18 62.57 L104.72 63.14 L104.26 63.71 L103.81 64.28 L103.36 64.86 L102.91 65.45 L102.48 66.03 L102.04 66.63 L101.61 67.22 L101.19 67.82 L100.77 68.42 L100.36 69.03 L99.95 69.64 L99.55 70.25 L99.16 70.87 L98.76 71.49 L98.38 72.11 L98 72.74 L97.62 73.37 L97.25 74 L96.89 74.64 L96.53 75.28 L96.18 75.92 L95.83 76.56 L95.49 77.21 L95.16 77.86 L94.83 78.52 L94.5 79.18 L94.18 79.84 L93.87 80.5 L93.56 81.17 L93.26 81.83 L92.97 82.51 L92.68 83.18 L92.39 83.85 L92.12 84.53 L91.84 85.21 L91.58 85.9 L91.32 86.58 L91.07 87.27 L90.82 87.96 L90.58 88.65 L90.34 89.35 L90.11 90.04 L89.89 90.74 L89.67 91.44 L89.46 92.14 L89.25 92.85 L89.06 93.55 L88.86 94.26 L88.68 94.97 L88.5 95.68 L88.32 96.39 L88.15 97.1 L87.99 97.82 L87.84 98.54 L87.69 99.25 L87.54 99.97 L87.41 100.69 L87.28 101.41 L87.15 102.14 L87.03 102.86 L86.92 103.58 L86.82 104.31 L86.72 105.04 L86.63 105.76 L86.54 106.49 L86.46 107.22 L86.39 107.95 L86.32 108.68 L86.26 109.41 L86.2 110.14 L86.16 110.87 L86.12 111.6 L86.08 112.34 L86.05 113.07 L86.03 113.8 L86.01 114.53 L86 115.27 L86 116 L86 116.73 L86.01 117.47 L86.03 118.2 L86.05 118.93 L86.08 119.66 L86.12 120.4 L86.16 121.13 L86.2 121.86 L86.26 122.59 L86.32 123.32 L86.39 124.05 L86.46 124.78 L86.54 125.51 L86.63 126.24 L86.72 126.96 L86.82 127.69 L86.92 128.42 L87.03 129.14 L87.15 129.86 L87.28 130.59 L87.41 131.31 L87.54 132.03 L87.69 132.75 L87.84 133.46 L87.99 134.18 L88.15 134.9 L88.32 135.61 L88.5 136.32 L88.68 137.03 L88.86 137.74 L89.06 138.45 L89.25 139.15 L89.46 139.86 L89.67 140.56 L89.89 141.26 L90.11 141.96 L90.34 142.65 L90.58 143.35 L90.82 144.04 L91.07 144.73 L91.32 145.42 L91.58 146.1 L91.84 146.79 L92.12 147.47 L92.39 148.15 L92.68 148.82 L92.97 149.49 L93.26 150.17 L93.56 150.83 L93.87 151.5 L94.18 152.16 L94.5 152.82 L94.83 153.48 L95.16 154.14 L95.49 154.79 L95.83 155.44 L96.18 156.08 L96.53 156.72 L96.89 157.36 L97.25 158 L97.62 158.63 L98 159.26 L98.38 159.89 L98.76 160.51 L99.16 161.13 L99.55 161.75 L99.95 162.36 L100.36 162.97 L100.77 163.58 L101.19 164.18 L101.61 164.78 L102.04 165.37 L102.48 165.97 L102.91 166.55 L103.36 167.14 L103.81 167.72 L104.26 168.29 L104.72 168.86 L105.18 169.43 L105.65 169.99 L106.13 170.55 L106.6 171.11 L107.09 171.66 L107.58 172.21 L108.07 172.75 L108.57 173.29 L109.07 173.82 L109.58 174.35 L110.09 174.88 L110.6 175.4 L111.12 175.91 L111.65 176.42 L112.18 176.93 L112.71 177.43 L113.25 177.93 L113.79 178.42 L114.34 178.91 L114.89 179.4 L115.45 179.87 L116.01 180.35 L116.57 180.82 L117.14 181.28 L117.71 181.74 L118.28 182.19 L118.86 182.64 L119.45 183.09 L120.03 183.52 L120.63 183.96 L121.22 184.39 L121.82 184.81 L122.42 185.23 L123.03 185.64 L123.64 186.05 L124.25 186.45 L124.87 186.84 L125.49 187.24 L126.11 187.62 L126.74 188 L127.37 188.38 L128 188.75 L128.64 189.11 L129.28 189.47 L129.92 189.82 L130.56 190.17 L131.21 190.51 L131.86 190.84 L132.52 191.17 L133.18 191.5 L133.84 191.82 L134.5 192.13 L135.17 192.44 L135.83 192.74 L136.51 193.03 L137.18 193.32 L137.85 193.61 L138.53 193.88 L139.21 194.16 L139.9 194.42 L140.58 194.68 L141.27 194.93 L141.96 195.18 L142.65 195.42 L143.35 195.66 L144.04 195.89 L144.74 196.11 L145.44 196.33 L146.14 196.54 L146.85 196.75 L147.55 196.94 L148.26 197.14 L148.97 197.32 L149.68 197.5 L150.39 197.68 L151.1 197.85 L151.82 198.01 L152.54 198.16 L153.25 198.31 L153.97 198.46 L154.69 198.59 L155.41 198.72 L156.14 198.85 L156.86 198.97 L157.58 199.08 L158.31 199.18 L159.04 199.28 L159.76 199.37 L160.49 199.46 L161.22 199.54 L161.95 199.61 L162.68 199.68 L163.41 199.74 L164.14 199.8 L164.87 199.84 L165.6 199.88 L166.34 199.92 L167.07 199.95 L167.8 199.97 L168.53 199.99 L169.27 200 L170 200'/><path class='lc' d='M226 200 L226.49 199.51 L226.97 199.01 L227.45 198.5 L227.92 197.98 L228.39 197.45 L228.85 196.92 L229.31 196.37 L229.76 195.82 L230.21 195.26 L230.65 194.69 L231.08 194.12 L231.51 193.53 L231.94 192.94 L232.36 192.34 L232.77 191.74 L233.17 191.12 L233.57 190.5 L233.96 189.87 L234.35 189.23 L234.73 188.59 L235.1 187.94 L235.46 187.28 L235.82 186.61 L236.16 185.94 L236.51 185.26 L236.84 184.57 L237.16 183.88 L237.48 183.17 L237.79 182.47 L238.09 181.75 L238.38 181.04 L238.67 180.31 L238.94 179.58 L239.21 178.84 L239.47 178.1 L239.72 177.35 L239.96 176.59 L240.19 175.83 L240.41 175.07 L240.62 174.3 L240.82 173.52 L241.02 172.74 L241.2 171.95 L241.37 171.16 L241.54 170.37 L241.69 169.57 L241.83 168.77 L241.97 167.96 L242.09 167.15 L242.2 166.33 L242.3 165.51 L242.4 164.69 L242.48 163.86 L242.55 163.03 L242.61 162.2 L242.66 161.37 L242.7 160.53 L242.72 159.69 L242.74 158.85 L242.75 158 L242.74 157.15 L242.72 156.3 L242.7 155.45 L242.66 154.6 L242.61 153.74 L242.54 152.89 L242.47 152.03 L242.39 151.17 L242.29 150.32 L242.18 149.46 L242.06 148.6 L241.93 147.74 L241.79 146.88 L241.64 146.02 L241.47 145.16 L241.3 144.3 L241.11 143.44 L240.91 142.58 L240.7 141.72 L240.47 140.87 L240.24 140.01 L239.99 139.16 L239.73 138.31 L239.46 137.46 L239.18 136.61 L238.89 135.76 L238.58 134.92 L238.27 134.08 L237.94 133.24 L237.6 132.4 L237.25 131.57 L236.88 130.74 L236.51 129.91 L236.12 129.09 L235.73 128.27 L235.32 127.46 L234.9 126.65 L234.47 125.84 L234.02 125.04 L233.57 124.24 L233.11 123.45 L232.63 122.66 L232.14 121.88 L231.65 121.1 L231.14 120.33 L230.62 119.56 L230.09 118.8 L229.55 118.04 L228.99 117.29 L228.43 116.55 L227.86 115.81 L227.28 115.08 L226.68 114.36 L226.08 113.65 L225.47 112.94 L224.84 112.23 L224.21 111.54 L223.56 110.85 L222.91 110.17 L222.25 109.5 L221.58 108.84 L220.89 108.18 L220.2 107.54 L219.5 106.9 L218.79 106.27 L218.08 105.65 L217.35 105.03 L216.61 104.43 L215.87 103.83 L215.12 103.25 L214.35 102.67 L213.59 102.11 L212.81 101.55 L212.02 101 L211.23 100.46 L210.43 99.94 L209.62 99.42 L208.8 98.91 L207.98 98.41 L207.15 97.93 L206.31 97.45 L205.47 96.99 L204.62 96.53 L203.76 96.09 L202.9 95.66 L202.03 95.23 L201.15 94.82 L200.27 94.42 L199.39 94.04 L198.49 93.66 L197.6 93.29 L196.69 92.94 L195.78 92.6 L194.87 92.27 L193.95 91.95 L193.03 91.64 L192.11 91.35 L191.17 91.07 L190.24 90.8 L189.3 90.54 L188.36 90.29 L187.41 90.06 L186.46 89.84 L185.51 89.63 L184.56 89.43 L183.6 89.25 L182.64 89.08 L181.68 88.92 L180.71 88.77 L179.74 88.64 L178.77 88.52 L177.8 88.41 L176.83 88.31 L175.86 88.23 L174.88 88.16 L173.91 88.1 L172.93 88.06 L171.95 88.03 L170.98 88.01 L170 88 L169.02 88.01 L168.05 88.03 L167.07 88.06 L166.09 88.1 L165.12 88.16 L164.14 88.23 L163.17 88.31 L162.2 88.41 L161.23 88.52 L160.26 88.64 L159.29 88.77 L158.32 88.92 L157.36 89.08 L156.4 89.25 L155.44 89.43 L154.49 89.63 L153.54 89.84 L152.59 90.06 L151.64 90.29 L150.7 90.54 L149.76 90.8 L148.83 91.07 L147.89 91.35 L146.97 91.64 L146.05 91.95 L145.13 92.27 L144.22 92.6 L143.31 92.94 L142.4 93.29 L141.51 93.66 L140.61 94.04 L139.73 94.42 L138.85 94.82 L137.97 95.23 L137.1 95.66 L136.24 96.09 L135.38 96.53 L134.53 96.99 L133.69 97.45 L132.85 97.93 L132.02 98.41 L131.2 98.91 L130.38 99.42 L129.57 99.94 L128.77 100.46 L127.98 101 L127.19 101.55 L126.41 102.11 L125.65 102.67 L124.88 103.25 L124.13 103.83 L123.39 104.43 L122.65 105.03 L121.92 105.65 L121.21 106.27 L120.5 106.9 L119.8 107.54 L119.11 108.18 L118.42 108.84 L117.75 109.5 L117.09 110.17 L116.44 110.85 L115.79 111.54 L115.16 112.23 L114.53 112.94 L113.92 113.65 L113.32 114.36 L112.72 115.08 L112.14 115.81 L111.57 116.55 L111.01 117.29 L110.45 118.04 L109.91 118.8 L109.38 119.56 L108.86 120.33 L108.35 121.1 L107.86 121.88 L107.37 122.66 L106.89 123.45 L106.43 124.24 L105.98 125.04 L105.53 125.84 L105.1 126.65 L104.68 127.46 L104.27 128.27 L103.88 129.09 L103.49 129.91 L103.12 130.74 L102.75 131.57 L102.4 132.4 L102.06 133.24 L101.73 134.08 L101.42 134.92 L101.11 135.76 L100.82 136.61 L100.54 137.46 L100.27 138.31 L100.01 139.16 L99.76 140.01 L99.53 140.87 L99.3 141.72 L99.09 142.58 L98.89 143.44 L98.7 144.3 L98.53 145.16 L98.36 146.02 L98.21 146.88 L98.07 147.74 L97.94 148.6 L97.82 149.46 L97.71 150.32 L97.61 151.17 L97.53 152.03 L97.46 152.89 L97.39 153.74 L97.34 154.6 L97.3 155.45 L97.28 156.3 L97.26 157.15 L97.25 158 L97.26 158.85 L97.28 159.69 L97.3 160.53 L97.34 161.37 L97.39 162.2 L97.45 163.03 L97.52 163.86 L97.6 164.69 L97.7 165.51 L97.8 166.33 L97.91 167.15 L98.03 167.96 L98.17 168.77 L98.31 169.57 L98.46 170.37 L98.63 171.16 L98.8 171.95 L98.98 172.74 L99.18 173.52 L99.38 174.3 L99.59 175.07 L99.81 175.83 L100.04 176.59 L100.28 177.35 L100.53 178.1 L100.79 178.84 L101.06 179.58 L101.33 180.31 L101.62 181.04 L101.91 181.75 L102.21 182.47 L102.52 183.17 L102.84 183.88 L103.16 184.57 L103.49 185.26 L103.84 185.94 L104.18 186.61 L104.54 187.28 L104.9 187.94 L105.27 188.59 L105.65 189.23 L106.04 189.87 L106.43 190.5 L106.83 191.12 L107.23 191.74 L107.64 192.34 L108.06 192.94 L108.49 193.53 L108.92 194.12 L109.35 194.69 L109.79 195.26 L110.24 195.82 L110.69 196.37 L111.15 196.92 L111.61 197.45 L112.08 197.98 L112.55 198.5 L113.03 199.01 L113.51 199.51 L114 200 L114.49 200.48 L114.99 200.96 L115.48 201.43 L115.99 201.89 L116.49 202.34 L117 202.78 L117.52 203.21 L118.03 203.63 L118.55 204.05 L119.08 204.46 L119.6 204.85 L120.13 205.24 L120.66 205.62 L121.19 205.99 L121.73 206.36 L122.26 206.71 L122.8 207.05 L123.34 207.39 L123.88 207.72 L124.43 208.04 L124.97 208.35 L125.52 208.65 L126.06 208.94 L126.61 209.22 L127.16 209.5 L127.71 209.76 L128.26 210.02 L128.81 210.27 L129.36 210.51 L129.91 210.74 L130.46 210.97 L131.01 211.18 L131.56 211.39 L132.1 211.59 L132.65 211.78 L133.2 211.96 L133.74 212.13 L134.29 212.3 L134.83 212.45 L135.38 212.6 L135.92 212.74 L136.46 212.88 L136.99 213 L137.53 213.12 L138.06 213.23 L138.59 213.33 L139.12 213.43 L139.65 213.51 L140.17 213.59 L140.7 213.66 L141.22 213.73 L141.73 213.79 L142.25 213.84 L142.76 213.88 L143.26 213.92 L143.77 213.95 L144.27 213.97 L144.77 213.99 L145.26 214 L145.75 214 L146.24 214 L146.72 213.99 L147.2 213.97 L147.68 213.95 L148.15 213.92 L148.61 213.89 L149.08 213.85 L149.54 213.8 L149.99 213.75 L150.44 213.7 L150.88 213.64 L151.32 213.57 L151.76 213.5 L152.19 213.42 L152.62 213.34 L153.04 213.25 L153.46 213.16 L153.87 213.06 L154.27 212.96 L154.68 212.86 L155.07 212.75 L155.46 212.64 L155.85 212.52 L156.23 212.4 L156.61 212.27 L156.98 212.15 L157.34 212.01 L157.7 211.88 L158.05 211.74 L158.4 211.6 L158.74 211.45 L159.08 211.31 L159.41 211.16 L159.74 211 L160.06 210.85 L160.38 210.69 L160.68 210.53 L160.99 210.37 L161.29 210.2 L161.58 210.04 L161.87 209.87 L162.15 209.7 L162.42 209.53 L162.69 209.35 L162.96 209.18 L163.21 209.01 L163.47 208.83 L163.71 208.65 L163.96 208.47 L164.19 208.3 L164.42 208.12 L164.65 207.94 L164.87 207.76 L165.08 207.58 L165.29 207.4 L165.49 207.22 L165.69 207.04 L165.88 206.86 L166.07 206.68 L166.25 206.5 L166.42 206.32 L166.6 206.14 L166.76 205.96 L166.92 205.79 L167.08 205.61 L167.23 205.44 L167.37 205.27 L167.52 205.09 L167.65 204.92 L167.78 204.76 L167.91 204.59 L168.03 204.42 L168.15 204.26 L168.26 204.1 L168.37 203.94 L168.47 203.78 L168.57 203.63 L168.67 203.47 L168.76 203.32 L168.84 203.17 L168.93 203.03 L169.01 202.88 L169.08 202.74 L169.15 202.61 L169.22 202.47 L169.28 202.34 L169.35 202.21 L169.4 202.09 L169.46 201.96 L169.51 201.84 L169.55 201.73 L169.6 201.61 L169.64 201.5 L169.68 201.4 L169.71 201.3 L169.75 201.2 L169.78 201.1 L169.8 201.01 L169.83 200.92 L169.85 200.84 L169.87 200.76 L169.89 200.68 L169.91 200.61 L169.92 200.54 L169.94 200.47 L169.95 200.41 L169.96 200.36 L169.97 200.31 L169.98 200.26 L169.98 200.21 L169.99 200.17 L169.99 200.14 L169.99 200.1 L170 200.08 L170 200.05 L170 200.03 L170 200.02 L170 200.01 L170 200 L170 200 L170 200 L170 200.01 L170 200.02 L170 200.03 L170 200.05 L170 200.08 L170.01 200.1 L170.01 200.14 L170.01 200.17 L170.02 200.21 L170.02 200.26 L170.03 200.31 L170.04 200.36 L170.05 200.41 L170.06 200.47 L170.08 200.54 L170.09 200.61 L170.11 200.68 L170.13 200.76 L170.15 200.84 L170.17 200.92 L170.2 201.01 L170.22 201.1 L170.25 201.2 L170.29 201.3 L170.32 201.4 L170.36 201.5 L170.4 201.61 L170.45 201.73 L170.49 201.84 L170.54 201.96 L170.6 202.09 L170.65 202.21 L170.72 202.34 L170.78 202.47 L170.85 202.61 L170.92 202.74 L170.99 202.88 L171.07 203.03 L171.16 203.17 L171.24 203.32 L171.33 203.47 L171.43 203.63 L171.53 203.78 L171.63 203.94 L171.74 204.1 L171.85 204.26 L171.97 204.42 L172.09 204.59 L172.22 204.76 L172.35 204.92 L172.48 205.09 L172.63 205.27 L172.77 205.44 L172.92 205.61 L173.08 205.79 L173.24 205.96 L173.4 206.14 L173.58 206.32 L173.75 206.5 L173.93 206.68 L174.12 206.86 L174.31 207.04 L174.51 207.22 L174.71 207.4 L174.92 207.58 L175.13 207.76 L175.35 207.94 L175.58 208.12 L175.81 208.3 L176.04 208.47 L176.29 208.65 L176.53 208.83 L176.79 209.01 L177.04 209.18 L177.31 209.35 L177.58 209.53 L177.85 209.7 L178.13 209.87 L178.42 210.04 L178.71 210.2 L179.01 210.37 L179.32 210.53 L179.62 210.69 L179.94 210.85 L180.26 211 L180.59 211.16 L180.92 211.31 L181.26 211.45 L181.6 211.6 L181.95 211.74 L182.3 211.88 L182.66 212.01 L183.02 212.15 L183.39 212.27 L183.77 212.4 L184.15 212.52 L184.54 212.64 L184.93 212.75 L185.32 212.86 L185.73 212.96 L186.13 213.06 L186.54 213.16 L186.96 213.25 L187.38 213.34 L187.81 213.42 L188.24 213.5 L188.68 213.57 L189.12 213.64 L189.56 213.7 L190.01 213.75 L190.46 213.8 L190.92 213.85 L191.39 213.89 L191.85 213.92 L192.32 213.95 L192.8 213.97 L193.28 213.99 L193.76 214 L194.25 214 L194.74 214 L195.23 213.99 L195.73 213.97 L196.23 213.95 L196.74 213.92 L197.24 213.88 L197.75 213.84 L198.27 213.79 L198.78 213.73 L199.3 213.66 L199.83 213.59 L200.35 213.51 L200.88 213.43 L201.41 213.33 L201.94 213.23 L202.47 213.12 L203.01 213 L203.54 212.88 L204.08 212.74 L204.62 212.6 L205.17 212.45 L205.71 212.3 L206.26 212.13 L206.8 211.96 L207.35 211.78 L207.9 211.59 L208.44 211.39 L208.99 211.18 L209.54 210.97 L210.09 210.74 L210.64 210.51 L211.19 210.27 L211.74 210.02 L212.29 209.76 L212.84 209.5 L213.39 209.22 L213.94 208.94 L214.48 208.65 L215.03 208.35 L215.57 208.04 L216.12 207.72 L216.66 207.39 L217.2 207.05 L217.74 206.71 L218.27 206.36 L218.81 205.99 L219.34 205.62 L219.87 205.24 L220.4 204.85 L220.92 204.46 L221.45 204.05 L221.97 203.63 L222.48 203.21 L223 202.78 L223.51 202.34 L224.01 201.89 L224.52 201.43 L225.01 200.96 L225.51 200.48 L226 200'/><circle class='fi' cx='242.75' cy='158' r='5'/><text class='tb' x='252.75' y='176'>(3, π/6)</text><circle class='fi' cx='97.25' cy='158' r='5'/><text class='tb end' x='87.25' y='176'>(3, 5π/6)</text><circle class='fp' cx='170' cy='200' r='8'/><circle class='fi' cx='170' cy='200' r='4'/><text class='tb' x='182' y='224'>pole: also shared</text><text class='ta' x='234' y='22'>r = 6 sin θ</text><text class='tc' x='10' y='50'>r = 2 + 2 sin θ</text></svg>",
+    "cap": "r = r finds (3, π/6) and (3, 5π/6). The pole is shared too, reached at θ = 0 on the circle and θ = 3π/2 on the cardioid, so r = r misses it."
+   },
+   "ex": [
+    {
+     "q": "Find the intersections of r = 3 + sin θ and r = 3 − cos θ, 0 ≤ θ < 2π.",
+     "a": "((6 + √2)/2, 3π/4) and ((6 − √2)/2, 7π/4)",
+     "why": "sin θ = −cos θ at 3π/4 and 7π/4. Neither curve reaches r = 0 (r stays at 2 or more), so no pole."
+    }
+   ],
+   "watch": [
+    "Dividing by cos θ to get tan θ can drop answers where cos θ = 0. Check those, or read the unit circle.",
+    "Radian interval, radian answers."
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Calculator problems",
+   "d": "2 of the 25 problems; set the modes first",
+   "p": [
+    "These should take minutes, not the period. Most blank or strange screens are a mode problem."
+   ],
+   "rows": [
+    [
+     "polar mode",
+     "TI-84: MODE, then POL, so Y= reads r1 =. TI-Nspire: set the graph entry to polar."
+    ],
+    [
+     "angle mode",
+     "Degree or radian to match the problem. A wrong setting is the usual reason nothing shows."
+    ],
+    [
+     "window",
+     "θ from 0 to 360° (or 0 to 2π); zoom until the whole curve fits."
+    ],
+    [
+     "r² equations",
+     "Enter r1 = √(right side). One root draws the whole lemniscate; the ± doesn't change its graph."
+    ],
+    [
+     "read r",
+     "Trace gives r at a chosen θ (TI-Nspire: Menu, Trace, Graph Trace)."
+    ]
+   ],
+   "ex": [
+    {
+     "q": "Graph r² = 25 sin 2θ. What do you enter, and what should you see?",
+     "a": "r1 = √(25 sin(2θ)): a lemniscate with tips at 5 on the 45° line",
+     "why": "Nothing appears in QII or QIV, where sin 2θ is negative."
+    },
+    {
+     "q": "You enter r = 5 cos 3θ and see only a short curve near the x-axis. First check?",
+     "a": "The angle mode and the θ window",
+     "why": "In degree mode, θ from 0 to 2π sweeps only about 6°."
+    }
+   ],
+   "watch": [
+    "Copy what the screen shows onto the grid: label the tips and axis crossings with their r."
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Spot the mistake",
+   "d": "each card shows work with one error; find it before you reveal",
+   "p": [
+    "Each card copies a worked step with one error in it. Say what went wrong and fix it, then reveal the answer to check."
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 360 240' role='img' aria-label='A sketch labeled r = 4 cos 3θ that shows six petals of length 4, one every 60 degrees.'><path class='ln' d='M20 120H280'/><path class='ln' d='M150 230V10'/><path class='ln' d='M254 120 L253.96 119.09 L253.84 118.19 L253.64 117.29 L253.37 116.39 L253.01 115.5 L252.58 114.62 L252.07 113.76 L251.48 112.9 L250.81 112.07 L250.07 111.24 L249.26 110.44 L248.37 109.66 L247.4 108.9 L246.37 108.17 L245.26 107.46 L244.08 106.78 L242.84 106.13 L241.52 105.5 L240.14 104.92 L238.7 104.36 L237.19 103.84 L235.62 103.36 L233.99 102.91 L232.3 102.51 L230.55 102.14 L228.75 101.82 L226.9 101.54 L224.99 101.3 L223.04 101.11 L221.03 100.97 L218.99 100.87 L216.89 100.82 L214.76 100.82 L212.59 100.86 L210.38 100.96 L208.14 101.11 L205.86 101.31 L203.56 101.56 L201.22 101.86 L198.86 102.21 L196.48 102.62 L194.08 103.08 L191.66 103.59 L189.22 104.15 L186.77 104.77 L184.31 105.44 L181.84 106.16 L179.36 106.93 L176.88 107.75 L174.4 108.62 L171.91 109.55 L169.43 110.52 L166.96 111.54 L164.5 112.61 L162.04 113.73 L159.6 114.9 L157.17 116.11 L154.76 117.36 L152.37 118.66 L150 120 L152.35 118.62 L154.67 117.2 L156.96 115.74 L159.22 114.24 L161.45 112.71 L163.64 111.14 L165.8 109.54 L167.93 107.91 L170.01 106.25 L172.05 104.56 L174.05 102.85 L176 101.11 L177.91 99.35 L179.77 97.57 L181.57 95.77 L183.33 93.96 L185.04 92.13 L186.69 90.29 L188.29 88.43 L189.83 86.58 L191.32 84.71 L192.75 82.84 L194.12 80.97 L195.43 79.1 L196.68 77.23 L197.87 75.36 L198.99 73.51 L200.06 71.66 L201.06 69.82 L202 68 L202.88 66.19 L203.69 64.4 L204.44 62.64 L205.12 60.89 L205.74 59.17 L206.3 57.47 L206.79 55.81 L207.22 54.17 L207.59 52.57 L207.89 51 L208.14 49.48 L208.32 47.99 L208.43 46.54 L208.49 45.13 L208.49 43.77 L208.43 42.46 L208.31 41.19 L208.14 39.98 L207.91 38.82 L207.62 37.71 L207.28 36.66 L206.89 35.66 L206.44 34.73 L205.95 33.85 L205.4 33.04 L204.81 32.29 L204.17 31.6 L203.49 30.98 L202.77 30.42 L202 29.93 L201.19 29.51 L200.35 29.16 L199.47 28.88 L198.56 28.68 L197.61 28.54 L196.63 28.48 L195.63 28.49 L194.59 28.57 L193.54 28.72 L192.45 28.96 L191.35 29.26 L190.23 29.64 L189.09 30.1 L187.94 30.63 L186.77 31.23 L185.59 31.91 L184.4 32.66 L183.21 33.49 L182.01 34.39 L180.8 35.37 L179.6 36.41 L178.4 37.53 L177.2 38.72 L176 39.98 L174.81 41.31 L173.63 42.71 L172.46 44.17 L171.3 45.71 L170.16 47.3 L169.03 48.97 L167.92 50.69 L166.84 52.48 L165.77 54.32 L164.72 56.23 L163.7 58.19 L162.71 60.21 L161.74 62.28 L160.81 64.4 L159.9 66.57 L159.03 68.79 L158.19 71.06 L157.39 73.37 L156.62 75.72 L155.89 78.11 L155.19 80.54 L154.54 83.01 L153.93 85.51 L153.36 88.04 L152.83 90.6 L152.35 93.19 L151.9 95.8 L151.51 98.43 L151.16 101.08 L150.85 103.75 L150.59 106.44 L150.38 109.14 L150.21 111.84 L150.09 114.56 L150.02 117.28 L150 120 L149.98 117.28 L149.91 114.56 L149.79 111.84 L149.62 109.14 L149.41 106.44 L149.15 103.75 L148.84 101.08 L148.49 98.43 L148.1 95.8 L147.65 93.19 L147.17 90.6 L146.64 88.04 L146.07 85.51 L145.46 83.01 L144.81 80.54 L144.11 78.11 L143.38 75.72 L142.61 73.37 L141.81 71.06 L140.97 68.79 L140.1 66.57 L139.19 64.4 L138.26 62.28 L137.29 60.21 L136.3 58.19 L135.28 56.23 L134.23 54.32 L133.16 52.48 L132.08 50.69 L130.97 48.97 L129.84 47.3 L128.7 45.71 L127.54 44.17 L126.37 42.71 L125.19 41.31 L124 39.98 L122.8 38.72 L121.6 37.53 L120.4 36.41 L119.2 35.37 L117.99 34.39 L116.79 33.49 L115.6 32.66 L114.41 31.91 L113.23 31.23 L112.06 30.63 L110.91 30.1 L109.77 29.64 L108.65 29.26 L107.55 28.96 L106.46 28.72 L105.41 28.57 L104.37 28.49 L103.37 28.48 L102.39 28.54 L101.44 28.68 L100.53 28.88 L99.65 29.16 L98.81 29.51 L98 29.93 L97.23 30.42 L96.51 30.98 L95.83 31.6 L95.19 32.29 L94.6 33.04 L94.05 33.85 L93.56 34.73 L93.11 35.66 L92.72 36.66 L92.38 37.71 L92.09 38.82 L91.86 39.98 L91.69 41.19 L91.57 42.46 L91.51 43.77 L91.51 45.13 L91.57 46.54 L91.68 47.99 L91.86 49.48 L92.11 51 L92.41 52.57 L92.78 54.17 L93.21 55.81 L93.7 57.47 L94.26 59.17 L94.88 60.89 L95.56 62.64 L96.31 64.4 L97.12 66.19 L98 68 L98.94 69.82 L99.94 71.66 L101.01 73.51 L102.13 75.36 L103.32 77.23 L104.57 79.1 L105.88 80.97 L107.25 82.84 L108.68 84.71 L110.17 86.58 L111.71 88.43 L113.31 90.29 L114.96 92.13 L116.67 93.96 L118.43 95.77 L120.23 97.57 L122.09 99.35 L124 101.11 L125.95 102.85 L127.95 104.56 L129.99 106.25 L132.07 107.91 L134.2 109.54 L136.36 111.14 L138.55 112.71 L140.78 114.24 L143.04 115.74 L145.33 117.2 L147.65 118.62 L150 120 L147.63 118.66 L145.24 117.36 L142.83 116.11 L140.4 114.9 L137.96 113.73 L135.5 112.61 L133.04 111.54 L130.57 110.52 L128.09 109.55 L125.6 108.62 L123.12 107.75 L120.64 106.93 L118.16 106.16 L115.69 105.44 L113.23 104.77 L110.78 104.15 L108.34 103.59 L105.92 103.08 L103.52 102.62 L101.14 102.21 L98.78 101.86 L96.44 101.56 L94.14 101.31 L91.86 101.11 L89.62 100.96 L87.41 100.86 L85.24 100.82 L83.11 100.82 L81.01 100.87 L78.97 100.97 L76.96 101.11 L75.01 101.3 L73.1 101.54 L71.25 101.82 L69.45 102.14 L67.7 102.51 L66.01 102.91 L64.38 103.36 L62.81 103.84 L61.3 104.36 L59.86 104.92 L58.48 105.5 L57.16 106.13 L55.92 106.78 L54.74 107.46 L53.63 108.17 L52.6 108.9 L51.63 109.66 L50.74 110.44 L49.93 111.24 L49.19 112.07 L48.52 112.9 L47.93 113.76 L47.42 114.62 L46.99 115.5 L46.63 116.39 L46.36 117.29 L46.16 118.19 L46.04 119.09 L46 120 L46.04 120.91 L46.16 121.81 L46.36 122.71 L46.63 123.61 L46.99 124.5 L47.42 125.38 L47.93 126.24 L48.52 127.1 L49.19 127.93 L49.93 128.76 L50.74 129.56 L51.63 130.34 L52.6 131.1 L53.63 131.83 L54.74 132.54 L55.92 133.22 L57.16 133.87 L58.48 134.5 L59.86 135.08 L61.3 135.64 L62.81 136.16 L64.38 136.64 L66.01 137.09 L67.7 137.49 L69.45 137.86 L71.25 138.18 L73.1 138.46 L75.01 138.7 L76.96 138.89 L78.97 139.03 L81.01 139.13 L83.11 139.18 L85.24 139.18 L87.41 139.14 L89.62 139.04 L91.86 138.89 L94.14 138.69 L96.44 138.44 L98.78 138.14 L101.14 137.79 L103.52 137.38 L105.92 136.92 L108.34 136.41 L110.78 135.85 L113.23 135.23 L115.69 134.56 L118.16 133.84 L120.64 133.07 L123.12 132.25 L125.6 131.38 L128.09 130.45 L130.57 129.48 L133.04 128.46 L135.5 127.39 L137.96 126.27 L140.4 125.1 L142.83 123.89 L145.24 122.64 L147.63 121.34 L150 120 L147.65 121.38 L145.33 122.8 L143.04 124.26 L140.78 125.76 L138.55 127.29 L136.36 128.86 L134.2 130.46 L132.07 132.09 L129.99 133.75 L127.95 135.44 L125.95 137.15 L124 138.89 L122.09 140.65 L120.23 142.43 L118.43 144.23 L116.67 146.04 L114.96 147.87 L113.31 149.71 L111.71 151.57 L110.17 153.42 L108.68 155.29 L107.25 157.16 L105.88 159.03 L104.57 160.9 L103.32 162.77 L102.13 164.64 L101.01 166.49 L99.94 168.34 L98.94 170.18 L98 172 L97.12 173.81 L96.31 175.6 L95.56 177.36 L94.88 179.11 L94.26 180.83 L93.7 182.53 L93.21 184.19 L92.78 185.83 L92.41 187.43 L92.11 189 L91.86 190.52 L91.68 192.01 L91.57 193.46 L91.51 194.87 L91.51 196.23 L91.57 197.54 L91.69 198.81 L91.86 200.02 L92.09 201.18 L92.38 202.29 L92.72 203.34 L93.11 204.34 L93.56 205.27 L94.05 206.15 L94.6 206.96 L95.19 207.71 L95.83 208.4 L96.51 209.02 L97.23 209.58 L98 210.07 L98.81 210.49 L99.65 210.84 L100.53 211.12 L101.44 211.32 L102.39 211.46 L103.37 211.52 L104.37 211.51 L105.41 211.43 L106.46 211.28 L107.55 211.04 L108.65 210.74 L109.77 210.36 L110.91 209.9 L112.06 209.37 L113.23 208.77 L114.41 208.09 L115.6 207.34 L116.79 206.51 L117.99 205.61 L119.2 204.63 L120.4 203.59 L121.6 202.47 L122.8 201.28 L124 200.02 L125.19 198.69 L126.37 197.29 L127.54 195.83 L128.7 194.29 L129.84 192.7 L130.97 191.03 L132.08 189.31 L133.16 187.52 L134.23 185.68 L135.28 183.77 L136.3 181.81 L137.29 179.79 L138.26 177.72 L139.19 175.6 L140.1 173.43 L140.97 171.21 L141.81 168.94 L142.61 166.63 L143.38 164.28 L144.11 161.89 L144.81 159.46 L145.46 156.99 L146.07 154.49 L146.64 151.96 L147.17 149.4 L147.65 146.81 L148.1 144.2 L148.49 141.57 L148.84 138.92 L149.15 136.25 L149.41 133.56 L149.62 130.86 L149.79 128.16 L149.91 125.44 L149.98 122.72 L150 120 L150.02 122.72 L150.09 125.44 L150.21 128.16 L150.38 130.86 L150.59 133.56 L150.85 136.25 L151.16 138.92 L151.51 141.57 L151.9 144.2 L152.35 146.81 L152.83 149.4 L153.36 151.96 L153.93 154.49 L154.54 156.99 L155.19 159.46 L155.89 161.89 L156.62 164.28 L157.39 166.63 L158.19 168.94 L159.03 171.21 L159.9 173.43 L160.81 175.6 L161.74 177.72 L162.71 179.79 L163.7 181.81 L164.72 183.77 L165.77 185.68 L166.84 187.52 L167.92 189.31 L169.03 191.03 L170.16 192.7 L171.3 194.29 L172.46 195.83 L173.63 197.29 L174.81 198.69 L176 200.02 L177.2 201.28 L178.4 202.47 L179.6 203.59 L180.8 204.63 L182.01 205.61 L183.21 206.51 L184.4 207.34 L185.59 208.09 L186.77 208.77 L187.94 209.37 L189.09 209.9 L190.23 210.36 L191.35 210.74 L192.45 211.04 L193.54 211.28 L194.59 211.43 L195.63 211.51 L196.63 211.52 L197.61 211.46 L198.56 211.32 L199.47 211.12 L200.35 210.84 L201.19 210.49 L202 210.07 L202.77 209.58 L203.49 209.02 L204.17 208.4 L204.81 207.71 L205.4 206.96 L205.95 206.15 L206.44 205.27 L206.89 204.34 L207.28 203.34 L207.62 202.29 L207.91 201.18 L208.14 200.02 L208.31 198.81 L208.43 197.54 L208.49 196.23 L208.49 194.87 L208.43 193.46 L208.32 192.01 L208.14 190.52 L207.89 189 L207.59 187.43 L207.22 185.83 L206.79 184.19 L206.3 182.53 L205.74 180.83 L205.12 179.11 L204.44 177.36 L203.69 175.6 L202.88 173.81 L202 172 L201.06 170.18 L200.06 168.34 L198.99 166.49 L197.87 164.64 L196.68 162.77 L195.43 160.9 L194.12 159.03 L192.75 157.16 L191.32 155.29 L189.83 153.42 L188.29 151.57 L186.69 149.71 L185.04 147.87 L183.33 146.04 L181.57 144.23 L179.77 142.43 L177.91 140.65 L176 138.89 L174.05 137.15 L172.05 135.44 L170.01 133.75 L167.93 132.09 L165.8 130.46 L163.64 128.86 L161.45 127.29 L159.22 125.76 L156.96 124.26 L154.67 122.8 L152.35 121.38 L150 120 L152.37 121.34 L154.76 122.64 L157.17 123.89 L159.6 125.1 L162.04 126.27 L164.5 127.39 L166.96 128.46 L169.43 129.48 L171.91 130.45 L174.4 131.38 L176.88 132.25 L179.36 133.07 L181.84 133.84 L184.31 134.56 L186.77 135.23 L189.22 135.85 L191.66 136.41 L194.08 136.92 L196.48 137.38 L198.86 137.79 L201.22 138.14 L203.56 138.44 L205.86 138.69 L208.14 138.89 L210.38 139.04 L212.59 139.14 L214.76 139.18 L216.89 139.18 L218.99 139.13 L221.03 139.03 L223.04 138.89 L224.99 138.7 L226.9 138.46 L228.75 138.18 L230.55 137.86 L232.3 137.49 L233.99 137.09 L235.62 136.64 L237.19 136.16 L238.7 135.64 L240.14 135.08 L241.52 134.5 L242.84 133.87 L244.08 133.22 L245.26 132.54 L246.37 131.83 L247.4 131.1 L248.37 130.34 L249.26 129.56 L250.07 128.76 L250.81 127.93 L251.48 127.1 L252.07 126.24 L252.58 125.38 L253.01 124.5 L253.37 123.61 L253.64 122.71 L253.84 121.81 L253.96 120.91 L254 120'/><text class='tm' x='258' y='114'>4</text><text class='tb' x='262' y='40'>a sketch of</text><text class='tb' x='262' y='58'>r = 4 cos 3θ</text><text class='tm' x='262' y='80'>6 petals,</text><text class='tm' x='262' y='96'>each 4 long</text></svg>",
+    "cap": "A classmate's sketch, used in the rose card below."
+   },
+   "ex": [
+    {
+     "q": "Plot (−3, 60°). Work shown: \"Face 60°, walk out 3. The point is in QI at (3/2, 3√3/2).\"",
+     "a": "Mistake: ignored the negative r. Fix: walk backward to (−3/2, −3√3/2) in QIII, the same point as (3, 240°).",
+     "why": "Negative r points the opposite way from θ."
+    },
+    {
+     "q": "Convert (−3, 3) to polar. Work shown: \"r = 3√2, θ = tan⁻¹(3/−3) = −45°, so (3√2, 315°).\"",
+     "a": "Mistake: trusted tan⁻¹'s quadrant. Fix: the point is in QII, so θ = 180° − 45° = 135°: (3√2, 135°).",
+     "why": "tan⁻¹ only returns QI or QIV angles; the sketch decides."
+    },
+    {
+     "q": "Convert r = 2 / (1 + cos θ). Work shown: \"r² = 4 / (1 + cos θ)², so x² + y² = 4 / (1 + x)².\"",
+     "a": "Mistake: swapped cos θ for x. Fix: r + r cos θ = 2, so √(x² + y²) = 2 − x, and y² = 4 − 4x.",
+     "why": "cos θ is x/r. Only r cos θ becomes x, so clear the fraction first."
+    },
+    {
+     "q": "The sketch above is labeled r = 4 cos 3θ. What's wrong with it?",
+     "a": "Mistake: 6 petals. Fix: n = 3 is odd, so 3 petals of length 4, 120° apart, one on the polar axis.",
+     "why": "Only an even n doubles the petal count."
+    },
+    {
+     "q": "Intersections of r = 6 sin θ and r = 2 + 2 sin θ. Work shown: \"sin θ = 1/2, so they meet exactly twice: (3, π/6) and (3, 5π/6).\"",
+     "a": "Mistake: \"exactly twice\" misses the pole. Fix: 6 sin θ = 0 at θ = 0 and 2 + 2 sin θ = 0 at 3π/2, so both curves pass through the pole as well.",
+     "why": "At the pole r = 0 for any θ, so two curves can reach it at different angles."
+    },
+    {
+     "q": "Calculator: graph r² = 25 cos 2θ. Work shown: \"Enter r1 = 5 cos(2θ).\"",
+     "a": "Mistake: took the root of 25 only. Fix: r1 = √(25 cos(2θ)), a lemniscate. 5 cos 2θ draws a 4-petal rose.",
+     "why": "The square root covers the whole right side."
+    },
+    {
+     "q": "Simplify √−12 · √−3. Work shown: \"√((−12)(−3)) = √36 = 6.\"",
+     "a": "Mistake: multiplied under one radical. Fix: (2i√3)(i√3) = 2i² · 3 = −6.",
+     "why": "Pull out i first; √a · √b = √(ab) fails when both are negative."
+    }
+   ],
+   "terms": [
+    "negative r",
+    "quadrant",
+    "petal count",
+    "the pole",
+    "square root"
+   ]
+  }
+ ],
+ "problems": [
+  {
+   "q": "**Polar point**: (4, 7π/6). (a) Quadrant. (b) A pair with r > 0 and 2π < θ < 4π, and a pair with r < 0 and 0 < θ < 2π. (c) Rectangular coordinates.",
+   "steps": [
+    [
+     "7π/6 = π + π/6",
+     "Just past π: quadrant III."
+    ],
+    [
+     "(a) QIII",
+     "r > 0 keeps θ's quadrant."
+    ],
+    [
+     "7π/6 + 2π = 7π/6 + 12π/6 = 19π/6",
+     "Same r, one full turn."
+    ],
+    [
+     "(4, 19π/6)",
+     "19π/6 is between 2π = 12π/6 and 4π = 24π/6."
+    ],
+    [
+     "7π/6 − π = π/6, so (−4, π/6)",
+     "Flip r, turn half a circle."
+    ],
+    [
+     "x = 4 cos(7π/6) = 4(−√3/2) = −2√3",
+     "QIII: cos is negative."
+    ],
+    [
+     "y = 4 sin(7π/6) = 4(−1/2) = −2",
+     "QIII: sin is negative."
+    ]
+   ],
+   "ans": "QIII; (4, 19π/6) and (−4, π/6); (−2√3, −2)"
+  },
+  {
+   "q": "**Negative r**: (−6, 150°). Quadrant, two other polar pairs, and rectangular coordinates.",
+   "steps": [
+    [
+     "150° points into QII",
+     "Where θ faces."
+    ],
+    [
+     "r < 0: 150° + 180° = 330°, QIV",
+     "Negative r walks backward."
+    ],
+    [
+     "(6, 330°)",
+     "Positive r at the opposite angle."
+    ],
+    [
+     "(−6, 150° + 360°) = (−6, 510°)",
+     "Keep r, add a full turn."
+    ],
+    [
+     "x = −6 cos 150° = −6(−√3/2) = 3√3",
+     "Keep the negative r in the product."
+    ],
+    [
+     "y = −6 sin 150° = −6(1/2) = −3",
+     ""
+    ]
+   ],
+   "ans": "QIV; (6, 330°) and (−6, 510°); (3√3, −3)"
+  },
+  {
+   "q": "**Rectangular to polar**: (−2√3, −2), two pairs with 0° ≤ θ < 360°.",
+   "steps": [
+    [
+     "Both parts negative: QIII",
+     "Sketch first."
+    ],
+    [
+     "r = √((−2√3)² + (−2)²) = √(12 + 4) = √16 = 4",
+     "(−2√3)² = 4 · 3 = 12."
+    ],
+    [
+     "ref = tan⁻¹(2 / (2√3)) = tan⁻¹(1/√3) = 30°",
+     "Use |y/x| for the reference angle."
+    ],
+    [
+     "θ = 180° + 30° = 210°",
+     "QIII: 180° + ref."
+    ],
+    [
+     "(4, 210°)",
+     ""
+    ],
+    [
+     "(−4, 210° − 180°) = (−4, 30°)",
+     "Flip r; subtract 180° to stay under 360°."
+    ]
+   ],
+   "ans": "(4, 210°) and (−4, 30°)"
+  },
+  {
+   "q": "**Rectangular to polar equation**: 3x − y = 5.",
+   "steps": [
+    [
+     "3(r cos θ) − r sin θ = 5",
+     "x = r cos θ, y = r sin θ."
+    ],
+    [
+     "r(3 cos θ − sin θ) = 5",
+     "Factor out r."
+    ],
+    [
+     "r = 5 / (3 cos θ − sin θ)",
+     "Divide."
+    ],
+    [
+     "graph: y = 3x − 5",
+     "A line: slope 3, y-intercept −5."
+    ]
+   ],
+   "ans": "r = 5 / (3 cos θ − sin θ)"
+  },
+  {
+   "q": "**Line through two polar points**: (4, 0°) and (6, 90°). Polar equation, simplified.",
+   "steps": [
+    [
+     "(4, 0°) → (4 cos 0°, 4 sin 0°) = (4, 0)",
+     "Convert both points."
+    ],
+    [
+     "(6, 90°) → (6 cos 90°, 6 sin 90°) = (0, 6)",
+     ""
+    ],
+    [
+     "m = (6 − 0) / (0 − 4) = −3/2",
+     ""
+    ],
+    [
+     "y = −(3/2)x + 6",
+     "y-intercept 6."
+    ],
+    [
+     "2y = −3x + 12, so 3x + 2y = 12",
+     "Standard form ax + by = c."
+    ],
+    [
+     "3r cos θ + 2r sin θ = 12",
+     "Swap in r."
+    ],
+    [
+     "r = 12 / (3 cos θ + 2 sin θ)",
+     "Factor out r and divide."
+    ],
+    [
+     "check: θ = 0° gives 12/3 = 4; θ = 90° gives 12/2 = 6",
+     "Both original points."
+    ]
+   ],
+   "ans": "r = 12 / (3 cos θ + 2 sin θ)"
+  },
+  {
+   "q": "**Polar to rectangular**: r = 6 / (1 + cos θ). Name the graph.",
+   "steps": [
+    [
+     "r(1 + cos θ) = 6",
+     "Clear the fraction."
+    ],
+    [
+     "r + r cos θ = 6",
+     "Distribute."
+    ],
+    [
+     "√(x² + y²) + x = 6",
+     "r → √(x² + y²), r cos θ → x."
+    ],
+    [
+     "√(x² + y²) = 6 − x",
+     "Isolate the radical."
+    ],
+    [
+     "x² + y² = 36 − 12x + x²",
+     "Square both sides."
+    ],
+    [
+     "y² = 36 − 12x",
+     "x² cancels."
+    ],
+    [
+     "y² = −12(x − 3)",
+     "Factor out −12: vertex form (y − k)² = a(x − h)."
+    ],
+    [
+     "vertex (3, 0); x = 0 gives y = ±6",
+     "a < 0, so it opens left."
+    ]
+   ],
+   "ans": "y² = 36 − 12x, a parabola opening left with vertex (3, 0)"
+  },
+  {
+   "q": "**Polar to rectangular**: r = 8 sin θ − 6 cos θ. Name the graph.",
+   "steps": [
+    [
+     "r² = 8r sin θ − 6r cos θ",
+     "Multiply by r to build r sin θ and r cos θ."
+    ],
+    [
+     "x² + y² = 8y − 6x",
+     "Swap."
+    ],
+    [
+     "x² + 6x + y² − 8y = 0",
+     "Everything on one side."
+    ],
+    [
+     "x² + 6x + 9 + y² − 8y + 16 = 9 + 16",
+     "Complete the square twice: (6/2)² = 9, (−8/2)² = 16."
+    ],
+    [
+     "(x + 3)² + (y − 4)² = 25",
+     ""
+    ],
+    [
+     "center (−3, 4), radius 5",
+     "It passes through the pole: 9 + 16 = 25."
+    ]
+   ],
+   "ans": "(x + 3)² + (y − 4)² = 25, a circle with center (−3, 4) and radius 5"
+  },
+  {
+   "q": "**Name and sketch**: r = 2 + 4 sin θ.",
+   "steps": [
+    [
+     "a = 2, b = 4: a/b = 1/2 < 1",
+     "Limaçon form a + b sin θ."
+    ],
+    [
+     "limaçon with an inner loop",
+     "The ratio is under 1."
+    ],
+    [
+     "θ = 0°: r = 2; 90°: r = 6; 180°: r = 2",
+     "Axis crossings."
+    ],
+    [
+     "θ = 270°: r = 2 − 4 = −2, plotted at (0, 2)",
+     "Negative r: opposite side, so up."
+    ],
+    [
+     "r = 0 when sin θ = −1/2: θ = 210°, 330°",
+     "The inner loop runs between these."
+    ],
+    [
+     "+sin: the big loop opens up, maximum 6",
+     ""
+    ]
+   ],
+   "ans": "Limaçon with an inner loop opening up: 6 at the top, crossing the x-axis at 2 and −2, inner loop reaching (0, 2)"
+  },
+  {
+   "q": "**Lemniscate**: r² = 25 sin 2θ. Name it, give the calculator entry, and describe the graph.",
+   "steps": [
+    [
+     "r² = a² sin 2θ with a² = 25, a = 5",
+     "r² form: lemniscate."
+    ],
+    [
+     "r1 = √(25 sin(2θ))",
+     "The calculator needs r =; root the whole right side."
+    ],
+    [
+     "sin 2θ = 1 at θ = 45°, so r = 5",
+     "Tip of the first loop."
+    ],
+    [
+     "sin 2θ < 0 for 90° < θ < 180°",
+     "No real r: nothing in QII (or QIV)."
+    ],
+    [
+     "loops in QI and QIII, tips at 5 on the 45° line",
+     "sin tilts it; cos would lay it on the x-axis."
+    ]
+   ],
+   "ans": "Lemniscate with tips 5 from the pole along 45° and 225°"
+  },
+  {
+   "q": "**Intersections**: r = 5 − sin θ and r = 5 + cos θ, 0 ≤ θ < 2π.",
+   "steps": [
+    [
+     "5 − sin θ = 5 + cos θ",
+     "Set r = r."
+    ],
+    [
+     "−sin θ = cos θ",
+     "The 5s cancel."
+    ],
+    [
+     "θ = 3π/4, 7π/4",
+     "Unit circle: sin and cos have opposite signs, both √2/2 in size."
+    ],
+    [
+     "θ = 3π/4: r = 5 − √2/2 = (10 − √2)/2",
+     "Plug into either equation."
+    ],
+    [
+     "θ = 7π/4: r = 5 + √2/2 = (10 + √2)/2",
+     "sin(7π/4) = −√2/2."
+    ],
+    [
+     "pole: 5 − sin θ ≥ 4, never 0",
+     "No pole intersection."
+    ]
+   ],
+   "ans": "((10 − √2)/2, 3π/4) and ((10 + √2)/2, 7π/4)"
+  },
+  {
+   "q": "**Intersections and the pole**: r = 6 sin θ and r = 2 + 2 sin θ, 0 ≤ θ < 2π.",
+   "steps": [
+    [
+     "6 sin θ = 2 + 2 sin θ",
+     "Set r = r."
+    ],
+    [
+     "4 sin θ = 2, so sin θ = 1/2",
+     ""
+    ],
+    [
+     "θ = π/6, 5π/6",
+     "Sine is positive in QI and QII."
+    ],
+    [
+     "r = 6 sin(π/6) = 3; r = 6 sin(5π/6) = 3",
+     "Same r both times."
+    ],
+    [
+     "6 sin θ = 0 at θ = 0",
+     "Pole check, curve 1."
+    ],
+    [
+     "2 + 2 sin θ = 0 at θ = 3π/2",
+     "Pole check, curve 2: both reach the pole."
+    ]
+   ],
+   "ans": "(3, π/6), (3, 5π/6), and the pole"
+  },
+  {
+   "q": "**Radicals with i**: (a) √−45 · √−5  (b) √−48 / √3",
+   "steps": [
+    [
+     "√−45 = i√45 = 3i√5; √−5 = i√5",
+     "Pull out i before multiplying."
+    ],
+    [
+     "(3i√5)(i√5) = 3i² · 5",
+     ""
+    ],
+    [
+     "= 3(−1)(5) = −15",
+     "i² = −1."
+    ],
+    [
+     "√−48 = i√48 = 4i√3",
+     "(b)"
+    ],
+    [
+     "4i√3 / √3 = 4i",
+     "√3 cancels."
+    ]
+   ],
+   "ans": "(a) −15  (b) 4i"
+  },
+  {
+   "q": "**Divide**: (2 + 5i) / (3 − 4i)",
+   "steps": [
+    [
+     "(2 + 5i)/(3 − 4i) · (3 + 4i)/(3 + 4i)",
+     "Conjugate of the bottom."
+    ],
+    [
+     "top: 6 + 8i + 15i + 20i²",
+     "FOIL."
+    ],
+    [
+     "= 6 + 23i − 20 = −14 + 23i",
+     "20i² = −20."
+    ],
+    [
+     "bottom: 3² + 4² = 25",
+     "(a − bi)(a + bi) = a² + b²."
+    ],
+    [
+     "= −14/25 + (23/25)i",
+     "Standard form a + bi."
+    ]
+   ],
+   "ans": "−14/25 + (23/25)i"
+  },
+  {
+   "q": "**Solve over the complex numbers**: 5x² + 2x + 1 = 0",
+   "steps": [
+    [
+     "x = (−2 ± √(4 − 20)) / 10",
+     "Quadratic formula with a = 5, b = 2, c = 1."
+    ],
+    [
+     "= (−2 ± √−16) / 10",
+     ""
+    ],
+    [
+     "= (−2 ± 4i) / 10",
+     "√−16 = 4i."
+    ],
+    [
+     "= −1/5 ± (2/5)i",
+     "Split the fraction and reduce each part."
+    ]
+   ],
+   "ans": "x = −1/5 + (2/5)i and x = −1/5 − (2/5)i"
+  },
+  {
+   "q": "**Powers of i**: (a) i⁻¹⁴  (b) 1 / i⁻²³",
+   "steps": [
+    [
+     "i⁻¹⁴ = i⁻¹⁴⁺¹⁶ = i²",
+     "Add a multiple of 4 to land on 0 to 3."
+    ],
+    [
+     "= −1",
+     ""
+    ],
+    [
+     "1 / i⁻²³ = i²³",
+     "A negative exponent in the bottom moves up."
+    ],
+    [
+     "23 = 4 · 5 + 3, so i²³ = i³ = −i",
+     "Use the remainder."
+    ]
+   ],
+   "ans": "(a) −1  (b) −i"
+  },
+  {
+   "q": "**Trig form**: (a) 12 cis(−60°) in rectangular form. (b) −7i in trig form, 0° ≤ θ < 360°.",
+   "steps": [
+    [
+     "12(cos(−60°) + i sin(−60°))",
+     "(a) Write cis out."
+    ],
+    [
+     "= 12(1/2 − (√3/2)i)",
+     "−60° is in QIV: cos +, sin −."
+    ],
+    [
+     "= 6 − 6√3 i",
+     "Distribute 12."
+    ],
+    [
+     "−7i is the point (0, −7)",
+     "(b) On the negative imaginary axis."
+    ],
+    [
+     "r = 7, θ = 270°",
+     "No tan⁻¹ needed on an axis."
+    ]
+   ],
+   "ans": "(a) 6 − 6√3 i  (b) 7 cis 270°"
+  },
+  {
+   "q": "**Product**: (4 cis 200°)(3 cis 130°) in rectangular form.",
+   "steps": [
+    [
+     "= 4 · 3 cis(200° + 130°)",
+     "Product theorem: multiply r's, add angles."
+    ],
+    [
+     "= 12 cis 330°",
+     ""
+    ],
+    [
+     "= 12(√3/2 − (1/2)i)",
+     "QIV: cos +, sin −."
+    ],
+    [
+     "= 6√3 − 6i",
+     ""
+    ]
+   ],
+   "ans": "6√3 − 6i"
+  },
+  {
+   "q": "**Quotient from rectangular**: (3√2 + 3√6 i) / (√2 − √6 i)",
+   "steps": [
+    [
+     "r₁ = √(18 + 54) = √72 = 6√2",
+     "(3√2)² = 18, (3√6)² = 54."
+    ],
+    [
+     "θ₁ = tan⁻¹(3√6 / 3√2) = tan⁻¹(√3) = 60°",
+     "Both parts positive: QI."
+    ],
+    [
+     "r₂ = √(2 + 6) = 2√2",
+     "Bottom."
+    ],
+    [
+     "θ₂ = tan⁻¹(−√6/√2) = −60°, so 300°",
+     "QIV: add 360°."
+    ],
+    [
+     "(6√2 / 2√2) cis(60° − 300°) = 3 cis(−240°)",
+     "Quotient theorem."
+    ],
+    [
+     "= 3 cis 120°",
+     "Add 360°."
+    ],
+    [
+     "= 3(−1/2 + (√3/2)i) = −3/2 + (3√3/2)i",
+     "QII: cos −, sin +."
+    ]
+   ],
+   "ans": "−3/2 + (3√3/2)i"
+  },
+  {
+   "q": "**De Moivre**: (2 − 2i)⁵ in a + bi form.",
+   "steps": [
+    [
+     "r = √(4 + 4) = 2√2; θ = 315°",
+     "QIV: 360° − 45°."
+    ],
+    [
+     "(2√2)⁵ cis(5 · 315°)",
+     "De Moivre: rⁿ and nθ."
+    ],
+    [
+     "(2√2)⁵ = 32 · (√2)⁵ = 32 · 4√2 = 128√2",
+     "(√2)⁵ = (√2)⁴ · √2 = 4√2."
+    ],
+    [
+     "5 · 315° = 1575°, and 1575° − 4 · 360° = 135°",
+     "Subtract full turns."
+    ],
+    [
+     "128√2(−√2/2 + (√2/2)i)",
+     "QII: cos −, sin +."
+    ],
+    [
+     "= −128 + 128i",
+     "√2 · √2 = 2."
+    ]
+   ],
+   "ans": "−128 + 128i"
+  },
+  {
+   "q": "**Cube roots**: solve x³ − (4 + 4√3 i) = 0 in trig form.",
+   "steps": [
+    [
+     "x³ = 4 + 4√3 i",
+     "Isolate x³."
+    ],
+    [
+     "r = √(16 + 48) = 8; θ = tan⁻¹(√3) = 60°",
+     "QI."
+    ],
+    [
+     "x = ∛8 cis((60° + 360°k)/3)",
+     "nth root theorem, k = 0, 1, 2."
+    ],
+    [
+     "= 2 cis(20° + 120°k)",
+     "Cube roots sit 120° apart."
+    ],
+    [
+     "= 2 cis 20°, 2 cis 140°, 2 cis 260°",
+     "Stop at three."
+    ]
+   ],
+   "ans": "2 cis 20°, 2 cis 140°, 2 cis 260°"
+  },
+  {
+   "q": "**Mandelbrot set**: is z = −1 + i in the set?",
+   "steps": [
+    [
+     "z = −1 + i, |z| = √2",
+     "Start; √2 is under 2."
+    ],
+    [
+     "z² + z = −2i + (−1 + i) = −1 − i",
+     "(−1 + i)² = 1 − 2i − 1 = −2i."
+    ],
+    [
+     "|−1 − i| = √2",
+     "Still under 2."
+    ],
+    [
+     "(−1 − i)² + z = 2i + (−1 + i) = −1 + 3i",
+     "(−1 − i)² = 1 + 2i − 1 = 2i."
+    ],
+    [
+     "|−1 + 3i| = √10 ≈ 3.16",
+     "Over 2: not in the set."
+    ]
+   ],
+   "ans": "No"
+  }
+ ],
+ "formulas": [
+  {
+   "n": "x and y",
+   "f": "x = r cos θ, y = r sin θ",
+   "note": "keep the sign of r"
+  },
+  {
+   "n": "r and θ",
+   "f": "r² = x² + y², tan θ = y/x",
+   "note": "sketch the quadrant; tan⁻¹ only gives QI or QIV"
+  },
+  {
+   "n": "same point",
+   "f": "(r, θ + 360°k) = (−r, θ + 180°)",
+   "note": "flip r and turn 180° together"
+  },
+  {
+   "n": "line",
+   "f": "ax + by = c ↔ r = c / (a cos θ + b sin θ)"
+  },
+  {
+   "n": "vertical, horizontal line",
+   "f": "x = k ↔ r = k sec θ; y = k ↔ r = k csc θ"
+  },
+  {
+   "n": "circle at the pole",
+   "f": "x² + y² = a² ↔ r = ±a"
+  },
+  {
+   "n": "circle through the pole",
+   "f": "r = a cos θ, r = a sin θ",
+   "note": "diameter |a| on the x-axis (cos) or the y-axis (sin)"
+  },
+  {
+   "n": "limaçon",
+   "f": "r = a ± b cos θ, r = a ± b sin θ",
+   "note": "a/b < 1 inner loop; a/b = 1 cardioid; 1 to 2 dimple; 2 or more round"
+  },
+  {
+   "n": "rose curve",
+   "f": "r = a cos nθ, r = a sin nθ",
+   "note": "n odd: n petals; n even: 2n; petal length |a|"
+  },
+  {
+   "n": "lemniscate",
+   "f": "r² = a² cos 2θ, r² = a² sin 2θ",
+   "note": "figure eight with tips at |a|"
+  },
+  {
+   "n": "intersections",
+   "f": "r₁ = r₂, then r = 0 on each",
+   "note": "the pole can be shared at different θ"
+  },
+  {
+   "n": "i",
+   "f": "i² = −1, √−a = i√a",
+   "note": "pull out i before multiplying"
+  },
+  {
+   "n": "powers of i",
+   "f": "i, −1, −i, 1, then repeat",
+   "note": "use the exponent's remainder after dividing by 4"
+  },
+  {
+   "n": "conjugate",
+   "f": "(a + bi)(a − bi) = a² + b²",
+   "note": "divide by multiplying top and bottom by the bottom's conjugate"
+  },
+  {
+   "n": "trig form",
+   "f": "r cis θ = r(cos θ + i sin θ)"
+  },
+  {
+   "n": "product, quotient",
+   "f": "r₁r₂ cis(θ₁ + θ₂); (r₁/r₂) cis(θ₁ − θ₂)"
+  },
+  {
+   "n": "De Moivre",
+   "f": "[r cis θ]ⁿ = rⁿ cis nθ"
+  },
+  {
+   "n": "nth roots",
+   "f": "ⁿ√r cis((θ + 360°k)/n), k = 0 to n − 1"
+  },
+  {
+   "n": "Julia set",
+   "f": "z → z² − 1, repeat",
+   "note": "any |z| over 2: not in the set"
+  },
+  {
+   "n": "Mandelbrot set",
+   "f": "z, z² + z, (z² + z)² + z, …",
+   "note": "any |value| over 2: not in the set"
+  }
+ ],
+ "abbr": {
+  "cis θ": "cos θ + i sin θ",
+  "QI–QIV": "quadrants I to IV",
+  "ref": "reference angle",
+  "TI-84, TI-Nspire": "graphing calculator models",
+  "POL": "polar mode on a TI-84"
+ }
+};
+
+/* ═══ machinery. nothing below needs editing. ═══ */
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* markup: **term** bolds once per scope; legacy ==x== and !!x!! render as plain text */
+let SEEN=null;
+const scope=()=>{SEEN=new Set()};
+const fmt=s=>esc(s).replace(/==(.+?)==/g,"$1").replace(/!!(.+?)!!/g,"$1").replace(/\*\*(.+?)\*\*/g,(m,t)=>{const k=t.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();if(SEEN&&SEEN.has(k))return t;if(SEEN)SEEN.add(k);return `<b class="kw">${t}</b>`});
+const plain=s=>fmt(s).replace(/<b class="kw">(.*?)<\/b>/g,"$1");
+const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const I_TEST='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="1.8" width="9" height="10.6" rx="1.6"/><path d="M5 5h4M5 7.6h4M5 10.2h2"/></svg>';
+const I_WARN='<svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.8 12.6 11.8H1.4z"/><path d="M7 5.6v2.8M7 10.1h.01"/></svg>';
+const ICON={
+ apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ psych:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ phys:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ pre:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ sem:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ span:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ apwh:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ biz:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ mor:'<path d="M13 4.5v17"/><path d="M7.5 9.5h11"/>',
+ csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
+};
+const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables",leq:"the leq",prompts:"prompts"};
+const has=v=>Array.isArray(v)?v.length>0:!!v;
+
+/* header */
+document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
+document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
+$("#title").textContent=GUIDE.title;
+if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+/* link targets from GUIDE data: site-relative or http(s), never other schemes or user:pass@ (engine, 2026-09-30) */
+const safeUrl=u=>{const s=String(u??"").trim();if(!s||/[\x00-\x20\\]/.test(s))return null;const m=/^([a-z][a-z0-9+.-]*):/i.exec(s);if(m&&!/^https?$/i.test(m[1]))return null;try{const x=new URL(s,"https://valentinoguides.com/");if(x.username||x.password)return null}catch(e){return null}return s};
+if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(ok.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");if(ok.length){const d=$("#pdfs");d.innerHTML=(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"")+ok.map((p,i)=>`<a class="btn${i?" ghost":""}" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.t)}</a>`).join("");d.hidden=false}}
+$("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
+(function(){
+  const c=$("#crow");
+  c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  if(GUIDE.test){
+    const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
+    const now=new Date(); now.setHours(0,0,0,0);
+    const days=Math.round((t-now)/864e5);
+    const md=`${t.getMonth()+1}/${t.getDate()}`+(GUIDE.end?`–${e.getMonth()+1}/${e.getDate()}`:"");
+    let txt, past=e<now;
+    if(past)txt=`test was ${md}`;
+    else if(days<=0)txt=`test today · ${md}`;
+    else if(days===1)txt=`test tomorrow · ${md}`;
+    else if(days<=14)txt=`test in ${days} days · ${md}`;
+    else txt=`test ${md}`;
+    c.appendChild(el("span","chip"+(past?" past":" due"),esc(txt)));
+  }
+  if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
+})();
+const bar=$("#bar");
+const setBarH=()=>document.documentElement.style.setProperty("--barh",bar.offsetHeight+"px");
+setBarH(); addEventListener("resize",setBarH);
+
+function shead(txt,extra){return el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""))}
+
+/* ═══ outline blocks ═══ */
+const B={
+  p:v=>(Array.isArray(v)?v:[v]).map(x=>`<p>${fmt(x)}</p>`).join(""),
+  pts:v=>`<ul class="pts${v.length>=6&&v.every(x=>String(x).length<70)?" two":""}">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`,
+  rows:v=>`<dl class="rows">${v.map(([k,x])=>`<dt>${esc(k)}</dt><dd>${fmt(x)}</dd>`).join("")}</dl>`,
+  steps:v=>`<ol class="steps">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  flow:v=>`<ol class="flow">${v.map(x=>`<li><span>${fmt(x)}</span></li>`).join("")}</ol>`,
+  fig:v=>`<figure class="fig">${v.svg||""}${v.cap?`<figcaption>${fmt(v.cap)}</figcaption>`:""}</figure>`,
+  tiles:v=>`<div class="tiles">${v.map(x=>`<div><h5>${fmt(x.h)}</h5>${x.t?`<p>${fmt(x.t)}</p>`:""}${x.k?`<span class="tk">${esc(x.k)}</span>`:""}</div>`).join("")}</div>`,
+  tree:v=>{const n=x=>`<li><div class="nd"><b>${fmt(x.t)}</b>${x.d?`<span>${fmt(x.d)}</span>`:""}</div>${x.c?.length?`<ul>${x.c.map(n).join("")}</ul>`:""}</li>`;return `<div class="tree"><ul>${n(v)}</ul></div>`},
+  table:v=>{const cols=v.cols||[];return `${v.h?`<p class="tcap">${esc(v.h)}</p>`:""}<div class="tbw"><table class="tbl${cols.length===2?" two":""}">${cols.some(c=>c)?`<thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead>`:""}<tbody>${(v.rows||[]).map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`},
+  cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
+  watch:v=>`<div class="watch"><div class="wl">${I_WARN}watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
+  ex:v=>`<div class="exs">${v.map(x=>Array.isArray(x.opts)?`<div class="tq mc"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div>${x.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${j===x.a?" data-c":""}><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")}<div class="ea">${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`:`<div class="tq"><div class="el">${I_TEST}on the test</div><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>show answer</span>${CHEV}</button><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"example",ok:"rule",warn:"watch out"})[n.k]||esc(n.k||"note")}</span>${fmt(n.t)}</div>`).join(""),
+  terms:v=>`<div class="terms"><span class="tl">key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
+};
+const VIS=["fig","tree","tiles"];
+function section(s,i){
+  scope();
+  const watch=[...(s.watch||[]),...(s.notes||[]).filter(n=>n.k==="warn").map(n=>n.t)];
+  const notes=(s.notes||[]).filter(n=>n.k!=="warn");
+  const mainKeys=["p","pts","rows","flow","steps"].filter(k=>has(s[k]));
+  const vis=VIS.filter(k=>has(s[k]));
+  let sideKey=vis[0]||null;
+  const main=mainKeys.map(k=>B[k](s[k])).join("")+(notes.length?B.notes(notes):"");
+  let side="", watchPlaced=false;
+  if(sideKey)side=B[sideKey](s[sideKey]);
+  else if(watch.length&&main){side=B.watch(watch);watchPlaced=true}
+  let h="";
+  if(main&&side)h+=`<div class="duo${sideKey==="tree"||sideKey==="fig"?" wide-side":""}"><div class="main">${main}</div><div class="side">${side}</div></div>`;
+  else if(main)h+=`<div class="main solo">${main}</div>`;
+  else if(side)h+=side;
+  const rest=vis.filter(k=>k!==sideKey).concat(["table","cmp"].filter(k=>has(s[k])));
+  if(sideKey&&!main){/* visual already placed alone */}
+  rest.forEach(k=>{h+=B[k](s[k])});
+  if(has(s.tables))s.tables.forEach(t=>{h+=B.table(t)});
+  if(has(s.ex))h+=B.ex(s.ex);
+  if(watch.length&&!watchPlaced)h+=B.watch(watch);
+  if(has(s.terms))h+=B.terms(s.terms);
+  const n=String(i+1).padStart(2,"0");
+  const badge=s.w===3?`<span class="w w3">tested most</span>`:s.w===2?`<span class="w w2">tested</span>`:"";
+  const node=el("section","sec",`<header><span class="num">${n}</span><div class="ht"><h3>${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</div>${badge}</header><div class="sb">${h}</div>`);
+  node.id="s-"+(i+1);
+  SEEN=null;
+  return node;
+}
+function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{
+  const b=x.querySelector(".eb");
+  if(b){b.setAttribute("aria-expanded","false");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"hide answer":"show answer";b.setAttribute("aria-expanded",String(on))});return}
+  x.insertAdjacentHTML("beforeend",'<p class="vh" role="status" aria-live="polite"></p>');
+  x.querySelectorAll(".opt").forEach(o=>o.addEventListener("click",()=>{
+    if(x.classList.contains("done")||$("#root").classList.contains("showall"))return;
+    x.classList.add("done","on");
+    if(o.hasAttribute("data-c")){o.classList.add("right");tagOpt(o,"\u2713 correct");say(x,"Correct.")}else{o.classList.add("wrong");tagOpt(o,"\u2717 your answer");const c=x.querySelector(".opt[data-c]");if(c){c.classList.add("right");tagOpt(c,"\u2713 correct")}say(x,"Not quite. The answer is ("+(c?c.querySelector(".k").textContent:"?")+").")}
+  }));
+})}
+function buildOutline(sec){
+  const list=GUIDE.outline||[];
+  const wrap=el("div","ol"); const toc=el("nav","toc"); toc.setAttribute("aria-label","sections");
+  const col=el("div","olc");
+  toc.innerHTML=`<div class="tl">on this page</div>`;
+  if(has(GUIDE.top)){
+    scope();
+    const t=el("div","tops"); t.id="s-top";
+    t.innerHTML=GUIDE.top.map(x=>`<div class="tp">${fmt(x)}</div>`).join("");
+    col.appendChild(shead("start here","what decides the grade")); col.appendChild(t);
+    if(GUIDE.topTable){const tt=el("div","toptbl",B.table(GUIDE.topTable));col.appendChild(tt)}
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-top"><i class="w3" style="border-radius:50%"></i><span>start here</span></a>`);
+  }
+  list.forEach((s,i)=>{
+    col.appendChild(section(s,i));
+    toc.insertAdjacentHTML("beforeend",`<a href="#s-${i+1}"><i class="w${s.w||1}"></i><span>${esc(s.t)}</span></a>`);
+  });
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    col.appendChild(shead("abbreviations"));
+    const a=el("div","abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")); a.id="s-abbr"; col.appendChild(a);
+  }
+  if(list.some(s=>s.w===3)||list.some(s=>s.w===2))toc.insertAdjacentHTML("beforeend",`<div class="leg"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`);
+  wrap.appendChild(toc); wrap.appendChild(col); sec.appendChild(wrap);
+  wireEx(col);
+  const links=[...toc.querySelectorAll("a")];
+  links.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}));
+  if("IntersectionObserver" in window){
+    const vis=new Map();
+    const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target.id,e.isIntersecting));
+      const first=links.find(a=>vis.get(a.getAttribute("href").slice(1)));
+      if(first){links.forEach(a=>a.classList.toggle("on",a===first));if(getComputedStyle(toc).display==="flex"){const l=first.offsetLeft-toc.clientWidth/2+first.offsetWidth/2;toc.scrollTo({left:l,behavior:REDUCED?"auto":"smooth"})}}
+    },{rootMargin:"-20% 0px -55% 0px"});
+    links.forEach(a=>{const t=col.querySelector(a.getAttribute("href"));if(t)io.observe(t)});
+  }
+}
+
+/* practice mc */
+let SCORE={done:0,right:0,total:0}, RESEARCH=()=>{};
+/* feedback in words for sighted and screen-reader users (engine, 2026-09-30) */
+function tagOpt(o,t){if(!o.querySelector(".ftag"))o.insertAdjacentHTML("beforeend",`<span class="ftag">${t}</span>`)}
+function say(card,t){const s=card.querySelector(".vh[role=status]");if(s)s.textContent=t}
+function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
+function buildPractice(sec){
+  const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
+  sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
+  /* retry missed questions (engine, 2026-09-30): in memory for this page visit only, nothing stored or sent.
+     SCORE counts first tries only. Retries change the missed set and the round progress, never SCORE.
+     HOLD ignores a second click for half a second after a retry step, so a double click can't hit the control that moved under it. */
+  const FIRST=new Map(), MISSED=new Set(); let RT=null, ROUND=0, HOLD=-1e9;
+  const hold=()=>{const t=performance.now();if(t-HOLD<500)return true;HOLD=t;return false};
+  const rbar=el("div","rbar"); rbar.hidden=true; rbar.tabIndex=-1; rbar.setAttribute("role","group"); rbar.setAttribute("aria-label","retry missed questions");
+  rbar.innerHTML=`<p class="rst"></p><p class="vh" role="status" aria-live="polite"></p><div class="rbtns"><button type="button" class="btn" data-r="again" hidden></button><button type="button" class="btn ghost" data-r="all">all questions</button><button type="button" class="btn ghost" data-r="over">start over</button></div>`;
+  sec.insertBefore(rbar,sec.firstChild);
+  $("#reset").insertAdjacentHTML("beforebegin",'<button type="button" id="retry" hidden></button>');
+  const rbtn=$("#retry"), rst=rbar.querySelector(".rst"), rsay=rbar.querySelector(".vh"), ragain=rbar.querySelector('[data-r="again"]');
+  const g=el("div","qgrid"); g.tabIndex=-1;
+  const clearCard=c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"));c.querySelectorAll(".ftag").forEach(t=>t.remove());say(c,"")};
+  const firstTxt=()=>`first-try score stays ${SCORE.right} of ${SCORE.total}.`;
+  function rsync(){
+    const n=MISSED.size; rbar.hidden=!RT;
+    if(!RT){rbtn.hidden=!n;rbtn.textContent=`retry missed (${n})`;return}
+    const all=RT.set.length, end=RT.done>=all;
+    rbtn.hidden=false; rbtn.textContent=!end?`round ${RT.round}: ${RT.done} of ${all}`:n?`retry the ${n} still missed`:"all fixed · all questions";
+    ragain.hidden=!(end&&n); ragain.textContent=`retry the ${n} still missed`;
+    rst.textContent=!end?`retry round ${RT.round}: ${RT.done} of ${all} answered, ${RT.fixed} now right. ${firstTxt()}`
+      :n?`round ${RT.round} done: ${RT.fixed} of ${all} now right, ${n} still missed. ${firstTxt()}`:`all fixed: every missed question is now right. ${firstTxt()}`;
+    if(end&&!RT.said){RT.said=1;rsay.textContent=rst.textContent}
+  }
+  function record(i,ok){
+    if(!FIRST.has(i)){FIRST.set(i,ok);if(ok)SCORE.right++;else MISSED.add(i);SCORE.done++;$("#scn").textContent=SCORE.right}
+    else{if(ok)MISSED.delete(i);else MISSED.add(i);if(RT&&RT.set.includes(i)){RT.done++;if(ok)RT.fixed++}}
+    scoreVis(); rsync();
+  }
+  function startRetry(){
+    if(!MISSED.size||hold())return;
+    if($("#root").classList.contains("showall"))$("#showall").click();
+    RT={round:++ROUND,set:[...MISSED].sort((a,b)=>a-b),done:0,fixed:0,said:0};
+    g.querySelectorAll(".q").forEach(c=>{const on=RT.set.includes(+c.dataset.qi);c.classList.toggle("rx",!on);if(on)clearCard(c)});
+    rsay.textContent=""; rsync(); RESEARCH();
+    const r=rbar.getBoundingClientRect(); if(r.top<$("#bar").offsetHeight||r.bottom>innerHeight)sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});
+    rbar.focus({preventScroll:true});
+    const msg=`retry round ${RT.round}: ${RT.set.length} missed question${RT.set.length===1?"":"s"}. ${firstTxt()}`; setTimeout(()=>{if(RT&&RT.round===ROUND&&!RT.said)rsay.textContent=msg},120);
+  }
+  function endRetry(){if(hold())return;RT=null;rsay.textContent="";g.querySelectorAll(".q.rx").forEach(c=>c.classList.remove("rx"));rsync();RESEARCH();g.focus({preventScroll:true})}
+  qs.forEach((q,i)=>{
+    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a]; card.dataset.qi=i;
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${keys.includes(j)?" data-c":""}><span class="k">${"abcdef"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      (multi?`<div class="mchk"><span>select all that apply</span><button type="button" class="btn ghost">check</button></div>`:"")+
+      `<p class="vh" role="status" aria-live="polite"></p><div class="why"><b>why</b>${plain(q.why||"")}</div>`;
+    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall")||performance.now()-HOLD<500;
+    const finish=ok=>{card.classList.add("done");record(i,ok)};
+    opts.forEach(b=>b.addEventListener("click",()=>{
+      if(locked())return;
+      if(multi){b.classList.toggle("sel");return}
+      const j=+b.dataset.i;
+      if(j===q.a){b.classList.add("right");tagOpt(b,"\u2713 correct");say(card,"Correct.")}else{b.classList.add("wrong");tagOpt(b,"\u2717 your answer");opts[q.a].classList.add("right");tagOpt(opts[q.a],"\u2713 correct");say(card,"Not quite. The answer is ("+("abcdef"[q.a]||q.a+1)+").")}
+      finish(j===q.a);
+    }));
+    if(multi)card.querySelector(".mchk .btn").addEventListener("click",e=>{
+      if(locked())return;
+      let ok=true; const had=document.activeElement===e.currentTarget;
+      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c){o.classList.add("right");tagOpt(o,"\u2713 correct")}else if(s){o.classList.add("wrong");tagOpt(o,"\u2717 your answer")}if(s!==c)ok=false});
+      say(card,ok?"Correct.":"Not quite. The correct choices are marked.");
+      finish(ok);
+      if(had)(card.querySelector(".opt.right")||opts[0]).focus({preventScroll:true});
+    });
+    g.appendChild(card);
+  });
+  sec.appendChild(g);
+  rbtn.addEventListener("click",()=>{
+    if(!RT)return startRetry();
+    if(RT.done<RT.set.length){sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});rbar.focus({preventScroll:true});return}
+    if(MISSED.size)startRetry();else endRetry();
+  });
+  ragain.addEventListener("click",startRetry);
+  rbar.querySelector('[data-r="all"]').addEventListener("click",endRetry);
+  rbar.querySelector('[data-r="over"]').addEventListener("click",()=>$("#reset").click());
+  $("#reset").addEventListener("click",()=>{if(hold())return;SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
+}
+
+/* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
+function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps">${st.map(s=>`<li>${plain(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${plain(m)}</div><div class="wy">${y?plain(y):""}</div></li>`}).join("")}</ul>`}
+function buildProblems(sec){
+  const ps=GUIDE.problems||[];
+  sec.appendChild(shead("problems",`${ps.length} to work`));
+  const g=el("div","pgrid");
+  ps.forEach((p,i)=>{
+    const card=el("div","group prob");
+    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
+    const go=card.querySelector(".go");go.setAttribute("aria-expanded","false");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps";go.setAttribute("aria-expanded",String(on))});
+    g.appendChild(card);
+  });
+  sec.appendChild(g);
+}
+
+/* formulas */
+function buildFormulas(sec){
+  const fs=GUIDE.formulas||[];
+  sec.appendChild(shead("formulas",`${fs.length}`));
+  sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
+}
+
+/* flashcards: flip deck, plus the whole list */
+function buildCards(sec){
+  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  sec.appendChild(shead("cards",`${cs.length} · tap to flip, swipe for next`));
+  const dk=el("div","dk");
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  sec.appendChild(dk);
+  const cnt=nav.querySelector(".cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const go=d=>{i=(i+d+cs.length)%cs.length;draw()};
+  fc.addEventListener("click",()=>fc.classList.toggle("flip")); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();fc.classList.toggle("flip")}});
+  nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
+  nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
+  nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
+  draw();
+  sec.appendChild(shead("all cards",`${cs.length}`));
+  sec.appendChild(el("div","clist",cs.map(c=>`<div><b>${plain(c.f)}</b><span>${plain(c.b)}</span></div>`).join("")));
+}
+
+/* timeline */
+function buildTimeline(sec){
+  const ts=GUIDE.timeline||[];
+  sec.appendChild(shead("timeline",`${ts.length} events`));
+  sec.appendChild(el("div","tln",ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${plain(t.t)}</div>${t.d?`<div class="d">${plain(t.d)}</div>`:"<div></div>"}</div>`).join("")));
+}
+
+/* checklist */
+function buildChecklist(sec){
+  const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+  sec.appendChild(shead("checklist",`${cs.length} items`));
+  const g=el("div","ckg");
+  cs.forEach((c,i)=>{
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${plain(c.t)}</span>${c.d?`<span class="d">${plain(c.d)}</span>`:""}</span>`);
+    b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
+    g.appendChild(b);
+  });
+  sec.appendChild(g);
+}
+
+/* cram sheet: [{h, d, items:[{n, y, t}]}] */
+function buildCram(sec){
+  const gs=GUIDE.cram||[];
+  sec.appendChild(shead("cram sheet","one line each"));
+  sec.appendChild(el("div","cgrid",gs.map(g=>`<div class="group"><div class="gh">${esc(g.h||"")}<span>${esc(g.d||String((g.items||[]).length))}</span></div>${(g.items||[]).map(c=>`<div class="cr"><div class="n"><span>${plain(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${plain(c.t)}</div></div>`).join("")}</div>`).join("")));
+}
+
+/* tables pane: [{h, d, cols, rows}] */
+function buildTables(sec){
+  const w=el("div","tpane");
+  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
+  sec.appendChild(w);
+}
+
+/* essay panes (used by the LEQ guide): prompts + leq + fn */
+function buildPrompts(sec){
+  const ps=GUIDE.prompts||[];
+  if(has(GUIDE.prompts_note)){sec.appendChild(shead("how points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
+  sec.appendChild(shead("possible prompts",`${ps.length}`));
+  ps.forEach((p,i)=>{
+    scope();
+    const g=el("div","group");
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
+    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn">${esc(p.q)}</span></span>`+CHEV;
+    const inner=(p.tldr?`<div class="pl">tldr</div><ul class="bul">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
+      `<div class="pl">context</div><ul class="bul">${(p.ctx||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">thesis</div><div class="ans">${esc(p.thesis)}</div>`+
+      (p.body||[]).map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
+      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
+    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body); sec.appendChild(g);
+  });
+  SEEN=null;
+}
+function buildLeq(sec){
+  const L=GUIDE.leq;
+  sec.appendChild(shead("how it runs"));
+  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p>${L.math?`<p>${fmt(L.math)}</p>`:""}`));
+  if(has(L.rows)){
+    sec.appendChild(shead("the rubric",`${L.rows.length} rows`));
+    sec.appendChild(el("div","tbw",`<table class="tbl"><thead><tr><th>row</th><th>earns it</th><th>loses it</th><th>class tips</th></tr></thead><tbody>${L.rows.map(r=>`<tr><td data-l="row">${esc(r.n)}</td><td data-l="earns it">${plain(r.earn)}</td><td data-l="loses it">${plain(r.lose)}</td><td data-l="class tips">${plain(r.cls||"")}</td></tr>`).join("")}</tbody></table>`));
+  }
+  if(has(L.codes))sec.appendChild(el("div","card",`<div class="terms"><span class="tl">margin codes</span>${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
+  if(has(L.shape)){sec.appendChild(shead("the shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
+  if(has(L.pace)){
+    const tot=L.pace.reduce((a,p)=>a+p.m,0);
+    sec.appendChild(shead(`${tot} minutes`,"minute by minute"));
+    sec.appendChild(el("div","card",`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>${B.steps(L.pace.map(p=>`**${p.l} · ${p.m} min.** ${p.t}`))}`));
+  }
+  if(has(GUIDE.fn)){sec.appendChild(shead("notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
+}
+
+/* panes */
+const root=$("#root"), panesEl=$("#panes"), pthumb=panesEl.querySelector(".thumb");
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables,leq:buildLeq,prompts:buildPrompts};
+const PANES=(GUIDE.panes||[]).filter(id=>builders[id]&&(has(GUIDE[id])||(id==="outline"&&has(GUIDE.top))));
+const tabs=[];
+PANES.forEach(id=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel");
+  scope(); builders[id](sec); SEEN=null; root.appendChild(sec);
+  const b=el("button",null,esc((GUIDE.labels||{})[id]||LABEL[id]||id)); b.type="button"; b.setAttribute("role","tab"); b.dataset.pane=id;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+});
+if(PANES.length<2)panesEl.classList.add("one");
+function moveP(){const on=panesEl.querySelector('button[aria-selected="true"]');if(!on)return;pthumb.style.left=on.offsetLeft+"px";pthumb.style.width=on.offsetWidth+"px"}
+let CUR=null, afterShow=()=>{};
+function show(id,user){
+  CUR=id;
+  tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.pane===id)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  moveP(); scoreVis(); afterShow();
+  if(user){try{history.replaceState(null,"","#"+id)}catch(e){}; const top=panesEl.getBoundingClientRect().top+scrollY-bar.offsetHeight-12; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"})}
+}
+const want=location.hash.slice(1);
+show(PANES.includes(want)?want:PANES[0],false);
+requestAnimationFrame(moveP); addEventListener("resize",moveP);
+
+/* search: filters every pane as you type and marks the hits; "/" focuses it.
+   show all answers: practice keys + whys, problem steps, every "on the test" answer. */
+(function(){
+  const q=$("#q"), box=$("#srch"), stat=$("#sstat"), sall=$("#showall");
+  const ITEMS={outline:".tp,.toptbl,.sec,#s-abbr",practice:".q",problems:".prob",formulas:".fx",cards:".clist > div",timeline:".ev",checklist:".ck",cram:".cr",tables:".tblk tbody tr",prompts:".group",leq:".card,.tbw"};
+  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x,.ftag,.vh";
+  const fold=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\s+/g," ");
+  const lab=id=>(GUIDE.labels||{})[id]||LABEL[id]||id;
+  const IDX=PANES.map(id=>{
+    const p=$("#p-"+id), sel=ITEMS[id]||"";
+    const items=sel?[...p.querySelectorAll(sel)].map(n=>{const c=n.cloneNode(true);c.querySelectorAll(SKIP).forEach(x=>x.remove());let sp="";const w=document.createTreeWalker(c,NodeFilter.SHOW_TEXT);while(w.nextNode())sp+=w.currentNode.nodeValue+" ";return {n,t:fold(c.textContent)+"\n"+fold(sp)}}):[];
+    const nr=el("div","nores sx"); p.prepend(nr);
+    return {id,p,items,nr,vis:sel.split(",").map(x=>x.trim()+":not(.sx)").join(",")};
+  });
+  const unmark=()=>{root.querySelectorAll("mark.hit").forEach(m=>{const pa=m.parentNode;if(!pa)return;pa.replaceChild(document.createTextNode(m.textContent),m);pa.normalize()})};
+  const mark=(node,re)=>{
+    const w=document.createTreeWalker(node,NodeFilter.SHOW_TEXT,{acceptNode:t=>t.parentElement.closest("svg,mark,"+SKIP)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+    const ts=[]; while(w.nextNode())ts.push(w.currentNode);
+    ts.forEach(t=>{const s=t.nodeValue;re.lastIndex=0;if(!re.test(s))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;
+      while((m=re.exec(s))){if(!m[0].length){re.lastIndex++;continue}if(m.index>i)f.appendChild(document.createTextNode(s.slice(i,m.index)));const k=document.createElement("mark");k.className="hit";k.textContent=m[0];f.appendChild(k);i=m.index+m[0].length}
+      if(i<s.length)f.appendChild(document.createTextNode(s.slice(i)));t.parentNode.replaceChild(f,t)});
+  };
+  const flip=(g,hide)=>{g.classList.toggle("sx",hide);const h=g.previousElementSibling;if(h&&h.classList.contains("sh"))h.classList.toggle("sx",hide)};
+  let RAW="", LAST=null, COUNTS={};
+  const chips=ids=>ids.map(id=>`<button type="button" data-p="${id}"${id===CUR?' aria-current="true"':""}>${esc(lab(id))}<b>${COUNTS[id]}</b></button>`).join("");
+  function status(){
+    const on=LAST&&LAST.length>0;
+    stat.classList.toggle("on",!!on);
+    IDX.forEach(P=>P.nr.classList.toggle("sx",!on||COUNTS[P.id]>0||!P.items.length));
+    if(!on){stat.innerHTML="";return}
+    const tot=IDX.reduce((a,P)=>a+COUNTS[P.id],0), hits=PANES.filter(id=>COUNTS[id]>0);
+    stat.innerHTML=(tot?`<span>${tot} match${tot===1?"":"es"} for <q>${esc(RAW)}</q></span>`:`<span>no matches for <q>${esc(RAW)}</q>. try fewer or shorter words.</span>`)+(PANES.length>1?chips(hits):"");
+    IDX.forEach(P=>{if(COUNTS[P.id]||!P.items.length)return;P.nr.innerHTML=hits.length?`<p>nothing in this tab matches. these do:</p><div>${chips(hits)}</div>`:`<p>nothing in this guide matches.</p>`});
+  }
+  function run(){
+    RAW=q.value.trim(); box.classList.toggle("has",!!q.value);
+    const f=fold(RAW).trim(), terms=f.length>=2?f.split(" "):[];
+    const key=terms.join(" "); if(key===(LAST||[]).join(" ")&&LAST!==null)return;
+    LAST=terms; unmark();
+    const on=terms.length>0;
+    root.classList.toggle("searching",on);
+    const re=on?new RegExp(terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/'/g,"['\u2018\u2019]")).sort((a,b)=>b.length-a.length).join("|"),"gi"):null;
+    IDX.forEach(P=>{
+      let c=0;
+      P.items.forEach(it=>{const hit=!on||terms.every(t=>it.t.includes(t));it.n.classList.toggle("sx",!hit);if(on&&hit&&!it.n.classList.contains("rx")){c++;mark(it.n,re)}});
+      COUNTS[P.id]=c;
+      const p=P.p;
+      p.querySelectorAll(".tops,.clist,.cgrid,.cgrid > .group,.tblk,.qgrid,.pgrid,.fgrid,.tln,.ckg").forEach(g=>flip(g,on&&!g.querySelector(P.vis)));
+      p.querySelectorAll(".dk").forEach(g=>flip(g,on));
+      const ab=p.querySelector("#s-abbr"); if(ab)flip(ab,ab.classList.contains("sx"));
+      p.querySelectorAll(".toc a").forEach(a=>{const t=p.querySelector(a.getAttribute("href"));a.classList.toggle("sx",!!(t&&t.classList.contains("sx")))});
+    });
+    status();
+  }
+  let T=0;
+  q.addEventListener("input",()=>{box.classList.toggle("has",!!q.value);clearTimeout(T);T=setTimeout(run,140)});
+  q.addEventListener("keydown",e=>{if(e.key==="Escape"){q.value="";run();q.blur()}else if(e.key==="Enter"){clearTimeout(T);run();q.blur()}});
+  $("#qx").addEventListener("click",()=>{q.value="";run();q.focus()});
+  const go=e=>{const b=e.target.closest("button[data-p]");if(b)show(b.dataset.p,true)};
+  stat.addEventListener("click",go); root.addEventListener("click",e=>{if(e.target.closest(".nores"))go(e)});
+  afterShow=status;
+  RESEARCH=()=>{if(LAST&&LAST.length){LAST=null;run()}};
+  const focusQ=()=>{const top=$("#tools").getBoundingClientRect().top+scrollY-bar.offsetHeight-16;if(scrollY>top+4)scrollTo({top:Math.max(0,top),behavior:REDUCED?"auto":"smooth"});q.focus({preventScroll:true})};
+  $("#sbtn").addEventListener("click",focusQ);
+  addEventListener("keydown",e=>{if(e.key==="/"&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();focusQ()}});
+  if(has(GUIDE.practice)||has(GUIDE.problems)||(GUIDE.outline||[]).some(s=>has(s.ex))){
+    sall.hidden=false;
+    sall.addEventListener("click",()=>{const on=!root.classList.contains("showall");root.classList.toggle("showall",on);sall.setAttribute("aria-pressed",String(on));sall.classList.toggle("ghost",!on);sall.lastElementChild.textContent=on?"hide answers":"show all answers"});
+  }
+})();
+
+/* theme (shared with the homepage via localStorage "theme") */
+const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
+function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+function setTheme(mode){
+  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
+  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+}
+segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
+(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
+})();
+requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
+document.fonts?.ready.then(()=>{moveThumb();moveP();setBarH()});
+
+/* sticky bar shadow, reading progress, staggered reveal */
+(function(){const p=$("#prog i");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6);const se=document.scrollingElement,h=se.scrollHeight-se.clientHeight;p.style.width=(h>0?Math.min(100,se.scrollTop/h*100):0)+"%"};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

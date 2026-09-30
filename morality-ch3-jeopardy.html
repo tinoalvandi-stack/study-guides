@@ -81,6 +81,7 @@ footer{margin-top:26px;color:#6E6B82;font-size:12px;text-align:center}
 .nm i{display:none}
 .nm input{flex:1;min-width:0;border:0;background:none;color:#fff;font:500 16px var(--sans);padding:9px 0;outline:none}
 .nm input::placeholder{color:rgba(255,255,255,.4)}
+.nm:focus-within{outline:2px solid var(--gold);outline-offset:2px}
 .nm .dice{border:0;background:none;color:var(--gold);cursor:pointer;font:500 11px var(--cond);letter-spacing:.12em;text-transform:uppercase;padding:6px}
 .win .crown{display:none}
 .win .wt{font:600 clamp(34px,7vw,56px) var(--serif);color:var(--gold)}
@@ -103,7 +104,7 @@ footer{margin-top:26px;color:#6E6B82;font-size:12px;text-align:center}
 <div class="bar"><button class="btn" id="editTeams">edit teams</button><button class="btn pri" id="final">final jeopardy</button><button class="btn" id="reset">new game</button></div>
 <footer>valentinoguides.com</footer>
 </div>
-<div class="ov" id="ov"><div class="tag" id="oTag"></div><div class="dd" id="oDD"></div><div class="clue" id="oClue"></div><div class="ans" id="oAns"></div><div class="row" id="oRow"></div></div>
+<div class="ov" id="ov"><div class="tag" id="oTag"></div><div class="dd" id="oDD"></div><div class="clue" id="oClue"></div><div class="ans" id="oAns" tabindex="-1"></div><div class="row" id="oRow"></div></div>
 <div class="ov" id="su"><div class="setup">
 <div class="kicker">Before we begin</div><h2>Name your teams</h2>
 <div class="step"><button class="btn" id="minus" aria-label="fewer teams">−</button><b id="cnt">2</b><button class="btn" id="plus" aria-label="more teams">+</button></div>
@@ -127,7 +128,7 @@ const CATS=[
  {n:"Types of Law",q:[
   ["The law written into the human soul","What is natural law?"],
   ["The Ten Commandments sum up this law","What is the Old Law?"],
-  ["The New Law is expressed most clearly in this sermon","What is the Sermon on the Mount?"],
+  ["Expressed most clearly in the Sermon on the Mount, this law also includes the evangelical counsels","What is the New Law (the law of the Gospel)?"],
   ["God's wise and loving plan, the source of all law","What is divine (eternal) law?"],
   ["The Old Law is a \"law of\" this, since it names sin but can't remove it","What is bondage?"]]},
  {n:"Grace & Merit",q:[
@@ -137,13 +138,13 @@ const CATS=[
   ["Special graces for the common good, like praying in tongues","What are charisms?"],
   ["The source of all merit","What is the love of Jesus Christ?"]]},
  {n:"Just Law & Church",q:[
-  ["He said \"an unjust law is no law at all\"","Who is St. Augustine?"],
+  ["MLK quoted this saint: \"an unjust law is no law at all\"","Who is St. Augustine?"],
   ["The minimum number of times a year you must go to confession","What is once?"],
   ["Aquinas: law is reasonable, for the common good, and from this","What is competent authority?"],
   ["The Church's official body of rules","What is canon law?"],
   ["Catholics must receive the Eucharist at least during this season","What is the Easter season?"]]}
 ];
-const FINAL=["The three evangelical counsels included in the New Law","What are poverty, chastity, and obedience?"];
+const FINAL=["The four kinds of grace the chapter names besides sanctifying grace","What are actual grace, sacramental graces, charisms (special graces), and graces of state?"];
 
 const COLORS=["#D9B45A","#7FA8F0","#E48585","#86C79A","#C0A2E8","#E8A56A","#6FC9C9","#E8E1CF"];
 const IDEAS=["The Apostles","Holy Rollers","Saintly Squad","Divine Minds","The Beatitudes","Grace Chasers","Team Aquinas","The Evangelists","Merit Makers","Natural Lawyers","The Disciples","Heaven Bound","Pew Crew","Sons of Thunder","The Faithful","Loaves & Fishes"];
@@ -152,11 +153,14 @@ let teams=[],used={},dd="",draft=[];
 function pickIdea(ex){const pool=IDEAS.filter(x=>!ex.includes(x));return pool[Math.floor(Math.random()*pool.length)]||"Team"}
 function mk(t,c,h){const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.textContent=h;return n}
 function btn(t,cls,fn){const b=mk("button","btn "+(cls||""),t);b.type="button";b.onclick=fn;return b}
+let lastTile=0;
+function focusRow(){const b=$("#oRow button");if(b)b.focus()}
+$("#oRow").addEventListener("click",()=>setTimeout(()=>{const a=document.activeElement;if(!a||a===document.body||!document.contains(a)){if($("#ov").classList.contains("on")){if($("#oAns").textContent)$("#oAns").focus();else focusRow()}}},0));
 function rollDD(){dd=Math.floor(Math.random()*5)+","+(2+Math.floor(Math.random()*3))}
 function openSetup(first){
  draft=teams.length?teams.map(t=>({n:t.n,s:t.s})):[{n:"",s:0},{n:"",s:0}];
  $("#start").textContent=first?"let's play":"save teams";
- renderSetup();$("#su").classList.add("on");
+ renderSetup();$("#su").classList.add("on");setTimeout(()=>{const i=$("#names input");if(i)i.focus()},0);
 }
 function renderSetup(){
  $("#cnt").textContent=draft.length;$("#minus").disabled=draft.length<=2;$("#plus").disabled=draft.length>=8;
@@ -167,7 +171,7 @@ function renderSetup(){
 }
 $("#minus").onclick=()=>{if(draft.length>2){draft.pop();renderSetup()}};
 $("#plus").onclick=()=>{if(draft.length<8){draft.push({n:"",s:0});renderSetup()}};
-$("#start").onclick=()=>{teams=draft.map((t,i)=>({n:(t.n||"").trim()||"Team "+(i+1),s:t.s||0,c:COLORS[i]}));$("#su").classList.remove("on");draw()};
+$("#start").onclick=()=>{teams=draft.map((t,i)=>({n:(t.n||"").trim()||"Team "+(i+1),s:t.s||0,c:COLORS[i]}));$("#su").classList.remove("on");draw();const t=$("#board .tile:not(.used)");if(t)t.focus()};
 function draw(){
  const sc=$("#scores");sc.innerHTML="";const top=Math.max(...teams.map(t=>t.s));
  teams.forEach(t=>{const d=mk("div","team"+(t.s>0&&t.s===top?" lead":""));d.style.setProperty("--tc",t.c);const b=mk("b",t.s<0?"neg":"",t.s);d.append(mk("span","n",t.n),b);sc.append(d)});
@@ -175,27 +179,27 @@ function draw(){
  CATS.forEach(c=>bd.append(mk("div","cat",c.n)));
  for(let r=0;r<5;r++)CATS.forEach((c,ci)=>{const k=ci+","+r;const b=mk("button","tile"+(used[k]?" used":""),(r+1)*100);b.type="button";b.setAttribute("aria-label",c.n+" for "+(r+1)*100);if(!used[k])b.onclick=()=>openClue(ci,r);bd.append(b)});
 }
-function close(){$("#ov").classList.remove("on");draw();if(Object.keys(used).length===25&&!finalDone)setTimeout(()=>{},0)}
+function close(){$("#ov").classList.remove("on");draw();const t=$("#board").querySelectorAll(".tile")[lastTile];if(t)t.focus();if(Object.keys(used).length===25&&!finalDone)setTimeout(()=>{},0)}
 let finalDone=false;
 function scoreRow(val,after){const row=$("#oRow");row.innerHTML="";
  teams.forEach(t=>{const g=mk("div","grp");g.style.setProperty("--tc",t.c);g.append(mk("span","",t.n),btn("+"+val,"ok",()=>{t.s+=val;after()}),btn("−"+val,"no",()=>{t.s-=val;draw();g.style.opacity=".4"}));row.append(g)});
  row.append(btn("nobody","",close));}
 function openClue(ci,r){
- const k=ci+","+r,[clue,ans]=CATS[ci].q[r];let val=(r+1)*100;used[k]=1;
+ lastTile=r*5+ci;const k=ci+","+r,[clue,ans]=CATS[ci].q[r];let val=(r+1)*100;used[k]=1;
  $("#oTag").textContent=CATS[ci].n.replace("­","")+" · "+val;$("#oAns").textContent="";$("#oClue").textContent="";$("#oDD").textContent="";
  const row=$("#oRow");row.innerHTML="";$("#ov").classList.add("on");
- const showClue=()=>{$("#oDD").textContent="";$("#oClue").textContent=clue;row.innerHTML="";row.append(btn("reveal answer","pri",()=>{$("#oAns").textContent=ans;scoreRow(val,close)}))};
- if(k===dd){$("#oDD").textContent="Daily Double";const l=mk("label","","wager ");const i=mk("input");i.type="number";i.min=0;i.value=Math.max(val,500);l.append(i);row.append(l,btn("show clue","pri",()=>{val=Math.max(0,parseInt(i.value)||0);$("#oTag").textContent=CATS[ci].n.replace("­","")+" · wager "+val;showClue()}))}
+ const showClue=()=>{$("#oDD").textContent="";$("#oClue").textContent=clue;row.innerHTML="";row.append(btn("reveal answer","pri",()=>{$("#oAns").textContent=ans;scoreRow(val,close)}));focusRow()};
+ if(k===dd){$("#oDD").textContent="Daily Double";const l=mk("label","","wager ");const i=mk("input");i.type="number";i.min=0;i.value=Math.max(val,500);l.append(i);row.append(l,btn("show clue","pri",()=>{val=Math.max(0,parseInt(i.value)||0);$("#oTag").textContent=CATS[ci].n.replace("­","")+" · wager "+val;showClue()}));i.focus()}
  else showClue();
 }
 function openFinal(){
- const row=$("#oRow");row.innerHTML="";$("#oTag").textContent="final jeopardy · the new law";$("#oDD").textContent="Final Jeopardy";$("#oClue").textContent="Every team secretly writes down a wager.";$("#oAns").textContent="";$("#ov").classList.add("on");
+ const row=$("#oRow");row.innerHTML="";$("#oTag").textContent="final jeopardy · grace";$("#oDD").textContent="Final Jeopardy";$("#oClue").textContent="Every team secretly writes down a wager.";$("#oAns").textContent="";$("#ov").classList.add("on");
  row.append(btn("show clue","pri",()=>{$("#oDD").textContent="";$("#oClue").textContent=FINAL[0];row.innerHTML="";row.append(btn("reveal answer","pri",()=>{$("#oAns").textContent=FINAL[1];row.innerHTML="";
   teams.forEach(t=>{const g=mk("div","grp");g.style.setProperty("--tc",t.c);const i=mk("input");i.type="number";i.min=0;i.value=0;i.setAttribute("aria-label",t.n+" wager");
    const ok=btn("right","ok",()=>{t.s+=parseInt(i.value)||0;g.style.opacity=".4";ok.disabled=no.disabled=true}),no=btn("wrong","no",()=>{t.s-=parseInt(i.value)||0;g.style.opacity=".4";ok.disabled=no.disabled=true});
    g.append(mk("span","",t.n),i,ok,no);row.append(g)});
   row.append(btn("crown the winner","pri",winner))}))}));
- row.append(btn("back","",close));
+ row.append(btn("back","",close));focusRow()
 }
 function winner(){finalDone=true;const row=$("#oRow");row.innerHTML="";const s=[...teams].sort((a,b)=>b.s-a.s);
  $("#oTag").textContent="";$("#oDD").textContent="";$("#oAns").textContent="";
