@@ -705,28 +705,27 @@ const GUIDE = {
   {
    "w": 3,
    "t": "How the test asks",
-   "d": "the formats Exam #1 used",
+   "d": "the exam format",
    "p": [
-    "Know each term both ways: name to definition and back. Exam #1 mixed these formats with multiple choice.",
-    "Business models won’t be named or listed; explain why a company chose its model.",
-    "Practice tests A and B copy this layout question for question: tap through them under practice tests, write the 2-4 point answers under short answer, or print the PDFs."
+    "A written exam (on paper): **multiple choice**, **matching**, **true/false**, and a **scenario analysis**, where you evaluate a situation and create a solution.",
+    "Business models won't be named or listed; explain why a company chose its model."
    ],
    "tiles": [
     {
+     "h": "Multiple choice",
+     "t": "Pick A-D. Most answers are the board's own wording."
+    },
+    {
      "h": "Matching",
-     "t": "A word bank of terms; label the definitions."
+     "t": "A word bank of terms; write each one next to its definition."
     },
     {
      "h": "True/false",
      "t": "A real definition on the wrong term, or a wrong number (37% where the fact is 57%). Check both."
     },
     {
-     "h": "Fill in",
-     "t": "Name the term from its definition."
-    },
-    {
-     "h": "Short answer",
-     "t": "Explain it and give a real example (about 2 points each), or list a set (“name 4…”)."
+     "h": "Scenario analysis",
+     "t": "Read a business situation, evaluate it with the board's terms, then create a solution or resolve."
     }
    ],
    "ex": [
@@ -741,6 +740,63 @@ const GUIDE = {
      "why": "Oligopoly = a few companies. Real definition, wrong term."
     }
    ]
+  },
+  {
+   "w": 3,
+   "t": "Scenario analysis",
+   "d": "evaluate a situation, then create a solution",
+   "p": [
+    "**Evaluate**: name what is going on in board terms and use any numbers given. **Create a solution**: fix it in the same terms. These are the situations the board and both reviews walked through."
+   ],
+   "steps": [
+    "Evaluate: name the concept (sole proprietor, brick + mortar, direct competition) and the problem.",
+    "Use the numbers or facts given (a 75% gross margin vs the 25-35% manufacturer standard).",
+    "Create a solution: the fix in board words (improve quality but maintain pricing, form an LLC, add online ordering)."
+   ],
+   "tiles": [
+    {
+     "h": "Tesla vs BMW and Mercedes",
+     "k": "starred",
+     "t": "Evaluate: cheaper than BMW and Mercedes, quality behind them. Solve: 1) improve quality and choice but maintain pricing, or 2) a higher-end luxury Tesla at a higher price, competing directly."
+    },
+    {
+     "h": "Cyber breach",
+     "k": "starred",
+     "t": "Evaluate: what data, who was affected, how many, effects. Resolve: cyber security plus risk management (audits, safety, integrity, accuracy)."
+    },
+    {
+     "h": "Launching new products",
+     "t": "Evaluate the gross margin against the standard (75% vs 25-35% for manufacturers). Solve: launch or market more; check finance/accounting first and use IM data for an informed decision."
+    },
+    {
+     "h": "Closing a weak store",
+     "t": "Evaluate: pull each store's sales numbers from IM, operations, accounting and marketing. Solve: close the lowest performer, an informed decision."
+    },
+    {
+     "h": "Starting a business",
+     "t": "Alone: sole proprietor, unlimited liability. Protect yourself: an LLC. Partners in a practice (doctors, lawyers): an LLP."
+    },
+    {
+     "h": "A store losing online shoppers",
+     "t": "Evaluate: brick + mortar only. Solve: add online ordering (bricks + clicks) to reach more customers. Change is the only constant."
+    }
+   ],
+   "ex": [
+    {
+     "q": "Scenario: Tesla is cheaper than BMW and Mercedes, but its quality is behind them. What can Tesla do?",
+     "a": "Improve quality and choice but keep its price, or launch a higher-end luxury Tesla at a higher price and compete directly.",
+     "why": "Both options are on the board. Raising the price without better quality is the wrong move."
+    },
+    {
+     "q": "Scenario: you sell sneakers by yourself and a customer sues you. Evaluate and resolve.",
+     "a": "Sole proprietor with unlimited liability. Form an LLC so you can only lose what you invested.",
+     "why": "An LLP is for partners, not one owner."
+    }
+   ],
+   "watch": [
+    "Name the concept in board words before giving the fix; a fix with no reason earns half the points."
+   ],
+   "terms": []
   },
   {
    "w": 3,
@@ -1716,7 +1772,7 @@ const GUIDE = {
     "Pricing, choice, quality"
    ],
    "a": 1,
-   "why": "IM is people, processes and systems."
+   "why": "IM is people, processes and systems. Taxes, liability, decision making is where ownership varies."
   },
   {
    "q": "Test A #6: When Information Management STORES information, where does it go?",
@@ -1730,15 +1786,13 @@ const GUIDE = {
    "why": "Stores: databases, servers, hard drives, clouds. Search, retrieve, archive is how it organizes."
   },
   {
-   "q": "Test A #7: Information Management makes data accessible and usable to make ____ decisions.",
+   "q": "Test A #7: TRUE / FALSE. Information Management makes data accessible and usable to make informed decisions.",
    "opts": [
-    "informed",
-    "quick",
-    "legal",
-    "financial"
+    "TRUE",
+    "FALSE"
    ],
    "a": 0,
-   "why": "Informed decisions. Starred on the board."
+   "why": "True. Informed decisions was starred on the board."
   },
   {
    "q": "Test A #8: TRUE / FALSE. Raw data is info/data before it becomes useful information. Example: 100 people attended a movie premiere.",
@@ -1759,26 +1813,22 @@ const GUIDE = {
    "why": "False. That is raw data. Relevant data is only the useful data, collected and stored to make decisions."
   },
   {
-   "q": "Test A #10: Fill in: audits, safety, integrity, accuracy",
+   "q": "Test A #10: Match the term: Audits, safety, integrity, accuracy",
    "opts": [
-    "Cyber security",
-    "Risk management",
-    "Logistics",
-    "Trade secrets"
+    "Risk Management",
+    "Cyber Security"
    ],
-   "a": 1,
+   "a": 0,
    "why": "Risk management: audits, safety, integrity, accuracy."
   },
   {
-   "q": "Test A #11: Fill in: protects sensitive info and trade secrets, and stops ransom attacks",
+   "q": "Test A #11: Match the term: Protects sensitive info and trade secrets, and stops ransom attacks",
    "opts": [
-    "Cyber security",
-    "Risk management",
-    "Intellectual property",
-    "Relevant data"
+    "Risk Management",
+    "Cyber Security"
    ],
-   "a": 0,
-   "why": "Cyber security protects sensitive info and trade secrets."
+   "a": 1,
+   "why": "Cyber Security: Protects sensitive info and trade secrets, and stops ransom attacks."
   },
   {
    "q": "Test A #12: Match the term: Cost of goods sold: material, labor, rubber, glue",
@@ -1843,7 +1893,7 @@ const GUIDE = {
    "why": "False. COGS up means gross profit and gross margin % go down."
   },
   {
-   "q": "Test A #18: A company/business CHOOSES its business ____. D2C, bricks + clicks and nickel + dime are examples.",
+   "q": "Test A #18: A company/business CHOOSES its business:",
    "opts": [
     "Plan",
     "Function",
@@ -2020,7 +2070,7 @@ const GUIDE = {
     "FALSE"
    ],
    "a": 1,
-   "why": "False. A sole proprietor has unlimited liability: they are personally responsible for debts and obligations."
+   "why": "False. A sole proprietor has unlimited liability: personally responsible for debts and obligations."
   },
   {
    "q": "Test B #1: TRUE / FALSE. Risk Management is defined as: Audits, safety, integrity, accuracy.",
@@ -2084,15 +2134,13 @@ const GUIDE = {
    "why": "Relevant data is organized so it helps make a decision. \"100 people attended\" is raw."
   },
   {
-   "q": "Test B #7: Cyber security protects sensitive info and trade secrets, and stops ____ attacks.",
+   "q": "Test B #7: TRUE / FALSE. Cyber security protects sensitive info and trade secrets, and stops ransom attacks.",
    "opts": [
-    "marketing",
-    "ransom",
-    "pricing",
-    "competitor"
+    "TRUE",
+    "FALSE"
    ],
-   "a": 1,
-   "why": "Ransom attacks."
+   "a": 0,
+   "why": "True."
   },
   {
    "q": "Test B #8: TRUE / FALSE. Intangible assets have value but are not physical.",
@@ -2113,7 +2161,7 @@ const GUIDE = {
    "why": "False. That is trade secrets. Intellectual property is ideas, inventions, methods."
   },
   {
-   "q": "Test B #10: A Nike shoe sells for $100. Its COGS (material, labor, rubber, glue) is $25. Fill in: Gross profit (sales revenue - COGS)",
+   "q": "Test B #10: What is the gross profit?",
    "opts": [
     "$125",
     "$25",
@@ -2124,7 +2172,7 @@ const GUIDE = {
    "why": "$100 - $25 = $75."
   },
   {
-   "q": "Test B #11: A Nike shoe sells for $100. Its COGS (material, labor, rubber, glue) is $25. Fill in: Gross margin % (gross profit / sales price)",
+   "q": "Test B #11: What is the gross margin %?",
    "opts": [
     "75%",
     "25%",
@@ -2189,7 +2237,7 @@ const GUIDE = {
    "why": "False. It's gross profit divided by sales price: $12 / $20 = 60%."
   },
   {
-   "q": "Test B #18: Direct sales, D2C, bricks + clicks, crowdfunding and MLM are all examples of business:",
+   "q": "Test B #18: Direct sales, D2C, bricks + clicks, crowdfunding, and MLM are all examples of business:",
    "opts": [
     "Trends",
     "Models",
@@ -2837,120 +2885,87 @@ const GUIDE = {
  },
  "problems": [
   {
-   "q": "Test A #34: What is Information Management? Tell me how it helps a business manage its information. (2 points)",
+   "q": "Test A #34-35, Tesla (6 points). Tesla ran a competitive analysis against BMW, Mercedes, Toyota, and Honda on two lines: lack of quality to high quality, and not so expensive to expensive. Tesla came out cheaper than BMW and Mercedes but more expensive than Toyota and Honda, and its quality is behind BMW and Mercedes. 34) EVALUATE: What are Tesla's strength and weakness against BMW and Mercedes? (2 pts) 35) CREATE A SOLUTION: What can Tesla do to compete with BMW and Mercedes? Give both options. (4 pts)",
    "steps": [
-    "1 point: one of the 6 business functions: people, processes, and systems that collect, organize, store, and secure relevant data and info.",
-    "1 point: it makes the data accessible and usable to make informed decisions."
+    "34) 1 point: strength: Tesla is less expensive than BMW and Mercedes.",
+    "34) 1 point: weakness: Tesla's quality is behind BMW and Mercedes.",
+    "35) 2 points: improve quality and give more choice, but maintain pricing.",
+    "35) 2 points: offer a \"higher end\" luxury auto, raise the price, and compete directly with BMW and Mercedes."
    ],
-   "ans": "Information Management is one of the 6 business functions. It uses people, processes and systems to collect, organize, store and secure relevant data and information, and makes it accessible and usable so the business can make informed decisions."
+   "ans": "34) Strength: price, it is cheaper than BMW and Mercedes. Weakness: quality, it is behind them. 35) 1) Improve quality and choice but keep the price, so it competes with BMW and Mercedes and still beats them on price. 2) Offer a higher-end luxury Tesla at a higher price and compete directly."
   },
   {
-   "q": "Test A #35: Name the 3 areas where business ownership varies. (3 points)",
+   "q": "Test A #36-37, New soccer shoes (5 points). You are the VP of Marketing and Sales at a shoe company and want to launch 3 new soccer shoes. Your best-selling shoe sells for $120 and costs $30 to make (COGS). 36) EVALUATE: Find the gross profit and gross margin %, and compare it to the manufacturer industry standard. (3 pts) 37) CREATE A SOLUTION: Should you launch the shoes? Which business function do you check with first? (2 pts)",
    "steps": [
-    "1 point each: taxes, liability, decision making."
+    "36) 1 point: gross profit = $120 - $30 = $90.",
+    "36) 1 point: gross margin % = $90 / $120 = 75%.",
+    "36) 1 point: the manufacturer standard is 25-35%, so 75% is more than double it.",
+    "37) 1 point: yes, launch (or market more): the margin shows a strong revenue stream.",
+    "37) 1 point: check with accounting/finance (is the money there?), using data from Information Management to make an informed decision."
    ],
-   "ans": "Taxes, liability, decision making."
+   "ans": "36) Gross profit $90, gross margin 75%, more than double the 25-35% manufacturer standard. 37) Launch them: the margin is far above the standard. First confirm with accounting/finance that the money is there, and use IM data so it's an informed decision."
   },
   {
-   "q": "Test A #36: GROSS PROFIT EQUATION: Aliyah's Candles sells a candle to Jimmy's Candle Store for $8. Jimmy's sells it for $20. Find the gross profit and the gross margin %. (2 points)",
+   "q": "Test A #38-39, Cyber breach (4 points). A hotel and casino company is hacked. Customers' names, birthdates, and driver's license numbers are stolen, and the hotel and casino computers are down for days. 38) EVALUATE: What data was taken, who was affected, and what were the effects? (2 pts) 39) RESOLVE: Which two Information Management protections should the company use? (2 pts)",
    "steps": [
-    "1 point: gross profit = $20 - $8 = $12.",
-    "1 point: gross margin % = $12 / $20 = 60%."
+    "38) 1 point: what data and who: customers' personal info (names, birthdates, license numbers).",
+    "38) 1 point: effects: systems down, lost money, customers at risk of identity theft.",
+    "39) 1 point: cyber security: protects sensitive info and trade secrets, stops ransom attacks.",
+    "39) 1 point: risk management: audits, safety, integrity, accuracy."
    ],
-   "ans": "Gross profit $12; gross margin 60%."
+   "ans": "38) Customers' personal information was taken; the company lost days of business and money, and customers face identity theft. 39) Cyber security to protect sensitive info and stop ransom attacks, and risk management (audits, safety, integrity, accuracy)."
   },
   {
-   "q": "Test A #37: Match and explain with an example (C Corporation, S Corporation, B Corporation): ______ double taxation: the company pays tax on profits and the shareholders pay too (2 points)",
+   "q": "Test A #40, Two doctors (2 points). Two doctors are opening a practice together. Each one is worried about being blamed for the other's mistakes. 40) EVALUATE AND RESOLVE: Which type of business ownership should they choose, and why? (2 pts)",
    "steps": [
-    "1 point: C Corporation.",
-    "1 point: an example: Cracker Barrel, Amazon, or Ford."
+    "40) 1 point: an LLP (limited liability partnership).",
+    "40) 1 point: why: partners have limited liability and aren't responsible for each other's actions (doctors, lawyers)."
    ],
-   "ans": "C corporation: double taxation. Cracker Barrel, Amazon, Ford."
+   "ans": "40) An LLP: limited liability, and partners aren't responsible for each other's actions. Doctors and lawyers use it."
   },
   {
-   "q": "Test A #38: Match and explain with an example (C Corporation, S Corporation, B Corporation): ______ taxes \"pass thru\" to the shareholders, who file on their personal tax returns (2 points)",
+   "q": "Test B #34-35, Closing a store (5 points). You are the VP of National Sales and Marketing for a clothing company. 70% of your sales come from the northeastern states. The CEO tells you to close your weakest store. 34) EVALUATE: What information do you need, and which business functions would you get it from? (3 pts) 35) CREATE A SOLUTION: How do you decide which store to close? (2 pts)",
    "steps": [
-    "1 point: S Corporation.",
-    "1 point: an example: a small business like a pizza or coffee shop (100 shareholders, U.S. citizens)."
+    "34) 1 point: the sales numbers for each store (relevant data).",
+    "34) 1 point: from Information Management.",
+    "34) 1 point: plus at least one more function: operations, accounting/finance, or marketing and sales.",
+    "35) 1 point: compare the stores' numbers and pick the lowest performer.",
+    "35) 1 point: that makes it an informed decision based on the data."
    ],
-   "ans": "S corporation: pass-through taxes, 100 shareholders who are U.S. citizens. Small businesses like pizza or coffee shops."
+   "ans": "34) Each store's sales numbers, pulled from Information Management, operations, accounting/finance, and marketing and sales. 35) Compare the stores and close the lowest performer (like the Boise, Idaho store in class). The data makes it an informed decision."
   },
   {
-   "q": "Test A #39: Match and explain with an example (C Corporation, S Corporation, B Corporation): ______ public benefit: helps social/environmental causes, \"balance profit + benefit\" (2 points)",
+   "q": "Test B #36-37, A bookstore losing customers (4 points). A local bookstore only sells in its physical store. Sales are dropping because more of its customers shop online. 36) EVALUATE: What business model is the bookstore using, and what is the problem? (2 pts) 37) CREATE A SOLUTION: What business model should it switch to, and why? (2 pts)",
    "steps": [
-    "1 point: B Corporation.",
-    "1 point: an example: Ben & Jerry's or Patagonia."
+    "36) 1 point: brick + mortar (physical store only).",
+    "36) 1 point: it can't reach customers who shop online, so it is losing sales.",
+    "37) 1 point: bricks + clicks: keep the store and add online ordering for pickup or delivery.",
+    "37) 1 point: why: reach more customers and increase sales (change is the only constant: businesses must adapt and innovate)."
    ],
-   "ans": "B corporation: balances profit and benefit. Ben & Jerry's, Patagonia."
+   "ans": "36) Brick + mortar. It can't reach online shoppers, so sales drop. 37) Bricks + clicks: add online ordering to the store to reach more customers and increase sales. Businesses must adapt and innovate."
   },
   {
-   "q": "Test A #40: Name 4 of the SIX effects of competition. (4 points)",
+   "q": "Test B #38-39, Selling sneakers alone (4 points). You start a secondhand sneaker business by yourself. A customer slips in your store and sues you, and you also owe $30,000 on a business loan. 38) EVALUATE: What type of business ownership is this, and what kind of liability do you have? (2 pts) 39) RESOLVE: How could you set up the business to protect yourself? (2 pts)",
    "steps": [
-    "1 point each, any 4 of: pricing control, choice/variety, innovation (new products/technology), quality (improvements), the economy (jobs), the consumer (society benefits)."
+    "38) 1 point: sole proprietor.",
+    "38) 1 point: unlimited liability: you are personally responsible for the lawsuit (actions) and the loan (debt).",
+    "39) 1 point: form an LLC (limited liability company).",
+    "39) 1 point: why: your loss is limited to the amount you invested, and taxes still pass to the owner."
    ],
-   "ans": "Pricing control, choice/variety, innovation, quality, the economy (jobs), the consumer (society benefits)."
+   "ans": "38) A sole proprietorship with unlimited liability: you're personally responsible for the lawsuit and the debt. 39) Form an LLC: you can only lose what you invested, and taxes still pass to you."
   },
   {
-   "q": "Test B #34: What is Operations? Tell me the 3 things it manages. (2 points)",
+   "q": "Test B #40, A new store in town (4 points). A Target opens right across the street from a Walmart. 40) EVALUATE AND RESOLVE: What type of competition is this, and name 3 ways the town and its shoppers benefit. (4 pts)",
    "steps": [
-    "1 point: the daily functioning of an organization, where the execution of strategy happens.",
-    "1 point: it manages inputs/outputs: manufacture, purchase, logistics."
+    "40) 1 point: direct competition (same products/services).",
+    "40) 3 points: any 3 effects: pricing control, choice/variety, innovation, quality, the economy (jobs), the consumer (society benefits)."
    ],
-   "ans": "Operations is the daily functioning of an organization, the day to day where the execution of strategy happens. It manages inputs and outputs: manufacture, purchase, logistics."
-  },
-  {
-   "q": "Test B #35: Information Management is one of the 6 business functions. Name the 3 things it involves. (3 points)",
-   "steps": [
-    "1 point each: people, processes, systems."
-   ],
-   "ans": "People, processes, systems."
-  },
-  {
-   "q": "Test B #36: COMPETITIVE ANALYSIS: What can Tesla do to compete with BMW and Mercedes? Give both options. (2 points)",
-   "steps": [
-    "1 point: improve quality and give more choice, but maintain pricing.",
-    "1 point: offer a \"higher end\" luxury auto, raise the price, and compete directly with BMW and Mercedes."
-   ],
-   "ans": "1) Improve quality and choice but keep the price. 2) Offer a higher-end luxury Tesla at a higher price and compete directly."
-  },
-  {
-   "q": "Test B #37: Match and explain with an example (Ambient Intelligence, Augmented Reality, Gig Economy): ______ when many objects act in unison (2 points)",
-   "steps": [
-    "1 point: Ambient Intelligence.",
-    "1 point: an example: automated checkout, FedEx, Amazon, or telemedicine."
-   ],
-   "ans": "Ambient intelligence: many connected objects acting in unison. Automated checkout, FedEx, Amazon, telemedicine."
-  },
-  {
-   "q": "Test B #38: Match and explain with an example (Ambient Intelligence, Augmented Reality, Gig Economy): ______ a technology trend used by IKEA and Sephora (2 points)",
-   "steps": [
-    "1 point: Augmented Reality.",
-    "1 point: an example: IKEA's app shows furniture in your room; Sephora shows makeup on your face."
-   ],
-   "ans": "Augmented reality: IKEA, Sephora."
-  },
-  {
-   "q": "Test B #39: Match and explain with an example (Ambient Intelligence, Augmented Reality, Gig Economy): ______ contract workers who work for multiple companies, often remote (2 points)",
-   "steps": [
-    "1 point: Gig Economy.",
-    "1 point: an example: Uber, Uber Eats, Lyft, or a dog walker."
-   ],
-   "ans": "Gig economy: Uber, Uber Eats, Lyft, dog walkers."
-  },
-  {
-   "q": "Test B #40: Research a \"cyber\" breach. What data? Who was affected? How many? Effects? (4 points)",
-   "steps": [
-    "1 point: what data (for MGM Resorts, 2023: names, phone numbers, emails, addresses, birthdates, driver's license numbers).",
-    "1 point: who (MGM customers from before March 2019).",
-    "1 point: how many (MGM never released a number; give the number for the breach you researched).",
-    "1 point: effects (MGM: hotels and casino systems down for about 8 days, about $100 million in losses)."
-   ],
-   "ans": "Example, MGM Resorts (September 2023): hackers got customers' names, contact info, birthdates and driver's license numbers; it hit customers from before March 2019; MGM never said how many; systems were down about 8 days and it cost about $100 million. Any real breach works if all four parts are answered."
+   "ans": "40) Direct competition. Shoppers get better prices, more choice and better quality, and the new store creates jobs for the economy."
   }
  ],
  "labels": {
   "practice": "practice tests",
-  "problems": "short answer"
+  "problems": "scenarios"
  },
  "pdfs": [
   {
@@ -2962,7 +2977,7 @@ const GUIDE = {
    "url": "/bus-unit-1-5-1-10-practice-b.pdf"
   }
  ],
- "pdfsNote": "Printable, in the real exam's layout and built from the review board: 40 questions, 50 points, answer key at the end."
+ "pdfsNote": "Printable, in the real exam's format and built from the review board: multiple choice, matching, true/false, scenario analysis. 50 points, answer key at the end."
 };
 
 /* ═══ machinery. nothing below needs editing. ═══ */
