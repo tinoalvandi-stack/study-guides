@@ -423,7 +423,7 @@ if(COURSE){
         L.forEach(f=>{const a=nextCard(f);if(a)side.append(a)});
       }
       const tips=el("div","howto");
-      tips.innerHTML='<div class="sh"><h3>how to use a guide</h3></div><ol><li><b>start here</b> is the short version of the whole guide.</li><li>sections run heaviest first; read the ones marked <i>tested most</i> first.</li><li>try every <b>on the test</b> card before you open the answer.</li><li>finish with <b>practice</b>; <i>retry missed</i> loops back to what you got wrong.</li></ol>';
+      tips.innerHTML='<div class="sh"><h3>how to use a guide</h3></div><ol><li><b>focus on these ideas</b> is the short version of the whole guide.</li><li>lessons run heaviest first; <b>jump to topic</b> lists them, and the ones marked <i>tested most</i> come first.</li><li>answer every <b>on the test</b> question before you check it.</li><li>finish with <b>try practice</b>; <i>retry missed</i> loops back to what you got wrong.</li></ol>';
       side.append(tips);
       const list=el("section","units");
       list.innerHTML='<div class="sh"><h3>study guides</h3><span class="shx">newest first</span></div>';

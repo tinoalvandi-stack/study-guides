@@ -92,33 +92,35 @@ drop off on their own; leave them in the array.
 `pin: true` (optional) puts that entry first in "up next" while it is live,
 ahead of earlier-dated entries; it still drops off after its date.
 
-## Design system: revision 2, warm paper (October 1, 2026)
+## Design system: revision 3, blue and navy (September 30, 2026)
 
-- Approved from the private design demo (`_staging/design-demo`, revision 2):
-  warm paper, Figtree throughout (no serif titles), original illustrated class
-  covers, and soft directional depth. It replaced "indigo & kinari"
-  (September 2026), whose Bricolage display face and narrow centered column read
-  as generic.
+- Approved from two before/after reference images (the opening of a guide and a
+  lesson in it, APUSH Unit 2/B), with his words "yes its good. have claude make
+  the changes." It replaced revision 2 (warm paper, October 1 build), whose
+  dense layout put five competing cards, an 11-link sidebar and a stack of
+  boxes in front of the first lesson.
 - Type: Figtree only. Headings 760–780 with tight tracking (-.03 to -.045em);
-  body 400–500; labels and buttons 600–700. Titles keep their own capitals; only
-  small interface chrome is lowercase.
+  body 400–500 at 16–17px; labels and buttons 600–700. Titles keep their own
+  capitals; only small interface chrome is lowercase.
 - Tokens (same names in `site.css` and the guide template; change both):
-  `--paper` `#F4F1E9` / `#141A17`, `--surface` `#FFFDF8` / `#1C2420`,
-  `--surface2`, `--line` / `--line2`, `--ink` `#283832` / `#EEEDE5`,
-  `--ink2` / `--ink3` (secondary text, 5:1 or better), `--accent` green
-  `#375E4D` / `#9CC9AE` (buttons, focus, the mark) with `--on-accent`, `--hi`
-  terracotta `#9C5338` / `#E39B78` ("new", date chips, the logo dot), `--good`,
-  `--bad`, one `--c-<id>` per class (4.5:1 or better on every surface) and a
-  `--t-<id>` tint for the class page hero. Shadows are `--sh1` / `--sh2`: a
-  small vertical offset, never a glow.
-- Class covers: eight original layered SVG illustrations drawn in code (rose
-  curve, capitol, brain, projectile, bar chart, arches and scales, page and pen,
-  speech bubbles). `art()` in `site.js` and `coverArt()` in the guide template
-  hold the same drawings; change both together.
-- Density: no oversized hero, no empty columns. The homepage puts search, up
-  next and the catalog in the first two screens; guide headers are a compact
-  title block with the class cover beside it on desktop.
-- Corners: cards 16px, buttons 11px, chips 9px. Tap targets at least 40px.
+  `--paper` `#F1F5F9` / `#0C1220` (cool light paper / deep navy),
+  `--surface` `#FCFDFF` / `#131B2C`, `--surface2`, `--tint` (light blue for
+  icon circles and table heads), `--line` / `--line2`, `--ink` navy `#0E1B3D` /
+  `#E8EDF6`, `--body` (reading text, 10:1 or better), `--ink2` / `--ink3`
+  (secondary text, 5:1 or better), `--accent` navy blue `#274B7E` / `#8EB3EA`
+  (buttons, focus, links, the mark) with `--on-accent`, `--amber` `#D99A2B`
+  (priority numbers, callout rules, the logo dot) with `--amber-bg`, `--hi`
+  amber ink `#8A5300` / `#F0C273` (dates, "new"), `--good`, `--bad`, one
+  `--c-<id>` per class and a `--t-<id>` tint for the class page hero. Shadows
+  are `--sh1` / `--sh2`: a small vertical offset, never a glow.
+- Classes keep their identity: the eight illustrated covers (rose curve,
+  capitol, brain, projectile, bar chart, arches and scales, page and pen,
+  speech bubbles) stay warm and class-colored; `art()` in `site.js` and
+  `coverArt()` in the guide template hold the same drawings, change both
+  together. The class color also tints its icon, its diagrams and its
+  welcome-page hero. Shared surfaces (bar, buttons, panels, menus) are blue.
+- Corners: cards 14–16px, buttons 10–11px, chips 8–9px. Tap targets at least
+  40px.
 
 ## Homepage features
 
@@ -150,34 +152,28 @@ ahead of earlier-dated entries; it still drops off after its date.
 
 Each guide is a standalone self-contained HTML file. Conventions that must
 hold, because they are what the site's readers rely on (reader feedback,
-September 2026; the second round on the 29th said the first guides were
-over-highlighted and hard to follow):
+September 2026, and the approved revision 3 layout):
 
-- Easy to read first. Less to read, more to look at: tables, flows, trees,
-  tiles, drawn figures and maps instead of paragraphs. A section has at most
-  two short paragraphs; everything else is a shape.
+- Easy to follow first: a calm reading flow, not a dashboard. The page opens
+  on a compact title, one meta line and three controls, then the "focus on
+  these ideas" box and the first lesson. No start gate, no permanent sidebar,
+  no accordion hiding, no huge blank areas.
+- Readable prose and bullets carry each lesson; the subject's own diagram (a
+  map, a graph, a figure, a tree) sits beside the explanation it belongs to.
+  Parallel items render as one readable list, and every "on the test" example
+  of a lesson sits in one panel. This supersedes the earlier rules that asked
+  for a shape or a tile grid in every section.
 - Key terms are **bold once**, where they are defined or first used. Nothing
   else is marked inline: no highlight boxes, no underlines, no red text. Traps
-  and common wrong answers go in the section's one "watch out" box.
-- Every tested section carries "on the test" examples: a question in the style
+  and common wrong answers go in the lesson's one "watch out" callout.
+- Every tested lesson carries "on the test" examples: a question in the style
   the class actually tests (a scenario for psych, a stimulus-style question for
   APUSH, a small-business case, a short problem for math and physics), with a
-  tap-to-reveal answer and a one-line why.
-- Body text at full contrast (white on dark). Weight and color carry the
-  emphasis, never dimmed text.
+  check-your-understanding answer and a one-line why.
+- Body text at full contrast; weight and color carry the emphasis, never
+  dimmed text.
 - Whatever weighs most on the test goes first, in the guide and in the study
   order.
-- Dense and engaging, not open and airy (his feedback, October 1, 2026: "too
-  much whitespace and just like open area"). Content fills the width: no lone
-  paragraph beside empty space, no tall empty cards, no oversized header. Every
-  tested section shows a shape (table, tiles, flow, tree, figure) and an "on
-  the test" example; a text-only section uses two-column bullets or `rows`.
-  Cut empty space, never study material, and keep type legible and tap targets
-  comfortable.
-- Colors vary guide to guide: each class carries its own color through the
-  page. Dark neutral is an option (the theme switch), not the default. The
-  site accent green stays on buttons, focus rings and examples; terracotta
-  marks dates and "new".
 - Universal for classmates: nothing that assumes a resource only Valentino
   has, no artifacts of his own process. Someone landing cold should think
   "this is all I need to study."
@@ -186,34 +182,49 @@ over-highlighted and hard to follow):
   class pages follow the same rule: course names only, no surnames.
 - Any abbreviation used gets a key at the bottom listing every one.
 - No statistics presented as something to memorize; give the idea in words.
+- Cut empty space and clutter, never study material.
 
-## Guide template (v2, September 29, 2026)
+## Guide template (v3, September 30, 2026)
 
 Every guide is built from `template/guide-template.html`: one `GUIDE` object
 renders the whole page; the CSS and the machinery below the object are never
 edited per guide. If a guide needs something the template lacks, change the
 template and rebuild every guide.
 
-Layout (revision 2): the page is up to 1280px wide. The header is a compact
-title block: the class name (a link to the class welcome page), the test chip,
-the title, the one-line `sub`, the PDF buttons, and the class cover beside them
-on desktop (hidden on phones). On desktop and iPad (960px and up) a sticky "on
-this page" menu sits left of the sections and highlights the one being read; on
-phones the same menu is a sticky jump bar under the header. Sections are open
-blocks on the paper divided by a rule, with a numbered class-colored chip; their
-parts (tiles, tables, figures, examples, the watch box) are the only boxes, so
-nothing nests more than one level. Every section is open (no collapsing).
-Practice, problems, formulas and cram lay out in two columns on wide screens; a
-problem card opens to full width with its steps beside it; the practice score is
-a floating pill with retry-missed.
+Layout (revision 3): the page is up to 1180px wide. The header is a compact
+title, one meta line (the class name, a link to its welcome page · the test
+date · `meta`), the one-line `sub`, and the small class cover beside them.
+Under it, one row of controls: **Jump to topic** (a menu of every lesson with
+its weight, the focus box, quick facts and abbreviations), a quiet search
+field, **Tools** (the other views such as timeline, practice and problems,
+"show all answers", and the printable PDFs from `pdfs`), and one main action,
+**Try practice** (practice, or problems when there is no practice). Once those
+controls scroll away, the sticky bar carries "Class · Unit", Jump to topic,
+Search and Tools. Other views show a "back to the guide" line.
+The guide view opens with the "focus on these ideas" box: the first three `top`
+lines with numbered amber dots, so the first lesson starts within a phone's
+opening screen; any further `top` lines render after the lessons as "more to
+keep in mind" (ordinary reading, linked from the box and listed in Jump to
+topic). Then every lesson open in order: an eyebrow (number / weight), the
+title, the one-line `d`, then text on the left with the lesson's diagram
+(`fig` or `tree`) beside it (sticky while the text scrolls) and the watch-out
+callout closing the text column; lists (`tiles`), tables and comparisons below;
+then one "on the test" panel and the key terms; a "Next:" link ends each
+lesson. `topTable` renders after the lessons as "quick facts", linked from the
+focus box. Deep links work: `#s-3` opens lesson 3, `#practice` opens a view.
+Practice, problems, formulas and cram lay out in two columns on wide screens;
+a problem card opens to full width with its steps beside it; the practice
+score is a floating pill with retry-missed (first-try scoring unchanged).
 
 Template changes are engine-only. After any change to the template, rebuild
 every guide by splicing the new engine around each guide's own `GUIDE` block,
 then check: every guide's engine is byte-identical to the template, every
-`GUIDE` block is byte-identical and parses to the same object as before, the
-repository validator reports ERROR 0, and the interaction suites pass
-(practice right/wrong, retry missed, reveals, search, show all answers, panes,
-keyboard, print, 390px, both themes).
+`GUIDE` block is byte-identical and parses to the same object as before (a
+guide added since the work started is checked against the commit that added
+it), the repository validator reports ERROR 0, and the interaction suites
+pass (practice right/wrong, first-try score, retry missed, reveals, search,
+show all answers, jump to topic, deep links, views through Tools, keyboard,
+print, 390px, both themes).
 
 Header fields: `id` (class token: apush psych phys pre sem biz mor lang span
 apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`, `pdfs`
@@ -221,7 +232,8 @@ apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`, `pdfs`
 `panes` (tab order; a pane shows only when its data exists), `labels` (tab
 renames), `abbr`.
 
-`top`: three to five start-here lines (numbered tiles).
+`top`: three to five start-here lines (the first three open the guide in the
+"focus on these ideas" box; the rest read after the lessons).
 
 `outline`: sections, heaviest first. Each has `w` (3 tested most, 2 tested,
 1 know it), `t`, `d` (one line on what the test asks) and any of these blocks:
@@ -237,9 +249,10 @@ renames), `abbr`.
   multiple choice; use that form whenever the test is multiple choice
 - `watch`: the traps, one line each
 - `terms`: key-term chips
-The engine puts text blocks left and the first `fig`/`tree`/`tiles` right, then
-the other visuals, tables and comparisons full width, then examples, the watch
-box and the chips.
+The engine puts text blocks left and the `fig` or `tree` right (a lesson with
+no text shows its visual full width), closes the text column with the watch
+box, then renders `tiles` as one list, then tables and comparisons, then the
+"on the test" panel and the chips.
 
 Figures never hard-code a color. They use the engine's classes so light and
 dark both work: strokes `ln lc la lb lg` (+ `dash`), fills `fs fsa fp fc fa fb fg
@@ -260,11 +273,12 @@ Markup: `**term**` only. The engine bolds a term once per section and renders
 any legacy `==x==` or `!!x!!` as plain text.
 
 Every guide also gets, from the template alone (nothing to set in `GUIDE`):
-a search box beside the tabs (filters every pane as you type, marks the hits,
-shows per-tab counts; `/` or the header magnifier jumps to it) and a
-"show all answers" toggle (practice keys and whys, problem steps, every "on
-the test" answer), shown whenever the guide has any of those. `topTable`
-(`{h, cols, rows}`) renders one table under the start-here tiles.
+a search field (filters every view as you type, marks the hits, shows
+per-view counts, hides non-matching lessons in Jump to topic too; `/` or the
+header magnifier jumps to it), Jump to topic, and a "show all answers" toggle
+in Tools (practice keys and whys, problem steps, every "on the test" answer),
+shown whenever the guide has any of those. `topTable`
+(`{h, cols, rows}`) renders one "quick facts" table after the lessons.
 
 ## Guide history
 
