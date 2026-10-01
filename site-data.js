@@ -30,73 +30,67 @@ const FEATURES=[
 ];
 
 /* CLASSES: the eight classes this year, each with its welcome page (page) and its units, newest first.
-   A unit is the guide plus optional extras (kind: "cram" | "pdf" | "quiz"). added = the day it went up;
+   A unit is the guide plus optional extras (kind: "cram" | "pdf" | "quiz"), labelled exactly as in the guide, e.g. "Practice test A (PDF)".
+   Several versions of one test share a group label: {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url}. added = the day it went up;
    "new" shows for 7 days. A class with no units keeps its welcome page with an honest empty state.
-   blurb: one line on the welcome page. short: the label printed on the class cover. */
+   short: the label printed on the class cover. */
 const CLASSES=[
-  {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY",
-   blurb:"Connect the events to the argument. Study the units, then put the evidence to work.", units:[
+  {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY", units:[
      {t:"Unit 2/B", url:"/apush-unit-2b", added:"2026-10-01",
-      extras:[{kind:"pdf", t:"practice test", url:"/apush-unit-2b-practice.pdf"}]},
+      extras:[{kind:"pdf", t:"Practice test (PDF)", url:"/apush-unit-2b-practice.pdf"}]},
      {t:"Unit 2/A", url:"/apush-unit-2a", added:"2026-09-21"},
      {t:"Unit 1 LEQ", url:"/apush-unit-1-leq", added:"2026-09-13"},
      {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
      {t:"Unit 1/A", url:"/apush-unit-1a", added:"2026-08-29"}]},
-  {id:"lang", page:"/lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language and Composition", abbr:"AP Lang", short:"ENGLISH LANGUAGE",
-   blurb:"Read closely. Follow the argument. Make your own language do more.", units:[]},
-  {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS",
-   blurb:"Sketch the motion before solving it. From introductory to advanced kinematics.", units:[
+  {id:"lang", page:"/lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language and Composition", abbr:"AP Lang", short:"ENGLISH LANGUAGE", units:[]},
+  {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS", units:[
      {t:"Advanced kinematics", url:"/physics-advanced-kinematics", added:"2026-09-27", extras:[
-        {kind:"pdf", t:"version 1", url:"/physics-advanced-kinematics-version-1.pdf"},
-        {kind:"pdf", t:"version 2", url:"/physics-advanced-kinematics-version-2.pdf"},
-        {kind:"pdf", t:"version 3", url:"/physics-advanced-kinematics-version-3.pdf"},
-        {kind:"pdf", t:"version 4", url:"/physics-advanced-kinematics-version-4.pdf"},
-        {kind:"pdf", t:"version 5", url:"/physics-advanced-kinematics-version-5.pdf"},
-        {kind:"pdf", t:"version 6", url:"/physics-advanced-kinematics-version-6.pdf"}]},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-advanced-kinematics-version-1.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 2", s:"2", url:"/physics-advanced-kinematics-version-2.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 3", s:"3", url:"/physics-advanced-kinematics-version-3.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 4", s:"4", url:"/physics-advanced-kinematics-version-4.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 5", s:"5", url:"/physics-advanced-kinematics-version-5.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 6", s:"6", url:"/physics-advanced-kinematics-version-6.pdf"}]},
      {t:"Intro kinematics", url:"/physics-intro-kinematics", added:"2026-09-01"}]},
-  {id:"psych", page:"/psych", c:"var(--c-psych)", glyph:"head", name:"AP Psychology", abbr:"Psych", short:"PSYCHOLOGY",
-   blurb:"From biological bases to behavior. Make the vocabulary stick by putting it in context.", units:[
+  {id:"psych", page:"/psych", c:"var(--c-psych)", glyph:"head", name:"AP Psychology", abbr:"Psych", short:"PSYCHOLOGY", units:[
      {t:"Unit 1 exam", url:"/psych-unit-1", added:"2026-09-25"},
      {t:"Unit 1.4–1.6", url:"/psych-unit-1-4-1-6", added:"2026-09-23"},
      {t:"Unit 1.1–1.3", url:"/psych-unit-1-1-1-3", added:"2026-09-15"},
      {t:"Unit 0", url:"/psych-unit-0", added:"2026-09-01"}]},
-  {id:"sem", page:"/seminar", c:"var(--c-sem)", glyph:"bubbles", name:"AP Seminar", abbr:"Seminar", short:"SEMINAR",
-   blurb:"Start with a question. Look at the evidence. Build a perspective you can defend.", units:[]},
-  {id:"bus", page:"/business", c:"var(--c-biz)", glyph:"chart", name:"Business Principles", abbr:"Business", short:"BUSINESS",
-   blurb:"Turn business vocabulary into a working understanding of choices, markets and organizations.", units:[
+  {id:"sem", page:"/seminar", c:"var(--c-sem)", glyph:"bubbles", name:"AP Seminar", abbr:"Seminar", short:"SEMINAR", units:[]},
+  {id:"bus", page:"/business", c:"var(--c-biz)", glyph:"chart", name:"Business Principles", abbr:"Business", short:"BUSINESS", units:[
      {t:"LPs 1-5 to 1-10", url:"/bus-unit-1-5-1-10", added:"2026-09-24", extras:[
-        {kind:"pdf", t:"practice test a", url:"/bus-unit-1-5-1-10-practice-a.pdf"},
-        {kind:"pdf", t:"practice test b", url:"/bus-unit-1-5-1-10-practice-b.pdf"}]},
-     {t:"Unit 1", url:"/bus-unit-1", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/bus-unit-1-cram"}]}]},
-  {id:"mor", page:"/morality", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality and Social Justice", abbr:"Morality", short:"MORALITY",
-   blurb:"Think through moral choices, human dignity, and the responsibility we share with one another.", units:[
-     {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"practice quiz A", url:"/morality-ch3-practice-a.pdf"},{kind:"quiz", t:"jeopardy", url:"/morality-ch3-jeopardy"}]},
-     {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/morality-ch1-2-cram"}]}]},
-  {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS",
-   blurb:"Find the pattern, draw the connection. Complex numbers, trig form, polar graphs and vectors.", units:[
+        {kind:"pdf", t:"Practice test A (PDF)", url:"/bus-unit-1-5-1-10-practice-a.pdf"},
+        {kind:"pdf", t:"Practice test B (PDF)", url:"/bus-unit-1-5-1-10-practice-b.pdf"}]},
+     {t:"Unit 1", url:"/bus-unit-1", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/bus-unit-1-cram"}]}]},
+  {id:"mor", page:"/morality", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality and Social Justice", abbr:"Morality", short:"MORALITY", units:[
+     {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"Practice quiz A (PDF)", url:"/morality-ch3-practice-a.pdf"},{kind:"quiz", t:"Jeopardy game", url:"/morality-ch3-jeopardy"}]},
+     {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
+  {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
      {t:"Polar unit test", url:"/precalc-polar", added:"2026-09-29", extras:[
-        {kind:"pdf", t:"practice a", url:"/precalc-polar-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-polar-practice-b.pdf"},
-        {kind:"pdf", t:"practice c", url:"/precalc-polar-practice-c.pdf"},
-        {kind:"pdf", t:"practice d", url:"/precalc-polar-practice-d.pdf"},
-        {kind:"pdf", t:"practice e", url:"/precalc-polar-practice-e.pdf"},
-        {kind:"pdf", t:"practice f", url:"/precalc-polar-practice-f.pdf"},
-        {kind:"cram", t:"cram sheet", url:"/precalc-polar-cram.pdf"}]},
+        {kind:"pdf", t:"Practice test A (PDF)", url:"/precalc-polar-practice-a.pdf"},
+        {kind:"pdf", t:"Practice test B (PDF)", url:"/precalc-polar-practice-b.pdf"},
+        {kind:"pdf", t:"Practice test C (PDF)", url:"/precalc-polar-practice-c.pdf"},
+        {kind:"pdf", t:"Practice test D (PDF)", url:"/precalc-polar-practice-d.pdf"},
+        {kind:"pdf", t:"Practice test E (PDF)", url:"/precalc-polar-practice-e.pdf"},
+        {kind:"pdf", t:"Practice test F (PDF)", url:"/precalc-polar-practice-f.pdf"},
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-polar-cram.pdf"}]},
      {t:"Product, quotient & De Moivre's theorems", url:"/precalc-theorems", added:"2026-09-23", extras:[
-        {kind:"pdf", t:"practice a", url:"/precalc-theorems-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-theorems-practice-b.pdf"},
-        {kind:"pdf", t:"practice c", url:"/precalc-theorems-practice-c.pdf"},
-        {kind:"pdf", t:"all quizzes + keys", url:"/precalc-theorems-quizzes.pdf"}]},
+        {kind:"pdf", t:"Practice quiz A (PDF)", url:"/precalc-theorems-practice-a.pdf"},
+        {kind:"pdf", t:"Practice quiz B (PDF)", url:"/precalc-theorems-practice-b.pdf"},
+        {kind:"pdf", t:"Practice quiz C (PDF)", url:"/precalc-theorems-practice-c.pdf"},
+        {kind:"pdf", t:"Quizzes A–C in one file (PDF)", url:"/precalc-theorems-quizzes.pdf"}]},
      {t:"Complex numbers & trig form", url:"/precalc-complex-trig-form", added:"2026-09-17", extras:[
-        {kind:"pdf", t:"practice a", url:"/precalc-complex-trig-form-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-complex-trig-form-practice-b.pdf"},
-        {kind:"pdf", t:"practice c", url:"/precalc-complex-trig-form-practice-c.pdf"},
-        {kind:"pdf", t:"all quizzes + memorize sheet", url:"/precalc-complex-trig-form-quizzes.pdf"}]},
+        {kind:"pdf", t:"Practice quiz A (PDF)", url:"/precalc-complex-trig-form-practice-a.pdf"},
+        {kind:"pdf", t:"Practice quiz B (PDF)", url:"/precalc-complex-trig-form-practice-b.pdf"},
+        {kind:"pdf", t:"Practice quiz C (PDF)", url:"/precalc-complex-trig-form-practice-c.pdf"},
+        {kind:"pdf", t:"Quizzes A–C + memorize sheet (PDF)", url:"/precalc-complex-trig-form-quizzes.pdf"}]},
      {t:"Vectors, ICF & trig equations", url:"/precalc-vectors-icf-trig-eq", added:"2026-09-03", extras:[
-        {kind:"pdf", t:"practice a", url:"/precalc-vectors-icf-trig-eq-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-vectors-icf-trig-eq-practice-b.pdf"},
-        {kind:"quiz", t:"quizzes", url:"/precalc-quizzes"}]},
-     {t:"Vectors + dot product", url:"/precalc-vectors", added:"2026-08-30"}]}
+        {kind:"pdf", t:"Practice test A (PDF)", url:"/precalc-vectors-icf-trig-eq-practice-a.pdf"},
+        {kind:"pdf", t:"Practice test B (PDF)", url:"/precalc-vectors-icf-trig-eq-practice-b.pdf"},
+        {kind:"quiz", t:"Vector quizzes A–C (print page)", url:"/precalc-quizzes"}]},
+     {t:"Vectors + dot product", url:"/precalc-vectors", added:"2026-08-30", extras:[
+        {kind:"pdf", t:"Quizzes A–C + memorize sheet (PDF)", url:"/precalc-quizzes.pdf"}]}]}
 ];
 
 /* line glyphs, one per class */

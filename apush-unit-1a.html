@@ -50,7 +50,7 @@ a{color:inherit;text-decoration:none}
 #prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
 #prog i{display:block;height:100%;width:0;background:var(--accent)}
 
-/* ═══ bar: brand + theme; once the guide's own controls scroll away it carries jump / search / tools ═══ */
+/* ═══ bar: brand + theme; once the guide's own controls scroll away it carries sections / topics / search ═══ */
 .bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);padding:max(9px,env(safe-area-inset-top)) 0 9px;transition:box-shadow .3s var(--ease)}
 .bar.stuck{box-shadow:0 1px 0 0 var(--line)}
 .bar .wrap{display:flex;align-items:center;gap:10px;min-height:38px}
@@ -66,6 +66,7 @@ a{color:inherit;text-decoration:none}
 .bctl{display:none;align-items:center;gap:2px;min-width:0}
 .bar.compact .bctl{display:flex}
 .bar.compact .seg,.bar.compact .sbtn{display:none}
+.bctl .cur{max-width:150px;overflow:hidden;text-overflow:ellipsis}
 .bnm{font-size:var(--t13);font-weight:600;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;padding-right:10px;margin-right:4px;border-right:1px solid var(--line)}
 .bctl .mbtn{border:0;background:none;box-shadow:none;height:34px;padding:0 10px}
 @media (hover:hover){.bctl .mbtn:hover{background:var(--surface2)}}
@@ -111,16 +112,48 @@ a.cname{border-radius:6px}
   .sec{padding-top:18px;margin-top:16px}
 }
 
-/* ═══ controls: jump to topic, quiet search, tools, one main action ═══ */
-.gctl{display:flex;align-items:center;gap:10px;margin:18px 0 18px}
-.mbtn .lbl-s{display:none}
-@media (max-width:440px){.mbtn .lbl-s{display:inline}.mbtn .lbl-l{display:none}}
+/* ═══ practice PDFs: the printable tests, above everything else ═══ */
+.pdfs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 0;padding:12px;border-radius:var(--r-card);background:var(--tint);border:1px solid color-mix(in srgb,var(--accent) 16%,var(--line))}
+.pdf{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:7px 14px 7px 11px;border-radius:var(--r-btn);background:var(--surface);border:1px solid color-mix(in srgb,var(--accent) 38%,var(--line));color:var(--accent);font-size:var(--t15);font-weight:650;line-height:1.25;box-shadow:var(--sh1);transition:border-color .16s var(--ease),transform .2s var(--spring)}
+.pdf svg{flex:none}
+@media (hover:hover){.pdf:hover{border-color:var(--accent)}}
+.pdf:active{transform:scale(.985)}
+.pgrp{display:flex;flex-wrap:wrap;align-items:center;gap:8px;flex-basis:100%}
+.pgl{display:inline-flex;align-items:center;gap:7px;margin-right:2px;font-size:var(--t15);font-weight:700;color:var(--ink)}
+.pgl svg{color:var(--accent)}
+.pgrp .pdf{padding:7px 13px;min-width:44px;justify-content:center}
+.pdfs .pn{flex:1 1 300px;margin:0 4px;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
+@media (max-width:599px){
+  .pdfs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px;margin-top:12px}
+  .pdfs .pn{margin:0 2px;font-size:var(--t12)}
+  .pdf{font-size:var(--t13);padding:7px 10px 7px 9px;gap:7px;min-height:44px}
+  .pdfs > .pdf:only-of-type{grid-column:1 / -1}
+  .pgrp,.pdfs .pn{grid-column:1 / -1}
+  .pgrp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .pgl{grid-column:1 / -1;font-size:var(--t13)}
+}
+
+/* ═══ controls: the Sections row, then Topics, Search, Show answers and Print ═══ */
+.gctl{display:grid;gap:10px;margin:16px 0 18px}
+.secs{display:flex;align-items:center;gap:10px;min-width:0}
+.secl{flex:none;font-size:var(--t12);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
+.segs{position:relative;display:flex;gap:2px;min-width:0;max-width:100%;padding:3px;border-radius:12px;background:var(--surface2);border:1px solid var(--line);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding:0 16px}
+.segs::-webkit-scrollbar{display:none}
+.sg{flex:none;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:9px;font-size:var(--t15);font-weight:600;color:var(--ink2);white-space:nowrap;transition:background .2s var(--ease),color .2s var(--ease),box-shadow .2s var(--ease)}
+.sg .n{font-size:var(--t12);font-weight:700;color:var(--ink3);font-variant-numeric:tabular-nums}
+.sg[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px #0e1b3d14,0 2px 8px #0e1b3d12;outline:1px solid var(--line)}
+.sg[aria-selected="true"] .n{color:var(--accent)}
+@media (hover:hover){.sg:not([aria-selected="true"]):hover{color:var(--ink);background:color-mix(in srgb,var(--surface) 55%,transparent)}}
+.sg:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.util{display:flex;align-items:center;gap:10px;min-width:0}
 .mbtn{flex:none;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:var(--t15);font-weight:600;white-space:nowrap;transition:border-color .16s var(--ease),background .16s var(--ease)}
 .mbtn svg{flex:none;color:var(--ink3)}
 .mbtn .cv{transition:transform .24s var(--spring)}
 .mbtn[aria-expanded="true"] .cv{transform:rotate(180deg)}
+.mbtn[aria-pressed="true"]{background:var(--tint);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));color:var(--accent)}
+.mbtn[aria-pressed="true"] svg{color:var(--accent)}
 @media (hover:hover){.mbtn:hover{border-color:var(--line2)}}
-.srch{position:relative;flex:1 1 auto;min-width:0;max-width:420px}
+.srch{position:relative;flex:1 1 auto;min-width:0;max-width:440px}
 .srch > svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ink3);pointer-events:none}
 .srch input{display:block;width:100%;height:42px;padding:0 38px 0 38px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:var(--t16);-webkit-appearance:none;appearance:none}
 .srch input::placeholder{color:var(--ink3);opacity:1}
@@ -130,19 +163,24 @@ a.cname{border-radius:6px}
 .srch .x{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:7px;display:none;place-items:center;color:var(--ink3)}
 .srch.has .x{display:grid}
 @media (hover:hover){.srch .x:hover{color:var(--ink);background:var(--surface2)}}
-.tryp{margin-left:auto;height:42px;padding:0 18px;font-size:var(--t15);white-space:nowrap}
+.util .acts{display:flex;gap:10px;margin-left:auto}
 @media (max-width:719px){
-  .gctl{display:grid;grid-template-columns:auto auto 1fr;gap:8px;margin:12px 0 12px}
-  .gctl .srch{grid-column:1 / -1;grid-row:1;max-width:none}
-  .gctl .tryp{margin-left:0;justify-self:stretch}
+  .gctl{gap:8px;margin:12px 0 14px}
+  .secl{font-size:11px}
+  .segs{margin-right:calc(-1 * var(--gut));border-radius:12px 0 0 12px;border-right:0;padding-right:var(--gut)}
+  .segs.ovf{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent)}
+  .segs.ovl{-webkit-mask-image:linear-gradient(90deg,transparent,#000 30px);mask-image:linear-gradient(90deg,transparent,#000 30px)}
+  .segs.ovl.ovf{-webkit-mask-image:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 44px),transparent)}
+  .sg{min-height:36px;padding:0 11px;font-size:var(--t15)}
+  .util{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
+  .util .srch{max-width:none}
+  .util .acts{grid-column:1 / -1;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .util .acts .mbtn{justify-content:center;height:40px;font-size:var(--t13)}
+  .util .acts .mbtn[hidden] + .mbtn{grid-column:1 / -1}
 }
-@media (max-width:379px){.gctl .mbtn{padding:0 11px}.gctl .tryp{padding:0 12px}}
-.pnav{display:flex;align-items:center;gap:8px;margin:-4px 0 14px;font-size:var(--t13);color:var(--ink3)}
-.pnav button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 10px 0 6px;border-radius:8px;font-weight:600;color:var(--accent)}
-@media (hover:hover){.pnav button:hover{background:var(--surface2)}}
-.pnav b{font-weight:650;color:var(--ink2)}
+@media (max-width:379px){.gctl .mbtn{padding:0 11px}}
 
-/* menus (jump to topic, tools): one panel each, opened from the header or the bar */
+/* menus (topics, sections): one panel each, opened from the controls or the bar */
 .menu{position:fixed;z-index:90;width:min(360px,calc(100vw - 24px));max-height:min(70vh,560px);overflow:auto;overscroll-behavior:contain;padding:6px;border-radius:14px;background:var(--surface);border:1px solid var(--line2);box-shadow:var(--sh2);animation:pop .22s var(--spring)}
 @keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .menu .ml{padding:8px 10px 4px;font-size:var(--t12);font-weight:650;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
@@ -170,7 +208,7 @@ a.cname{border-radius:6px}
 .sstat.on{display:flex}
 .sstat > span{margin-right:2px}
 .sstat q{color:var(--ink)}
-.sstat button,.nores button{padding:5px 10px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface);font-size:var(--t12);font-weight:600;color:var(--ink2);text-transform:lowercase}
+.sstat button,.nores button{padding:5px 10px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface);font-size:var(--t12);font-weight:600;color:var(--ink2)}
 .sstat button[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .sstat b,.nores b{font-weight:650;font-variant-numeric:tabular-nums;margin-left:4px}
 .nores{margin:0 0 16px;padding:16px 18px;border:1px dashed var(--line2);border-radius:var(--r-card);color:var(--ink2);font-size:var(--t15)}
@@ -183,11 +221,12 @@ mark.hit{background:color-mix(in srgb,var(--amber) 34%,transparent);color:inheri
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 /* small section label (panes) */
-.sh{display:flex;align-items:baseline;gap:10px;margin:26px 0 12px}
+.sh{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:26px 0 12px}
 .sh:first-child{margin-top:0}
-.sh h3{margin:0;font-size:var(--t20);font-weight:760;letter-spacing:-.02em;color:var(--ink);text-transform:lowercase;white-space:nowrap}
+.sh h3{margin:0;font-size:var(--t20);font-weight:760;letter-spacing:-.02em;color:var(--ink);min-width:0}
+.sh h3::first-letter{text-transform:uppercase}
 .sh::after{content:"";flex:1;height:1px;background:var(--line);order:2;align-self:center}
-.shx{order:3;font-size:var(--t13);color:var(--ink3);text-transform:lowercase;font-variant-numeric:tabular-nums;white-space:nowrap}
+.shx{order:3;min-width:0;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums}
 
 /* ═══ guide: focus box, then every lesson open in reading order ═══ */
 .ol{max-width:100%}
@@ -596,7 +635,7 @@ footer .upd{display:block;margin-top:6px}
 
 @media print{
   :root{--paper:#fff;--surface:#fff;--surface2:#f5f6f8;--tint:#eef1f5;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999;--amber-bg:#fff}
-  .bar,.gctl,.menu,.pnav,.nxt,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg,.gcov{display:none !important}
+  .bar,.gctl,.pdfs,.menu,.nxt,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg,.gcov{display:none !important}
   body{background:#fff;padding:0}
   .focus,.tq,.q,.prob,.tln,.fx,.rbar{box-shadow:none !important}
   .rv{opacity:1 !important;transform:none !important;animation:none !important}
@@ -629,9 +668,9 @@ footer .upd{display:block;margin-top:6px}
     </a>
     <div class="bctl" id="bctl">
       <span class="bnm" id="bnm"></span>
-      <button type="button" class="mbtn" data-menu="m-jump" aria-expanded="false" aria-controls="m-jump" aria-haspopup="true"><span class="lbl-l">Jump to topic</span><span class="lbl-s">Jump</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
-      <button type="button" class="mbtn" data-act="search" aria-label="search this guide"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg><span class="lbl-l">Search</span></button>
-      <button type="button" class="mbtn" data-menu="m-tools" aria-expanded="false" aria-controls="m-tools" aria-haspopup="true"><span>Tools</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
+      <button type="button" class="mbtn" id="secb" data-menu="m-sec" aria-expanded="false" aria-controls="m-sec" aria-haspopup="true" hidden><span class="vh">Sections: </span><span class="cur" id="seccur"></span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
+      <button type="button" class="mbtn" data-menu="m-jump" aria-expanded="false" aria-controls="m-jump" aria-haspopup="true"><span>Topics</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
+      <button type="button" class="mbtn" data-act="search" aria-label="search this guide"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg></button>
     </div>
     <button type="button" class="sbtn" id="sbtn" aria-label="search this guide" title="search ( / )"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg></button>
     <div class="seg" role="group" aria-label="theme">
@@ -652,18 +691,26 @@ footer .upd{display:block;margin-top:6px}
     </div>
     <div class="gcov rv" id="gcov" aria-hidden="true"></div>
   </div>
+  <section class="pdfs rv" id="pdfs" aria-label="Practice PDFs" hidden></section>
   <div class="gctl rv" id="gctl">
-    <button type="button" class="mbtn" id="jumpb" data-menu="m-jump" aria-expanded="false" aria-controls="m-jump" aria-haspopup="true"><span class="lbl-l">Jump to topic</span><span class="lbl-s">Jump</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
-    <div class="srch" id="srch" role="search">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg>
-      <input id="q" type="search" placeholder="Search this guide" aria-label="search this guide" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
-      <button type="button" class="x" id="qx" aria-label="clear search"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg></button>
+    <div class="secs" id="secs" hidden>
+      <span class="secl" id="secl">Sections</span>
+      <div class="segs" id="panes" role="tablist" aria-labelledby="secl"></div>
     </div>
-    <button type="button" class="mbtn" id="toolsb" data-menu="m-tools" aria-expanded="false" aria-controls="m-tools" aria-haspopup="true"><span>Tools</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
-    <button type="button" class="btn tryp" id="tryp" hidden>Try practice</button>
+    <div class="util">
+      <button type="button" class="mbtn" id="jumpb" data-menu="m-jump" aria-expanded="false" aria-controls="m-jump" aria-haspopup="true"><span>Topics</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
+      <div class="srch" id="srch" role="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg>
+        <input id="q" type="search" placeholder="Search" aria-label="search this guide" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+        <button type="button" class="x" id="qx" aria-label="clear search"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg></button>
+      </div>
+      <div class="acts">
+        <button type="button" class="mbtn" id="showall" aria-pressed="false" hidden><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg><span class="mt">Show answers</span></button>
+        <button type="button" class="mbtn" id="printb"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6V1.8h8V6M4 12H2.5V7.2A1.2 1.2 0 0 1 3.7 6h8.6a1.2 1.2 0 0 1 1.2 1.2V12H12"/><path d="M4 9.5h8v4.7H4z"/></svg><span>Print</span></button>
+      </div>
+    </div>
   </div>
   <div class="sstat" id="sstat" aria-live="polite"></div>
-  <div class="pnav" id="pnav" hidden><button type="button" id="pback"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3 5 7l4 4"/></svg>back to the guide</button><span>·</span><b id="pnow"></b></div>
   <div id="root" class="rv"></div>
   <footer>
     study guide written by a student, free to use. not affiliated with the school.
@@ -672,17 +719,13 @@ footer .upd{display:block;margin-top:6px}
   </footer>
 </main>
 <div class="menu" id="m-jump" hidden aria-label="jump to topic"></div>
-<div class="menu" id="m-tools" hidden aria-label="tools">
-  <div class="mg"><div class="ml">view</div><div class="panes" id="panes" role="group" aria-label="views"></div></div>
-  <div class="mg" id="mg-ans" hidden><button type="button" class="mi" id="showall" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg><span class="mt">show all answers</span></button></div>
-  <div class="mg" id="pdfs" hidden></div>
-</div>
+<div class="menu" id="m-sec" hidden aria-label="sections"><div class="ml">Sections</div><div id="secm"></div></div>
 <div class="scorepill" id="score"><span aria-live="polite"><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
    GUIDE: the only thing to edit. Everything renders from this object.
-   Rules (sept 30 2026, design revision 3):
+   Rules (sept 30 2026, design revision 3; navigation oct 1 2026):
    · bold a key term with **term** the first time it appears in a
      section. Nothing else is marked inline: no highlights, no
      underlines, no red text. (The renderer bolds each term once per
@@ -2735,7 +2778,8 @@ function coverArt(gid){
   if(id==="sem")s=`<g stroke="${c}" stroke-opacity=".4" stroke-width="1.5" fill="none"><path d="M91 198L167 89 319 104 376 221 223 228Z M167 89L223 228M319 104L91 198"/></g><g filter="url(#${n}sh)"><path d="M90 74h159a17 17 0 0 1 17 17v79a17 17 0 0 1-17 17h-93l-37 29v-29H90a17 17 0 0 1-17-17V91a17 17 0 0 1 17-17Z" fill="${c}"/><path d="M243 127h139a14 14 0 0 1 14 14v64a14 14 0 0 1-14 14h-17v23l-33-23h-89a14 14 0 0 1-14-14v-64a14 14 0 0 1 14-14Z" fill="${d}"/></g><path d="M105 110H223M105 126H208M105 142H180M260 158H364M260 175H349M260 192H309" stroke="${b}" stroke-opacity=".6" stroke-width="3"/>`;
   return `<svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" focusable="false" xmlns="http://www.w3.org/2000/svg">${defs}${bg}${s}</svg>`;
 }
-const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables",leq:"the leq",prompts:"prompts"};
+/* section names say where they lead; GUIDE.labels overrides one (e.g. problems:"SAQ practice") */
+const LABEL={outline:"Guide",practice:"Practice questions",problems:"Worked examples",formulas:"Formulas",cards:"Flashcards",timeline:"Timeline",checklist:"Checklist",cram:"Cram sheet",tables:"Tables",leq:"The LEQ",prompts:"Prompts"};
 const has=v=>Array.isArray(v)?v.length>0:!!v;
 
 /* header: title, one meta line (class · test date · format), the class cover */
@@ -2745,7 +2789,12 @@ $("#title").textContent=GUIDE.title;
 if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
 /* link targets from GUIDE data: site-relative or http(s), never other schemes or user:pass@ */
 const safeUrl=u=>{const s=String(u??"").trim();if(!s||/[\x00-\x20\\]/.test(s))return null;const m=/^([a-z][a-z0-9+.-]*):/i.exec(s);if(m&&!/^https?$/i.test(m[1]))return null;try{const x=new URL(s,"https://valentinoguides.com/");if(x.username||x.password)return null}catch(e){return null}return s};
-if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(ok.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");if(ok.length){const d=$("#pdfs");d.innerHTML=`<div class="ml">printable</div>`+ok.map(p=>`<a class="mi" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${I_DOC}<span class="mt">${esc(p.t)}</span></a>`).join("")+(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"");d.hidden=false}}
+/* practice PDFs: shown above the controls on every section, labelled exactly as written (e.g. "Practice test A (PDF)").
+   Entries that share a `g` (group label) render as one labelled row of short buttons, e.g. g:"Practice test (PDF)", t:"Version 1". */
+if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(ok.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");if(ok.length){
+  const d=$("#pdfs"), lk=(p,lab)=>`<a class="pdf" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener"${lab?` aria-label="${esc(lab)}"`:""}>${p.g?"":I_DOC}<span>${esc(p.t)}</span></a>`;
+  let h="";for(let i=0;i<ok.length;){const p=ok[i];if(!p.g){h+=lk(p);i++;continue}let j=i;while(j<ok.length&&ok[j].g===p.g)j++;h+=`<div class="pgrp" role="group" aria-label="${esc(p.g)}"><span class="pgl">${I_DOC}${esc(p.g)}</span>${ok.slice(i,j).map(x=>lk(x,x.g+", "+x.t)).join("")}</div>`;i=j}
+  d.innerHTML=h+(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"");d.hidden=false}}
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");
@@ -2791,7 +2840,7 @@ const B={
   cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
   watch:v=>`<div class="watch"><div class="wl">${I_WARN}Watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
   /* every "on the test" example of a section in one panel */
-  ex:v=>`<div class="exs"><div class="exh">${I_TEST}On the test</div>${v.map(x=>Array.isArray(x.opts)?`<div class="tq mc"><div class="eq">${plain(x.q)}</div><div class="opts">${x.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${j===x.a?" data-c":""}><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")}</div><div class="ea">${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`:`<div class="tq"><div class="eqr"><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>Check your understanding</span>${CHEV}</button></div><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  ex:v=>`<div class="exs"><div class="exh">${I_TEST}On the test</div>${v.map(x=>Array.isArray(x.opts)?`<div class="tq mc"><div class="eq">${plain(x.q)}</div><div class="opts">${x.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${j===x.a?" data-c":""}><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")}</div><div class="ea">${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`:`<div class="tq"><div class="eqr"><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>Show answer</span>${CHEV}</button></div><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
   notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"Example",ok:"Rule",warn:"Watch out"})[n.k]||esc(n.k||"Note")}</span>${fmt(n.t)}</div>`).join(""),
   terms:v=>`<div class="terms"><span class="tl">Key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
 };
@@ -2821,7 +2870,8 @@ function section(s,i,next){
   if(has(s.terms))h+=B.terms(s.terms);
   const n=String(i+1).padStart(2,"0"), w=WN[s.w];
   const eyb=`<p class="eyb"><span class="num">${n}</span>${w?`<span aria-hidden="true">/</span><span class="w ${w[0]}">${w[1]}</span>`:""}</p>`;
-  const nx=next?`<div class="nxt"><a href="#s-${i+2}" data-j="s-${i+2}">Next: ${esc(next.t)}${I_NEXT}</a></div>`:"";
+  const tp=!next&&TRY?TRY:null;
+  const nx=next?`<div class="nxt"><a href="#s-${i+2}" data-j="s-${i+2}">Next: ${esc(next.t)}${I_NEXT}</a></div>`:tp?`<div class="nxt"><a href="#${tp}" data-p="${tp}">Next: ${esc(lab(tp))}${cnt(tp)?` (${cnt(tp)})`:""}${I_NEXT}</a></div>`:"";
   const node=el("section","sec",`<header>${eyb}<h3 id="h-s-${i+1}" tabindex="-1">${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</header><div class="sb">${h}</div>${nx}`);
   node.id="s-"+(i+1); node.setAttribute("aria-labelledby","h-s-"+(i+1));
   SEEN=null;
@@ -2829,7 +2879,7 @@ function section(s,i,next){
 }
 function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{
   const b=x.querySelector(".eb");
-  if(b){b.setAttribute("aria-expanded","false");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"Hide answer":"Check your understanding";b.setAttribute("aria-expanded",String(on))});return}
+  if(b){b.setAttribute("aria-expanded","false");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"Hide answer":"Show answer";b.setAttribute("aria-expanded",String(on))});return}
   x.insertAdjacentHTML("beforeend",'<p class="vh" role="status" aria-live="polite"></p>');
   x.querySelectorAll(".opt").forEach(o=>o.addEventListener("click",()=>{
     if(x.classList.contains("done")||$("#root").classList.contains("showall"))return;
@@ -2849,11 +2899,11 @@ function buildOutline(sec){
     scope();
     const lead=GUIDE.top.slice(0,TOPN), more=GUIDE.top.slice(TOPN), k=lead.length;
     const f=el("section","focus"); f.id="s-top"; f.setAttribute("aria-labelledby","h-s-top");
-    f.innerHTML=`<h3 id="h-s-top" tabindex="-1">Focus on ${k===1?"this":"these "+(NUMW[k]||k)} ${k===1?"idea":"ideas"}</h3><ol class="tops">${lead.map(x=>`<li class="tp">${fmt(x)}</li>`).join("")}</ol>`+
+    f.innerHTML=`<h3 id="h-s-top" tabindex="-1">Key ${k===1?"idea":"ideas"}</h3><ol class="tops">${lead.map(x=>`<li class="tp">${fmt(x)}</li>`).join("")}</ol>`+
       (more.length?`<a class="fqk" href="#${MID}" data-j="${MID}">${NUMW[more.length]?NUMW[more.length].replace(/^./,c=>c.toUpperCase()):more.length} more to keep in mind${I_NEXT}</a>`:"");
-    if(more.length)moreHTML=`<header><p class="eyb">from the focus list</p><h3 id="h-s-more" tabindex="-1">More to keep in mind</h3></header><div class="sb"><ol class="tops" style="counter-reset:tp ${TOPN}">${more.map(x=>`<li class="tm">${fmt(x)}</li>`).join("")}</ol></div>`;
+    if(more.length)moreHTML=`<header><p class="eyb">key ideas</p><h3 id="h-s-more" tabindex="-1">More to keep in mind</h3></header><div class="sb"><ol class="tops" style="counter-reset:tp ${TOPN}">${more.map(x=>`<li class="tm">${fmt(x)}</li>`).join("")}</ol></div>`;
     col.appendChild(f);
-    JUMP.push({id:"s-top",n:"",t:"Focus on these ideas",w:0});
+    JUMP.push({id:"s-top",n:"",t:"Key ideas",w:0});
   }
   /* the quick-facts table (topTable) sits after the lessons so the first lesson starts right under the focus box; the focus box links to it */
   const QT=GUIDE.topTable&&has(GUIDE.topTable.rows)?GUIDE.topTable:null, qh=QT?(QT.h||"Quick facts"):"";
@@ -2868,13 +2918,13 @@ function buildOutline(sec){
     JUMP.push({id:QID,n:"",t:qh,w:0});
   }
   if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
-    col.appendChild(shead("abbreviations"));
+    col.appendChild(shead("Abbreviations"));
     const a=el("div","abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")); a.id="s-abbr"; col.appendChild(a);
     JUMP.push({id:"s-abbr",n:"",t:"Abbreviations",w:0});
   }
   sec.appendChild(col);
   wireEx(col);
-  col.addEventListener("click",e=>{const a=e.target.closest(".nxt a,.fqk");if(a){e.preventDefault();goTo(a.dataset.j)}});
+  col.addEventListener("click",e=>{const a=e.target.closest(".nxt a,.fqk");if(!a)return;e.preventDefault();if(a.dataset.p)show(a.dataset.p,true);else goTo(a.dataset.j)});
 }
 
 /* practice mc */
@@ -2885,7 +2935,6 @@ function say(card,t){const s=card.querySelector(".vh[role=status]");if(s)s.textC
 function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
 function buildPractice(sec){
   const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
-  sec.appendChild(shead("practice",`${qs.length} questions · tap an answer`));
   /* retry missed questions: in memory for this page visit only, nothing stored or sent.
      SCORE counts first tries only. Retries change the missed set and the round progress, never SCORE.
      HOLD ignores a second click for half a second after a retry step, so a double click can't hit the control that moved under it. */
@@ -2966,13 +3015,12 @@ function buildPractice(sec){
 function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps">${st.map(s=>`<li>${plain(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${plain(m)}</div><div class="wy">${y?plain(y):""}</div></li>`}).join("")}</ul>`}
 function buildProblems(sec){
   const ps=GUIDE.problems||[];
-  sec.appendChild(shead((GUIDE.labels||{}).problems||"problems",`${ps.length} to work`));
   const g=el("div","pgrid");
   ps.forEach((p,i)=>{
     const card=el("div","group prob");
-    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>show the steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
+    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>Show steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
     const go=card.querySelector(".go");go.setAttribute("aria-expanded","false");
-    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"hide the steps":"show the steps";go.setAttribute("aria-expanded",String(on))});
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"Hide steps":"Show steps";go.setAttribute("aria-expanded",String(on))});
     g.appendChild(card);
   });
   sec.appendChild(g);
@@ -2981,14 +3029,12 @@ function buildProblems(sec){
 /* formulas */
 function buildFormulas(sec){
   const fs=GUIDE.formulas||[];
-  sec.appendChild(shead("formulas",`${fs.length}`));
   sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
 }
 
 /* flashcards: flip deck, plus the whole list */
 function buildCards(sec){
   const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
-  sec.appendChild(shead("cards",`${cs.length} · tap to flip, swipe for next`));
   const dk=el("div","dk");
   const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
   const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
@@ -3003,21 +3049,19 @@ function buildCards(sec){
   addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT"||OPEN)return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
   let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
-  sec.appendChild(shead("all cards",`${cs.length}`));
+  sec.appendChild(shead("All cards",`${cs.length}`));
   sec.appendChild(el("div","clist",cs.map(c=>`<div><b>${plain(c.f)}</b><span>${plain(c.b)}</span></div>`).join("")));
 }
 
 /* timeline */
 function buildTimeline(sec){
   const ts=GUIDE.timeline||[];
-  sec.appendChild(shead("timeline",`${ts.length} events`));
   sec.appendChild(el("div","tln",ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${plain(t.t)}</div>${t.d?`<div class="d">${plain(t.d)}</div>`:"<div></div>"}</div>`).join("")));
 }
 
 /* checklist */
 function buildChecklist(sec){
   const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
-  sec.appendChild(shead("checklist",`${cs.length} items`));
   const g=el("div","ckg");
   cs.forEach((c,i)=>{
     const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${plain(c.t)}</span>${c.d?`<span class="d">${plain(c.d)}</span>`:""}</span>`);
@@ -3030,22 +3074,21 @@ function buildChecklist(sec){
 /* cram sheet: [{h, d, items:[{n, y, t}]}] */
 function buildCram(sec){
   const gs=GUIDE.cram||[];
-  sec.appendChild(shead("cram sheet","one line each"));
   sec.appendChild(el("div","cgrid",gs.map(g=>`<div class="group"><div class="gh">${esc(g.h||"")}<span>${esc(g.d||String((g.items||[]).length))}</span></div>${(g.items||[]).map(c=>`<div class="cr"><div class="n"><span>${plain(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${plain(c.t)}</div></div>`).join("")}</div>`).join("")));
 }
 
 /* tables pane: [{h, d, cols, rows}] */
 function buildTables(sec){
   const w=el("div","tpane");
-  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
+  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"Table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
   sec.appendChild(w);
 }
 
 /* essay panes (used by the LEQ guide): prompts + leq + fn */
 function buildPrompts(sec){
   const ps=GUIDE.prompts||[];
-  if(has(GUIDE.prompts_note)){sec.appendChild(shead("how points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
-  sec.appendChild(shead("possible prompts",`${ps.length}`));
+  if(has(GUIDE.prompts_note)){sec.appendChild(shead("How points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
+  sec.appendChild(shead("Possible prompts",`${ps.length}`));
   ps.forEach((p,i)=>{
     scope();
     const g=el("div","group");
@@ -3064,23 +3107,23 @@ function buildPrompts(sec){
 }
 function buildLeq(sec){
   const L=GUIDE.leq;
-  sec.appendChild(shead("how it runs"));
+  sec.appendChild(shead("How it runs"));
   sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p>${L.math?`<p>${fmt(L.math)}</p>`:""}`));
   if(has(L.rows)){
-    sec.appendChild(shead("the rubric",`${L.rows.length} rows`));
+    sec.appendChild(shead("The rubric",`${L.rows.length} rows`));
     sec.appendChild(el("div","tbw",`<table class="tbl"><thead><tr><th>row</th><th>earns it</th><th>loses it</th><th>class tips</th></tr></thead><tbody>${L.rows.map(r=>`<tr><td data-l="row">${esc(r.n)}</td><td data-l="earns it">${plain(r.earn)}</td><td data-l="loses it">${plain(r.lose)}</td><td data-l="class tips">${plain(r.cls||"")}</td></tr>`).join("")}</tbody></table>`));
   }
   if(has(L.codes))sec.appendChild(el("div","card",`<div class="terms"><span class="tl">margin codes</span>${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
-  if(has(L.shape)){sec.appendChild(shead("the shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
+  if(has(L.shape)){sec.appendChild(shead("The shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
   if(has(L.pace)){
     const tot=L.pace.reduce((a,p)=>a+p.m,0);
     sec.appendChild(shead(`${tot} minutes`,"minute by minute"));
     sec.appendChild(el("div","card",`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>${B.steps(L.pace.map(p=>`**${p.l} · ${p.m} min.** ${p.t}`))}`));
   }
-  if(has(GUIDE.fn)){sec.appendChild(shead("notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
+  if(has(GUIDE.fn)){sec.appendChild(shead("Notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
 }
 
-/* ═══ menus: jump to topic and tools. one panel each, opened from the header or from the bar ═══ */
+/* ═══ menus: topics (from the controls or the bar) and sections (from the bar). one panel each ═══ */
 let OPEN=null, OPENBY=null;
 const FOCUSABLE='a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])';
 const visibleF=root=>[...root.querySelectorAll(FOCUSABLE)].filter(n=>n.offsetParent!==null&&!n.closest("[hidden]"));
@@ -3129,32 +3172,50 @@ addEventListener("scroll",()=>{if(OPEN&&OPENBY){const r=OPENBY.getBoundingClient
 /* go to a lesson (from jump to topic, a next link or a deep link) */
 function goTo(id,instant){
   const t=document.getElementById(id); if(!t)return;
-  const pane=t.closest(".pane"); if(pane&&!pane.classList.contains("on"))show(pane.id.slice(2),false);
+  const pane=t.closest(".pane"), moved=pane&&!pane.classList.contains("on"); if(moved)show(pane.id.slice(2),false);
   t.scrollIntoView({behavior:REDUCED||instant?"auto":"smooth",block:"start"});
   const h=t.querySelector("h3[tabindex]")||t; if(!h.hasAttribute("tabindex"))h.tabIndex=-1;
   h.focus({preventScroll:true});
-  try{history.replaceState(null,"","#"+id)}catch(e){}
+  try{if(moved)history.pushState(null,"","#"+id);else history.replaceState(null,"","#"+id)}catch(e){}
 }
 
-/* panes */
-const root=$("#root"), panesEl=$("#panes");
+/* sections: one tab per view, always visible above the topics menu; the bar repeats them as a menu once scrolled */
+const root=$("#root"), panesEl=$("#panes"), secm=$("#secm");
 const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables,leq:buildLeq,prompts:buildPrompts};
 const PANES=(GUIDE.panes||[]).filter(id=>builders[id]&&(has(GUIDE[id])||(id==="outline"&&has(GUIDE.top))));
 const lab=id=>(GUIDE.labels||{})[id]||LABEL[id]||id;
-const tabs=[];
+/* counts shown on a section's tab: questions, problems, cards */
+const cnt=id=>["practice","problems","cards"].includes(id)?(GUIDE[id]||[]).length:0;
+/* the first practice section; the guide's last lesson links to it by name */
+const TRY=["practice","problems"].find(id=>PANES.includes(id))||null;
+const tabs=[], mtabs=[];
 PANES.forEach(id=>{
-  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("aria-label",lab(id));
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel"); sec.setAttribute("aria-labelledby","tab-"+id); sec.tabIndex=-1;
   scope(); builders[id](sec); SEEN=null; root.appendChild(sec);
-  const b=el("button","mi",`<span class="mt">${esc(lab(id))}</span><svg class="mck" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 9.5l3 3 6-7"/></svg>`); b.type="button"; b.dataset.pane=id;
-  b.addEventListener("click",()=>{closeMenu(false);show(id,true)}); panesEl.appendChild(b); tabs.push(b);
+  const n=cnt(id);
+  const b=el("button","sg",`<span>${esc(lab(id))}</span>${n?`<span class="n">${n}</span>`:""}`); b.type="button"; b.id="tab-"+id; b.dataset.pane=id;
+  b.setAttribute("role","tab"); b.setAttribute("aria-controls","p-"+id); b.setAttribute("aria-selected","false"); b.tabIndex=-1;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+  const m=el("button","mi",`<span class="mt">${esc(lab(id))}${n?` <span class="ms" style="display:inline">${n}</span>`:""}</span><svg class="mck" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 9.5l3 3 6-7"/></svg>`); m.type="button"; m.dataset.pane=id;
+  m.addEventListener("click",()=>{closeMenu(false);show(id,true)}); secm.appendChild(m); mtabs.push(m);
 });
-if(PANES.length<2)panesEl.closest(".mg").hidden=true;
+if(PANES.length>1){$("#secs").hidden=false;$("#secb").hidden=false}
+/* a fade on the right edge while more tabs sit off-screen (phones) */
+const segFade=()=>{panesEl.classList.toggle("ovf",panesEl.scrollWidth-panesEl.clientWidth-panesEl.scrollLeft>4);panesEl.classList.toggle("ovl",panesEl.scrollLeft>4)};
+panesEl.addEventListener("scroll",segFade,{passive:true}); addEventListener("resize",segFade); requestAnimationFrame(segFade); document.fonts?.ready.then(segFade);
+/* arrow keys move between tabs (and open them); Home and End jump to the ends */
+panesEl.addEventListener("keydown",e=>{
+  const i=tabs.indexOf(document.activeElement); if(i<0)return;
+  const k={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key]; let j=null;
+  if(k)j=(i+k+tabs.length)%tabs.length; else if(e.key==="Home")j=0; else if(e.key==="End")j=tabs.length-1;
+  if(j===null)return; e.preventDefault(); show(tabs[j].dataset.pane,true); tabs[j].focus({preventScroll:true});
+});
 /* jump to topic */
 (function(){
   const m=$("#m-jump");
   if(!JUMP.length){document.querySelectorAll('[data-menu="m-jump"]').forEach(b=>b.hidden=true);return}
   const ws=new Set(JUMP.map(j=>j.w));
-  m.innerHTML=`<div class="ml">jump to topic</div>`+JUMP.map(j=>`<a class="mi" href="#${j.id}" data-j="${j.id}"><span class="mn">${j.n}</span><span class="mt">${esc(j.t)}</span>${j.w?`<i class="w${j.w}" aria-hidden="true"></i>`:""}</a>`).join("")+
+  m.innerHTML=`<div class="ml">Topics</div>`+JUMP.map(j=>`<a class="mi" href="#${j.id}" data-j="${j.id}"><span class="mn">${j.n}</span><span class="mt">${esc(j.t)}</span>${j.w?`<i class="w${j.w}" aria-hidden="true"></i>`:""}</a>`).join("")+
     ((ws.has(3)||ws.has(2))?`<div class="mleg" aria-hidden="true"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`:"");
   m.addEventListener("click",e=>{const a=e.target.closest("a[data-j]");if(!a)return;e.preventDefault();closeMenu(false);goTo(a.dataset.j)});
   if("IntersectionObserver" in window){
@@ -3166,31 +3227,33 @@ if(PANES.length<2)panesEl.closest(".mg").hidden=true;
     links.forEach(a=>{const t=document.getElementById(a.dataset.j);if(t)io.observe(t)});
   }
 })();
-/* the one main action: practice (or problems) and back */
-const TRY=["practice","problems"].find(id=>PANES.includes(id));
-const tryb=$("#tryp");
-if(TRY){tryb.hidden=false;tryb.addEventListener("click",()=>show(TRY,true))}
-$("#pback").addEventListener("click",()=>show(PANES[0],true));
 let CUR=null, afterShow=()=>{};
 function show(id,user){
-  CUR=id; closeMenu(false);
-  tabs.forEach(b=>b.setAttribute("aria-current",String(b.dataset.pane===id)));
+  const changed=CUR!==id; CUR=id; closeMenu(false);
+  tabs.forEach(b=>{const on=b.dataset.pane===id;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1});
+  mtabs.forEach(b=>b.setAttribute("aria-current",String(b.dataset.pane===id)));
+  $("#seccur").textContent=lab(id);
   document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
-  if(TRY)tryb.hidden=CUR===TRY;
-  const back=PANES[0]==="outline"&&id!=="outline"; $("#pnav").hidden=!back; $("#pnow").textContent=lab(id);
+  const on=tabs.find(b=>b.dataset.pane===id); if(on){const r=on.getBoundingClientRect(),q=panesEl.getBoundingClientRect();if(r.left<q.left||r.right>q.right)panesEl.scrollTo({left:on.offsetLeft-24,behavior:REDUCED?"auto":"smooth"})}
   scoreVis(); afterShow();
-  if(user){try{history.replaceState(null,"","#"+id)}catch(e){}; const top=$("#gctl").getBoundingClientRect().top+scrollY-bar.offsetHeight-10; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"})}
+  if(user){
+    /* a section change is a history step, so the browser's back button returns to the previous section */
+    if(changed&&location.hash!=="#"+id){try{history.pushState(null,"","#"+id)}catch(e){}}
+    const top=$("#gctl").getBoundingClientRect().top+scrollY-bar.offsetHeight-10; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"});
+  }
 }
 /* deep links: #practice opens a pane; #s-3 opens the guide at that lesson */
 function route(instant){
   const want=decodeURIComponent(location.hash.slice(1));
-  if(PANES.includes(want)){show(want,false);return}
+  if(PANES.includes(want)){if(CUR!==want)show(want,false);return}
   const t=want&&document.getElementById(want);
   if(t&&t.closest(".pane")){show(t.closest(".pane").id.slice(2),false);requestAnimationFrame(()=>requestAnimationFrame(()=>goTo(want,instant)));return}
-  if(!CUR)show(PANES[0],false);
+  if(!CUR||(!want&&CUR!==PANES[0]))show(PANES[0],false);
 }
 route(true);
+/* back and forward: hash links, pushed section changes */
 addEventListener("hashchange",()=>route(false));
+addEventListener("popstate",()=>route(true));
 
 /* search: filters every pane as you type and marks the hits; "/" focuses it.
    show all answers: practice keys + whys, problem steps, every "on the test" answer. */
@@ -3222,8 +3285,8 @@ addEventListener("hashchange",()=>route(false));
     IDX.forEach(P=>P.nr.classList.toggle("sx",!on||COUNTS[P.id]>0||!P.items.length));
     if(!on){stat.innerHTML="";return}
     const tot=IDX.reduce((a,P)=>a+COUNTS[P.id],0), hits=PANES.filter(id=>COUNTS[id]>0);
-    stat.innerHTML=(tot?`<span>${tot} match${tot===1?"":"es"} for <q>${esc(RAW)}</q></span>`:`<span>no matches for <q>${esc(RAW)}</q>. try fewer or shorter words.</span>`)+(PANES.length>1?chips(hits):"");
-    IDX.forEach(P=>{if(COUNTS[P.id]||!P.items.length)return;P.nr.innerHTML=hits.length?`<p>nothing in this view matches. these do:</p><div>${chips(hits)}</div>`:`<p>nothing in this guide matches.</p>`});
+    stat.innerHTML=(tot?`<span>${tot} match${tot===1?"":"es"} for <q>${esc(RAW)}</q></span>`:`<span>No matches for <q>${esc(RAW)}</q>. Try fewer or shorter words.</span>`)+(PANES.length>1?chips(hits):"");
+    IDX.forEach(P=>{if(COUNTS[P.id]||!P.items.length)return;P.nr.innerHTML=hits.length?`<p>Nothing in this section matches. These do:</p><div>${chips(hits)}</div>`:`<p>Nothing in this guide matches.</p>`});
   }
   function run(){
     RAW=q.value.trim(); box.classList.toggle("has",!!q.value);
@@ -3258,11 +3321,10 @@ addEventListener("hashchange",()=>route(false));
   document.querySelectorAll('[data-act="search"]').forEach(b=>b.addEventListener("click",focusQ));
   addEventListener("keydown",e=>{if(e.key==="/"&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();focusQ()}});
   if(has(GUIDE.practice)||has(GUIDE.problems)||(GUIDE.outline||[]).some(s=>has(s.ex))){
-    $("#mg-ans").hidden=false;
-    sall.addEventListener("click",()=>{const on=!root.classList.contains("showall");root.classList.toggle("showall",on);sall.setAttribute("aria-pressed",String(on));sall.querySelector(".mt").textContent=on?"hide answers":"show all answers";closeMenu(false)});
+    sall.hidden=false;
+    sall.addEventListener("click",()=>{const on=!root.classList.contains("showall");root.classList.toggle("showall",on);sall.setAttribute("aria-pressed",String(on));sall.querySelector(".mt").textContent=on?"Hide answers":"Show answers";closeMenu(false)});
   }
-  /* tools needs at least one thing in it */
-  if([...$("#m-tools").children].every(g=>g.hidden))document.querySelectorAll('[data-menu="m-tools"]').forEach(b=>b.hidden=true);
+  $("#printb").addEventListener("click",()=>{closeMenu(false);print()});
 })();
 
 /* theme (shared with the homepage via localStorage "theme") */
@@ -3283,7 +3345,7 @@ segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
 requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
 document.fonts?.ready.then(()=>{moveThumb();setBarH()});
 
-/* bar: shadow once scrolled; carries jump / search / tools once the guide's own controls scroll away. reading progress, staggered reveal */
+/* bar: shadow once scrolled; carries sections / topics / search once the guide's own controls scroll away. reading progress, staggered reveal */
 (function(){const p=$("#prog i"),ctl=$("#gctl");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6);const gone=ctl.getBoundingClientRect().bottom<bar.offsetHeight;if(gone!==bar.classList.contains("compact")){bar.classList.toggle("compact",gone);if(OPEN&&OPENBY&&!OPENBY.offsetParent)closeMenu(false);if(!gone)moveThumb()}const se=document.scrollingElement,h=se.scrollHeight-se.clientHeight;p.style.width=(h>0?Math.min(100,se.scrollTop/h*100):0)+"%"};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
 document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
 </script>

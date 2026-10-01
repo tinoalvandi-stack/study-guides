@@ -12,7 +12,7 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
   opened, the class catalog, the feedback card, and the hand-maintained
   `<noscript>` list of every guide.
 - `site-data.js`: the site's data: `FEATURES` (upcoming tests) and `CLASSES`
-  (the eight classes, each with its welcome-page URL, blurb and units). This
+  (the eight classes, each with its welcome-page URL and units). This
   is the file to edit when a guide is added.
 - `site.js`: renders the homepage and the class welcome pages from that data
   (search, up next, catalog, class covers, theme, share, feedback).
@@ -144,8 +144,12 @@ ahead of earlier-dated entries; it still drops off after its date.
 - Share on every unit uses the native share sheet, or copies the link.
 - The catalog shows all eight classes as illustrated cards, guides first and
   the classes still waiting for one last; each opens the class welcome page
-  (hero with cover, what is on the page, up next for that class, every unit
-  with its extras). Class names are course names only: no teacher names
+  (hero with the class name, its counts and cover, up next for that class,
+  every unit with its extras). Card counts name practice PDFs ("5 study
+  guides · 13 practice PDFs"), never a vague "extras". Unit chips carry the
+  same labels as the guide ("Guide", "Practice test A (PDF)"); versions of one
+  test share a group label (`g`) and render as short numbered chips. No
+  welcome eyebrow, blurb or "how to use a guide" box. Class names are course names only: no teacher names
   anywhere on the site, including the search aliases in `site.js`.
 
 ## Guide pages themselves
@@ -155,9 +159,19 @@ hold, because they are what the site's readers rely on (reader feedback,
 September 2026, and the approved revision 3 layout):
 
 - Easy to follow first: a calm reading flow, not a dashboard. The page opens
-  on a compact title, one meta line and three controls, then the "focus on
-  these ideas" box and the first lesson. No start gate, no permanent sidebar,
-  no accordion hiding, no huge blank areas.
+  on a compact title and one meta line, the practice PDFs (when the guide has
+  any), the Sections row, then Topics, Search, Show answers and Print, then
+  the "Key ideas" box and the first lesson. No start gate, no permanent
+  sidebar, no accordion hiding, no huge blank areas.
+- Labels say where they lead. Practice PDFs are named exactly as the file
+  calls itself, ending "(PDF)" ("Practice test A (PDF)", "Practice quiz B
+  (PDF)"); online multiple choice is "Practice questions"; math and physics
+  solutions are "Worked examples"; other practice is named for what it is
+  ("SAQ practice", "Mini FRQs", "Scenarios"). Never a generic "Try practice".
+- Short chrome, no filler: no intro that describes the page's own layout, no
+  instructions a control already makes obvious ("tap an answer", "print it
+  and set a timer"). Teacher wording, definitions, evidence, formulas,
+  diagrams, citations, answers and Work/Why steps are never cut.
 - Readable prose and bullets carry each lesson; the subject's own diagram (a
   map, a graph, a figure, a tree) sits beside the explanation it belongs to.
   Parallel items render as one readable list, and every "on the test" example
@@ -191,30 +205,44 @@ renders the whole page; the CSS and the machinery below the object are never
 edited per guide. If a guide needs something the template lacks, change the
 template and rebuild every guide.
 
-Layout (revision 3): the page is up to 1180px wide. The header is a compact
-title, one meta line (the class name, a link to its welcome page · the test
-date · `meta`), the one-line `sub`, and the small class cover beside them.
-Under it, one row of controls: **Jump to topic** (a menu of every lesson with
-its weight, the focus box, quick facts and abbreviations), a quiet search
-field, **Tools** (the other views such as timeline, practice and problems,
-"show all answers", and the printable PDFs from `pdfs`), and one main action,
-**Try practice** (practice, or problems when there is no practice). Once those
-controls scroll away, the sticky bar carries "Class · Unit", Jump to topic,
-Search and Tools. Other views show a "back to the guide" line.
-The guide view opens with the "focus on these ideas" box: the first three `top`
-lines with numbered amber dots, so the first lesson starts within a phone's
-opening screen; any further `top` lines render after the lessons as "more to
-keep in mind" (ordinary reading, linked from the box and listed in Jump to
-topic). Then every lesson open in order: an eyebrow (number / weight), the
+Layout (revision 3, navigation update October 1, 2026): the page is up to
+1180px wide. The header is a compact title, one meta line (the class name, a
+link to its welcome page · the test date · `meta`), the one-line `sub`, and
+the small class cover beside them. Then, in order:
+- **Practice PDFs** (from `pdfs`), on a tinted strip above everything else,
+  each button labelled exactly as written, with `pdfsNote` beside or under
+  them. Entries sharing a `g` group label render as one labelled row of short
+  buttons (physics: "Practice test (PDF)" · Version 1 … 6). Only files that
+  exist; a guide with none shows no strip.
+- **Sections**: a visible segmented tab row (`role="tablist"`) naming every
+  view by destination with its count where it has one ("Practice questions
+  43", "Worked examples 26", "Flashcards 61"); the active one is raised. On
+  phones it scrolls sideways with an edge fade instead of wrapping. Arrow keys,
+  Home and End move between tabs. A section change is a history step, so the
+  browser's back and forward buttons move between sections.
+- **Topics** (a menu of every lesson with its weight, Key ideas, quick facts
+  and abbreviations), **Search**, **Show answers** (practice keys and whys,
+  problem steps, every "on the test" answer) and **Print** (the current
+  section; controls and the PDF strip are hidden in print). On phones Topics
+  and Search share a row and Show answers and Print share the next.
+Once those controls scroll away, the sticky bar carries "Class · Unit", a
+Sections menu showing the current section, Topics and Search. The guide
+section opens with the "Key ideas" box: the first three `top` lines with
+numbered amber dots; any further `top` lines render after the lessons as
+"more to keep in mind" (ordinary reading, linked from the box and listed in
+Topics). Then every lesson open in order: an eyebrow (number / weight), the
 title, the one-line `d`, then text on the left with the lesson's diagram
 (`fig` or `tree`) beside it (sticky while the text scrolls) and the watch-out
 callout closing the text column; lists (`tiles`), tables and comparisons below;
-then one "on the test" panel and the key terms; a "Next:" link ends each
-lesson. `topTable` renders after the lessons as "quick facts", linked from the
-focus box. Deep links work: `#s-3` opens lesson 3, `#practice` opens a view.
-Practice, problems, formulas and cram lay out in two columns on wide screens;
-a problem card opens to full width with its steps beside it; the practice
-score is a floating pill with retry-missed (first-try scoring unchanged).
+then one "on the test" panel ("Show answer" on each) and the key terms; a
+"Next:" link ends each lesson, and the last one leads to the first practice
+section by name ("Next: Practice questions (43)"). `topTable` renders after
+the lessons as "quick facts", linked from the Key ideas box. Deep links work:
+`#s-3` opens lesson 3, `#practice` opens a section. Other sections drop their
+own title line (the Sections row already names them). Practice, problems,
+formulas and cram lay out in two columns on wide screens; a problem card opens
+to full width with its steps beside it ("Show steps"); the practice score is a
+floating pill with retry-missed (first-try scoring unchanged).
 
 Template changes are engine-only. After any change to the template, rebuild
 every guide by splicing the new engine around each guide's own `GUIDE` block,
@@ -223,17 +251,21 @@ then check: every guide's engine is byte-identical to the template, every
 guide added since the work started is checked against the commit that added
 it), the repository validator reports ERROR 0, and the interaction suites
 pass (practice right/wrong, first-try score, retry missed, reveals, search,
-show all answers, jump to topic, deep links, views through Tools, keyboard,
-print, 390px, both themes).
+Show answers, Topics jumps, deep links, every section tab, back and forward,
+keyboard (tabs with arrow keys, menus with Escape), Print, the PDF links (200,
+a real PDF, above the lessons), 390px, both themes).
 
 Header fields: `id` (class token: apush psych phys pre sem biz mor lang span
 apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`, `pdfs`
-(`{t, url}` buttons for printable practice; optional `pdfsNote`), `updated`,
-`panes` (tab order; a pane shows only when its data exists), `labels` (tab
-renames), `abbr`.
+(`{t, url}` practice PDFs, `t` exactly as the file calls itself ending "(PDF)";
+`{g, t, url}` for versions of one test; optional `pdfsNote`, one line on
+format, points and the key), `updated`, `panes` (Sections order; a section
+shows only when its data exists), `labels` (name a section by where it leads;
+defaults Guide, Practice questions, Worked examples, Formulas, Flashcards,
+Timeline, Checklist, Cram sheet, Tables, Prompts, The LEQ), `abbr`.
 
 `top`: three to five start-here lines (the first three open the guide in the
-"focus on these ideas" box; the rest read after the lessons).
+"Key ideas" box; the rest read after the lessons).
 
 `outline`: sections, heaviest first. Each has `w` (3 tested most, 2 tested,
 1 know it), `t`, `d` (one line on what the test asks) and any of these blocks:
@@ -273,10 +305,10 @@ Markup: `**term**` only. The engine bolds a term once per section and renders
 any legacy `==x==` or `!!x!!` as plain text.
 
 Every guide also gets, from the template alone (nothing to set in `GUIDE`):
-a search field (filters every view as you type, marks the hits, shows
-per-view counts, hides non-matching lessons in Jump to topic too; `/` or the
-header magnifier jumps to it), Jump to topic, and a "show all answers" toggle
-in Tools (practice keys and whys, problem steps, every "on the test" answer),
+a search field (filters every section as you type, marks the hits, shows
+per-section counts, hides non-matching lessons in Topics too; `/` or the
+header magnifier jumps to it), Topics, Sections, Print, and a "Show answers"
+toggle (practice keys and whys, problem steps, every "on the test" answer),
 shown whenever the guide has any of those. `topTable`
 (`{h, cols, rows}`) renders one "quick facts" table after the lessons.
 

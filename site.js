@@ -100,8 +100,8 @@ function guideLink(c,u,opts){
     const kinds=el("span","kinds");
     const mk=(kind,label,url,main)=>{const k=el("a","kind"+(main?" main":""));k.href=url;k.target="_blank";k.rel="noopener noreferrer";
       k.innerHTML=ICON[kind]+esc(label);k.addEventListener("click",e=>{e.stopPropagation();recordOpen(c,u)});return k};
-    kinds.append(mk("guide","guide",u.url,true));
-    u.extras.forEach(x=>kinds.append(mk(x.kind,x.t,x.url,false)));
+    kinds.append(mk("guide","Guide",u.url,true));
+    appendExtras(kinds,u.extras,mk,null);
     rt.append(kinds);
   }
   a.append(rt);
@@ -113,6 +113,16 @@ function guideLink(c,u,opts){
   }
   const ch=el("span","chw"); ch.innerHTML=ICON.chev; a.append(ch.firstChild);
   return a;
+}
+/* extras as chips, labelled as written; versions of one test (same g) share one labelled group of short chips */
+function appendExtras(box,xs,mk,pick){
+  for(let i=0;i<xs.length;){const x=xs[i];
+    if(!x.g){box.append(mk(x.kind,x.t,x.url,pick===x));i++;continue}
+    let j=i;while(j<xs.length&&xs[j].g===x.g)j++;
+    const g=el("span","kgrp"); g.setAttribute("role","group"); g.setAttribute("aria-label",x.g);
+    const l=el("span","kgl"); l.innerHTML=ICON[x.kind]||""; l.append(document.createTextNode(x.g)); g.append(l);
+    xs.slice(i,j).forEach(y=>{const k=mk(y.kind,y.s||y.t,y.url,pick===y);k.querySelector("svg")?.remove();k.setAttribute("aria-label",y.g+", "+y.t);g.append(k)});
+    box.append(g); i=j}
 }
 /* an up-next card */
 function nextCard(f){
@@ -128,8 +138,8 @@ function nextCard(f){
   return a;
 }
 function classCounts(c){
-  const g=c.units.length, x=c.units.reduce((n,u)=>n+(u.extras||[]).length,0);
-  return g?g+(g===1?" study guide":" study guides")+(x?" · "+x+(x===1?" extra":" extras"):""):"no guides yet";
+  const g=c.units.length, p=c.units.reduce((n,u)=>n+(u.extras||[]).filter(x=>x.kind==="pdf").length,0);
+  return g?g+(g===1?" study guide":" study guides")+(p?" · "+p+(p===1?" practice PDF":" practice PDFs"):""):"no guides yet";
 }
 
 /* ═══ homepage ═══ */
@@ -168,7 +178,7 @@ if(!COURSE){
     $("#cty").textContent=CLASSES.length+" classes · "+CLASSES.reduce((n,c)=>n+c.units.length,0)+" guides";
   })();
   /* decorative covers beside the heading (desktop only) */
-  (function(){const h=$("#homeart");if(!h)return;h.innerHTML='<div class="note b">'+cover(byId("apush"))+'</div><div class="note f">'+cover(byId("pre"))+'</div><span class="note-cap">a fresh look,<br>one class at a time.</span>'})();
+  (function(){const h=$("#homeart");if(!h)return;h.innerHTML='<div class="note b">'+cover(byId("apush"))+'</div><div class="note f">'+cover(byId("pre"))+'</div>'})();
   /* fast find */
   const ALIAS={apush:["apush","ush","history","us history","american history","hist"],phys:["physics","phys","kinematics","science"],
     psych:["psych","psychology"],bus:["business","bus","biz","principles"],mor:["morality","religion","theology","catholic","church","social justice"],
@@ -218,7 +228,7 @@ if(!COURSE){
       const mk=(kind,label,url,main)=>{const k=el("a","kind"+(main?" main":""));k.href=url;k.target="_blank";k.rel="noopener noreferrer";
         k.innerHTML=ICON[kind]+esc(label);k.addEventListener("click",e=>{e.stopPropagation();recordOpen(c,u)});return k};
       kinds.append(mk("guide","guide",u.url,!pick));
-      u.extras.forEach(x=>kinds.append(mk(x.kind,x.t,x.url,pick===x)));
+      appendExtras(kinds,u.extras,mk,pick);
       a.append(kinds);
     }
     const go=el("span","go"); go.innerHTML=(pick?"open "+esc(pick.t):"open the study guide")+ICON.arrow;
@@ -395,14 +405,13 @@ if(COURSE){
     const n=c.units.length, pdfs=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="pdf").length,0),
           cram=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="cram").length,0),
           quiz=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="quiz").length,0);
-    const facts=[n?n+(n===1?" study guide":" study guides"):"",cram?cram+(cram===1?" cram sheet":" cram sheets"):"",pdfs?pdfs+" practice "+(pdfs===1?"pdf":"pdfs"):"",quiz?quiz+(quiz===1?" quiz or game":" quizzes and games"):""].filter(Boolean);
+    const facts=[n?n+(n===1?" study guide":" study guides"):"",cram?cram+(cram===1?" cram sheet":" cram sheets"):"",pdfs?pdfs+" practice "+(pdfs===1?"PDF":"PDFs"):"",quiz?quiz+(quiz===1?" quiz or game":" quizzes and games"):""].filter(Boolean);
     const hero=el("section","chero");
     hero.dataset.c=c.id;
-    hero.innerHTML=`<div class="ccopy"><span class="welcome">welcome to</span><h1></h1><p class="blurb"></p>`+
+    hero.innerHTML=`<div class="ccopy"><h1></h1>`+
       (facts.length?`<ul class="facts">${facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`:"")+
       `<div class="cta"></div></div>`+cover(c);
     hero.querySelector("h1").textContent=c.name;
-    hero.querySelector(".blurb").textContent=c.blurb||"";
     const cta=hero.querySelector(".cta");
     if(n){const first=L[0]||null;
       const b=el("a","btn"); b.href=first?first.url:c.units[0].url; b.target="_blank"; b.rel="noopener noreferrer";
@@ -422,11 +431,8 @@ if(COURSE){
         side.innerHTML='<div class="sh"><h3>up next</h3></div>';
         L.forEach(f=>{const a=nextCard(f);if(a)side.append(a)});
       }
-      const tips=el("div","howto");
-      tips.innerHTML='<div class="sh"><h3>how to use a guide</h3></div><ol><li><b>focus on these ideas</b> is the short version of the whole guide.</li><li>lessons run heaviest first; <b>jump to topic</b> lists them, and the ones marked <i>tested most</i> come first.</li><li>answer every <b>on the test</b> question before you check it.</li><li>finish with <b>try practice</b>; <i>retry missed</i> loops back to what you got wrong.</li></ol>';
-      side.append(tips);
       const list=el("section","units");
-      list.innerHTML='<div class="sh"><h3>study guides</h3><span class="shx">newest first</span></div>';
+      list.innerHTML='<div class="sh"><h3>study guides</h3></div>';
       const grp=el("div","group");
       c.units.forEach((u,i)=>{const lv=L.find(f=>f.url===u.url);grp.append(guideLink(c,u,{num:n-i,meta:lv?"test "+when(lv)+" · "+md(due(lv)):(u.added?"added "+md(u.added):"")}))});
       list.append(grp);
