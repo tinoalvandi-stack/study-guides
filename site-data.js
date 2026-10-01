@@ -24,7 +24,7 @@ const FEATURES=[
   {classId:"pre",   title:"Product, quotient & De Moivre's theorems study guide", url:"/precalc-theorems", test:"2026-09-24", pin:true, note:"Non-calculator quiz, 5 questions, 30 minutes. Product and quotient theorems, De Moivre's theorem, nth roots."},
   {classId:"phys",  title:"Advanced kinematics study guide", url:"/physics-advanced-kinematics", test:"2026-09-28", note:"50 minutes: sketch a graph, two problems, one derivation. Acceleration, kinematic equations, free fall, projectiles."},
   {classId:"psych", title:"Unit 1 exam study guide", url:"/psych-unit-1", test:"2026-09-29", end:"2026-10-01", note:"The full unit 1 exam: an AAQ plus 50 MCQs on modules 1.1 to 1.6, with unit 0 mixed in."},
-  {classId:"bus",   title:"LPs 1-5 to 1-10 study guide", url:"/bus-unit-1-5-1-10", test:"2026-10-01", end:"2026-10-02", note:"High Exam #2: information management, operations and gross profit, business models, competition, trends, ownership types."},
+  {classId:"bus",   title:"LPs 1-5 to 1-10 study guide", url:"/bus-unit-1-5-1-10", test:"2026-10-01", end:"2026-10-02", note:"High Exam #2: information management, operations and gross profit, business models, competition, trends, ownership types. Practice tests A and B in the exam’s own layout."},
   {classId:"pre",   title:"Polar unit test study guide", url:"/precalc-polar", test:"2026-10-01", note:"The whole unit: complex numbers, trig form, the theorems, polar equations and graphs. 25 problems, 2 with a calculator."},
   {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."}
 ];
@@ -63,7 +63,9 @@ const CLASSES=[
    blurb:"Start with a question. Look at the evidence. Build a perspective you can defend.", units:[]},
   {id:"bus", page:"/business", c:"var(--c-biz)", glyph:"chart", name:"Business Principles", abbr:"Business", short:"BUSINESS",
    blurb:"Turn business vocabulary into a working understanding of choices, markets and organizations.", units:[
-     {t:"LPs 1-5 to 1-10", url:"/bus-unit-1-5-1-10", added:"2026-09-24"},
+     {t:"LPs 1-5 to 1-10", url:"/bus-unit-1-5-1-10", added:"2026-09-24", extras:[
+        {kind:"pdf", t:"practice test a", url:"/bus-unit-1-5-1-10-practice-a.pdf"},
+        {kind:"pdf", t:"practice test b", url:"/bus-unit-1-5-1-10-practice-b.pdf"}]},
      {t:"Unit 1", url:"/bus-unit-1", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/bus-unit-1-cram"}]}]},
   {id:"mor", page:"/morality", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality and Social Justice", abbr:"Morality", short:"MORALITY",
    blurb:"Think through moral choices, human dignity, and the responsibility we share with one another.", units:[
