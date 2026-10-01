@@ -688,9 +688,18 @@ const GUIDE = {
  "sub": "Polar points, equations and graphs first, then a recap of the complex-number half of the unit. The test covers all of it.",
  "updated": "sept 30, 2026",
  "pdfs": [
-  {"t": "practice test a", "url": "/precalc-polar-practice-a.pdf"},
-  {"t": "practice test b", "url": "/precalc-polar-practice-b.pdf"},
-  {"t": "review: odds worked", "url": "/precalc-polar-review-odds.pdf"}
+  {
+   "t": "practice test a",
+   "url": "/precalc-polar-practice-a.pdf"
+  },
+  {
+   "t": "practice test b",
+   "url": "/precalc-polar-practice-b.pdf"
+  },
+  {
+   "t": "review: odds worked",
+   "url": "/precalc-polar-review-odds.pdf"
+  }
  ],
  "pdfsNote": "Practice tests are printable in the test's layout (2 calculator problems, then 23 without, 75 points) with a worked key at the end. The review has every odd problem worked beside it.",
  "panes": [
@@ -1094,11 +1103,12 @@ const GUIDE = {
   {
    "w": 3,
    "t": "Complex numbers and trig form (recap)",
-   "d": "first half of the unit; the complex numbers & trig form guide has the full lessons",
+   "d": "every problem type from the complex numbers quiz, with its answer",
    "p": [
-    "Every real number and every imaginary number is **complex**. Pull i out before touching radicals, and divide with the **conjugate**."
+    "Every real number and every imaginary number is **complex**. Pull i out before touching radicals, divide with the **conjugate**, and rationalize anything left on the bottom."
    ],
    "table": {
+    "h": "the complex numbers quiz, problem by problem",
     "cols": [
      "type",
      "do this",
@@ -1106,62 +1116,84 @@ const GUIDE = {
     ],
     "rows": [
      [
-      "classify",
-      "real: b = 0. Pure imaginary: a = 0, b ≠ 0. Nonreal: b ≠ 0. All are complex.",
-      "3i: pure imaginary, nonreal, complex"
-     ],
-     [
       "radicals",
-      "√−a = i√a first, then multiply",
-      "√−45 · √−5 = −15"
+      "√−a = i√a first, then multiply; rationalize a radical left on the bottom",
+      "√6 / (√−3 · √−5) = −√10/5"
      ],
      [
-      "divide",
-      "times the conjugate over the conjugate",
-      "(2 + 5i)/(3 − 4i) = −14/25 + (23/25)i"
+      "standard form",
+      "split over the bottom, reduce both parts",
+      "(−6 + √−45)/9 = −2/3 + (√5/3)i"
      ],
      [
       "powers of i",
       "exponent mod 4: i, −1, −i, 1",
-      "i⁻¹⁴ = i² = −1"
+      "i¹⁰³ = i³ = −i"
+     ],
+     [
+      "subtract",
+      "every minus hits both parts",
+      "(−5 − 2i) − (−3 + 2i) − (14 + 10i) = −16 − 14i"
+     ],
+     [
+      "divide",
+      "times the conjugate over the conjugate",
+      "(√6 − i√6)/(−√2 + i√2) = −√3"
+     ],
+     [
+      "three factors",
+      "multiply the i in first, then FOIL",
+      "−3i(6 + i)(2 − 5i) = −84 − 51i"
      ],
      [
       "quadratics",
-      "set = 0, quadratic formula, √(negative) = i√",
-      "5x² + 2x + 1 = 0: x = −1/5 ± (2/5)i"
+      "set = 0, quadratic formula; answers can come out real",
+      "4y² + 6y = −5: y = −3/4 ± (√11/4)i. 4x² − 8 = 352: x = ±3√10"
      ],
      [
       "to trig form",
       "r = √(x² + y²), θ from a sketch",
-      "−7i = 7 cis 270°"
+      "−3√3/2 − (3/2)i = 3 cis 210°"
      ],
      [
       "to rectangular",
       "exact cos and sin, then distribute r",
-      "12 cis(−60°) = 6 − 6√3 i"
+      "4 cis 4π/3 = −2 − 2√3 i"
      ],
      [
       "Julia set",
       "square, subtract 1, repeat; any |z| over 2 means out",
-      "z = 0: −1, 0, −1, … stays under 2, so in"
+      "z = 1 − i: −1 − 2i, and √5 > 2, so not in"
+     ],
+     [
+      "classify",
+      "real: b = 0. Pure imaginary: a = 0, b ≠ 0. Nonreal: b ≠ 0. All are complex.",
+      "3i: pure imaginary, nonreal, complex"
      ]
     ]
    },
    "ex": [
     {
-     "q": "Simplify √−48 / √3.",
-     "a": "4i",
-     "why": "4i√3 / √3 = 4i. Pull i out first every time; for products, skipping that step flips the sign."
+     "q": "Simplify √14 / (√−2 · √−21).",
+     "a": "−√3/3",
+     "why": "i√2 · i√21 = i²√42 = −√42, and √14/√42 = √(1/3). No radical left on the bottom: −1/√3 = −√3/3."
     },
     {
-     "q": "Simplify 1 / i⁻²³.",
-     "a": "−i",
-     "why": "1 / i⁻²³ = i²³. 23 leaves remainder 3 after dividing by 4, and i³ = −i."
+     "q": "(3 − 4i) − (−2 + 6i) − (7 − i)",
+     "a": "−2 − 9i",
+     "why": "Every minus hits both parts: 3 + 2 − 7 = −2 and −4 − 6 + 1 = −9."
+    },
+    {
+     "q": "−2i(1 + 3i)(4 − i)",
+     "a": "22 − 14i",
+     "why": "−2i(1 + 3i) = 6 − 2i first, then (6 − 2i)(4 − i) = 24 − 14i + 2i² = 22 − 14i."
     }
    ],
    "watch": [
     "√−a · √−b is −√(ab), not √(ab).",
-    "Real numbers are complex too: list complex for every number."
+    "Rationalize with the radical over itself, then simplify: √90 = 3√10.",
+    "Reduce the i part too: (−6 + 3i√5)/9 = −2/3 + (√5/3)i.",
+    "−(14 + 10i) is −14 − 10i: both signs flip."
    ],
    "terms": [
     "complex",
@@ -1174,7 +1206,7 @@ const GUIDE = {
   {
    "w": 3,
    "t": "Product, quotient, De Moivre, roots (recap)",
-   "d": "same skills as the theorems quiz; that guide has the full lessons",
+   "d": "every problem type from the theorems quiz, with its answer",
    "rows": [
     [
      "product",
@@ -1191,9 +1223,14 @@ const GUIDE = {
     [
      "roots",
      "ⁿ√r cis((θ + 360°k)/n), k = 0 to n − 1"
+    ],
+    [
+     "angle out of range",
+     "over 360° (2π): subtract full turns. Negative: add 360° (2π)."
     ]
    ],
    "table": {
+    "h": "the theorems quiz, problem by problem",
     "cols": [
      "problem",
      "trig form",
@@ -1201,42 +1238,59 @@ const GUIDE = {
     ],
     "rows": [
      [
-      "(4 cis 200°)(3 cis 130°)",
-      "12 cis 330°",
-      "6√3 − 6i"
+      "2√6 cis 150° ÷ 5 cis 300°",
+      "(2√6/5) cis(−150°) = (2√6/5) cis 210°",
+      "−3√2/5 − (√6/5)i"
+     ],
+     [
+      "[4 cis 5π/6][3 cis 4π/3]",
+      "12 cis 13π/6 = 12 cis π/6",
+      "6√3 + 6i"
+     ],
+     [
+      "Mandelbrot, z = 0 + i",
+      "i, −1 + i, −i, −1 + i, … sizes 1, √2, 1, √2",
+      "in the set"
+     ],
+     [
+      "(1 − i√3)⁵",
+      "2⁵ cis 1500° = 32 cis 60°",
+      "16 + 16√3 i"
+     ],
+     [
+      "x³ − (−√2 + i√2) = 0",
+      "x³ = 2 cis 135°: ∛2, then 45° + 120°k",
+      "∛2 cis 45°, ∛2 cis 165°, ∛2 cis 285°"
      ],
      [
       "(3√2 + 3√6 i) / (√2 − √6 i)",
       "6√2 cis 60° ÷ 2√2 cis 300° = 3 cis 120°",
       "−3/2 + (3√3/2)i"
-     ],
-     [
-      "(2 − 2i)⁵",
-      "(2√2)⁵ cis 1575° = 128√2 cis 135°",
-      "−128 + 128i"
-     ],
-     [
-      "x³ = 4 + 4√3 i",
-      "8 cis 60°: cube root of 8 is 2, 60° ÷ 3 = 20°",
-      "2 cis 20°, 2 cis 140°, 2 cis 260°"
      ]
     ]
    },
    "ex": [
     {
-     "q": "Is z = −1 + i in the Mandelbrot set?",
-     "a": "No",
-     "why": "z² + z = −1 − i, then (−1 − i)² + z = −1 + 3i, and √10 is over 2."
+     "q": "[2(cos 5π/3 + i sin 5π/3)][3(cos 5π/6 + i sin 5π/6)] in rectangular form.",
+     "a": "6i",
+     "why": "6 cis 15π/6 = 6 cis 5π/2. Subtract 2π, not π: 5π/2 − 2π = π/2, so 6 cis π/2 = 6i. Subtracting π gives −6i."
     },
     {
-     "q": "Solve x³ + 64 = 0 in trig form.",
-     "a": "4 cis 60°, 4 cis 180°, 4 cis 300°",
-     "why": "x³ = −64 = 64 cis 180°. x = −4 is only one of the three."
+     "q": "Is z = −i in the Mandelbrot set?",
+     "a": "Yes",
+     "why": "−i, then (−i)² − i = −1 − i (size √2), then (−1 − i)² − i = i (size 1), then −1 − i again: it cycles and never passes 2."
+    },
+    {
+     "q": "Solve x³ − (−4 + 4√3 i) = 0. Leave answers in trig form.",
+     "a": "2 cis 40°, 2 cis 160°, 2 cis 280°",
+     "why": "x³ = 8 cis 120°: ∛8 = 2 and 120° ÷ 3 = 40°, then add 120° twice."
     }
    ],
    "watch": [
-    "Isolate xⁿ first; the constant changes sign when it moves.",
-    "Angle over 360°: subtract 360°. Negative angle: add 360°."
+    "Past 2π: subtract 2π (12π/6), not π. Subtracting π flips both signs.",
+    "A quotient angle can go negative: −150° + 360° = 210°.",
+    "Big powers: 1500° − 4(360°) = 60°. Keep subtracting 360° until the angle fits.",
+    "Isolate xⁿ first (the constant changes sign), and stop at ⁿ√r cis α when trig form is asked."
    ],
    "terms": [
     "product theorem",
@@ -1791,6 +1845,64 @@ const GUIDE = {
    "ans": "(a) −15  (b) 4i"
   },
   {
+   "q": "**Radical quotient**: √14 / (√−2 · √−21)",
+   "steps": [
+    [
+     "= √14 / (i√2 · i√21)",
+     "Pull i out first."
+    ],
+    [
+     "= √14 / (i²√42) = √14 / (−√42)",
+     "i² = −1."
+    ],
+    [
+     "= −√(14/42) = −1/√3",
+     "One radical; reduce inside."
+    ],
+    [
+     "= −1/√3 · √3/√3 = −√3/3",
+     "Rationalize."
+    ]
+   ],
+   "ans": "−√3/3"
+  },
+  {
+   "q": "**Subtract three**: (3 − 4i) − (−2 + 6i) − (7 − i)",
+   "steps": [
+    [
+     "= 3 − 4i + 2 − 6i − 7 + i",
+     "Every minus hits both parts."
+    ],
+    [
+     "real: 3 + 2 − 7 = −2",
+     ""
+    ],
+    [
+     "imaginary: −4 − 6 + 1 = −9",
+     ""
+    ]
+   ],
+   "ans": "−2 − 9i"
+  },
+  {
+   "q": "**Three factors**: −2i(1 + 3i)(4 − i)",
+   "steps": [
+    [
+     "−2i(1 + 3i) = −2i − 6i² = 6 − 2i",
+     "Multiply the i in first; −6i² = +6."
+    ],
+    [
+     "(6 − 2i)(4 − i) = 24 − 6i − 8i + 2i²",
+     "FOIL."
+    ],
+    [
+     "= 24 − 14i − 2 = 22 − 14i",
+     "2i² = −2."
+    ]
+   ],
+   "ans": "22 − 14i"
+  },
+  {
    "q": "**Divide**: (2 + 5i) / (3 − 4i)",
    "steps": [
     [
@@ -1887,26 +1999,52 @@ const GUIDE = {
    "ans": "(a) 6 − 6√3 i  (b) 7 cis 270°"
   },
   {
-   "q": "**Product**: (4 cis 200°)(3 cis 130°) in rectangular form.",
+   "q": "**Product in radians**: [4(cos 3π/2 + i sin 3π/2)][2(cos 5π/6 + i sin 5π/6)] in rectangular form.",
    "steps": [
     [
-     "= 4 · 3 cis(200° + 130°)",
+     "= 4 · 2 cis(3π/2 + 5π/6)",
      "Product theorem: multiply r's, add angles."
     ],
     [
-     "= 12 cis 330°",
-     ""
+     "= 8 cis(9π/6 + 5π/6) = 8 cis 14π/6 = 8 cis 7π/3",
+     "Common denominator 6."
     ],
     [
-     "= 12(√3/2 − (1/2)i)",
-     "QIV: cos +, sin −."
+     "7π/3 − 2π = 7π/3 − 6π/3 = π/3",
+     "Past 2π: subtract 2π, not π."
     ],
     [
-     "= 6√3 − 6i",
+     "= 8(1/2 + (√3/2)i)",
+     "QI."
+    ],
+    [
+     "= 4 + 4√3 i",
      ""
     ]
    ],
-   "ans": "6√3 − 6i"
+   "ans": "4 + 4√3 i"
+  },
+  {
+   "q": "**Quotient in trig form**: 6√2(cos 100° + i sin 100°) ÷ 3(cos 325° + i sin 325°), rectangular form.",
+   "steps": [
+    [
+     "= (6√2/3) cis(100° − 325°) = 2√2 cis(−225°)",
+     "Quotient theorem: divide r's, subtract angles."
+    ],
+    [
+     "= 2√2 cis 135°",
+     "Negative angle: add 360°."
+    ],
+    [
+     "= 2√2(−√2/2 + (√2/2)i)",
+     "QII: cos −, sin +."
+    ],
+    [
+     "= −2 + 2i",
+     "√2 · √2 = 2."
+    ]
+   ],
+   "ans": "−2 + 2i"
   },
   {
    "q": "**Quotient from rectangular**: (3√2 + 3√6 i) / (√2 − √6 i)",
@@ -2023,6 +2161,32 @@ const GUIDE = {
     ]
    ],
    "ans": "No"
+  },
+  {
+   "q": "**Mandelbrot set, a cycle**: is z = −i in the set?",
+   "steps": [
+    [
+     "z = −i, |z| = 1",
+     "Start."
+    ],
+    [
+     "z² + z = −1 − i, |−1 − i| = √2",
+     "(−i)² = −1."
+    ],
+    [
+     "(−1 − i)² + z = 2i − i = i, |i| = 1",
+     "(−1 − i)² = 1 + 2i − 1 = 2i."
+    ],
+    [
+     "i² + z = −1 − i",
+     "Back to step 2: it cycles."
+    ],
+    [
+     "never over 2",
+     "In the set."
+    ]
+   ],
+   "ans": "Yes"
   }
  ],
  "formulas": [
