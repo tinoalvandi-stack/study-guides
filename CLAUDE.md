@@ -167,15 +167,23 @@ over-highlighted and hard to follow):
   emphasis, never dimmed text.
 - Whatever weighs most on the test goes first, in the guide and in the study
   order.
+- Dense and engaging, not open and airy (his feedback, October 1, 2026: "too
+  much whitespace and just like open area"). Content fills the width: no lone
+  paragraph beside empty space, no tall empty cards, no oversized header. Every
+  tested section shows a shape (table, tiles, flow, tree, figure) and an "on
+  the test" example; a text-only section uses two-column bullets or `rows`.
+  Cut empty space, never study material, and keep type legible and tap targets
+  comfortable.
 - Colors vary guide to guide: each class carries its own color through the
-  page. Dark neutral is an option (the theme switch), not the default. Site
-  indigo stays on buttons and examples.
+  page. Dark neutral is an option (the theme switch), not the default. The
+  site accent green stays on buttons, focus rings and examples; terracotta
+  marks dates and "new".
 - Universal for classmates: nothing that assumes a resource only Valentino
   has, no artifacts of his own process. Someone landing cold should think
   "this is all I need to study."
 - Inside a guide, no teacher is named and there is no third-person attribution
-  ("he said", "his outline"). State the facts directly. (The homepage may carry
-  a surname next to the class name to tell sections apart; see above.)
+  ("he said", "his outline"). State the facts directly. The homepage and the
+  class pages follow the same rule: course names only, no surnames.
 - Any abbreviation used gets a key at the bottom listing every one.
 - No statistics presented as something to memorize; give the idea in words.
 
