@@ -6,481 +6,51 @@
 <title>Valentino guides</title>
 <meta name="description" content="Free study guides, cram sheets, and practice for Bishop Gorman classes. Made by a student.">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F1E9">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141A17">
 <link rel="canonical" href="https://valentinoguides.com/">
 <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Valentino guides","alternateName":["Valentino Guides","valentinoguides.com"],"url":"https://valentinoguides.com/"}</script>
-<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Valentino guides">
 <meta property="og:title" content="Valentino guides">
-<meta property="og:description" content="Free study guides, cram sheets, and practice for Bishop Gorman classes.">
+<meta property="og:description" content="Free study guides, cram sheets, and practice for Bishop Gorman classes. Made by a student.">
 <meta property="og:url" content="https://valentinoguides.com/">
 <meta property="og:image" content="https://valentinoguides.com/og-image.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://valentinoguides.com/og-image.png?v=3">
-<style>
-@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
-@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
-@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
-
-
-/* ═══ type ═══ */
-:root{
-  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
-  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
-  --serif:var(--display); --text:var(--sans); --round:var(--sans);
-  --w-d:600; --ls-d:-.025em;
-  /* one scale */
-  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px; --t42:42px;
-  --r-card:14px; --r-btn:10px; --r-chip:8px; --r-tile:8px;
-  --spring:cubic-bezier(.32,.72,0,1);
-  --ease:cubic-bezier(.22,.61,.36,1);
-  --gap:16px;
-}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-.bar h1,.intro h2,.hero .htitle,.topm .tt,.fbh b,#fbdone{font-optical-sizing:auto}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--sans);font-size:var(--t16);line-height:1.5;letter-spacing:0;
-  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-  overflow-x:hidden;min-height:100vh;
-  padding-bottom:calc(48px + env(safe-area-inset-bottom))}
-button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
-a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:640px;margin:0 auto;padding:0 var(--gap)}
-#amb,.spec,.wash,.sheen{display:none !important}
-
-/* ═══ surfaces ═══ */
-.g{position:relative;background:var(--surface);border:1px solid var(--line)}
-
-/* ═══ bar ═══ */
-.bar{position:sticky;top:0;z-index:40;background:var(--paper);
-  padding:max(10px,env(safe-area-inset-top)) 0 10px;
-  transition:box-shadow .3s var(--ease)}
-.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
-.bar .wrap{display:flex;align-items:center;gap:10px}
-.mark{width:26px;height:26px;border-radius:5px;flex:none;display:grid;place-items:center;
-  background:var(--accent);color:var(--on-accent);
-  font-family:var(--display);font-size:18px;line-height:1;padding-bottom:2px}
-.bar h1{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);
-  text-transform:lowercase;white-space:nowrap;
-  opacity:0;transform:translateY(4px);pointer-events:none;
-  transition:opacity .3s var(--ease),transform .3s var(--spring)}
-.bar h1.show{opacity:1;transform:none}
-.seg{position:relative;display:flex;margin-left:auto;border:1px solid var(--line);border-radius:8px;
-  padding:2px;isolation:isolate;flex:none;background:var(--surface)}
-.seg button{position:relative;z-index:2;padding:4px 9px;border-radius:6px;
-  font-size:var(--t12);font-weight:500;color:var(--ink3);text-transform:lowercase;
-  transition:color .2s var(--ease)}
-.seg button[aria-pressed="true"]{color:var(--on-accent)}
-.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:6px;
-  background:var(--ink);
-  transition:left .36s var(--spring),width .36s var(--spring)}
-.sbtn{display:flex;align-items:center;gap:6px;flex:none;padding:5px 8px;border-radius:8px;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink2);
-  transition:border-color .2s var(--ease),color .2s var(--ease)}
-@media (hover:hover){.sbtn:hover{color:var(--ink);border-color:var(--line2)}}
-.kbd{display:none;font-size:11px;font-weight:500;color:var(--ink3);font-variant-numeric:tabular-nums}
-@media (min-width:560px){.kbd{display:inline}}
-
-/* ═══ intro ═══ */
-main{padding-top:30px}
-.intro{margin:0 0 34px}
-.intro h2{margin:0 0 8px;font-family:var(--display);font-size:38px;font-weight:var(--w-d);
-  letter-spacing:var(--ls-d);line-height:1.02;text-transform:lowercase}
-@media (min-width:560px){.intro h2{font-size:52px}}
-.intro p{margin:0;font-size:var(--t15);line-height:1.55;color:var(--ink2);max-width:44ch;
-  text-transform:lowercase}
-
-/* section head: label + rule */
-.sh{display:flex;align-items:center;gap:10px;margin:30px 0 10px}
-.sh h3{margin:0;font-size:var(--t12);font-weight:600;letter-spacing:.05em;
-  color:var(--ink3);text-transform:lowercase}
-.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2}
-.shx{order:3;font-size:var(--t12);color:var(--ink3);text-transform:lowercase;
-  font-variant-numeric:tabular-nums}
-
-/* ═══ up next ═══ */
-.hero{display:block;width:100%;border-radius:var(--r-card);padding:16px 16px 14px;overflow:hidden;
-  margin-bottom:10px;background:var(--surface);border:1px solid var(--line);
-  transition:border-color .25s var(--ease)}
-@media (hover:hover){.hero:hover{border-color:var(--line2)}}
-.hrow{display:flex;align-items:center;gap:9px;margin-bottom:10px}
-.hmeta{min-width:0;flex:1;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-.hk{font-size:var(--t12);font-weight:600;letter-spacing:.04em;text-transform:lowercase;
-  color:var(--accent-ink,var(--ink))}
-.hc{font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
-.chip{flex:none;font-size:var(--t12);font-weight:500;padding:3px 8px;
-  border-radius:var(--r-chip);background:var(--surface2);color:var(--ink2);white-space:nowrap;
-  font-variant-numeric:tabular-nums;border:1px solid var(--line)}
-.chip.due{color:var(--accent-ink,var(--ink));border-color:var(--accent-ink,var(--line));background:transparent}
-.hero .htitle{display:block;font-family:var(--display);font-size:var(--t26);font-weight:var(--w-d);
-  letter-spacing:var(--ls-d);line-height:1.12;margin-bottom:14px;text-transform:lowercase;
-  text-wrap:balance}
-.go{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
-  padding:11px;border-radius:var(--r-btn);color:var(--on-accent);
-  font-size:var(--t15);font-weight:600;text-transform:lowercase;
-  background:var(--b,var(--accent));
-  transition:filter .18s var(--ease)}
-.hero .go{--b:var(--accent);color:var(--on-accent)}
-@media (hover:hover){.hero:hover .go{filter:brightness(1.06)}}
-
-/* ═══ rows ═══ */
-.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line)}
-.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 14px;
-  position:relative;z-index:1;cursor:pointer;
-  transition:background .16s var(--ease)}
-.row + .row,.sub + .row{border-top:1px solid var(--line)}
-.row:not(.empty):active{background:var(--surface2)}
-.row.empty{cursor:default}
-.glyph{width:21px;height:21px;flex:none;display:block}
-.rt{min-width:0;flex:1}
-.rn{display:block;font-size:var(--t16);font-weight:500;letter-spacing:-.004em;line-height:1.3;
-  text-transform:lowercase}
-.rc{flex:none;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums}
-.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
-.row.open .chev{transform:rotate(90deg)}
-.row.empty .rn{color:var(--ink3)}
-.soon{font-size:var(--t12);font-weight:500;padding:3px 8px;border-radius:var(--r-chip);
-  border:1px solid var(--line);color:var(--ink3);flex:none;text-transform:lowercase}
-
-/* expanded guide list */
-.sub{display:grid;grid-template-rows:0fr;position:relative;z-index:1;background:var(--surface2);
-  border-top:1px solid var(--line);
-  transition:grid-template-rows .36s var(--spring)}
-.sub.on{grid-template-rows:1fr}
-.sub > div{overflow:hidden}
-.link{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:10px 14px 10px 18px;
-  transition:background .16s var(--ease)}
-.link + .link{border-top:1px solid var(--line)}
-@media (hover:hover){.row:not(.empty):hover,.link:hover{background:var(--surface2)}
-  .link:hover{background:var(--surface)}
-  .row:not(.empty):hover .chev,.link:hover .chev{transform:translateX(2px)}
-  .row.open:hover .chev{transform:rotate(90deg)}}
-.tagd{width:6px;height:6px;border-radius:1px;flex:none}
-.lt{display:block;font-size:var(--t15);font-weight:450;letter-spacing:-.004em;line-height:1.35;
-  text-transform:lowercase}
-.ld{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
-.note{margin:2px 14px 12px 18px;font-size:var(--t12);line-height:1.5;color:var(--ink3);
-  text-transform:lowercase}
-
-/* ═══ archive ═══ */
-.arch{display:flex;align-items:center;gap:8px;width:100%;padding:12px 14px;border-radius:var(--r-card);
-  text-align:left;background:var(--surface);border:1px solid var(--line)}
-.at{flex:1;min-width:0}
-.an{display:block;font-size:var(--t16);font-weight:500;text-transform:lowercase}
-.as{display:block;font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
-.tw{flex:none;color:var(--ink3);transition:transform .3s var(--spring)}
-.arch[aria-expanded="true"] .tw{transform:rotate(90deg)}
-#archwrap{display:grid;grid-template-rows:0fr;opacity:0;margin-top:0;
-  transition:grid-template-rows .4s var(--spring),opacity .28s var(--ease),margin-top .4s var(--spring)}
-#archwrap.on{grid-template-rows:1fr;opacity:1;margin-top:10px}
-#archwrap > div{overflow:hidden}
-
-/* ═══ search ═══ */
-dialog#search{border:0;padding:0;background:none;max-width:min(540px,92vw);width:100%;
-  margin:11vh auto auto;overflow:visible}
-dialog#search::backdrop{background:color-mix(in srgb,var(--ink) 38%,transparent)}
-dialog#search[open]{animation:pop .26s var(--spring)}
-@keyframes pop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-#search .panel{border-radius:var(--r-card);overflow:hidden;background:var(--surface);
-  border:1px solid var(--line2);box-shadow:0 18px 48px -16px color-mix(in srgb,var(--ink) 45%,transparent)}
-.qrow{display:flex;align-items:center;gap:9px;padding:12px 14px;color:var(--ink3);
-  border-bottom:1px solid var(--line)}
-#q{flex:1;min-width:0;border:0;background:none;outline:none;font-size:var(--t16);color:var(--ink);
-  font-family:var(--sans)}
-#q::placeholder{color:var(--ink3)}
-#q::-webkit-search-cancel-button,#q::-webkit-search-decoration{-webkit-appearance:none;display:none}
-.esc{font-size:11px;font-weight:500;color:var(--ink3);padding:2px 6px;
-  border-radius:4px;border:1px solid var(--line);text-transform:lowercase}
-#results{max-height:min(52vh,420px);overflow-y:auto;padding:6px}
-#results a{display:flex;align-items:center;gap:10px;padding:8px 9px;border-radius:8px;
-  transition:background .14s var(--ease)}
-#results a[aria-selected="true"]{background:var(--surface2)}
-#results .m{min-width:0;flex:1}
-#results .m b{display:block;font-size:var(--t15);font-weight:500;
-  text-transform:lowercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#results .m span{display:block;font-size:var(--t12);color:var(--ink3);text-transform:lowercase}
-#results .none{padding:16px 12px;text-align:center;color:var(--ink3);font-size:var(--t15);
-  text-transform:lowercase}
-
-/* ═══ entrance ═══ */
-.rise{opacity:0;transform:translateY(8px);
-  animation:rise .5s var(--spring) forwards;animation-delay:calc(var(--i,0)*40ms)}
-@keyframes rise{to{opacity:1;transform:none}}
-
-/* ═══ compat note ═══ */
-.compat{display:none;border-radius:var(--r-card);margin-top:24px;background:var(--surface);
-  border:1px solid var(--line)}
-@media (max-width:760px),(hover:none){.compat{display:block}}
-.compat summary{display:flex;align-items:center;gap:9px;padding:12px 14px;border-radius:var(--r-card);
-  cursor:pointer;list-style:none;font-size:var(--t15);font-weight:500;text-transform:lowercase}
-.compat summary::-webkit-details-marker{display:none}
-.compat summary::marker{content:""}
-.compat .ci{flex:none;color:var(--ink3)}
-.compat summary .tw{margin-left:auto}
-.compat[open] summary .tw{transform:rotate(90deg)}
-.cbody{padding:0 14px 14px;font-size:var(--t13);line-height:1.6;color:var(--ink2);
-  text-transform:lowercase}
-.cbody p{margin:0 0 10px}
-.cbody p:last-child{margin:0}
-.cbody b{font-weight:600;color:var(--ink)}
-.cbody kbd{font-size:var(--t12);font-weight:500;color:var(--ink);
-  border:1px solid var(--line);border-radius:4px;padding:1px 5px;text-transform:none}
-
-footer{margin-top:34px;padding:18px 0 6px;border-top:1px solid var(--line);
-  text-align:left;font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
-.upd{display:block;margin-top:6px;color:var(--ink3);opacity:.8}
-
-/* ═══ feedback ═══ */
-#fb{position:fixed;right:max(14px,env(safe-area-inset-right));z-index:30;
-  bottom:max(14px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-#fbpill{display:flex;align-items:center;gap:7px;padding:8px 12px;border-radius:var(--r-btn);
-  font-size:var(--t13);font-weight:500;color:var(--ink2);background:var(--surface);
-  border:1px solid var(--line);text-transform:lowercase;
-  box-shadow:0 4px 16px -8px color-mix(in srgb,var(--ink) 40%,transparent);
-  transition:color .18s var(--ease),border-color .18s var(--ease),opacity .25s var(--ease)}
-#fbpill svg{flex:none;color:var(--ink3)}
-@media (hover:hover){#fbpill:hover{color:var(--ink);border-color:var(--line2)}}
-#fb.on #fbpill{opacity:0;pointer-events:none}
-#fbcard{display:none;outline:none;width:min(320px,calc(100vw - 28px));max-height:calc(100vh - 28px - env(safe-area-inset-bottom));overflow:auto;overscroll-behavior:contain;border-radius:var(--r-card);
-  padding:13px;background:var(--surface);border:1px solid var(--line2);
-  box-shadow:0 18px 48px -18px color-mix(in srgb,var(--ink) 45%,transparent)}
-#fb.on #fbcard{display:block;animation:pop .28s var(--spring)}
-.fbh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.fbh b{font-family:var(--display);font-size:var(--t20);font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase}
-.fbseg{margin-left:0}
-.fbseg button{padding:4px 10px}
-#fb.sent .fbseg{display:none}
-/* request a guide */
-#rqform{display:none}
-#fb.rq #fbform{display:none}
-#fb.rq:not(.sent) #rqform{display:block}
-.rqnote{margin:0 0 10px;padding:8px 10px;border-radius:8px;background:var(--surface2);border:1px solid var(--line);
-  font-size:var(--t12);line-height:1.45;color:var(--ink2)}
-.rqnote b{font-weight:600;color:var(--ink)}
-.rqf{display:grid;gap:6px;margin-bottom:9px}
-.rqf input,.rqf select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;
-  background:var(--surface2);color:var(--ink);font-family:var(--sans);font-size:var(--t15);line-height:1.3;outline:none;
-  appearance:none;-webkit-appearance:none;transition:border-color .16s var(--ease)}
-.rqf input:focus,.rqf select:focus{border-color:var(--accent)}
-.rqf input::placeholder{color:var(--ink3)}
-.rqf select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 10px center;padding-right:26px}
-.rqf select.ph{color:var(--ink3)}
-.rq2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.rqh{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3);margin:2px 0 5px}
-.rqodds{font-size:var(--t12);line-height:1.4;color:var(--ink2);margin:-3px 0 9px;min-height:1.4em}
-.rqodds.no{color:var(--hi)}
-.rqfiles{margin:0 0 10px;padding:9px 10px;border:1px dashed var(--line2);border-radius:8px;font-size:var(--t12);line-height:1.45;color:var(--ink2)}
-.rqfiles b{display:block;font-weight:600;color:var(--ink);margin-bottom:2px}
-.fbf a{color:var(--accent-text,var(--accent));font-weight:600;text-decoration:none}
-#rqsend{flex:none;padding:7px 13px;border-radius:var(--r-btn);color:var(--on-accent);
-  font-size:var(--t13);font-weight:600;text-transform:lowercase;background:var(--accent);transition:opacity .18s var(--ease)}
-#rqsend:disabled{opacity:.4;cursor:default}
-.pick:disabled{opacity:.4;cursor:default}
-#rqdone{display:none;padding:4px 0 2px}
-#rqdone .fbh b{font-size:var(--t20)}
-#rqdone p{margin:0 0 10px;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
-#rqdone p b{font-weight:600;color:var(--ink)}
-.rqup{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:10px 12px;border-radius:var(--r-btn);
-  background:var(--accent);color:var(--on-accent);font-size:var(--t13);font-weight:600;text-transform:lowercase;text-decoration:none}
-.rqup svg{flex:none}
-#rqdone small{display:block;margin-top:8px;font-size:11px;line-height:1.35;color:var(--ink3);text-transform:lowercase;text-align:center}
-#rqdone small a{color:var(--accent-text,var(--accent));font-weight:600;text-decoration:none}
-#fb.sent.rq #fbdone{display:none}
-#fb.sent.rq #rqdone{display:block}
-.fbx{width:24px;height:24px;border-radius:6px;border:1px solid var(--line);color:var(--ink3);
-  display:flex;align-items:center;justify-content:center}
-.stars{display:flex;gap:3px;margin:0 0 10px -2px}
-.stars button{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:6px;
-  color:var(--ink3);transition:color .16s var(--ease)}
-.stars button.lit{color:var(--hi)}
-.stars button.lit svg{fill:currentColor}
-.picks{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}
-.pick{font-size:var(--t12);font-weight:500;padding:5px 9px;border-radius:var(--r-chip);
-  border:1px solid var(--line);color:var(--ink2);text-transform:lowercase;
-  transition:border-color .16s var(--ease),color .16s var(--ease)}
-.pick[aria-pressed="true"]{border-color:var(--accent);color:var(--accent-text,var(--accent))}
-#fbnote{display:none;width:100%;margin:0 0 9px;padding:8px 10px;border:1px solid var(--line);
-  border-radius:8px;resize:none;background:var(--surface2);color:var(--ink);
-  font-family:var(--sans);font-size:var(--t15);line-height:1.4;outline:none}
-#fbnote::placeholder{color:var(--ink3)}
-#fbnote.show{display:block}
-.fbf{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.fbf small{font-size:11px;color:var(--ink3);text-transform:lowercase;line-height:1.35}
-#fbsend{flex:none;padding:7px 13px;border-radius:var(--r-btn);color:var(--on-accent);
-  font-size:var(--t13);font-weight:600;text-transform:lowercase;background:var(--accent);
-  transition:opacity .18s var(--ease)}
-#fbsend:disabled{opacity:.4;cursor:default}
-#fbdone{display:none;text-align:center;padding:8px 0 4px;font-family:var(--display);font-size:var(--t20);
-  font-weight:var(--w-d);letter-spacing:var(--ls-d);text-transform:lowercase}
-#fbdone span{display:block;font-family:var(--sans);font-size:var(--t12);font-weight:500;color:var(--ink3);margin-top:2px}
-#fb.sent #fbform{display:none}
-#fb.sent #fbdone{display:block}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-@media (max-width:420px){body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}}
-
-@media (prefers-reduced-motion:reduce){
-  .rise{opacity:1;transform:none;animation:none}
-  dialog#search[open],#fb.on #fbcard{animation:none}
-  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
-}
-
-/* skip link */
-.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:9px 13px;border-radius:var(--r-btn);
-  background:var(--accent);color:var(--on-accent);font-weight:600;font-size:var(--t13);
-  transition:top .2s var(--spring)}
-.skipl:focus{top:12px;outline:none}
-
-/* ═══ v2 additions: search field, recent, units, chips, share, toast, marks ═══ */
-.find{display:flex;align-items:center;gap:9px;margin:18px 0 0;padding:10px 12px;border-radius:var(--r-btn);
-  background:var(--surface);border:1px solid var(--line);color:var(--ink3);
-  transition:border-color .2s var(--ease)}
-.find:focus-within{border-color:var(--ink)}
-.find svg{flex:none}
-.find input{flex:1;min-width:0;border:0;background:none;outline:none;font-family:var(--sans);
-  font-size:var(--t16);color:var(--ink);letter-spacing:-.004em}
-.find input::placeholder{color:var(--ink3)}
-.find .kbd{margin-left:auto}
-.find .clr{display:none;width:22px;height:22px;border-radius:5px;border:1px solid var(--line);
-  align-items:center;justify-content:center;color:var(--ink3)}
-.find.has .clr{display:flex}
-.find.has .kbd{display:none}
-#inline{display:none}
-body.searching #inline{display:block}
-body.searching #upnext,body.searching #recent,body.searching #yearhd,body.searching #year,body.searching .compat{display:none}
-#inline .none{padding:18px 14px;color:var(--ink3);font-size:var(--t15);text-transform:lowercase}
-
-.hnote{display:block;font-size:var(--t13);color:var(--ink2);margin:-8px 0 14px;text-transform:lowercase}
-
-.rx{margin-left:auto;width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;
-  color:var(--ink3);border:1px solid transparent}
-@media (hover:hover){.rx:hover{border-color:var(--line);color:var(--ink)}}
-.sh .rx{order:4;margin-left:0}
-
-.unit{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px 10px 18px;text-align:left}
-.unit + .unit{border-top:1px solid var(--line)}
-.unit .rt{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
-.ut{display:flex;align-items:center;gap:8px;min-width:0}
-.ut .lt{display:inline;font-size:var(--t15);font-weight:500;letter-spacing:-.004em;line-height:1.35;text-transform:lowercase}
-.new{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--hi);text-transform:lowercase;flex:none}
-.kinds{display:flex;flex-wrap:wrap;gap:5px}
-.kind{display:inline-flex;align-items:center;gap:5px;font-size:var(--t12);font-weight:500;padding:3px 8px;
-  border-radius:var(--r-chip);border:1px solid var(--line);color:var(--ink2);text-transform:lowercase;
-  background:var(--surface);transition:border-color .16s var(--ease),color .16s var(--ease)}
-.kind.main{border-color:var(--ink);color:var(--ink)}
-.kind svg{flex:none;color:var(--ink3)}
-.kind.main svg{color:var(--ink)}
-@media (hover:hover){.kind:hover{border-color:var(--line2);color:var(--ink)}.kind.main:hover{background:var(--ink);color:var(--paper)}.kind.main:hover svg{color:var(--paper)}}
-.shr{flex:none;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;
-  color:var(--ink3);border:1px solid transparent;transition:border-color .16s var(--ease),color .16s var(--ease)}
-.shr:active{color:var(--ink)}
-@media (hover:hover){.shr:hover{border-color:var(--line);color:var(--ink)}}
-.sub .tagd{display:none}
-#recent .unit{padding-left:14px}
-#recent .rc{font-size:var(--t12)}
-
-#toast{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translate(-50%,12px);
-  z-index:80;padding:8px 13px;border-radius:var(--r-btn);background:var(--ink);color:var(--paper);
-  font-size:var(--t13);font-weight:500;text-transform:lowercase;opacity:0;pointer-events:none;
-  transition:opacity .2s var(--ease),transform .3s var(--spring)}
-#toast.on{opacity:1;transform:translate(-50%,0)}
-
-/* marks */
-.mark{background:none;color:var(--accent);width:28px;height:28px;border-radius:0;padding:0;display:grid;place-items:center}
-.mark svg{display:block;width:28px;height:28px}
-.mark .mono{width:26px;height:26px;border-radius:5px;background:var(--accent);color:var(--on-accent);
-  display:grid;place-items:center;font-family:var(--display);font-size:19px;line-height:1;padding-bottom:2px}
-.mark .mono i{font-style:italic}
-.mark .mono em{font-style:normal;display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--hi);margin-left:1px;transform:translateY(5px)}
-
-.cbody .tip{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
-
-.eyebrow{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:lowercase;margin-bottom:-1px}
-.unit .rt{gap:4px}
-.unit .kinds{margin-top:3px}
-@media (max-width:559px){.sbtn{display:none}}
-
-/* ═══ fast find ═══ */
-.intro{margin:0 0 26px}
-.intro h2{font-size:clamp(26px,8.6vw,34px)}
-@media (min-width:560px){.intro h2{font-size:44px}}
-.intro h2 label{cursor:text}
-.find{margin-top:14px;min-height:52px;padding:0 6px 0 14px;gap:10px}
-.find input{font-size:17px;padding:14px 0}
-.find .clr{width:40px;height:40px;border-radius:8px}
-.find .clr svg{width:12px;height:12px}
-.intro .hint{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:14px 2px 0;max-width:none;font-size:var(--t12);line-height:1.3;color:var(--ink3);text-transform:lowercase}
-.hint[hidden]{display:none}
-.eg{font:inherit;font-size:var(--t12);font-weight:500;color:var(--ink2);padding:4px 10px;border:1px solid var(--line);border-radius:var(--r-chip);
-  background:var(--surface);text-transform:lowercase;transition:border-color .16s var(--ease),color .16s var(--ease)}
-.eg:active,.eg:hover{border-color:var(--line2);color:var(--ink)}
-body.searching .intro{margin-bottom:6px}
-.topm{display:flex;flex-direction:column;gap:6px;position:relative;padding:16px 16px 14px 19px;border-radius:var(--r-card);
-  background:var(--surface);border:1px solid var(--line);overflow:hidden;
-  box-shadow:0 8px 24px -10px color-mix(in srgb,var(--ink) 18%,transparent);transition:border-color .2s var(--ease)}
-.topm::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,var(--accent))}
-.topm .eyebrow{font-size:var(--t12);font-weight:600;letter-spacing:.06em;text-transform:lowercase}
-.topm .tt{font-family:var(--display);font-size:24px;font-weight:var(--w-d);line-height:1.12;letter-spacing:var(--ls-d);text-transform:lowercase;text-wrap:balance}
-.topm .kinds{margin:2px 0 4px}
-.topm .go{margin-top:6px}
-.topm.sel,.unit.sel{border-color:var(--ink)}
-@media (hover:hover){.topm:hover{border-color:var(--line2)}}
-#inlinelist[hidden],#tophd[hidden],#otherhd[hidden]{display:none}
-.unit.cmp{min-height:52px;padding:8px 12px 8px 14px}
-.unit.cmp .rt{gap:1px}
-.unit.cmp .lt{font-size:var(--t15)}
-.nores{padding:4px 2px 0}
-.nores p{margin:0 0 10px;font-size:var(--t15);color:var(--ink2);text-transform:lowercase}
-.nores .sl{display:block;font-size:var(--t12);color:var(--ink3);margin-bottom:6px;text-transform:lowercase}
-.sugs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.sugs .eg{padding:7px 11px;font-size:var(--t13)}
-.reqg{font:inherit;font-size:var(--t13);font-weight:500;color:var(--accent-text,var(--accent));text-transform:lowercase;text-decoration:underline;text-underline-offset:3px}
-.kind{min-height:30px;padding:5px 10px}
-.shr{width:40px;height:40px}
-.bar h1{opacity:1;transform:none;pointer-events:auto}
-body.searching #upnext,body.searching #recent,body.searching #yearhd,body.searching #year,body.searching .compat,body.searching footer{display:none}
-#find::-webkit-search-cancel-button,#find::-webkit-search-decoration{-webkit-appearance:none;display:none}
-.topm .go{--b:var(--accent);color:var(--on-accent)}
-
-:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1.00);--ink3:rgba(94,90,82,0.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,0.97);--ink3:rgba(185,178,167,0.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0}}
-:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,0.97);--ink3:rgba(185,178,167,0.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0}
-
-
-
-</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Valentino guides","alternateName":["Valentino Guides","valentinoguides.com"],"url":"https://valentinoguides.com/"}</script>
+<link rel="stylesheet" href="/site.css?v=5">
 </head>
 <body>
 <a class="skipl" href="#main">skip to the guides</a>
 <header class="bar" id="bar">
   <div class="wrap">
-    <span class="mark" aria-hidden="true"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="5" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg></span>
-    <h1>valentino guides</h1>
+    <a class="brand" href="/" aria-label="valentino guides, all classes"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg><span><b>valentino guides</b><small>free study guides</small></span></a>
+    <button type="button" class="sbtn" id="searchOpen" aria-label="search guides"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.7"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg><span>search</span><span class="kbd">⌘K</span></button>
     <div class="seg" role="group" aria-label="theme">
       <span class="thumb" aria-hidden="true"></span>
       <button type="button" data-set="auto" aria-pressed="true">auto</button>
       <button type="button" data-set="light" aria-pressed="false">light</button>
       <button type="button" data-set="dark" aria-pressed="false">dark</button>
     </div>
-    <button type="button" class="sbtn" id="searchOpen" aria-label="search guides"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.7"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg><span class="kbd">⌘K</span></button>
   </div>
 </header>
 
 <main class="wrap" id="main" tabindex="-1">
-  <div class="intro">
-    <h2><label for="find">what are you studying?</label></h2>
-    <form class="find" id="findw" role="search" autocomplete="off"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.7"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg><input id="find" type="search" placeholder="class, unit, or topic" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="search guides" aria-controls="inline"><span class="kbd">⌘K</span><button type="button" class="clr" id="findclr" aria-label="clear search"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"/></svg></button></form>
-    <p class="hint" id="hint">try <button type="button" class="eg" data-q="psych unit 0">psych unit 0</button> or <button type="button" class="eg" data-q="vectors">vectors</button></p>
-  </div>
+  <section class="intro">
+    <div>
+      <h2><label for="find">What are you studying <em>today?</em></label></h2>
+      <p class="lede">Study guides, practice and cram sheets for eight Bishop Gorman classes. Free, and made by a student.</p>
+      <form class="find" id="findw" role="search" autocomplete="off"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.7"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg><input id="find" type="search" placeholder="class, unit, or topic" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="search guides" aria-controls="inline"><span class="kbd">⌘K</span><button type="button" class="clr" id="findclr" aria-label="clear search"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"/></svg></button></form>
+      <p class="hint" id="hint">try <button type="button" class="eg" data-q="psych unit 0">psych unit 0</button> or <button type="button" class="eg" data-q="vectors">vectors</button></p>
+      <a class="browse" id="browse" href="#classes">browse all eight classes <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="home-art" id="homeart" aria-hidden="true"></div>
+  </section>
 
   <section id="inline" aria-live="polite">
     <div class="sh" id="tophd"><h3>top match</h3><span class="shx" id="inlinen"></span></div>
@@ -491,8 +61,8 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
   </section>
 
   <section id="upnext" hidden>
-    <div class="sh"><h3>up next</h3></div>
-    <div id="feat"></div>
+    <div class="sh"><h3>up next</h3><span class="shx" id="upn"></span></div>
+    <div class="feat" id="feat"></div>
   </section>
 
   <section id="recent" hidden>
@@ -500,8 +70,10 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
     <div class="group" id="recentlist"></div>
   </section>
 
-  <div class="sh" id="yearhd"><h3>this year</h3><span class="shx" id="cty"></span></div>
-  <div class="group" id="year"></div>
+  <section id="classes">
+    <div class="sh"><h3>your classes</h3><span class="shx" id="cty"></span></div>
+    <div class="catalog" id="catalog"></div>
+  </section>
 
   <details class="compat">
     <summary>
@@ -509,7 +81,7 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
       on a phone?
       <svg class="tw" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg>
     </summary>
-    <div class="cbody">
+    <div class="cbody2">
       <p><b>put it on your home screen.</b> in safari tap <kbd>share</kbd>, then <b>add to home screen</b>. it opens like an app.</p>
       <p class="tip">if things are missing or cut off, tap <kbd>aA</kbd> in the address bar and choose <b>request desktop website</b>. still wrong? pull down to refresh.</p>
     </div>
@@ -518,7 +90,7 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
   <footer>
     study guides for bishop gorman classes, written by a student and free to use.
     not affiliated with the school. check anything that matters against your own notes.
-    <span class="upd">site last updated sept 13, 2026</span>
+    <span class="upd">site last updated oct 1, 2026</span>
   </footer>
 </main>
 
@@ -582,482 +154,11 @@ body.searching #upnext,body.searching #recent,body.searching #yearhd,body.search
   </button>
 </div>
 
-
-
-<script>
-"use strict";
-const $=s=>document.querySelector(s);
-const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e};
-const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
-const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const SITE="https://valentinoguides.com";
-const n0=new Date(), TODAY=new Date(n0.getTime()-n0.getTimezoneOffset()*6e4).toISOString().slice(0,10);
-const ICON={"search": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"4.7\"/><path d=\"M10.5 10.5 14 14\" stroke-linecap=\"round\"/></svg>", "chev": "<svg class=\"chev\" width=\"8\" height=\"14\" viewBox=\"0 0 8 14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M1 1l6 6-6 6\"/></svg>", "x": "<svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M1.5 1.5l7 7M8.5 1.5l-7 7\"/></svg>", "share": "<svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 10V2M5 5l3-3 3 3\"/><path d=\"M3 8v5.5h10V8\"/></svg>", "guide": "<svg width=\"11\" height=\"11\" viewBox=\"0 0 12 12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 2.5h8v7H2z\"/><path d=\"M4 5h4M4 7h3\"/></svg>", "cram": "<svg width=\"11\" height=\"11\" viewBox=\"0 0 12 12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 1.5 3 7h3l-1 3.5L9 5H6z\"/></svg>", "pdf": "<svg width=\"11\" height=\"11\" viewBox=\"0 0 12 12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 1.5h4l2.5 2.5v6.5H3z\"/><path d=\"M7 1.5V4h2.5\"/></svg>", "quiz": "<svg width=\"11\" height=\"11\" viewBox=\"0 0 12 12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2.5 6.5 5 9l4.5-6\"/></svg>"};
-
-/* ═══════════ CONTENT (preview data: dates are examples) ═══════════ */
-/* ═══════════ DATA ═══════════
-   FEATURES: upcoming tests, in date order. Expired ones drop off on their own; leave them.
-   Optional note: one line on what the test covers. Optional end: last day of a multi-day test.
-   Optional pin:true puts a live entry first in up next, ahead of earlier-dated ones; it still drops off after its date. */
-const FEATURES=[
-  {classId:"apush", title:"Unit 1/A study guide", url:"/apush-unit-1a", test:"2026-08-31", end:"2026-09-01"},
-  {classId:"pre",   title:"Vectors + dot product study guide", url:"/precalc-vectors", test:"2026-08-31"},
-  {classId:"mor",   title:"Ch 1–2 study guide", url:"/morality-ch1-2", test:"2026-09-02", end:"2026-09-03"},
-  {classId:"mor",   title:"Ch 3 study guide", url:"/morality-ch3", test:"2026-10-01", note:"Law as a Guide to Freedom, vocab heavy, with a review game"},
-  {classId:"bus",   title:"Unit 1 study guide", url:"/bus-unit-1", test:"2026-09-02", end:"2026-09-03"},
-  {classId:"phys",  title:"Intro kinematics study guide", url:"/physics-intro-kinematics", test:"2026-09-02", end:"2026-09-03"},
-  {classId:"psych", title:"Unit 0 study guide", url:"/psych-unit-0", test:"2026-09-02", end:"2026-09-03"},
-  {classId:"pre",   title:"Vectors, ICF & trig equations study guide", url:"/precalc-vectors-icf-trig-eq", test:"2026-09-04"},
-  {classId:"apush", title:"Unit 1/B study guide", url:"/apush-unit-1b", test:"2026-09-08", end:"2026-09-09"},
-  {classId:"psych", title:"Unit 1.1\u20131.3 study guide", url:"/psych-unit-1-1-1-3", test:"2026-09-15", end:"2026-09-16", note:"Heredity and environment, the nervous system, the neuron and neural firing."},
-  {classId:"apush", title:"Unit 1 LEQ study guide", url:"/apush-unit-1-leq", test:"2026-09-16", note:"In-class LEQ, 40 minutes. English colonization through King William's War."},
-  {classId:"apush", title:"Unit 2/A study guide", url:"/apush-unit-2a", test:"2026-09-23", note:"25 questions, 17 minutes. Population and the Great Awakening through choosing sides (1774-75); acts of Parliament first."},
-  {classId:"psych", title:"Unit 1.4\u20131.6 study guide", url:"/psych-unit-1-4-1-6", test:"2026-09-23", end:"2026-09-24", note:"The brain, sleep, and sensation, plus the Phineas Gage mini FRQs."},
-  {classId:"pre",   title:"Complex numbers & trig form study guide", url:"/precalc-complex-trig-form", test:"2026-09-18", note:"Non-calculator quiz, 11 questions, 30 minutes. Complex arithmetic, trig/polar form, the Julia set."},
-  {classId:"pre",   title:"Product, quotient & De Moivre's theorems study guide", url:"/precalc-theorems", test:"2026-09-24", pin:true, note:"Non-calculator quiz, 5 questions, 30 minutes. Product and quotient theorems, De Moivre's theorem, nth roots."},
-  {classId:"phys",  title:"Advanced kinematics study guide", url:"/physics-advanced-kinematics", test:"2026-09-28", note:"50 minutes: sketch a graph, two problems, one derivation. Acceleration, kinematic equations, free fall, projectiles."},
-  {classId:"psych", title:"Unit 1 exam study guide", url:"/psych-unit-1", test:"2026-09-29", end:"2026-10-01", note:"The full unit 1 exam: an AAQ plus 50 MCQs on modules 1.1 to 1.6, with unit 0 mixed in."},
-  {classId:"bus",   title:"LPs 1-5 to 1-10 study guide", url:"/bus-unit-1-5-1-10", test:"2026-10-01", end:"2026-10-02", note:"High Exam #2: information management, operations and gross profit, business models, competition, trends, ownership types."},
-  {classId:"pre",   title:"Polar unit test study guide", url:"/precalc-polar", test:"2026-10-01", note:"The whole unit: complex numbers, trig form, the theorems, polar equations and graphs. 25 problems, 2 with a calculator."},
-  {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."}
-];
-/* CLASSES: one entry per unit, newest first. A unit is the guide plus optional extras
-   (kind: "cram" | "pdf" | "quiz"). added = the day it went up; "new" shows for 7 days.
-   A class with no units stays here for its color and glyph but does not show. Also add new
-   guides to the <noscript> list at the bottom. */
-const CLASSES=[
-  {id:"apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", units:[
-     {t:"Unit 2/B", url:"/apush-unit-2b", added:"2026-10-01"},
-     {t:"Unit 2/A", url:"/apush-unit-2a", added:"2026-09-21"},
-     {t:"Unit 1 LEQ", url:"/apush-unit-1-leq", added:"2026-09-13"},
-     {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
-     {t:"Unit 1/A", url:"/apush-unit-1a", added:"2026-08-29"}]},
-  {id:"lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language", abbr:"AP Lang", units:[]},
-  {id:"phys", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", units:[
-     {t:"Advanced kinematics", url:"/physics-advanced-kinematics", added:"2026-09-27", extras:[
-        {kind:"pdf", t:"version 1", url:"/physics-advanced-kinematics-version-1.pdf"},
-        {kind:"pdf", t:"version 2", url:"/physics-advanced-kinematics-version-2.pdf"},
-        {kind:"pdf", t:"version 3", url:"/physics-advanced-kinematics-version-3.pdf"},
-        {kind:"pdf", t:"version 4", url:"/physics-advanced-kinematics-version-4.pdf"},
-        {kind:"pdf", t:"version 5", url:"/physics-advanced-kinematics-version-5.pdf"},
-        {kind:"pdf", t:"version 6", url:"/physics-advanced-kinematics-version-6.pdf"}]},
-     {t:"Intro kinematics", url:"/physics-intro-kinematics", added:"2026-09-01"}]},
-  {id:"psych", c:"var(--c-psych)", glyph:"head", name:"AP Psychology", units:[
-     {t:"Unit 1 exam", url:"/psych-unit-1", added:"2026-09-25"},
-     {t:"Unit 1.4\u20131.6", url:"/psych-unit-1-4-1-6", added:"2026-09-23"},
-     {t:"Unit 1.1\u20131.3", url:"/psych-unit-1-1-1-3", added:"2026-09-15"},
-     {t:"Unit 0", url:"/psych-unit-0", added:"2026-09-01"}]},
-  {id:"sem", c:"var(--c-sem)", glyph:"bubbles", name:"AP Seminar", units:[]},
-  {id:"bus", c:"var(--c-biz)", glyph:"chart", name:"Business Principles", units:[
-     {t:"LPs 1-5 to 1-10", url:"/bus-unit-1-5-1-10", added:"2026-09-24"},
-     {t:"Unit 1", url:"/bus-unit-1", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/bus-unit-1-cram"}]}]},
-  {id:"mor", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality (Rinaldo)", abbr:"Morality", units:[
-     {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"quiz", t:"jeopardy", url:"/morality-ch3-jeopardy"}]},
-     {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/morality-ch1-2-cram"}]}]},
-  {id:"pre", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", units:[
-     {t:"Polar unit test", url:"/precalc-polar", added:"2026-09-29", extras:[
-        {kind:"pdf", t:"practice a", url:"/precalc-polar-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-polar-practice-b.pdf"},
-        {kind:"pdf", t:"review odds worked", url:"/precalc-polar-review-odds.pdf"}]},
-     {t:"Product, quotient & De Moivre's theorems", url:"/precalc-theorems", added:"2026-09-23", extras:[
-        {kind:"pdf", t:"practice a", url:"/precalc-theorems-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-theorems-practice-b.pdf"},
-        {kind:"pdf", t:"practice c", url:"/precalc-theorems-practice-c.pdf"},
-        {kind:"pdf", t:"all quizzes + keys", url:"/precalc-theorems-quizzes.pdf"}]},
-     {t:"Complex numbers & trig form", url:"/precalc-complex-trig-form", added:"2026-09-17", extras:[
-        {kind:"pdf", t:"practice a", url:"/precalc-complex-trig-form-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-complex-trig-form-practice-b.pdf"},
-        {kind:"pdf", t:"practice c", url:"/precalc-complex-trig-form-practice-c.pdf"},
-        {kind:"pdf", t:"all quizzes + memorize sheet", url:"/precalc-complex-trig-form-quizzes.pdf"}]},
-     {t:"Vectors, ICF & trig equations", url:"/precalc-vectors-icf-trig-eq", added:"2026-09-03", extras:[
-        {kind:"pdf", t:"practice a", url:"/precalc-vectors-icf-trig-eq-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-vectors-icf-trig-eq-practice-b.pdf"},
-        {kind:"quiz", t:"quizzes", url:"/precalc-quizzes"}]},
-     {t:"Vectors + dot product", url:"/precalc-vectors", added:"2026-08-30"}]}
-];
-const G={
- flag:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
- nib:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
- head:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
- atom:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
- curve:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
- bubbles:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
- speech:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
- globe:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
- chart:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
- cross:'<path d="M13 4.6v17"/><path d="M7.4 10.2h11.2"/>',
- book:'<path d="M13 8.6c-2.1-1.7-4.8-1.9-7.3-.6v11.4c2.5-1.3 5.2-1.1 7.3.6 2.1-1.7 4.8-1.9 7.3-.6V8c-2.5-1.3-5.2-1.1-7.3.6z"/><path d="M13 8.6v11.4"/>',
- code:'<path d="M9.6 8.4 4.8 13.2l4.8 4.8"/><path d="M16.4 8.4l4.8 4.8-4.8 4.8"/><path d="M14.2 5.8l-2.4 14.4"/>'
-};
-function glyphSvg(name,color,size){
-  return '<svg class="glyph" viewBox="0 0 26 26" width="'+size+'" height="'+size+'" role="img" aria-hidden="true" style="color:'+color+'">'+
-   '<g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'+(G[name]||G.flag)+'</g></svg>';
-}
-const byId=id=>CLASSES.find(c=>c.id===id);
-const abs=u=>u;  /* links stay relative on the site; SITE is for sharing */
-const isNew=d=>d&&(new Date(TODAY)-new Date(d))/864e5<=7;
-
-/* ═══════════ THEME ═══════════ */
-const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
-function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
-function setTheme(mode){
-  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
-  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
-  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
-  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
-}
-segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
-(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
-  const stamped=document.documentElement.dataset.theme;
-  const mode=saved==="light"||saved==="dark"?saved:(stamped==="light"||stamped==="dark"?stamped:"auto");
-  if(mode!=="auto")document.documentElement.dataset.theme=mode;
-  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
-})();
-requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
-
-/* ═══════════ TOAST + SHARE + RECENT ═══════════ */
-let toastT=0;
-function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("on"),1600)}
-async function share(url,title){
-  const u=url.startsWith("http")?url:SITE+url;
-  if(navigator.share){try{await navigator.share({title:title,url:u});return}catch(e){if(e.name==="AbortError")return}}
-  try{await navigator.clipboard.writeText(u);toast("link copied")}catch(e){prompt("copy this link",u)}
-}
-function recordOpen(c,u){
-  const list=store.get("recent",[]).filter(r=>r.u!==u.url);
-  list.unshift({u:u.url,t:u.t,c:c.id,ts:Date.now()});
-  store.set("recent",list.slice(0,6));
-}
-function guideLink(c,u,opts){
-  const a=el("a","unit"); a.href=abs(u.url); a.target="_blank"; a.rel="noopener noreferrer";
-  const rt=el("span","rt"), ut=el("span","ut");
-  if(opts&&opts.cls){const s=el("span","eyebrow");s.textContent=c.name;s.style.color=c.c;rt.append(s)}
-  const lt=el("span","lt",u.t); ut.append(lt);
-  if(isNew(u.added)&&!(opts&&opts.noNew))ut.append(el("span","new","new"));
-  rt.append(ut);
-  if(u.extras&&u.extras.length&&!(opts&&opts.compact)){
-    const kinds=el("span","kinds");
-    const mk=(kind,label,url,main)=>{const k=el("a","kind"+(main?" main":""));k.href=abs(url);k.target="_blank";k.rel="noopener noreferrer";
-      k.innerHTML=ICON[kind]+esc(label);k.addEventListener("click",e=>{e.stopPropagation();recordOpen(c,u)});return k};
-    kinds.append(mk("guide","guide",u.url,true));
-    u.extras.forEach(x=>kinds.append(mk(x.kind,x.t,x.url,false)));
-    rt.append(kinds);
-  }
-  a.addEventListener("click",()=>recordOpen(c,u));
-  const chev=el("span"); chev.innerHTML=ICON.chev;
-  if(opts&&opts.compact){a.classList.add("cmp");a.append(opts.glyph?glyphSvgWrap(c):"",rt,chev.firstChild);return a}
-  const sh=el("button","shr"); sh.type="button"; sh.innerHTML=ICON.share; sh.setAttribute("aria-label","share "+u.t);
-  sh.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();share(u.url,c.name+" · "+u.t)});
-  a.append(opts&&opts.glyph?glyphSvgWrap(c):"",rt,sh,chev.firstChild);
-  return a;
-}
-function glyphSvgWrap(c){const s=el("span");s.innerHTML=glyphSvg(c.glyph,c.c,20);return s.firstChild}
-
-/* ═══════════ UP NEXT ═══════════ */
-(function(){
-  const live=FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>(b.pin?1:0)-(a.pin?1:0)||a.test.localeCompare(b.test));
-  if(!live.length)return;
-  $("#upnext").hidden=false;
-  const md=x=>(x.getMonth()+1)+"/"+x.getDate();
-  const when=f=>{const d=new Date(f.test+"T12:00:00"),now=new Date(TODAY+"T12:00:00");const days=Math.round((d-now)/864e5);
-    return days<=0?"today":days===1?"tomorrow":"in "+days+" days"};
-  live.forEach(f=>{const c=byId(f.classId);
-  const a=el("a","hero"); a.href=abs(f.url); a.target="_blank"; a.rel="noopener noreferrer";
-  a.style.setProperty("--accent-ink",c.c);
-  a.innerHTML='<span class="hrow">'+glyphSvg(c.glyph,c.c,22)+'<span class="hmeta"><span class="hk"></span><span class="hc">'+when(f)+'</span></span>'+
-    '<span class="chip due">'+md(new Date((f.test<TODAY&&f.end?f.end:f.test)+"T12:00:00"))+'</span></span><span class="htitle"></span>'+
-    (f.note?'<span class="hnote"></span>':'')+
-    '<span class="go">open the guide<svg width="7" height="12" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span>';
-  a.querySelector(".hk").textContent=c.name; a.querySelector(".htitle").textContent=f.title;
-  if(f.note)a.querySelector(".hnote").textContent=f.note;
-  a.addEventListener("click",()=>recordOpen(c,{url:f.url,t:f.title}));
-  $("#feat").append(a);
-  });
-})();
-
-/* ═══════════ RECENT ═══════════ */
-function drawRecent(){
-  const list=store.get("recent",[]).map(r=>({r:r,c:byId(r.c)})).filter(x=>x.c).slice(0,3);
-  const sec=$("#recent"), box=$("#recentlist"); box.innerHTML="";
-  if(!list.length){sec.hidden=true;return}
-  sec.hidden=false;
-  list.forEach(x=>box.append(guideLink(x.c,{t:x.r.t,url:x.r.u},{glyph:true,cls:true,noNew:true})));
-}
-$("#recentclr").addEventListener("click",()=>{store.set("recent",[]);drawRecent();toast("cleared")});
-drawRecent();
-addEventListener("pageshow",drawRecent);
-
-/* ═══════════ CLASS ROWS ═══════════ */
-const OPEN=new Set(store.get("open",[]));
-function rowFor(c){
-  const n=c.units.length;
-  const a=el("a","row"); a.href="#"; a.setAttribute("role","button"); a.tabIndex=0; a.setAttribute("aria-expanded","false");
-  a.innerHTML=glyphSvg(c.glyph,c.c,21)+'<span class="rt"><span class="rn"></span></span><span class="rc">'+n+(n===1?" unit":" units")+'</span>'+ICON.chev;
-  a.querySelector(".rn").textContent=c.name;
-  const open=e=>{e.preventDefault();toggleClass(c,a)};
-  a.addEventListener("click",open);
-  a.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ")open(e)});
-  return a;
-}
-function toggleClass(c,row,silent){
-  let next=row.nextElementSibling;
-  if(!(next&&next.classList.contains("sub"))){
-    next=el("div","sub"); const inner=el("div");
-    c.units.forEach(u=>inner.append(guideLink(c,u)));
-    next.append(inner); row.after(next);
-    if(silent){next.style.transition="none";requestAnimationFrame(()=>next.style.transition="")}
-  }
-  const on=!next.classList.contains("on");
-  next.classList.toggle("on",on); row.classList.toggle("open",on); row.setAttribute("aria-expanded",String(on));
-  on?OPEN.add(c.id):OPEN.delete(c.id); store.set("open",[...OPEN]);
-}
-const shown=CLASSES.filter(c=>c.units.length);
-shown.forEach(c=>{const r=rowFor(c);$("#year").append(r);if(OPEN.has(c.id))toggleClass(c,r,true)});
-$("#cty").textContent=shown.length+" classes · "+shown.reduce((n,c)=>n+c.units.length,0)+" guides";
-
-/* ═══════════ FAST FIND ═══════════ */
-const ALIAS={apush:["apush","ush","history","us history","american history","hist"],phys:["physics","phys","kinematics","science"],
-  psych:["psych","psychology"],bus:["business","bus","biz","principles"],mor:["morality","religion","rinaldo","theology","catholic","church"],
-  pre:["precalc","precal","pre calc","math","precalculus","trig","vectors","calc","trigonometry"],lang:["lang","english"],sem:["seminar","sem"]};
-const KINDW={cram:["cram","cheat sheet","cheat","one pager","sheet","summary"],pdf:["practice","worksheet","pdf","problems","homework"],quiz:["quiz","quizzes","questions"]};
-const norm=x=>String(x).toLowerCase().replace(/[’']/g,"").replace(/[–—]/g,"-").replace(/[^a-z0-9/&\s-]/g," ")
-  .replace(/(\d)\s*\/\s*([a-z])\b/g,"$1$2").replace(/\bu\s?(\d)/g,"unit $1").replace(/\bunit(\d)/g,"unit $1").replace(/\bch(?:apters?)?\.?\s?(\d)/g,"ch $1").replace(/\s+/g," ").trim();
-const INDEX=[];
-CLASSES.forEach(c=>c.units.forEach(u=>INDEX.push({c:c,u:u,title:norm(u.t),cls:norm(c.name),abbr:norm(c.abbr||""),al:ALIAS[c.id]||[],
-  ex:(u.extras||[]).map(x=>({x:x,t:norm(x.t)})),added:u.added||""})));
-function rank(query){
-  const q=norm(query); if(!q)return {hits:[],q:q};
-  const words=q.split(" ");
-  const recent=store.get("recent",[]).map(r=>r.u);
-  const live=FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>(b.pin?1:0)-(a.pin?1:0)||a.test.localeCompare(b.test)).map(f=>f.url);
-  const classOnly=CLASSES.find(c=>norm(c.name)===q||norm(c.abbr||"")===q||(ALIAS[c.id]||[]).includes(q));
-  let kind=null; for(const k in KINDW)if(KINDW[k].some(w=>q===w||q.includes(w)))kind=k;
-  const hits=[];
-  INDEX.forEach(it=>{
-    let s=0;
-    const hasKind=kind&&it.ex.some(e=>e.x.kind===kind);
-    const hay=[it.title,it.cls,it.abbr,...it.al,...it.ex.map(e=>e.t),...(hasKind?KINDW[kind]:[])].join(" ");
-    if(it.title===q||it.cls+" "+it.title===q)s+=100;
-    if(classOnly&&it.c===classOnly)s+=60;
-    if(it.title.startsWith(q)||(it.abbr&&(it.abbr+" "+it.title).startsWith(q)))s+=45;
-    const hit=words.filter(w=>hay.includes(w)||it.al.some(a=>a.startsWith(w))||it.cls.split(" ").some(cw=>cw.startsWith(w))).length;
-    if(hit===words.length)s+=30; else if(hit)s+=8*hit; else return;
-    let pick=null;
-    if(kind){const e=it.ex.find(e=>e.x.kind===kind); if(e){s+=20;pick=e.x}}
-    if(recent.includes(it.u.url))s+=8;
-    if(live.includes(it.u.url))s+=6;
-    hits.push({it:it,s:s,pick:pick});
-  });
-  hits.sort((a,b)=>b.s-a.s||(b.it.added>a.it.added?1:b.it.added<a.it.added?-1:0)||(recent.indexOf(a.it.u.url)+1||99)-(recent.indexOf(b.it.u.url)+1||99));
-  return {hits:hits,q:q,classOnly:classOnly,kind:kind};
-}
-const find=$("#find"), findw=$("#findw"), hint=$("#hint");
-let SEL=0, LAST=[];
-function topCard(h){
-  const c=h.it.c,u=h.it.u,pick=h.pick;
-  const a=el("a","topm"); a.href=(pick||u).url; a.target="_blank"; a.rel="noopener noreferrer";
-  a.style.setProperty("--c",c.c);
-  const eyebrow=el("span","eyebrow",c.name); eyebrow.style.color=c.c;
-  const t=el("span","tt",u.t);
-  a.append(eyebrow,t);
-  if(u.extras&&u.extras.length){
-    const kinds=el("span","kinds");
-    const mk=(kind,label,url,main)=>{const k=el("a","kind"+(main?" main":""));k.href=url;k.target="_blank";k.rel="noopener noreferrer";
-      k.innerHTML=ICON[kind]+esc(label);k.addEventListener("click",e=>{e.stopPropagation();recordOpen(c,u)});return k};
-    kinds.append(mk("guide","guide",u.url,!pick));
-    u.extras.forEach(x=>kinds.append(mk(x.kind,x.t,x.url,pick===x)));
-    a.append(kinds);
-  }
-  const go=el("span","go"); go.innerHTML=(pick?"open "+esc(pick.t):"open the study guide")+' <svg width="7" height="12" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg>';
-  a.append(go);
-  a.addEventListener("click",()=>recordOpen(c,u));
-  return a;
-}
-function runSearch(){
-  const raw=find.value.trim();
-  findw.classList.toggle("has",!!raw); document.body.classList.toggle("searching",!!raw); hint.hidden=!!raw;
-  if(!raw){LAST=[];return}
-  const r=rank(raw); LAST=r.hits; SEL=0;
-  const top=$("#top"), box=$("#inlinelist"), empty=$("#empty");
-  top.innerHTML=""; box.innerHTML=""; empty.innerHTML="";
-  $("#tophd").hidden=!r.hits.length; $("#otherhd").hidden=r.hits.length<2; box.hidden=r.hits.length<2;
-  $("#tophd h3").textContent=r.hits.length&&r.hits[0].s<30?"closest match":"top match";
-  if(!r.hits.length){
-    const d=el("div","nores");
-    const p=el("p"); p.append("no guide found for “"+raw+"”."); d.append(p);
-    const sug=el("div","sugs");
-    CLASSES.filter(c=>c.units.length).forEach(c=>{const b=el("button","eg",(c.abbr||c.name).toLowerCase());b.type="button";b.dataset.q=(c.abbr||c.name).toLowerCase();sug.append(b)});
-    d.append(el("span","sl","try a class:"),sug);
-    const req=el("button","reqg","can’t find it? request a guide"); req.type="button"; req.addEventListener("click",()=>{if(window.openFeedback)window.openFeedback("rq")});
-    d.append(req); empty.append(d); $("#inlinen").textContent=""; return;
-  }
-  $("#inlinen").textContent=r.hits.length+(r.hits.length===1?" guide":" guides");
-  top.append(topCard(r.hits[0]));
-  r.hits.slice(1,8).forEach(h=>box.append(guideLink(h.it.c,h.it.u,{glyph:true,cls:true,compact:true})));
-}
-function openTop(){const h=LAST[SEL]; if(!h)return; recordOpen(h.it.c,h.it.u); window.open((h.pick||h.it.u).url,"_blank","noopener")}
-find.addEventListener("input",runSearch);
-findw.addEventListener("submit",e=>{e.preventDefault();openTop()});
-$("#findclr").addEventListener("click",()=>{find.value="";runSearch();find.focus()});
-find.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){find.value="";runSearch();find.blur();return}
-  if(!LAST.length)return;
-  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();SEL=(SEL+(e.key==="ArrowDown"?1:-1)+LAST.length)%LAST.length;
-    const rows=[$("#top .topm"),...$("#inlinelist").querySelectorAll(".unit")];rows.forEach((r,i)=>r&&r.classList.toggle("sel",i===SEL));}
-});
-document.addEventListener("click",e=>{const b=e.target.closest(".eg"); if(!b)return; find.value=b.dataset.q; runSearch(); find.focus()});
-function focusFind(){find.scrollIntoView({block:"center",behavior:REDUCED?"auto":"smooth"});find.focus({preventScroll:true})}
-$("#searchOpen").addEventListener("click",focusFind);
-addEventListener("keydown",e=>{
-  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();focusFind()}
-  if(e.key==="/"&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){e.preventDefault();focusFind()}
-});
-
-/* ═══════════ FEEDBACK ═══════════ */
-(function(){
-  const FORM="https://docs.google.com/forms/d/e/1FAIpQLSfQ5elBMrus2Kv3GGbnliZ-VN3lhgjMbgetnqPRYhuYX1vKNA/formResponse";
-  const PICKS=["hard to find things","too long","want more classes","want flashcards","want quizzes","looks off on my phone","other…"];
-  const fb=$("#fb"), card=$("#fbcard"), pill=$("#fbpill"), form=$("#fbform"),
-        starsEl=$(".stars"), picksEl=$("#fbpicks"), note=$("#fbnote"), send=$("#fbsend");
-  let stars=0, picked=new Set(), busy=false;
-  const STAR='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>';
-  for(let i=1;i<=5;i++){
-    const b=el("button"); b.type="button"; b.innerHTML=STAR; b.dataset.v=i;
-    b.setAttribute("role","radio"); b.setAttribute("aria-label",i+(i===1?" star":" stars"));
-    b.onclick=()=>{stars=i; paint(); check()};
-    starsEl.append(b);
-  }
-  PICKS.forEach(p=>{
-    const b=el("button","pick",p); b.type="button"; b.setAttribute("aria-pressed","false");
-    b.onclick=()=>{
-      const on=!picked.has(p); on?picked.add(p):picked.delete(p);
-      b.setAttribute("aria-pressed",String(on));
-      if(p==="other…"){note.classList.toggle("show",on); if(on)note.focus()}
-      check();
-    };
-    picksEl.append(b);
-  });
-  function paint(){
-    [...starsEl.children].forEach((b,i)=>{
-      b.classList.toggle("lit",i<stars); b.classList.toggle("last",i===stars-1);
-      b.setAttribute("aria-checked",String(i===stars-1));
-    });
-  }
-  function check(){ send.disabled=busy||!(stars||picked.size||note.value.trim()) }
-  note.addEventListener("input",check);
-  function open(tab){
-    fb.classList.add("on"); pill.setAttribute("aria-expanded","true"); card.setAttribute("aria-hidden","false");
-    if(tab)setTab(tab); else requestAnimationFrame(fThumb);
-    setTimeout(()=>card.focus({preventScroll:true}),60);
-  }
-  function close(){
-    fb.classList.remove("on"); pill.setAttribute("aria-expanded","false"); card.setAttribute("aria-hidden","true");
-    pill.focus({preventScroll:true});
-  }
-  /* tabs: feedback | request a guide */
-  const fseg=$("#fbseg"), fthumb=fseg.querySelector(".thumb"), fbtns=[...fseg.querySelectorAll("button")];
-  function fThumb(){const on=fseg.querySelector('button[aria-pressed="true"]')||fbtns[0];fthumb.style.left=on.offsetLeft+"px";fthumb.style.width=on.offsetWidth+"px"}
-  function setTab(t){
-    fbtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.tab===t)));
-    fb.classList.toggle("rq",t==="rq"); requestAnimationFrame(fThumb);
-  }
-  fbtns.forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
-  addEventListener("resize",fThumb);
-  pill.onclick=()=>open(); window.openFeedback=t=>open(t);
-  $("#fbclose").onclick=()=>close();
-  const q=new URLSearchParams(location.search);
-  if(location.hash==="#request"||q.has("request"))setTimeout(()=>open("rq"),900);
-  else if(location.hash==="#feedback"||q.has("feedback"))setTimeout(()=>open(),900);
-  addEventListener("keydown",e=>{ if(e.key==="Escape"&&fb.classList.contains("on"))close() });
-  addEventListener("pointerdown",e=>{ if(fb.classList.contains("on")&&!fb.contains(e.target))close() });
-  form.addEventListener("submit",async e=>{
-    e.preventDefault(); if(busy)return;
-    if(form.botcheck.value)return;
-    busy=true; send.textContent="sending…"; check();
-    const picks=[...picked].filter(p=>p!=="other…");
-    const data=new URLSearchParams();
-    data.set("entry.576362932",stars?stars+"/5":"none");
-    data.set("entry.1638729526",picks.length?picks.join(", "):"none");
-    data.set("entry.1486272230",(note.value.trim()||"none")+"\npage: "+location.pathname);
-    try{
-      await fetch(FORM,{method:"POST",mode:"no-cors",body:data});
-      fb.classList.add("sent");
-      setTimeout(()=>{close(); setTimeout(()=>{
-        fb.classList.remove("sent"); stars=0; picked.clear(); note.value=""; note.classList.remove("show");
-        paint(); [...picksEl.children].forEach(b=>b.setAttribute("aria-pressed","false"));
-        busy=false; send.textContent="send"; check();
-      },400)},1800);
-    }catch(_){
-      busy=false; send.textContent="try again"; check();
-    }
-  });
-
-  /* request a guide */
-  const rq=$("#rqform"), rqsend=$("#rqsend"), rqodds=$("#rqodds"), wantEl=$("#rqwant"), cls=rq.cls;
-  const WANTS=["cram sheet","summary of my notes","practice questions","full guide"];
-  let want=new Set(), rbusy=false;
-  CLASSES.forEach(c=>{const o=el("option",null,c.name);o.value=c.name;o.dataset.mine="1";cls.append(o)});
-  const oth=el("option",null,"a class i'm not in"); oth.value="other"; cls.append(oth);
-  WANTS.forEach(w=>{
-    const b=el("button","pick",w); b.type="button"; b.setAttribute("aria-pressed","false");
-    b.onclick=()=>{const on=!want.has(w); on?want.add(w):want.delete(w); b.setAttribute("aria-pressed",String(on)); rcheck()};
-    wantEl.append(b);
-  });
-  function mine(){return cls.value&&cls.value!=="other"}
-  const clsname=$("#rqclsname");
-  function clsLabel(){return mine()?cls.value:rq.clsname.value.trim()+" (not my class)"}
-  function odds(){
-    if(!cls.value){rqodds.textContent="";rqodds.classList.remove("no");return}
-    rqodds.classList.toggle("no",!mine());
-    rqodds.textContent=mine()
-      ?"i'm in this class, so decent odds."
-      :"not my class. from your notes i can do a cram sheet or a summary, not a full guide.";
-    if(!mine()&&want.has("full guide")){want.delete("full guide");[...wantEl.children].forEach(b=>{if(b.textContent==="full guide")b.setAttribute("aria-pressed","false")})}
-    [...wantEl.children].forEach(b=>{if(b.textContent==="full guide")b.disabled=!mine()});
-  }
-  cls.addEventListener("change",()=>{cls.classList.toggle("ph",!cls.value);clsname.hidden=cls.value!=="other";if(!clsname.hidden)clsname.focus();odds();rcheck()});
-  function rcheck(){
-    const ok=rq.name.value.trim()&&rq.ig.value.trim()&&cls.value&&(mine()||rq.clsname.value.trim())&&rq.teacher.value.trim()&&rq.lesson.value.trim()&&want.size;
-    rqsend.disabled=rbusy||!ok;
-  }
-  rq.addEventListener("input",rcheck);
-  rq.addEventListener("submit",async e=>{
-    e.preventDefault(); if(rbusy)return;
-    if(rq.botcheck.value)return;
-    rbusy=true; rqsend.textContent="sending…"; rcheck();
-    const data=new URLSearchParams();
-    data.set("entry.576362932","request");
-    data.set("entry.1638729526","guide request · "+clsLabel());
-    data.set("entry.1486272230",["name: "+rq.name.value.trim(),"ig: @"+rq.ig.value.trim().replace(/^@/,""),"class: "+clsLabel(),
-      "teacher: "+rq.teacher.value.trim(),"unit: "+rq.lesson.value.trim(),"wants: "+[...want].join(", "),"page: "+location.pathname].join("\n"));
-    try{
-      await fetch(FORM,{method:"POST",mode:"no-cors",body:data});
-      fb.classList.add("sent");
-    }catch(_){
-      rbusy=false; rqsend.textContent="try again"; rcheck();
-    }
-  });
-  /* when the card closes after a request, reset it */
-  const _close=close;
-  close=function(){
-    _close();
-    if(fb.classList.contains("sent")&&fb.classList.contains("rq")){
-      setTimeout(()=>{fb.classList.remove("sent"); rq.reset(); cls.classList.add("ph"); clsname.hidden=true; want.clear();
-        [...wantEl.children].forEach(b=>b.setAttribute("aria-pressed","false")); odds(); rbusy=false; rqsend.textContent="next: send files"; rcheck(); setTab("fb")},400);
-    }
-  };
-})();
-
-
-/* ═══════════ SCROLL ═══════════ */
-$(".bar h1").classList.add("show");
-(function(){const bar=$("#bar");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};
-  addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
-
-</script>
+<script src="/site-data.js?v=5"></script>
+<script src="/site.js?v=5"></script>
 <noscript>
   <h2>every guide</h2>
+  <p>class pages: <a href="/apush">AP US History</a>, <a href="/physics">AP Physics 1</a>, <a href="/psych">AP Psychology</a>, <a href="/business">Business Principles</a>, <a href="/morality">Catholic Morality and Social Justice</a>, <a href="/precalc">Honors Precalculus BC</a>, <a href="/lang">AP English Language and Composition</a>, <a href="/seminar">AP Seminar</a></p>
   <h3>AP US History</h3>
   <ul>
     <li><a href="/apush-unit-2b">Unit 2/B</a> &middot; Guide</li>
@@ -1082,7 +183,7 @@ $(".bar h1").classList.add("show");
     <li><a href="/bus-unit-1">Unit 1</a> &middot; Guide</li>
     <li><a href="/bus-unit-1-cram">Unit 1 cram sheet</a> &middot; Cram sheet</li>
   </ul>
-  <h3>Catholic Morality (Rinaldo)</h3>
+  <h3>Catholic Morality and Social Justice</h3>
   <ul>
     <li><a href="/morality-ch3">Ch 3</a> &middot; Guide</li>
     <li><a href="/morality-ch3-jeopardy">Ch 3 jeopardy</a> &middot; Game</li>

@@ -8,38 +8,52 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 
 ## Layout
 
-- `index.html` — the entire site. Design, data, search, and theming all live
-  in this one file.
-- `vercel.json` — security headers and `cleanUrls`. A guide at `foo.html` is
+- `index.html`: the homepage shell: header, search field, up next, recently
+  opened, the class catalog, the feedback card, and the hand-maintained
+  `<noscript>` list of every guide.
+- `site-data.js`: the site's data: `FEATURES` (upcoming tests) and `CLASSES`
+  (the eight classes, each with its welcome-page URL, blurb and units). This
+  is the file to edit when a guide is added.
+- `site.js`: renders the homepage and the class welcome pages from that data
+  (search, up next, catalog, class covers, theme, share, feedback).
+- `site.css`: styles for the homepage and the class welcome pages. Its tokens
+  match the guide template's; change both together.
+- Class welcome pages, one per class: `apush.html`, `physics.html`,
+  `psych.html`, `business.html`, `morality.html`, `precalc.html`, `lang.html`,
+  `seminar.html` (served at `/apush`, `/physics`, …). Each is a thin shell with
+  `<body data-course="<id>">`; everything on it comes from `CLASSES`, so a new
+  guide shows up there without touching the page.
+- `vercel.json`: security headers and `cleanUrls`. A guide at `foo.html` is
   served at `/foo`, so links never carry the extension.
-- `404.html` — any path that does not exist.
-- `og-image.png` — link preview card. Its URL in `index.html` is absolute and
+- `404.html`: any path that does not exist.
+- `og-image.png`: link preview card. Its URL in `index.html` is absolute and
   points at valentinoguides.com.
-- `apple-touch-icon.png`, `favicon.svg` — home screen and tab icons. The mark is a
+- `apple-touch-icon.png`, `favicon.svg`: home screen and tab icons. The mark is a
   bold "v" with a terracotta full stop; the "v" is an outline traced from
   Bricolage Grotesque (weight 700), so it needs no font to render. Icons and
   fonts are cached for a week, so when one changes, bump the `?v=` on its
   `<link>` / `og:image` URL in `index.html` or browsers keep the old one.
-- `fonts/` — Bricolage Grotesque (display, variable 200–800 with an optical
-  size axis) and Figtree (text, variable 300–900, plus italic), self-hosted
-  woff2 (latin subset from Google Fonts). The CSP allows `font-src 'self'`
-  only; never link Google Fonts.
+- `fonts/`: Figtree (variable 300–900, plus italic) is the only face the
+  homepage, class pages and guides use. Bricolage Grotesque and the others stay
+  for the pages that keep their own layouts (cram sheets, jeopardy, 404).
+  Self-hosted woff2 (latin subset). The CSP allows `font-src 'self'` only;
+  never link Google Fonts.
 - Individual guides: one `.html` file per guide at the repo root
   (`psych-unit-0.html`, `precalc-vectors.html`, …). Practice tests ship as
   `.pdf` beside them.
-- `template/guide-template.html` — the guide template on the current design
+- `template/guide-template.html`: the guide template on the current design
   system (same tokens, type and components as the homepage). Copy it, edit
   the `GUIDE` object, save as `<class>-<topic>.html` at the root. Listed in
   `.vercelignore`, so it is in the repo but not on the site. The `glass-guides`
   skill (its name is historical) is the how-to.
-- `_staging/` — untracked scratch. Never commit it.
+- `_staging/`: untracked scratch. Never commit it.
 
 ## Adding a guide
 
 1. Drop the guide's HTML file at the repo root. Name it
    `<class>-<topic>.html`, lowercase, hyphens only. That filename becomes the
    URL: `precalc-vectors.html` → `/precalc-vectors`.
-2. Add a unit to the class's `units` array in `CLASSES` in `index.html`,
+2. Add a unit to the class's `units` array in `CLASSES` in `site-data.js`,
    newest first:
 
    ```js
@@ -49,8 +63,10 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
    ```
 
    One unit = one row. `extras` are optional chips on that row; `kind` is
-   `cram`, `pdf` or `quiz`. `added` drives the "new" tag for seven days. A class
-   with no units is kept for its color and glyph but does not show.
+   `cram`, `pdf` or `quiz`. `added` drives the "new" tag for seven days. The
+   homepage catalog and the class's welcome page pick the unit up on their own.
+   A class with no units keeps its welcome page with an honest "no guides here
+   yet" state; never invent a guide or a class to fill it.
 3. **Add the same link to the `<noscript>` block near the bottom of
    `index.html`.** That list is hand-maintained, not generated from `CLASSES`.
    Forgetting it is the easy mistake: the site looks fine, but the no-JS and
@@ -62,7 +78,7 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 
 ## Featuring an upcoming test
 
-Add to the `FEATURES` array at the top of the script, in test-date order:
+Add to the `FEATURES` array in `site-data.js`, in test-date order:
 
 ```js
 { classId: "pre", title: "Vectors & trig equations study guide", url: "/precalc-vectors-icf-trig-eq",
@@ -76,57 +92,59 @@ drop off on their own; leave them in the array.
 `pin: true` (optional) puts that entry first in "up next" while it is live,
 ahead of earlier-dated entries; it still drops off after its date.
 
-## Design system: "indigo & kinari" (September 2026)
+## Design system: revision 2, warm paper (October 1, 2026)
 
-- Type: Bricolage Grotesque for display (`--display`, weight `--w-d` 600,
-  tracking `--ls-d` -.025em, optical sizing on) and Figtree for everything else
-  (`--sans`; 400 body, 500 row names, 600 buttons and labels). One scale: 12 /
-  13 / 15 / 16 / 20 / 26 / 42; the hero heading is `clamp(26px, 8.6vw, 34px)`
-  on phones so "what are you studying?" stays on one line down to 360px, and
-  44px from 560px up. No word-spacing hacks; Figtree spaces normally.
-  (Instrument Serif / Sans, September 11–13, was replaced the same week: too
-  thin at display size, and its kerning showed gaps in the wordmark.)
-- Color tokens live in the three blocks at the top of `index.html`: `--paper`
-  (page, warm unbleached `#EEE8DC` / `#151B20`), `--surface` / `--surface2`
-  (cards `#FBF8F1` / `#1D252A`, nested rows), `--line` / `--line2` (hairlines),
-  `--ink` / `--ink2` / `--ink3` (text `#20272B` / `#F2ECDF`, secondary
-  `#5E5A52` / `#B9B2A7`), `--accent` (indigo `#294A5E` light, `#8FB7CA` dark:
-  buttons, the mark, focus rings, selected states) with `--on-accent` (the card
-  color) as its label, `--hi` (terracotta `#944B34` / `#E18A67`: "new", the date
-  chip, the logo dot, nothing else), and one muted `--c-<id>` per class. Every
-  text token is checked at 4.5:1 or better on the surface it sits on. Change all
-  three blocks together. The source values are the "Indigo & Kinari" palette in
-  `claude/perplexity-ui-research-2026-09-13.md` in the Claude project.
-- Corners: cards 14px, buttons 10px, chips 8px. No ambient glow, no backdrop
-  blur, no gloss. Surfaces are flat with a 1px line; shadows only on the search
-  results and the feedback card.
-- Class marks are line icons in the class color, no tiles.
-- Buttons are the accent with a card-colored label. The class color only appears
-  in labels, icons, the date chip and the top-match rail.
+- Approved from the private design demo (`_staging/design-demo`, revision 2):
+  warm paper, Figtree throughout (no serif titles), original illustrated class
+  covers, and soft directional depth. It replaced "indigo & kinari"
+  (September 2026), whose Bricolage display face and narrow centered column read
+  as generic.
+- Type: Figtree only. Headings 760–780 with tight tracking (-.03 to -.045em);
+  body 400–500; labels and buttons 600–700. Titles keep their own capitals; only
+  small interface chrome is lowercase.
+- Tokens (same names in `site.css` and the guide template; change both):
+  `--paper` `#F4F1E9` / `#141A17`, `--surface` `#FFFDF8` / `#1C2420`,
+  `--surface2`, `--line` / `--line2`, `--ink` `#283832` / `#EEEDE5`,
+  `--ink2` / `--ink3` (secondary text, 5:1 or better), `--accent` green
+  `#375E4D` / `#9CC9AE` (buttons, focus, the mark) with `--on-accent`, `--hi`
+  terracotta `#9C5338` / `#E39B78` ("new", date chips, the logo dot), `--good`,
+  `--bad`, one `--c-<id>` per class (4.5:1 or better on every surface) and a
+  `--t-<id>` tint for the class page hero. Shadows are `--sh1` / `--sh2`: a
+  small vertical offset, never a glow.
+- Class covers: eight original layered SVG illustrations drawn in code (rose
+  curve, capitol, brain, projectile, bar chart, arches and scales, page and pen,
+  speech bubbles). `art()` in `site.js` and `coverArt()` in the guide template
+  hold the same drawings; change both together.
+- Density: no oversized hero, no empty columns. The homepage puts search, up
+  next and the catalog in the first two screens; guide headers are a compact
+  title block with the class cover beside it on desktop.
+- Corners: cards 16px, buttons 11px, chips 9px. Tap targets at least 40px.
 
 ## Homepage features
 
 - Wordmark: the header reads "valentino guides" (lowercase chrome) next to the
   mark; the tab title and `og:title` are "Valentino guides". Matches the
   domain; keep them in sync if it is ever renamed.
-- The page opens on "what are you studying?" and the search field (Fast Find).
+- The page opens on "What are you studying today?" and the search field (Fast Find).
   Typing replaces the page with one **top match** card (class, display title,
   chips for extras, an open button) and compact **other matches**. Enter or the
   iPhone keyboard's Search key opens the top match; arrow keys move the
   selection. Ranking is a small weighted score in `rank()`: exact title 100,
   class-only query 60, title prefix 45, every word 30, a kind word (cram,
   practice, quiz) that the unit actually has 20, recently opened 8, up next 6.
-  `ALIAS` holds the shorthand students type (`apush`, `rinaldo`, `math`,
-  `trig`); add to it when a new class arrives. `norm()` folds `u1b`, `unit1`
+  `ALIAS` holds the shorthand students type (`apush`, `math`, `trig`,
+  `polar`); add to it when a new class arrives. `norm()` folds `u1b`, `unit1`
   and `1/b` together. A partial-only result is labelled "closest match"; no
   result shows class chips and a "request a guide" link into the feedback card.
 - `/` or ⌘K focus the field.
-- "Recently opened" and remembered open classes live in the viewer's
-  localStorage. Nothing leaves the browser.
+- "Recently opened" and the theme choice live in the viewer's localStorage.
+  Nothing leaves the browser.
 - Share on every unit uses the native share sheet, or copies the link.
-- Class names may carry the teacher's surname in parentheses when a class has
-  several sections at school, e.g. `Catholic Morality (Rinaldo)`. That is the
-  only place a teacher is named.
+- The catalog shows all eight classes as illustrated cards, guides first and
+  the classes still waiting for one last; each opens the class welcome page
+  (hero with cover, what is on the page, up next for that class, every unit
+  with its extras). Class names are course names only: no teacher names
+  anywhere on the site, including the search aliases in `site.js`.
 
 ## Guide pages themselves
 
@@ -168,11 +186,26 @@ renders the whole page; the CSS and the machinery below the object are never
 edited per guide. If a guide needs something the template lacks, change the
 template and rebuild every guide.
 
-Layout: the page is up to 1180px wide. On desktop and iPad (960px and up) a
-sticky "on this page" menu sits left of the sections and highlights the one
-being read; on phones the same menu is a sticky jump bar under the header.
-Every section is open (no collapsing). Practice, formulas and cram lay out in
-two columns on wide screens; the practice score is a floating pill.
+Layout (revision 2): the page is up to 1280px wide. The header is a compact
+title block: the class name (a link to the class welcome page), the test chip,
+the title, the one-line `sub`, the PDF buttons, and the class cover beside them
+on desktop (hidden on phones). On desktop and iPad (960px and up) a sticky "on
+this page" menu sits left of the sections and highlights the one being read; on
+phones the same menu is a sticky jump bar under the header. Sections are open
+blocks on the paper divided by a rule, with a numbered class-colored chip; their
+parts (tiles, tables, figures, examples, the watch box) are the only boxes, so
+nothing nests more than one level. Every section is open (no collapsing).
+Practice, problems, formulas and cram lay out in two columns on wide screens; a
+problem card opens to full width with its steps beside it; the practice score is
+a floating pill with retry-missed.
+
+Template changes are engine-only. After any change to the template, rebuild
+every guide by splicing the new engine around each guide's own `GUIDE` block,
+then check: every guide's engine is byte-identical to the template, every
+`GUIDE` block is byte-identical and parses to the same object as before, the
+repository validator reports ERROR 0, and the interaction suites pass
+(practice right/wrong, retry missed, reveals, search, show all answers, panes,
+keyboard, print, 390px, both themes).
 
 Header fields: `id` (class token: apush psych phys pre sem biz mor lang span
 apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`, `pdfs`
@@ -260,8 +293,9 @@ left out on purpose (not a guide).
 ## Local preview
 
 Plain `python3 -m http.server` does not honor `cleanUrls`, so extensionless
-links 404 locally while working fine in production. Either open the `.html`
-files directly, or run `vercel dev` to match production routing.
+links (every guide link and the class pages at `/apush` …) 404 locally while
+working fine in production. Run `vercel dev`, or a small static server that
+maps `/name` to `name.html`.
 
 ## Before saying it is done
 
@@ -273,8 +307,9 @@ it. Verify, then say in one clause what was checked:
   rather than reporting success early.
 - For a practice-test PDF, confirm the page count and that the first page
   renders.
-- Confirm the guide appears in both the `CLASSES` array and the `<noscript>`
-  list, since the site looks correct when only one of them is updated.
+- Confirm the guide appears in both the `CLASSES` array (`site-data.js`) and
+  the `<noscript>` list in `index.html`, since the site looks correct when only
+  one of them is updated, and that it shows on its class welcome page.
 
 If a check is not possible, say so plainly instead of implying it passed.
 

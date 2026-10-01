@@ -6,31 +6,26 @@
 <title>study guide · valentino guides</title>
 <meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEE8DC">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151B20">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F1E9">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141A17">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
-<link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template v2 (kinari, wide layout, sept 29 2026) ═══
-   Same tokens, type, corners and components as the homepage. Edit the GUIDE object below the machinery; leave the CSS alone. */
-@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque.woff2) format("woff2")}
+/* ═══ valentino guides · guide template v2, design revision 2 (warm paper, Figtree, dense layout, oct 1 2026) ═══
+   Same tokens, type and corners as the homepage (site.css). Edit the GUIDE object below the machinery; leave the CSS alone. */
 @font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
 @font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
 
-:root{--paper:#EEE8DC;--surface:#FBF8F1;--surface2:#F4EFE5;--line:#D4CABB;--line2:#B4ADA1;--ink:#20272B;--ink2:rgba(94,90,82,1);--ink3:rgba(94,90,82,.95);--accent:#294A5E;--on-accent:#FBF8F1;--hi:#944B34;--good:#4C6A48;--bad:#8E3F4C;
-  --c-apush:#8A442D;--c-psych:#873E50;--c-phys:#28636A;--c-pre:#684A78;--c-sem:#56633B;--c-biz:#75601E;--c-mor:#69513D;--c-lang:#4A4E7A;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
-  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}}
-:root[data-theme="dark"]{--paper:#151B20;--surface:#1D252A;--surface2:#192024;--line:#354149;--line2:#576064;--ink:#F2ECDF;--ink2:rgba(185,178,167,.97);--ink3:rgba(185,178,167,.77);--accent:#8FB7CA;--on-accent:#1D252A;--hi:#E18A67;--good:#9BBC8A;--bad:#DF8592;
-  --c-apush:#E08B68;--c-psych:#DB8D9C;--c-phys:#75B8B6;--c-pre:#C39ACC;--c-sem:#AAB67A;--c-biz:#CBB15F;--c-mor:#C79E7B;--c-lang:#A9AEE0;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE}
+:root{--paper:#F4F1E9;--surface:#FFFDF8;--surface2:#F1EEE6;--line:#DEDFD3;--line2:#BFC4B6;--ink:#283832;--ink2:#4E5A52;--ink3:#5C665E;--accent:#375E4D;--on-accent:#FFFDF8;--hi:#9C5338;--good:#3F6B45;--bad:#9A3F3A;--c-apush:#9A4A33;--c-psych:#5C5689;--c-phys:#2E6378;--c-pre:#1F5A55;--c-sem:#46604F;--c-biz:#7E5A22;--c-mor:#7A4A5E;--c-lang:#4A5874;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63;--tab-on:#FFFDF8;--glow:#E2E8D980;--sh1:0 1px 2px #2438230a,0 6px 18px #2438230b;--sh2:0 2px 4px #2438230d,0 14px 32px #24382317}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#141A17;--surface:#1C2420;--surface2:#18201C;--line:#2E3933;--line2:#4A5750;--ink:#EEEDE5;--ink2:#BCC3B9;--ink3:#A2AA9F;--accent:#9CC9AE;--on-accent:#14201A;--hi:#E39B78;--good:#9BC48F;--bad:#E8968F;--c-apush:#E9A07F;--c-psych:#BDB6EA;--c-phys:#8BC4D6;--c-pre:#8FD0BF;--c-sem:#A9C8B2;--c-biz:#E2C17A;--c-mor:#E6AEC3;--c-lang:#AEBBD8;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE;--tab-on:#2E3933;--glow:#22302800;--sh1:0 1px 2px #0006,0 6px 18px #0004;--sh2:0 2px 4px #0006,0 14px 32px #0005}}
+:root[data-theme="dark"]{--paper:#141A17;--surface:#1C2420;--surface2:#18201C;--line:#2E3933;--line2:#4A5750;--ink:#EEEDE5;--ink2:#BCC3B9;--ink3:#A2AA9F;--accent:#9CC9AE;--on-accent:#14201A;--hi:#E39B78;--good:#9BC48F;--bad:#E8968F;--c-apush:#E9A07F;--c-psych:#BDB6EA;--c-phys:#8BC4D6;--c-pre:#8FD0BF;--c-sem:#A9C8B2;--c-biz:#E2C17A;--c-mor:#E6AEC3;--c-lang:#AEBBD8;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE;--tab-on:#2E3933;--glow:#22302800;--sh1:0 1px 2px #0006,0 6px 18px #0004;--sh2:0 2px 4px #0006,0 14px 32px #0005}
 
 :root{
-  --display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --display:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
   --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
-  --w-d:600; --ls-d:-.025em;
+  --w-d:760; --ls-d:-.03em;
   --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t20:20px; --t26:26px;
   --r-card:14px; --r-btn:10px; --r-chip:8px;
   --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
@@ -539,9 +534,74 @@ footer .upd{display:block;margin-top:6px}
 .rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
 
+/* ═══ design revision 2 (oct 1 2026): warm paper, denser page, one level of boxes ═══ */
+:root{--maxw:1280px;--r-card:16px;--r-btn:11px;--r-chip:9px}
+body{background:radial-gradient(ellipse at 90% 0%,var(--glow),transparent 42%) no-repeat,var(--paper)}
+.mark rect{rx:8px}
+.bar h1{font-size:19px;letter-spacing:-.03em}
+.seg{border-radius:10px}.seg .thumb{background:var(--accent);border-radius:8px}.seg button{font-weight:600}
+main{padding-top:10px}
+/* header: title block left, small class cover right (hidden on phones) */
+.ghead{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:26px;align-items:center}
+.ghead > :not(.gcov){grid-column:1}
+.gcov{grid-column:2;grid-row:1 / span 4;align-self:stretch;position:relative;width:clamp(150px,17vw,220px);min-height:96px;max-height:150px;border-radius:14px;overflow:hidden;border:4px solid var(--surface);box-shadow:var(--sh2)}
+.gcov svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.gcov svg text{font-family:var(--sans)}
+.gcov:empty{display:none}
+@media (max-width:759px){.ghead{display:block}.gcov{display:none}}
+.crow{margin-bottom:6px;gap:6px 8px}
+.cname{font-size:var(--t13);font-weight:700;letter-spacing:.01em;text-transform:none}
+a.cname{border-radius:8px;padding:2px 6px 2px 2px;margin-left:-2px}
+@media (hover:hover){a.cname:hover{background:color-mix(in srgb,var(--cls) 10%,transparent)}}
+a.cname .up{font-size:11px;font-weight:600;color:var(--ink3);margin-left:2px}
+h2.title{font-family:var(--sans);font-size:clamp(27px,3.2vw,40px);font-weight:780;letter-spacing:-.035em;line-height:1.06;text-transform:none;margin:0 0 6px}
+.sub{font-size:var(--t15);line-height:1.5;margin:0 0 8px;max-width:84ch}
+.pdfs{margin:4px 0 4px}
+.pdfs .btn{min-height:40px}
+.panerow{margin:12px 0 14px}
+.panes{background:var(--surface2);border-radius:12px;padding:3px}
+.panes .thumb{top:3px;bottom:3px;left:3px;border-radius:9px;background:var(--tab-on);box-shadow:0 1px 2px #0000001f,0 3px 8px #24382317}
+.panes button{min-height:38px;font-weight:650;color:var(--ink3)}
+.panes button[aria-selected="true"]{color:var(--ink)}
+.srch input{border-radius:var(--r-btn);box-shadow:var(--sh1)}
+.sstat{margin:-6px 0 12px}
+.sh{margin:20px 0 10px}
+.sh h3{font-size:var(--t13);font-weight:750;letter-spacing:.02em;color:var(--ink)}
+@media (min-width:960px){.ol{grid-template-columns:200px minmax(0,1fr);column-gap:28px}}
+.toc a{font-weight:550}
+/* start here */
+.tops{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-bottom:16px}
+.tops .tp{padding:12px 14px 12px 46px;box-shadow:var(--sh1)}
+.tops .tp::before{border-radius:8px}
+/* sections: open blocks on the paper divided by a rule; their parts are the only boxes */
+.sec{background:none;border:0;border-radius:0;overflow:visible;margin:0;border-top:1px solid var(--line);padding:18px 0 20px}
+.sec > header{padding:0 0 12px;border:0;align-items:center;gap:12px}
+.sec .num{display:grid;place-items:center;width:32px;height:32px;min-width:0;padding:0;border-radius:10px;background:var(--cls);color:var(--surface);font-family:var(--sans);font-size:var(--t13);font-weight:780}
+.sec h3{font-family:var(--sans);font-size:clamp(19px,2vw,23px);font-weight:760;letter-spacing:-.025em}
+.sec .sd{font-size:var(--t13);margin-top:2px}
+@container (max-width:520px){.sec > header .w{margin:0 0 0 44px}}
+.sb{padding:0;gap:14px}
+@container (min-width:700px){.sb .duo{gap:22px}}
+.sb .main.solo{max-width:88ch}
+.tiles > div,.cmp > div,.flow li,.tree .nd,.callout,.fig,.tbw,.tq,.abbr,.fx,.clist > div,.ck,.tln,.so{background:var(--surface)}
+.tiles > div,.cmp > div,.tq,.fig,.tbw,.tln,.fx,.ck,.q,.prob,.cgrid .group,.rbar,.abbr{box-shadow:var(--sh1)}
+.flow li:last-child{background:color-mix(in srgb,var(--cls) 10%,var(--surface))}
+.tree > ul > li > ul > li > .nd{background:color-mix(in srgb,var(--cls) 9%,var(--surface))}
+.tbl th{background:color-mix(in srgb,var(--cls) 9%,var(--surface));color:var(--ink2)}
+.watch{background:color-mix(in srgb,var(--bad) 6%,var(--surface))}
+.exs{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.q .why,.tq .ea,.prob .reveal{background:var(--surface2)}
+.qgrid,.pgrid,.fgrid,.clist,.cgrid{gap:12px}
+/* problems: compact cards two across; a card opens to full width with its steps beside it */
+.pgrid{grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));align-items:start}
+.prob.on,.showall .prob{grid-column:1/-1}
+@container (min-width:820px){#root:not(.showall) .prob:not(.on) .pi{grid-template-columns:minmax(0,1fr)}#root:not(.showall) .prob:not(.on) .reveal{display:none}#root:not(.showall) .prob:not(.on) .qside{border-right:0}}
+footer{margin-top:30px}
+
 @media print{
   :root{--paper:#fff;--surface:#fff;--surface2:#f6f6f6;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999}
-  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg{display:none !important}
+  .bar,.toc,.panes,.tools,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg,.gcov{display:none !important}
+  body{background:#fff}.sec,.tops .tp,.tq,.fig,.tbw,.q,.prob{box-shadow:none !important}
   .ol{display:block} .rv{opacity:1 !important;transform:none !important;animation:none !important}
   .tq .ea,.prob .reveal,.q .why{display:block !important}
   .q:not(.done) .opt[data-c]::after,.tq:not(.done) .opt[data-c]::after{content:"\2713  correct answer";margin-left:auto;padding-left:10px;font-size:var(--t12);font-weight:700;white-space:nowrap}
@@ -578,10 +638,13 @@ footer .upd{display:block;margin-top:6px}
 </header>
 
 <main class="wrap" id="main">
-  <div class="crow rv" id="crow"></div>
-  <h2 class="title rv" id="title"></h2>
-  <p class="sub rv" id="sub" hidden></p>
-  <div class="pdfs rv" id="pdfs" hidden></div>
+  <div class="ghead">
+    <div class="crow rv" id="crow"></div>
+    <h2 class="title rv" id="title"></h2>
+    <p class="sub rv" id="sub" hidden></p>
+    <div class="pdfs rv" id="pdfs" hidden></div>
+    <div class="gcov rv" id="gcov" aria-hidden="true"></div>
+  </div>
   <div class="rv panerow">
     <div class="panes" id="panes" role="tablist"><span class="thumb" aria-hidden="true"></span></div>
     <div class="tools" id="tools">
@@ -2346,6 +2409,28 @@ const ICON={
  csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
 };
 const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+/* class welcome pages and covers (design revision 2): the same illustrations as the homepage catalog */
+const CLASSPAGE={apush:"/apush",psych:"/psych",phys:"/physics",pre:"/precalc",biz:"/business",mor:"/morality",lang:"/lang",sem:"/seminar"};
+function coverArt(gid){
+  const id=gid==="biz"?"bus":gid;
+  const P={pre:["#1e514d","#123632","#bce3b0","#f5b792"],apush:["#b76045","#72392e","#f8d7ae","#e99b70"],psych:["#66628b","#35364f","#d6c4fa","#f4bcad"],phys:["#356f85","#193c50","#b5e8df","#efc26e"],bus:["#c59342","#8b572b","#ffe5aa","#f5bc75"],mor:["#81586b","#493948","#edbbca","#e9bd86"],lang:["#7a879b","#414e66","#e4e9f0","#edbd9f"],sem:["#779283","#3c594b","#e1e8ba","#edc699"]};
+  if(!P[id])return "";
+  const [a,b,c,d]=P[id], n="gc";
+  const defs=`<defs><linearGradient id="${n}bg" x2="1" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient><linearGradient id="${n}pt" x2=".8" y2="1"><stop stop-color="${c}"/><stop offset="1" stop-color="${d}"/></linearGradient><filter id="${n}sh" x="-50%" y="-50%" width="200%" height="210%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#14211c" flood-opacity=".24"/></filter></defs>`;
+  const bg=`<rect width="480" height="300" fill="url(#${n}bg)"/><circle cx="415" cy="20" r="190" fill="${c}" opacity=".06"/><circle cx="30" cy="305" r="170" fill="${d}" opacity=".05"/>`;
+  const grid='<path d="M0 60H480M0 100H480M0 140H480M0 180H480M0 220H480M0 260H480M40 0V300M80 0V300M120 0V300M160 0V300M200 0V300M240 0V300M280 0V300M320 0V300M360 0V300M400 0V300M440 0V300" stroke="white" stroke-opacity=".07" fill="none"/>';
+  let s="";
+  if(id==="pre"){const pts=[];for(let t=0;t<=Math.PI*2+.01;t+=.008){const r=106*Math.cos(3*t);pts.push(`${(252+r*Math.cos(t)).toFixed(1)},${(154+r*Math.sin(t)).toFixed(1)}`)}
+    s=grid+`<g stroke="${c}" fill="none" opacity=".25"><circle cx="252" cy="154" r="115"/><circle cx="252" cy="154" r="74"/><path d="M85 154H401M252 22V288M158 61L346 247M155 247L346 60"/></g><polygon points="${pts.join(" ")}" fill="url(#${n}pt)" stroke="${c}" stroke-width="1.5" filter="url(#${n}sh)"/><circle cx="252" cy="154" r="5" fill="${b}"/><g transform="translate(38 213) rotate(-7)" filter="url(#${n}sh)"><rect width="143" height="47" rx="9" fill="#f4e7cb"/><text x="17" y="30" fill="${b}" font-size="19">r = a cos 3θ</text></g><text x="357" y="66" fill="${c}" font-size="13">90°</text>`}
+  if(id==="apush")s=`<circle cx="313" cy="122" r="105" fill="${d}" opacity=".25"/><g transform="translate(75 67) rotate(-9 130 100)" filter="url(#${n}sh)"><rect width="263" height="189" rx="8" fill="#f6dfba"/><path d="M23 146H241M36 157H228M55 133V74M91 133V74M127 133V74M163 133V74M199 133V74M39 68H218L129 23Z" fill="none" stroke="${b}" stroke-width="3"/><path d="M25 175H178" stroke="${a}" stroke-width="2"/></g><g transform="translate(316 194)"><circle r="40" fill="${d}"/><circle r="31" stroke="${b}" fill="none" opacity=".6"/><path d="M-16 0H16M0-16V16" stroke="${b}"/><circle r="8" fill="${b}"/></g><path d="M345 64L382 68M343 77L388 82M341 90L374 94" stroke="${c}" opacity=".7" stroke-width="2"/>`;
+  if(id==="psych")s=`<g opacity=".14" fill="none" stroke="${c}"><circle cx="240" cy="155" r="113"/><circle cx="240" cy="155" r="92"/><path d="M52 155H427M240 20V287"/></g><path d="M238 72C197 33 153 67 159 102C113 114 116 174 158 180C146 222 200 252 238 217C273 249 320 222 315 183C358 158 341 103 309 102C315 56 271 38 238 72Z" fill="url(#${n}pt)" filter="url(#${n}sh)"/><g fill="none" stroke="${b}" stroke-width="2.4"><path d="M238 76V214M181 97C213 83 229 119 205 137M284 94C260 91 251 115 263 130C288 126 304 151 288 168M164 150C187 136 203 163 192 178M209 204C194 186 222 158 237 166M265 199C253 181 265 172 280 180"/></g><g stroke="${d}" stroke-width="1.5"><path d="M143 114L87 85M328 149L398 134M281 223L339 265M159 190L102 237"/></g><g fill="${d}"><circle cx="87" cy="85" r="8"/><circle cx="398" cy="134" r="12"/><circle cx="339" cy="265" r="7"/><circle cx="102" cy="237" r="10"/></g>`;
+  if(id==="phys")s=grid+`<path d="M55 244H424M70 263V55" stroke="${c}" opacity=".5"/><path d="M82 222Q243 -66 406 214" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="5 7"/><path d="M236 92H294M286 86L294 92 286 98" fill="none" stroke="${d}" stroke-width="2"/>`+[[82,222,9],[126,156,13],[183,109,18],[242,92,24],[303,112,31],[355,155,36],[406,214,42]].map(([x,y,r],i)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${n}pt)" opacity="${(.25+i*.12).toFixed(2)}" filter="url(#${n}sh)"/><circle cx="${x-r*.25}" cy="${y-r*.3}" r="${r*.24}" fill="white" opacity="${(.06+i*.016).toFixed(3)}"/>`).join("");
+  if(id==="bus")s=`<g stroke="${c}" stroke-opacity=".2" fill="none"><path d="M46 201L253 280 434 187M46 161L253 240 434 147M46 121L253 200 434 107"/></g>`+[[102,166,50],[183,125,91],[267,69,147]].map(([x,y,h])=>`<g filter="url(#${n}sh)"><path d="M${x} ${y}l48-20 35 15-48 21Z" fill="#ffe7b4"/><path d="M${x} ${y}l35 16v${h}l-35-16Z" fill="${d}"/><path d="M${x+35} ${y+16}l48-21v${h}l-48 21Z" fill="${c}"/></g>`).join("")+`<path d="M98 122L205 70 322 32M310 32H322V44" stroke="${c}" stroke-width="2" fill="none"/>`;
+  if(id==="mor")s=`<path d="M127 280V124a113 113 0 0 1 226 0V280Z" fill="${c}" opacity=".15"/><path d="M152 280V127a88 88 0 0 1 176 0V280Z" fill="${c}" opacity=".12"/><path d="M177 280V130a63 63 0 0 1 126 0V280Z" fill="${d}" opacity=".19"/><g stroke="${c}" stroke-width="3" fill="none" filter="url(#${n}sh)"><path d="M240 66V235M188 239H292M151 116H329M169 119L135 179H203ZM311 119L277 179H345Z"/><path d="M135 179Q169 217 203 179M277 179Q311 217 345 179" fill="${d}" stroke="${d}"/></g><circle cx="240" cy="115" r="9" fill="${c}"/>`;
+  if(id==="lang")s=`<g transform="translate(108 51) rotate(-10 123 95)" filter="url(#${n}sh)"><rect x="12" y="13" width="249" height="199" rx="8" fill="${d}"/><rect width="249" height="199" rx="8" fill="#f4ead8"/><path d="M28 37H161" stroke="${b}" stroke-width="8"/><path d="M28 66H215M28 82H204M28 98H221M28 130H205M28 146H221M28 162H185" stroke="${b}" opacity=".65" stroke-width="2"/><path d="M24 97H155M106 147H221" stroke="${a}" stroke-width="11" opacity=".22"/><path d="M25 179Q86 158 142 179" stroke="${a}" fill="none" stroke-width="2"/></g><g transform="translate(338 95) rotate(28)"><rect width="12" height="133" rx="3" fill="${b}"/><rect width="12" height="30" rx="3" fill="${d}"/><path d="M0 133L6 151 12 133Z" fill="${c}"/></g>`;
+  if(id==="sem")s=`<g stroke="${c}" stroke-opacity=".4" stroke-width="1.5" fill="none"><path d="M91 198L167 89 319 104 376 221 223 228Z M167 89L223 228M319 104L91 198"/></g><g filter="url(#${n}sh)"><path d="M90 74h159a17 17 0 0 1 17 17v79a17 17 0 0 1-17 17h-93l-37 29v-29H90a17 17 0 0 1-17-17V91a17 17 0 0 1 17-17Z" fill="${c}"/><path d="M243 127h139a14 14 0 0 1 14 14v64a14 14 0 0 1-14 14h-17v23l-33-23h-89a14 14 0 0 1-14-14v-64a14 14 0 0 1 14-14Z" fill="${d}"/></g><path d="M105 110H223M105 126H208M105 142H180M260 158H364M260 175H349M260 192H309" stroke="${b}" stroke-opacity=".6" stroke-width="3"/>`;
+  return `<svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" focusable="false" xmlns="http://www.w3.org/2000/svg">${defs}${bg}${s}</svg>`;
+}
 const LABEL={outline:"guide",practice:"practice",problems:"problems",formulas:"formulas",cards:"cards",timeline:"timeline",checklist:"checklist",cram:"cram sheet",tables:"tables",leq:"the leq",prompts:"prompts"};
 const has=v=>Array.isArray(v)?v.length>0:!!v;
 
@@ -2360,7 +2445,10 @@ if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(o
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");
-  c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  const page=CLASSPAGE[GUIDE.id];
+  if(page){const a=el("a","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>");a.href=page;a.title="all "+GUIDE.cls+" guides";c.appendChild(a)}
+  else c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  $("#gcov").innerHTML=coverArt(GUIDE.id);
   if(GUIDE.test){
     const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
     const now=new Date(); now.setHours(0,0,0,0);

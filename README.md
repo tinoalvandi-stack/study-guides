@@ -1,6 +1,6 @@
 # Study Guides
 
-Valentino's study-guides site. Replaces the old Linktree. One static page, no
+Valentino's study-guides site. Replaces the old Linktree. Static pages, no
 build step, no backend, no third-party scripts. There is nothing to breach
 because nothing runs server-side and nothing loads from anywhere else. Visitor
 counts come from Vercel Web Analytics: cookieless, anonymous, served from this
@@ -8,44 +8,37 @@ domain.
 
 ## Files
 
-- `index.html`: the whole site. Design, data, and search live here.
+- `index.html`: the homepage shell (search, up next, the class catalog,
+  feedback, and a `<noscript>` list of every guide).
+- `site-data.js`: the data. `CLASSES` (the eight classes, their welcome pages
+  and units) and `FEATURES` (upcoming tests).
+- `site.js` / `site.css`: render and style the homepage and the class pages.
+- `apush.html`, `physics.html`, `psych.html`, `business.html`, `morality.html`,
+  `precalc.html`, `lang.html`, `seminar.html`: one welcome page per class.
 - `vercel.json`: security headers plus clean URLs. Vercel serves the rest as-is.
 - `404.html`: served for any path that does not exist.
-- `og-image.png`: the preview card iMessage and social apps show when the link
-     is shared. Its URL in `index.html` is absolute and points at valentinoguides.com;
-  if the site ends up on a different domain, update the two `og:` URLs in the
-  head.
-- `apple-touch-icon.png`: the icon when someone saves the site to an iPhone
-  home screen.
+- `og-image.png`, `apple-touch-icon.png`, `favicon.svg`: share card and icons.
 - One `.html` file per guide at the repo root (`psych-unit-0.html`,
   `morality-ch1-2.html`, ...). The filename is the URL: `/psych-unit-0`.
   Practice-test PDFs sit beside them.
 - `template/guide-template.html`: the starting file for a new guide. Copy it,
-  fill in the `GUIDE` object at the top of the script, save at the root. It is
-  listed in `.vercelignore`, so it is not served.
+  fill in the `GUIDE` object, save at the root. It is listed in
+  `.vercelignore`, so it is not served.
 
 ## Adding a guide
 
 1. Drop the guide's HTML file at the repo root, named `<class>-<topic>.html`.
-2. In `index.html`, find the `CLASSES` array (marked `DATA` in a comment) and
-   add one entry to the right class, newest first:
-
-   ```js
-   { t: "Unit 2", tag: "Guide", url: "/precalc-unit-2" }
-   ```
-
-   `tag` is one of `Guide`, `Flashcards`, `Quiz`, `Cram sheet`. Empty classes
-   show "Soon" automatically once their array has an entry.
+2. In `site-data.js`, add one unit to the right class in `CLASSES`, newest
+   first: `{ t: "Unit 2", url: "/precalc-unit-2", added: "2026-10-05" }`.
+   The homepage catalog and the class page update on their own.
 3. Add the same link to the `<noscript>` list near the bottom of `index.html`.
 4. Commit. Vercel redeploys on its own in under a minute.
 
 ## New test coming up
 
-Add an entry to the `FEATURES` array at the top of the script, in test-date
-order: `classId`, `title`, `url`, and `test` as `YYYY-MM-DD`. Up next shows a
-full card for every test that has not passed, soonest first, and each drops off
-on its own the day after, so several can be queued at once. The date chip hides itself the same
-way. Leave the rest alone.
+Add an entry to the `FEATURES` array in `site-data.js`, in test-date order:
+`classId`, `title`, `url`, and `test` as `YYYY-MM-DD`. Up next shows a card for
+every test that has not passed, soonest first, and each drops off on its own.
 
 ## Rules baked in
 
@@ -56,5 +49,5 @@ way. Leave the rest alone.
 
 ## Local preview
 
-Open `index.html` in a browser, or `python3 -m http.server` in the repo folder
-and visit `localhost:8000`.
+`vercel dev`, or any static server that maps `/name` to `name.html` (the site
+uses clean URLs).
