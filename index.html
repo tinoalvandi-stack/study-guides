@@ -619,7 +619,8 @@ const FEATURES=[
   {classId:"phys",  title:"Advanced kinematics study guide", url:"/physics-advanced-kinematics", test:"2026-09-28", note:"50 minutes: sketch a graph, two problems, one derivation. Acceleration, kinematic equations, free fall, projectiles."},
   {classId:"psych", title:"Unit 1 exam study guide", url:"/psych-unit-1", test:"2026-09-29", end:"2026-10-01", note:"The full unit 1 exam: an AAQ plus 50 MCQs on modules 1.1 to 1.6, with unit 0 mixed in."},
   {classId:"bus",   title:"LPs 1-5 to 1-10 study guide", url:"/bus-unit-1-5-1-10", test:"2026-10-01", end:"2026-10-02", note:"High Exam #2: information management, operations and gross profit, business models, competition, trends, ownership types."},
-  {classId:"pre",   title:"Polar unit test study guide", url:"/precalc-polar", test:"2026-10-01", note:"The whole unit: complex numbers, trig form, the theorems, polar equations and graphs. 25 problems, 2 with a calculator."}
+  {classId:"pre",   title:"Polar unit test study guide", url:"/precalc-polar", test:"2026-10-01", note:"The whole unit: complex numbers, trig form, the theorems, polar equations and graphs. 25 problems, 2 with a calculator."},
+  {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."}
 ];
 /* CLASSES: one entry per unit, newest first. A unit is the guide plus optional extras
    (kind: "cram" | "pdf" | "quiz"). added = the day it went up; "new" shows for 7 days.
@@ -627,6 +628,7 @@ const FEATURES=[
    guides to the <noscript> list at the bottom. */
 const CLASSES=[
   {id:"apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", units:[
+     {t:"Unit 2/B", url:"/apush-unit-2b", added:"2026-10-01"},
      {t:"Unit 2/A", url:"/apush-unit-2a", added:"2026-09-21"},
      {t:"Unit 1 LEQ", url:"/apush-unit-1-leq", added:"2026-09-13"},
      {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
@@ -1057,6 +1059,7 @@ $(".bar h1").classList.add("show");
   <h2>every guide</h2>
   <h3>AP US History</h3>
   <ul>
+    <li><a href="/apush-unit-2b">Unit 2/B</a> &middot; Guide</li>
     <li><a href="/apush-unit-2a">Unit 2/A</a> &middot; Guide</li>
     <li><a href="/apush-unit-1-leq">Unit 1 LEQ</a> &middot; Guide</li>
     <li><a href="/apush-unit-1b">Unit 1/B</a> &middot; Guide</li>
