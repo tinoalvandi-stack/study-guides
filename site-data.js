@@ -36,7 +36,8 @@ const FEATURES=[
 const CLASSES=[
   {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY",
    blurb:"Connect the events to the argument. Study the units, then put the evidence to work.", units:[
-     {t:"Unit 2/B", url:"/apush-unit-2b", added:"2026-10-01"},
+     {t:"Unit 2/B", url:"/apush-unit-2b", added:"2026-10-01",
+      extras:[{kind:"pdf", t:"practice test", url:"/apush-unit-2b-practice.pdf"}]},
      {t:"Unit 2/A", url:"/apush-unit-2a", added:"2026-09-21"},
      {t:"Unit 1 LEQ", url:"/apush-unit-1-leq", added:"2026-09-13"},
      {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
