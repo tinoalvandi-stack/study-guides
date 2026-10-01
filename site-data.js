@@ -76,8 +76,7 @@ const CLASSES=[
    blurb:"Find the pattern, draw the connection. Complex numbers, trig form, polar graphs and vectors.", units:[
      {t:"Polar unit test", url:"/precalc-polar", added:"2026-09-29", extras:[
         {kind:"pdf", t:"practice a", url:"/precalc-polar-practice-a.pdf"},
-        {kind:"pdf", t:"practice b", url:"/precalc-polar-practice-b.pdf"},
-        {kind:"pdf", t:"review odds worked", url:"/precalc-polar-review-odds.pdf"}]},
+        {kind:"pdf", t:"practice b", url:"/precalc-polar-practice-b.pdf"}]},
      {t:"Product, quotient & De Moivre's theorems", url:"/precalc-theorems", added:"2026-09-23", extras:[
         {kind:"pdf", t:"practice a", url:"/precalc-theorems-practice-a.pdf"},
         {kind:"pdf", t:"practice b", url:"/precalc-theorems-practice-b.pdf"},
