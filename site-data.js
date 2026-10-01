@@ -69,7 +69,7 @@ const CLASSES=[
      {t:"Unit 1", url:"/bus-unit-1", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/bus-unit-1-cram"}]}]},
   {id:"mor", page:"/morality", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality and Social Justice", abbr:"Morality", short:"MORALITY",
    blurb:"Think through moral choices, human dignity, and the responsibility we share with one another.", units:[
-     {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"quiz", t:"jeopardy", url:"/morality-ch3-jeopardy"}]},
+     {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"practice quiz A", url:"/morality-ch3-practice-a.pdf"},{kind:"quiz", t:"jeopardy", url:"/morality-ch3-jeopardy"}]},
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS",
    blurb:"Find the pattern, draw the connection. Complex numbers, trig form, polar graphs and vectors.", units:[
