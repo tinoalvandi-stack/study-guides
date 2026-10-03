@@ -45,7 +45,7 @@ a{color:inherit;text-decoration:none}
 .brand small{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink3);margin-top:3px}
 .seg{position:relative;display:flex;border:1px solid var(--line);border-radius:10px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
 .seg button{position:relative;z-index:2;padding:5px 10px;border-radius:8px;font-size:var(--t12);font-weight:600;color:var(--ink3);text-transform:lowercase;transition:color .2s var(--ease)}
-.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg button[aria-pressed="true"],.seg button[aria-selected="true"]{color:var(--on-accent)}
 .seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--accent);transition:left .36s var(--spring),width .36s var(--spring)}
 .sbtn{display:flex;align-items:center;gap:7px;flex:none;height:34px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);font-size:var(--t13);font-weight:600}
 @media (hover:hover){.sbtn:hover{color:var(--ink);border-color:var(--line2)}}
@@ -282,10 +282,27 @@ footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(-
 .fbf{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .fbf small{font-size:11px;color:var(--ink3);text-transform:lowercase;line-height:1.35}
 #fbdone{display:none;text-align:center;padding:8px 0 4px;font-size:var(--t20);font-weight:760;letter-spacing:-.025em;text-transform:lowercase}
-#fbdone span{display:block;font-size:var(--t12);font-weight:500;color:var(--ink3);margin-top:2px}
+#fbdone span{display:block;font-size:var(--t12);font-weight:500;color:var(--ink3);margin-top:2px;text-wrap:balance}
+#fb.sent .fbh{justify-content:flex-end}
 #fb.sent #fbform{display:none}
 #fb.sent #fbdone{display:block}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+/* status line: sending / sent are announced only (the done panel shows the words); a failure is shown in place */
+.fbstat{margin:9px 0 0;font-size:var(--t12);line-height:1.45;color:var(--ink2)}
+.fbstat:empty{display:none}
+.fbstat.err{color:var(--bad);font-weight:600}
+.fbstat.quiet{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#fbcard [role="tab"]:focus-visible,.stars button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+/* comfortable tap targets on phones and touch screens (44px, Apple's minimum) */
+@media (max-width:719px),(pointer:coarse){
+  .seg button{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+  .fbseg button{padding:0 12px}
+  .fbx{width:44px;height:44px}
+  .stars{gap:4px}
+  .stars button{width:44px;height:44px}
+}
+/* narrowest phones: the 44px theme switch needs the room, so the wordmark text steps aside (the link keeps its label) */
+@media (max-width:359px){.brand > span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 
 @media (prefers-reduced-motion:reduce){
   .rise{opacity:1;transform:none;animation:none}

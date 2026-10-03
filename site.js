@@ -285,6 +285,22 @@ if(!COURSE){
     const fb=$("#fb"), card=$("#fbcard"), pill=$("#fbpill"), form=$("#fbform"),
           starsEl=$(".stars"), picksEl=$("#fbpicks"), note=$("#fbnote"), send=$("#fbsend");
     let stars=0, picked=new Set(), busy=false;
+    /* status line (role=status): sending, sent, and why a send failed. Google Forms sends no CORS headers,
+       so a no-cors POST only proves the entry left the browser, never that the form saved it; the wording says exactly that. */
+    const stat=$("#fbstatus");
+    const say=(msg,kind)=>{stat.textContent=msg||"";stat.className="fbstat"+(kind?" "+kind:"")};
+    const TIMEOUT=15000;
+    const FAIL={offline:"you're offline, so nothing was sent. what you wrote is still here; try again once you're connected.",
+      timeout:"no answer after 15 seconds, so it may not have gone through. what you wrote is still here; try again.",
+      network:"couldn't send. check your connection and try again. what you wrote is still here."};
+    async function post(data){
+      if(navigator.onLine===false){const x=new Error("offline");x.kind="offline";throw x}
+      const ac=typeof AbortController==="function"?new AbortController():null;
+      const t=ac?setTimeout(()=>ac.abort(),TIMEOUT):0;
+      try{await fetch(FORM,{method:"POST",mode:"no-cors",body:data,signal:ac?ac.signal:undefined})}
+      catch(e){const x=new Error(e&&e.message||"network");x.kind=ac&&ac.signal.aborted?"timeout":"network";throw x}
+      finally{clearTimeout(t)}
+    }
     const STAR='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>';
     for(let i=1;i<=5;i++){
       const b=el("button"); b.type="button"; b.innerHTML=STAR; b.dataset.v=i;
@@ -292,6 +308,13 @@ if(!COURSE){
       b.onclick=()=>{stars=i; paint(); check()};
       starsEl.append(b);
     }
+    /* radio group keys: arrows select the next or previous rating and move focus to it (roving tabindex) */
+    starsEl.addEventListener("keydown",e=>{
+      const bs=[...starsEl.children], i=bs.indexOf(document.activeElement); if(i<0)return;
+      const k={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key]; let j=null;
+      if(k)j=(i+k+bs.length)%bs.length; else if(e.key==="Home")j=0; else if(e.key==="End")j=bs.length-1;
+      if(j===null)return; e.preventDefault(); stars=j+1; paint(); check(); bs[j].focus();
+    });
     PICKS.forEach(p=>{
       const b=el("button","pick",p); b.type="button"; b.setAttribute("aria-pressed","false");
       b.onclick=()=>{
@@ -302,11 +325,13 @@ if(!COURSE){
       };
       picksEl.append(b);
     });
-    function paint(){[...starsEl.children].forEach((b,i)=>{b.classList.toggle("lit",i<stars);b.setAttribute("aria-checked",String(i===stars-1))})}
+    function paint(){[...starsEl.children].forEach((b,i)=>{b.classList.toggle("lit",i<stars);b.setAttribute("aria-checked",String(i===stars-1));b.tabIndex=(stars?i===stars-1:i===0)?0:-1})}
+    paint();
     function check(){ send.disabled=busy||!(stars||picked.size||note.value.trim()) }
     note.addEventListener("input",check);
     function open(tab){
       fb.classList.add("on"); pill.setAttribute("aria-expanded","true"); card.setAttribute("aria-hidden","false");
+      if(!fb.classList.contains("sent"))say("");
       if(tab)setTab(tab); else requestAnimationFrame(fThumb);
       setTimeout(()=>card.focus({preventScroll:true}),60);
     }
@@ -314,10 +339,21 @@ if(!COURSE){
       fb.classList.remove("on"); pill.setAttribute("aria-expanded","false"); card.setAttribute("aria-hidden","true");
       pill.focus({preventScroll:true});
     };
-    const fseg=$("#fbseg"), fthumb=fseg.querySelector(".thumb"), fbtns=[...fseg.querySelectorAll("button")];
-    function fThumb(){const on=fseg.querySelector('button[aria-pressed="true"]')||fbtns[0];fthumb.style.left=on.offsetLeft+"px";fthumb.style.width=on.offsetWidth+"px"}
-    function setTab(t){fbtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.tab===t)));fb.classList.toggle("rq",t==="rq");requestAnimationFrame(fThumb)}
+    /* tabs: aria-selected, one tab in the Tab order, its panel shown; arrows, Home and End switch tabs */
+    const fseg=$("#fbseg"), fthumb=fseg.querySelector(".thumb"), fbtns=[...fseg.querySelectorAll('[role="tab"]')];
+    function fThumb(){const on=fseg.querySelector('[aria-selected="true"]')||fbtns[0];fthumb.style.left=on.offsetLeft+"px";fthumb.style.width=on.offsetWidth+"px"}
+    function setTab(t,focus){
+      fbtns.forEach(b=>{const on=b.dataset.tab===t;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1;
+        const p=document.getElementById(b.getAttribute("aria-controls")); if(p)p.hidden=!on; if(on&&focus)b.focus()});
+      fb.classList.toggle("rq",t==="rq"); if(!fb.classList.contains("sent"))say(""); requestAnimationFrame(fThumb);
+    }
     fbtns.forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
+    fseg.addEventListener("keydown",e=>{
+      const i=fbtns.indexOf(document.activeElement); if(i<0)return;
+      const k={ArrowRight:1,ArrowLeft:-1}[e.key]; let j=null;
+      if(k)j=(i+k+fbtns.length)%fbtns.length; else if(e.key==="Home")j=0; else if(e.key==="End")j=fbtns.length-1;
+      if(j===null)return; e.preventDefault(); setTab(fbtns[j].dataset.tab,true);
+    });
     addEventListener("resize",fThumb);
     pill.onclick=()=>open(); window.openFeedback=t=>open(t);
     $("#fbclose").onclick=()=>close();
@@ -329,21 +365,22 @@ if(!COURSE){
     form.addEventListener("submit",async e=>{
       e.preventDefault(); if(busy)return;
       if(form.botcheck.value)return;
-      busy=true; send.textContent="sending…"; check();
+      busy=true; send.textContent="sending…"; say("sending…","quiet"); check();
       const picks=[...picked].filter(p=>p!=="other…");
       const data=new URLSearchParams();
       data.set("entry.576362932",stars?stars+"/5":"none");
       data.set("entry.1638729526",picks.length?picks.join(", "):"none");
       data.set("entry.1486272230",(note.value.trim()||"none")+"\npage: "+location.pathname);
       try{
-        await fetch(FORM,{method:"POST",mode:"no-cors",body:data});
+        await post(data);
         fb.classList.add("sent");
+        say("sent. it left your browser, but this page can't confirm the form saved it.","quiet");
         setTimeout(()=>{close(); setTimeout(()=>{
           fb.classList.remove("sent"); stars=0; picked.clear(); note.value=""; note.classList.remove("show");
           paint(); [...picksEl.children].forEach(b=>b.setAttribute("aria-pressed","false"));
-          busy=false; send.textContent="send"; check();
-        },400)},1800);
-      }catch(_){busy=false; send.textContent="try again"; check()}
+          busy=false; send.textContent="send"; say(""); check();
+        },400)},3200);
+      }catch(err){busy=false; send.textContent="try again"; say(FAIL[err.kind]||FAIL.network,"err"); check()}
     });
     const rq=$("#rqform"), rqsend=$("#rqsend"), rqodds=$("#rqodds"), wantEl=$("#rqwant"), cls=rq.cls;
     const WANTS=["cram sheet","summary of my notes","practice questions","full guide"];
@@ -374,21 +411,21 @@ if(!COURSE){
     rq.addEventListener("submit",async e=>{
       e.preventDefault(); if(rbusy)return;
       if(rq.botcheck.value)return;
-      rbusy=true; rqsend.textContent="sending…"; rcheck();
+      rbusy=true; rqsend.textContent="sending…"; say("sending…","quiet"); rcheck();
       const data=new URLSearchParams();
       data.set("entry.576362932","request");
       data.set("entry.1638729526","guide request · "+clsLabel());
       data.set("entry.1486272230",["name: "+rq.name.value.trim(),"ig: @"+rq.ig.value.trim().replace(/^@/,""),"class: "+clsLabel(),
         "teacher: "+rq.teacher.value.trim(),"unit: "+rq.lesson.value.trim(),"wants: "+[...want].join(", "),"page: "+location.pathname].join("\n"));
-      try{await fetch(FORM,{method:"POST",mode:"no-cors",body:data});fb.classList.add("sent")}
-      catch(_){rbusy=false; rqsend.textContent="try again"; rcheck()}
+      try{await post(data);fb.classList.add("sent");say("sent. now dm the files. this page can't confirm the request arrived, so your dm is what confirms it.","quiet")}
+      catch(err){rbusy=false; rqsend.textContent="try again"; say(FAIL[err.kind]||FAIL.network,"err"); rcheck()}
     });
     const _close=close;
     close=function(){
       _close();
       if(fb.classList.contains("sent")&&fb.classList.contains("rq")){
         setTimeout(()=>{fb.classList.remove("sent"); rq.reset(); cls.classList.add("ph"); clsname.hidden=true; want.clear();
-          [...wantEl.children].forEach(b=>b.setAttribute("aria-pressed","false")); odds(); rbusy=false; rqsend.textContent="next: send files"; rcheck(); setTab("fb")},400);
+          [...wantEl.children].forEach(b=>b.setAttribute("aria-pressed","false")); odds(); rbusy=false; rqsend.textContent="next: send files"; rcheck(); say(""); setTab("fb")},400);
       }
     };
   })();

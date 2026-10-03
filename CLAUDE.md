@@ -142,6 +142,18 @@ ahead of earlier-dated entries; it still drops off after its date.
 - "Recently opened" and the theme choice live in the viewer's localStorage.
   Nothing leaves the browser.
 - Share on every unit uses the native share sheet, or copies the link.
+- Feedback and guide requests post to a Google Form with `fetch(..., {mode:"no-cors"})`. The
+  form sends no CORS headers, so the browser only learns the entry left, never that it was saved.
+  The success text says exactly that ("thanks, sent / this page can't confirm the form saved it";
+  "sent. now the files." for requests). Offline, a network error or no answer in 15 seconds shows a
+  plain message in the card's status line (`#fbstatus`, `role="status"`) and keeps everything the
+  reader typed. Never write "got it" or "received". The card's two tabs are real tabs
+  (`aria-selected`, roving tabindex, arrow/Home/End keys, `role="tabpanel"` panels); the rating is a
+  radio group whose arrow keys move and select.
+- Phones and touch screens get 44px tap targets for the theme switch, the guide Sections tabs, the
+  feedback tabs, close button and stars (`(max-width:719px),(pointer:coarse)`); mouse screens keep
+  the compact sizes. Below 390px (guides) and 360px (homepage, class pages) the wordmark text is
+  visually hidden so the controls fit; the mark still links home and keeps its label.
 - The catalog shows all eight classes as illustrated cards, guides first and
   the classes still waiting for one last; each opens the class welcome page
   (hero with the class name, its counts and cover, up next for that class,
