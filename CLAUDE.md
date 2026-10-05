@@ -12,15 +12,15 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
   opened, the class catalog, the feedback card, and the hand-maintained
   `<noscript>` list of every guide.
 - `site-data.js`: the site's data: `FEATURES` (upcoming tests) and `CLASSES`
-  (the eight classes, each with its welcome-page URL and units). This
-  is the file to edit when a guide is added.
+  (the eight Bishop Gorman classes plus UC Scout AP Spanish, each with its
+  welcome-page URL and units). This is the file to edit when a guide is added.
 - `site.js`: renders the homepage and the class welcome pages from that data
   (search, up next, catalog, class covers, theme, share, feedback).
 - `site.css`: styles for the homepage and the class welcome pages. Its tokens
   match the guide template's; change both together.
 - Class welcome pages, one per class: `apush.html`, `physics.html`,
   `psych.html`, `business.html`, `morality.html`, `precalc.html`, `lang.html`,
-  `seminar.html` (served at `/apush`, `/physics`, …). Each is a thin shell with
+  `seminar.html`, `spanish.html` (served at `/apush`, `/physics`, …). Each is a thin shell with
   `<body data-course="<id>">`; everything on it comes from `CLASSES`, so a new
   guide shows up there without touching the page.
 - `vercel.json`: security headers and `cleanUrls`. A guide at `foo.html` is
@@ -75,6 +75,20 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
    (the template already has it):
    `<script defer src="/_vercel/insights/script.js"></script>`
 5. Commit and push. Vercel handles the rest.
+
+## UC Scout AP Spanish (added October 4, 2026)
+
+- Not a Bishop Gorman course. Its `CLASSES` entry (`span`, page `/spanish`) carries `warn`:
+  "For UC Scout AP Spanish. This is not aligned to Bishop Gorman’s Spanish curriculum." `site.js`
+  shows `warn` on the class card, the welcome-page hero, the search top match and class-labelled rows;
+  the `<noscript>` list repeats it. Keep it on every listing of this class.
+- `spanish-ucscout-s1-midterm.html` keeps `translate="no" class="notranslate"` on `<html>` and
+  `<meta name="google" content="notranslate">` so browsers do not machine-translate the Spanish.
+  These two head lines are its only difference from the template engine; keep them when re-splicing.
+- Extras may use `kind: "audio"` for listening pages. The span cover exists only in `art()` in
+  `site.js`; the template's `coverArt()` has none, so the guide header shows no cover.
+- Everything published for it is original, unofficial practice, not endorsed by UC Scout. No dated
+  personal study schedule, exam window or course account details go on the site.
 
 ## Featuring an upcoming test
 

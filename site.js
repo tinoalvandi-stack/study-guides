@@ -17,6 +17,7 @@ const ICON={
  cram:'<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.5 3 7h3l-1 3.5L9 5H6z"/></svg>',
  pdf:'<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 1.5h4l2.5 2.5v6.5H3z"/><path d="M7 1.5V4h2.5"/></svg>',
  quiz:'<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5 5 9l4.5-6"/></svg>',
+ audio:'<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.8 4.6h2l3-2.4v7.6l-3-2.4h-2z"/><path d="M9 4.2a2.6 2.6 0 0 1 0 3.6"/></svg>',
  arrow:'<svg class="arr" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 function glyphSvg(name,color,size){
@@ -35,7 +36,7 @@ const when=f=>{const d=new Date(f.test+"T12:00:00"),now=new Date(TODAY+"T12:00:0
 let artSerial=0;
 function art(id){
   const n="art"+(++artSerial);
-  const P={pre:["#1e514d","#123632","#bce3b0","#f5b792"],apush:["#b76045","#72392e","#f8d7ae","#e99b70"],psych:["#66628b","#35364f","#d6c4fa","#f4bcad"],phys:["#356f85","#193c50","#b5e8df","#efc26e"],bus:["#c59342","#8b572b","#ffe5aa","#f5bc75"],mor:["#81586b","#493948","#edbbca","#e9bd86"],lang:["#7a879b","#414e66","#e4e9f0","#edbd9f"],sem:["#779283","#3c594b","#e1e8ba","#edc699"]};
+  const P={pre:["#1e514d","#123632","#bce3b0","#f5b792"],apush:["#b76045","#72392e","#f8d7ae","#e99b70"],psych:["#66628b","#35364f","#d6c4fa","#f4bcad"],phys:["#356f85","#193c50","#b5e8df","#efc26e"],bus:["#c59342","#8b572b","#ffe5aa","#f5bc75"],mor:["#81586b","#493948","#edbbca","#e9bd86"],lang:["#7a879b","#414e66","#e4e9f0","#edbd9f"],sem:["#779283","#3c594b","#e1e8ba","#edc699"],span:["#a2534b","#5c2826","#f6d8c9","#eaa684"]};
   const [a,b,c,d]=P[id]||P.sem;
   const defs=`<defs><linearGradient id="${n}bg" x2="1" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient><linearGradient id="${n}pt" x2=".8" y2="1"><stop stop-color="${c}"/><stop offset="1" stop-color="${d}"/></linearGradient><filter id="${n}sh" x="-50%" y="-50%" width="200%" height="210%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#14211c" flood-opacity=".24"/></filter></defs>`;
   const bg=`<rect width="480" height="300" fill="url(#${n}bg)"/><circle cx="415" cy="20" r="190" fill="${c}" opacity=".06"/><circle cx="30" cy="305" r="170" fill="${d}" opacity=".05"/>`;
@@ -50,6 +51,7 @@ function art(id){
   if(id==="mor")s=`<path d="M127 280V124a113 113 0 0 1 226 0V280Z" fill="${c}" opacity=".15"/><path d="M152 280V127a88 88 0 0 1 176 0V280Z" fill="${c}" opacity=".12"/><path d="M177 280V130a63 63 0 0 1 126 0V280Z" fill="${d}" opacity=".19"/><g stroke="${c}" stroke-width="3" fill="none" filter="url(#${n}sh)"><path d="M240 66V235M188 239H292M151 116H329M169 119L135 179H203ZM311 119L277 179H345Z"/><path d="M135 179Q169 217 203 179M277 179Q311 217 345 179" fill="${d}" stroke="${d}"/></g><circle cx="240" cy="115" r="9" fill="${c}"/>`;
   if(id==="lang")s=`<g transform="translate(108 51) rotate(-10 123 95)" filter="url(#${n}sh)"><rect x="12" y="13" width="249" height="199" rx="8" fill="${d}"/><rect width="249" height="199" rx="8" fill="#f4ead8"/><path d="M28 37H161" stroke="${b}" stroke-width="8"/><path d="M28 66H215M28 82H204M28 98H221M28 130H205M28 146H221M28 162H185" stroke="${b}" opacity=".65" stroke-width="2"/><path d="M24 97H155M106 147H221" stroke="${a}" stroke-width="11" opacity=".22"/><path d="M25 179Q86 158 142 179" stroke="${a}" fill="none" stroke-width="2"/></g><g transform="translate(338 95) rotate(28)"><rect width="12" height="133" rx="3" fill="${b}"/><rect width="12" height="30" rx="3" fill="${d}"/><path d="M0 133L6 151 12 133Z" fill="${c}"/></g>`;
   if(id==="sem")s=`<g stroke="${c}" stroke-opacity=".4" stroke-width="1.5" fill="none"><path d="M91 198L167 89 319 104 376 221 223 228Z M167 89L223 228M319 104L91 198"/></g><g filter="url(#${n}sh)"><path d="M90 74h159a17 17 0 0 1 17 17v79a17 17 0 0 1-17 17h-93l-37 29v-29H90a17 17 0 0 1-17-17V91a17 17 0 0 1 17-17Z" fill="${c}"/><path d="M243 127h139a14 14 0 0 1 14 14v64a14 14 0 0 1-14 14h-17v23l-33-23h-89a14 14 0 0 1-14-14v-64a14 14 0 0 1 14-14Z" fill="${d}"/></g><path d="M105 110H223M105 126H208M105 142H180M260 158H364M260 175H349M260 192H309" stroke="${b}" stroke-opacity=".6" stroke-width="3"/>`;
+  if(id==="span")s=`<g filter="url(#${n}sh)"><path d="M98 66h188a20 20 0 0 1 20 20v94a20 20 0 0 1-20 20H172l-46 34v-34H98a20 20 0 0 1-20-20V86a20 20 0 0 1 20-20Z" fill="url(#${n}pt)"/><path d="M290 148h92a16 16 0 0 1 16 16v54a16 16 0 0 1-16 16h-10v26l-32-26h-50a16 16 0 0 1-16-16v-54a16 16 0 0 1 16-16Z" fill="${c}"/></g><text x="192" y="164" text-anchor="middle" fill="${b}" font-size="96" font-weight="700" font-family="Figtree,system-ui,sans-serif">ñ</text><text x="336" y="207" text-anchor="middle" fill="${a}" font-size="38" font-weight="700" font-family="Figtree,system-ui,sans-serif">¿qué?</text>`;
   return `<svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">${defs}${bg}${s}</svg>`;
 }
 const cover=(c,extra)=>`<div class="cover" data-c="${c.id}"><span class="cover-code">${esc(c.short||c.name)}</span>${art(c.id)}${extra||""}</div>`;
@@ -95,6 +97,7 @@ function guideLink(c,u,opts){
   ut.append(el("span","lt",u.t));
   if(isNew(u.added)&&!opts.noNew)ut.append(el("span","new","new"));
   rt.append(ut);
+  if(opts.cls&&c.warn)rt.append(el("span","uwarn",c.warn));
   if(opts.meta)rt.append(el("span","ld",opts.meta));
   if(u.extras&&u.extras.length&&!opts.compact){
     const kinds=el("span","kinds");
@@ -168,11 +171,12 @@ if(!COURSE){
       const a=el("a","ccard rise"+(c.units.length?"":" empty")); a.href=c.page; a.style.setProperty("--i",i);
       const nx=L.find(f=>f.classId===c.id);
       a.innerHTML=cover(c,'<span class="cover-arrow">'+ICON.arrow+'</span>')+
-        '<span class="cbody"><span class="ctitle"></span><span class="cmeta"></span>'+(nx?'<span class="cnext"></span>':'')+'</span>';
+        '<span class="cbody"><span class="ctitle"></span><span class="cmeta"></span>'+(nx?'<span class="cnext"></span>':'')+(c.warn?'<span class="cwarn"></span>':'')+'</span>';
       a.querySelector(".ctitle").textContent=c.name;
       a.querySelector(".cmeta").textContent=classCounts(c);
+      if(c.warn)a.querySelector(".cwarn").textContent=c.warn;
       if(nx)a.querySelector(".cnext").textContent="test "+when(nx)+" · "+md(due(nx));
-      a.setAttribute("aria-label",c.name+", "+classCounts(c));
+      a.setAttribute("aria-label",c.name+", "+classCounts(c)+(c.warn?". "+c.warn:""));
       $("#catalog").append(a);
     });
     $("#cty").textContent=CLASSES.length+" classes · "+CLASSES.reduce((n,c)=>n+c.units.length,0)+" guides";
@@ -182,8 +186,9 @@ if(!COURSE){
   /* fast find */
   const ALIAS={apush:["apush","ush","history","us history","american history","hist"],phys:["physics","phys","kinematics","science"],
     psych:["psych","psychology"],bus:["business","bus","biz","principles"],mor:["morality","religion","theology","catholic","church","social justice"],
-    pre:["precalc","precal","pre calc","math","precalculus","trig","vectors","calc","trigonometry","polar"],lang:["lang","english"],sem:["seminar","sem"]};
-  const KINDW={cram:["cram","cheat sheet","cheat","one pager","sheet","summary"],pdf:["practice","worksheet","pdf","problems","homework"],quiz:["quiz","quizzes","questions"]};
+    pre:["precalc","precal","pre calc","math","precalculus","trig","vectors","calc","trigonometry","polar"],lang:["lang","english"],sem:["seminar","sem"],
+    span:["spanish","span","ap spanish","espanol","uc scout","ucscout","scout"]};
+  const KINDW={cram:["cram","cheat sheet","cheat","one pager","sheet","summary"],pdf:["practice","worksheet","pdf","problems","homework"],quiz:["quiz","quizzes","questions"],audio:["audio","listening","listen","mp3"]};
   const norm=x=>String(x).toLowerCase().replace(/[’']/g,"").replace(/[–—]/g,"-").replace(/[^a-z0-9/&\s-]/g," ")
     .replace(/(\d)\s*\/\s*([a-z])\b/g,"$1$2").replace(/\bu\s?(\d)/g,"unit $1").replace(/\bunit(\d)/g,"unit $1").replace(/\bch(?:apters?)?\.?\s?(\d)/g,"ch $1").replace(/\s+/g," ").trim();
   const INDEX=[];
@@ -223,6 +228,7 @@ if(!COURSE){
     a.style.setProperty("--k",c.c);
     const eyebrow=el("span","eyebrow",c.name); eyebrow.style.color=c.c;
     a.append(eyebrow,el("span","tt",u.t));
+    if(c.warn)a.append(el("span","uwarn",c.warn));
     if(u.extras&&u.extras.length){
       const kinds=el("span","kinds");
       const mk=(kind,label,url,main)=>{const k=el("a","kind"+(main?" main":""));k.href=url;k.target="_blank";k.rel="noopener noreferrer";
@@ -441,14 +447,16 @@ if(COURSE){
     const L=live().filter(f=>f.classId===c.id);
     const n=c.units.length, pdfs=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="pdf").length,0),
           cram=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="cram").length,0),
-          quiz=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="quiz").length,0);
-    const facts=[n?n+(n===1?" study guide":" study guides"):"",cram?cram+(cram===1?" cram sheet":" cram sheets"):"",pdfs?pdfs+" practice "+(pdfs===1?"PDF":"PDFs"):"",quiz?quiz+(quiz===1?" quiz or game":" quizzes and games"):""].filter(Boolean);
+          quiz=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="quiz").length,0),
+          audio=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="audio").length,0);
+    const facts=[n?n+(n===1?" study guide":" study guides"):"",cram?cram+(cram===1?" cram sheet":" cram sheets"):"",pdfs?pdfs+" practice "+(pdfs===1?"PDF":"PDFs"):"",quiz?quiz+(quiz===1?" quiz or game":" quizzes and games"):"",audio?audio+(audio===1?" audio page":" audio pages"):""].filter(Boolean);
     const hero=el("section","chero");
     hero.dataset.c=c.id;
     hero.innerHTML=`<div class="ccopy"><h1></h1>`+
       (facts.length?`<ul class="facts">${facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`:"")+
       `<div class="cta"></div></div>`+cover(c);
     hero.querySelector("h1").textContent=c.name;
+    if(c.warn)hero.querySelector("h1").after(el("p","cwarn hw",c.warn));
     const cta=hero.querySelector(".cta");
     if(n){const first=L[0]||null;
       const b=el("a","btn"); b.href=first?first.url:c.units[0].url; b.target="_blank"; b.rel="noopener noreferrer";

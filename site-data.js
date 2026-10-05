@@ -29,7 +29,9 @@ const FEATURES=[
   {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."}
 ];
 
-/* CLASSES: the eight classes this year, each with its welcome page (page) and its units, newest first.
+/* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
+   warn (optional): a notice shown on the class card, its welcome page and search rows; AP Spanish needs it because it is not a Bishop Gorman course.
+   kind "audio" marks a listening page.
    A unit is the guide plus optional extras (kind: "cram" | "pdf" | "quiz"), labelled exactly as in the guide, e.g. "Practice test A (PDF)".
    Several versions of one test share a group label: {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url}. added = the day it went up;
    "new" shows for 7 days. A class with no units keeps its welcome page with an honest empty state.
@@ -90,7 +92,19 @@ const CLASSES=[
         {kind:"pdf", t:"Practice test B (PDF)", url:"/precalc-vectors-icf-trig-eq-practice-b.pdf"},
         {kind:"quiz", t:"Vector quizzes A–C (print page)", url:"/precalc-quizzes"}]},
      {t:"Vectors + dot product", url:"/precalc-vectors", added:"2026-08-30", extras:[
-        {kind:"pdf", t:"Quizzes A–C + memorize sheet (PDF)", url:"/precalc-quizzes.pdf"}]}]}
+        {kind:"pdf", t:"Quizzes A–C + memorize sheet (PDF)", url:"/precalc-quizzes.pdf"}]}]},
+  {id:"span", page:"/spanish", c:"var(--c-span)", glyph:"speech", name:"AP Spanish Language and Culture (UC Scout)", abbr:"AP Spanish", short:"SPANISH · UC SCOUT",
+   warn:"For UC Scout AP Spanish. This is not aligned to Bishop Gorman’s Spanish curriculum.", units:[
+     {t:"UC Scout Semester 1 midterm", url:"/spanish-ucscout-s1-midterm", added:"2026-10-04", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/spanish-ucscout-s1-midterm-cram.pdf"},
+        {kind:"pdf", g:"Practice exam A", t:"Exam (PDF)", s:"Exam", url:"/spanish-ucscout-s1-midterm-practice-a.pdf"},
+        {kind:"pdf", g:"Practice exam A", t:"Answer key (PDF)", s:"Key", url:"/spanish-ucscout-s1-midterm-practice-a-key.pdf"},
+        {kind:"audio", g:"Practice exam A", t:"Audio, 3 tracks (page)", s:"Audio", url:"/spanish-ucscout-s1-midterm-audio-a"},
+        {kind:"pdf", g:"Practice exam B", t:"Exam (PDF)", s:"Exam", url:"/spanish-ucscout-s1-midterm-practice-b.pdf"},
+        {kind:"pdf", g:"Practice exam B", t:"Answer key (PDF)", s:"Key", url:"/spanish-ucscout-s1-midterm-practice-b-key.pdf"},
+        {kind:"audio", g:"Practice exam B", t:"Audio, 3 tracks (page)", s:"Audio", url:"/spanish-ucscout-s1-midterm-audio-b"},
+        {kind:"pdf", t:"Listening scripts (PDF)", url:"/spanish-ucscout-s1-midterm-listening-scripts.pdf"},
+        {kind:"pdf", t:"Oral practice pack (PDF)", url:"/spanish-ucscout-s1-midterm-oral-pack.pdf"}]}]}
 ];
 
 /* line glyphs, one per class */
@@ -102,5 +116,6 @@ const G={
  curve:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
  bubbles:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
  chart:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
- cross:'<path d="M13 4.6v17"/><path d="M7.4 10.2h11.2"/>'
+ cross:'<path d="M13 4.6v17"/><path d="M7.4 10.2h11.2"/>',
+ speech:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>'
 };

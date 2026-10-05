@@ -10,11 +10,11 @@ domain.
 
 - `index.html`: the homepage shell (search, up next, the class catalog,
   feedback, and a `<noscript>` list of every guide).
-- `site-data.js`: the data. `CLASSES` (the eight classes, their welcome pages
+- `site-data.js`: the data. `CLASSES` (the eight Bishop Gorman classes plus UC Scout AP Spanish, their welcome pages
   and units) and `FEATURES` (upcoming tests).
 - `site.js` / `site.css`: render and style the homepage and the class pages.
 - `apush.html`, `physics.html`, `psych.html`, `business.html`, `morality.html`,
-  `precalc.html`, `lang.html`, `seminar.html`: one welcome page per class.
+  `precalc.html`, `lang.html`, `seminar.html`, `spanish.html`: one welcome page per class.
 - `vercel.json`: security headers plus clean URLs. Vercel serves the rest as-is.
 - `404.html`: served for any path that does not exist.
 - `og-image.png`, `apple-touch-icon.png`, `favicon.svg`: share card and icons.
