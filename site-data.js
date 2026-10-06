@@ -38,6 +38,8 @@ const FEATURES=[
    short: the label printed on the class cover. */
 const CLASSES=[
   {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY", units:[
+     {t:"Unit 2 LEQ", url:"/apush-unit-2-leq", added:"2026-10-06",
+      extras:[{kind:"cram", t:"Cram sheet (PDF)", url:"/apush-unit-2-leq-cram.pdf"}]},
      {t:"Unit 2/B", url:"/apush-unit-2b", added:"2026-10-01",
       extras:[{kind:"pdf", t:"Practice test (PDF)", url:"/apush-unit-2b-practice.pdf"}]},
      {t:"Unit 2/A", url:"/apush-unit-2a", added:"2026-09-21"},

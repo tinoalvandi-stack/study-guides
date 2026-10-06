@@ -1,0 +1,2454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>study guide · valentino guides</title>
+<meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F1F5F9">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C1220">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ═══ valentino guides · guide template v3, design revision 3 (blue and navy, calm reading flow, sept 30 2026) ═══
+   Same tokens, type and corners as the homepage (site.css). Edit the GUIDE object below the machinery; leave the CSS alone. */
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+
+:root{--paper:#F1F5F9;--surface:#FCFDFF;--body:#2F3B54;--surface2:#EEF3F8;--tint:#E3ECF6;--line:#D8E1EB;--line2:#B4C2D2;--ink:#0E1B3D;--ink2:#3A4862;--ink3:#56637D;--accent:#274B7E;--on-accent:#FFFFFF;--hi:#8A5300;--amber:#D99A2B;--amber-bg:#FCF6E8;--good:#2D7048;--bad:#A8392F;--c-apush:#9A4A33;--c-psych:#5C5689;--c-phys:#2E6378;--c-pre:#1F5A55;--c-sem:#46604F;--c-biz:#7E5A22;--c-mor:#7A4A5E;--c-lang:#4A5874;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63;--sh1:0 1px 2px #0e1b3d0a,0 4px 14px #0e1b3d0b;--sh2:0 2px 4px #0e1b3d0d,0 14px 32px #0e1b3d17}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0C1220;--surface:#131B2C;--body:#D3DBE8;--surface2:#182235;--tint:#1C2A44;--line:#263249;--line2:#3D4C67;--ink:#E8EDF6;--ink2:#B8C3D6;--ink3:#98A5BC;--accent:#8EB3EA;--on-accent:#0B1630;--hi:#F0C273;--amber:#E2AE4E;--amber-bg:#251F12;--good:#8ACB9C;--bad:#F19A90;--c-apush:#E9A07F;--c-psych:#BDB6EA;--c-phys:#8BC4D6;--c-pre:#8FD0BF;--c-sem:#A9C8B2;--c-biz:#E2C17A;--c-mor:#E6AEC3;--c-lang:#AEBBD8;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE;--sh1:0 1px 2px #0007,0 6px 18px #0005;--sh2:0 2px 4px #0007,0 14px 32px #0006}}
+:root[data-theme="dark"]{--paper:#0C1220;--surface:#131B2C;--body:#D3DBE8;--surface2:#182235;--tint:#1C2A44;--line:#263249;--line2:#3D4C67;--ink:#E8EDF6;--ink2:#B8C3D6;--ink3:#98A5BC;--accent:#8EB3EA;--on-accent:#0B1630;--hi:#F0C273;--amber:#E2AE4E;--amber-bg:#251F12;--good:#8ACB9C;--bad:#F19A90;--c-apush:#E9A07F;--c-psych:#BDB6EA;--c-phys:#8BC4D6;--c-pre:#8FD0BF;--c-sem:#A9C8B2;--c-biz:#E2C17A;--c-mor:#E6AEC3;--c-lang:#AEBBD8;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE;--sh1:0 1px 2px #0007,0 6px 18px #0005;--sh2:0 2px 4px #0007,0 14px 32px #0006}
+
+:root{
+  --display:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:780; --ls-d:-.03em;
+  --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t17:17px; --t20:20px; --t26:26px;
+  --r-card:14px; --r-btn:10px; --r-chip:8px;
+  --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
+  --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
+  --maxw:1180px; --gut:clamp(16px,3.4vw,36px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--barh,58px) + 14px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t16);line-height:1.55;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;
+  padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+[hidden]{display:none !important}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.vh{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* reading aids */
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
+.skipl:focus{top:12px;outline:none}
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
+#prog i{display:block;height:100%;width:0;background:var(--accent)}
+
+/* ═══ bar: brand + theme; once the guide's own controls scroll away it carries sections / topics / search ═══ */
+.bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);padding:max(9px,env(safe-area-inset-top)) 0 9px;transition:box-shadow .3s var(--ease)}
+.bar.stuck{box-shadow:0 1px 0 0 var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px;min-height:38px}
+.home{display:flex;align-items:center;gap:10px;min-width:0;margin-right:auto}
+.mark{width:28px;height:28px;border-radius:7px;flex:none;display:block}
+.bar h1{margin:0;font-size:18px;font-weight:760;letter-spacing:-.03em;white-space:nowrap}
+.seg{position:relative;display:flex;border:1px solid var(--line);border-radius:10px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
+.seg button{position:relative;z-index:2;padding:4px 10px;border-radius:8px;font-size:var(--t12);font-weight:600;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
+.seg button[aria-pressed="true"]{color:var(--on-accent)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--accent);transition:left .36s var(--spring),width .36s var(--spring)}
+.sbtn{flex:none;width:38px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink2);transition:color .16s var(--ease)}
+@media (hover:hover){.sbtn:hover{color:var(--ink)}}
+.bctl{display:none;align-items:center;gap:2px;min-width:0}
+.bar.compact .bctl{display:flex}
+.bar.compact .seg,.bar.compact .sbtn{display:none}
+.bctl .cur{max-width:150px;overflow:hidden;text-overflow:ellipsis}
+.bnm{font-size:var(--t13);font-weight:600;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;padding-right:10px;margin-right:4px;border-right:1px solid var(--line)}
+.bctl .mbtn{border:0;background:none;box-shadow:none;height:34px;padding:0 10px}
+@media (hover:hover){.bctl .mbtn:hover{background:var(--surface2)}}
+@media (max-width:699px){.bnm{display:none}.bar.compact h1{display:none}}
+@media (max-width:420px){.bar .wrap{gap:8px}.bar h1{font-size:17px}.seg button{padding:4px 7px}.bctl .mbtn{padding:0 8px}}
+/* comfortable tap targets on phones and touch screens (44px): theme switch, and the search button beside it at the same height */
+@media (max-width:719px),(pointer:coarse){.seg button{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}.sbtn{width:44px;height:44px}}
+/* narrow phones: the bigger targets need the room, so the wordmark text steps aside (kept for screen readers); the mark stays and still links home */
+@media (max-width:389px){.bar h1{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+
+/* ═══ header: compact title + meta line, small class cover ═══ */
+main{padding-top:14px}
+.ghead{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:center}
+h2.title{margin:0;font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:var(--w-d);letter-spacing:-.035em;line-height:1.06;text-wrap:balance;color:var(--ink)}
+.crow{display:flex;align-items:center;flex-wrap:wrap;gap:2px 0;margin-top:7px;font-size:var(--t15);color:var(--ink3);line-height:1.45}
+.crow > *:not(:last-child)::after{content:"·";margin:0 8px;color:var(--ink3);font-weight:600}
+.cname{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--ink2)}
+.cname svg{width:18px;height:18px;flex:none;color:var(--cls)}
+a.cname{border-radius:6px}
+@media (hover:hover){a.cname:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}}
+.chip{min-width:0;font-variant-numeric:tabular-nums}
+.chip.due,.chip.past{white-space:nowrap}
+.chip.due{color:var(--hi);font-weight:650}
+.chip.past{color:var(--ink3)}
+.sub{margin:6px 0 0;font-size:var(--t15);line-height:1.5;color:var(--ink2);max-width:78ch}
+.gcov{position:relative;width:clamp(84px,13vw,132px);aspect-ratio:1.42;border-radius:12px;overflow:hidden;box-shadow:var(--sh1);border:1px solid var(--line)}
+.gcov svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.gcov svg text{font-family:var(--sans)}
+.gcov:empty{display:none}
+@media (max-width:519px){
+  /* phone: title and a small cover share the first row; the meta line and sub use the full width below */
+  .ghead{column-gap:12px;align-items:center}
+  .ghead .gtxt{display:contents}
+  #title{grid-column:1;grid-row:1}
+  .gcov{grid-column:2;grid-row:1;width:64px;border-radius:10px}
+  .crow,.sub{grid-column:1 / -1}
+  .crow{margin-top:6px;font-size:var(--t13)}
+  .sub{font-size:var(--t13);margin-top:4px}
+  main{padding-top:8px}
+  .focus{padding:12px 14px 12px 16px}
+  .focus h3{font-size:17px;margin-bottom:6px}
+  .tops{gap:4px}
+  .tops .tp,.tops .tm{font-size:var(--t15);padding-left:32px;line-height:1.42}
+  .tops .tp::before,.tops .tm::before{width:22px;height:22px;font-size:12px}
+  .fqk{display:flex;width:fit-content;margin:8px 0 0 32px}
+  .ol > .sec:first-of-type{margin-top:10px}
+  .sec{padding-top:18px;margin-top:16px}
+}
+
+/* ═══ practice PDFs: the printable tests, above everything else ═══ */
+.pdfs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 0;padding:12px;border-radius:var(--r-card);background:var(--tint);border:1px solid color-mix(in srgb,var(--accent) 16%,var(--line))}
+.pdf{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:7px 14px 7px 11px;border-radius:var(--r-btn);background:var(--surface);border:1px solid color-mix(in srgb,var(--accent) 38%,var(--line));color:var(--accent);font-size:var(--t15);font-weight:650;line-height:1.25;box-shadow:var(--sh1);transition:border-color .16s var(--ease),transform .2s var(--spring)}
+.pdf svg{flex:none}
+@media (hover:hover){.pdf:hover{border-color:var(--accent)}}
+.pdf:active{transform:scale(.985)}
+.pgrp{display:flex;flex-wrap:wrap;align-items:center;gap:8px;flex-basis:100%}
+.pgl{display:inline-flex;align-items:center;gap:7px;margin-right:2px;font-size:var(--t15);font-weight:700;color:var(--ink)}
+.pgl svg{color:var(--accent)}
+.pgrp .pdf{padding:7px 13px;min-width:44px;justify-content:center}
+.pdfs .pn{flex:1 1 300px;margin:0 4px;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
+@media (max-width:599px){
+  .pdfs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px;margin-top:12px}
+  .pdfs .pn{margin:0 2px;font-size:var(--t12)}
+  .pdf{font-size:var(--t13);padding:7px 10px 7px 9px;gap:7px;min-height:44px}
+  .pdfs > .pdf:only-of-type{grid-column:1 / -1}
+  .pgrp,.pdfs .pn{grid-column:1 / -1}
+  .pgrp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .pgl{grid-column:1 / -1;font-size:var(--t13)}
+}
+
+/* ═══ controls: the Sections row, then Topics, Search, Show answers and Print ═══ */
+.gctl{display:grid;gap:10px;margin:16px 0 18px}
+.secs{display:flex;align-items:center;gap:10px;min-width:0}
+.secl{flex:none;font-size:var(--t12);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
+.segs{position:relative;display:flex;gap:2px;min-width:0;max-width:100%;padding:3px;border-radius:12px;background:var(--surface2);border:1px solid var(--line);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding:0 16px}
+.segs::-webkit-scrollbar{display:none}
+.sg{flex:none;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:9px;font-size:var(--t15);font-weight:600;color:var(--ink2);white-space:nowrap;transition:background .2s var(--ease),color .2s var(--ease),box-shadow .2s var(--ease)}
+.sg .n{font-size:var(--t12);font-weight:700;color:var(--ink3);font-variant-numeric:tabular-nums}
+.sg[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px #0e1b3d14,0 2px 8px #0e1b3d12;outline:1px solid var(--line)}
+.sg[aria-selected="true"] .n{color:var(--accent)}
+@media (hover:hover){.sg:not([aria-selected="true"]):hover{color:var(--ink);background:color-mix(in srgb,var(--surface) 55%,transparent)}}
+.sg:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.util{display:flex;align-items:center;gap:10px;min-width:0}
+.mbtn{flex:none;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:var(--t15);font-weight:600;white-space:nowrap;transition:border-color .16s var(--ease),background .16s var(--ease)}
+.mbtn svg{flex:none;color:var(--ink3)}
+.mbtn .cv{transition:transform .24s var(--spring)}
+.mbtn[aria-expanded="true"] .cv{transform:rotate(180deg)}
+.mbtn[aria-pressed="true"]{background:var(--tint);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));color:var(--accent)}
+.mbtn[aria-pressed="true"] svg{color:var(--accent)}
+@media (hover:hover){.mbtn:hover{border-color:var(--line2)}}
+.srch{position:relative;flex:1 1 auto;min-width:0;max-width:440px}
+.srch > svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ink3);pointer-events:none}
+.srch input{display:block;width:100%;height:42px;padding:0 38px 0 38px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:var(--t16);-webkit-appearance:none;appearance:none}
+.srch input::placeholder{color:var(--ink3);opacity:1}
+.srch input::-webkit-search-cancel-button,.srch input::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
+.srch input:focus{outline:none;border-color:var(--accent)}
+.srch input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.srch .x{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:7px;display:none;place-items:center;color:var(--ink3)}
+.srch.has .x{display:grid}
+@media (hover:hover){.srch .x:hover{color:var(--ink);background:var(--surface2)}}
+.util .acts{display:flex;gap:10px;margin-left:auto}
+@media (max-width:719px){
+  .gctl{gap:8px;margin:12px 0 14px}
+  .secl{font-size:11px}
+  .segs{margin-right:calc(-1 * var(--gut));border-radius:12px 0 0 12px;border-right:0;padding-right:var(--gut)}
+  .segs.ovf{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent)}
+  .segs.ovl{-webkit-mask-image:linear-gradient(90deg,transparent,#000 30px);mask-image:linear-gradient(90deg,transparent,#000 30px)}
+  .segs.ovl.ovf{-webkit-mask-image:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 44px),transparent)}
+  .sg{min-height:44px;padding:0 12px;font-size:var(--t15)}
+  .util{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
+  .util .srch{max-width:none}
+  .util .acts{grid-column:1 / -1;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .util .acts .mbtn{justify-content:center;height:40px;font-size:var(--t13)}
+  .util .acts .mbtn[hidden] + .mbtn{grid-column:1 / -1}
+}
+@media (max-width:379px){.gctl .mbtn{padding:0 11px}}
+
+/* menus (topics, sections): one panel each, opened from the controls or the bar */
+.menu{position:fixed;z-index:90;width:min(360px,calc(100vw - 24px));max-height:min(70vh,560px);overflow:auto;overscroll-behavior:contain;padding:6px;border-radius:14px;background:var(--surface);border:1px solid var(--line2);box-shadow:var(--sh2);animation:pop .22s var(--spring)}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.menu .ml{padding:8px 10px 4px;font-size:var(--t12);font-weight:650;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
+.menu .mg + .mg{border-top:1px solid var(--line);margin-top:6px;padding-top:4px}
+.mi{display:flex;align-items:flex-start;gap:10px;width:100%;padding:9px 10px;border-radius:9px;font-size:var(--t15);line-height:1.35;color:var(--ink);text-align:left}
+.mi .mn{flex:none;min-width:22px;font-size:var(--t13);font-weight:650;color:var(--ink3);font-variant-numeric:tabular-nums;padding-top:1px}
+.mi .mt{flex:1;min-width:0}
+.mi .ms{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
+.mi i{flex:none;width:8px;height:8px;margin-top:7px;border-radius:50%;border:1.5px solid var(--accent)}
+.mi i.w3{background:var(--accent)} .mi i.w2{background:color-mix(in srgb,var(--accent) 35%,transparent)}
+.mi[aria-current="true"]{background:var(--tint)}
+.mi[aria-current="true"] .mn{color:var(--accent)}
+@media (hover:hover){.mi:hover{background:var(--surface2)}.mi[aria-current="true"]:hover{background:var(--tint)}}
+.mi .mck{flex:none;width:18px;height:18px;margin-top:1px;color:var(--accent);visibility:hidden}
+.mi[aria-current="true"] .mck,.mi[aria-pressed="true"] .mck{visibility:visible}
+.mi svg{flex:none}
+.menu .pn{margin:2px 10px 6px;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
+.menu .mleg{display:flex;flex-wrap:wrap;gap:4px 14px;padding:8px 10px 6px;font-size:var(--t12);color:var(--ink3);border-top:1px solid var(--line);margin-top:6px}
+.menu .mleg span{display:inline-flex;align-items:center;gap:6px}
+.menu .mleg i{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--accent)}
+.menu .mleg i.w3{background:var(--accent)} .menu .mleg i.w2{background:color-mix(in srgb,var(--accent) 35%,transparent)}
+
+/* search status */
+.sstat{display:none;align-items:center;flex-wrap:wrap;gap:6px 8px;margin:-6px 0 16px;font-size:var(--t13);color:var(--ink2)}
+.sstat.on{display:flex}
+.sstat > span{margin-right:2px}
+.sstat q{color:var(--ink)}
+.sstat button,.nores button{padding:5px 10px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface);font-size:var(--t12);font-weight:600;color:var(--ink2)}
+.sstat button[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.sstat b,.nores b{font-weight:650;font-variant-numeric:tabular-nums;margin-left:4px}
+.nores{margin:0 0 16px;padding:16px 18px;border:1px dashed var(--line2);border-radius:var(--r-card);color:var(--ink2);font-size:var(--t15)}
+.nores p{margin:0}
+.nores div{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.sx{display:none !important}
+mark.hit{background:color-mix(in srgb,var(--amber) 34%,transparent);color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pane{display:none;container-type:inline-size}
+.pane.on{display:block;animation:rise .38s var(--spring) both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* small section label (panes) */
+.sh{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:26px 0 12px}
+.sh:first-child{margin-top:0}
+.sh h3{margin:0;font-size:var(--t20);font-weight:760;letter-spacing:-.02em;color:var(--ink);min-width:0}
+.sh h3::first-letter{text-transform:uppercase}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);order:2;align-self:center}
+.shx{order:3;min-width:0;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums}
+
+/* ═══ guide: focus box, then every lesson open in reading order ═══ */
+.ol{max-width:100%}
+.focus{position:relative;margin:0 0 6px;padding:16px 20px 16px 22px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh1);overflow:hidden}
+.focus::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--amber)}
+.focus h3{margin:0 0 8px;font-size:var(--t20);font-weight:760;letter-spacing:-.02em}
+.tops{margin:0;padding:0;list-style:none;counter-reset:tp;display:grid;gap:6px}
+.tops .tp,.tops .tm{counter-increment:tp;position:relative;padding:2px 0 2px 36px;font-size:var(--t16);line-height:1.45;max-width:96ch}
+.tops .tm{color:var(--body)}
+.tops .tp::before,.tops .tm::before{content:counter(tp);position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:50%;background:var(--amber);color:#241600;font-weight:700;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+@media (min-width:520px){.fqk + .fqk{margin-left:18px}}
+.fqk{display:inline-flex;align-items:center;gap:6px;margin:10px 0 0 36px;font-size:var(--t13);font-weight:650;color:var(--accent)}
+@media (hover:hover){.fqk:hover{text-decoration:underline;text-underline-offset:3px}}
+.toptbl{margin:14px 0 0}
+.sec{position:relative;container-type:inline-size;border-top:1px solid var(--line);padding:28px 0 26px;margin-top:22px}
+.ol > .sec:first-of-type{margin-top:18px}
+.sec > header{margin:0 0 14px}
+.eyb{display:flex;align-items:center;gap:6px;margin:0 0 4px;font-size:var(--t12);font-weight:650;letter-spacing:.08em;color:var(--ink3);text-transform:uppercase}
+.eyb .num{font-variant-numeric:tabular-nums}
+.eyb .w{font-weight:650}
+.eyb .w3{color:var(--accent)} .eyb .w2{color:var(--ink2)}
+.sec h3{margin:0;font-family:var(--display);font-size:clamp(24px,2.9vw,34px);font-weight:760;letter-spacing:-.03em;line-height:1.12;text-wrap:balance;color:var(--ink)}
+.sec .sd{margin:5px 0 0;font-size:var(--t15);color:var(--ink2);line-height:1.45}
+.sec h3:focus{outline:none}
+.sb{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.sb .duo{display:grid;gap:18px}
+@container (min-width:720px){
+  .sb .duo{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:34px;align-items:start}
+  .sb .duo.wide-side{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+  .sb .duo > .side{position:sticky;top:calc(var(--barh,58px) + 18px)}
+}
+.duo > .main,.duo > .side{container-type:inline-size;min-width:0}
+.sb .main{display:grid;gap:14px;align-content:start}
+.sb .main.solo{max-width:78ch}
+.sb .main > *{margin:0}
+.sb p{margin:0 0 12px;font-size:var(--t17);line-height:1.6;color:var(--body)}
+.sb p:last-child{margin-bottom:0}
+.sb .main > .ptx{display:block}
+b.kw{font-weight:700;color:var(--ink)}
+.nxt{display:flex;justify-content:flex-end;margin-top:16px}
+.nxt a{display:inline-flex;align-items:center;gap:6px;padding:6px 4px;font-size:var(--t13);font-weight:600;color:var(--ink2)}
+@media (hover:hover){.nxt a:hover{color:var(--accent)}}
+
+/* bullets */
+.pts{margin:0;padding:0;list-style:none}
+.pts li{position:relative;padding:4px 0 4px 20px;font-size:var(--t16);line-height:1.55;color:var(--body)}
+.pts li::before{content:"";position:absolute;left:3px;top:13px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.pts.two{columns:2 240px;column-gap:28px}
+.pts.two li{break-inside:avoid}
+
+/* label rows */
+.rows{margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:16px}
+.rows dt{padding:8px 0;font-size:var(--t13);font-weight:700;line-height:24px;color:var(--ink)}
+.rows dd{margin:0;padding:8px 0;font-size:var(--t15);line-height:1.5;color:var(--body)}
+.rows dt + dd{border-top:1px solid var(--line)} .rows dt{border-top:1px solid var(--line)}
+.rows dt:first-of-type,.rows dd:first-of-type{border-top:0}
+@container (max-width:420px){.rows{grid-template-columns:1fr}.rows dt{padding-bottom:0}.rows dd{border-top:0 !important;padding-top:2px}}
+
+/* numbered steps */
+.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{position:relative;padding:8px 0 8px 36px;font-size:var(--t16);line-height:1.5;color:var(--body);counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:24px;height:24px;border-radius:50%;background:var(--tint);color:var(--accent);font-size:var(--t12);font-weight:750;display:grid;place-items:center}
+.steps li + li{border-top:1px solid var(--line)}
+
+/* flow: cause -> effect chain */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 0;margin:0;padding:0;list-style:none}
+.flow li{position:relative;flex:1 1 0;min-width:120px;display:flex;align-items:center;padding:10px 13px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);line-height:1.4;color:var(--ink);margin-right:30px}
+.flow li:last-child{margin-right:0;border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:var(--tint)}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-22px;top:50%;width:13px;height:12px;margin-top:-6px;background:var(--ink3);clip-path:polygon(0 15%,100% 50%,0 85%)}
+@container (max-width:639px){
+  .flow{flex-direction:column;gap:0}
+  .flow li{margin:0 0 24px;min-width:0}
+  .flow li:last-child{margin-bottom:0}
+  .flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-18px;margin:0 0 0 -6px;clip-path:polygon(15% 0,85% 0,50% 100%)}
+}
+
+/* tiles: parallel items as one readable list (two columns when there is room) */
+.tlist{margin:0}
+.tlist .tlh{margin:0 0 8px;font-size:var(--t13);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
+.tlist ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:minmax(0,1fr);gap:12px 32px}
+@container (min-width:620px){.tlist.two ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (min-width:900px){.tlist.n3 ul,.tlist.n6 ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tlist li{display:grid;grid-template-columns:38px minmax(0,1fr);gap:0 12px;align-items:start}
+.tlist .ti{grid-row:span 2;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--tint);color:var(--accent)}
+.tlist h5{margin:2px 0 0;font-size:var(--t16);font-weight:700;line-height:1.35;color:var(--ink)}
+.tlist .tt{font-size:var(--t15);line-height:1.5;color:var(--body)}
+.tlist .tk{display:inline-block;margin-left:6px;font-size:var(--t12);font-weight:600;color:var(--ink3)}
+
+/* tree (org chart; indented list on narrow columns) */
+.tree{overflow-x:auto}
+.tree ul{position:relative;display:flex;justify-content:center;margin:0;padding:16px 0 0;list-style:none}
+.tree > ul{padding-top:0}
+.tree li{position:relative;flex:1 1 0;padding:16px 4px 0;text-align:center;min-width:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:16px;border-top:1.5px solid var(--line2)}
+.tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line2)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:1.5px solid var(--line2);border-radius:0 6px 0 0}
+.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:16px;border-left:1.5px solid var(--line2)}
+.tree .nd{display:inline-block;max-width:100%;padding:7px 10px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);line-height:1.35;vertical-align:top}
+.tree .nd b{display:block;font-size:var(--t15);font-weight:700}
+.tree .nd span{display:block;color:var(--ink2);margin-top:2px}
+.tree > ul > li > .nd{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.tree > ul > li > .nd span{color:color-mix(in srgb,var(--on-accent) 85%,transparent)}
+.tree > ul > li > ul > li > .nd{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:var(--tint)}
+@container (max-width:379px){
+  .tree ul{display:block;padding:0 0 0 18px}
+  .tree > ul{padding-left:0}
+  .tree li{padding:6px 0 0 16px;text-align:left}
+  .tree > ul > li{padding-left:0}
+  .tree li::before{top:0;left:0;right:auto;width:12px;height:22px;border-top:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li::after{top:22px;left:0;right:auto;width:0;height:calc(100% - 22px);border:0;border-left:1.5px solid var(--line2);border-radius:0}
+  .tree li:last-child::after{display:none}
+  .tree li:first-child::before,.tree li:last-child::before{border-top:0;border-right:0;border-left:1.5px solid var(--line2);border-bottom:1.5px solid var(--line2);border-radius:0 0 0 6px}
+  .tree li:first-child::after{border-radius:0}
+  .tree > ul > li::before,.tree > ul > li::after{display:none}
+  .tree ul ul::before{display:none}
+  .tree li:only-child::before{display:block}
+  .tree li:only-child{padding-top:6px}
+  .tree > ul > li:only-child{padding:0}
+  .tree > ul > li:only-child::before,.tree > ul > li:only-child::after{display:none}
+}
+
+/* figure (inline svg drawn per guide): sits beside its explanation, no box around it */
+.fig{margin:0;padding:0}
+.fig svg{display:block;width:100%;height:auto;max-height:440px;font-family:var(--sans);overflow:visible}
+.fig figcaption{margin-top:10px;font-size:var(--t13);color:var(--ink3);line-height:1.45}
+.fig .ln{fill:none;stroke:var(--ink2);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .lc{fill:none;stroke:var(--cls);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .la{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .lb{fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+.fig .lg{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round}
+.fig .dash{stroke-dasharray:5 5}
+.fig .fc{fill:var(--cls)} .fig .fa{fill:var(--accent)} .fig .fb{fill:var(--bad)} .fig .fg{fill:var(--good)} .fig .fi{fill:var(--ink)}
+.fig .fs{fill:color-mix(in srgb,var(--cls) 18%,var(--surface))}
+.fig .fsa{fill:color-mix(in srgb,var(--accent) 16%,var(--surface))}
+.fig .fp{fill:var(--surface);stroke:var(--line2);stroke-width:1.2}
+.fig .fn{fill:none}
+.fig text{fill:var(--ink);font-size:14px}
+.fig .tm{fill:var(--ink2);font-size:12.5px}
+.fig .tb{font-weight:650}
+.fig .tc{fill:var(--cls);font-weight:650}
+.fig .ta{fill:var(--accent);font-weight:650}
+.fig .tw{fill:var(--surface);font-weight:650}
+.fig .tbd{fill:var(--bad);font-weight:650}
+.fig .mid{text-anchor:middle} .fig .end{text-anchor:end}
+.mk-ink{fill:var(--ink2)} .mk-cls{fill:var(--cls)} .mk-acc{fill:var(--accent)} .mk-bad{fill:var(--bad)}
+
+/* compare: columns divided by a rule */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cmp > div{padding:14px 18px 14px 0}
+.cmp > div + div{padding-left:18px;border-left:1px solid var(--line)}
+@container (max-width:479px){.cmp > div + div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+.cmp h5{margin:0 0 6px;font-size:var(--t15);font-weight:750;color:var(--ink)}
+.cmp p{margin:0 0 6px;font-size:var(--t15);line-height:1.5;color:var(--body)} .cmp p:last-child{margin:0}
+
+/* tables */
+.tbw{overflow-x:auto;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t15);line-height:1.5}
+.tbl th{padding:10px 14px;text-align:left;font-size:var(--t13);font-weight:700;color:var(--ink2);background:var(--tint);border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:10px 14px;vertical-align:top;border-top:1px solid var(--line);color:var(--body)}
+.tbl tbody tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:700;color:var(--ink)}
+.tcap{margin:0 0 8px;font-size:var(--t15);font-weight:750;color:var(--ink)}
+@container (max-width:519px){
+  .tbw .tbl thead{display:none}
+  .tbw .tbl tr{display:block;padding:10px 14px;border-top:1px solid var(--line)}
+  .tbw .tbl tbody tr:first-child{border-top:0}
+  .tbw .tbl td{display:block;padding:0;border:0}
+  .tbw .tbl.two td:not(:first-child)::before{display:none}
+  .tbw .tbl.two td:first-child{margin-bottom:2px}
+  .tbw .tbl td:not(:first-child)::before{content:attr(data-l);display:block;margin-top:6px;font-size:var(--t12);font-weight:700;letter-spacing:.04em;color:var(--ink3);text-transform:uppercase}
+}
+
+/* on the test: every example of a lesson in one panel */
+.exs{border-radius:var(--r-card);border:1px solid var(--line);background:var(--surface2);overflow:hidden}
+.exs .exh{display:flex;align-items:center;gap:8px;padding:12px 16px 0;font-size:var(--t13);font-weight:700;color:var(--ink2)}
+.exs .exh svg{flex:none;color:var(--accent)}
+.tq{padding:10px 16px 14px}
+.tq + .tq{border-top:1px solid var(--line);padding-top:14px}
+.tq .el{display:none}
+.tq .eqr{display:flex;align-items:center;gap:12px 18px}
+.tq .eq{flex:1;min-width:0;font-size:var(--t16);line-height:1.5;font-weight:500;color:var(--ink)}
+.tq .eb{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:0 16px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:650;text-align:center;transition:filter .18s var(--ease)}
+@media (hover:hover){.tq .eb:hover{filter:brightness(1.08)}}
+.tq .eb .chev{display:none}
+@container (max-width:560px){.tq .eqr{flex-direction:column;align-items:stretch}.tq .eb{width:100%}}
+.tq .ea{display:none;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:var(--t15);line-height:1.5}
+.tq.on .ea{display:block;animation:rise .3s var(--spring) both}
+.tq .ea b.aa{display:block;font-weight:700;color:var(--ink);margin-bottom:3px}
+.tq .ea .why{color:var(--ink2)}
+/* multiple-choice "on the test": {q, opts, a, why} */
+.tq.mc .eq{margin-bottom:8px}
+.tq.mc .opts{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.tq.mc .opt{border:1px solid var(--line);border-radius:11px;background:var(--surface)}
+@container (min-width:640px){.tq.mc .opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tq.done .opt{cursor:default}
+.tq.mc .ea .why{color:var(--ink)}
+
+/* watch out + callouts */
+.watch{border-radius:0 12px 12px 0;background:var(--amber-bg);border-left:3px solid var(--amber);padding:11px 16px 12px}
+.watch .wl,.callout .cl{display:flex;align-items:center;gap:7px;font-size:var(--t13);font-weight:750;color:var(--ink);margin-bottom:3px}
+.watch .wl svg{color:var(--hi)}
+.watch ul{margin:0;padding:0;list-style:none}
+.watch li{position:relative;padding:3px 0 3px 16px;font-size:var(--t15);line-height:1.5;color:var(--ink)}
+.watch li::before{content:"";position:absolute;left:1px;top:12px;width:7px;height:2px;border-radius:1px;background:var(--hi)}
+.callout{border-radius:0 12px 12px 0;padding:10px 16px 11px;font-size:var(--t15);line-height:1.5;background:var(--surface);border-left:3px solid var(--accent);color:var(--body)}
+.callout .cl{color:var(--ink)}
+.callout.ok{border-left-color:var(--good)}
+.callout.ex{border-left-color:var(--accent)}
+.callout.cls{border-left-color:var(--cls)}
+
+/* terms */
+.terms{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.terms .tl{font-size:var(--t12);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase;margin-right:4px}
+.term{font-size:var(--t13);font-weight:550;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink2)}
+
+.abbr{padding:14px 16px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);color:var(--ink2);line-height:1.7}
+.abbr b{color:var(--ink);font-weight:700}
+.olh{margin:30px 0 10px;font-size:var(--t13);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
+
+/* generic cards / groups */
+.card{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px}
+.card.top{border-left:4px solid var(--accent);padding-left:15px}
+.card.top p{margin:0 0 8px} .card.top p:last-child{margin-bottom:0}
+.group{border-radius:var(--r-card);overflow:hidden;background:var(--surface);border:1px solid var(--line);margin-bottom:12px;box-shadow:var(--sh1)}
+.row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:13px 15px;position:relative;z-index:1;cursor:pointer;transition:background .16s var(--ease)}
+.row + .row,.body + .row{border-top:1px solid var(--line)}
+@media (hover:hover){.row:hover{background:var(--surface2)}}
+.rt{min-width:0;flex:1}
+.rn{display:block;font-size:var(--t16);font-weight:600;line-height:1.35}
+.rd{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px;text-transform:lowercase}
+.chev{flex:none;color:var(--ink3);transition:transform .24s var(--spring)}
+.row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.body{display:grid;grid-template-rows:0fr;background:var(--surface2);border-top:1px solid var(--line);transition:grid-template-rows .36s var(--spring)}
+.body.on{grid-template-rows:1fr}
+.body > div{overflow:hidden}
+.body .in{padding:12px 16px 14px;display:grid;gap:10px}
+.body p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:9px 16px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:650;transition:filter .18s var(--ease)}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+@media (hover:hover){.btn:hover{filter:brightness(1.08)}}
+.btn:active,.mbtn:active,.tq .eb:active{transform:scale(.987)}
+
+/* practice mc */
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:14px;align-items:start}
+.q{margin:0}
+.q .qt{padding:15px 17px 11px;font-size:var(--t16);font-weight:500;line-height:1.45}
+.qn{font-size:var(--t12);font-weight:600;color:var(--ink3);font-variant-numeric:tabular-nums;margin-bottom:4px;text-transform:lowercase}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;min-height:44px;padding:11px 15px;border-top:1px solid var(--line);font-size:var(--t15);line-height:1.45;color:var(--ink);transition:background .16s var(--ease)}
+@media (hover:hover){#root:not(.showall) .q:not(.done) .opt:hover,#root:not(.showall) .tq:not(.done) .opt:hover{background:var(--surface2)}}
+.opt .k{flex:none;width:23px;height:23px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;font-size:11.5px;font-weight:650;color:var(--ink3);margin-top:0}
+.q.done .opt{cursor:default}
+.opt.right{background:color-mix(in srgb,var(--good) 13%,transparent)}
+.opt.right .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:color-mix(in srgb,var(--bad) 11%,transparent)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.q .why{display:none;padding:11px 17px 13px;border-top:1px solid var(--line);background:var(--surface2);font-size:var(--t15);line-height:1.5}
+.q .why b{color:var(--ink3);font-weight:650;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.q.done .why{display:block}
+/* select-all questions: a is an array of right indexes */
+.opt.sel{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.opt.sel .k{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.mchk{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 15px;border-top:1px solid var(--line);font-size:var(--t13);color:var(--ink3);text-transform:lowercase}
+.mchk .btn{min-height:36px;padding:6px 12px;font-size:var(--t13)}
+.q.done .mchk,.showall .mchk{display:none}
+/* show all answers */
+.showall .q .opt,.showall .tq .opt{cursor:default}
+.showall .q .opt[data-c],.showall .tq .opt[data-c]{background:color-mix(in srgb,var(--good) 13%,transparent)}
+.showall .q .opt[data-c] .k,.showall .tq .opt[data-c] .k{background:var(--good);border-color:var(--good);color:var(--surface)}
+/* answer feedback in words, not only color */
+.opt .ftag{margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:700;white-space:nowrap;text-transform:lowercase}
+.opt.right .ftag{color:var(--good)} .opt.wrong .ftag{color:var(--bad)}
+.showall .q:not(.done) .opt[data-c]::after,.showall .tq:not(.done) .opt[data-c]::after{content:"\2713  answer";margin-left:auto;padding-left:10px;align-self:center;font-size:var(--t12);font-weight:700;color:var(--good);white-space:nowrap}
+.showall .q .why,.showall .tq .ea{display:block}
+.showall .tq .eb,.showall .prob .go{display:none}
+.showall .prob .reveal{display:block}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 24px);padding:8px 8px 8px 16px;border-radius:14px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(8,16,40,.22);opacity:0;visibility:hidden;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease),visibility 0s linear .4s}
+.scorepill.show{transform:translateX(-50%);opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
+.scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
+.scorepill button{padding:7px 12px;border-radius:9px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:650;text-transform:lowercase}
+.scorepill button[hidden]{display:none}
+.scorepill button:focus-visible{outline-color:var(--paper)}
+/* retry missed questions */
+.rbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;padding:10px 12px 10px 16px;border-radius:var(--r-card);border:1px solid var(--line);background:var(--surface);box-shadow:var(--sh1)}
+.rbar[hidden],.rbar [hidden]{display:none !important}
+.rbar:focus,.qgrid:focus{outline:none}
+.rbar .rst{margin:0;flex:1 1 220px;font-size:var(--t15);line-height:1.4;text-transform:lowercase}
+.rbar .rbtns{display:flex;flex-wrap:wrap;gap:8px}
+.rbar .btn{min-height:36px;padding:6px 12px;font-size:var(--t13)}
+@media screen{.q.rx{display:none}}
+
+/* problems: compact cards two across; a card opens to full width with its steps beside it */
+.pgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));align-items:start}
+.prob{container-type:inline-size;margin:0}
+.prob.on,.showall .prob{grid-column:1/-1}
+.prob .pi{display:grid;grid-template-columns:minmax(0,1fr)}
+.prob .qt{padding:15px 17px;font-size:var(--t16);font-weight:500;line-height:1.5}
+.prob .go{border-top:1px solid var(--line);padding:12px 17px;display:flex;justify-content:space-between;align-items:center;font-size:var(--t15);font-weight:650;color:var(--accent);width:100%}
+.prob .reveal{display:none;border-top:1px solid var(--line);background:var(--surface2);padding:13px 17px 15px}
+.prob.on .reveal{display:block;animation:rise .3s var(--spring) both}
+.prob.on .go .chev{transform:rotate(90deg)}
+@container (min-width:820px){
+  .prob .pi{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .prob .qside{border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .prob .qside .qt{flex:1}
+  .prob .reveal{border-top:0;display:block;min-height:100%}
+  #root:not(.showall) .prob:not(.on) .pi{grid-template-columns:minmax(0,1fr)}
+  #root:not(.showall) .prob:not(.on) .reveal{display:none}
+  #root:not(.showall) .prob:not(.on) .qside{border-right:0}
+}
+.ans{margin-top:10px;padding:9px 12px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t15);border-left:3px solid var(--good)}
+.ans b{color:var(--ink3);font-weight:650;font-size:var(--t12);text-transform:lowercase;letter-spacing:.04em;margin-right:6px}
+.work{margin:0;padding:0;list-style:none}
+.work li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2px 16px;padding:7px 0;align-items:baseline}
+.work li + li{border-top:1px solid var(--line)}
+.work .wm{font-size:var(--t15);line-height:1.45;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.work .wm.cont{padding-left:1.1em}
+.work .wy{font-size:var(--t13);line-height:1.45;color:var(--ink2);padding-left:12px;border-left:2px solid var(--line)}
+.work .wy:empty{border-left-color:transparent}
+.work li.hd{padding:0 0 4px}
+.work .wh{font-size:var(--t12);font-weight:650;letter-spacing:.04em;text-transform:lowercase;color:var(--ink3)}
+.work li.hd .wh + .wh{padding-left:14px}
+@container (max-width:479px){.work li{grid-template-columns:1fr;gap:1px}.work .wy{border-left:0;padding-left:0}.work li.hd{display:none}}
+
+/* formulas */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.fx{padding:13px 15px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px;box-shadow:var(--sh1)}
+.fx .n{font-size:var(--t12);font-weight:700;letter-spacing:.04em;color:var(--ink3);text-transform:uppercase}
+.fx .f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--t16);font-weight:500;overflow-wrap:anywhere;color:var(--ink)}
+.fx .note{font-size:var(--t13);color:var(--ink2);line-height:1.45}
+
+/* flashcards */
+.dk{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.deck{position:relative;perspective:1200px}
+.fc{position:relative;min-height:230px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
+.fc.flip{transform:rotateY(180deg)}
+.fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:22px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:var(--sh1)}
+.fc .f{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t16);line-height:1.5;color:var(--ink)}
+.fc .tag{position:absolute;left:16px;top:13px;font-size:11.5px;font-weight:650;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
+.fc .b .tag{color:var(--accent)}
+.dnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin-top:6px}
+.clist > div{padding:13px 15px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.clist b{display:block;font-weight:700;margin-bottom:3px}
+.clist span{font-size:var(--t15);line-height:1.5;color:var(--ink2)}
+
+/* timeline */
+.tln{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden;box-shadow:var(--sh1)}
+.tln .ev{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 18px;padding:13px 17px;border-top:1px solid var(--line);position:relative}
+.tln .ev:first-child{border-top:0}
+.tln .y{font-family:var(--display);font-weight:760;font-size:var(--t16);color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.4}
+.tln .t{font-size:var(--t16);font-weight:650;line-height:1.4}
+.tln .d{font-size:var(--t15);color:var(--ink2);line-height:1.5;margin-top:2px}
+@media (min-width:900px){.tln .ev{grid-template-columns:110px minmax(0,.9fr) minmax(0,1.3fr)}.tln .d{margin-top:0}}
+@media (max-width:479px){.tln .ev{grid-template-columns:1fr;gap:2px}}
+
+/* cram */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:14px;align-items:start}
+.cgrid .group{margin:0}
+.cgrid .gh{padding:12px 15px;border-bottom:1px solid var(--line);font-size:var(--t13);font-weight:750;color:var(--ink);display:flex;justify-content:space-between;gap:10px;background:var(--tint)}
+.cgrid .gh span{color:var(--ink3);font-weight:550}
+.cr{display:grid;grid-template-columns:minmax(0,10em) 1fr;gap:2px 14px;padding:10px 15px;border-top:1px solid var(--line)}
+.gh + .cr{border-top:0}
+.cr .n{font-size:var(--t15);font-weight:700;line-height:1.4}
+.cr .y{display:block;margin-top:2px;font-size:var(--t12);font-weight:650;color:var(--accent);font-variant-numeric:tabular-nums}
+.cr .t{font-size:var(--t15);line-height:1.5;color:var(--ink2)}
+@media (max-width:479px){.cr{grid-template-columns:1fr}.cr .n{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}.cr .y{margin:0}}
+
+/* tables pane */
+.tpane{display:grid;gap:22px}
+.tpane .tblk{container-type:inline-size}
+
+/* checklist */
+.ckg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:0 12px}
+.ck{display:flex;align-items:flex-start;gap:11px;width:100%;padding:12px 14px;border-radius:12px;font-size:var(--t15);line-height:1.45;background:var(--surface);border:1px solid var(--line);margin-bottom:8px}
+.ck .box{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid var(--line2);margin-top:1px;display:grid;place-items:center;color:var(--surface);transition:background .16s var(--ease),border-color .16s var(--ease)}
+.ck.on .box{background:var(--good);border-color:var(--good)}
+.ck.on .t{color:var(--ink3);text-decoration:line-through}
+.ck .d{display:block;font-size:var(--t12);color:var(--ink3);margin-top:1px}
+
+/* essay panes (leq / prompts) */
+.bul{margin:0;padding-left:18px}
+.bul li{margin:3px 0;line-height:1.5}
+.pl{font-size:var(--t12);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase;margin-top:6px}
+.so{padding:9px 12px;border-radius:0 10px 10px 0;background:var(--surface);border-left:3px solid var(--accent);font-size:var(--t15)}
+.so .cl{display:block;font-size:var(--t12);font-weight:700;color:var(--accent);letter-spacing:.04em;text-transform:lowercase}
+.pace{display:flex;height:34px;border-radius:8px;overflow:hidden;gap:2px}
+.pace > div{display:grid;place-items:center;color:var(--on-accent);font-size:var(--t12);font-weight:700;background:var(--accent)}
+.pace > div:nth-child(2n){background:color-mix(in srgb,var(--accent) 70%,var(--ink))}
+.pace > div:nth-child(3n){background:var(--ink2);color:var(--paper)}
+.fnl{margin:0;padding-left:20px;font-size:var(--t15)}
+.fnl li{margin:4px 0}
+
+/* footer */
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:var(--t12);line-height:1.6;color:var(--ink3);text-transform:lowercase}
+footer a{color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+footer .upd{display:block;margin-top:6px}
+
+.rv{opacity:0;transform:translateY(8px);animation:rise .5s var(--spring) forwards}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.rv{opacity:1;transform:none}}
+
+@media print{
+  :root{--paper:#fff;--surface:#fff;--surface2:#f5f6f8;--tint:#eef1f5;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999;--amber-bg:#fff}
+  .bar,.gctl,.pdfs,.menu,.nxt,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg,.gcov{display:none !important}
+  body{background:#fff;padding:0}
+  .focus,.tq,.q,.prob,.tln,.fx,.rbar{box-shadow:none !important}
+  .rv{opacity:1 !important;transform:none !important;animation:none !important}
+  .tq .ea,.prob .reveal,.q .why{display:block !important}
+  .q:not(.done) .opt[data-c]::after,.tq:not(.done) .opt[data-c]::after{content:"\2713  correct answer";margin-left:auto;padding-left:10px;font-size:var(--t12);font-weight:700;white-space:nowrap}
+  .prob:not(.on) .reveal > *{display:block !important;visibility:visible !important}
+  #root:not(.showall) .prob:not(.on) .reveal{display:block !important}
+  .sec{padding:16px 0}
+  .group,.card,.tq,.fig,.tlist li,.focus,.watch,.tbw tr{break-inside:avoid}
+  .sec h3,.eyb,.exs .exh,.tcap,.tlist .tlh{break-after:avoid}
+  .exs{break-inside:auto}
+  @page{margin:.6in}
+}
+</style>
+</head>
+<body>
+<a class="skipl" href="#main">skip to the guide</a>
+<div id="prog" aria-hidden="true"><i></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-ink"/></marker>
+  <marker id="ahc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-cls"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-acc"/></marker>
+  <marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" class="mk-bad"/></marker>
+</defs></svg>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="home" href="/" aria-label="all guides">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--amber)"/></svg>
+      <h1>valentino guides</h1>
+    </a>
+    <div class="bctl" id="bctl">
+      <span class="bnm" id="bnm"></span>
+      <button type="button" class="mbtn" id="secb" data-menu="m-sec" aria-expanded="false" aria-controls="m-sec" aria-haspopup="true" hidden><span class="vh">Sections: </span><span class="cur" id="seccur"></span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
+      <button type="button" class="mbtn" data-menu="m-jump" aria-expanded="false" aria-controls="m-jump" aria-haspopup="true"><span>Topics</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
+      <button type="button" class="mbtn" data-act="search" aria-label="search this guide"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg></button>
+    </div>
+    <button type="button" class="sbtn" id="sbtn" aria-label="search this guide" title="search ( / )"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg></button>
+    <div class="seg" role="group" aria-label="theme">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set="auto" aria-pressed="true">auto</button>
+      <button type="button" data-set="light" aria-pressed="false">light</button>
+      <button type="button" data-set="dark" aria-pressed="false">dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="ghead">
+    <div class="gtxt">
+      <h2 class="title rv" id="title"></h2>
+      <div class="crow rv" id="crow"></div>
+      <p class="sub rv" id="sub" hidden></p>
+    </div>
+    <div class="gcov rv" id="gcov" aria-hidden="true"></div>
+  </div>
+  <section class="pdfs rv" id="pdfs" aria-label="Practice PDFs" hidden></section>
+  <div class="gctl rv" id="gctl">
+    <div class="secs" id="secs" hidden>
+      <span class="secl" id="secl">Sections</span>
+      <div class="segs" id="panes" role="tablist" aria-labelledby="secl"></div>
+    </div>
+    <div class="util">
+      <button type="button" class="mbtn" id="jumpb" data-menu="m-jump" aria-expanded="false" aria-controls="m-jump" aria-haspopup="true"><span>Topics</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
+      <div class="srch" id="srch" role="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg>
+        <input id="q" type="search" placeholder="Search" aria-label="search this guide" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+        <button type="button" class="x" id="qx" aria-label="clear search"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg></button>
+      </div>
+      <div class="acts">
+        <button type="button" class="mbtn" id="showall" aria-pressed="false" hidden><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg><span class="mt">Show answers</span></button>
+        <button type="button" class="mbtn" id="printb"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6V1.8h8V6M4 12H2.5V7.2A1.2 1.2 0 0 1 3.7 6h8.6a1.2 1.2 0 0 1 1.2 1.2V12H12"/><path d="M4 9.5h8v4.7H4z"/></svg><span>Print</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="sstat" id="sstat" aria-live="polite"></div>
+  <div id="root" class="rv"></div>
+  <footer>
+    study guide written by a student, free to use. not affiliated with the school.
+    check anything that matters against your own notes. <a href="/">all guides</a>
+    <span class="upd" id="upd"></span>
+  </footer>
+</main>
+<div class="menu" id="m-jump" hidden aria-label="jump to topic"></div>
+<div class="menu" id="m-sec" hidden aria-label="sections"><div class="ml">Sections</div><div id="secm"></div></div>
+<div class="scorepill" id="score"><span aria-live="polite"><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   GUIDE: the only thing to edit. Everything renders from this object.
+   Rules (sept 30 2026, design revision 3; navigation oct 1 2026):
+   · bold a key term with **term** the first time it appears in a
+     section. Nothing else is marked inline: no highlights, no
+     underlines, no red text. (The renderer bolds each term once per
+     section and ignores legacy ==x== / !!x!! markers.)
+   · traps go in `watch`, never in the prose.
+   · write readable prose and bullets; keep the subject's real
+     diagram (fig) beside its explanation; parallel items (tiles)
+     render as one readable list, examples (ex) as one panel.
+   · every tested section gets at least one `ex` (see it on a test).
+   ═══════════════════════════════════════════════════════════════════ */
+const GUIDE = {
+ "id": "apush",
+ "cls": "AP US History",
+ "title": "Unit 2 LEQ study guide",
+ "test": "",
+ "meta": "LEQ practice · chapters 4 to 6 · 1720 to 1783",
+ "sub": "Chapters 4 to 6: Becoming America (1720) through the Treaty of Paris (1783)",
+ "updated": "oct 5, 2026",
+ "pdfs": [
+  {
+   "t": "Cram sheet (PDF)",
+   "url": "/apush-unit-2-leq-cram.pdf"
+  }
+ ],
+ "pdfsNote": "One printable page: the rubric, cause-and-effect chains, the best evidence and a self-check.",
+ "panes": [
+  "outline",
+  "cram",
+  "tables",
+  "prompts",
+  "leq",
+  "timeline"
+ ],
+ "labels": {
+  "tables": "Evidence bank",
+  "prompts": "Practice prompts",
+  "leq": "Rubric"
+ },
+ "top": [
+  "The unit is one chain: **French and Indian War** debt, then taxes, then resistance, then independence, then a war won with French help.",
+  "Six points: thesis 1, context 1, evidence 2, analysis 2. Identify at least two specific, relevant examples for 1 evidence point; **use** at least two to support the argument for 2.",
+  "Know colonial society too: growth by natural increase, new immigrants, and the Great Awakening teaching colonists to question authority.",
+  "Dates that trip people: 1763 vs 1783 (two Treaties of Paris); 1775 rights as Englishmen vs 1776 independence; Yorktown 1781, peace 1783.",
+  "Complexity needs more than a token \"however\": explain a real exception, a second cause, or change over time, with evidence."
+ ],
+ "outline": [
+  {
+   "w": 3,
+   "t": "How the LEQ is scored",
+   "d": "the 6-point rubric, row by row",
+   "rows": [
+    [
+     "thesis (1)",
+     "A **defensible** claim that answers the prompt and sets up a line of reasoning, in one place, in the intro or the conclusion. Restating the prompt earns nothing."
+    ],
+    [
+     "context (1)",
+     "Broader developments before, during or after the prompt's years that connect to it. A phrase or a single reference is not enough."
+    ],
+    [
+     "evidence (1 or 2)",
+     "1 point: identify at least two specific, relevant examples. 2 points: use at least two specific examples to **support an argument** that answers the prompt."
+    ],
+    [
+     "analysis (1 or 2)",
+     "1 point: use **historical reasoning** (causation, comparison, or continuity and change) to frame the argument. 2 points: show a **complex understanding** that is part of the argument."
+    ]
+   ],
+   "cmp": [
+    {
+     "h": "identifying evidence: what the skill looks like",
+     "p": [
+      "\"The Stamp Act (1765) taxed printed paper.\"",
+      "True and specific, but it only names the act. Nothing says what it proves."
+     ]
+    },
+    {
+     "h": "using evidence: what the skill looks like",
+     "p": [
+      "\"The Stamp Act (1765) taxed printed paper for revenue, and colonists answered with boycotts and the Stamp Act Congress, which shows how British debt from the war turned into organized resistance.\"",
+      "Same fact, now tied to the claim with \"which shows.\""
+     ]
+    }
+   ],
+   "table": {
+    "h": "reasoning vs complexity",
+    "cols": [
+     "",
+     "historical reasoning (1 point)",
+     "complex understanding (2 points)"
+    ],
+    "rows": [
+     [
+      "what it is",
+      "the essay is built on causation, comparison or continuity and change",
+      "the essay explains the development in more depth"
+     ],
+     [
+      "how it looks",
+      "each body paragraph explains a cause and its effect",
+      "multiple causes weighed against each other; both cause and effect; both change and continuity; a connection to another period; or at least four pieces of evidence that support a nuanced argument"
+     ],
+     [
+      "not enough",
+      "a list of events in order",
+      "one sentence starting \"however\" with nothing behind it"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Prompt: evaluate the extent to which the French and Indian War led to the American Revolution. Which thesis earns the point? (A) \"The French and Indian War was important to the Revolution.\" (B) \"The French and Indian War led to the Revolution to a large extent, because its debt drove Parliament to tax the colonies and its victory removed the French threat that had kept colonists loyal, though colonial ideas about rights explain why the taxes caused a break.\"",
+     "a": "B.",
+     "why": "A restates the prompt and has no line of reasoning; B takes a position, gives reasons and a limit."
+    },
+    {
+     "q": "An essay lists the Sugar Act, the Stamp Act and the Townshend Acts with their dates and stops. How many evidence points?",
+     "a": "One.",
+     "why": "The acts are specific and relevant, but the essay never uses them to support an argument."
+    }
+   ],
+   "watch": [
+    "Complexity is not a trick sentence. It has to be part of the argument and backed with evidence.",
+    "The thesis can be more than one sentence, but all of it must sit in one place (intro or conclusion).",
+    "The single example above illustrates the difference; the rubric requires at least two specific examples for evidence credit. A phrase such as \"this shows\" does not earn points unless the explanation supports the argument."
+   ],
+   "terms": [
+    "thesis",
+    "contextualization",
+    "line of reasoning",
+    "historical reasoning",
+    "complex understanding"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "From war debt to taxes (1754 to 1766)",
+   "d": "the first cause in almost any prompt",
+   "flow": [
+    "French and Indian War (1754 to 1763)",
+    "Britain wins, deep in debt",
+    "Ends salutary neglect",
+    "Sugar Act (1764), Stamp Act (1765)",
+    "Boycotts, Stamp Act Congress",
+    "Repeal (1766), Declaratory Act"
+   ],
+   "pts": [
+    "**Treaty of Paris (1763)**: France loses its mainland North American empire. Britain gets land to the Mississippi; Spain gets Louisiana.",
+    "With the French gone, colonists need British protection less.",
+    "**Pontiac's Rebellion** (1763) leads to the **Proclamation of 1763**: no settlement west of the Appalachians.",
+    "**Sugar Act** (1764) cut the molasses duty but enforced it to raise revenue; the **Currency Act** (1764) restricted colonial paper currency.",
+    "**Stamp Act** (1765): a tax stamp on printed paper. Sons of Liberty, boycotts, and the Stamp Act Congress of 9 colonies.",
+    "Repealed in 1766, but the **Declaratory Act** said Parliament could make laws for the colonies \"in all cases whatsoever.\""
+   ],
+   "ex": [
+    {
+     "q": "Which development best explains why Parliament began taxing the colonies for revenue after 1763?",
+     "a": "The debt from the French and Indian War.",
+     "why": "The Proclamation of 1763 is about land, not taxes."
+    },
+    {
+     "q": "Why does the Albany Plan of Union (1754) work as contextualization for a prompt on colonial unity in the 1760s?",
+     "a": "It shows the colonies refused to unite before the war, so the united boycotts of the 1760s and 1770s were a change.",
+     "why": "Context sets up the change the essay explains."
+    }
+   ],
+   "watch": [
+    "The Proclamation of 1763 is a land rule, not a tax.",
+    "The Sugar Act lowered the duty; the change was enforcement and the goal of revenue."
+   ],
+   "terms": [
+    "salutary neglect",
+    "Proclamation of 1763",
+    "Declaratory Act"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "From protest to independence (1767 to 1776)",
+   "d": "how the goal changed from rights to a break",
+   "flow": [
+    "Townshend Acts (1767)",
+    "Boston Massacre (1770)",
+    "Committees of Correspondence (1772)",
+    "Tea Act and Tea Party (1773)",
+    "Coercive Acts, First Continental Congress (1774)",
+    "Lexington and Concord (1775), Declaration (1776)"
+   ],
+   "pts": [
+    "**Townshend Acts** (1767): duties on imported goods to pay royal officials. Boycotts and John Dickinson's letters; repealed in 1770 except tea.",
+    "**Committees of Correspondence** (1772): Samuel Adams's network links towns and then colonies.",
+    "**Coercive Acts** (1774) punish Boston, but the other colonies rally behind it.",
+    "**First Continental Congress** (1774): Declaration of Rights and Grievances (Parliament may regulate trade, not tax for revenue) and a boycott. Still loyal to the king.",
+    "**Lexington and Concord** (1775): British troops march to seize colonial supplies; the war starts.",
+    "**Second Continental Congress** (1775): Washington named commander; Causes and Necessity of Taking Up Arms and the **Olive Branch Petition** still seek rights as Englishmen. The king refuses the petition.",
+    "**Common Sense** (1776): Thomas Paine's plain argument for independence turns opinion.",
+    "**Declaration of Independence** (1776): Jefferson draws on John Locke; natural rights, consent of the governed, the right to alter or abolish, grievances against the king."
+   ],
+   "cmp": [
+    {
+     "h": "1774 to 1775: rights as Englishmen",
+     "p": [
+      "Declaration of Rights and Grievances",
+      "Causes and Necessity of Taking Up Arms",
+      "Olive Branch Petition"
+     ]
+    },
+    {
+     "h": "1776: independence",
+     "p": [
+      "Common Sense",
+      "Declaration of Independence"
+     ]
+    }
+   ],
+   "ex": [
+    {
+     "q": "Which evidence best shows that most colonial leaders did not seek independence in 1775?",
+     "a": "The Olive Branch Petition (1775).",
+     "why": "Common Sense (1776) is the case for independence, a year later."
+    },
+    {
+     "q": "For a continuity and change prompt on colonial goals, what is the change and what stays the same?",
+     "a": "Change: from restoring rights as Englishmen to independence. Continuity: the argument about consent and representation runs from the Stamp Act to the Declaration.",
+     "why": "Showing both change and continuity is one route to complexity."
+    }
+   ],
+   "watch": [
+    "1774 Declaration of Rights and Grievances is not the 1776 Declaration of Independence.",
+    "The Declaration blames the king, not Parliament."
+   ],
+   "terms": [
+    "Committees of Correspondence",
+    "Olive Branch Petition",
+    "consent of the governed"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Winning the war and the peace (1775 to 1783)",
+   "d": "why the Americans won and what they got",
+   "flow": [
+    "Lexington and Concord (1775): war begins",
+    "Saratoga (1777): turning point",
+    "French alliance (1778)",
+    "War moves South",
+    "Yorktown (1781): decisive surrender",
+    "Treaty of Paris (1783): independence recognized"
+   ],
+   "pts": [
+    "**Saratoga** (1777): a whole British army surrenders; it helped convince France to sign the **Franco-American Alliance** (1778).",
+    "France brought troops, money and supplies, and a navy that could challenge Britain's.",
+    "After Saratoga, Britain moved the war South, expecting Loyalist support.",
+    "Washington's strategy: avoid decisive losses and keep the army alive. Home ground helped; British supplies crossed an ocean.",
+    "**Yorktown** (1781): American and French forces, with the French navy offshore, trap a British army. Britain stops offensive operations and negotiates.",
+    "**Treaty of Paris (1783)**: independence, fishing rights off Newfoundland, borders to the Mississippi. Loyalists' property and the western forts stay unresolved; Native allies of Britain are left out."
+   ],
+   "ex": [
+    {
+     "q": "Which factor best explains the timing of France's open alliance with the United States?",
+     "a": "The American victory at Saratoga (1777).",
+     "why": "Yorktown (1781) came after the alliance and depended on it."
+    },
+    {
+     "q": "An essay says the war ended with independence in 1781. What is wrong?",
+     "a": "Yorktown (1781) was the decisive surrender, but Britain recognized independence in the Treaty of Paris (1783).",
+     "why": "Keep the military end and the diplomatic end separate."
+    }
+   ],
+   "watch": [
+    "Saratoga did not end the war; it secured the alliance.",
+    "Treaty of Paris 1763 ends the French and Indian War; 1783 ends the Revolution."
+   ],
+   "terms": [
+    "Saratoga",
+    "Franco-American Alliance",
+    "Yorktown",
+    "Treaty of Paris (1783)"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Colonial society: population and diversity (1720 to 1760)",
+   "d": "who the colonists were before the crisis",
+   "rows": [
+    [
+     "growth",
+     "Population grew about tenfold from 1700 to 1775, mostly by **natural increase** (more births than deaths)."
+    ],
+    [
+     "Africans",
+     "The largest group arriving were enslaved Africans, **involuntary migrants**."
+    ],
+    [
+     "Europeans",
+     "Most arrived after 1730: Irish, Scots, Germans (many to Pennsylvania) and **Scots-Irish**, often settling the backcountry."
+    ]
+   ],
+   "pts": [
+    "Use it as context: a bigger, more diverse population pushed settlers west, toward the land fights behind the Proclamation of 1763.",
+    "Use it as evidence that colonial society was less English and less unified than Britain assumed."
+   ],
+   "ex": [
+    {
+     "q": "Which statement about colonial population growth in the 1700s is accurate?",
+     "a": "Most growth came from natural increase.",
+     "why": "Immigration mattered, but births exceeding deaths drove most of it."
+    }
+   ],
+   "watch": [
+    "Growth came mostly from natural increase, not immigration."
+   ],
+   "terms": [
+    "natural increase",
+    "Scots-Irish"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "The First Great Awakening",
+   "d": "1730s and 1740s; religion that questioned authority",
+   "flow": [
+    "Churches seen as routine",
+    "Emotional, personal preaching",
+    "Congregations split: New Lights vs Old Lights",
+    "More denominations and toleration",
+    "Colonists practice challenging authority"
+   ],
+   "tiles": [
+    {
+     "h": "Jonathan Edwards",
+     "t": "Massachusetts preacher; \"Sinners in the Hands of an Angry God.\""
+    },
+    {
+     "h": "George Whitefield",
+     "t": "English **itinerant** preacher; huge crowds across the colonies."
+    },
+    {
+     "h": "New Lights vs Old Lights",
+     "t": "For the revival vs the traditional churches."
+    }
+   ],
+   "pts": [
+    "Argue carefully: the revival taught ordinary colonists to question established leaders, which historians often connect to later political resistance. Present that link as an argument, not a fact."
+   ],
+   "ex": [
+    {
+     "q": "Which effect of the First Great Awakening best supports an argument that colonial society became more diverse?",
+     "a": "Congregations split and new denominations grew, with more religious toleration.",
+     "why": "Edwards and Whitefield are people, not effects."
+    }
+   ],
+   "watch": [
+    "This is the First Great Awakening; the Second comes in the 1800s."
+   ],
+   "terms": [
+    "First Great Awakening",
+    "itinerant"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Ideas behind the resistance",
+   "d": "representation, rights and the fear of power",
+   "cmp": [
+    {
+     "h": "Britain: virtual representation",
+     "p": [
+      "Parliament speaks for every British subject, so it can tax the colonies."
+     ]
+    },
+    {
+     "h": "colonists: actual representation",
+     "p": [
+      "Only people you elect can tax you, so only colonial assemblies can."
+     ]
+    }
+   ],
+   "pts": [
+    "**Real Whigs**: English writers who warned that power always threatens liberty, so each act looked like part of a plot.",
+    "**John Locke**: natural rights and government by consent, the base of the Declaration.",
+    "Through 1775 the claim is rights as Englishmen; Common Sense and the Declaration turn it into natural rights for everyone."
+   ],
+   "ex": [
+    {
+     "q": "Which idea best explains why colonists accepted trade regulation but rejected taxes for revenue?",
+     "a": "Actual representation: only elected assemblies could tax them.",
+     "why": "Virtual representation was Britain's argument for taxing them."
+    }
+   ],
+   "watch": [
+    "\"No taxation without representation\" is about revenue taxes, not every trade rule."
+   ],
+   "terms": [
+    "virtual representation",
+    "actual representation",
+    "Real Whigs"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Thesis, context and analysis, practiced",
+   "d": "annotated examples to copy the moves from",
+   "steps": [
+    "Read the prompt's verb and reasoning word: extent, causes, change, similarity.",
+    "One useful approach: write a thesis with a position, reasons, and an optional qualification (\"to a large extent, because ..., though ...\").",
+    "Context: three or four sentences on what came before (or alongside) the prompt's years, ending with a sentence that points at the prompt.",
+    "Each body paragraph: claim, two specific pieces of evidence, then \"this shows\" sentences tying each one to the thesis.",
+    "Complexity: weigh a second cause, show change and continuity, or connect to another period, with evidence."
+   ],
+   "table": {
+    "h": "a context paragraph, annotated",
+    "cols": [
+     "sentence",
+     "why it is there"
+    ],
+    "rows": [
+     [
+      "\"From 1754 to 1763 Britain and France fought for North America, and the colonies refused to unite even under the Albany Plan.\"",
+      "broader development before the prompt's years"
+     ],
+     [
+      "\"Britain won, but the war left it deeply in debt and responsible for a huge new territory.\"",
+      "the condition that drives the prompt"
+     ],
+     [
+      "\"For decades London had barely enforced its trade laws.\"",
+      "salutary neglect, the old pattern about to end"
+     ],
+     [
+      "\"After 1763 that changed, and the colonists' response is the story of this prompt.\"",
+      "the hand-off to the thesis"
+     ]
+    ]
+   },
+   "cmp": [
+    {
+     "h": "weak analysis",
+     "p": [
+      "\"Then the Townshend Acts happened. Then the Boston Massacre happened.\"",
+      "Narration: events in order with no reasoning."
+     ]
+    },
+    {
+     "h": "strong analysis",
+     "p": [
+      "\"Because the Townshend duties paid royal officials, they threatened the assemblies' control of salaries, which is why the protest spread beyond merchants.\"",
+      "Causation: names the cause, the effect and why."
+     ]
+    }
+   ],
+   "ex": [
+    {
+     "q": "Which sentence adds complexity to a thesis that taxation caused the Revolution?",
+     "a": "\"Taxes alone do not explain the break: the colonists already believed in actual representation and feared concentrated power, so the same taxes looked like tyranny.\"",
+     "why": "It weighs a second cause (ideas) against the first, which is more than a token \"however.\""
+    }
+   ],
+   "watch": [
+    "Context that is one sentence, or that is just the thesis restated, does not earn the point."
+   ],
+   "terms": [
+    "complexity"
+   ]
+  },
+  {
+   "w": 1,
+   "t": "Big connections across the unit",
+   "d": "themes that tie the chapters together",
+   "tree": {
+    "t": "1720 to 1783",
+    "d": "one story, three chapters",
+    "c": [
+     {
+      "t": "Becoming America",
+      "d": "growth, diversity, Great Awakening"
+     },
+     {
+      "t": "Ends of Empire",
+      "d": "war, debt, taxes, resistance"
+     },
+     {
+      "t": "American Revolutions",
+      "d": "independence, war, peace"
+     }
+    ]
+   },
+   "pts": [
+    "**Causation**: war debt, then taxes, then boycotts and committees, then Congress, then war.",
+    "**Continuity**: colonists argue from representation and rights the whole time; the 1776 change is what those rights justify.",
+    "**Change**: from separate colonies (Albany Plan rejected, 1754) to joint action (Stamp Act Congress, Continental Congresses).",
+    "**Limits**: independence did not settle the status of enslaved people, Loyalists or Native nations."
+   ],
+   "terms": [
+    "causation",
+    "continuity and change"
+   ]
+  }
+ ],
+ "cram": [
+  {
+   "h": "the rubric",
+   "d": "6 points",
+   "items": [
+    {
+     "n": "Thesis",
+     "y": "1",
+     "t": "A defensible position and line of reasoning, in one place (intro or conclusion); a qualification is optional."
+    },
+    {
+     "n": "Context",
+     "y": "1",
+     "t": "Broader developments before, during or after, linked to the prompt."
+    },
+    {
+     "n": "Evidence",
+     "y": "1 or 2",
+     "t": "Name two examples (1); use two to support the argument (2)."
+    },
+    {
+     "n": "Analysis",
+     "y": "1 or 2",
+     "t": "Reasoning frames the essay (1); a complex understanding built into the argument (2)."
+    }
+   ]
+  },
+  {
+   "h": "the chain",
+   "items": [
+    {
+     "n": "War to debt",
+     "y": "1754 to 1763",
+     "t": "Britain wins the French and Indian War, deep in debt; France leaves."
+    },
+    {
+     "n": "Debt to taxes",
+     "y": "1764 to 1767",
+     "t": "Sugar, Stamp, Townshend: revenue taxes end salutary neglect."
+    },
+    {
+     "n": "Taxes to resistance",
+     "y": "1765 to 1774",
+     "t": "Boycotts, Sons of Liberty, Committees of Correspondence, First Continental Congress."
+    },
+    {
+     "n": "Resistance to war",
+     "y": "1775",
+     "t": "Lexington and Concord; Second Continental Congress still offers the Olive Branch."
+    },
+    {
+     "n": "War to independence",
+     "y": "1776",
+     "t": "Common Sense, then the Declaration: natural rights and consent."
+    },
+    {
+     "n": "Winning",
+     "y": "1777 to 1783",
+     "t": "Saratoga leads to the French alliance (1778); Yorktown (1781); Treaty of Paris (1783)."
+    }
+   ]
+  },
+  {
+   "h": "colonial society",
+   "items": [
+    {
+     "n": "Natural increase",
+     "y": "1700s",
+     "t": "Most population growth came from births, not immigration."
+    },
+    {
+     "n": "New arrivals",
+     "y": "after 1730",
+     "t": "Enslaved Africans; Germans, Scots-Irish and others, many to the backcountry."
+    },
+    {
+     "n": "Great Awakening",
+     "y": "1730s to 1740s",
+     "t": "Edwards, Whitefield; churches split, more toleration, authority questioned."
+    }
+   ]
+  },
+  {
+   "h": "traps",
+   "items": [
+    {
+     "n": "Two treaties",
+     "y": "1763 vs 1783",
+     "t": "1763 ends the French and Indian War; 1783 ends the Revolution."
+    },
+    {
+     "n": "Two goals",
+     "y": "1775 vs 1776",
+     "t": "Rights as Englishmen, then independence."
+    },
+    {
+     "n": "Two endings",
+     "y": "1781 vs 1783",
+     "t": "Yorktown is the decisive surrender; the treaty recognizes independence."
+    },
+    {
+     "n": "Two declarations",
+     "y": "1774 vs 1776",
+     "t": "Rights and Grievances (loyal) vs Independence (the break)."
+    }
+   ]
+  }
+ ],
+ "tables": [
+  {
+   "h": "Colonial society",
+   "d": "Becoming America, 1720 to 1760",
+   "cols": [
+    "evidence",
+    "year",
+    "what it was",
+    "argument it supports"
+   ],
+   "rows": [
+    [
+     "Natural increase",
+     "1700s",
+     "Births outpace deaths; population grows about tenfold by 1775",
+     "colonies were growing into a society Britain could not easily control"
+    ],
+    [
+     "Enslaved Africans arrive",
+     "1700s",
+     "The largest group of newcomers, forced migrants",
+     "colonial prosperity rested on slavery; the Revolution's ideals left this unresolved"
+    ],
+    [
+     "German and Scots-Irish immigration",
+     "after 1730",
+     "Many settle Pennsylvania and the backcountry",
+     "a less English, more diverse society, pressing on western land"
+    ],
+    [
+     "First Great Awakening",
+     "1730s to 1740s",
+     "Revival led by Jonathan Edwards and George Whitefield",
+     "religious change: more denominations, more toleration, questioning of established leaders"
+    ],
+    [
+     "New Lights vs Old Lights",
+     "1740s",
+     "Congregations split over the revival",
+     "authority could be challenged from below"
+    ]
+   ]
+  },
+  {
+   "h": "War and the imperial crisis",
+   "d": "Ends of Empire, 1754 to 1774",
+   "cols": [
+    "evidence",
+    "year",
+    "what it was",
+    "argument it supports"
+   ],
+   "rows": [
+    [
+     "Albany Congress and Plan of Union",
+     "1754",
+     "Franklin's plan for joint defense; every assembly rejects it",
+     "colonies were not united before the crisis (a change to argue later)"
+    ],
+    [
+     "French and Indian War",
+     "1754 to 1763",
+     "Britain defeats France for North America",
+     "the war's debt and victory set up everything after"
+    ],
+    [
+     "Treaty of Paris (1763)",
+     "1763",
+     "France loses its mainland North American empire; Spain gets Louisiana",
+     "without the French threat, colonists needed Britain less"
+    ],
+    [
+     "Pontiac's Rebellion and the Proclamation",
+     "1763",
+     "Native resistance; settlement banned west of the Appalachians",
+     "British policy now limited colonists' land, not just trade"
+    ],
+    [
+     "Sugar Act and Currency Act",
+     "1764",
+     "Revenue duty enforced; no colonial paper money",
+     "the end of salutary neglect"
+    ],
+    [
+     "Stamp Act and Stamp Act Congress",
+     "1765",
+     "Tax on printed paper; 9 colonies protest together",
+     "taxation without representation united the colonies"
+    ],
+    [
+     "Declaratory Act",
+     "1766",
+     "Parliament can legislate for the colonies in all cases",
+     "Britain gave up the tax, never the principle"
+    ],
+    [
+     "Townshend Acts",
+     "1767",
+     "Import duties to pay royal officials",
+     "threatened the assemblies' power of the purse"
+    ],
+    [
+     "Boston Massacre",
+     "1770",
+     "Soldiers kill five colonists; Revere's engraving spreads",
+     "propaganda fed distrust of British troops"
+    ],
+    [
+     "Committees of Correspondence",
+     "1772",
+     "Samuel Adams's town and colony network",
+     "resistance became organized and intercolonial"
+    ],
+    [
+     "Tea Act and Boston Tea Party",
+     "1773",
+     "East India Company monopoly; tea dumped in Boston Harbor",
+     "the fight was principle and monopoly, not price"
+    ],
+    [
+     "Coercive Acts",
+     "1774",
+     "Boston punished, Massachusetts charter gutted",
+     "the punishment united the colonies instead of isolating Boston"
+    ],
+    [
+     "First Continental Congress",
+     "1774",
+     "Declaration of Rights and Grievances; boycott",
+     "still loyal: trade regulation yes, revenue taxes no"
+    ]
+   ]
+  },
+  {
+   "h": "Independence and the war",
+   "d": "American Revolutions, 1775 to 1783",
+   "cols": [
+    "evidence",
+    "year",
+    "what it was",
+    "argument it supports"
+   ],
+   "rows": [
+    [
+     "Lexington and Concord",
+     "1775",
+     "British march to seize supplies; first battles",
+     "fighting began before independence was the goal"
+    ],
+    [
+     "Second Continental Congress",
+     "1775",
+     "Washington commander; runs the war",
+     "colonists built their own government"
+    ],
+    [
+     "Olive Branch Petition",
+     "1775",
+     "Peace offer the king refused",
+     "most leaders still wanted reconciliation in 1775"
+    ],
+    [
+     "Dunmore's Proclamation",
+     "1775",
+     "Offered freedom to enslaved people belonging to rebels who served the British",
+     "the Revolution's meaning differed for enslaved people"
+    ],
+    [
+     "Common Sense",
+     "1776",
+     "Paine's plain argument for independence",
+     "public opinion shifted from rights to a break"
+    ],
+    [
+     "Declaration of Independence",
+     "1776",
+     "Natural rights, consent, grievances against the king",
+     "the ideological break; principles outlasted the complaints"
+    ],
+    [
+     "Saratoga",
+     "1777",
+     "A British army surrenders",
+     "the turning point that helped bring in France"
+    ],
+    [
+     "Franco-American Alliance",
+     "1778",
+     "France joins with troops, money and a navy",
+     "foreign help was decisive"
+    ],
+    [
+     "Yorktown",
+     "1781",
+     "French navy and allied army trap a British army",
+     "the decisive surrender; Britain turns to peace"
+    ],
+    [
+     "Treaty of Paris (1783)",
+     "1783",
+     "Independence, fishing rights, border at the Mississippi",
+     "a generous peace, with Loyalists and Native nations left unresolved"
+    ]
+   ]
+  }
+ ],
+ "prompts_note": [
+  "These are **practice** prompts written for studying. They are not the real prompt and not a prediction of it.",
+  "Each plan shows a defensible thesis, context, body claims with specific evidence, the explanation that turns facts into an argument, and a place to earn complexity.",
+  "The real prompt, the time limit, how many prompts you choose from and what aids are allowed have not been verified. Check the class agenda."
+ ],
+ "prompts": [
+  {
+   "q": "Practice prompt 1: Evaluate the extent to which the French and Indian War caused the colonists' movement toward independence in the period from 1754 to 1776.",
+   "tldr": [
+    "Argue: to a large extent, through debt and the removal of France",
+    "Bodies: debt led to taxes · France's exit changed loyalty · taxes became resistance",
+    "Complexity: ideas about representation explain why taxes led to a break"
+   ],
+   "ctx": [
+    "Before 1754: Britain and France fought earlier wars (Queen Anne's, King George's) that settled nothing",
+    "Britain ran the colonies with **salutary neglect**; assemblies handled their own taxes",
+    "Albany Plan of Union (1754) rejected: no colony would give up power",
+    "Hand-off: the war that began in the Ohio Valley in 1754 changed that relationship"
+   ],
+   "thesis": "The French and Indian War caused the movement toward independence to a large extent, because its debt pushed Parliament to tax the colonies for revenue and its victory removed the French threat that had kept colonists dependent on Britain; still, colonial beliefs about representation explain why those taxes turned into a demand for independence.",
+   "body": [
+    {
+     "h": "war debt led Parliament to tax",
+     "ev": [
+      "Sugar Act and Currency Act (1764): revenue enforced, colonial paper currency restricted.",
+      "Stamp Act (1765): a direct tax on printed paper."
+     ],
+     "so": "**Causation.** The debt is why Britain abandoned salutary neglect: the war created the need for revenue, and the acts were the result."
+    },
+    {
+     "h": "France's defeat changed the colonists' loyalty",
+     "ev": [
+      "Treaty of Paris (1763): France loses its mainland North American empire.",
+      "Proclamation of 1763 after Pontiac's Rebellion: the land colonists fought for was closed."
+     ],
+     "so": "With no French enemy, British troops and rules looked like control rather than protection, so obedience had less reason behind it."
+    },
+    {
+     "h": "taxes became organized resistance",
+     "ev": [
+      "Stamp Act Congress (1765) and boycotts.",
+      "Committees of Correspondence (1772), then the First Continental Congress (1774)."
+     ],
+     "so": "The war's consequences produced a chain of protests that built the institutions later used to govern and fight."
+    }
+   ],
+   "concl": [
+    "Complexity: the same taxes would not have led to a break without the colonists' belief in **actual representation** and the Real Whig fear of power; ideas turned grievances into independence.",
+    "Limit: as late as 1775 the Olive Branch Petition sought reconciliation, so the war set the process in motion but did not make independence inevitable."
+   ]
+  },
+  {
+   "q": "Practice prompt 2: Evaluate the extent to which demographic and religious developments changed colonial society in the period from 1720 to 1760.",
+   "tldr": [
+    "Argue: to a large extent; society grew more diverse and less deferential",
+    "Bodies: population growth · new immigrants · the Great Awakening",
+    "Complexity: much stayed the same: British rule, slavery, elite power"
+   ],
+   "ctx": [
+    "By 1700 the colonies were mostly English settlements on the coast",
+    "The Chesapeake and South Carolina had become slave societies",
+    "Established churches and local elites led colonial life",
+    "Hand-off: after 1720, growth and revival began to change that society"
+   ],
+   "thesis": "Demographic and religious developments changed colonial society to a large extent, because natural increase and new immigrants made it larger and more diverse and the Great Awakening weakened established churches; however, British rule, slavery and the power of local elites continued largely unchanged.",
+   "body": [
+    {
+     "h": "growth by natural increase",
+     "ev": [
+      "Population grew about tenfold from 1700 to 1775, mostly through births.",
+      "Settlers pushed west toward the Appalachians."
+     ],
+     "so": "**Change.** A fast-growing population needed land, which set up the conflicts behind the Proclamation of 1763."
+    },
+    {
+     "h": "new immigrants made society more diverse",
+     "ev": [
+      "Germans and Scots-Irish, most after 1730, many to Pennsylvania and the backcountry.",
+      "Enslaved Africans, the largest group of newcomers."
+     ],
+     "so": "The colonies became less English, and slavery grew alongside the free population."
+    },
+    {
+     "h": "the Great Awakening split the churches",
+     "ev": [
+      "Jonathan Edwards and George Whitefield's revival preaching.",
+      "New Lights vs Old Lights; more denominations and toleration."
+     ],
+     "so": "Ordinary colonists learned to question religious authority, a habit that could carry into politics."
+    }
+   ],
+   "concl": [
+    "Complexity (continuity): colonists were still loyal British subjects in 1760, and slavery expanded rather than weakened, so the change was social and religious, not political yet.",
+    "Connection: the questioning of authority links this chapter to the imperial crisis that follows; argue it as a connection, with evidence."
+   ]
+  },
+  {
+   "q": "Practice prompt 3: Evaluate the relative importance of the reasons the colonists won the American Revolution in the period from 1775 to 1783.",
+   "tldr": [
+    "Argue: the French alliance mattered most, but only because the army survived long enough to win it",
+    "Bodies: French alliance · Washington's strategy and home ground · British problems",
+    "Complexity: rank the causes and show how they depended on each other"
+   ],
+   "ctx": [
+    "After the Coercive Acts (1774) the colonies united in the First Continental Congress",
+    "Fighting began at Lexington and Concord (1775)",
+    "Britain had the stronger navy, a professional army and more money",
+    "Hand-off: the question is how the weaker side won"
+   ],
+   "thesis": "The French alliance was the most important reason the colonists won, because French troops, money and naval power made the decisive victory at Yorktown possible; Washington's strategy of avoiding decisive losses mattered almost as much, since it kept the army alive long enough for Saratoga to bring France in.",
+   "body": [
+    {
+     "h": "the French alliance",
+     "ev": [
+      "Saratoga (1777) helped convince France to ally (1778).",
+      "Yorktown (1781): the French navy and allied army trap the British."
+     ],
+     "so": "**Causation.** French help turned a stalemate into a decisive surrender, the most important single cause."
+    },
+    {
+     "h": "Washington's strategy and home ground",
+     "ev": [
+      "Washington avoided decisive losses and kept the army together.",
+      "British supplies had to cross an ocean."
+     ],
+     "so": "Surviving was a precondition: without an army in the field, there would have been no Saratoga and no alliance."
+    },
+    {
+     "h": "Britain's problems",
+     "ev": [
+      "After Saratoga the war moved South, where Britain never held the countryside.",
+      "Taking cities did not end the rebellion."
+     ],
+     "so": "Britain could win battles without winning control, which made a long war favor the Americans."
+    }
+   ],
+   "concl": [
+    "Complexity: the causes depended on each other; survival led to Saratoga, Saratoga to the alliance, the alliance to Yorktown.",
+    "Precision: Yorktown (1781) was the decisive surrender, but independence was recognized only in the Treaty of Paris (1783)."
+   ]
+  }
+ ],
+ "leq": {
+  "format": "Practice for a long essay on chapters 4 to 6 (1720 to 1783), covering colonial society, the imperial crisis and the Revolution. These are original practice prompts. Check the actual assessment instructions for its prompt, time limit, choices and permitted aids.",
+  "math": "The AP history LEQ rubric: 6 points. Each point is earned on its own, so an essay can earn evidence points without the thesis point.",
+  "rows": [
+   {
+    "n": "A · thesis (0 to 1)",
+    "earn": "A historically defensible claim that responds to the prompt and establishes a line of reasoning. One or more sentences in one place, in the introduction or the conclusion.",
+    "lose": "Restating or rephrasing the prompt. A claim with no reasoning. Pieces scattered through the essay.",
+    "cls": "Use the prompt's reasoning word: extent, causes, change."
+   },
+   {
+    "n": "B · contextualization (0 to 1)",
+    "earn": "Describes broader events, developments or processes before, during or after the prompt's time frame that relate to the topic.",
+    "lose": "Merely a phrase or a reference.",
+    "cls": "For 1754 to 1776, the earlier imperial wars and salutary neglect work; for 1720 to 1760, the slave societies and English settlement by 1700."
+   },
+   {
+    "n": "C · evidence (0 to 2)",
+    "earn": "1 point: identify at least two specific historical examples relevant to the topic. 2 points: use at least two specific pieces of evidence to support an argument that responds to the prompt.",
+    "lose": "Vague examples (\"taxes made people angry\"). Listing facts with no link to the claim keeps you at 1.",
+    "cls": "After each fact, a sentence saying what it shows."
+   },
+   {
+    "n": "D · analysis and reasoning (0 to 2)",
+    "earn": "1 point: use historical reasoning (comparison, causation, continuity and change) to frame or structure the argument. 2 points: demonstrate a complex understanding through sophisticated argumentation or effective use of evidence.",
+    "lose": "Narration in order. Complexity that is only a phrase or a reference.",
+    "cls": "Routes to the second point: multiple causes or effects; both cause and effect; both change and continuity; connections across periods; at least four pieces of evidence supporting a nuanced argument; different perspectives."
+   }
+  ],
+  "shape": [
+   "Introduction: context, then the thesis (or put the thesis in the conclusion; it must be in one place).",
+   "One body paragraph per reason in the thesis, in the same order.",
+   "Each body paragraph: claim, two specific pieces of evidence, and what each one shows.",
+   "Build complexity into the argument: weigh causes, show change and continuity, or connect periods.",
+   "Conclusion: restate the argument and its limit."
+  ]
+ },
+ "timeline": [
+  {
+   "y": "1700 to 1775",
+   "t": "Population grows about tenfold, mostly by natural increase",
+   "d": "society"
+  },
+  {
+   "y": "after 1730",
+   "t": "Most European immigrants arrive: Germans, Scots-Irish and others",
+   "d": "society"
+  },
+  {
+   "y": "1730s to 1740s",
+   "t": "First Great Awakening: Edwards, Whitefield; New vs Old Lights",
+   "d": "religion"
+  },
+  {
+   "y": "1754",
+   "t": "Albany Congress and Plan of Union; French and Indian War begins",
+   "d": "war"
+  },
+  {
+   "y": "1763",
+   "t": "Treaty of Paris; Pontiac's Rebellion; Proclamation of 1763",
+   "d": "empire"
+  },
+  {
+   "y": "1764",
+   "t": "Sugar Act and Currency Act",
+   "d": "taxes"
+  },
+  {
+   "y": "1765",
+   "t": "Stamp Act; Quartering Act; Stamp Act Congress",
+   "d": "taxes"
+  },
+  {
+   "y": "1766",
+   "t": "Stamp Act repealed; Declaratory Act",
+   "d": "taxes"
+  },
+  {
+   "y": "1767",
+   "t": "Townshend Acts",
+   "d": "taxes"
+  },
+  {
+   "y": "1770",
+   "t": "Boston Massacre; Townshend duties repealed except tea",
+   "d": "resistance"
+  },
+  {
+   "y": "1772",
+   "t": "Committees of Correspondence",
+   "d": "resistance"
+  },
+  {
+   "y": "1773",
+   "t": "Tea Act and Boston Tea Party",
+   "d": "resistance"
+  },
+  {
+   "y": "1774",
+   "t": "Coercive Acts; First Continental Congress",
+   "d": "resistance"
+  },
+  {
+   "y": "1775",
+   "t": "Lexington and Concord; Second Continental Congress; Olive Branch Petition; Dunmore's Proclamation",
+   "d": "war"
+  },
+  {
+   "y": "1776",
+   "t": "Common Sense; Declaration of Independence",
+   "d": "independence"
+  },
+  {
+   "y": "1777",
+   "t": "Saratoga, the turning point",
+   "d": "war"
+  },
+  {
+   "y": "1778",
+   "t": "Franco-American Alliance",
+   "d": "war"
+  },
+  {
+   "y": "1781",
+   "t": "Yorktown: the decisive British surrender",
+   "d": "war"
+  },
+  {
+   "y": "1783",
+   "t": "Treaty of Paris: independence recognized",
+   "d": "peace"
+  }
+ ],
+ "abbr": {
+  "LEQ": "long essay question",
+  "AP": "Advanced Placement"
+ }
+};
+
+/* ═══ machinery. nothing below needs editing. ═══ */
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n};
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* markup: **term** bolds once per scope; legacy ==x== and !!x!! render as plain text */
+let SEEN=null;
+const scope=()=>{SEEN=new Set()};
+const fmt=s=>esc(s).replace(/==(.+?)==/g,"$1").replace(/!!(.+?)!!/g,"$1").replace(/\*\*(.+?)\*\*/g,(m,t)=>{const k=t.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();if(SEEN&&SEEN.has(k))return t;if(SEEN)SEEN.add(k);return `<b class="kw">${t}</b>`});
+const plain=s=>fmt(s).replace(/<b class="kw">(.*?)<\/b>/g,"$1");
+const CHEV='<svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l4 4-4 4"/></svg>';
+const I_TEST='<svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="1.8" width="9" height="10.6" rx="1.6"/><path d="M5 5h4M5 7.6h4M5 10.2h2"/></svg>';
+const I_WARN='<svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.8 12.6 11.8H1.4z"/><path d="M7 5.6v2.8M7 10.1h.01"/></svg>';
+const I_CHECK='<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 9.5l3 3 6-7"/></svg>';
+const I_NEXT='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7h9M8 3.5 11.5 7 8 10.5"/></svg>';
+const I_DOC='<svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.8h5.2L12.5 5v9.2H4z"/><path d="M9 1.8V5h3.5M6 8.2h4.5M6 10.8h4.5"/></svg>';
+const ICON={
+ apush:'<path d="M7 22V5"/><path d="M7 6.4h10.5c.8 0 1.2.9.7 1.5L16 10l2.2 2.1c.5.6.1 1.5-.7 1.5H7"/>',
+ lang:'<path d="M6 22 9.3 15"/><path d="M9 15.4 17.4 5.2c.5-.6 1.4-.5 1.8.1l1.2 2c.3.6.1 1.4-.5 1.7L8.6 14.9"/><path d="M11.6 10.4 15 12.4"/>',
+ psych:'<path d="M18.4 20.4v-2.6h1.9c.7 0 1.1-.7.8-1.3l-1.6-3a7.2 7.2 0 1 0-6.8 4.2"/><path d="M9.2 21v-3.3"/>',
+ phys:'<circle cx="13.5" cy="13.5" r="2"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(60 13.5 13.5)"/><ellipse cx="13.5" cy="13.5" rx="9" ry="3.6" transform="rotate(120 13.5 13.5)"/>',
+ pre:'<path d="M5 5v16h16"/><path d="M7.5 18.6c3.2 0 3.6-9.4 6.6-9.4 2.6 0 3.3 6 6.6 6"/>',
+ sem:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
+ span:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>',
+ apwh:'<circle cx="13" cy="13" r="8.6"/><path d="M4.4 13h17.2"/><ellipse cx="13" cy="13" rx="3.6" ry="8.6"/>',
+ biz:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
+ mor:'<path d="M13 4.5v17"/><path d="M7.5 9.5h11"/>',
+ csp:'<path d="m9 8-5 5 5 5"/><path d="m17 8 5 5-5 5"/><path d="m14.5 5-3 16"/>'
+};
+const icon=id=>'<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICON[id]||ICON.apush)+'</svg>';
+/* class welcome pages and covers: the same illustrations as the homepage catalog */
+const CLASSPAGE={apush:"/apush",psych:"/psych",phys:"/physics",pre:"/precalc",biz:"/business",mor:"/morality",lang:"/lang",sem:"/seminar"};
+const SHORT={apush:"APUSH",psych:"AP Psych",phys:"AP Physics 1",pre:"Precalc",biz:"Business",mor:"Morality",lang:"AP Lang",sem:"AP Seminar",span:"AP Spanish",apwh:"AP World",csp:"AP CSP"};
+function coverArt(gid){
+  const id=gid==="biz"?"bus":gid;
+  const P={pre:["#1e514d","#123632","#bce3b0","#f5b792"],apush:["#b76045","#72392e","#f8d7ae","#e99b70"],psych:["#66628b","#35364f","#d6c4fa","#f4bcad"],phys:["#356f85","#193c50","#b5e8df","#efc26e"],bus:["#c59342","#8b572b","#ffe5aa","#f5bc75"],mor:["#81586b","#493948","#edbbca","#e9bd86"],lang:["#7a879b","#414e66","#e4e9f0","#edbd9f"],sem:["#779283","#3c594b","#e1e8ba","#edc699"]};
+  if(!P[id])return "";
+  const [a,b,c,d]=P[id], n="gc";
+  const defs=`<defs><linearGradient id="${n}bg" x2="1" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient><linearGradient id="${n}pt" x2=".8" y2="1"><stop stop-color="${c}"/><stop offset="1" stop-color="${d}"/></linearGradient><filter id="${n}sh" x="-50%" y="-50%" width="200%" height="210%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#14211c" flood-opacity=".24"/></filter></defs>`;
+  const bg=`<rect width="480" height="300" fill="url(#${n}bg)"/><circle cx="415" cy="20" r="190" fill="${c}" opacity=".06"/><circle cx="30" cy="305" r="170" fill="${d}" opacity=".05"/>`;
+  const grid='<path d="M0 60H480M0 100H480M0 140H480M0 180H480M0 220H480M0 260H480M40 0V300M80 0V300M120 0V300M160 0V300M200 0V300M240 0V300M280 0V300M320 0V300M360 0V300M400 0V300M440 0V300" stroke="white" stroke-opacity=".07" fill="none"/>';
+  let s="";
+  if(id==="pre"){const pts=[];for(let t=0;t<=Math.PI*2+.01;t+=.008){const r=106*Math.cos(3*t);pts.push(`${(252+r*Math.cos(t)).toFixed(1)},${(154+r*Math.sin(t)).toFixed(1)}`)}
+    s=grid+`<g stroke="${c}" fill="none" opacity=".25"><circle cx="252" cy="154" r="115"/><circle cx="252" cy="154" r="74"/><path d="M85 154H401M252 22V288M158 61L346 247M155 247L346 60"/></g><polygon points="${pts.join(" ")}" fill="url(#${n}pt)" stroke="${c}" stroke-width="1.5" filter="url(#${n}sh)"/><circle cx="252" cy="154" r="5" fill="${b}"/><g transform="translate(38 213) rotate(-7)" filter="url(#${n}sh)"><rect width="143" height="47" rx="9" fill="#f4e7cb"/><text x="17" y="30" fill="${b}" font-size="19">r = a cos 3θ</text></g><text x="357" y="66" fill="${c}" font-size="13">90°</text>`}
+  if(id==="apush")s=`<circle cx="313" cy="122" r="105" fill="${d}" opacity=".25"/><g transform="translate(75 67) rotate(-9 130 100)" filter="url(#${n}sh)"><rect width="263" height="189" rx="8" fill="#f6dfba"/><path d="M23 146H241M36 157H228M55 133V74M91 133V74M127 133V74M163 133V74M199 133V74M39 68H218L129 23Z" fill="none" stroke="${b}" stroke-width="3"/><path d="M25 175H178" stroke="${a}" stroke-width="2"/></g><g transform="translate(316 194)"><circle r="40" fill="${d}"/><circle r="31" stroke="${b}" fill="none" opacity=".6"/><path d="M-16 0H16M0-16V16" stroke="${b}"/><circle r="8" fill="${b}"/></g><path d="M345 64L382 68M343 77L388 82M341 90L374 94" stroke="${c}" opacity=".7" stroke-width="2"/>`;
+  if(id==="psych")s=`<g opacity=".14" fill="none" stroke="${c}"><circle cx="240" cy="155" r="113"/><circle cx="240" cy="155" r="92"/><path d="M52 155H427M240 20V287"/></g><path d="M238 72C197 33 153 67 159 102C113 114 116 174 158 180C146 222 200 252 238 217C273 249 320 222 315 183C358 158 341 103 309 102C315 56 271 38 238 72Z" fill="url(#${n}pt)" filter="url(#${n}sh)"/><g fill="none" stroke="${b}" stroke-width="2.4"><path d="M238 76V214M181 97C213 83 229 119 205 137M284 94C260 91 251 115 263 130C288 126 304 151 288 168M164 150C187 136 203 163 192 178M209 204C194 186 222 158 237 166M265 199C253 181 265 172 280 180"/></g><g stroke="${d}" stroke-width="1.5"><path d="M143 114L87 85M328 149L398 134M281 223L339 265M159 190L102 237"/></g><g fill="${d}"><circle cx="87" cy="85" r="8"/><circle cx="398" cy="134" r="12"/><circle cx="339" cy="265" r="7"/><circle cx="102" cy="237" r="10"/></g>`;
+  if(id==="phys")s=grid+`<path d="M55 244H424M70 263V55" stroke="${c}" opacity=".5"/><path d="M82 222Q243 -66 406 214" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="5 7"/><path d="M236 92H294M286 86L294 92 286 98" fill="none" stroke="${d}" stroke-width="2"/>`+[[82,222,9],[126,156,13],[183,109,18],[242,92,24],[303,112,31],[355,155,36],[406,214,42]].map(([x,y,r],i)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${n}pt)" opacity="${(.25+i*.12).toFixed(2)}" filter="url(#${n}sh)"/><circle cx="${x-r*.25}" cy="${y-r*.3}" r="${r*.24}" fill="white" opacity="${(.06+i*.016).toFixed(3)}"/>`).join("");
+  if(id==="bus")s=`<g stroke="${c}" stroke-opacity=".2" fill="none"><path d="M46 201L253 280 434 187M46 161L253 240 434 147M46 121L253 200 434 107"/></g>`+[[102,166,50],[183,125,91],[267,69,147]].map(([x,y,h])=>`<g filter="url(#${n}sh)"><path d="M${x} ${y}l48-20 35 15-48 21Z" fill="#ffe7b4"/><path d="M${x} ${y}l35 16v${h}l-35-16Z" fill="${d}"/><path d="M${x+35} ${y+16}l48-21v${h}l-48 21Z" fill="${c}"/></g>`).join("")+`<path d="M98 122L205 70 322 32M310 32H322V44" stroke="${c}" stroke-width="2" fill="none"/>`;
+  if(id==="mor")s=`<path d="M127 280V124a113 113 0 0 1 226 0V280Z" fill="${c}" opacity=".15"/><path d="M152 280V127a88 88 0 0 1 176 0V280Z" fill="${c}" opacity=".12"/><path d="M177 280V130a63 63 0 0 1 126 0V280Z" fill="${d}" opacity=".19"/><g stroke="${c}" stroke-width="3" fill="none" filter="url(#${n}sh)"><path d="M240 66V235M188 239H292M151 116H329M169 119L135 179H203ZM311 119L277 179H345Z"/><path d="M135 179Q169 217 203 179M277 179Q311 217 345 179" fill="${d}" stroke="${d}"/></g><circle cx="240" cy="115" r="9" fill="${c}"/>`;
+  if(id==="lang")s=`<g transform="translate(108 51) rotate(-10 123 95)" filter="url(#${n}sh)"><rect x="12" y="13" width="249" height="199" rx="8" fill="${d}"/><rect width="249" height="199" rx="8" fill="#f4ead8"/><path d="M28 37H161" stroke="${b}" stroke-width="8"/><path d="M28 66H215M28 82H204M28 98H221M28 130H205M28 146H221M28 162H185" stroke="${b}" opacity=".65" stroke-width="2"/><path d="M24 97H155M106 147H221" stroke="${a}" stroke-width="11" opacity=".22"/><path d="M25 179Q86 158 142 179" stroke="${a}" fill="none" stroke-width="2"/></g><g transform="translate(338 95) rotate(28)"><rect width="12" height="133" rx="3" fill="${b}"/><rect width="12" height="30" rx="3" fill="${d}"/><path d="M0 133L6 151 12 133Z" fill="${c}"/></g>`;
+  if(id==="sem")s=`<g stroke="${c}" stroke-opacity=".4" stroke-width="1.5" fill="none"><path d="M91 198L167 89 319 104 376 221 223 228Z M167 89L223 228M319 104L91 198"/></g><g filter="url(#${n}sh)"><path d="M90 74h159a17 17 0 0 1 17 17v79a17 17 0 0 1-17 17h-93l-37 29v-29H90a17 17 0 0 1-17-17V91a17 17 0 0 1 17-17Z" fill="${c}"/><path d="M243 127h139a14 14 0 0 1 14 14v64a14 14 0 0 1-14 14h-17v23l-33-23h-89a14 14 0 0 1-14-14v-64a14 14 0 0 1 14-14Z" fill="${d}"/></g><path d="M105 110H223M105 126H208M105 142H180M260 158H364M260 175H349M260 192H309" stroke="${b}" stroke-opacity=".6" stroke-width="3"/>`;
+  return `<svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" focusable="false" xmlns="http://www.w3.org/2000/svg">${defs}${bg}${s}</svg>`;
+}
+/* section names say where they lead; GUIDE.labels overrides one (e.g. problems:"SAQ practice") */
+const LABEL={outline:"Guide",practice:"Practice questions",problems:"Worked examples",formulas:"Formulas",cards:"Flashcards",timeline:"Timeline",checklist:"Checklist",cram:"Cram sheet",tables:"Tables",leq:"The LEQ",prompts:"Prompts"};
+const has=v=>Array.isArray(v)?v.length>0:!!v;
+
+/* header: title, one meta line (class · test date · format), the class cover */
+document.documentElement.style.setProperty("--cls",`var(--c-${GUIDE.id})`);
+document.title=`${GUIDE.title} · ${GUIDE.cls} · Valentino guides`;
+$("#title").textContent=GUIDE.title;
+if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
+/* link targets from GUIDE data: site-relative or http(s), never other schemes or user:pass@ */
+const safeUrl=u=>{const s=String(u??"").trim();if(!s||/[\x00-\x20\\]/.test(s))return null;const m=/^([a-z][a-z0-9+.-]*):/i.exec(s);if(m&&!/^https?$/i.test(m[1]))return null;try{const x=new URL(s,"https://valentinoguides.com/");if(x.username||x.password)return null}catch(e){return null}return s};
+/* practice PDFs: shown above the controls on every section, labelled exactly as written (e.g. "Practice test A (PDF)").
+   Entries that share a `g` (group label) render as one labelled row of short buttons, e.g. g:"Practice test (PDF)", t:"Version 1". */
+if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(ok.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");if(ok.length){
+  const d=$("#pdfs"), lk=(p,lab)=>`<a class="pdf" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener"${lab?` aria-label="${esc(lab)}"`:""}>${p.g?"":I_DOC}<span>${esc(p.t)}</span></a>`;
+  let h="";for(let i=0;i<ok.length;){const p=ok[i];if(!p.g){h+=lk(p);i++;continue}let j=i;while(j<ok.length&&ok[j].g===p.g)j++;h+=`<div class="pgrp" role="group" aria-label="${esc(p.g)}"><span class="pgl">${I_DOC}${esc(p.g)}</span>${ok.slice(i,j).map(x=>lk(x,x.g+", "+x.t)).join("")}</div>`;i=j}
+  d.innerHTML=h+(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"");d.hidden=false}}
+$("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
+(function(){
+  const c=$("#crow");
+  const page=CLASSPAGE[GUIDE.id];
+  if(page){const a=el("a","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>");a.href=page;a.title="all "+GUIDE.cls+" guides";c.appendChild(a)}
+  else c.appendChild(el("span","cname",icon(GUIDE.id)+"<span>"+esc(GUIDE.cls)+"</span>"));
+  $("#gcov").innerHTML=coverArt(GUIDE.id);
+  if(GUIDE.test){
+    const t=new Date(GUIDE.test+"T00:00:00"), e=new Date((GUIDE.end||GUIDE.test)+"T00:00:00");
+    const now=new Date(); now.setHours(0,0,0,0);
+    const days=Math.round((t-now)/864e5);
+    const md=`${t.getMonth()+1}/${t.getDate()}`+(GUIDE.end?`–${e.getMonth()+1}/${e.getDate()}`:"");
+    let txt, past=e<now;
+    if(past)txt=`Test was ${md}`;
+    else if(days<=0)txt=`Test today (${md})`;
+    else if(days===1)txt=`Test tomorrow (${md})`;
+    else if(days<=14)txt=`Test in ${days} days (${md})`;
+    else txt=`Test ${md}`;
+    c.appendChild(el("span","chip"+(past?" past":" due"),esc(txt)));
+  }
+  if(GUIDE.meta)c.appendChild(el("span","chip",esc(GUIDE.meta)));
+  $("#bnm").textContent=(SHORT[GUIDE.id]||GUIDE.cls)+" · "+String(GUIDE.title).replace(/\s+study guide$/i,"");
+})();
+const bar=$("#bar");
+const setBarH=()=>document.documentElement.style.setProperty("--barh",bar.offsetHeight+"px");
+setBarH(); addEventListener("resize",setBarH);
+
+function shead(txt,extra){return el("div","sh",`<h3>${esc(txt)}</h3>`+(extra?`<span class="shx">${esc(extra)}</span>`:""))}
+
+/* ═══ outline blocks ═══ */
+const B={
+  p:v=>(Array.isArray(v)?v:[v]).map(x=>`<p>${fmt(x)}</p>`).join(""),
+  pts:v=>`<ul class="pts${v.length>=6&&v.every(x=>String(x).length<70)?" two":""}">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`,
+  rows:v=>`<dl class="rows">${v.map(([k,x])=>`<dt>${esc(k)}</dt><dd>${fmt(x)}</dd>`).join("")}</dl>`,
+  steps:v=>`<ol class="steps">${v.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`,
+  flow:v=>`<ol class="flow">${v.map(x=>`<li><span>${fmt(x)}</span></li>`).join("")}</ol>`,
+  fig:v=>`<figure class="fig">${v.svg||""}${v.cap?`<figcaption>${fmt(v.cap)}</figcaption>`:""}</figure>`,
+  /* parallel items as one readable list; a tag every item shares is shown once, as the list's label */
+  tiles:v=>{const ks=v.map(x=>x.k||""), one=ks[0]&&ks.every(k=>k===ks[0]);
+    return `<div class="tlist${v.length>=2?" two":""}${v.length===3?" n3":v.length===6?" n6":""}">${one?`<p class="tlh">${esc(ks[0])}</p>`:""}<ul>${v.map(x=>`<li><span class="ti">${I_CHECK}</span><h5>${fmt(x.h)}</h5>${x.t||(!one&&x.k)?`<span class="tt">${x.t?fmt(x.t):""}${!one&&x.k?`<span class="tk">${esc(x.k)}</span>`:""}</span>`:""}</li>`).join("")}</ul></div>`},
+  tree:v=>{const n=x=>`<li><div class="nd"><b>${fmt(x.t)}</b>${x.d?`<span>${fmt(x.d)}</span>`:""}</div>${x.c?.length?`<ul>${x.c.map(n).join("")}</ul>`:""}</li>`;return `<div class="tree"><ul>${n(v)}</ul></div>`},
+  table:v=>{const cols=v.cols||[];return `<div class="tblock">${v.h?`<p class="tcap">${esc(v.h)}</p>`:""}<div class="tbw"><table class="tbl${cols.length===2?" two":""}">${cols.some(c=>c)?`<thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead>`:""}<tbody>${(v.rows||[]).map(r=>`<tr>${r.map((x,j)=>`<td data-l="${esc(cols[j]||"")}">${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></div>`},
+  cmp:v=>{const cs=Array.isArray(v)?v:[v.a,v.b].filter(Boolean);return `<div class="cmp">${cs.map(c=>`<div><h5>${esc(c.h)}</h5>${(c.p||[]).map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`).join("")}</div>`},
+  watch:v=>`<div class="watch"><div class="wl">${I_WARN}Watch out</div><ul>${v.map(x=>`<li>${plain(x)}</li>`).join("")}</ul></div>`,
+  /* every "on the test" example of a section in one panel */
+  ex:v=>`<div class="exs"><div class="exh">${I_TEST}On the test</div>${v.map(x=>Array.isArray(x.opts)?`<div class="tq mc"><div class="eq">${plain(x.q)}</div><div class="opts">${x.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${j===x.a?" data-c":""}><span class="k">${"abcde"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")}</div><div class="ea">${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`:`<div class="tq"><div class="eqr"><div class="eq">${plain(x.q)}</div><button type="button" class="eb"><span>Show answer</span>${CHEV}</button></div><div class="ea"><b class="aa">${plain(x.a)}</b>${x.why?`<span class="why">${plain(x.why)}</span>`:""}</div></div>`).join("")}</div>`,
+  notes:v=>v.map(n=>`<div class="callout ${esc(n.k||"")}"><span class="cl">${({ex:"Example",ok:"Rule",warn:"Watch out"})[n.k]||esc(n.k||"Note")}</span>${fmt(n.t)}</div>`).join(""),
+  terms:v=>`<div class="terms"><span class="tl">Key terms</span>${v.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>`
+};
+/* a subject diagram (fig, tree) sits beside the text; lists (tiles) read below it */
+const VIS=["fig","tree","tiles"], SIDE=["fig","tree"];
+const WN={3:["w3","tested most"],2:["w2","tested"],1:["w1","know it"]};
+function section(s,i,next){
+  scope();
+  const watch=[...(s.watch||[]),...(s.notes||[]).filter(n=>n.k==="warn").map(n=>n.t)];
+  const notes=(s.notes||[]).filter(n=>n.k!=="warn");
+  const mainKeys=["p","pts","rows","flow","steps"].filter(k=>has(s[k]));
+  const vis=VIS.filter(k=>has(s[k]));
+  const sideKey=SIDE.find(k=>has(s[k]))||(mainKeys.length?null:vis[0])||null;
+  const main=mainKeys.map(k=>B[k](s[k])).join("")+(notes.length?B.notes(notes):"");
+  let wb=watch.length?B.watch(watch):"";
+  const side=sideKey?B[sideKey](s[sideKey]):"";
+  let h="";
+  /* text left, the section's own diagram (or list) beside it; the watch box closes the text column */
+  if(main&&side){h+=`<div class="duo${sideKey==="tree"||sideKey==="fig"?" wide-side":""}"><div class="main">${main}${wb}</div><div class="side">${side}</div></div>`;wb=""}
+  else if(main){h+=`<div class="main solo">${main}${wb}</div>`;wb=""}
+  else if(side)h+=side;
+  const rest=vis.filter(k=>k!==sideKey).concat(["table","cmp"].filter(k=>has(s[k])));
+  rest.forEach(k=>{h+=B[k](s[k])});
+  if(has(s.tables))s.tables.forEach(t=>{h+=B.table(t)});
+  if(wb)h+=wb;
+  if(has(s.ex))h+=B.ex(s.ex);
+  if(has(s.terms))h+=B.terms(s.terms);
+  const n=String(i+1).padStart(2,"0"), w=WN[s.w];
+  const eyb=`<p class="eyb"><span class="num">${n}</span>${w?`<span aria-hidden="true">/</span><span class="w ${w[0]}">${w[1]}</span>`:""}</p>`;
+  const tp=!next&&TRY?TRY:null;
+  const nx=next?`<div class="nxt"><a href="#s-${i+2}" data-j="s-${i+2}">Next: ${esc(next.t)}${I_NEXT}</a></div>`:tp?`<div class="nxt"><a href="#${tp}" data-p="${tp}">Next: ${esc(lab(tp))}${cnt(tp)?` (${cnt(tp)})`:""}${I_NEXT}</a></div>`:"";
+  const node=el("section","sec",`<header>${eyb}<h3 id="h-s-${i+1}" tabindex="-1">${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</header><div class="sb">${h}</div>${nx}`);
+  node.id="s-"+(i+1); node.setAttribute("aria-labelledby","h-s-"+(i+1));
+  SEEN=null;
+  return node;
+}
+function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{
+  const b=x.querySelector(".eb");
+  if(b){b.setAttribute("aria-expanded","false");b.addEventListener("click",()=>{const on=!x.classList.contains("on");x.classList.toggle("on",on);b.firstElementChild.textContent=on?"Hide answer":"Show answer";b.setAttribute("aria-expanded",String(on))});return}
+  x.insertAdjacentHTML("beforeend",'<p class="vh" role="status" aria-live="polite"></p>');
+  x.querySelectorAll(".opt").forEach(o=>o.addEventListener("click",()=>{
+    if(x.classList.contains("done")||$("#root").classList.contains("showall"))return;
+    x.classList.add("done","on");
+    if(o.hasAttribute("data-c")){o.classList.add("right");tagOpt(o,"\u2713 correct");say(x,"Correct.")}else{o.classList.add("wrong");tagOpt(o,"\u2717 your answer");const c=x.querySelector(".opt[data-c]");if(c){c.classList.add("right");tagOpt(c,"\u2713 correct")}say(x,"Not quite. The answer is ("+(c?c.querySelector(".k").textContent:"?")+").")}
+  }));
+})}
+const NUMW={2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven"};
+const JUMP=[];
+function buildOutline(sec){
+  const list=GUIDE.outline||[];
+  const col=el("div","ol");
+  /* the opening shows at most three priorities; any others stay on the page as ordinary reading after the lessons ("more to keep in mind"), linked from the focus box */
+  const TOPN=3, MID="s-more";
+  let moreHTML="";
+  if(has(GUIDE.top)){
+    scope();
+    const lead=GUIDE.top.slice(0,TOPN), more=GUIDE.top.slice(TOPN), k=lead.length;
+    const f=el("section","focus"); f.id="s-top"; f.setAttribute("aria-labelledby","h-s-top");
+    f.innerHTML=`<h3 id="h-s-top" tabindex="-1">Key ${k===1?"idea":"ideas"}</h3><ol class="tops">${lead.map(x=>`<li class="tp">${fmt(x)}</li>`).join("")}</ol>`+
+      (more.length?`<a class="fqk" href="#${MID}" data-j="${MID}">${NUMW[more.length]?NUMW[more.length].replace(/^./,c=>c.toUpperCase()):more.length} more to keep in mind${I_NEXT}</a>`:"");
+    if(more.length)moreHTML=`<header><p class="eyb">key ideas</p><h3 id="h-s-more" tabindex="-1">More to keep in mind</h3></header><div class="sb"><ol class="tops" style="counter-reset:tp ${TOPN}">${more.map(x=>`<li class="tm">${fmt(x)}</li>`).join("")}</ol></div>`;
+    col.appendChild(f);
+    JUMP.push({id:"s-top",n:"",t:"Key ideas",w:0});
+  }
+  /* the quick-facts table (topTable) sits after the lessons so the first lesson starts right under the focus box; the focus box links to it */
+  const QT=GUIDE.topTable&&has(GUIDE.topTable.rows)?GUIDE.topTable:null, qh=QT?(QT.h||"Quick facts"):"";
+  const QID="s-qk";
+  if(QT){const fb=col.querySelector(".focus"), a=`<a class="fqk" href="#${QID}" data-j="${QID}">Quick facts: ${esc(qh)}${I_NEXT}</a>`; if(fb)fb.insertAdjacentHTML("beforeend",a)}
+  list.forEach((s,i)=>{col.appendChild(section(s,i,list[i+1]));JUMP.push({id:"s-"+(i+1),n:String(i+1).padStart(2,"0"),t:s.t,w:s.w||1})});
+  if(moreHTML){const mo=el("section","sec more",moreHTML);mo.id=MID;mo.setAttribute("aria-labelledby","h-s-more");col.appendChild(mo);JUMP.push({id:MID,n:"",t:"More to keep in mind",w:0})}
+  if(QT){
+    scope();
+    const q=el("section","sec qk",`<header><p class="eyb">quick facts</p><h3 id="h-s-qk" tabindex="-1">${esc(qh)}</h3></header><div class="sb">${B.table({cols:QT.cols,rows:QT.rows})}</div>`);
+    q.id=QID; q.setAttribute("aria-labelledby","h-s-qk"); col.appendChild(q); SEEN=null;
+    JUMP.push({id:QID,n:"",t:qh,w:0});
+  }
+  if(GUIDE.abbr&&Object.keys(GUIDE.abbr).length){
+    col.appendChild(shead("Abbreviations"));
+    const a=el("div","abbr",Object.entries(GUIDE.abbr).map(([k,v])=>`<b>${esc(k)}</b> ${esc(v)}`).join(" · ")); a.id="s-abbr"; col.appendChild(a);
+    JUMP.push({id:"s-abbr",n:"",t:"Abbreviations",w:0});
+  }
+  sec.appendChild(col);
+  wireEx(col);
+  col.addEventListener("click",e=>{const a=e.target.closest(".nxt a,.fqk");if(!a)return;e.preventDefault();if(a.dataset.p)show(a.dataset.p,true);else goTo(a.dataset.j)});
+}
+
+/* practice mc */
+let SCORE={done:0,right:0,total:0}, RESEARCH=()=>{};
+/* feedback in words for sighted and screen-reader users */
+function tagOpt(o,t){if(!o.querySelector(".ftag"))o.insertAdjacentHTML("beforeend",`<span class="ftag">${t}</span>`)}
+function say(card,t){const s=card.querySelector(".vh[role=status]");if(s)s.textContent=t}
+function scoreVis(){$("#score").classList.toggle("show",CUR==="practice"&&SCORE.done>0)}
+function buildPractice(sec){
+  const qs=GUIDE.practice||[]; SCORE.total=qs.length; $("#sct").textContent=qs.length;
+  /* retry missed questions: in memory for this page visit only, nothing stored or sent.
+     SCORE counts first tries only. Retries change the missed set and the round progress, never SCORE.
+     HOLD ignores a second click for half a second after a retry step, so a double click can't hit the control that moved under it. */
+  const FIRST=new Map(), MISSED=new Set(); let RT=null, ROUND=0, HOLD=-1e9;
+  const hold=()=>{const t=performance.now();if(t-HOLD<500)return true;HOLD=t;return false};
+  const rbar=el("div","rbar"); rbar.hidden=true; rbar.tabIndex=-1; rbar.setAttribute("role","group"); rbar.setAttribute("aria-label","retry missed questions");
+  rbar.innerHTML=`<p class="rst"></p><p class="vh" role="status" aria-live="polite"></p><div class="rbtns"><button type="button" class="btn" data-r="again" hidden></button><button type="button" class="btn ghost" data-r="all">all questions</button><button type="button" class="btn ghost" data-r="over">start over</button></div>`;
+  sec.insertBefore(rbar,sec.firstChild);
+  $("#reset").insertAdjacentHTML("beforebegin",'<button type="button" id="retry" hidden></button>');
+  const rbtn=$("#retry"), rst=rbar.querySelector(".rst"), rsay=rbar.querySelector(".vh"), ragain=rbar.querySelector('[data-r="again"]');
+  const g=el("div","qgrid"); g.tabIndex=-1;
+  const clearCard=c=>{c.classList.remove("done");c.querySelectorAll(".opt").forEach(o=>o.classList.remove("right","wrong","sel"));c.querySelectorAll(".ftag").forEach(t=>t.remove());say(c,"")};
+  const firstTxt=()=>`first-try score stays ${SCORE.right} of ${SCORE.total}.`;
+  function rsync(){
+    const n=MISSED.size; rbar.hidden=!RT;
+    if(!RT){rbtn.hidden=!n;rbtn.textContent=`retry missed (${n})`;return}
+    const all=RT.set.length, end=RT.done>=all;
+    rbtn.hidden=false; rbtn.textContent=!end?`round ${RT.round}: ${RT.done} of ${all}`:n?`retry the ${n} still missed`:"all fixed · all questions";
+    ragain.hidden=!(end&&n); ragain.textContent=`retry the ${n} still missed`;
+    rst.textContent=!end?`retry round ${RT.round}: ${RT.done} of ${all} answered, ${RT.fixed} now right. ${firstTxt()}`
+      :n?`round ${RT.round} done: ${RT.fixed} of ${all} now right, ${n} still missed. ${firstTxt()}`:`all fixed: every missed question is now right. ${firstTxt()}`;
+    if(end&&!RT.said){RT.said=1;rsay.textContent=rst.textContent}
+  }
+  function record(i,ok){
+    if(!FIRST.has(i)){FIRST.set(i,ok);if(ok)SCORE.right++;else MISSED.add(i);SCORE.done++;$("#scn").textContent=SCORE.right}
+    else{if(ok)MISSED.delete(i);else MISSED.add(i);if(RT&&RT.set.includes(i)){RT.done++;if(ok)RT.fixed++}}
+    scoreVis(); rsync();
+  }
+  function startRetry(){
+    if(!MISSED.size||hold())return;
+    if($("#root").classList.contains("showall"))$("#showall").click();
+    RT={round:++ROUND,set:[...MISSED].sort((a,b)=>a-b),done:0,fixed:0,said:0};
+    g.querySelectorAll(".q").forEach(c=>{const on=RT.set.includes(+c.dataset.qi);c.classList.toggle("rx",!on);if(on)clearCard(c)});
+    rsay.textContent=""; rsync(); RESEARCH();
+    const r=rbar.getBoundingClientRect(); if(r.top<$("#bar").offsetHeight||r.bottom>innerHeight)sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});
+    rbar.focus({preventScroll:true});
+    const msg=`retry round ${RT.round}: ${RT.set.length} missed question${RT.set.length===1?"":"s"}. ${firstTxt()}`; setTimeout(()=>{if(RT&&RT.round===ROUND&&!RT.said)rsay.textContent=msg},120);
+  }
+  function endRetry(){if(hold())return;RT=null;rsay.textContent="";g.querySelectorAll(".q.rx").forEach(c=>c.classList.remove("rx"));rsync();RESEARCH();g.focus({preventScroll:true})}
+  qs.forEach((q,i)=>{
+    const card=el("div","group q"), multi=Array.isArray(q.a), keys=multi?q.a:[q.a]; card.dataset.qi=i;
+    card.innerHTML=`<div class="qt"><div class="qn">question ${i+1}</div>${plain(q.q)}</div>`+
+      q.opts.map((o,j)=>`<button type="button" class="opt" data-i="${j}"${keys.includes(j)?" data-c":""}><span class="k">${"abcdef"[j]||j+1}</span><span>${plain(o)}</span></button>`).join("")+
+      (multi?`<div class="mchk"><span>select all that apply</span><button type="button" class="btn ghost">check</button></div>`:"")+
+      `<p class="vh" role="status" aria-live="polite"></p><div class="why"><b>why</b>${plain(q.why||"")}</div>`;
+    const opts=[...card.querySelectorAll(".opt")], locked=()=>card.classList.contains("done")||$("#root").classList.contains("showall")||performance.now()-HOLD<500;
+    const finish=ok=>{card.classList.add("done");record(i,ok)};
+    opts.forEach(b=>b.addEventListener("click",()=>{
+      if(locked())return;
+      if(multi){b.classList.toggle("sel");return}
+      const j=+b.dataset.i;
+      if(j===q.a){b.classList.add("right");tagOpt(b,"\u2713 correct");say(card,"Correct.")}else{b.classList.add("wrong");tagOpt(b,"\u2717 your answer");opts[q.a].classList.add("right");tagOpt(opts[q.a],"\u2713 correct");say(card,"Not quite. The answer is ("+("abcdef"[q.a]||q.a+1)+").")}
+      finish(j===q.a);
+    }));
+    if(multi)card.querySelector(".mchk .btn").addEventListener("click",e=>{
+      if(locked())return;
+      let ok=true; const had=document.activeElement===e.currentTarget;
+      opts.forEach((o,j)=>{const s=o.classList.contains("sel"),c=keys.includes(j);o.classList.remove("sel");if(c){o.classList.add("right");tagOpt(o,"\u2713 correct")}else if(s){o.classList.add("wrong");tagOpt(o,"\u2717 your answer")}if(s!==c)ok=false});
+      say(card,ok?"Correct.":"Not quite. The correct choices are marked.");
+      finish(ok);
+      if(had)(card.querySelector(".opt.right")||opts[0]).focus({preventScroll:true});
+    });
+    g.appendChild(card);
+  });
+  sec.appendChild(g);
+  rbtn.addEventListener("click",()=>{
+    if(!RT)return startRetry();
+    if(RT.done<RT.set.length){sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});rbar.focus({preventScroll:true});return}
+    if(MISSED.size)startRetry();else endRetry();
+  });
+  ragain.addEventListener("click",startRetry);
+  rbar.querySelector('[data-r="all"]').addEventListener("click",endRetry);
+  rbar.querySelector('[data-r="over"]').addEventListener("click",()=>$("#reset").click());
+  $("#reset").addEventListener("click",()=>{if(hold())return;SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
+}
+
+/* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
+function stepsHTML(st){st=st||[];if(!st.some(Array.isArray))return `<ol class="steps">${st.map(s=>`<li>${plain(s)}</li>`).join("")}</ol>`;return `<ul class="work"><li class="hd"><span class="wh">work</span><span class="wh">why</span></li>${st.map(s=>{const [m,y]=Array.isArray(s)?s:[s,""];return `<li><div class="wm${/^\s*=/.test(m)?" cont":""}">${plain(m)}</div><div class="wy">${y?plain(y):""}</div></li>`}).join("")}</ul>`}
+function buildProblems(sec){
+  const ps=GUIDE.problems||[];
+  const g=el("div","pgrid");
+  ps.forEach((p,i)=>{
+    const card=el("div","group prob");
+    card.innerHTML=`<div class="pi"><div class="qside"><div class="qt"><div class="qn">problem ${i+1}</div>${plain(p.q)}</div><button type="button" class="go"><span>Show steps</span>${CHEV}</button></div><div class="reveal">${stepsHTML(p.steps)}${p.ans?`<div class="ans"><b>answer</b>${plain(p.ans)}</div>`:""}</div></div>`;
+    const go=card.querySelector(".go");go.setAttribute("aria-expanded","false");
+    go.addEventListener("click",()=>{const on=!card.classList.contains("on");card.classList.toggle("on",on);go.firstElementChild.textContent=on?"Hide steps":"Show steps";go.setAttribute("aria-expanded",String(on))});
+    g.appendChild(card);
+  });
+  sec.appendChild(g);
+}
+
+/* formulas */
+function buildFormulas(sec){
+  const fs=GUIDE.formulas||[];
+  sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
+}
+
+/* flashcards: flip deck, plus the whole list */
+function buildCards(sec){
+  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  const dk=el("div","dk");
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  sec.appendChild(dk);
+  const cnt=nav.querySelector(".cnt");
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
+  const go=d=>{i=(i+d+cs.length)%cs.length;draw()};
+  fc.addEventListener("click",()=>fc.classList.toggle("flip")); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();fc.classList.toggle("flip")}});
+  nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
+  nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
+  nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
+  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT"||OPEN)return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
+  draw();
+  sec.appendChild(shead("All cards",`${cs.length}`));
+  sec.appendChild(el("div","clist",cs.map(c=>`<div><b>${plain(c.f)}</b><span>${plain(c.b)}</span></div>`).join("")));
+}
+
+/* timeline */
+function buildTimeline(sec){
+  const ts=GUIDE.timeline||[];
+  sec.appendChild(el("div","tln",ts.map(t=>`<div class="ev"><div class="y">${esc(t.y)}</div><div class="t">${plain(t.t)}</div>${t.d?`<div class="d">${plain(t.d)}</div>`:"<div></div>"}</div>`).join("")));
+}
+
+/* checklist */
+function buildChecklist(sec){
+  const cs=GUIDE.checklist||[]; const key="ck:"+location.pathname; let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+  const g=el("div","ckg");
+  cs.forEach((c,i)=>{
+    const b=el("button","ck"+(saved[i]?" on":""),`<span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span><span><span class="t">${plain(c.t)}</span>${c.d?`<span class="d">${plain(c.d)}</span>`:""}</span>`);
+    b.type="button"; b.addEventListener("click",()=>{b.classList.toggle("on");saved[i]=b.classList.contains("on");try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}});
+    g.appendChild(b);
+  });
+  sec.appendChild(g);
+}
+
+/* cram sheet: [{h, d, items:[{n, y, t}]}] */
+function buildCram(sec){
+  const gs=GUIDE.cram||[];
+  sec.appendChild(el("div","cgrid",gs.map(g=>`<div class="group"><div class="gh">${esc(g.h||"")}<span>${esc(g.d||String((g.items||[]).length))}</span></div>${(g.items||[]).map(c=>`<div class="cr"><div class="n"><span>${plain(c.n)}</span>${c.y?`<span class="y">${esc(c.y)}</span>`:""}</div><div class="t">${plain(c.t)}</div></div>`).join("")}</div>`).join("")));
+}
+
+/* tables pane: [{h, d, cols, rows}] */
+function buildTables(sec){
+  const w=el("div","tpane");
+  (GUIDE.tables||[]).forEach(tb=>{const b=el("div","tblk");b.appendChild(shead(tb.h||"Table",tb.d||`${(tb.rows||[]).length} rows`));b.insertAdjacentHTML("beforeend",B.table({cols:tb.cols,rows:tb.rows}));w.appendChild(b)});
+  sec.appendChild(w);
+}
+
+/* essay panes (used by the LEQ guide): prompts + leq + fn */
+function buildPrompts(sec){
+  const ps=GUIDE.prompts||[];
+  if(has(GUIDE.prompts_note)){sec.appendChild(shead("How points are earned"));sec.appendChild(el("div","card top",GUIDE.prompts_note.map(x=>`<p>${fmt(x)}</p>`).join("")))}
+  sec.appendChild(shead("Possible prompts",`${ps.length}`));
+  ps.forEach((p,i)=>{
+    scope();
+    const g=el("div","group");
+    const row=el("button","row"); row.type="button"; row.setAttribute("aria-expanded","false");
+    row.innerHTML=`<span class="rt"><span class="rd">prompt ${i+1}</span><span class="rn">${esc(p.q)}</span></span>`+CHEV;
+    const inner=(p.tldr?`<div class="pl">tldr</div><ul class="bul">${p.tldr.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`:"")+
+      `<div class="pl">context</div><ul class="bul">${(p.ctx||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      `<div class="pl">thesis</div><div class="ans">${esc(p.thesis)}</div>`+
+      (p.body||[]).map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
+      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
+    const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
+    row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
+    g.appendChild(row); g.appendChild(body); sec.appendChild(g);
+  });
+  SEEN=null;
+}
+function buildLeq(sec){
+  const L=GUIDE.leq;
+  sec.appendChild(shead("How it runs"));
+  sec.appendChild(el("div","card top",`<p>${fmt(L.format)}</p>${L.math?`<p>${fmt(L.math)}</p>`:""}`));
+  if(has(L.rows)){
+    sec.appendChild(shead("The rubric",`${L.rows.length} rows`));
+    sec.appendChild(el("div","tbw",`<table class="tbl"><thead><tr><th>row</th><th>earns it</th><th>loses it</th><th>class tips</th></tr></thead><tbody>${L.rows.map(r=>`<tr><td data-l="row">${esc(r.n)}</td><td data-l="earns it">${plain(r.earn)}</td><td data-l="loses it">${plain(r.lose)}</td><td data-l="class tips">${plain(r.cls||"")}</td></tr>`).join("")}</tbody></table>`));
+  }
+  if(has(L.codes))sec.appendChild(el("div","card",`<div class="terms"><span class="tl">margin codes</span>${L.codes.map(([a,b])=>`<span class="term">${esc(a)} · ${esc(b)}</span>`).join("")}</div>`));
+  if(has(L.shape)){sec.appendChild(shead("The shape"));sec.appendChild(el("div","card",B.steps(L.shape)))}
+  if(has(L.pace)){
+    const tot=L.pace.reduce((a,p)=>a+p.m,0);
+    sec.appendChild(shead(`${tot} minutes`,"minute by minute"));
+    sec.appendChild(el("div","card",`<div class="pace">${L.pace.map(p=>`<div style="flex:${p.m}" title="${esc(p.l)} · ${p.m} min"><span>${p.m}</span></div>`).join("")}</div>${B.steps(L.pace.map(p=>`**${p.l} · ${p.m} min.** ${p.t}`))}`));
+  }
+  if(has(GUIDE.fn)){sec.appendChild(shead("Notes",`${GUIDE.fn.length}`));sec.appendChild(el("div","card",`<ol class="fnl">${GUIDE.fn.map(x=>`<li>${fmt(x)}</li>`).join("")}</ol>`))}
+}
+
+/* ═══ menus: topics (from the controls or the bar) and sections (from the bar). one panel each ═══ */
+let OPEN=null, OPENBY=null;
+const FOCUSABLE='a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])';
+const visibleF=root=>[...root.querySelectorAll(FOCUSABLE)].filter(n=>n.offsetParent!==null&&!n.closest("[hidden]"));
+function placeMenu(m,t){
+  const r=t.getBoundingClientRect(), w=m.offsetWidth, vw=document.documentElement.clientWidth;
+  let left=r.left; if(left+w>vw-12)left=Math.max(12,r.right-w); if(left<12)left=12;
+  const inBar=t.closest(".bar"), top=Math.round(inBar?bar.getBoundingClientRect().bottom+6:r.bottom+6);
+  m.style.left=Math.round(left)+"px"; m.style.top=top+"px"; m.style.maxHeight=Math.max(200,Math.min(560,innerHeight-top-12))+"px";
+}
+function openMenu(id,t,kbd){
+  closeMenu(false);
+  const m=document.getElementById(id); if(!m)return;
+  m.hidden=false; placeMenu(m,t);
+  document.querySelectorAll(`[data-menu="${id}"]`).forEach(b=>b.setAttribute("aria-expanded",String(b===t)));
+  OPEN=m; OPENBY=t;
+  /* from the keyboard, focus moves into the menu; from a pointer it stays put (Tab or the arrow keys still enter it) */
+  if(kbd){const f=m.querySelector('.mi[aria-current="true"]')||visibleF(m)[0]; if(f)f.focus({preventScroll:true})}
+}
+function closeMenu(ret){
+  if(!OPEN)return;
+  const t=OPENBY; OPEN.hidden=true;
+  document.querySelectorAll(`[data-menu="${OPEN.id}"]`).forEach(b=>b.setAttribute("aria-expanded","false"));
+  OPEN=null; OPENBY=null;
+  if(ret&&t)t.focus({preventScroll:true});
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-menu]");
+  if(t){e.preventDefault();if(OPEN&&OPENBY===t)closeMenu(false);else openMenu(t.dataset.menu,t,e.detail===0);return}
+  if(OPEN&&!OPEN.contains(e.target))closeMenu(false);
+});
+document.addEventListener("keydown",e=>{
+  if(!OPEN)return;
+  if(e.key==="Escape"){e.preventDefault();closeMenu(true);return}
+  const items=visibleF(OPEN), i=items.indexOf(document.activeElement);
+  if(i<0&&document.activeElement===OPENBY&&(e.key==="ArrowDown"||(e.key==="Tab"&&!e.shiftKey))){e.preventDefault();(OPEN.querySelector('.mi[aria-current="true"]')||items[0])?.focus({preventScroll:true});return}
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();const n=items.length;if(!n)return;items[(i+(e.key==="ArrowDown"?1:-1)+n)%n].focus({preventScroll:true});return}
+  if(e.key==="Home"||e.key==="End"){e.preventDefault();(e.key==="Home"?items[0]:items[items.length-1])?.focus({preventScroll:true});return}
+  if(e.key==="Tab"){
+    if(e.shiftKey&&i<=0){e.preventDefault();closeMenu(true);return}
+    if(!e.shiftKey&&i===items.length-1){e.preventDefault();const t=OPENBY;closeMenu(false);const all=visibleF(document.body).filter(n=>!n.closest(".menu"));const k=all.indexOf(t);(all[k+1]||t).focus({preventScroll:true})}
+  }
+});
+addEventListener("resize",()=>{if(OPEN&&OPENBY)placeMenu(OPEN,OPENBY)});
+addEventListener("scroll",()=>{if(OPEN&&OPENBY){const r=OPENBY.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)closeMenu(false);else placeMenu(OPEN,OPENBY)}},{passive:true});
+
+/* go to a lesson (from jump to topic, a next link or a deep link) */
+function goTo(id,instant){
+  const t=document.getElementById(id); if(!t)return;
+  const pane=t.closest(".pane"), moved=pane&&!pane.classList.contains("on"); if(moved)show(pane.id.slice(2),false);
+  t.scrollIntoView({behavior:REDUCED||instant?"auto":"smooth",block:"start"});
+  const h=t.querySelector("h3[tabindex]")||t; if(!h.hasAttribute("tabindex"))h.tabIndex=-1;
+  h.focus({preventScroll:true});
+  try{if(moved)history.pushState(null,"","#"+id);else history.replaceState(null,"","#"+id)}catch(e){}
+}
+
+/* sections: one tab per view, always visible above the topics menu; the bar repeats them as a menu once scrolled */
+const root=$("#root"), panesEl=$("#panes"), secm=$("#secm");
+const builders={outline:buildOutline,practice:buildPractice,problems:buildProblems,formulas:buildFormulas,cards:buildCards,timeline:buildTimeline,checklist:buildChecklist,cram:buildCram,tables:buildTables,leq:buildLeq,prompts:buildPrompts};
+const PANES=(GUIDE.panes||[]).filter(id=>builders[id]&&(has(GUIDE[id])||(id==="outline"&&has(GUIDE.top))));
+const lab=id=>(GUIDE.labels||{})[id]||LABEL[id]||id;
+/* counts shown on a section's tab: questions, problems, cards */
+const cnt=id=>["practice","problems","cards"].includes(id)?(GUIDE[id]||[]).length:0;
+/* the first practice section; the guide's last lesson links to it by name */
+const TRY=["practice","problems"].find(id=>PANES.includes(id))||null;
+const tabs=[], mtabs=[];
+PANES.forEach(id=>{
+  const sec=el("section","pane"); sec.id="p-"+id; sec.setAttribute("role","tabpanel"); sec.setAttribute("aria-labelledby","tab-"+id); sec.tabIndex=-1;
+  scope(); builders[id](sec); SEEN=null; root.appendChild(sec);
+  const n=cnt(id);
+  const b=el("button","sg",`<span>${esc(lab(id))}</span>${n?`<span class="n">${n}</span>`:""}`); b.type="button"; b.id="tab-"+id; b.dataset.pane=id;
+  b.setAttribute("role","tab"); b.setAttribute("aria-controls","p-"+id); b.setAttribute("aria-selected","false"); b.tabIndex=-1;
+  b.addEventListener("click",()=>show(id,true)); panesEl.appendChild(b); tabs.push(b);
+  const m=el("button","mi",`<span class="mt">${esc(lab(id))}${n?` <span class="ms" style="display:inline">${n}</span>`:""}</span><svg class="mck" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 9.5l3 3 6-7"/></svg>`); m.type="button"; m.dataset.pane=id;
+  m.addEventListener("click",()=>{closeMenu(false);show(id,true)}); secm.appendChild(m); mtabs.push(m);
+});
+if(PANES.length>1){$("#secs").hidden=false;$("#secb").hidden=false}
+/* a fade on the right edge while more tabs sit off-screen (phones) */
+const segFade=()=>{panesEl.classList.toggle("ovf",panesEl.scrollWidth-panesEl.clientWidth-panesEl.scrollLeft>4);panesEl.classList.toggle("ovl",panesEl.scrollLeft>4)};
+panesEl.addEventListener("scroll",segFade,{passive:true}); addEventListener("resize",segFade); requestAnimationFrame(segFade); document.fonts?.ready.then(segFade);
+/* arrow keys move between tabs (and open them); Home and End jump to the ends */
+panesEl.addEventListener("keydown",e=>{
+  const i=tabs.indexOf(document.activeElement); if(i<0)return;
+  const k={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key]; let j=null;
+  if(k)j=(i+k+tabs.length)%tabs.length; else if(e.key==="Home")j=0; else if(e.key==="End")j=tabs.length-1;
+  if(j===null)return; e.preventDefault(); show(tabs[j].dataset.pane,true); tabs[j].focus({preventScroll:true});
+});
+/* jump to topic */
+(function(){
+  const m=$("#m-jump");
+  if(!JUMP.length){document.querySelectorAll('[data-menu="m-jump"]').forEach(b=>b.hidden=true);return}
+  const ws=new Set(JUMP.map(j=>j.w));
+  m.innerHTML=`<div class="ml">Topics</div>`+JUMP.map(j=>`<a class="mi" href="#${j.id}" data-j="${j.id}"><span class="mn">${j.n}</span><span class="mt">${esc(j.t)}</span>${j.w?`<i class="w${j.w}" aria-hidden="true"></i>`:""}</a>`).join("")+
+    ((ws.has(3)||ws.has(2))?`<div class="mleg" aria-hidden="true"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`:"");
+  m.addEventListener("click",e=>{const a=e.target.closest("a[data-j]");if(!a)return;e.preventDefault();closeMenu(false);goTo(a.dataset.j)});
+  if("IntersectionObserver" in window){
+    const links=[...m.querySelectorAll("a[data-j]")], seen=new Map();
+    const io=new IntersectionObserver(es=>{es.forEach(e=>seen.set(e.target.id,e.isIntersecting));
+      const first=links.find(a=>seen.get(a.dataset.j));
+      if(first)links.forEach(a=>a.setAttribute("aria-current",String(a===first)));
+    },{rootMargin:"-20% 0px -55% 0px"});
+    links.forEach(a=>{const t=document.getElementById(a.dataset.j);if(t)io.observe(t)});
+  }
+})();
+let CUR=null, afterShow=()=>{};
+function show(id,user){
+  const changed=CUR!==id; CUR=id; closeMenu(false);
+  tabs.forEach(b=>{const on=b.dataset.pane===id;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1});
+  mtabs.forEach(b=>b.setAttribute("aria-current",String(b.dataset.pane===id)));
+  $("#seccur").textContent=lab(id);
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  const on=tabs.find(b=>b.dataset.pane===id); if(on){const r=on.getBoundingClientRect(),q=panesEl.getBoundingClientRect();if(r.left<q.left||r.right>q.right)panesEl.scrollTo({left:on.offsetLeft-24,behavior:REDUCED?"auto":"smooth"})}
+  scoreVis(); afterShow();
+  if(user){
+    /* a section change is a history step, so the browser's back button returns to the previous section */
+    if(changed&&location.hash!=="#"+id){try{history.pushState(null,"","#"+id)}catch(e){}}
+    const top=$("#gctl").getBoundingClientRect().top+scrollY-bar.offsetHeight-10; if(scrollY>top)scrollTo({top,behavior:REDUCED?"auto":"smooth"});
+  }
+}
+/* deep links: #practice opens a pane; #s-3 opens the guide at that lesson */
+function route(instant){
+  const want=decodeURIComponent(location.hash.slice(1));
+  if(PANES.includes(want)){if(CUR!==want)show(want,false);return}
+  const t=want&&document.getElementById(want);
+  if(t&&t.closest(".pane")){show(t.closest(".pane").id.slice(2),false);requestAnimationFrame(()=>requestAnimationFrame(()=>goTo(want,instant)));return}
+  if(!CUR||(!want&&CUR!==PANES[0]))show(PANES[0],false);
+}
+route(true);
+/* back and forward: hash links, pushed section changes */
+addEventListener("hashchange",()=>route(false));
+addEventListener("popstate",()=>route(true));
+
+/* search: filters every pane as you type and marks the hits; "/" focuses it.
+   show all answers: practice keys + whys, problem steps, every "on the test" answer. */
+(function(){
+  const q=$("#q"), box=$("#srch"), stat=$("#sstat"), sall=$("#showall");
+  const ITEMS={outline:".tp,.toptbl,.sec,#s-abbr",practice:".q",problems:".prob",formulas:".fx",cards:".clist > div",timeline:".ev",checklist:".ck",cram:".cr",tables:".tblk tbody tr",prompts:".group",leq:".card,.tbw"};
+  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x,.ftag,.vh,.eyb,.nxt,.exh,.ti,.fqk";
+  const fold=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\s+/g," ");
+  const IDX=PANES.map(id=>{
+    const p=$("#p-"+id), sel=ITEMS[id]||"";
+    const items=sel?[...p.querySelectorAll(sel)].map(n=>{const c=n.cloneNode(true);c.querySelectorAll(SKIP).forEach(x=>x.remove());let sp="";const w=document.createTreeWalker(c,NodeFilter.SHOW_TEXT);while(w.nextNode())sp+=w.currentNode.nodeValue+" ";return {n,t:fold(c.textContent)+"\n"+fold(sp)}}):[];
+    const nr=el("div","nores sx"); p.prepend(nr);
+    return {id,p,items,nr,vis:sel.split(",").map(x=>x.trim()+":not(.sx)").join(",")};
+  });
+  const unmark=()=>{root.querySelectorAll("mark.hit").forEach(m=>{const pa=m.parentNode;if(!pa)return;pa.replaceChild(document.createTextNode(m.textContent),m);pa.normalize()})};
+  const mark=(node,re)=>{
+    const w=document.createTreeWalker(node,NodeFilter.SHOW_TEXT,{acceptNode:t=>t.parentElement.closest("svg,mark,"+SKIP)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+    const ts=[]; while(w.nextNode())ts.push(w.currentNode);
+    ts.forEach(t=>{const s=t.nodeValue;re.lastIndex=0;if(!re.test(s))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;
+      while((m=re.exec(s))){if(!m[0].length){re.lastIndex++;continue}if(m.index>i)f.appendChild(document.createTextNode(s.slice(i,m.index)));const k=document.createElement("mark");k.className="hit";k.textContent=m[0];f.appendChild(k);i=m.index+m[0].length}
+      if(i<s.length)f.appendChild(document.createTextNode(s.slice(i)));t.parentNode.replaceChild(f,t)});
+  };
+  const flip=(g,hide)=>{g.classList.toggle("sx",hide);const h=g.previousElementSibling;if(h&&h.classList.contains("sh"))h.classList.toggle("sx",hide)};
+  let RAW="", LAST=null, COUNTS={};
+  const chips=ids=>ids.map(id=>`<button type="button" data-p="${id}"${id===CUR?' aria-current="true"':""}>${esc(lab(id))}<b>${COUNTS[id]}</b></button>`).join("");
+  function status(){
+    const on=LAST&&LAST.length>0;
+    stat.classList.toggle("on",!!on);
+    IDX.forEach(P=>P.nr.classList.toggle("sx",!on||COUNTS[P.id]>0||!P.items.length));
+    if(!on){stat.innerHTML="";return}
+    const tot=IDX.reduce((a,P)=>a+COUNTS[P.id],0), hits=PANES.filter(id=>COUNTS[id]>0);
+    stat.innerHTML=(tot?`<span>${tot} match${tot===1?"":"es"} for <q>${esc(RAW)}</q></span>`:`<span>No matches for <q>${esc(RAW)}</q>. Try fewer or shorter words.</span>`)+(PANES.length>1?chips(hits):"");
+    IDX.forEach(P=>{if(COUNTS[P.id]||!P.items.length)return;P.nr.innerHTML=hits.length?`<p>Nothing in this section matches. These do:</p><div>${chips(hits)}</div>`:`<p>Nothing in this guide matches.</p>`});
+  }
+  function run(){
+    RAW=q.value.trim(); box.classList.toggle("has",!!q.value);
+    const f=fold(RAW).trim(), terms=f.length>=2?f.split(" "):[];
+    const key=terms.join(" "); if(key===(LAST||[]).join(" ")&&LAST!==null)return;
+    LAST=terms; unmark();
+    const on=terms.length>0;
+    root.classList.toggle("searching",on);
+    const re=on?new RegExp(terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/'/g,"['\u2018\u2019]")).sort((a,b)=>b.length-a.length).join("|"),"gi"):null;
+    IDX.forEach(P=>{
+      let c=0;
+      P.items.forEach(it=>{const hit=!on||terms.every(t=>it.t.includes(t));it.n.classList.toggle("sx",!hit);if(on&&hit&&!it.n.classList.contains("rx")){c++;mark(it.n,re)}});
+      COUNTS[P.id]=c;
+      const p=P.p;
+      p.querySelectorAll(".focus,.clist,.cgrid,.cgrid > .group,.tblk,.qgrid,.pgrid,.fgrid,.tln,.ckg").forEach(g=>flip(g,on&&!g.querySelector(P.vis)));
+      p.querySelectorAll(".dk").forEach(g=>flip(g,on));
+      const ab=p.querySelector("#s-abbr"); if(ab)flip(ab,ab.classList.contains("sx"));
+    });
+    document.querySelectorAll("#m-jump a[data-j]").forEach(a=>{const t=document.getElementById(a.dataset.j);a.classList.toggle("sx",!!(t&&t.classList.contains("sx")))});
+    status();
+  }
+  let T=0;
+  q.addEventListener("input",()=>{box.classList.toggle("has",!!q.value);clearTimeout(T);T=setTimeout(run,140)});
+  q.addEventListener("keydown",e=>{if(e.key==="Escape"){q.value="";run();q.blur()}else if(e.key==="Enter"){clearTimeout(T);run();q.blur()}});
+  $("#qx").addEventListener("click",()=>{q.value="";run();q.focus()});
+  const go=e=>{const b=e.target.closest("button[data-p]");if(b)show(b.dataset.p,true)};
+  stat.addEventListener("click",go); root.addEventListener("click",e=>{if(e.target.closest(".nores"))go(e)});
+  afterShow=status;
+  RESEARCH=()=>{if(LAST&&LAST.length){LAST=null;run()}};
+  const focusQ=()=>{closeMenu(false);const top=$("#gctl").getBoundingClientRect().top+scrollY-bar.offsetHeight-16;if(scrollY>top+4)scrollTo({top:Math.max(0,top),behavior:REDUCED?"auto":"smooth"});q.focus({preventScroll:true})};
+  $("#sbtn").addEventListener("click",focusQ);
+  document.querySelectorAll('[data-act="search"]').forEach(b=>b.addEventListener("click",focusQ));
+  addEventListener("keydown",e=>{if(e.key==="/"&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();focusQ()}});
+  if(has(GUIDE.practice)||has(GUIDE.problems)||(GUIDE.outline||[]).some(s=>has(s.ex))){
+    sall.hidden=false;
+    sall.addEventListener("click",()=>{const on=!root.classList.contains("showall");root.classList.toggle("showall",on);sall.setAttribute("aria-pressed",String(on));sall.querySelector(".mt").textContent=on?"Hide answers":"Show answers";closeMenu(false)});
+  }
+  $("#printb").addEventListener("click",()=>{closeMenu(false);print()});
+})();
+
+/* theme (shared with the homepage via localStorage "theme") */
+const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];
+function moveThumb(){const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];if(!on.offsetWidth)return;thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+function setTheme(mode){
+  const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
+  if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+}
+segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
+(function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
+  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
+})();
+requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
+document.fonts?.ready.then(()=>{moveThumb();setBarH()});
+
+/* bar: shadow once scrolled; carries sections / topics / search once the guide's own controls scroll away. reading progress, staggered reveal */
+(function(){const p=$("#prog i"),ctl=$("#gctl");let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6);const gone=ctl.getBoundingClientRect().bottom<bar.offsetHeight;if(gone!==bar.classList.contains("compact")){bar.classList.toggle("compact",gone);if(OPEN&&OPENBY&&!OPENBY.offsetParent)closeMenu(false);if(!gone)moveThumb()}const se=document.scrollingElement,h=se.scrollHeight-se.clientHeight;p.style.width=(h>0?Math.min(100,se.scrollTop/h*100):0)+"%"};addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+document.querySelectorAll(".rv").forEach((n,i)=>n.style.animationDelay=(i*55)+"ms");
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
