@@ -47,7 +47,9 @@ const CLASSES=[
      {t:"Unit 1 LEQ", url:"/apush-unit-1-leq", added:"2026-09-13"},
      {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
      {t:"Unit 1/A", url:"/apush-unit-1a", added:"2026-08-29"}]},
-  {id:"lang", page:"/lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language and Composition", abbr:"AP Lang", short:"ENGLISH LANGUAGE", units:[]},
+  {id:"lang", page:"/lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language and Composition", abbr:"AP Lang", short:"ENGLISH LANGUAGE", units:[
+     {t:"Rhetorical analysis tips", url:"/lang-ra-tips", added:"2026-10-06", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/lang-ra-tips-cram.pdf"}]}]},
   {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS", units:[
      {t:"Advanced kinematics", url:"/physics-advanced-kinematics", added:"2026-09-27", extras:[
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-advanced-kinematics-version-1.pdf"},
