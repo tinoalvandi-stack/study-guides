@@ -6,31 +6,36 @@
 <title>study guide · valentino guides</title>
 <meta name="description" content="A free study guide from valentinoguides.com. Made by a student.">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F1F5F9">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C1220">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F8F5EF">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171615">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
-<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template v3, design revision 3 (blue and navy, calm reading flow, sept 30 2026) ═══
-   Same tokens, type and corners as the homepage (site.css). Edit the GUIDE object below the machinery; leave the CSS alone. */
-@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(/fonts/figtree.woff2) format("woff2")}
-@font-face{font-family:"Figtree";font-style:italic;font-weight:300 900;font-display:swap;src:url(/fonts/figtree-italic.woff2) format("woff2")}
+/* ═══ valentino guides · guide template v4, editorial revision (charcoal, warm white, oxblood; topic tiles, study modes, one-minute break; oct 7 2026) ═══
+   Same tokens and type as the homepage (site.css). Edit the GUIDE object below the machinery; leave the CSS alone.
+   Fonts: Source Serif 4 (headings) and Source Sans 3 (body and interface), self-hosted, SIL Open Font License 1.1 (fonts/OFL-*.txt). */
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url(/fonts/source-serif-4-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url(/fonts/source-serif-4-greek.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:200 900;font-display:swap;src:url(/fonts/source-sans-3-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Sans 3";font-style:italic;font-weight:200 900;font-display:swap;src:url(/fonts/source-sans-3-latin-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:200 900;font-display:swap;src:url(/fonts/source-sans-3-greek.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
 
-:root{--paper:#F1F5F9;--surface:#FCFDFF;--body:#2F3B54;--surface2:#EEF3F8;--tint:#E3ECF6;--line:#D8E1EB;--line2:#B4C2D2;--ink:#0E1B3D;--ink2:#3A4862;--ink3:#56637D;--accent:#274B7E;--on-accent:#FFFFFF;--hi:#8A5300;--amber:#D99A2B;--amber-bg:#FCF6E8;--good:#2D7048;--bad:#A8392F;--c-apush:#9A4A33;--c-psych:#5C5689;--c-phys:#2E6378;--c-pre:#1F5A55;--c-sem:#46604F;--c-biz:#7E5A22;--c-mor:#7A4A5E;--c-lang:#4A5874;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63;--sh1:0 1px 2px #0e1b3d0a,0 4px 14px #0e1b3d0b;--sh2:0 2px 4px #0e1b3d0d,0 14px 32px #0e1b3d17}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0C1220;--surface:#131B2C;--body:#D3DBE8;--surface2:#182235;--tint:#1C2A44;--line:#263249;--line2:#3D4C67;--ink:#E8EDF6;--ink2:#B8C3D6;--ink3:#98A5BC;--accent:#8EB3EA;--on-accent:#0B1630;--hi:#F0C273;--amber:#E2AE4E;--amber-bg:#251F12;--good:#8ACB9C;--bad:#F19A90;--c-apush:#E9A07F;--c-psych:#BDB6EA;--c-phys:#8BC4D6;--c-pre:#8FD0BF;--c-sem:#A9C8B2;--c-biz:#E2C17A;--c-mor:#E6AEC3;--c-lang:#AEBBD8;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE;--sh1:0 1px 2px #0007,0 6px 18px #0005;--sh2:0 2px 4px #0007,0 14px 32px #0006}}
-:root[data-theme="dark"]{--paper:#0C1220;--surface:#131B2C;--body:#D3DBE8;--surface2:#182235;--tint:#1C2A44;--line:#263249;--line2:#3D4C67;--ink:#E8EDF6;--ink2:#B8C3D6;--ink3:#98A5BC;--accent:#8EB3EA;--on-accent:#0B1630;--hi:#F0C273;--amber:#E2AE4E;--amber-bg:#251F12;--good:#8ACB9C;--bad:#F19A90;--c-apush:#E9A07F;--c-psych:#BDB6EA;--c-phys:#8BC4D6;--c-pre:#8FD0BF;--c-sem:#A9C8B2;--c-biz:#E2C17A;--c-mor:#E6AEC3;--c-lang:#AEBBD8;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE;--sh1:0 1px 2px #0007,0 6px 18px #0005;--sh2:0 2px 4px #0007,0 14px 32px #0006}
+:root{--paper:#F8F5EF;--surface:#FFFDF9;--body:#2B2826;--surface2:#F2EEE6;--tint:#F1E8E4;--line:#E3DCD1;--line2:#C7BDAE;--ink:#1E1C1A;--ink2:#4A4440;--ink3:#645D55;--accent:#7B2430;--on-accent:#FFFFFF;--btn:#26231F;--on-btn:#FBF8F2;--hi:#7B2430;--amber:#9C3B45;--on-amber:#FFFFFF;--amber-bg:#F6ECE8;--good:#2F6A47;--bad:#A4342C;--c-apush:#9A4A33;--c-psych:#5C5689;--c-phys:#2E6378;--c-pre:#1F5A55;--c-sem:#46604F;--c-biz:#7E5A22;--c-mor:#7A4A5E;--c-lang:#4A5874;--c-span:#8E3F3A;--c-apwh:#5F4A78;--c-csp:#4E5A63;--sh1:0 1px 2px #1e1c1a0a,0 4px 14px #1e1c1a0b;--sh2:0 2px 4px #1e1c1a0d,0 14px 32px #1e1c1a17}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#171615;--surface:#1F1D1B;--body:#E4DED4;--surface2:#262321;--tint:#2D2422;--line:#36312D;--line2:#4D4640;--ink:#F4EFE7;--ink2:#C9C0B4;--ink3:#A79E92;--accent:#E0959C;--on-accent:#1E1416;--btn:#EEE8DE;--on-btn:#1E1C1A;--hi:#E7A3A9;--amber:#C9707A;--on-amber:#1E1416;--amber-bg:#2A1F1E;--good:#8FC9A0;--bad:#F0988F;--c-apush:#E9A07F;--c-psych:#BDB6EA;--c-phys:#8BC4D6;--c-pre:#8FD0BF;--c-sem:#A9C8B2;--c-biz:#E2C17A;--c-mor:#E6AEC3;--c-lang:#AEBBD8;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE;--sh1:0 1px 2px #0007,0 6px 18px #0005;--sh2:0 2px 4px #0007,0 14px 32px #0006}}
+:root[data-theme="dark"]{--paper:#171615;--surface:#1F1D1B;--body:#E4DED4;--surface2:#262321;--tint:#2D2422;--line:#36312D;--line2:#4D4640;--ink:#F4EFE7;--ink2:#C9C0B4;--ink3:#A79E92;--accent:#E0959C;--on-accent:#1E1416;--btn:#EEE8DE;--on-btn:#1E1C1A;--hi:#E7A3A9;--amber:#C9707A;--on-amber:#1E1416;--amber-bg:#2A1F1E;--good:#8FC9A0;--bad:#F0988F;--c-apush:#E9A07F;--c-psych:#BDB6EA;--c-phys:#8BC4D6;--c-pre:#8FD0BF;--c-sem:#A9C8B2;--c-biz:#E2C17A;--c-mor:#E6AEC3;--c-lang:#AEBBD8;--c-span:#E09490;--c-apwh:#BBA3D6;--c-csp:#A9B6BE;--sh1:0 1px 2px #0007,0 6px 18px #0005;--sh2:0 2px 4px #0007,0 14px 32px #0006}
 
 :root{
-  --display:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
-  --sans:"Figtree",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
-  --w-d:780; --ls-d:-.03em;
+  --display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Source Sans 3",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
+  --w-d:620; --ls-d:-.012em;
   --t12:12px; --t13:13px; --t15:15px; --t16:16px; --t17:17px; --t20:20px; --t26:26px;
   --r-card:14px; --r-btn:10px; --r-chip:8px;
   --spring:cubic-bezier(.32,.72,0,1); --ease:cubic-bezier(.22,.61,.36,1);
   --cls:var(--accent);            /* set from GUIDE.id at runtime: the class color */
-  --maxw:1180px; --gut:clamp(16px,3.4vw,36px);
+  --maxw:1280px; --gut:clamp(16px,3.4vw,36px);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--barh,58px) + 14px)}
@@ -45,7 +50,7 @@ a{color:inherit;text-decoration:none}
 .vh{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* reading aids */
-.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
+.skipl{position:fixed;left:12px;top:-72px;z-index:200;padding:10px 15px;border-radius:var(--r-btn);background:var(--btn);color:var(--on-btn);font-weight:600;font-size:14px;transition:top .24s var(--spring)}
 .skipl:focus{top:12px;outline:none}
 #prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;pointer-events:none}
 #prog i{display:block;height:100%;width:0;background:var(--accent)}
@@ -56,11 +61,11 @@ a{color:inherit;text-decoration:none}
 .bar .wrap{display:flex;align-items:center;gap:10px;min-height:38px}
 .home{display:flex;align-items:center;gap:10px;min-width:0;margin-right:auto}
 .mark{width:28px;height:28px;border-radius:7px;flex:none;display:block}
-.bar h1{margin:0;font-size:18px;font-weight:760;letter-spacing:-.03em;white-space:nowrap}
+.bar h1{margin:0;font-family:var(--display);font-size:19px;font-weight:620;letter-spacing:-.01em;white-space:nowrap}
 .seg{position:relative;display:flex;border:1px solid var(--line);border-radius:10px;padding:2px;isolation:isolate;flex:none;background:var(--surface)}
 .seg button{position:relative;z-index:2;padding:4px 10px;border-radius:8px;font-size:var(--t12);font-weight:600;color:var(--ink3);text-transform:lowercase;text-align:center;transition:color .2s var(--ease)}
-.seg button[aria-pressed="true"]{color:var(--on-accent)}
-.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--accent);transition:left .36s var(--spring),width .36s var(--spring)}
+.seg button[aria-pressed="true"]{color:var(--on-btn)}
+.seg .thumb{position:absolute;z-index:1;top:2px;bottom:2px;left:2px;width:0;border-radius:8px;background:var(--btn);transition:left .36s var(--spring),width .36s var(--spring)}
 .sbtn{flex:none;width:38px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink2);transition:color .16s var(--ease)}
 @media (hover:hover){.sbtn:hover{color:var(--ink)}}
 .bctl{display:none;align-items:center;gap:2px;min-width:0}
@@ -74,13 +79,13 @@ a{color:inherit;text-decoration:none}
 @media (max-width:420px){.bar .wrap{gap:8px}.bar h1{font-size:17px}.seg button{padding:4px 7px}.bctl .mbtn{padding:0 8px}}
 /* comfortable tap targets on phones and touch screens (44px): theme switch, and the search button beside it at the same height */
 @media (max-width:719px),(pointer:coarse){.seg button{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}.sbtn{width:44px;height:44px}}
-/* narrow phones: the bigger targets need the room, so the wordmark text steps aside (kept for screen readers); the mark stays and still links home */
-@media (max-width:389px){.bar h1{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+/* phones under 440px: the bigger targets and the serif wordmark need the room, so the wordmark text steps aside (kept for screen readers); the mark stays and still links home */
+@media (max-width:439px){.bar h1{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 
 /* ═══ header: compact title + meta line, small class cover ═══ */
 main{padding-top:14px}
 .ghead{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:center}
-h2.title{margin:0;font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:var(--w-d);letter-spacing:-.035em;line-height:1.06;text-wrap:balance;color:var(--ink)}
+h2.title{margin:0;font-family:var(--display);font-size:clamp(30px,4.2vw,46px);font-weight:var(--w-d);letter-spacing:-.018em;line-height:1.08;text-wrap:balance;color:var(--ink)}
 .crow{display:flex;align-items:center;flex-wrap:wrap;gap:2px 0;margin-top:7px;font-size:var(--t15);color:var(--ink3);line-height:1.45}
 .crow > *:not(:last-child)::after{content:"·";margin:0 8px;color:var(--ink3);font-weight:600}
 .cname{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--ink2)}
@@ -116,26 +121,67 @@ a.cname{border-radius:6px}
   .sec{padding-top:18px;margin-top:16px}
 }
 
-/* ═══ practice PDFs: the printable tests, above everything else ═══ */
-.pdfs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 0;padding:12px;border-radius:var(--r-card);background:var(--tint);border:1px solid color-mix(in srgb,var(--accent) 16%,var(--line))}
-.pdf{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:7px 14px 7px 11px;border-radius:var(--r-btn);background:var(--surface);border:1px solid color-mix(in srgb,var(--accent) 38%,var(--line));color:var(--accent);font-size:var(--t15);font-weight:650;line-height:1.25;box-shadow:var(--sh1);transition:border-color .16s var(--ease),transform .2s var(--spring)}
-.pdf svg{flex:none}
-@media (hover:hover){.pdf:hover{border-color:var(--accent)}}
-.pdf:active{transform:scale(.985)}
-.pgrp{display:flex;flex-wrap:wrap;align-items:center;gap:8px;flex-basis:100%}
-.pgl{display:inline-flex;align-items:center;gap:7px;margin-right:2px;font-size:var(--t15);font-weight:700;color:var(--ink)}
-.pgl svg{color:var(--accent)}
-.pgrp .pdf{padding:7px 13px;min-width:44px;justify-content:center}
-.pdfs .pn{flex:1 1 300px;margin:0 4px;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
-@media (max-width:599px){
-  .pdfs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px;margin-top:12px}
-  .pdfs .pn{margin:0 2px;font-size:var(--t12)}
-  .pdf{font-size:var(--t13);padding:7px 10px 7px 9px;gap:7px;min-height:44px}
-  .pdfs > .pdf:only-of-type{grid-column:1 / -1}
-  .pgrp,.pdfs .pn{grid-column:1 / -1}
-  .pgrp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-  .pgl{grid-column:1 / -1;font-size:var(--t13)}
+/* ═══ layout: the study column, and a side column for downloads and the optional break.
+   Wide screens (1080px+, desktop and iPad landscape) put them side by side; phones and iPad portrait stack the break below the study surface
+   and open downloads from the Downloads button. ═══ */
+.gbody{display:block;margin-top:2px}
+.gcol{min-width:0}
+.gside{display:grid;gap:16px;align-content:start;margin-top:30px}
+@media (min-width:1080px){
+  .gbody{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:32px;align-items:start}
+  .gside{margin-top:16px;align-self:stretch}
+  #dlb{display:none !important}
 }
+@media (max-width:1079px){.gside .dl{display:none !important}}
+.sub.scope{max-width:none;margin-top:12px;padding:10px 14px;border-left:3px solid var(--amber);background:var(--amber-bg);border-radius:0 10px 10px 0;font-size:var(--t15);font-weight:600;color:var(--ink)}
+
+/* ═══ downloads: grouped, out of the first study view (side card on wide screens, a menu from the Downloads button elsewhere) ═══ */
+.dl{padding:14px 14px 12px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh1)}
+.dlh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 2px 8px}
+.dlh h3{margin:0;font-family:var(--display);font-size:var(--t17);font-weight:620;letter-spacing:-.01em}
+.dlh span{font-size:var(--t12);font-weight:650;color:var(--ink3);font-variant-numeric:tabular-nums}
+.dgrp + .dgrp{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.dgl{margin:0 2px 6px;font-size:var(--t12);font-weight:700;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+.dli{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:8px 10px;border-radius:10px;font-size:var(--t15);font-weight:600;line-height:1.3;color:var(--ink);transition:background .16s var(--ease)}
+.dli svg{flex:none;color:var(--accent)}
+@media (hover:hover){.dli:hover{background:var(--surface2)}}
+.dchips{display:flex;flex-wrap:wrap;gap:6px;padding:0 2px}
+.dchip{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:6px 12px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface);font-size:var(--t13);font-weight:650;color:var(--ink)}
+@media (hover:hover){.dchip:hover{border-color:var(--accent);color:var(--accent)}}
+.dl .pn,.menu .dpn{margin:10px 2px 0;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
+.mbtn .dn{font-size:var(--t12);font-weight:700;color:var(--ink3);font-variant-numeric:tabular-nums}
+#m-dl{width:min(380px,calc(100vw - 24px));padding:10px}
+
+/* ═══ the one-minute break: optional, finite, starts only when asked ═══ */
+.brk{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line2);overflow:hidden}
+.brk summary{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:52px;padding:12px 16px;cursor:pointer;list-style:none}
+.brk summary::-webkit-details-marker{display:none}
+.brk summary:focus-visible{outline-offset:-3px}
+.brk .bt{font-family:var(--display);font-size:var(--t17);font-weight:620;letter-spacing:-.01em}
+.brk .btag{font-size:var(--t12);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase;padding:2px 6px;border-radius:6px;background:var(--surface2)}
+.brk .bc{padding:0 16px 16px}
+.brk .bi{margin:0 0 12px;font-size:var(--t15);color:var(--ink2)}
+.btop{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:var(--t13);color:var(--ink2)}
+.timer{font-size:var(--t20);font-weight:700;font-variant-numeric:tabular-nums;line-height:1;padding:6px 9px;border-radius:8px;background:var(--surface2);color:var(--ink)}
+.gscr{position:relative;border-radius:10px;overflow:hidden;background:#1E1C1A;aspect-ratio:560/360}
+.gscr canvas{display:block;width:100%;height:100%;touch-action:manipulation}
+.gov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:18px 20px;color:#F4EFE7;pointer-events:none}
+.gname{font-family:var(--display);font-size:clamp(24px,7vw,30px);font-weight:650;line-height:1.05;letter-spacing:-.01em}
+.ghint{margin-top:10px;max-width:180px;font-size:var(--t13);line-height:1.4;color:#C9C0B4}
+.ttrack{height:4px;margin:10px 0 0;border-radius:3px;background:var(--line);overflow:hidden}
+#tfill{display:block;height:100%;width:100%;background:var(--amber)}
+.gins{margin:12px 0;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
+.btn.full{width:100%}
+.gctl2{display:flex;gap:8px}
+.gctl2 .btn{flex:1;white-space:nowrap;padding:9px 12px}
+.gctl2 .btn.ghost{flex:1.4}
+/* wide screens: the break panel stays in view while the lesson scrolls */
+@media (min-width:1080px) and (min-height:720px){.gside .brk{position:sticky;top:calc(var(--barh,58px) + 16px)}}
+.bnote{margin:10px 0 0;font-size:var(--t12);line-height:1.45;color:var(--ink3)}
+.gaming .brk{border-color:var(--amber);box-shadow:0 0 0 3px color-mix(in srgb,var(--amber) 22%,transparent)}
+@keyframes backglow{0%,35%{box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 35%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
+.returned{animation:backglow 1.1s var(--ease)}
+@media (max-width:1079px){.brk{max-width:560px}}
 
 /* ═══ controls: the Sections row, then Topics, Search, Show answers and Print ═══ */
 .gctl{display:grid;gap:10px;margin:16px 0 18px}
@@ -145,7 +191,7 @@ a.cname{border-radius:6px}
 .segs::-webkit-scrollbar{display:none}
 .sg{flex:none;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:9px;font-size:var(--t15);font-weight:600;color:var(--ink2);white-space:nowrap;transition:background .2s var(--ease),color .2s var(--ease),box-shadow .2s var(--ease)}
 .sg .n{font-size:var(--t12);font-weight:700;color:var(--ink3);font-variant-numeric:tabular-nums}
-.sg[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px #0e1b3d14,0 2px 8px #0e1b3d12;outline:1px solid var(--line)}
+.sg[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px #1e1c1a14,0 2px 8px #1e1c1a12;outline:1px solid var(--line)}
 .sg[aria-selected="true"] .n{color:var(--accent)}
 @media (hover:hover){.sg:not([aria-selected="true"]):hover{color:var(--ink);background:color-mix(in srgb,var(--surface) 55%,transparent)}}
 .sg:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
@@ -178,11 +224,11 @@ a.cname{border-radius:6px}
   .sg{min-height:44px;padding:0 12px;font-size:var(--t15)}
   .util{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
   .util .srch{max-width:none}
-  .util .acts{grid-column:1 / -1;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  .util .acts .mbtn{justify-content:center;height:40px;font-size:var(--t13)}
-  .util .acts .mbtn[hidden] + .mbtn{grid-column:1 / -1}
+  .util .acts{grid-column:1 / -1;margin:0;display:flex;gap:8px}
+  .util .acts .mbtn{flex:1 1 0;min-width:0;justify-content:center;gap:6px;height:44px;padding:0 8px;font-size:var(--t13)}
+  .util .acts .mbtn svg{width:14px;height:14px}
 }
-@media (max-width:379px){.gctl .mbtn{padding:0 11px}}
+@media (max-width:379px){.gctl .mbtn{padding:0 9px}.util .acts .mbtn svg{display:none}}
 
 /* menus (topics, sections): one panel each, opened from the controls or the bar */
 .menu{position:fixed;z-index:90;width:min(360px,calc(100vw - 24px));max-height:min(70vh,560px);overflow:auto;overscroll-behavior:contain;padding:6px;border-radius:14px;background:var(--surface);border:1px solid var(--line2);box-shadow:var(--sh2);animation:pop .22s var(--spring)}
@@ -213,13 +259,13 @@ a.cname{border-radius:6px}
 .sstat > span{margin-right:2px}
 .sstat q{color:var(--ink)}
 .sstat button,.nores button{padding:5px 10px;border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface);font-size:var(--t12);font-weight:600;color:var(--ink2)}
-.sstat button[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.sstat button[aria-current="true"]{background:var(--btn);border-color:var(--btn);color:var(--on-btn)}
 .sstat b,.nores b{font-weight:650;font-variant-numeric:tabular-nums;margin-left:4px}
 .nores{margin:0 0 16px;padding:16px 18px;border:1px dashed var(--line2);border-radius:var(--r-card);color:var(--ink2);font-size:var(--t15)}
 .nores p{margin:0}
 .nores div{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .sx{display:none !important}
-mark.hit{background:color-mix(in srgb,var(--amber) 34%,transparent);color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+mark.hit{background:color-mix(in srgb,#E2B04A 42%,transparent);color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .pane{display:none;container-type:inline-size}
 .pane.on{display:block;animation:rise .38s var(--spring) both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -227,7 +273,7 @@ mark.hit{background:color-mix(in srgb,var(--amber) 34%,transparent);color:inheri
 /* small section label (panes) */
 .sh{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:26px 0 12px}
 .sh:first-child{margin-top:0}
-.sh h3{margin:0;font-size:var(--t20);font-weight:760;letter-spacing:-.02em;color:var(--ink);min-width:0}
+.sh h3{margin:0;font-family:var(--display);font-size:var(--t20);font-weight:620;letter-spacing:-.01em;color:var(--ink);min-width:0}
 .sh h3::first-letter{text-transform:uppercase}
 .sh::after{content:"";flex:1;height:1px;background:var(--line);order:2;align-self:center}
 .shx{order:3;min-width:0;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums}
@@ -236,11 +282,11 @@ mark.hit{background:color-mix(in srgb,var(--amber) 34%,transparent);color:inheri
 .ol{max-width:100%}
 .focus{position:relative;margin:0 0 6px;padding:16px 20px 16px 22px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh1);overflow:hidden}
 .focus::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--amber)}
-.focus h3{margin:0 0 8px;font-size:var(--t20);font-weight:760;letter-spacing:-.02em}
+.focus h3{margin:0 0 8px;font-family:var(--display);font-size:var(--t20);font-weight:620;letter-spacing:-.01em}
 .tops{margin:0;padding:0;list-style:none;counter-reset:tp;display:grid;gap:6px}
 .tops .tp,.tops .tm{counter-increment:tp;position:relative;padding:2px 0 2px 36px;font-size:var(--t16);line-height:1.45;max-width:96ch}
 .tops .tm{color:var(--body)}
-.tops .tp::before,.tops .tm::before{content:counter(tp);position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:50%;background:var(--amber);color:#241600;font-weight:700;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.tops .tp::before,.tops .tm::before{content:counter(tp);position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:50%;background:var(--amber);color:var(--on-amber);font-weight:700;font-size:var(--t13);display:grid;place-items:center;font-variant-numeric:tabular-nums}
 @media (min-width:520px){.fqk + .fqk{margin-left:18px}}
 .fqk{display:inline-flex;align-items:center;gap:6px;margin:10px 0 0 36px;font-size:var(--t13);font-weight:650;color:var(--accent)}
 @media (hover:hover){.fqk:hover{text-decoration:underline;text-underline-offset:3px}}
@@ -252,7 +298,7 @@ mark.hit{background:color-mix(in srgb,var(--amber) 34%,transparent);color:inheri
 .eyb .num{font-variant-numeric:tabular-nums}
 .eyb .w{font-weight:650}
 .eyb .w3{color:var(--accent)} .eyb .w2{color:var(--ink2)}
-.sec h3{margin:0;font-family:var(--display);font-size:clamp(24px,2.9vw,34px);font-weight:760;letter-spacing:-.03em;line-height:1.12;text-wrap:balance;color:var(--ink)}
+.sec h3{margin:0;font-family:var(--display);font-size:clamp(25px,2.9vw,34px);font-weight:620;letter-spacing:-.015em;line-height:1.14;text-wrap:balance;color:var(--ink)}
 .sec .sd{margin:5px 0 0;font-size:var(--t15);color:var(--ink2);line-height:1.45}
 .sec h3:focus{outline:none}
 .sb{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
@@ -266,13 +312,63 @@ mark.hit{background:color-mix(in srgb,var(--amber) 34%,transparent);color:inheri
 .sb .main{display:grid;gap:14px;align-content:start}
 .sb .main.solo{max-width:78ch}
 .sb .main > *{margin:0}
-.sb p{margin:0 0 12px;font-size:var(--t17);line-height:1.6;color:var(--body)}
+.sb p{margin:0 0 12px;font-size:var(--t17);line-height:1.62;color:var(--body)}
 .sb p:last-child{margin-bottom:0}
 .sb .main > .ptx{display:block}
 b.kw{font-weight:700;color:var(--ink)}
 .nxt{display:flex;justify-content:flex-end;margin-top:16px}
 .nxt a{display:inline-flex;align-items:center;gap:6px;padding:6px 4px;font-size:var(--t13);font-weight:600;color:var(--ink2)}
 @media (hover:hover){.nxt a:hover{color:var(--accent)}}
+
+/* ═══ topic tiles: pick one small topic; it opens below as one lesson card ═══ */
+.topics{margin:22px 0 0}
+.topics .sh{margin:0 0 12px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,196px),1fr));gap:10px}
+.tile{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:6px;min-height:118px;padding:13px 14px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);text-align:left;transition:transform .2s var(--spring),border-color .16s var(--ease),box-shadow .2s var(--ease)}
+@media (hover:hover){.tile:hover{transform:translateY(-2px);border-color:var(--line2);box-shadow:var(--sh1)}}
+.tile:active{transform:scale(.99)}
+.tile .tt1{display:flex;align-items:center;gap:8px;font-size:var(--t12);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tile .tn{color:var(--accent);font-variant-numeric:tabular-nums}
+.tile .tw{color:var(--ink3)}
+.tile .tw.w3{color:var(--ink2)}
+.tile .tow{margin-left:auto;color:var(--accent);visibility:hidden}
+.tile .th{font-family:var(--display);font-size:var(--t17);font-weight:620;line-height:1.22;letter-spacing:-.005em;color:var(--ink)}
+.tile .td{margin-top:auto;font-size:var(--t13);line-height:1.38;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:color-mix(in srgb,var(--tint) 55%,var(--surface))}
+.tile[aria-pressed="true"] .tow{visibility:visible}
+.tmore{display:none;margin:10px 0 0;min-height:44px;padding:0 14px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);font-size:var(--t15);font-weight:650;color:var(--ink)}
+@media (max-width:599px){
+  .tgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .tile{min-height:96px;padding:11px 12px 12px;gap:4px}
+  .tile .th{font-size:var(--t16)}
+  .tile .td{display:none}
+  .tile .tw{display:none}
+  .tgrid.clip:not(.all) .tile:nth-child(n+7):not([aria-pressed="true"]){display:none}
+  .tgrid.clip + .tmore{display:inline-flex;align-items:center;gap:6px}
+}
+.searching .topics{display:none}
+
+/* one lesson at a time: the open topic is a card; search and print show every lesson */
+.ol.one > .les{display:none}
+.ol.one > .les.cur,.searching .ol.one > .les:not(.sx){display:block}
+.ol.one > .les{margin-top:16px;padding:22px clamp(16px,2.6vw,28px) 20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:var(--sh1)}
+.ol.one > .les + .sec:not(.les){margin-top:30px}
+.ol.one > .les .nxt{margin-top:14px}
+
+/* study modes inside a lesson: Learn, Try it */
+.lmodes{display:flex;gap:4px;margin:2px 0 16px;padding:4px;border-radius:12px;background:var(--surface2);border:1px solid var(--line);width:fit-content;max-width:100%}
+.lm{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 15px;border-radius:9px;font-size:var(--t15);font-weight:650;color:var(--ink2);white-space:nowrap}
+.lm .n{font-size:var(--t12);font-weight:700;color:var(--ink3);font-variant-numeric:tabular-nums}
+.lm[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px #1e1c1a14,0 2px 8px #1e1c1a10;outline:1px solid var(--line)}
+.lm[aria-selected="true"] .n{color:var(--accent)}
+@media (hover:hover){.lm:not([aria-selected="true"]):hover{color:var(--ink)}}
+.lm:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@media (max-width:719px),(pointer:coarse){.lm{min-height:44px}}
+.lp{display:none}
+.lp.on,.searching .lp{display:block}
+.lp.on{animation:rise .32s var(--spring) both}
+.lact{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+@media (max-width:479px){.lact .btn{flex:1 1 100%}}
 
 /* bullets */
 .pts{margin:0;padding:0;list-style:none}
@@ -335,8 +431,8 @@ b.kw{font-weight:700;color:var(--ink)}
 .tree .nd{display:inline-block;max-width:100%;padding:7px 10px;border-radius:var(--r-btn);background:var(--surface);border:1px solid var(--line);font-size:var(--t13);line-height:1.35;vertical-align:top}
 .tree .nd b{display:block;font-size:var(--t15);font-weight:700}
 .tree .nd span{display:block;color:var(--ink2);margin-top:2px}
-.tree > ul > li > .nd{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.tree > ul > li > .nd span{color:color-mix(in srgb,var(--on-accent) 85%,transparent)}
+.tree > ul > li > .nd{background:var(--btn);border-color:var(--btn);color:var(--on-btn)}
+.tree > ul > li > .nd span{color:color-mix(in srgb,var(--on-btn) 85%,transparent)}
 .tree > ul > li > ul > li > .nd{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:var(--tint)}
 @container (max-width:379px){
   .tree ul{display:block;padding:0 0 0 18px}
@@ -416,7 +512,7 @@ b.kw{font-weight:700;color:var(--ink)}
 .tq .el{display:none}
 .tq .eqr{display:flex;align-items:center;gap:12px 18px}
 .tq .eq{flex:1;min-width:0;font-size:var(--t16);line-height:1.5;font-weight:500;color:var(--ink)}
-.tq .eb{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:0 16px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:650;text-align:center;transition:filter .18s var(--ease)}
+.tq .eb{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:0 16px;border-radius:var(--r-btn);background:var(--btn);color:var(--on-btn);font-size:var(--t15);font-weight:650;text-align:center;transition:filter .18s var(--ease)}
 @media (hover:hover){.tq .eb:hover{filter:brightness(1.08)}}
 .tq .eb .chev{display:none}
 @container (max-width:560px){.tq .eqr{flex-direction:column;align-items:stretch}.tq .eb{width:100%}}
@@ -472,7 +568,7 @@ b.kw{font-weight:700;color:var(--ink)}
 .body > div{overflow:hidden}
 .body .in{padding:12px 16px 14px;display:grid;gap:10px}
 .body p{margin:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:9px 16px;border-radius:var(--r-btn);background:var(--accent);color:var(--on-accent);font-size:var(--t15);font-weight:650;transition:filter .18s var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 16px;border-radius:var(--r-btn);background:var(--btn);color:var(--on-btn);font-size:var(--t15);font-weight:650;transition:filter .18s var(--ease)}
 .btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
 @media (hover:hover){.btn:hover{filter:brightness(1.08)}}
 .btn:active,.mbtn:active,.tq .eb:active{transform:scale(.987)}
@@ -510,7 +606,7 @@ b.kw{font-weight:700;color:var(--ink)}
 .showall .q .why,.showall .tq .ea{display:block}
 .showall .tq .eb,.showall .prob .go{display:none}
 .showall .prob .reveal{display:block}
-.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 24px);padding:8px 8px 8px 16px;border-radius:14px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(8,16,40,.22);opacity:0;visibility:hidden;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease),visibility 0s linear .4s}
+.scorepill{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(140%);z-index:60;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 24px);padding:8px 8px 8px 16px;border-radius:14px;background:var(--ink);color:var(--paper);font-size:var(--t15);box-shadow:0 8px 28px rgba(20,16,12,.24);opacity:0;visibility:hidden;pointer-events:none;transition:transform .4s var(--spring),opacity .25s var(--ease),visibility 0s linear .4s}
 .scorepill.show{transform:translateX(-50%);opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
 .scorepill b{font-family:var(--display);font-weight:var(--w-d);font-size:var(--t20);font-variant-numeric:tabular-nums}
 .scorepill button{padding:7px 12px;border-radius:9px;background:color-mix(in srgb,var(--paper) 16%,transparent);color:var(--paper);font-size:var(--t13);font-weight:650;text-transform:lowercase}
@@ -571,12 +667,21 @@ b.kw{font-weight:700;color:var(--ink)}
 .fc{position:relative;min-height:230px;border-radius:var(--r-card);cursor:pointer;transform-style:preserve-3d;transition:transform .5s var(--spring)}
 .fc.flip{transform:rotateY(180deg)}
 .fc > div{position:absolute;inset:0;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:22px;display:grid;place-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:var(--sh1)}
-.fc .f{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
+.fc .f{font-family:var(--display);font-size:clamp(25px,3.4vw,34px);font-weight:var(--w-d);letter-spacing:var(--ls-d);line-height:1.15;text-wrap:balance}
 .fc .b{transform:rotateY(180deg);background:var(--surface2);font-size:var(--t16);line-height:1.5;color:var(--ink)}
 .fc .tag{position:absolute;left:16px;top:13px;font-size:11.5px;font-weight:650;color:var(--ink3);text-transform:lowercase;letter-spacing:.04em}
 .fc .b .tag{color:var(--accent)}
 .dnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .dnav .cnt{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums;text-transform:lowercase}
+.dstudy{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.dstudy .btn{min-width:120px}
+.dstudy .mk{margin-left:auto;font-size:var(--t13);color:var(--ink3);font-variant-numeric:tabular-nums}
+.ddone{padding:20px 22px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh1)}
+.ddone .eyb{color:var(--accent)}
+.ddone h4{margin:0 0 6px;font-family:var(--display);font-size:var(--t26);font-weight:620;letter-spacing:-.012em}
+.ddone p{margin:0 0 14px;color:var(--ink2)}
+.ddone .row2{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:479px){.dstudy .btn{flex:1 1 0;min-width:0}.dstudy .mk{flex-basis:100%;margin:0}}
 .clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin-top:6px}
 .clist > div{padding:13px 15px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
 .clist b{display:block;font-weight:700;margin-bottom:3px}
@@ -586,7 +691,7 @@ b.kw{font-weight:700;color:var(--ink)}
 .tln{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden;box-shadow:var(--sh1)}
 .tln .ev{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 18px;padding:13px 17px;border-top:1px solid var(--line);position:relative}
 .tln .ev:first-child{border-top:0}
-.tln .y{font-family:var(--display);font-weight:760;font-size:var(--t16);color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.4}
+.tln .y{font-family:var(--display);font-weight:650;font-size:var(--t16);color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.4}
 .tln .t{font-size:var(--t16);font-weight:650;line-height:1.4}
 .tln .d{font-size:var(--t15);color:var(--ink2);line-height:1.5;margin-top:2px}
 @media (min-width:900px){.tln .ev{grid-template-columns:110px minmax(0,.9fr) minmax(0,1.3fr)}.tln .d{margin-top:0}}
@@ -639,7 +744,10 @@ footer .upd{display:block;margin-top:6px}
 
 @media print{
   :root{--paper:#fff;--surface:#fff;--surface2:#f5f6f8;--tint:#eef1f5;--ink:#111;--ink2:#333;--ink3:#555;--line:#ccc;--line2:#999;--amber-bg:#fff}
-  .bar,.gctl,.pdfs,.menu,.nxt,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg,.gcov{display:none !important}
+  .bar,.gctl,.gside,.menu,.nxt,.sstat,.nores,.skipl,#prog,.scorepill,.rbar,.tq .eb,.prob .go,.seg,.gcov,.topics,.lmodes,.lact,.dstudy,.ddone{display:none !important}
+  .gbody{display:block !important}
+  .ol.one > .les{display:block !important;border:0;padding:16px 0;box-shadow:none;border-top:1px solid #ccc;border-radius:0}
+  .lp{display:block !important;animation:none !important}
   body{background:#fff;padding:0}
   .focus,.tq,.q,.prob,.tln,.fx,.rbar{box-shadow:none !important}
   .rv{opacity:1 !important;transform:none !important;animation:none !important}
@@ -667,7 +775,7 @@ footer .upd{display:block;margin-top:6px}
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="home" href="/" aria-label="all guides">
-      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="var(--accent)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-accent)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--amber)"/></svg>
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="var(--btn)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-btn)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--amber)"/></svg>
       <h1>valentino guides</h1>
     </a>
     <div class="bctl" id="bctl">
@@ -687,7 +795,7 @@ footer .upd{display:block;margin-top:6px}
 </header>
 
 <main class="wrap" id="main">
-  <div class="ghead">
+  <div class="ghead" id="ghead">
     <div class="gtxt">
       <h2 class="title rv" id="title"></h2>
       <div class="crow rv" id="crow"></div>
@@ -695,34 +803,56 @@ footer .upd{display:block;margin-top:6px}
     </div>
     <div class="gcov rv" id="gcov" aria-hidden="true"></div>
   </div>
-  <section class="pdfs rv" id="pdfs" aria-label="Practice PDFs" hidden></section>
-  <div class="gctl rv" id="gctl">
-    <div class="secs" id="secs" hidden>
-      <span class="secl" id="secl">Sections</span>
-      <div class="segs" id="panes" role="tablist" aria-labelledby="secl"></div>
-    </div>
-    <div class="util">
-      <button type="button" class="mbtn" id="jumpb" data-menu="m-jump" aria-expanded="false" aria-controls="m-jump" aria-haspopup="true"><span>Topics</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
-      <div class="srch" id="srch" role="search">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg>
-        <input id="q" type="search" placeholder="Search" aria-label="search this guide" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
-        <button type="button" class="x" id="qx" aria-label="clear search"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg></button>
+  <div class="gbody">
+    <div class="gcol" id="study">
+      <div class="gctl rv" id="gctl">
+        <div class="secs" id="secs" hidden>
+          <span class="secl" id="secl">Sections</span>
+          <div class="segs" id="panes" role="tablist" aria-labelledby="secl"></div>
+        </div>
+        <div class="util">
+          <button type="button" class="mbtn" id="jumpb" data-menu="m-jump" aria-expanded="false" aria-controls="m-jump" aria-haspopup="true"><span>Topics</span><svg class="cv" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></button>
+          <div class="srch" id="srch" role="search">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.4 10.4 3.4 3.4"/></svg>
+            <input id="q" type="search" placeholder="Search" aria-label="search this guide" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+            <button type="button" class="x" id="qx" aria-label="clear search"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg></button>
+          </div>
+          <div class="acts">
+            <button type="button" class="mbtn" id="dlb" data-menu="m-dl" aria-expanded="false" aria-controls="m-dl" aria-haspopup="true" hidden><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.8 7 8 10.2 11.2 7M2.5 13.5h11"/></svg><span>Downloads</span><span class="dn" id="dln"></span></button>
+            <button type="button" class="mbtn" id="showall" aria-pressed="false" hidden><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg><span class="mt">Show answers</span></button>
+            <button type="button" class="mbtn" id="printb"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6V1.8h8V6M4 12H2.5V7.2A1.2 1.2 0 0 1 3.7 6h8.6a1.2 1.2 0 0 1 1.2 1.2V12H12"/><path d="M4 9.5h8v4.7H4z"/></svg><span>Print</span></button>
+          </div>
+        </div>
       </div>
-      <div class="acts">
-        <button type="button" class="mbtn" id="showall" aria-pressed="false" hidden><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg><span class="mt">Show answers</span></button>
-        <button type="button" class="mbtn" id="printb"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6V1.8h8V6M4 12H2.5V7.2A1.2 1.2 0 0 1 3.7 6h8.6a1.2 1.2 0 0 1 1.2 1.2V12H12"/><path d="M4 9.5h8v4.7H4z"/></svg><span>Print</span></button>
-      </div>
+      <div class="sstat" id="sstat" aria-live="polite"></div>
+      <div id="root" class="rv"></div>
     </div>
+    <aside class="gside" id="side" aria-label="Downloads and an optional break">
+      <section class="dl rv" id="pdfs" aria-labelledby="dlh" hidden></section>
+      <details class="brk rv" id="brk" open>
+        <summary><span class="bt">One-minute break</span><span class="btag">optional</span></summary>
+        <div class="bc">
+          <p class="bi">A short reset. Your place in the guide stays put.</p>
+          <div class="btop"><span id="gstate">Ready when you are</span><span class="timer" id="timer" role="timer" aria-label="60 seconds">1:00</span></div>
+          <div class="gscr"><canvas id="game" width="560" height="360" role="img" aria-label="Jump over the blocks. Lasts one minute."></canvas><div class="gov" id="gov"><span class="gname">Jump for<br>a minute.</span><span class="ghint">60 seconds, then back to your spot.</span></div></div>
+          <div class="ttrack" aria-hidden="true"><span id="tfill"></span></div>
+          <p class="gins">Tap Jump, tap the screen or press Space to hop the blocks. Esc returns.</p>
+          <button type="button" class="btn full" id="gstart">Start 60-second break</button>
+          <div class="gctl2" id="gctl2" hidden><button type="button" class="btn" id="gjump">Jump</button><button type="button" class="btn ghost" id="gback">Back to studying</button></div>
+          <p class="bnote" id="bnote">Stops at one minute. You can leave early.</p>
+          <p class="vh" id="gsay" role="status" aria-live="polite"></p>
+        </div>
+      </details>
+    </aside>
   </div>
-  <div class="sstat" id="sstat" aria-live="polite"></div>
-  <div id="root" class="rv"></div>
-  <footer>
+  <footer id="foot">
     study guide written by a student, free to use. not affiliated with the school.
     check anything that matters against your own notes. <a href="/">all guides</a>
     <span class="upd" id="upd"></span>
   </footer>
 </main>
 <div class="menu" id="m-jump" hidden aria-label="jump to topic"></div>
+<div class="menu" id="m-dl" hidden aria-label="downloads"></div>
 <div class="menu" id="m-sec" hidden aria-label="sections"><div class="ml">Sections</div><div id="secm"></div></div>
 <div class="scorepill" id="score"><span aria-live="polite"><b id="scn">0</b> of <span id="sct">0</span> right</span><button type="button" id="reset">start over</button></div>
 
@@ -2086,12 +2216,27 @@ $("#title").textContent=GUIDE.title;
 if(GUIDE.sub){$("#sub").textContent=GUIDE.sub;$("#sub").hidden=false}
 /* link targets from GUIDE data: site-relative or http(s), never other schemes or user:pass@ */
 const safeUrl=u=>{const s=String(u??"").trim();if(!s||/[\x00-\x20\\]/.test(s))return null;const m=/^([a-z][a-z0-9+.-]*):/i.exec(s);if(m&&!/^https?$/i.test(m[1]))return null;try{const x=new URL(s,"https://valentinoguides.com/");if(x.username||x.password)return null}catch(e){return null}return s};
-/* practice PDFs: shown above the controls on every section, labelled exactly as written (e.g. "Practice test A (PDF)").
-   Entries that share a `g` (group label) render as one labelled row of short buttons, e.g. g:"Practice test (PDF)", t:"Version 1". */
-if(GUIDE.pdfs?.length){const ok=GUIDE.pdfs.filter(p=>safeUrl(p.url)!==null);if(ok.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");if(ok.length){
-  const d=$("#pdfs"), lk=(p,lab)=>`<a class="pdf" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener"${lab?` aria-label="${esc(lab)}"`:""}>${p.g?"":I_DOC}<span>${esc(p.t)}</span></a>`;
-  let h="";for(let i=0;i<ok.length;){const p=ok[i];if(!p.g){h+=lk(p);i++;continue}let j=i;while(j<ok.length&&ok[j].g===p.g)j++;h+=`<div class="pgrp" role="group" aria-label="${esc(p.g)}"><span class="pgl">${I_DOC}${esc(p.g)}</span>${ok.slice(i,j).map(x=>lk(x,x.g+", "+x.t)).join("")}</div>`;i=j}
-  d.innerHTML=h+(GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"");d.hidden=false}}
+/* downloads: every practice PDF, key, cram sheet and audio page, grouped and labelled exactly as written (e.g. "Practice test A (PDF)").
+   Entries that share a `g` (group label) form one group of short buttons, e.g. g:"Practice test (PDF)", t:"Version 1".
+   The rest group by what they are. Wide screens show the list beside the study column; elsewhere the Downloads button opens it. */
+const DLS=(GUIDE.pdfs||[]).filter(p=>safeUrl(p.url)!==null);
+if(GUIDE.pdfs?.length&&DLS.length<GUIDE.pdfs.length)console.warn("pdfs: skipped a link whose URL is not a site path or http(s)");
+if(DLS.length){
+  const kind=t=>/practice|quiz|test|exam/i.test(t)?"Practice":/key/i.test(t)?"Answer keys":/cram|memori[sz]e|sheet|script|pack|notes/i.test(t)?"Study sheets":"More";
+  const groups=[];
+  for(let i=0;i<DLS.length;){const p=DLS[i];if(p.g){let j=i;while(j<DLS.length&&DLS[j].g===p.g)j++;groups.push({h:p.g,chips:DLS.slice(i,j)});i=j;continue}
+    const k=kind(p.t);let g=groups.find(x=>!x.chips&&x.h===k);if(!g){g={h:k,items:[]};groups.push(g)}g.items.push(p);i++}
+  const lk=p=>`<a class="dli" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${I_DOC}<span>${esc(p.t)}</span></a>`;
+  const ck=p=>`<a class="dchip" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener" aria-label="${esc(p.g+", "+p.t)}">${esc(p.t)}</a>`;
+  const RANK={Practice:1,"Answer keys":2,"Study sheets":3,More:4}; groups.forEach((g,n)=>g.o=g.chips?n/100:RANK[g.h]); groups.sort((x,y)=>x.o-y.o);
+  const one=groups.length===1&&!groups[0].chips;
+  const body=groups.map(g=>`<div class="dgrp" role="group" aria-label="${esc(g.h)}">${one?"":`<p class="dgl">${esc(g.h)}</p>`}${g.chips?`<div class="dchips">${g.chips.map(ck).join("")}</div>`:g.items.map(lk).join("")}</div>`).join("");
+  const note=GUIDE.pdfsNote?`<p class="pn">${esc(GUIDE.pdfsNote)}</p>`:"";
+  const d=$("#pdfs"); d.innerHTML=`<div class="dlh"><h3 id="dlh">Downloads</h3><span>${DLS.length}</span></div>${body}${note}`; d.hidden=false;
+  $("#m-dl").innerHTML=`<div class="ml">Downloads</div>${body}${note.replace('class="pn"','class="dpn"')}`;
+  $("#dlb").hidden=false; $("#dln").textContent=DLS.length;
+}
+if(GUIDE.id==="span"&&GUIDE.sub)$("#sub").classList.add("scope");
 $("#upd").textContent=GUIDE.updated?`last updated ${GUIDE.updated}`:"";
 (function(){
   const c=$("#crow");
@@ -2163,13 +2308,21 @@ function section(s,i,next){
   rest.forEach(k=>{h+=B[k](s[k])});
   if(has(s.tables))s.tables.forEach(t=>{h+=B.table(t)});
   if(wb)h+=wb;
-  if(has(s.ex))h+=B.ex(s.ex);
   if(has(s.terms))h+=B.terms(s.terms);
   const n=String(i+1).padStart(2,"0"), w=WN[s.w];
+  /* study modes: Learn (the lesson) and Try it (its "on the test" examples), as in the approved demo */
+  const k=i+1, nx_=has(s.ex)?s.ex.length:0;
+  const brkB=`<button type="button" class="btn ghost" data-brk>One-minute break</button>`;
+  let body;
+  if(nx_){
+    body=`<div class="lmodes" role="tablist" aria-label="Study this topic"><button type="button" class="lm" role="tab" id="lm-l-${k}" aria-controls="lp-l-${k}" aria-selected="true" data-m="learn">Learn</button><button type="button" class="lm" role="tab" id="lm-t-${k}" aria-controls="lp-t-${k}" aria-selected="false" tabindex="-1" data-m="try">Try it <span class="n">${nx_}</span></button></div>`+
+      `<div class="lp on" id="lp-l-${k}" role="tabpanel" aria-labelledby="lm-l-${k}" data-m="learn"><div class="sb">${h}</div><div class="lact"><button type="button" class="btn" data-m="try">Try ${nx_} question${nx_===1?"":"s"}</button>${brkB}</div></div>`+
+      `<div class="lp" id="lp-t-${k}" role="tabpanel" aria-labelledby="lm-t-${k}" data-m="try"><div class="sb">${B.ex(s.ex)}</div><div class="lact"><button type="button" class="btn ghost" data-m="learn">Back to the lesson</button>${brkB}</div></div>`;
+  }else body=`<div class="sb">${h}</div><div class="lact">${brkB}</div>`;
   const eyb=`<p class="eyb"><span class="num">${n}</span>${w?`<span aria-hidden="true">/</span><span class="w ${w[0]}">${w[1]}</span>`:""}</p>`;
   const tp=!next&&TRY?TRY:null;
   const nx=next?`<div class="nxt"><a href="#s-${i+2}" data-j="s-${i+2}">Next: ${esc(next.t)}${I_NEXT}</a></div>`:tp?`<div class="nxt"><a href="#${tp}" data-p="${tp}">Next: ${esc(lab(tp))}${cnt(tp)?` (${cnt(tp)})`:""}${I_NEXT}</a></div>`:"";
-  const node=el("section","sec",`<header>${eyb}<h3 id="h-s-${i+1}" tabindex="-1">${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</header><div class="sb">${h}</div>${nx}`);
+  const node=el("section","sec les",`<header>${eyb}<h3 id="h-s-${i+1}" tabindex="-1">${esc(s.t)}</h3>${s.d?`<p class="sd">${esc(s.d)}</p>`:""}</header>${body}${nx}`);
   node.id="s-"+(i+1); node.setAttribute("aria-labelledby","h-s-"+(i+1));
   SEEN=null;
   return node;
@@ -2185,6 +2338,14 @@ function wireEx(scopeEl){scopeEl.querySelectorAll(".tq").forEach(x=>{
   }));
 })}
 const NUMW={2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven"};
+/* one lesson open at a time (when a guide has two or more) */
+let ONE=false, CURL=0;
+function selectLesson(k){
+  if(!ONE)return; k=+k; if(!(k>0))return; CURL=k;
+  document.querySelectorAll("#p-outline .les").forEach(L=>L.classList.toggle("cur",L.id==="s-"+k));
+  document.querySelectorAll("#p-outline .tile").forEach(t=>t.setAttribute("aria-pressed",String(+t.dataset.l===k)));
+  document.querySelectorAll("#m-jump a[data-j]").forEach(a=>{if(/^s-\d+$/.test(a.dataset.j))a.setAttribute("aria-current",String(a.dataset.j==="s-"+k));else a.setAttribute("aria-current","false")});
+}
 const JUMP=[];
 function buildOutline(sec){
   const list=GUIDE.outline||[];
@@ -2206,7 +2367,28 @@ function buildOutline(sec){
   const QT=GUIDE.topTable&&has(GUIDE.topTable.rows)?GUIDE.topTable:null, qh=QT?(QT.h||"Quick facts"):"";
   const QID="s-qk";
   if(QT){const fb=col.querySelector(".focus"), a=`<a class="fqk" href="#${QID}" data-j="${QID}">Quick facts: ${esc(qh)}${I_NEXT}</a>`; if(fb)fb.insertAdjacentHTML("beforeend",a)}
+  /* topic tiles (two or more lessons): pick one; it opens as the lesson card below. Search and print still show every lesson. */
+  if(list.length>1){
+    ONE=true; col.classList.add("one");
+    const tp=el("section","topics"); tp.id="s-topics"; tp.setAttribute("aria-labelledby","h-topics");
+    tp.innerHTML=`<div class="sh"><h3 id="h-topics">Pick a topic</h3><span class="shx">${list.length} topics</span></div><div class="tgrid${list.length>8?" clip":""}">${list.map((s,i)=>{const w=WN[s.w];return `<button type="button" class="tile" data-l="${i+1}" aria-pressed="false" aria-controls="s-${i+1}"><span class="tt1"><span class="tn">${String(i+1).padStart(2,"0")}</span>${w?`<span class="tw ${w[0]}">${w[1]}</span>`:""}<span class="tow" aria-hidden="true">open</span></span><span class="th">${esc(s.t)}</span>${s.d?`<span class="td">${esc(s.d)}</span>`:""}</button>`}).join("")}</div>`+(list.length>8?`<button type="button" class="tmore" aria-expanded="false">All ${list.length} topics</button>`:"");
+    col.appendChild(tp);
+    tp.addEventListener("click",e=>{
+      const m=e.target.closest(".tmore"); if(m){const g=tp.querySelector(".tgrid"),on=!g.classList.contains("all");g.classList.toggle("all",on);m.setAttribute("aria-expanded",String(on));m.textContent=on?"Fewer topics":`All ${list.length} topics`;return}
+      const t=e.target.closest(".tile"); if(t)goTo("s-"+t.dataset.l);
+    });
+  }
   list.forEach((s,i)=>{col.appendChild(section(s,i,list[i+1]));JUMP.push({id:"s-"+(i+1),n:String(i+1).padStart(2,"0"),t:s.t,w:s.w||1})});
+  /* study modes inside each lesson, plus the break buttons */
+  col.querySelectorAll(".les").forEach(L=>{
+    const ts=[...L.querySelectorAll(".lm")];
+    const set=(m,focus)=>{ts.forEach(b=>{const on=b.dataset.m===m;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1});L.querySelectorAll(".lp").forEach(p=>p.classList.toggle("on",p.dataset.m===m));if(focus)L.querySelector(`.lm[data-m="${m}"]`)?.focus({preventScroll:true})};
+    L.addEventListener("click",e=>{
+      const b=e.target.closest("button[data-m]"); if(b&&L.contains(b)){const fromTab=b.classList.contains("lm");set(b.dataset.m,!fromTab);if(!fromTab){const r=L.getBoundingClientRect();if(r.top<bar.offsetHeight)L.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}return}
+      if(e.target.closest("[data-brk]"))startBreak(e.target.closest("[data-brk]"));
+    });
+    L.querySelector(".lmodes")?.addEventListener("keydown",e=>{const i=ts.indexOf(document.activeElement);if(i<0)return;const k={ArrowRight:1,ArrowLeft:-1}[e.key];let j=null;if(k)j=(i+k+ts.length)%ts.length;else if(e.key==="Home")j=0;else if(e.key==="End")j=ts.length-1;if(j===null)return;e.preventDefault();set(ts[j].dataset.m,true)});
+  });
   if(moreHTML){const mo=el("section","sec more",moreHTML);mo.id=MID;mo.setAttribute("aria-labelledby","h-s-more");col.appendChild(mo);JUMP.push({id:MID,n:"",t:"More to keep in mind",w:0})}
   if(QT){
     scope();
@@ -2329,21 +2511,34 @@ function buildFormulas(sec){
   sec.appendChild(el("div","fgrid",fs.map(f=>`<div class="fx"><span class="n">${esc(f.n)}</span><span class="f">${esc(f.f)}</span>${f.note?`<span class="note">${plain(f.note)}</span>`:""}</div>`).join("")));
 }
 
-/* flashcards: flip deck, plus the whole list */
+/* flashcards: think first, flip, then "Review again" or "Got it". Marked cards form a short review round.
+   Back, next and shuffle still move freely; arrow keys and swipes too. In memory for this visit only. */
 function buildCards(sec){
-  const cs=GUIDE.cards||[]; let i=0, order=cs.map((_,k)=>k);
+  const cs=GUIDE.cards||[]; const all=cs.map((_,k)=>k); let order=all.slice(), i=0, marked=new Set(), done=0, round=1;
   const dk=el("div","dk");
-  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; deck.appendChild(fc); dk.appendChild(deck);
-  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; fc.setAttribute("aria-label","flashcard, press to flip"); deck.appendChild(fc); dk.appendChild(deck);
+  const st=el("div","dstudy",`<button type="button" class="btn" data-a="flip">Show answer</button><button type="button" class="btn ghost" data-a="again" hidden>Review again</button><button type="button" class="btn" data-a="got" hidden>Got it</button><span class="mk" aria-live="polite"></span>`); dk.appendChild(st);
+  const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn ghost" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
+  const fin=el("div","ddone"); fin.hidden=true; fin.tabIndex=-1; dk.appendChild(fin);
   sec.appendChild(dk);
-  const cnt=nav.querySelector(".cnt");
-  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${cs.length}`};
-  const go=d=>{i=(i+d+cs.length)%cs.length;draw()};
-  fc.addEventListener("click",()=>fc.classList.toggle("flip")); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();fc.classList.toggle("flip")}});
+  const cnt=nav.querySelector(".cnt"), mk=st.querySelector(".mk"), bF=st.querySelector('[data-a="flip"]'), bA=st.querySelector('[data-a="again"]'), bG=st.querySelector('[data-a="got"]');
+  const sync=()=>{const f=fc.classList.contains("flip");bF.hidden=f;bA.hidden=!f;bG.hidden=!f;bF.textContent="Show answer";mk.textContent=marked.size?`${marked.size} marked to review`:""};
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${order.length}${round>1?` · review round ${round}`:""}`;sync()};
+  const flip=()=>{fc.classList.toggle("flip");sync()};
+  const go=d=>{i=(i+d+order.length)%order.length;draw()};
+  const showDeck=on=>{deck.hidden=!on;st.hidden=!on;nav.hidden=!on;fin.hidden=on};
+  const finish=()=>{const n=marked.size;
+    fin.innerHTML=`<p class="eyb">${round>1?`review round ${round} finished`:"deck finished"}</p><h4>${n?`${n} card${n===1?"":"s"} to review again`:`All ${order.length} cards checked`}</h4><p>${n?"Go through just the cards you marked.":"Try one of them in a sentence of your own, or run the full deck again."}</p><div class="row2">${n?`<button type="button" class="btn" data-a="rev">Review marked cards (${n})</button>`:""}<button type="button" class="btn${n?" ghost":""}" data-a="full">Full deck again</button></div>`;
+    showDeck(false); fin.focus({preventScroll:true});};
+  const mark=again=>{const k=order[i];if(again)marked.add(k);else marked.delete(k);done++;if(i>=order.length-1)finish();else{i++;draw();fc.focus({preventScroll:true})}};
+  fin.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.a==="rev"){order=[...marked].sort((a,b)=>a-b);round++}else{order=all.slice();round=1}marked=new Set();i=0;done=0;showDeck(true);draw();fc.focus({preventScroll:true})});
+  fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
+  bF.addEventListener("click",()=>{flip();bG.focus({preventScroll:true})});
+  bA.addEventListener("click",()=>mark(true)); bG.addEventListener("click",()=>mark(false));
   nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
   nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
   nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
-  addEventListener("keydown",e=>{if(!sec.classList.contains("on")||e.target.tagName==="INPUT"||OPEN)return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  addEventListener("keydown",e=>{if(e.defaultPrevented||!sec.classList.contains("on")||deck.hidden||e.target.tagName==="INPUT"||e.target.closest?.("[role=tab]")||OPEN||document.body.classList.contains("gaming"))return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
   let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
   sec.appendChild(shead("All cards",`${cs.length}`));
@@ -2470,6 +2665,7 @@ addEventListener("scroll",()=>{if(OPEN&&OPENBY){const r=OPENBY.getBoundingClient
 function goTo(id,instant){
   const t=document.getElementById(id); if(!t)return;
   const pane=t.closest(".pane"), moved=pane&&!pane.classList.contains("on"); if(moved)show(pane.id.slice(2),false);
+  if(ONE&&t.classList.contains("les"))selectLesson(id.slice(2));
   t.scrollIntoView({behavior:REDUCED||instant?"auto":"smooth",block:"start"});
   const h=t.querySelector("h3[tabindex]")||t; if(!h.hasAttribute("tabindex"))h.tabIndex=-1;
   h.focus({preventScroll:true});
@@ -2515,7 +2711,8 @@ panesEl.addEventListener("keydown",e=>{
   m.innerHTML=`<div class="ml">Topics</div>`+JUMP.map(j=>`<a class="mi" href="#${j.id}" data-j="${j.id}"><span class="mn">${j.n}</span><span class="mt">${esc(j.t)}</span>${j.w?`<i class="w${j.w}" aria-hidden="true"></i>`:""}</a>`).join("")+
     ((ws.has(3)||ws.has(2))?`<div class="mleg" aria-hidden="true"><span><i class="w3"></i>tested most</span><span><i class="w2"></i>tested</span><span><i class="w1"></i>know it</span></div>`:"");
   m.addEventListener("click",e=>{const a=e.target.closest("a[data-j]");if(!a)return;e.preventDefault();closeMenu(false);goTo(a.dataset.j)});
-  if("IntersectionObserver" in window){
+  if(ONE)selectLesson(CURL||1);
+  else if("IntersectionObserver" in window){
     const links=[...m.querySelectorAll("a[data-j]")], seen=new Map();
     const io=new IntersectionObserver(es=>{es.forEach(e=>seen.set(e.target.id,e.isIntersecting));
       const first=links.find(a=>seen.get(a.dataset.j));
@@ -2557,7 +2754,7 @@ addEventListener("popstate",()=>route(true));
 (function(){
   const q=$("#q"), box=$("#srch"), stat=$("#sstat"), sall=$("#showall");
   const ITEMS={outline:".tp,.toptbl,.sec,#s-abbr",practice:".q",problems:".prob",formulas:".fx",cards:".clist > div",timeline:".ev",checklist:".ck",cram:".cr",tables:".tblk tbody tr",prompts:".group",leq:".card,.tbw"};
-  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x,.ftag,.vh,.eyb,.nxt,.exh,.ti,.fqk";
+  const SKIP=".eb,.go,.qn,.el,.wl,.k,.num,.w,.tl,.tag,.cl,.chev,.x,.ftag,.vh,.eyb,.nxt,.exh,.ti,.fqk,.lmodes,.lact";
   const fold=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\s+/g," ");
   const IDX=PANES.map(id=>{
     const p=$("#p-"+id), sel=ITEMS[id]||"";
@@ -2623,6 +2820,102 @@ addEventListener("popstate",()=>route(true));
   }
   $("#printb").addEventListener("click",()=>{closeMenu(false);print()});
 })();
+
+/* ═══ one-minute break: optional, starts only on a click or tap, hard stop at 60 seconds, early exit any time.
+   The guide behind it is inert while it runs and nothing about it changes: the open section, lesson, study mode, answers,
+   flashcard position, search and scroll are exactly where they were. No score, no saving, nothing sent. ═══ */
+const GAME=(function(){
+  const LIMIT=60000, cv=$("#game"), cx=cv.getContext&&cv.getContext("2d"), brk=$("#brk");
+  const W=560,H=360,GROUND=292,PX=84,PS=30;
+  let on=false, deadline=0, raf=0, tick=0, stopT=0, last=0, spawn=1.2, py=0, vy=0, obs=[], flash=0, mark=null, lastFocus=null;
+  const COL={bg:"#1E1C1A",grid:"#2A2724",line:"#5A524A",me:"#F4EFE7",foot:"#A79E92",ob:"#C9707A",txt:"#8E857A",hit:"#F6D7B0"};
+  const rr=(x,y,w,h,r)=>{cx.beginPath();if(cx.roundRect)cx.roundRect(x,y,w,h,r);else cx.rect(x,y,w,h)};
+  function draw(){
+    if(!cx)return;
+    cx.fillStyle=COL.bg;cx.fillRect(0,0,W,H);cx.strokeStyle=COL.grid;cx.lineWidth=1;
+    for(let x=0;x<W;x+=40){cx.beginPath();cx.moveTo(x+.5,0);cx.lineTo(x+.5,H);cx.stroke()}
+    for(let y=12;y<H;y+=40){cx.beginPath();cx.moveTo(0,y+.5);cx.lineTo(W,y+.5);cx.stroke()}
+    cx.strokeStyle=COL.line;cx.lineWidth=2;cx.beginPath();cx.moveTo(0,GROUND);cx.lineTo(W,GROUND);cx.stroke();
+    if(on){cx.fillStyle=flash>0?COL.hit:COL.me;rr(PX,GROUND-PS-py,PS,PS,7);cx.fill();
+    cx.fillStyle=COL.foot;cx.fillRect(PX+5,GROUND-py-4,20,4)}
+    cx.fillStyle=COL.ob;for(const o of obs){rr(o.x,GROUND-o.h,o.w,o.h,3);cx.fill()}
+    cx.fillStyle=COL.txt;cx.font='600 13px "Source Sans 3", system-ui, sans-serif';cx.fillText("A SHORT BREAK",20,335);
+  }
+  const fmtT=ms=>{const s=Math.ceil(ms/1000);return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`};
+  function clock(){
+    if(!on)return;
+    const ms=Math.max(0,deadline-Date.now());
+    $("#timer").textContent=fmtT(ms); $("#timer").setAttribute("aria-label",`${Math.ceil(ms/1000)} seconds left`);
+    $("#tfill").style.width=(ms/LIMIT*100)+"%";
+    if(ms<=0)end(false);
+  }
+  function frame(t){
+    if(!on)return;
+    const dt=Math.min((t-last)/1000,.032); last=t; spawn-=dt; flash=Math.max(0,flash-dt);
+    if(spawn<=0){obs.push({x:W+20,w:24+Math.random()*14,h:31+Math.random()*20});spawn=1.25+Math.random()*.5}
+    if(py>0||vy>0){py+=vy*dt;vy-=1300*dt;if(py<0){py=0;vy=0}}
+    for(const o of obs)o.x-=200*dt; obs=obs.filter(o=>o.x+o.w>0);
+    for(const o of obs){if(o.x<PX+PS-4&&o.x+o.w>PX+4&&py<o.h-4){obs=obs.filter(z=>z!==o);flash=.25;$("#gstate").textContent="Keep hopping"}}
+    draw(); if(Date.now()>=deadline){end(false);return}
+    raf=requestAnimationFrame(frame);
+  }
+  function jump(){if(on&&py<=0){vy=520;py=.5}}
+  /* everything except the break panel goes inert while it runs */
+  const others=()=>[$("#bar"),$("#ghead"),$("#study"),$("#pdfs"),$("#foot"),$("#score"),$(".skipl")].filter(Boolean);
+  function start(from){
+    if(on)return;
+    closeMenu(false);
+    const study=$("#study"), ae=document.activeElement;
+    const inStudy=ae&&study.contains(ae);
+    /* the exact spot to come back to: scroll position and the control that had focus */
+    mark={x:scrollX,y:scrollY,focus:inStudy?ae:(lastFocus&&lastFocus.isConnected?lastFocus:null),from:from||null};
+    on=true; deadline=Date.now()+LIMIT; obs=[]; py=0; vy=0; spawn=1.1; flash=0;
+    brk.open=true; document.body.classList.add("gaming");
+    others().forEach(n=>n.inert=true);
+    $("#gov").hidden=true; $("#gstart").hidden=true; $("#gctl2").hidden=false;
+    $("#gstate").textContent="Break in progress"; $("#bnote").textContent="Your place in the guide is saved.";
+    $("#gsay").textContent="One-minute break started. Press Space to jump. Escape returns to the guide.";
+    const r=brk.getBoundingClientRect(); if(r.top<0||r.bottom>innerHeight)brk.scrollIntoView({behavior:"auto",block:"center"});
+    $("#gjump").focus({preventScroll:true});
+    last=performance.now(); clock(); raf=requestAnimationFrame(frame);
+    tick=setInterval(clock,100); stopT=setTimeout(()=>end(false),LIMIT+50);
+  }
+  function end(early){
+    if(!on)return;
+    on=false; cancelAnimationFrame(raf); clearInterval(tick); clearTimeout(stopT);
+    document.body.classList.remove("gaming"); others().forEach(n=>n.inert=false);
+    $("#gctl2").hidden=true; $("#gstart").hidden=false; $("#gov").hidden=false;
+    $("#gov").innerHTML='<span class="gname">Back to<br>your spot.</span><span class="ghint">Right where you left off.</span>';
+    $("#gstate").textContent=early?"Back early":"One minute is up";
+    $("#timer").textContent=early?fmtT(Math.max(0,deadline-Date.now())):"0:00"; $("#timer").setAttribute("aria-label",early?"break ended":"break finished");
+    if(!early)$("#tfill").style.width="0%";
+    $("#bnote").textContent="Another break is always your choice.";
+    $("#gsay").textContent=early?"Back in the guide, at your saved spot.":"One minute is up. Back in the guide, at your saved spot.";
+    draw();
+    const m=mark; mark=null;
+    const f=m&&m.focus&&m.focus.isConnected?m.focus:(m&&m.from&&m.from.isConnected?m.from:$("#gstart"));
+    f.focus({preventScroll:true});
+    scrollTo({left:m?m.x:0,top:m?m.y:0,behavior:"auto"});
+    const les=f.closest&&f.closest(".les,.pane"); if(les&&!REDUCED){les.classList.remove("returned");void les.offsetWidth;les.classList.add("returned")}
+  }
+  $("#gstart").addEventListener("click",()=>start(null));
+  $("#gjump").addEventListener("click",jump);
+  $("#gback").addEventListener("click",()=>end(true));
+  cv.addEventListener("pointerdown",e=>{if(on){e.preventDefault();jump()}});
+  /* while it runs: Space jumps, Escape returns; other shortcuts of the page stay quiet */
+  addEventListener("keydown",e=>{
+    if(!on)return;
+    if(e.key==="Escape"){e.preventDefault();e.stopImmediatePropagation();end(true);return}
+    if(e.code==="Space"||e.key===" "){if(document.activeElement===$("#gback"))return;e.preventDefault();e.stopImmediatePropagation();if(!e.repeat)jump();return}
+    if(e.key!=="Tab"&&e.key!=="Enter")e.stopImmediatePropagation();
+  },true);
+  document.addEventListener("visibilitychange",clock);
+  $("#study").addEventListener("focusin",e=>{if(!on)lastFocus=e.target});
+  if(matchMedia("(max-width:1079px)").matches)brk.open=false;
+  draw();
+  return {start,end,get on(){return on}};
+})();
+function startBreak(btn){GAME.start(btn)}
 
 /* theme (shared with the homepage via localStorage "theme") */
 const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];

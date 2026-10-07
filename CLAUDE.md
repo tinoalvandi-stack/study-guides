@@ -33,11 +33,13 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
   Bricolage Grotesque (weight 700), so it needs no font to render. Icons and
   fonts are cached for a week, so when one changes, bump the `?v=` on its
   `<link>` / `og:image` URL in `index.html` or browsers keep the old one.
-- `fonts/`: Figtree (variable 300–900, plus italic) is the only face the
-  homepage, class pages and guides use. Bricolage Grotesque and the others stay
-  for the pages that keep their own layouts (cram sheets, jeopardy, 404).
-  Self-hosted woff2 (latin subset). The CSP allows `font-src 'self'` only;
-  never link Google Fonts.
+- `fonts/`: Source Serif 4 (headings) and Source Sans 3 (body and interface)
+  are the faces of the homepage, class pages, guides and the Spanish audio
+  pages: variable woff2, latin and greek subsets, self-hosted, SIL Open Font
+  License 1.1 with the license files beside them (`fonts/OFL-*.txt`,
+  `fonts/README.md`). Figtree, Bricolage Grotesque and the others stay for the
+  pages that keep their own layouts (cram sheets, jeopardy, 404). The CSP
+  allows `font-src 'self'` only; never link Google Fonts.
 - Individual guides: one `.html` file per guide at the repo root
   (`psych-unit-0.html`, `precalc-vectors.html`, …). Practice tests ship as
   `.pdf` beside them.
@@ -106,35 +108,35 @@ drop off on their own; leave them in the array.
 `pin: true` (optional) puts that entry first in "up next" while it is live,
 ahead of earlier-dated entries; it still drops off after its date.
 
-## Design system: revision 3, blue and navy (September 30, 2026)
+## Design system: editorial revision (October 7, 2026)
 
-- Approved from two before/after reference images (the opening of a guide and a
-  lesson in it, APUSH Unit 2/B), with his words "yes its good. have claude make
-  the changes." It replaced revision 2 (warm paper, October 1 build), whose
-  dense layout put five competing cards, an 11-link sidebar and a stack of
-  boxes in front of the first lesson.
-- Type: Figtree only. Headings 760–780 with tight tracking (-.03 to -.045em);
-  body 400–500 at 16–17px; labels and buttons 600–700. Titles keep their own
-  capitals; only small interface chrome is lowercase.
+- Approved from a working demo (topic tiles, Learn / Try it, grouped downloads,
+  an optional one-minute break) and rolled out to every template guide, with
+  type and color changed to a clean editorial style. It replaced revision 3
+  (blue and navy, Figtree), whose layout rules it otherwise keeps.
+- Type: Source Serif 4 for headings and titles (weight about 620, tracking
+  -.01 to -.02em), Source Sans 3 for everything else (body 400 at 16–17px,
+  labels and buttons 600–700). Titles keep their own capitals; only small
+  interface chrome is lowercase.
 - Tokens (same names in `site.css` and the guide template; change both):
-  `--paper` `#F1F5F9` / `#0C1220` (cool light paper / deep navy),
-  `--surface` `#FCFDFF` / `#131B2C`, `--surface2`, `--tint` (light blue for
-  icon circles and table heads), `--line` / `--line2`, `--ink` navy `#0E1B3D` /
-  `#E8EDF6`, `--body` (reading text, 10:1 or better), `--ink2` / `--ink3`
-  (secondary text, 5:1 or better), `--accent` navy blue `#274B7E` / `#8EB3EA`
-  (buttons, focus, links, the mark) with `--on-accent`, `--amber` `#D99A2B`
-  (priority numbers, callout rules, the logo dot) with `--amber-bg`, `--hi`
-  amber ink `#8A5300` / `#F0C273` (dates, "new"), `--good`, `--bad`, one
-  `--c-<id>` per class and a `--t-<id>` tint for the class page hero. Shadows
-  are `--sh1` / `--sh2`: a small vertical offset, never a glow.
-- Classes keep their identity: the eight illustrated covers (rose curve,
-  capitol, brain, projectile, bar chart, arches and scales, page and pen,
-  speech bubbles) stay warm and class-colored; `art()` in `site.js` and
-  `coverArt()` in the guide template hold the same drawings, change both
-  together. The class color also tints its icon, its diagrams and its
-  welcome-page hero. Shared surfaces (bar, buttons, panels, menus) are blue.
-- Corners: cards 14–16px, buttons 10–11px, chips 8–9px. Tap targets at least
-  40px.
+  `--paper` warm white `#F8F5EF` / charcoal `#171615`, `--surface`
+  `#FFFDF9` / `#1F1D1B`, `--surface2`, `--tint` (a faint oxblood-warm wash),
+  `--line` / `--line2`, `--ink` charcoal `#1E1C1A` / warm white `#F4EFE7`,
+  `--body` (reading text, 12:1 or better), `--ink2` / `--ink3` (secondary
+  text, 5.3:1 or better on every surface), `--accent` oxblood `#7B2430` /
+  `#E0959C` (links, the open tile, focus rings, eyebrows, small marks) with
+  `--on-accent`, `--btn` / `--on-btn` (filled buttons, the theme thumb and the
+  mark: charcoal in light, warm white in dark), `--amber` (now a light
+  oxblood: Key ideas numbers, the watch-out rule, the timer bar, the logo
+  dot) with `--on-amber` and `--amber-bg`, `--hi` (dates, "new"), `--good`,
+  `--bad`, one `--c-<id>` per class and a `--t-<id>` tint for the class page
+  hero. Oxblood stays restrained: small accents only, never large fills.
+  Shadows `--sh1` / `--sh2`: a small vertical offset, never a glow.
+- Classes keep their identity: the illustrated covers stay warm and
+  class-colored; `art()` in `site.js` and `coverArt()` in the guide template
+  hold the same drawings, change both together.
+- Corners: cards 14–16px, buttons 10–11px, chips 8–9px. Tap targets 44px on
+  phones and touch screens.
 
 ## Homepage features
 
@@ -185,10 +187,10 @@ hold, because they are what the site's readers rely on (reader feedback,
 September 2026, and the approved revision 3 layout):
 
 - Easy to follow first: a calm reading flow, not a dashboard. The page opens
-  on a compact title and one meta line, the practice PDFs (when the guide has
-  any), the Sections row, then Topics, Search, Show answers and Print, then
-  the "Key ideas" box and the first lesson. No start gate, no permanent
-  sidebar, no accordion hiding, no huge blank areas.
+  on a compact title and one meta line, the Sections row, then Topics, Search,
+  Downloads, Show answers and Print, then the "Key ideas" box, the topic tiles
+  and the open lesson. Downloads never take the first study view. No start
+  gate, no huge blank areas.
 - Labels say where they lead. Practice PDFs are named exactly as the file
   calls itself, ending "(PDF)" ("Practice test A (PDF)", "Practice quiz B
   (PDF)"); online multiple choice is "Practice questions"; math and physics
@@ -224,51 +226,61 @@ September 2026, and the approved revision 3 layout):
 - No statistics presented as something to memorize; give the idea in words.
 - Cut empty space and clutter, never study material.
 
-## Guide template (v3, September 30, 2026)
+## Guide template (v4, editorial revision, October 7, 2026)
 
 Every guide is built from `template/guide-template.html`: one `GUIDE` object
 renders the whole page; the CSS and the machinery below the object are never
 edited per guide. If a guide needs something the template lacks, change the
 template and rebuild every guide.
 
-Layout (revision 3, navigation update October 1, 2026): the page is up to
-1180px wide. The header is a compact title, one meta line (the class name, a
-link to its welcome page · the test date · `meta`), the one-line `sub`, and
-the small class cover beside them. Then, in order:
-- **Practice PDFs** (from `pdfs`), on a tinted strip above everything else,
-  each button labelled exactly as written, with `pdfsNote` beside or under
-  them. Entries sharing a `g` group label render as one labelled row of short
-  buttons (physics: "Practice test (PDF)" · Version 1 … 6). Only files that
-  exist; a guide with none shows no strip.
-- **Sections**: a visible segmented tab row (`role="tablist"`) naming every
-  view by destination with its count where it has one ("Practice questions
-  43", "Worked examples 26", "Flashcards 61"); the active one is raised. On
-  phones it scrolls sideways with an edge fade instead of wrapping. Arrow keys,
-  Home and End move between tabs. A section change is a history step, so the
-  browser's back and forward buttons move between sections.
-- **Topics** (a menu of every lesson with its weight, Key ideas, quick facts
-  and abbreviations), **Search**, **Show answers** (practice keys and whys,
-  problem steps, every "on the test" answer) and **Print** (the current
-  section; controls and the PDF strip are hidden in print). On phones Topics
-  and Search share a row and Show answers and Print share the next.
-Once those controls scroll away, the sticky bar carries "Class · Unit", a
-Sections menu showing the current section, Topics and Search. The guide
-section opens with the "Key ideas" box: the first three `top` lines with
-numbered amber dots; any further `top` lines render after the lessons as
-"more to keep in mind" (ordinary reading, linked from the box and listed in
-Topics). Then every lesson open in order: an eyebrow (number / weight), the
-title, the one-line `d`, then text on the left with the lesson's diagram
-(`fig` or `tree`) beside it (sticky while the text scrolls) and the watch-out
-callout closing the text column; lists (`tiles`), tables and comparisons below;
-then one "on the test" panel ("Show answer" on each) and the key terms; a
-"Next:" link ends each lesson, and the last one leads to the first practice
-section by name ("Next: Practice questions (43)"). `topTable` renders after
-the lessons as "quick facts", linked from the Key ideas box. Deep links work:
-`#s-3` opens lesson 3, `#practice` opens a section. Other sections drop their
-own title line (the Sections row already names them). Practice, problems,
-formulas and cram lay out in two columns on wide screens; a problem card opens
-to full width with its steps beside it ("Show steps"); the practice score is a
-floating pill with retry-missed (first-try scoring unchanged).
+Layout: the page is up to 1280px wide. The header is a compact title, one
+meta line (the class name, a link to its welcome page · the test date ·
+`meta`), the one-line `sub` (for UC Scout Spanish it renders as the
+curriculum warning box), and the small class cover. Below it, on wide
+screens (1080px and up: desktop and iPad landscape) a study column and a
+316px side column; on phones and iPad portrait one column.
+- **Sections**: the segmented tab row (`role="tablist"`) naming every view by
+  destination with its count ("Practice questions 43"). Arrow keys, Home and
+  End move between tabs; a section change is a history step.
+- **Topics**, **Search**, **Downloads** (phones and iPad portrait only),
+  **Show answers** and **Print**.
+- **Downloads** (from `pdfs`): every printable, key and audio page, labelled
+  exactly as written, grouped: entries sharing a `g` form one group of short
+  buttons (physics "Practice test (PDF)" · Version 1 … 6; Spanish "Practice
+  exam A" · Exam, Answer key, Audio), the rest group by what they are
+  (Practice, Answer keys, Study sheets, More), with `pdfsNote` under them. Wide
+  screens show them as a card in the side column; elsewhere the Downloads
+  button opens the same list as a menu.
+- **Guide section**: the "Key ideas" box (first three `top` lines), then
+  **topic tiles** ("Pick a topic": number, weight, title, the one-line `d`;
+  phones show six and an "All n topics" button when there are more than
+  eight), then **one lesson card at a time** (the open tile's lesson; lesson 1
+  at first). Search shows every matching lesson; print prints every lesson.
+  Each lesson with `ex` has two **study modes**, Learn (the lesson, ending
+  with "Try n questions" and "One-minute break") and Try it (its "on the test"
+  examples, ending with "Back to the lesson"), as tabs with arrow keys. The
+  "Next:" link opens the next lesson; the last leads to the first practice
+  section. "More to keep in mind", quick facts (`topTable`) and the
+  abbreviation key stay on the page under the lesson card. Deep links work:
+  `#s-3` opens lesson 3, `#practice` opens a section; tiles and the Topics
+  menu keep the hash in step.
+- **Flashcards**: think first, Show answer, then Review again or Got it; the
+  end of a round offers "Review marked cards (n)" or the full deck. Back,
+  next, shuffle, arrow keys and swipes still work. In memory only.
+- **One-minute break** (side column on wide screens, where it stays in view;
+  collapsed below the study column elsewhere): optional, starts only from its
+  button or a lesson's "One-minute break" button, shows a 1:00 countdown and a
+  timer bar, stops hard at 60 seconds (a wall-clock deadline plus a backstop
+  timer, checked again when the tab returns), and can be left early with
+  "Back to studying" or Escape. While it runs the rest of the page is inert;
+  on exit the scroll position and focus return exactly where they were, and
+  nothing else (section, lesson, mode, answers, flashcard position, search)
+  has moved. No score, no leaderboard, no accounts, no storage, no network.
+  Space or a tap jumps.
+Other sections drop their own title line (the Sections row names them).
+Practice, problems, formulas and cram lay out in two columns where there is
+room; the practice score is a floating pill with retry-missed (first-try
+scoring unchanged).
 
 Template changes are engine-only. After any change to the template, rebuild
 every guide by splicing the new engine around each guide's own `GUIDE` block,
@@ -278,8 +290,10 @@ guide added since the work started is checked against the commit that added
 it), the repository validator reports ERROR 0, and the interaction suites
 pass (practice right/wrong, first-try score, retry missed, reveals, search,
 Show answers, Topics jumps, deep links, every section tab, back and forward,
-keyboard (tabs with arrow keys, menus with Escape), Print, the PDF links (200,
-a real PDF, above the lessons), 390px, both themes).
+keyboard (tabs with arrow keys, menus with Escape), Print, the downloads (200,
+a real PDF, in the side card or the Downloads menu), topic tiles, study modes,
+the one-minute break (60-second stop, early exit, exact return), 390px, iPad
+portrait and landscape, both themes).
 
 Header fields: `id` (class token: apush psych phys pre sem biz mor lang span
 apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`, `pdfs`
