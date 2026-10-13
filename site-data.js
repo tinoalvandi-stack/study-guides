@@ -64,7 +64,9 @@ const CLASSES=[
      {t:"Unit 1.4–1.6", url:"/psych-unit-1-4-1-6", added:"2026-09-23"},
      {t:"Unit 1.1–1.3", url:"/psych-unit-1-1-1-3", added:"2026-09-15"},
      {t:"Unit 0", url:"/psych-unit-0", added:"2026-09-01"}]},
-  {id:"sem", page:"/seminar", c:"var(--c-sem)", glyph:"bubbles", name:"AP Seminar", abbr:"Seminar", short:"SEMINAR", units:[]},
+  {id:"sem", page:"/seminar", c:"var(--c-sem)", glyph:"bubbles", name:"AP Seminar", abbr:"Seminar", short:"SEMINAR", units:[
+     {t:"End-of-course exam Part A", url:"/seminar-eoc-part-a", added:"2026-10-12", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/seminar-eoc-part-a-cram.pdf"}]}]},
   {id:"bus", page:"/business", c:"var(--c-biz)", glyph:"chart", name:"Business Principles", abbr:"Business", short:"BUSINESS", units:[
      {t:"LPs 1-5 to 1-10", url:"/bus-unit-1-5-1-10", added:"2026-09-24", extras:[
         {kind:"pdf", t:"Practice test A (PDF)", url:"/bus-unit-1-5-1-10-practice-a.pdf"},
