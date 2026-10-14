@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "offline.html"
+        ],
+        "createdAt": "2026-10-14T05:04:25.047Z",
+        "reason": "Claude: both hits (.topm::before, .hero::before) come from the shared site.css (Fast Find rail shipped 2026-09-13, Up next top bar); neither element exists on offline.html"
+      }
+    ]
+  }
+}
