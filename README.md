@@ -12,12 +12,17 @@ domain.
   feedback, and a `<noscript>` list of every guide).
 - `site-data.js`: the data. `CLASSES` (the eight Bishop Gorman classes plus UC Scout AP Spanish, their welcome pages
   and units) and `FEATURES` (upcoming tests).
+- `site-topics.js`: generated lesson topics for search and the class pages.
 - `site.js` / `site.css`: render and style the homepage and the class pages.
 - `apush.html`, `physics.html`, `psych.html`, `business.html`, `morality.html`,
   `precalc.html`, `lang.html`, `seminar.html`, `spanish.html`: one welcome page per class.
 - `vercel.json`: security headers plus clean URLs. Vercel serves the rest as-is.
 - `404.html`: served for any path that does not exist.
-- `og-image.png`, `apple-touch-icon.png`, `favicon.svg`: share card and icons.
+- `og-image.png`, `og/*.png`, `apple-touch-icon.png`, `favicon.svg`: share
+  cards (the homepage's, then one per class) and icons.
+- `sw.js`, `offline.html`: network-first offline copies of pages already opened.
+- `tools/sync-guides.mjs`: writes each guide's link-preview tags and
+  `site-topics.js` from the guide's own data. Not served.
 - One `.html` file per guide at the repo root (`psych-unit-0.html`,
   `morality-ch1-2.html`, ...). The filename is the URL: `/psych-unit-0`.
   Practice-test PDFs sit beside them.
@@ -32,7 +37,8 @@ domain.
    first: `{ t: "Unit 2", url: "/precalc-unit-2", added: "2026-10-05" }`.
    The homepage catalog and the class page update on their own.
 3. Add the same link to the `<noscript>` list near the bottom of `index.html`.
-4. Commit. Vercel redeploys on its own in under a minute.
+4. Run `node tools/sync-guides.mjs` (link preview and searchable topics).
+5. Commit. Vercel redeploys on its own in under a minute.
 
 ## New test coming up
 

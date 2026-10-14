@@ -36,35 +36,9 @@ const FEATURES=[
    A unit is the guide plus optional extras (kind: "cram" | "pdf" | "quiz"), labelled exactly as in the guide, e.g. "Practice test A (PDF)".
    Several versions of one test share a group label: {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url}. added = the day it went up;
    "new" shows for 7 days. A class with no units keeps its welcome page with an honest empty state.
-   short: the label printed on the class cover. */
+   short: the label printed on the class cover.
+   Order: the catalog and the no-results chips show classes in this order, which is set by hand. Keep it; never re-sort. */
 const CLASSES=[
-  {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY", units:[
-     {t:"Unit 2 LEQ", url:"/apush-unit-2-leq", added:"2026-10-06",
-      extras:[{kind:"cram", t:"Cram sheet (PDF)", url:"/apush-unit-2-leq-cram.pdf"},
-              {kind:"pdf", t:"Practice LEQ prompts (PDF)", url:"/apush-unit-2-leq-practice.pdf"}]},
-     {t:"Unit 2/B", url:"/apush-unit-2b", added:"2026-10-01",
-      extras:[{kind:"pdf", t:"Practice test (PDF)", url:"/apush-unit-2b-practice.pdf"}]},
-     {t:"Unit 2/A", url:"/apush-unit-2a", added:"2026-09-21"},
-     {t:"Unit 1 LEQ", url:"/apush-unit-1-leq", added:"2026-09-13"},
-     {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
-     {t:"Unit 1/A", url:"/apush-unit-1a", added:"2026-08-29"}]},
-  {id:"lang", page:"/lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language and Composition", abbr:"AP Lang", short:"ENGLISH LANGUAGE", units:[
-     {t:"Rhetorical analysis: priority devices & full reference", url:"/lang-ra-tips#s-6", added:"2026-10-08", extras:[
-        {kind:"cram", t:"Cram sheet (PDF)", url:"/lang-ra-tips-cram.pdf"}]}]},
-  {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS", units:[
-     {t:"Advanced kinematics", url:"/physics-advanced-kinematics", added:"2026-09-27", extras:[
-        {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-advanced-kinematics-version-1.pdf"},
-        {kind:"pdf", g:"Practice test (PDF)", t:"Version 2", s:"2", url:"/physics-advanced-kinematics-version-2.pdf"},
-        {kind:"pdf", g:"Practice test (PDF)", t:"Version 3", s:"3", url:"/physics-advanced-kinematics-version-3.pdf"},
-        {kind:"pdf", g:"Practice test (PDF)", t:"Version 4", s:"4", url:"/physics-advanced-kinematics-version-4.pdf"},
-        {kind:"pdf", g:"Practice test (PDF)", t:"Version 5", s:"5", url:"/physics-advanced-kinematics-version-5.pdf"},
-        {kind:"pdf", g:"Practice test (PDF)", t:"Version 6", s:"6", url:"/physics-advanced-kinematics-version-6.pdf"}]},
-     {t:"Intro kinematics", url:"/physics-intro-kinematics", added:"2026-09-01"}]},
-  {id:"psych", page:"/psych", c:"var(--c-psych)", glyph:"head", name:"AP Psychology", abbr:"Psych", short:"PSYCHOLOGY", units:[
-     {t:"Unit 1 exam", url:"/psych-unit-1", added:"2026-09-25"},
-     {t:"Unit 1.4–1.6", url:"/psych-unit-1-4-1-6", added:"2026-09-23"},
-     {t:"Unit 1.1–1.3", url:"/psych-unit-1-1-1-3", added:"2026-09-15"},
-     {t:"Unit 0", url:"/psych-unit-0", added:"2026-09-01"}]},
   {id:"sem", page:"/seminar", c:"var(--c-sem)", glyph:"bubbles", name:"AP Seminar", abbr:"Seminar", short:"SEMINAR", units:[
      {t:"End-of-course exam Part A", url:"/seminar-eoc-part-a", added:"2026-10-12", extras:[
         {kind:"cram", t:"Cram sheet (PDF)", url:"/seminar-eoc-part-a-cram.pdf"}]}]},
@@ -104,6 +78,33 @@ const CLASSES=[
         {kind:"quiz", t:"Vector quizzes A–C (print page)", url:"/precalc-quizzes"}]},
      {t:"Vectors + dot product", url:"/precalc-vectors", added:"2026-08-30", extras:[
         {kind:"pdf", t:"Quizzes A–C + memorize sheet (PDF)", url:"/precalc-quizzes.pdf"}]}]},
+  {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY", units:[
+     {t:"Unit 2 LEQ", url:"/apush-unit-2-leq", added:"2026-10-06",
+      extras:[{kind:"cram", t:"Cram sheet (PDF)", url:"/apush-unit-2-leq-cram.pdf"},
+              {kind:"pdf", t:"Practice LEQ prompts (PDF)", url:"/apush-unit-2-leq-practice.pdf"}]},
+     {t:"Unit 2/B", url:"/apush-unit-2b", added:"2026-10-01",
+      extras:[{kind:"pdf", t:"Practice test (PDF)", url:"/apush-unit-2b-practice.pdf"}]},
+     {t:"Unit 2/A", url:"/apush-unit-2a", added:"2026-09-21"},
+     {t:"Unit 1 LEQ", url:"/apush-unit-1-leq", added:"2026-09-13"},
+     {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
+     {t:"Unit 1/A", url:"/apush-unit-1a", added:"2026-08-29"}]},
+  {id:"psych", page:"/psych", c:"var(--c-psych)", glyph:"head", name:"AP Psychology", abbr:"Psych", short:"PSYCHOLOGY", units:[
+     {t:"Unit 1 exam", url:"/psych-unit-1", added:"2026-09-25"},
+     {t:"Unit 1.4–1.6", url:"/psych-unit-1-4-1-6", added:"2026-09-23"},
+     {t:"Unit 1.1–1.3", url:"/psych-unit-1-1-1-3", added:"2026-09-15"},
+     {t:"Unit 0", url:"/psych-unit-0", added:"2026-09-01"}]},
+  {id:"lang", page:"/lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language and Composition", abbr:"AP Lang", short:"ENGLISH LANGUAGE", units:[
+     {t:"Rhetorical analysis: priority devices & full reference", url:"/lang-ra-tips#s-6", added:"2026-10-08", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/lang-ra-tips-cram.pdf"}]}]},
+  {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS", units:[
+     {t:"Advanced kinematics", url:"/physics-advanced-kinematics", added:"2026-09-27", extras:[
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-advanced-kinematics-version-1.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 2", s:"2", url:"/physics-advanced-kinematics-version-2.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 3", s:"3", url:"/physics-advanced-kinematics-version-3.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 4", s:"4", url:"/physics-advanced-kinematics-version-4.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 5", s:"5", url:"/physics-advanced-kinematics-version-5.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 6", s:"6", url:"/physics-advanced-kinematics-version-6.pdf"}]},
+     {t:"Intro kinematics", url:"/physics-intro-kinematics", added:"2026-09-01"}]},
   {id:"span", page:"/spanish", c:"var(--c-span)", glyph:"speech", name:"AP Spanish Language and Culture (UC Scout)", abbr:"AP Spanish", short:"SPANISH · UC SCOUT",
    warn:"For UC Scout AP Spanish. This is not aligned to Bishop Gorman’s Spanish curriculum.", units:[
      {t:"UC Scout Semester 1 midterm", url:"/spanish-ucscout-s1-midterm", added:"2026-10-04", extras:[

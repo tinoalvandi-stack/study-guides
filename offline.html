@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Offline · Valentino guides</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F8F5EF">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171615">
+<link rel="icon" href="/favicon.svg?v=5" type="image/svg+xml" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
+<link rel="stylesheet" href="/site.css?v=7">
+<script>try{const t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+  .off{max-width:720px;padding:28px 0 8px}
+  .off h1{margin:0 0 8px;font-family:var(--display);font-size:clamp(30px,8vw,44px);font-weight:620;letter-spacing:-.018em;line-height:1.08}
+  .off p{margin:0 0 18px;max-width:52ch;font-size:var(--t16);line-height:1.5;color:var(--body)}
+  .off .btn{margin-bottom:26px}
+  .off .sh{margin-top:4px}
+  .off .none{font-size:var(--t15);color:var(--ink2)}
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="valentino guides, all classes"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="var(--btn)"/><path d="M8.98 20.80 4.67 7.20H8.65L11.36 17.68H11.47L14.27 7.20H18.03L13.72 20.80Z" fill="var(--on-btn)"/><circle cx="21.43" cy="18.90" r="1.9" fill="var(--hi)"/></svg><span><b>valentino guides</b><small>free study guides</small></span></a>
+  </div>
+</header>
+<main class="wrap" id="main">
+  <section class="off">
+    <h1>No connection</h1>
+    <p>This page hasn't been opened on this device yet, so there's no saved copy. Guides you've already opened still work.</p>
+    <button type="button" class="btn" id="retry">Try again</button>
+    <div class="sh"><h3>saved on this device</h3><span class="shx" id="n"></span></div>
+    <div class="group" id="list"></div>
+    <p class="none" id="none" hidden>Nothing saved yet. Open a guide while you're online and it stays here for next time.</p>
+  </section>
+</main>
+<div class="wrap">
+  <footer>
+    study guides for bishop gorman classes, written by a student and free to use.
+    not affiliated with the school. check anything that matters against your own notes.
+  </footer>
+</div>
+<script src="/site-data.js?v=6"></script>
+<script>
+/* lists the guides this device has a saved copy of (kept by sw.js), using the class and unit names from site-data.js */
+"use strict";
+document.getElementById("retry").addEventListener("click",()=>location.reload());
+(async function(){
+  const list=document.getElementById("list"), none=document.getElementById("none");
+  const show=n=>{document.getElementById("n").textContent=n?n+(n===1?" guide":" guides"):"";none.hidden=!!n;list.hidden=!n};
+  if(!("caches" in window)||typeof CLASSES==="undefined"){show(0);return}
+  const paths=new Set();
+  try{for(const k of await caches.keys())for(const r of await (await caches.open(k)).keys())paths.add(new URL(r.url).pathname)}catch(e){}
+  let n=0;
+  CLASSES.forEach(c=>c.units.forEach(u=>{
+    const p=String(u.url).split("#")[0]; if(!paths.has(p))return;
+    const a=document.createElement("a"); a.className="unit"; a.href=u.url;
+    const rt=document.createElement("span"); rt.className="rt";
+    const e=document.createElement("span"); e.className="eyebrow"; e.textContent=c.name; e.style.color=c.c;
+    const t=document.createElement("span"); t.className="lt"; t.textContent=u.t;
+    rt.append(e,t); a.append(rt); list.append(a); n++;
+  }));
+  show(n);
+})();
+</script>
+</body>
+</html>

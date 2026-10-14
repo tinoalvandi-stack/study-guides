@@ -14,8 +14,11 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 - `site-data.js`: the site's data: `FEATURES` (upcoming tests) and `CLASSES`
   (the eight Bishop Gorman classes plus UC Scout AP Spanish, each with its
   welcome-page URL and units). This is the file to edit when a guide is added.
+- `site-topics.js`: generated, never hand-edited. Every guide's lesson titles,
+  key terms and one-line test focus, which Fast Find searches and the class pages
+  list. `node tools/sync-guides.mjs` writes it.
 - `site.js`: renders the homepage and the class welcome pages from that data
-  (search, up next, catalog, class covers, theme, share, feedback).
+  (search, up next, catalog, class covers, theme, share, studied ticks, feedback).
 - `site.css`: styles for the homepage and the class welcome pages. Its tokens
   match the guide template's; change both together.
 - Class welcome pages, one per class: `apush.html`, `physics.html`,
@@ -26,13 +29,21 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 - `vercel.json`: security headers and `cleanUrls`. A guide at `foo.html` is
   served at `/foo`, so links never carry the extension.
 - `404.html`: any path that does not exist.
-- `og-image.png`: link preview card. Its URL in `index.html` is absolute and
-  points at valentinoguides.com.
-- `apple-touch-icon.png`, `favicon.svg`: home screen and tab icons. The mark is a
-  bold "v" with a terracotta full stop; the "v" is an outline traced from
-  Bricolage Grotesque (weight 700), so it needs no font to render. Icons and
-  fonts are cached for a week, so when one changes, bump the `?v=` on its
-  `<link>` / `og:image` URL in `index.html` or browsers keep the old one.
+- `og-image.png`: the homepage's link preview card. `og/<class page>.png`
+  (`og/apush.png`, `og/precalc.png`, …): one card per class, used by that class
+  page and every guide in the class. All are 1200×630, drawn from the class
+  covers on the editorial colors (renderer kept in `_staging/og/render.html`,
+  untracked). Their URLs are absolute and carry `?v=`; bump it when a card
+  changes (`OG_V` in `tools/sync-guides.mjs` for the class cards).
+- `apple-touch-icon.png`, `favicon.svg`: home screen and tab icons on the
+  editorial colors (charcoal tile, warm white "v", light oxblood dot). The "v"
+  is an outline traced from Bricolage Grotesque (weight 700), so it needs no
+  font to render. Icons and fonts are cached for a week, so when one changes,
+  bump the `?v=` on every `<link>` to it (now `v=5`) or browsers keep the old one.
+- `sw.js` + `offline.html`: offline copies (see "Offline copies" below).
+- `tools/sync-guides.mjs`: fills each guide's page meta block and writes
+  `site-topics.js` (see "Adding a guide"). Node, no dependencies. Listed in
+  `.vercelignore`.
 - `fonts/`: Source Serif 4 (headings) and Source Sans 3 (body and interface)
   are the faces of the homepage, class pages, guides and the Spanish audio
   pages: variable woff2, latin and greek subsets, self-hosted, SIL Open Font
@@ -73,10 +84,18 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
    `index.html`.** That list is hand-maintained, not generated from `CLASSES`.
    Forgetting it is the easy mistake: the site looks fine, but the no-JS and
    crawler view silently misses the guide.
-4. Make sure the page carries the analytics tag right before `</body>`
+4. **Run `node tools/sync-guides.mjs`** from the repo root. It writes the
+   guide's page meta block (tab title, description, link preview with its
+   class card) from `GUIDE`, and adds its lessons to `site-topics.js`. Run it
+   again after any edit to a guide's `title`, `cls`, `sub`, `top` or `outline`.
+   `node tools/sync-guides.mjs --check` exits 1 when anything is out of date;
+   run it before every commit that touches a guide. Skipping it means the
+   shared link unfurls as the template placeholder and the lessons are not
+   searchable.
+5. Make sure the page carries the analytics tag right before `</body>`
    (the template already has it):
    `<script defer src="/_vercel/insights/script.js"></script>`
-5. Commit and push. Vercel handles the rest.
+6. Commit and push. Vercel handles the rest.
 
 ## UC Scout AP Spanish (added October 4, 2026)
 
@@ -154,10 +173,27 @@ ahead of earlier-dated entries; it still drops off after its date.
   `polar`); add to it when a new class arrives. `norm()` folds `u1b`, `unit1`
   and `1/b` together. A partial-only result is labelled "closest match"; no
   result shows class chips and a "request a guide" link into the feedback card.
+- Lesson topics: when the words are not in a unit's own title but are in one of
+  its lessons (title, key terms or the one-line test focus, from
+  `site-topics.js`), the unit still matches and the top card names the lesson
+  ("LESSON 4 Stamp Act (1765) …") with "open this lesson", which deep links to
+  `/<guide>#s-4`. A lesson hit scores 24 (28 when the words are in the lesson
+  title), under a unit whose own title has every word (30). Words match the
+  start of a word, never the middle ("act" no longer matches "practice").
 - `/` or ⌘K focus the field.
-- "Recently opened" and the theme choice live in the viewer's localStorage.
-  Nothing leaves the browser.
-- Share on every unit uses the native share sheet, or copies the link.
+- "Recently opened", the theme choice and the studied ticks live in the viewer's
+  localStorage. Nothing leaves the browser.
+- Up next cards carry a countdown ring: the number of days left inside an arc in
+  the class color that is the days left out of two weeks (full beyond 14 days,
+  shrinking as the test gets close); on the day it is a full ring with the class
+  icon. The date sits in the line under the class name.
+- Share on every unit uses the native share sheet, or copies the link. On class
+  pages it is a "Share" chip at the end of the unit's chip row.
+- Class pages: every unit row shows its first three lesson titles (from
+  `site-topics.js`, one line on wide screens, two on phones) and ends its chip
+  row with a "Studied" toggle (`aria-pressed`, kept in localStorage `studied`).
+  Ticked units tint their number green, and the homepage class card shows
+  "2 of 6 studied".
 - Feedback and guide requests post to a Google Form with `fetch(..., {mode:"no-cors"})`. The
   form sends no CORS headers, so the browser only learns the entry left, never that it was saved.
   The success text says exactly that ("thanks, sent / this page can't confirm the form saved it";
@@ -176,7 +212,14 @@ ahead of earlier-dated entries; it still drops off after its date.
   every unit with its extras). Card counts name practice PDFs ("5 study
   guides · 13 practice PDFs"), never a vague "extras". Unit chips carry the
   same labels as the guide ("Guide", "Practice test A (PDF)"); versions of one
-  test share a group label (`g`) and render as short numbered chips. No
+  test share a group label (`g`) and render as short numbered chips, and a run
+  of lettered practice files ("Practice test A (PDF)", "Practice test B (PDF)")
+  renders the same way, as "Practice tests (PDF)" with A and B chips. Practice
+  chips (tests, quizzes, exams, prompt sets; not keys, audio or study sheets)
+  are bold, because readers skipped them (October 13, 2026).
+- Class order: the catalog, the no-results chips and the `<noscript>` list
+  follow the order of `CLASSES`, which is fixed by hand. Keep it; never re-sort
+  by name or guide count. No
   welcome eyebrow, blurb or "how to use a guide" box. Class names are course names only: no teacher names
   anywhere on the site, including the search aliases in `site.js`.
 
@@ -187,10 +230,12 @@ hold, because they are what the site's readers rely on (reader feedback,
 September 2026, and the approved revision 3 layout):
 
 - Easy to follow first: a calm reading flow, not a dashboard. The page opens
-  on a compact title and one meta line, the Sections row, then Topics, Search,
+  on a compact title and one meta line, the **Practice tests** strip when the
+  guide has printable practice, the Sections row, then Topics, Search,
   Downloads, Show answers and Print, then the "Key ideas" box, the topic tiles
-  and the open lesson. Downloads never take the first study view. No start
-  gate, no huge blank areas.
+  and the open lesson. The full Downloads list never takes the first study
+  view; the practice tests do, in one bold strip, because readers did not open
+  Downloads to find them (October 13, 2026). No start gate, no huge blank areas.
 - Labels say where they lead. Practice PDFs are named exactly as the file
   calls itself, ending "(PDF)" ("Practice test A (PDF)", "Practice quiz B
   (PDF)"); online multiple choice is "Practice questions"; math and physics
@@ -232,6 +277,16 @@ Every guide is built from `template/guide-template.html`: one `GUIDE` object
 renders the whole page; the CSS and the machinery below the object are never
 edited per guide. If a guide needs something the template lacks, change the
 template and rebuild every guide.
+
+Practice tests strip (October 13, 2026): built from `pdfs`, no field to set.
+Every printable test, quiz, exam or prompt set (labels containing test, quiz,
+exam or prompts; never answer keys, audio, scripts or study sheets) is named in
+bold on one card above the Sections row: a lettered series ("Practice test A
+(PDF)", "Practice test B (PDF)") is one row, "Practice tests · PDF" with A and B
+buttons; versions of one test (same `g`) are one row of numbered buttons
+("Practice test, 6 versions"); a lone file is one row with an Open button. The
+full list still sits in Downloads. Hidden in print. On phones the Key ideas box
+still starts inside the 390×844 opening (checked on every guide with practice).
 
 Layout: the page is up to 1280px wide. The header is a compact title, one
 meta line (the class name, a link to its welcome page · the test date ·
@@ -282,9 +337,15 @@ Practice, problems, formulas and cram lay out in two columns where there is
 room; the practice score is a floating pill with retry-missed (first-try
 scoring unchanged).
 
-Template changes are engine-only. After any change to the template, rebuild
-every guide by splicing the new engine around each guide's own `GUIDE` block,
-then check: every guide's engine is byte-identical to the template, every
+Template changes are engine-only. The engine is everything outside two
+per-guide blocks: the `GUIDE` object (from `const GUIDE = ` up to the
+`/* ═══ machinery. nothing below needs editing. ═══ */` line; one guide stores
+it as a single JSON line) and the page meta block in the head (from
+`<!-- page meta` to `<!-- /page meta -->`, written by
+`tools/sync-guides.mjs`). The Spanish guide's two notranslate head lines are
+the one other difference. After any change to the template, rebuild every
+guide by splicing the new engine around each guide's own `GUIDE` block, run
+`node tools/sync-guides.mjs`, then check: every guide's engine is byte-identical to the template, every
 `GUIDE` block is byte-identical and parses to the same object as before (a
 guide added since the work started is checked against the commit that added
 it), the repository validator reports ERROR 0, and the interaction suites
@@ -363,6 +424,33 @@ visuals and examples added). `precalc-quizzes.html` is a print sheet,
 (`bus-unit-1-cram`, `morality-ch1-2-cram`) are print-style sheets; those four
 stay on their own layouts.
 
+## Offline copies (October 13, 2026)
+
+- `sw.js` is a network-first service worker, registered by `site.js` and by the
+  guide template (only on secure origins). Online, every request goes to the
+  network as if it were not there, and a copy of each page or file that loads
+  (status 200, same origin) is kept, one copy per path. Only when the network
+  request fails does it answer from that copy; a page never opened on the
+  device shows `/offline`, which lists the guides this device has saved.
+- It never touches: non-GET requests, other origins (the feedback form),
+  `/_vercel/…` (analytics), audio files and range requests.
+- Change the cache name `V` in `sw.js` to drop every kept copy. Its own
+  `Cache-Control` is the HTML rule (`max-age=0`), so browsers pick up a new
+  `sw.js` on the next visit.
+- Kill switch, if it ever misbehaves: replace `sw.js` with
+
+  ```js
+  self.addEventListener("install",()=>self.skipWaiting());
+  self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.map(n=>caches.delete(n))))
+    .then(()=>self.registration.unregister()).then(()=>self.clients.matchAll()).then(cs=>cs.forEach(c=>c.navigate(c.url)))));
+  ```
+
+  and push. Leave the registration lines in place so every visitor picks it up.
+- Tested by stopping the server, not by browser offline emulation (which does
+  not cut localhost): an opened guide, class page and the homepage render, an
+  unopened guide shows `/offline` listing only saved guides, and a changed file
+  on the server shows up at once while online.
+
 ## Content Security Policy
 
 `vercel.json` sets a strict CSP: `default-src 'self'`, inline styles and
@@ -404,6 +492,8 @@ it. Verify, then say in one clause what was checked:
 - Confirm the guide appears in both the `CLASSES` array (`site-data.js`) and
   the `<noscript>` list in `index.html`, since the site looks correct when only
   one of them is updated, and that it shows on its class welcome page.
+- `node tools/sync-guides.mjs --check` passes, and the live guide's
+  `og:title` is its own title, not the template's "Study guide".
 
 If a check is not possible, say so plainly instead of implying it passed.
 
