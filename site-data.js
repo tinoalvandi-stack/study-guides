@@ -27,7 +27,8 @@ const FEATURES=[
   {classId:"bus",   title:"LPs 1-5 to 1-10 study guide", url:"/bus-unit-1-5-1-10", test:"2026-10-01", end:"2026-10-02", note:"High Exam #2: information management, operations and gross profit, business models, competition, trends, ownership types. Practice tests A and B in the exam’s own layout."},
   {classId:"pre",   title:"Polar unit test study guide", url:"/precalc-polar", test:"2026-10-01", note:"The whole unit: complex numbers, trig form, the theorems, polar equations and graphs. 25 problems, 2 with a calculator."},
   {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."},
-  {classId:"pre",   title:"Parametric equations quiz study guide", url:"/precalc-parametrics", test:"2026-10-15", note:"4 questions, 30 minutes total: 3 without a calculator, 1 with. Four practice question types: eliminate t, trig curves, two parametrizations, projectiles."}
+  {classId:"pre",   title:"Parametric equations quiz study guide", url:"/precalc-parametrics", test:"2026-10-15", note:"4 questions, 30 minutes total: 3 without a calculator, 1 with. Four practice question types: eliminate t, trig curves, two parametrizations, projectiles."},
+  {classId:"sem",   title:"End-of-course exam Part A guide", url:"/seminar-eoc-part-a", test:"2026-10-19", note:"Main argument, line of reasoning and evidence evaluation: templates, a phrase bank and two timed practice sets."}
 ];
 
 /* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
