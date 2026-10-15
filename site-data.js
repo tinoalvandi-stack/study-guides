@@ -10,7 +10,7 @@ const FEATURES=[
   {classId:"apush", title:"Unit 1/A study guide", url:"/apush-unit-1a", test:"2026-08-31", end:"2026-09-01"},
   {classId:"pre",   title:"Vectors + dot product study guide", url:"/precalc-vectors", test:"2026-08-31"},
   {classId:"mor",   title:"Ch 1–2 study guide", url:"/morality-ch1-2", test:"2026-09-02", end:"2026-09-03"},
-  {classId:"mor",   title:"Ch 3 study guide", url:"/morality-ch3", test:"2026-10-01", note:"Law as a Guide to Freedom, vocab heavy, with a review game"},
+  {classId:"mor",   title:"Ch 3 study guide", url:"/morality-ch3", test:"2026-10-01", note:"Law as a Guide to Freedom, vocab heavy"},
   {classId:"bus",   title:"Unit 1 study guide", url:"/bus-unit-1", test:"2026-09-02", end:"2026-09-03"},
   {classId:"phys",  title:"Intro kinematics study guide", url:"/physics-intro-kinematics", test:"2026-09-02", end:"2026-09-03"},
   {classId:"psych", title:"Unit 0 study guide", url:"/psych-unit-0", test:"2026-09-02", end:"2026-09-03"},
@@ -48,7 +48,7 @@ const CLASSES=[
         {kind:"pdf", t:"Practice test B (PDF)", url:"/bus-unit-1-5-1-10-practice-b.pdf"}]},
      {t:"Unit 1", url:"/bus-unit-1", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/bus-unit-1-cram"}]}]},
   {id:"mor", page:"/morality", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality and Social Justice", abbr:"Morality", short:"MORALITY", units:[
-     {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"Practice quiz A (PDF)", url:"/morality-ch3-practice-a.pdf"},{kind:"quiz", t:"Jeopardy game", url:"/morality-ch3-jeopardy"}]},
+     {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"Practice quiz A (PDF)", url:"/morality-ch3-practice-a.pdf"}]},
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
      {t:"Parametric equations", url:"/precalc-parametrics", added:"2026-10-13", extras:[

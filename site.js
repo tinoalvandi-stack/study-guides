@@ -511,7 +511,7 @@ if(COURSE){
           cram=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="cram").length,0),
           quiz=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="quiz").length,0),
           audio=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="audio").length,0);
-    const facts=[n?n+(n===1?" study guide":" study guides"):"",cram?cram+(cram===1?" cram sheet":" cram sheets"):"",pdfs?pdfs+" practice "+(pdfs===1?"PDF":"PDFs"):"",quiz?quiz+(quiz===1?" quiz or game":" quizzes and games"):"",audio?audio+(audio===1?" audio page":" audio pages"):""].filter(Boolean);
+    const facts=[n?n+(n===1?" study guide":" study guides"):"",cram?cram+(cram===1?" cram sheet":" cram sheets"):"",pdfs?pdfs+" practice "+(pdfs===1?"PDF":"PDFs"):"",quiz?quiz+(quiz===1?" quiz":" quizzes"):"",audio?audio+(audio===1?" audio page":" audio pages"):""].filter(Boolean);
     const hero=el("section","chero");
     hero.dataset.c=c.id;
     hero.innerHTML=`<div class="ccopy"><h1></h1>`+

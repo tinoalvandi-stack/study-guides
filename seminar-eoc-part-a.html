@@ -26,7 +26,7 @@
 <link rel="preload" href="/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template v4, editorial revision (charcoal, warm white, oxblood; topic tiles, study modes, one-minute break; oct 7 2026) ═══
+/* ═══ valentino guides · guide template v4, editorial revision (charcoal, warm white, oxblood; topic tiles, study modes; oct 7 2026; break game removed oct 15 2026) ═══
    Same tokens and type as the homepage (site.css). Edit the GUIDE object below the machinery; leave the CSS alone.
    Fonts: Source Serif 4 (headings) and Source Sans 3 (body and interface), self-hosted, SIL Open Font License 1.1 (fonts/OFL-*.txt). */
 @font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url(/fonts/source-serif-4-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -133,9 +133,9 @@ a.cname{border-radius:6px}
   .sec{padding-top:18px;margin-top:16px}
 }
 
-/* ═══ layout: the study column, and a side column for downloads and the optional break.
-   Wide screens (1080px+, desktop and iPad landscape) put them side by side; phones and iPad portrait stack the break below the study surface
-   and open downloads from the Downloads button. ═══ */
+/* ═══ layout: the study column, and a side column for downloads.
+   Wide screens (1080px+, desktop and iPad landscape) put them side by side; a guide with no downloads uses the full width.
+   Phones and iPad portrait open downloads from the Downloads button. ═══ */
 .gbody{display:block;margin-top:2px}
 .gcol{min-width:0}
 .gside{display:grid;gap:16px;align-content:start;margin-top:30px}
@@ -144,7 +144,8 @@ a.cname{border-radius:6px}
   .gside{margin-top:16px;align-self:stretch}
   #dlb{display:none !important}
 }
-@media (max-width:1079px){.gside .dl{display:none !important}}
+@media (max-width:1079px){.gside{display:none !important}}
+@media (min-width:1080px){.gbody.solo{display:block}.gbody.solo .gside{display:none}}
 .sub.scope{max-width:none;margin-top:12px;padding:10px 14px;border-left:3px solid var(--amber);background:var(--amber-bg);border-radius:0 10px 10px 0;font-size:var(--t15);font-weight:600;color:var(--ink)}
 
 /* ═══ downloads: grouped, out of the first study view (side card on wide screens, a menu from the Downloads button elsewhere) ═══ */
@@ -178,36 +179,7 @@ a.cname{border-radius:6px}
 @media (hover:hover){.ptc a:hover{border-color:var(--accent);color:var(--accent)}a.ptr:hover .pgo{background:var(--accent);color:var(--on-accent)}}
 @media (max-width:519px){.ptest{padding:2px 14px}.ptc{margin-left:0;width:100%}.ptc a{flex:1 0 44px}.ptc a.wide{flex-basis:100%}.ptl{font-size:var(--t16)}}
 
-/* ═══ the one-minute break: optional, finite, starts only when asked ═══ */
-.brk{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line2);overflow:hidden}
-.brk summary{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:52px;padding:12px 16px;cursor:pointer;list-style:none}
-.brk summary::-webkit-details-marker{display:none}
-.brk summary:focus-visible{outline-offset:-3px}
-.brk .bt{font-family:var(--display);font-size:var(--t17);font-weight:620;letter-spacing:-.01em}
-.brk .btag{font-size:var(--t12);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase;padding:2px 6px;border-radius:6px;background:var(--surface2)}
-.brk .bc{padding:0 16px 16px}
-.brk .bi{margin:0 0 12px;font-size:var(--t15);color:var(--ink2)}
-.btop{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:var(--t13);color:var(--ink2)}
-.timer{font-size:var(--t20);font-weight:700;font-variant-numeric:tabular-nums;line-height:1;padding:6px 9px;border-radius:8px;background:var(--surface2);color:var(--ink)}
-.gscr{position:relative;border-radius:10px;overflow:hidden;background:#1E1C1A;aspect-ratio:560/360}
-.gscr canvas{display:block;width:100%;height:100%;touch-action:manipulation}
-.gov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:18px 20px;color:#F4EFE7;pointer-events:none}
-.gname{font-family:var(--display);font-size:clamp(24px,7vw,30px);font-weight:650;line-height:1.05;letter-spacing:-.01em}
-.ghint{margin-top:10px;max-width:180px;font-size:var(--t13);line-height:1.4;color:#C9C0B4}
-.ttrack{height:4px;margin:10px 0 0;border-radius:3px;background:var(--line);overflow:hidden}
-#tfill{display:block;height:100%;width:100%;background:var(--amber)}
-.gins{margin:12px 0;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
-.btn.full{width:100%}
-.gctl2{display:flex;gap:8px}
-.gctl2 .btn{flex:1;white-space:nowrap;padding:9px 12px}
-.gctl2 .btn.ghost{flex:1.4}
-/* wide screens: the break panel stays in view while the lesson scrolls */
-@media (min-width:1080px) and (min-height:720px){.gside .brk{position:sticky;top:calc(var(--barh,58px) + 16px)}}
-.bnote{margin:10px 0 0;font-size:var(--t12);line-height:1.45;color:var(--ink3)}
-.gaming .brk{border-color:var(--amber);box-shadow:0 0 0 3px color-mix(in srgb,var(--amber) 22%,transparent)}
-@keyframes backglow{0%,35%{box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 35%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
-.returned{animation:backglow 1.1s var(--ease)}
-@media (max-width:1079px){.brk{max-width:560px}}
+/* the one-minute break game was removed oct 15 2026 */
 
 /* ═══ controls: the Sections row, then Topics, Search, Show answers and Print ═══ */
 .gctl{display:grid;gap:10px;margin:16px 0 18px}
@@ -854,22 +826,8 @@ footer .upd{display:block;margin-top:6px}
       <div class="sstat" id="sstat" aria-live="polite"></div>
       <div id="root" class="rv"></div>
     </div>
-    <aside class="gside" id="side" aria-label="Downloads and an optional break">
+    <aside class="gside" id="side" aria-label="Downloads">
       <section class="dl rv" id="pdfs" aria-labelledby="dlh" hidden></section>
-      <details class="brk rv" id="brk" open>
-        <summary><span class="bt">One-minute break</span><span class="btag">optional</span></summary>
-        <div class="bc">
-          <p class="bi">A short reset. Your place in the guide stays put.</p>
-          <div class="btop"><span id="gstate">Ready when you are</span><span class="timer" id="timer" role="timer" aria-label="60 seconds">1:00</span></div>
-          <div class="gscr"><canvas id="game" width="560" height="360" role="img" aria-label="Jump over the blocks. Lasts one minute."></canvas><div class="gov" id="gov"><span class="gname">Jump for<br>a minute.</span><span class="ghint">60 seconds, then back to your spot.</span></div></div>
-          <div class="ttrack" aria-hidden="true"><span id="tfill"></span></div>
-          <p class="gins">Tap Jump, tap the screen or press Space to hop the blocks. Esc returns.</p>
-          <button type="button" class="btn full" id="gstart">Start 60-second break</button>
-          <div class="gctl2" id="gctl2" hidden><button type="button" class="btn" id="gjump">Jump</button><button type="button" class="btn ghost" id="gback">Back to studying</button></div>
-          <p class="bnote" id="bnote">Stops at one minute. You can leave early.</p>
-          <p class="vh" id="gsay" role="status" aria-live="polite"></p>
-        </div>
-      </details>
     </aside>
   </div>
   <footer id="foot">
@@ -903,7 +861,7 @@ const GUIDE = {
  "title": "Part A argument analysis",
  "meta": "3 questions · 15 points · about 30 min",
  "sub": "End-of-course exam Part A: main argument, line of reasoning and evidence, written to the 2026 College Board scoring guidelines.",
- "updated": "oct 13, 2026",
+ "updated": "oct 15, 2026",
  "pdfs": [
   {
    "t": "Cram sheet (PDF)",
@@ -922,7 +880,7 @@ const GUIDE = {
    "url": "https://apcentral.collegeboard.org/courses/ap-seminar/exam"
   }
  ],
- "pdfsNote": "Cram sheet: one page of scoring rules, the evidence lenses, the three answer templates and the 30-minute pace. The source links are the official 2026 materials; scoring language in this guide is paraphrased.",
+ "pdfsNote": "Cram sheet: one page of scoring rules, evidence checks, the three templates and the 30-minute pace. Source links are the official 2026 materials; scoring language here is paraphrased.",
  "panes": [
   "outline",
   "cram",
@@ -932,11 +890,10 @@ const GUIDE = {
   "checklist": "Final checklist"
  },
  "top": [
-  "**A2 and A3** carry 12 of the 15 Part A points. Spend most of the time explaining connections and judging evidence.",
-  "A2: name the author's **claims** and explain how each one leads to the next and to the thesis. Order is not connection.",
-  "A3: judge **specific evidence** for relevance and source credibility, using only what the passage says about each source.",
-  "A1: name every part of the thesis, including any qualification, in one or two sentences.",
-  "Write in complete sentences; bullets and outlines are not accepted. Naming ethos, pathos or logos is not evaluation."
+  "**A2 and A3** carry 12 of the 15 points; spend most of the time there.",
+  "A2: explain how the **claims** connect toward the author's purpose; order is not connection.",
+  "A3: open with an overall judgment, then judge **specific evidence** for relevance and credibility.",
+  "A1: about two sentences naming every part of the thesis."
  ],
  "topTable": {
   "h": "The three questions",
@@ -971,15 +928,14 @@ const GUIDE = {
   {
    "w": 3,
    "t": "A2: Line of reasoning (6 points)",
-   "d": "most of the score lives in the connections between claims",
+   "d": "how the claims connect, not just where they appear",
    "p": [
-    "A **claim** is a statement the author wants you to accept; **evidence** backs it up (archaeological findings, expert testimony, experiments, repeated findings, statistics). One statement can do both jobs: a finding can support a **subclaim** that itself supports the thesis. Say which role it plays.",
-    "Explain how claims, subclaims and evidence work together toward the author's purpose. Find the genuine **pivot**, condition, **qualification** or **counterargument**, if the passage has one: where the move happens, what changes, and why it matters. Don't impose a structure the passage doesn't have."
+    "Explain how **claims**, **subclaims** and **evidence** (archaeological findings, experiments, expert testimony, quotations, examples, statistics) build toward the author's purpose. One statement can be both a claim and evidence; say which role it plays.",
+    "Trace the opening claims and support, any genuine **pivot**, condition or **qualification**, and the conclusion. Save detailed evidence critique for A3."
    ],
    "steps": [
-    "Map the major claims, the subclaims and the evidence under each (C1, C2...), with the relationship word between them: because, so, but, which requires.",
-    "Find the major move: a pivot, condition or qualification. Note what changes and why it matters.",
-    "Write it (study strategy, not a scoring rule): 2 to 3 sentences on the opening or overall claims and their support, about 2 on the key transition, and 1 strong sentence connecting to the conclusion."
+    "Map the major claims, subclaims and evidence (C1, C2...) with a link word between each: because, so, but, which requires.",
+    "Write it (study strategy, not a scoring rule): 2 to 3 sentences on the opening claims and support, about 2 on the key transition, 1 tying to the conclusion."
    ],
    "rows": [
     [
@@ -1000,7 +956,7 @@ const GUIDE = {
     ],
     [
      "Adjust",
-     "Adapt the number and order of moves to the passage; use \"shifts\" only where it really pivots. Useful verbs: establishes, identifies, contextualizes, elaborates, substantiates, reinforces, highlights, pivots. Keep detailed evidence criticism for A3."
+     "No real pivot? Swap the \"Later\" sentence for how the next claim builds on the first; never invent one. Wording: phrase bank below."
     ]
    ],
    "tiles": [
@@ -1022,16 +978,6 @@ const GUIDE = {
     {
      "h": "Pivot or condition",
      "t": "turns to a new focus, or limits when the claim holds · signals: yet, instead, only if, unless",
-     "k": "how claims connect"
-    },
-    {
-     "h": "Claim to implication",
-     "t": "shows what follows if a claim is true · signals: this means, which requires",
-     "k": "how claims connect"
-    },
-    {
-     "h": "Context to stakes",
-     "t": "shows why the issue matters now · signals: today, increasingly, already",
      "k": "how claims connect"
     },
     {
@@ -1065,6 +1011,33 @@ const GUIDE = {
      ]
     ]
    },
+   "tables": [
+    {
+     "h": "Phrase bank: use only moves the article actually makes",
+     "cols": [
+      "part",
+      "phrases"
+     ],
+     "rows": [
+      [
+       "Opening",
+       "overall / primary claim, contention or argument · establishes the primary problem · identifies the problem or issue · initial claim · contextualizes the issue"
+      ],
+      [
+       "Building support",
+       "elaborates, supports or illustrates through statistics · illustrates anecdotally · through the subclaim of... · endorses the claim through expert testimony · emphasizes the issue's importance through... · highlights, exemplifies, accentuates"
+      ],
+      [
+       "Later reasoning",
+       "further in the piece / essay / excerpt... · pivots · subclaim · broadens the issue · narrows in on a subcomponent · expands · qualifies · pinpoints the origin · specifies the affected demographic · clarifies the problem's cause · justifies a solution · reveals a limitation · refutes an objection"
+      ],
+      [
+       "Conclusion",
+       "revisits the contention · reinforces the primary claim · doubles down on... · reiterates the overarching argument · hammers home the point of..."
+      ]
+     ]
+    }
+   ],
    "ex": [
     {
      "q": "A student writes: \"First the author talks about crashes. Next she describes a study. Finally she proposes data sharing.\" What's missing?",
@@ -1072,20 +1045,14 @@ const GUIDE = {
      "why": "Replace \"next\" with a real link: \"Because company data can't be checked, the author argues that...\"."
     },
     {
-     "q": "Paraphrased teaching example (hypothetical summary, not a real source): archaeological findings show ancient people ate root vegetables; the author then explains their nutritional value; the conclusion challenges a popular modern \"paleo\" idea of what ancient diets were. Write the A2 connections.",
-     "a": "Initially, the author establishes that ancient people ate root vegetables through archaeological findings, which grounds the argument in physical evidence. The author then shifts from whether these foods were eaten to why they mattered, using their nutritional value to explain their place in the diet. Finally, these points build to a conclusion that challenges the modern paleo conception, because the evidence shows such foods were part of ancient eating.",
+     "q": "Paraphrased illustrative teaching example (a reading's argument, summarized; not an independently verified historical finding): archaeological evidence shows ancient people ate root vegetables; the author then turns to the nutritional benefits of these rhizomes; the conclusion challenges modern \"paleo\" assumptions about ancient diets. Write the A2 connections.",
+     "a": "Initially, the author establishes that ancient people ate root vegetables through archaeological evidence, which grounds the argument in physical findings. The author then shifts from whether these rhizomes were eaten to their nutritional benefits, which establishes their importance in the diet rather than as a side food. Finally, that dietary importance builds to a conclusion that challenges modern paleo assumptions about what ancient people ate.",
      "why": "Each sentence says what the move does (establishes, shifts, challenges) and how it leads to the next. Listing \"findings, nutrition, conclusion\" would not show the connections."
-    },
-    {
-     "q": "An author writes, \"Critics say this rule costs too much. But the savings outweigh the cost within two years.\" How should an A2 answer describe this move?",
-     "a": "As a concession and rebuttal: the author grants the cost objection, then answers it, which protects the thesis from its most likely criticism.",
-     "why": "Skipping a counterargument the passage has, or calling it a side note, misses a step in the reasoning."
     }
    ],
    "watch": [
-    "Paragraph-by-paragraph summary with \"first, next, finally\" usually stays near a 2: order is not connection.",
-    "Leaving out the solution claim, or a counterargument the passage has, is a major omission (about a 4).",
-    "\"These ideas relate\" without saying how, or a three-part structure forced onto a passage that doesn't have one, reads as a surface connection."
+    "\"First, next, finally\" summary usually stays near a 2: order is not connection.",
+    "Leaving out the solution claim, or a counterargument the passage has, is a major omission (about a 4)."
    ],
    "terms": [
     "claim",
@@ -1093,7 +1060,6 @@ const GUIDE = {
     "evidence",
     "line of reasoning",
     "pivot",
-    "counterargument",
     "qualification"
    ]
   },
@@ -1102,40 +1068,36 @@ const GUIDE = {
    "t": "A3: Evaluating evidence (6 points)",
    "d": "specific pieces, judged on relevance and credibility, tied to the claim each supports",
    "p": [
-    "Open with an overall effectiveness judgment that reflects the real strengths and weaknesses, then discuss **specific pieces of evidence** and why each supports or limits its claim. **Relevance** asks whether it matches that exact claim; **credibility** asks what the passage tells you about the source.",
-    "A positive or a negative judgment can both work if the passage justifies it; don't force artificial balance. Judge the author's use of evidence, not whether you agree with the author."
+    "Open with a nuanced overall judgment that previews your assessment, then evaluate **specific pieces of evidence**: **relevance** to the exact claim and **credibility** from what the passage says about the source. Tie both to the claim; a respected name alone isn't enough.",
+    "Reasoned judgments, positive or negative, can both work if the passage supports them. No forced balance; judge the author's use of evidence, not whether you agree."
    ],
    "rows": [
     [
      "Relevance",
-     "Same group, place, time and scope as the claim? Evidence about a nearby point is weaker support."
+     "Same group, place, time and scope as the claim?"
     ],
     [
-     "Expertise",
-     "Is the source's field the one the claim needs? Use only what's on the page."
-    ],
-    [
-     "Purpose and bias",
-     "What could the source gain? A **stake in the outcome**, such as a corporate affiliation, raises questions about purpose; it doesn't prove bias."
+     "Credibility",
+     "Qualifications or affiliations that fit the claim; any **stake in the outcome** (a corporate purpose raises questions, it doesn't prove bias)."
     ],
     [
      "Currency",
-     "Is the date recent enough for this topic? Old evidence isn't automatically weak."
+     "Recent enough in the article's context? Old isn't automatically weak."
     ],
     [
-     "Methods and sample",
-     "Judge methods when the passage supplies them. **Sufficiency**: does the sample size match how broad the conclusion is? One anecdote can't carry a pattern."
+     "Support",
+     "Facts or unsupported assertion? Corroborated? Methods, when the passage gives them."
     ],
     [
-     "Reasoning and accuracy",
-     "Data or sound reasoning, or unsupported opinion? Is the evidence represented accurately? Name the **limitation**: correlation instead of cause, self-report, a short time window."
+     "Sample",
+     "**Sufficiency**: does the sample size match how broad the conclusion is? One anecdote can't carry a pattern."
     ]
    ],
    "steps": [
     "Open: [qualified overall judgment], strongest where [X] and thinner where [Y].",
     "[Specific evidence] supports [claim] because [relevant strength].",
-    "However, [specific limitation established by the passage] limits [what can reasonably be concluded], making it [qualified effectiveness judgment]. Use \"however\" only for a genuine limitation; strong evidence gets called strong.",
-    "Repeat with another specific piece of evidence (a practice strategy, not an official minimum)."
+    "However, [specific limitation established by the passage] limits [what can reasonably be concluded], making it [qualified effectiveness judgment]. Use \"however\" only for a real limitation.",
+    "Repeat with other pieces as the passage warrants (a strategy, not an official minimum)."
    ],
    "table": {
     "h": "Scoring, paraphrased from the 2026 College Board scoring guidelines",
@@ -1167,20 +1129,17 @@ const GUIDE = {
      "h": "In the scoring guidelines",
      "p": [
       "Relevance and credibility tied to specific evidence.",
-      "Strengths and/or weaknesses.",
-      "How well the evidence supports the argument.",
-      "\"At least two pieces\" appears in the 4-point description.",
-      "Evaluating only sources, not the evidence from them, cannot score 6."
+      "Strengths and/or weaknesses, and how well the evidence supports the argument.",
+      "\"At least two pieces\" appears only in the 4-point description.",
+      "Evaluating only sources, not their evidence, cannot score 6."
      ]
     },
     {
      "h": "Study strategy, not a rule",
      "p": [
-      "Open with an overall effectiveness judgment.",
-      "Evaluate 2 or 3 pieces in depth (optional).",
-      "Pick one strong and one weak piece only when the passage has both.",
-      "Choose the lens that matters most for each piece.",
-      "The 6-point description sets no number of pieces; depth beats count."
+      "Open with an overall judgment.",
+      "Several weaker pieces and one or two stronger ones, when warranted; no set count.",
+      "Use the check that matters most for each piece."
      ]
     }
    ],
@@ -1191,26 +1150,19 @@ const GUIDE = {
      "why": "Name the statistic, the claim it serves and what the passage says about its source."
     },
     {
-     "q": "A passage cites \"a 2023 survey of 2,000 drivers by a car-insurance trade group\" to support the claim that drivers want stricter phone laws (hypothetical). Give one credibility point and one limitation.",
-     "a": "Credibility: the passage names the group and the date, but an insurance trade group may have a stake in stricter laws. Limitation: a survey shows what drivers say they want, not whether stricter laws would work.",
-     "why": "Both points come from details on the page; nothing about the group is invented."
-    },
-    {
-     "q": "Paraphrased teaching example (hypothetical, not a verified study): an article on listening cites a technology company's report that average attention spans have shrunk. The passage gives no researcher, methods or publication. Evaluate this evidence.",
-     "a": "The figure supports the claim that listening is getting harder because it's quantitative and attention connects directly to listening. However, the passage doesn't identify the researcher, methods or publication, and a company's report may serve its own purpose, which limits how confidently readers can accept the number, making it suggestive rather than conclusive.",
-     "why": "The attention-listening link is a strength; calling attention unrelated to listening would be wrong. The missing details limit confidence without proving the report is wrong."
+     "q": "Paraphrased teaching example (illustrative, not a factual claim about any real study): an article on listening cites a well-known technology company's report, with dates, that average attention spans have shrunk. The passage gives no researchers, methods or publication details. Evaluate this evidence.",
+     "a": "The report gives moderate support to the claim that listening is getting harder: a recognizable organization and dates that fit the article's context help, and attention span can legitimately relate to listening. However, the passage names no researchers or methods, the company's purpose for the report is unclear, and the article doesn't show exactly how attention span measures listening, which limits how confidently readers can accept it, making it suggestive rather than conclusive.",
+     "why": "A well-known name alone isn't enough; tie credibility and relevance to the claim. Calling attention unrelated to listening would be wrong. Missing details limit confidence without proving the report is wrong."
     }
    ],
    "watch": [
-    "Judging only the source (\"it's from a respected journal\") without the specific evidence cannot score 6.",
-    "Never invent a degree, journal or reputation. Missing credentials or methods in the passage don't prove the source lacks them; say what the passage doesn't tell you.",
-    "Don't manufacture a flaw in strong evidence; a real limit should say whether it undercuts the claim."
+    "Missing credentials, methods, dates or data limit what you can assess; they don't prove the evidence is false or that the details don't exist. Never invent them.",
+    "Don't manufacture a flaw in strong evidence."
    ],
    "terms": [
     "relevance",
     "credibility",
     "sufficiency",
-    "limitation",
     "stake in the outcome",
     "currency"
    ]
@@ -1218,16 +1170,15 @@ const GUIDE = {
   {
    "w": 2,
    "t": "A1: Main argument (3 points)",
-   "d": "every part of the thesis, in one or two sentences",
+   "d": "every part of the thesis, in about two sentences",
    "p": [
-    "Full credit names **every main part** of the argument; the topic alone earns 1. The 2026 scoring guidelines split that year's thesis into three required parts and expected a specific group, not \"people\". Count the parts before you write.",
-    "Keep it concise: about two sentences is a good target (a strategy, not a rule). There's no required order; mapping the claims for A2 first can make the thesis clearer."
+    "Name **every main part** of the argument in about two sentences (a strategy, not a rule); the topic alone earns 1. No required order: mapping A2 first can clarify the thesis."
    ],
    "steps": [
-    "Position: what the author wants you to believe or do. Check the conclusion and words like should, must, need.",
-    "Reason: the problem or cause that drives the position.",
-    "Action and actor: who should do what, under what condition.",
-    "Qualification: limits the author builds in (\"not yet\", \"only if\", \"not a ban\"). Dropping one overstates the thesis."
+    "Position: what the author wants believed or done (check the conclusion; should, must, need).",
+    "Reason: the problem or cause behind it.",
+    "Action and actor: who should do what.",
+    "Qualification: limits like \"not yet\" or \"only if\"; dropping one overstates the thesis."
    ],
    "rows": [
     [
@@ -1240,7 +1191,7 @@ const GUIDE = {
     ],
     [
      "Adjust",
-     "Identify the actual position or action, not just the topic. Match the clauses to the parts the passage has. Name actors as specifically as the author does; if the author says governments should act, \"governments\" is accurate. No proposal in the passage? Cut the action clause."
+     "Name the actual position or action, not just the topic, and actors as specifically as the author does. No proposal in the passage? Drop the action clause."
     ]
    ],
    "table": {
@@ -1276,49 +1227,11 @@ const GUIDE = {
     }
    ],
    "watch": [
-    "Topic only (\"The passage is about robotaxis\") earns 1.",
-    "Half the thesis, or a version that's too broad (\"Technology needs rules\"), earns about 2.",
-    "No opinion or evaluation in A1; save judgment for A3."
+    "Topic only earns 1; half the thesis or a too-broad version earns about 2.",
+    "No opinion or evaluation in A1."
    ],
    "terms": [
-    "thesis",
-    "main argument"
-   ]
-  },
-  {
-   "w": 2,
-   "t": "Why naming appeals or summarizing doesn't score",
-   "d": "Part A is argument analysis, not AP Lang rhetorical analysis",
-   "p": [
-    "\"The author uses logos\" names a category; it doesn't say which claim, which evidence, or how well it works. Retelling each paragraph can pick up a claim or two in A2 but stays near a 2 without connections; in A3, summary with no judgment is a 2."
-   ],
-   "cmp": [
-    {
-     "h": "AP Lang rhetorical analysis",
-     "p": [
-      "Asks how a writer's choices work on an audience for a purpose."
-     ]
-    },
-    {
-     "h": "AP Seminar Part A",
-     "p": [
-      "Asks whether the claims connect and whether the evidence holds up.",
-      "Credibility means checking the source (who, how, what stake), not the author's tone."
-     ]
-    }
-   ],
-   "ex": [
-    {
-     "q": "Rewrite as Seminar evaluation: \"The author uses logos with a statistic about crashes and ethos by citing a researcher, which makes the argument convincing.\"",
-     "a": "To support the claim that robotaxis are safer, the author cites a crash-rate comparison from the company's own report. It's relevant because it measures crashes per mile, the exact claim, but the company has a financial stake and the raw data isn't public, so it shows promise rather than proof.",
-     "why": "The rewrite names the claim, the specific evidence, its relevance and a credibility limit from the passage."
-    }
-   ],
-   "watch": [
-    "Appeal labels are not a substitute for evaluating specific evidence."
-   ],
-   "terms": [
-    "argument analysis"
+    "thesis"
    ]
   },
   {
@@ -1326,8 +1239,8 @@ const GUIDE = {
    "t": "The 30-minute plan",
    "d": "College Board suggests about 30 minutes for Part A and 90 for Part B",
    "p": [
-    "On the AP exam, Parts A and B share one two-hour block, and you can move between them. Responses are typed, in complete sentences.",
-    "Practice guidance, not an official allowance: aim for about 30 minutes, 35 at most as skills develop; a first practice may take 40 to 45. On the exam, every minute past 30 comes out of Part B's 90."
+    "Parts A and B share one two-hour exam. Answers are typed, concise and in complete sentences; you don't need every detail.",
+    "Practice target: 30 to 35 minutes (a training goal, not an official separate limit); a first try may take 40 to 45. On the exam, extra minutes come out of Part B."
    ],
    "table": {
     "h": "Minute by minute",
@@ -1338,35 +1251,34 @@ const GUIDE = {
     "rows": [
      [
       "0 to 6",
-      "Read once. Mark T at the thesis, C1, C2 at each claim, E at each piece of evidence with its source; circle every but, however, although, should, only if."
+      "Read once. Mark T (thesis), C1, C2 (claims), E (evidence and source); circle but, however, although, should, only if."
      ],
      [
       "6 to 8",
-      "Plan: write the link word between claims and mark the major move; star the strongest and the weakest evidence."
+      "Plan: link words between claims, the major move, the strongest and weakest evidence."
      ],
      [
       "8 to 10",
-      "Write A1: about two sentences with every part of the thesis (drafting it after mapping A2 is fine)."
+      "A1: about two sentences, every part of the thesis."
      ],
      [
       "10 to 19",
-      "Write A2: the opening claims and support, the key shift, then the connection to the conclusion; a counterargument as a step if the passage has one."
+      "A2: opening claims and support, the key shift, the conclusion."
      ],
      [
       "19 to 28",
-      "Write A3: open with an overall judgment, then 2 or 3 pieces (optional strategy), each with the claim it serves, its strength and any real limit."
+      "A3: overall judgment first, then the pieces the passage warrants."
      ],
      [
       "28 to 30",
-      "Reread: complete sentences, A1 has every part, no invented credentials, nothing bulleted."
+      "Reread: complete sentences, nothing bulleted, no invented credentials."
      ]
     ]
    },
    "pts": [
-    "Short on time: prioritize the major claims, the most important relationships and a few selected pieces of evidence.",
-    "First practice: Practice set 1, allowing up to 45 minutes, then score each answer against the scoring tables.",
-    "Next session: Self-test 2 with no notes, aiming for about 20 minutes, then reread the lesson for your lowest score.",
-    "Right before a timed write: the cram sheet or the final checklist only. A class time that differs? Keep the proportions and confirm the notes policy first."
+    "Short on time: major claims, key relationships, selected evidence.",
+    "Practice set 1 (up to 45 minutes), then Self-test 2 (about 20), each scored against the scoring tables.",
+    "Before a timed write: the cram sheet or checklist only."
    ],
    "ex": [
     {
@@ -1375,9 +1287,7 @@ const GUIDE = {
      "why": "Same proportions as the 30-minute plan: a small slice for A1, the rest split evenly between A2 and A3."
     }
    ],
-   "watch": [
-    "Five minutes on A1 is too many; it's worth 3 of the 15 points."
-   ],
+   "watch": [],
    "terms": []
   },
   {
@@ -1496,23 +1406,19 @@ const GUIDE = {
    "items": [
     {
      "n": "Claim vs evidence",
-     "t": "Claim: arguable statement (\"how do you know?\"). Evidence: what answers that question."
-    },
-    {
-     "n": "Major claims",
-     "t": "The steps the thesis needs; remove one and the argument has a hole."
+     "t": "Claim: arguable (\"how do you know?\"). Evidence answers that; one statement can be both."
     },
     {
      "n": "Connections",
-     "t": "Name the real link: because, so, answers, narrows, requires. Order is not connection."
+     "t": "Name the real link: because, so, answers, narrows. Order is not connection."
     },
     {
-     "n": "Pivots, qualifications",
-     "t": "If present, say where the move happens, what changes and why it matters."
+     "n": "Pivots",
+     "t": "If present, say where the move happens, what changes and why; never invent one."
     },
     {
      "n": "Close the chain",
-     "t": "Last sentence ties the claims back to the thesis."
+     "t": "Last sentence ties the claims to the thesis."
     }
    ]
   },
@@ -1521,28 +1427,24 @@ const GUIDE = {
    "d": "6 points",
    "items": [
     {
+     "n": "Open with a judgment",
+     "t": "Overall effectiveness first, matching the real strengths and limits."
+    },
+    {
      "n": "Specific pieces",
      "t": "Name the evidence and the exact claim it supports."
     },
     {
-     "n": "Relevance",
-     "t": "Same group, place, time and scope as the claim?"
+     "n": "Relevance and credibility",
+     "t": "Both tied to the claim, from the passage only; a big name alone isn't enough."
     },
     {
-     "n": "Credibility",
-     "t": "Expertise, purpose, date in context, methods if given; missing details limit confidence, they don't prove a flaw."
-    },
-    {
-     "n": "Sufficiency and limits",
-     "t": "One anecdote vs a pattern; correlation, self-report, a company grading itself."
-    },
-    {
-     "n": "Open with a judgment",
-     "t": "Overall effectiveness first, matching the real strengths and limits; no forced balance."
+     "n": "Limits",
+     "t": "Sample vs conclusion, corroboration, currency in context; missing details limit confidence, they don't prove a flaw."
     },
     {
      "n": "Hard limit",
-     "t": "Evaluating only sources, not their specific evidence, cannot score 6."
+     "t": "Evaluating only sources or their reputation cannot score 6."
     }
    ]
   },
@@ -1552,15 +1454,11 @@ const GUIDE = {
    "items": [
     {
      "n": "Every part",
-     "t": "Position, reason, action and actor, in one or two sentences."
+     "t": "Position, reason, action and actor, in about two sentences."
     },
     {
      "n": "Qualification",
      "t": "Keep \"not a ban\", \"only if\" and similar limits."
-    },
-    {
-     "n": "Actors",
-     "t": "As specific as the author names them; no vague \"people\"."
     },
     {
      "n": "Topic only",
@@ -1574,19 +1472,15 @@ const GUIDE = {
    "items": [
     {
      "n": "Pace",
-     "t": "0 to 8 read and plan · 8 to 10 A1 · 10 to 19 A2 · 19 to 28 A3 · 28 to 30 reread. Practice: 35 max; a first try may take 40 to 45."
+     "t": "0 to 8 read and plan · 8 to 10 A1 · 10 to 19 A2 · 19 to 28 A3 · 28 to 30 reread. Practice target 30 to 35."
     },
     {
      "n": "Format",
-     "t": "Complete sentences; bullets and outlines are not accepted."
+     "t": "Typed, concise, complete sentences; no bullets."
     },
     {
-     "n": "Not AP Lang",
-     "t": "Ethos, pathos and logos labels are not evaluation; summary is not analysis."
-    },
-    {
-     "n": "Optional strategy",
-     "t": "2 or 3 pieces of evidence in depth; depth beats count."
+     "n": "Strategy",
+     "t": "Several pieces of evidence as the passage warrants; no set count, no forced balance."
     }
    ]
   }
@@ -1596,16 +1490,13 @@ const GUIDE = {
    "t": "A1: every part of the thesis, including any qualification"
   },
   {
-   "t": "A1: actors named as specifically as the author names them (no vague \"people\")"
+   "t": "A1: actors as specific as the author's; no opinion"
   },
   {
-   "t": "A1: no opinion, no title restated"
+   "t": "A2: major claims named, not evidence"
   },
   {
-   "t": "A2: most major claims named, not evidence"
-  },
-  {
-   "t": "A2: a real relationship word between claims (because, so, answers, narrows), not just \"then\""
+   "t": "A2: real relationship words between claims, not just \"then\""
   },
   {
    "t": "A2: pivot, condition, counterargument or qualification, if present, explained as a step"
@@ -1614,27 +1505,21 @@ const GUIDE = {
    "t": "A2: last sentence ties the chain to the thesis"
   },
   {
-   "t": "A3: specific pieces evaluated in depth, each tied to the claim it supports",
-   "d": "2 or 3 is an optional strategy, not a rubric rule"
+   "t": "A3: opens with an overall judgment that matches the real strengths and limits",
+   "d": "a study strategy"
+  },
+  {
+   "t": "A3: specific pieces, each tied to the claim it supports",
+   "d": "the number of pieces is a study strategy, not a rubric rule"
   },
   {
    "t": "A3: relevance and credibility for each, from the passage only"
   },
   {
-   "t": "A3: a real limit or sufficiency problem, or a clear reason the evidence is strong"
+   "t": "A3: a real limit, or a clear reason the evidence is strong"
   },
   {
-   "t": "A3: evaluating the specific evidence, not just the source's name"
-  },
-  {
-   "t": "A3: an overall effectiveness judgment that matches the real strengths and limits",
-   "d": "opening with it is a study strategy"
-  },
-  {
-   "t": "All: complete sentences, no bullets"
-  },
-  {
-   "t": "All: no ethos, pathos or logos labels standing in for evaluation"
+   "t": "All: typed, complete sentences, no bullets"
   }
  ],
  "abbr": {
@@ -1729,7 +1614,7 @@ if(DLS.length){
   const d=$("#pdfs"); d.innerHTML=`<div class="dlh"><h3 id="dlh">Downloads</h3><span>${DLS.length}</span></div>${body}${note}`; d.hidden=false;
   $("#m-dl").innerHTML=`<div class="ml">Downloads</div>${body}${note.replace('class="pn"','class="dpn"')}`;
   $("#dlb").hidden=false; $("#dln").textContent=DLS.length;
-}
+}else $(".gbody").classList.add("solo");
 /* practice tests: every printable test, quiz, exam or prompt set from pdfs, named in bold above the Sections row, so nobody has to dig
    through Downloads for them. A letter series ("Practice test A (PDF)", "… B (PDF)") or one test's versions (same g) make one row of short
    buttons; a lone file is one row with an Open button. Answer keys, audio, scripts and study sheets stay in Downloads only. */
@@ -1842,13 +1727,12 @@ function section(s,i,next){
   const n=String(i+1).padStart(2,"0"), w=WN[s.w];
   /* study modes: Learn (the lesson) and Try it (its "on the test" examples), as in the approved demo */
   const k=i+1, nx_=has(s.ex)?s.ex.length:0;
-  const brkB=`<button type="button" class="btn ghost" data-brk>One-minute break</button>`;
   let body;
   if(nx_){
     body=`<div class="lmodes" role="tablist" aria-label="Study this topic"><button type="button" class="lm" role="tab" id="lm-l-${k}" aria-controls="lp-l-${k}" aria-selected="true" data-m="learn">Learn</button><button type="button" class="lm" role="tab" id="lm-t-${k}" aria-controls="lp-t-${k}" aria-selected="false" tabindex="-1" data-m="try">Try it <span class="n">${nx_}</span></button></div>`+
-      `<div class="lp on" id="lp-l-${k}" role="tabpanel" aria-labelledby="lm-l-${k}" data-m="learn"><div class="sb">${h}</div><div class="lact"><button type="button" class="btn" data-m="try">Try ${nx_} question${nx_===1?"":"s"}</button>${brkB}</div></div>`+
-      `<div class="lp" id="lp-t-${k}" role="tabpanel" aria-labelledby="lm-t-${k}" data-m="try"><div class="sb">${B.ex(s.ex)}</div><div class="lact"><button type="button" class="btn ghost" data-m="learn">Back to the lesson</button>${brkB}</div></div>`;
-  }else body=`<div class="sb">${h}</div><div class="lact">${brkB}</div>`;
+      `<div class="lp on" id="lp-l-${k}" role="tabpanel" aria-labelledby="lm-l-${k}" data-m="learn"><div class="sb">${h}</div><div class="lact"><button type="button" class="btn" data-m="try">Try ${nx_} question${nx_===1?"":"s"}</button></div></div>`+
+      `<div class="lp" id="lp-t-${k}" role="tabpanel" aria-labelledby="lm-t-${k}" data-m="try"><div class="sb">${B.ex(s.ex)}</div><div class="lact"><button type="button" class="btn ghost" data-m="learn">Back to the lesson</button></div></div>`;
+  }else body=`<div class="sb">${h}</div>`;
   const eyb=`<p class="eyb"><span class="num">${n}</span>${w?`<span aria-hidden="true">/</span><span class="w ${w[0]}">${w[1]}</span>`:""}</p>`;
   const tp=!next&&TRY?TRY:null;
   const nx=next?`<div class="nxt"><a href="#s-${i+2}" data-j="s-${i+2}">Next: ${esc(next.t)}${I_NEXT}</a></div>`:tp?`<div class="nxt"><a href="#${tp}" data-p="${tp}">Next: ${esc(lab(tp))}${cnt(tp)?` (${cnt(tp)})`:""}${I_NEXT}</a></div>`:"";
@@ -1909,13 +1793,12 @@ function buildOutline(sec){
     });
   }
   list.forEach((s,i)=>{col.appendChild(section(s,i,list[i+1]));JUMP.push({id:"s-"+(i+1),n:String(i+1).padStart(2,"0"),t:s.t,w:s.w||1})});
-  /* study modes inside each lesson, plus the break buttons */
+  /* study modes inside each lesson */
   col.querySelectorAll(".les").forEach(L=>{
     const ts=[...L.querySelectorAll(".lm")];
     const set=(m,focus)=>{ts.forEach(b=>{const on=b.dataset.m===m;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1});L.querySelectorAll(".lp").forEach(p=>p.classList.toggle("on",p.dataset.m===m));if(focus)L.querySelector(`.lm[data-m="${m}"]`)?.focus({preventScroll:true})};
     L.addEventListener("click",e=>{
       const b=e.target.closest("button[data-m]"); if(b&&L.contains(b)){const fromTab=b.classList.contains("lm");set(b.dataset.m,!fromTab);if(!fromTab){const r=L.getBoundingClientRect();if(r.top<bar.offsetHeight)L.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}return}
-      if(e.target.closest("[data-brk]"))startBreak(e.target.closest("[data-brk]"));
     });
     L.querySelector(".lmodes")?.addEventListener("keydown",e=>{const i=ts.indexOf(document.activeElement);if(i<0)return;const k={ArrowRight:1,ArrowLeft:-1}[e.key];let j=null;if(k)j=(i+k+ts.length)%ts.length;else if(e.key==="Home")j=0;else if(e.key==="End")j=ts.length-1;if(j===null)return;e.preventDefault();set(ts[j].dataset.m,true)});
   });
@@ -2068,7 +1951,7 @@ function buildCards(sec){
   nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
   nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
   nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
-  addEventListener("keydown",e=>{if(e.defaultPrevented||!sec.classList.contains("on")||deck.hidden||e.target.tagName==="INPUT"||e.target.closest?.("[role=tab]")||OPEN||document.body.classList.contains("gaming"))return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  addEventListener("keydown",e=>{if(e.defaultPrevented||!sec.classList.contains("on")||deck.hidden||e.target.tagName==="INPUT"||e.target.closest?.("[role=tab]")||OPEN)return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
   let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
   sec.appendChild(shead("All cards",`${cs.length}`));
@@ -2350,102 +2233,6 @@ addEventListener("popstate",()=>route(true));
   }
   $("#printb").addEventListener("click",()=>{closeMenu(false);print()});
 })();
-
-/* ═══ one-minute break: optional, starts only on a click or tap, hard stop at 60 seconds, early exit any time.
-   The guide behind it is inert while it runs and nothing about it changes: the open section, lesson, study mode, answers,
-   flashcard position, search and scroll are exactly where they were. No score, no saving, nothing sent. ═══ */
-const GAME=(function(){
-  const LIMIT=60000, cv=$("#game"), cx=cv.getContext&&cv.getContext("2d"), brk=$("#brk");
-  const W=560,H=360,GROUND=292,PX=84,PS=30;
-  let on=false, deadline=0, raf=0, tick=0, stopT=0, last=0, spawn=1.2, py=0, vy=0, obs=[], flash=0, mark=null, lastFocus=null;
-  const COL={bg:"#1E1C1A",grid:"#2A2724",line:"#5A524A",me:"#F4EFE7",foot:"#A79E92",ob:"#C9707A",txt:"#8E857A",hit:"#F6D7B0"};
-  const rr=(x,y,w,h,r)=>{cx.beginPath();if(cx.roundRect)cx.roundRect(x,y,w,h,r);else cx.rect(x,y,w,h)};
-  function draw(){
-    if(!cx)return;
-    cx.fillStyle=COL.bg;cx.fillRect(0,0,W,H);cx.strokeStyle=COL.grid;cx.lineWidth=1;
-    for(let x=0;x<W;x+=40){cx.beginPath();cx.moveTo(x+.5,0);cx.lineTo(x+.5,H);cx.stroke()}
-    for(let y=12;y<H;y+=40){cx.beginPath();cx.moveTo(0,y+.5);cx.lineTo(W,y+.5);cx.stroke()}
-    cx.strokeStyle=COL.line;cx.lineWidth=2;cx.beginPath();cx.moveTo(0,GROUND);cx.lineTo(W,GROUND);cx.stroke();
-    if(on){cx.fillStyle=flash>0?COL.hit:COL.me;rr(PX,GROUND-PS-py,PS,PS,7);cx.fill();
-    cx.fillStyle=COL.foot;cx.fillRect(PX+5,GROUND-py-4,20,4)}
-    cx.fillStyle=COL.ob;for(const o of obs){rr(o.x,GROUND-o.h,o.w,o.h,3);cx.fill()}
-    cx.fillStyle=COL.txt;cx.font='600 13px "Source Sans 3", system-ui, sans-serif';cx.fillText("A SHORT BREAK",20,335);
-  }
-  const fmtT=ms=>{const s=Math.ceil(ms/1000);return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`};
-  function clock(){
-    if(!on)return;
-    const ms=Math.max(0,deadline-Date.now());
-    $("#timer").textContent=fmtT(ms); $("#timer").setAttribute("aria-label",`${Math.ceil(ms/1000)} seconds left`);
-    $("#tfill").style.width=(ms/LIMIT*100)+"%";
-    if(ms<=0)end(false);
-  }
-  function frame(t){
-    if(!on)return;
-    const dt=Math.min((t-last)/1000,.032); last=t; spawn-=dt; flash=Math.max(0,flash-dt);
-    if(spawn<=0){obs.push({x:W+20,w:24+Math.random()*14,h:31+Math.random()*20});spawn=1.25+Math.random()*.5}
-    if(py>0||vy>0){py+=vy*dt;vy-=1300*dt;if(py<0){py=0;vy=0}}
-    for(const o of obs)o.x-=200*dt; obs=obs.filter(o=>o.x+o.w>0);
-    for(const o of obs){if(o.x<PX+PS-4&&o.x+o.w>PX+4&&py<o.h-4){obs=obs.filter(z=>z!==o);flash=.25;$("#gstate").textContent="Keep hopping"}}
-    draw(); if(Date.now()>=deadline){end(false);return}
-    raf=requestAnimationFrame(frame);
-  }
-  function jump(){if(on&&py<=0){vy=520;py=.5}}
-  /* everything except the break panel goes inert while it runs */
-  const others=()=>[$("#bar"),$("#ghead"),$("#study"),$("#pdfs"),$("#foot"),$("#score"),$(".skipl")].filter(Boolean);
-  function start(from){
-    if(on)return;
-    closeMenu(false);
-    const study=$("#study"), ae=document.activeElement;
-    const inStudy=ae&&study.contains(ae);
-    /* the exact spot to come back to: scroll position and the control that had focus */
-    mark={x:scrollX,y:scrollY,focus:inStudy?ae:(lastFocus&&lastFocus.isConnected?lastFocus:null),from:from||null};
-    on=true; deadline=Date.now()+LIMIT; obs=[]; py=0; vy=0; spawn=1.1; flash=0;
-    brk.open=true; document.body.classList.add("gaming");
-    others().forEach(n=>n.inert=true);
-    $("#gov").hidden=true; $("#gstart").hidden=true; $("#gctl2").hidden=false;
-    $("#gstate").textContent="Break in progress"; $("#bnote").textContent="Your place in the guide is saved.";
-    $("#gsay").textContent="One-minute break started. Press Space to jump. Escape returns to the guide.";
-    const r=brk.getBoundingClientRect(); if(r.top<0||r.bottom>innerHeight)brk.scrollIntoView({behavior:"auto",block:"center"});
-    $("#gjump").focus({preventScroll:true});
-    last=performance.now(); clock(); raf=requestAnimationFrame(frame);
-    tick=setInterval(clock,100); stopT=setTimeout(()=>end(false),LIMIT+50);
-  }
-  function end(early){
-    if(!on)return;
-    on=false; cancelAnimationFrame(raf); clearInterval(tick); clearTimeout(stopT);
-    document.body.classList.remove("gaming"); others().forEach(n=>n.inert=false);
-    $("#gctl2").hidden=true; $("#gstart").hidden=false; $("#gov").hidden=false;
-    $("#gov").innerHTML='<span class="gname">Back to<br>your spot.</span><span class="ghint">Right where you left off.</span>';
-    $("#gstate").textContent=early?"Back early":"One minute is up";
-    $("#timer").textContent=early?fmtT(Math.max(0,deadline-Date.now())):"0:00"; $("#timer").setAttribute("aria-label",early?"break ended":"break finished");
-    if(!early)$("#tfill").style.width="0%";
-    $("#bnote").textContent="Another break is always your choice.";
-    $("#gsay").textContent=early?"Back in the guide, at your saved spot.":"One minute is up. Back in the guide, at your saved spot.";
-    draw();
-    const m=mark; mark=null;
-    const f=m&&m.focus&&m.focus.isConnected?m.focus:(m&&m.from&&m.from.isConnected?m.from:$("#gstart"));
-    f.focus({preventScroll:true});
-    scrollTo({left:m?m.x:0,top:m?m.y:0,behavior:"auto"});
-    const les=f.closest&&f.closest(".les,.pane"); if(les&&!REDUCED){les.classList.remove("returned");void les.offsetWidth;les.classList.add("returned")}
-  }
-  $("#gstart").addEventListener("click",()=>start(null));
-  $("#gjump").addEventListener("click",jump);
-  $("#gback").addEventListener("click",()=>end(true));
-  cv.addEventListener("pointerdown",e=>{if(on){e.preventDefault();jump()}});
-  /* while it runs: Space jumps, Escape returns; other shortcuts of the page stay quiet */
-  addEventListener("keydown",e=>{
-    if(!on)return;
-    if(e.key==="Escape"){e.preventDefault();e.stopImmediatePropagation();end(true);return}
-    if(e.code==="Space"||e.key===" "){if(document.activeElement===$("#gback"))return;e.preventDefault();e.stopImmediatePropagation();if(!e.repeat)jump();return}
-    if(e.key!=="Tab"&&e.key!=="Enter")e.stopImmediatePropagation();
-  },true);
-  document.addEventListener("visibilitychange",clock);
-  $("#study").addEventListener("focusin",e=>{if(!on)lastFocus=e.target});
-  if(matchMedia("(max-width:1079px)").matches)brk.open=false;
-  draw();
-  return {start,end,get on(){return on}};
-})();
-function startBreak(btn){GAME.start(btn)}
 
 /* theme (shared with the homepage via localStorage "theme") */
 const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];

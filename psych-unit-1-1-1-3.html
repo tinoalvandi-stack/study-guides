@@ -26,7 +26,7 @@
 <link rel="preload" href="/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* ═══ valentino guides · guide template v4, editorial revision (charcoal, warm white, oxblood; topic tiles, study modes, one-minute break; oct 7 2026) ═══
+/* ═══ valentino guides · guide template v4, editorial revision (charcoal, warm white, oxblood; topic tiles, study modes; oct 7 2026; break game removed oct 15 2026) ═══
    Same tokens and type as the homepage (site.css). Edit the GUIDE object below the machinery; leave the CSS alone.
    Fonts: Source Serif 4 (headings) and Source Sans 3 (body and interface), self-hosted, SIL Open Font License 1.1 (fonts/OFL-*.txt). */
 @font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url(/fonts/source-serif-4-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -133,9 +133,9 @@ a.cname{border-radius:6px}
   .sec{padding-top:18px;margin-top:16px}
 }
 
-/* ═══ layout: the study column, and a side column for downloads and the optional break.
-   Wide screens (1080px+, desktop and iPad landscape) put them side by side; phones and iPad portrait stack the break below the study surface
-   and open downloads from the Downloads button. ═══ */
+/* ═══ layout: the study column, and a side column for downloads.
+   Wide screens (1080px+, desktop and iPad landscape) put them side by side; a guide with no downloads uses the full width.
+   Phones and iPad portrait open downloads from the Downloads button. ═══ */
 .gbody{display:block;margin-top:2px}
 .gcol{min-width:0}
 .gside{display:grid;gap:16px;align-content:start;margin-top:30px}
@@ -144,7 +144,8 @@ a.cname{border-radius:6px}
   .gside{margin-top:16px;align-self:stretch}
   #dlb{display:none !important}
 }
-@media (max-width:1079px){.gside .dl{display:none !important}}
+@media (max-width:1079px){.gside{display:none !important}}
+@media (min-width:1080px){.gbody.solo{display:block}.gbody.solo .gside{display:none}}
 .sub.scope{max-width:none;margin-top:12px;padding:10px 14px;border-left:3px solid var(--amber);background:var(--amber-bg);border-radius:0 10px 10px 0;font-size:var(--t15);font-weight:600;color:var(--ink)}
 
 /* ═══ downloads: grouped, out of the first study view (side card on wide screens, a menu from the Downloads button elsewhere) ═══ */
@@ -178,36 +179,7 @@ a.cname{border-radius:6px}
 @media (hover:hover){.ptc a:hover{border-color:var(--accent);color:var(--accent)}a.ptr:hover .pgo{background:var(--accent);color:var(--on-accent)}}
 @media (max-width:519px){.ptest{padding:2px 14px}.ptc{margin-left:0;width:100%}.ptc a{flex:1 0 44px}.ptc a.wide{flex-basis:100%}.ptl{font-size:var(--t16)}}
 
-/* ═══ the one-minute break: optional, finite, starts only when asked ═══ */
-.brk{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line2);overflow:hidden}
-.brk summary{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:52px;padding:12px 16px;cursor:pointer;list-style:none}
-.brk summary::-webkit-details-marker{display:none}
-.brk summary:focus-visible{outline-offset:-3px}
-.brk .bt{font-family:var(--display);font-size:var(--t17);font-weight:620;letter-spacing:-.01em}
-.brk .btag{font-size:var(--t12);font-weight:700;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase;padding:2px 6px;border-radius:6px;background:var(--surface2)}
-.brk .bc{padding:0 16px 16px}
-.brk .bi{margin:0 0 12px;font-size:var(--t15);color:var(--ink2)}
-.btop{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:var(--t13);color:var(--ink2)}
-.timer{font-size:var(--t20);font-weight:700;font-variant-numeric:tabular-nums;line-height:1;padding:6px 9px;border-radius:8px;background:var(--surface2);color:var(--ink)}
-.gscr{position:relative;border-radius:10px;overflow:hidden;background:#1E1C1A;aspect-ratio:560/360}
-.gscr canvas{display:block;width:100%;height:100%;touch-action:manipulation}
-.gov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:18px 20px;color:#F4EFE7;pointer-events:none}
-.gname{font-family:var(--display);font-size:clamp(24px,7vw,30px);font-weight:650;line-height:1.05;letter-spacing:-.01em}
-.ghint{margin-top:10px;max-width:180px;font-size:var(--t13);line-height:1.4;color:#C9C0B4}
-.ttrack{height:4px;margin:10px 0 0;border-radius:3px;background:var(--line);overflow:hidden}
-#tfill{display:block;height:100%;width:100%;background:var(--amber)}
-.gins{margin:12px 0;font-size:var(--t13);line-height:1.45;color:var(--ink2)}
-.btn.full{width:100%}
-.gctl2{display:flex;gap:8px}
-.gctl2 .btn{flex:1;white-space:nowrap;padding:9px 12px}
-.gctl2 .btn.ghost{flex:1.4}
-/* wide screens: the break panel stays in view while the lesson scrolls */
-@media (min-width:1080px) and (min-height:720px){.gside .brk{position:sticky;top:calc(var(--barh,58px) + 16px)}}
-.bnote{margin:10px 0 0;font-size:var(--t12);line-height:1.45;color:var(--ink3)}
-.gaming .brk{border-color:var(--amber);box-shadow:0 0 0 3px color-mix(in srgb,var(--amber) 22%,transparent)}
-@keyframes backglow{0%,35%{box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 35%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
-.returned{animation:backglow 1.1s var(--ease)}
-@media (max-width:1079px){.brk{max-width:560px}}
+/* the one-minute break game was removed oct 15 2026 */
 
 /* ═══ controls: the Sections row, then Topics, Search, Show answers and Print ═══ */
 .gctl{display:grid;gap:10px;margin:16px 0 18px}
@@ -854,22 +826,8 @@ footer .upd{display:block;margin-top:6px}
       <div class="sstat" id="sstat" aria-live="polite"></div>
       <div id="root" class="rv"></div>
     </div>
-    <aside class="gside" id="side" aria-label="Downloads and an optional break">
+    <aside class="gside" id="side" aria-label="Downloads">
       <section class="dl rv" id="pdfs" aria-labelledby="dlh" hidden></section>
-      <details class="brk rv" id="brk" open>
-        <summary><span class="bt">One-minute break</span><span class="btag">optional</span></summary>
-        <div class="bc">
-          <p class="bi">A short reset. Your place in the guide stays put.</p>
-          <div class="btop"><span id="gstate">Ready when you are</span><span class="timer" id="timer" role="timer" aria-label="60 seconds">1:00</span></div>
-          <div class="gscr"><canvas id="game" width="560" height="360" role="img" aria-label="Jump over the blocks. Lasts one minute."></canvas><div class="gov" id="gov"><span class="gname">Jump for<br>a minute.</span><span class="ghint">60 seconds, then back to your spot.</span></div></div>
-          <div class="ttrack" aria-hidden="true"><span id="tfill"></span></div>
-          <p class="gins">Tap Jump, tap the screen or press Space to hop the blocks. Esc returns.</p>
-          <button type="button" class="btn full" id="gstart">Start 60-second break</button>
-          <div class="gctl2" id="gctl2" hidden><button type="button" class="btn" id="gjump">Jump</button><button type="button" class="btn ghost" id="gback">Back to studying</button></div>
-          <p class="bnote" id="bnote">Stops at one minute. You can leave early.</p>
-          <p class="vh" id="gsay" role="status" aria-live="polite"></p>
-        </div>
-      </details>
     </aside>
   </div>
   <footer id="foot">
@@ -1852,7 +1810,7 @@ if(DLS.length){
   const d=$("#pdfs"); d.innerHTML=`<div class="dlh"><h3 id="dlh">Downloads</h3><span>${DLS.length}</span></div>${body}${note}`; d.hidden=false;
   $("#m-dl").innerHTML=`<div class="ml">Downloads</div>${body}${note.replace('class="pn"','class="dpn"')}`;
   $("#dlb").hidden=false; $("#dln").textContent=DLS.length;
-}
+}else $(".gbody").classList.add("solo");
 /* practice tests: every printable test, quiz, exam or prompt set from pdfs, named in bold above the Sections row, so nobody has to dig
    through Downloads for them. A letter series ("Practice test A (PDF)", "… B (PDF)") or one test's versions (same g) make one row of short
    buttons; a lone file is one row with an Open button. Answer keys, audio, scripts and study sheets stay in Downloads only. */
@@ -1965,13 +1923,12 @@ function section(s,i,next){
   const n=String(i+1).padStart(2,"0"), w=WN[s.w];
   /* study modes: Learn (the lesson) and Try it (its "on the test" examples), as in the approved demo */
   const k=i+1, nx_=has(s.ex)?s.ex.length:0;
-  const brkB=`<button type="button" class="btn ghost" data-brk>One-minute break</button>`;
   let body;
   if(nx_){
     body=`<div class="lmodes" role="tablist" aria-label="Study this topic"><button type="button" class="lm" role="tab" id="lm-l-${k}" aria-controls="lp-l-${k}" aria-selected="true" data-m="learn">Learn</button><button type="button" class="lm" role="tab" id="lm-t-${k}" aria-controls="lp-t-${k}" aria-selected="false" tabindex="-1" data-m="try">Try it <span class="n">${nx_}</span></button></div>`+
-      `<div class="lp on" id="lp-l-${k}" role="tabpanel" aria-labelledby="lm-l-${k}" data-m="learn"><div class="sb">${h}</div><div class="lact"><button type="button" class="btn" data-m="try">Try ${nx_} question${nx_===1?"":"s"}</button>${brkB}</div></div>`+
-      `<div class="lp" id="lp-t-${k}" role="tabpanel" aria-labelledby="lm-t-${k}" data-m="try"><div class="sb">${B.ex(s.ex)}</div><div class="lact"><button type="button" class="btn ghost" data-m="learn">Back to the lesson</button>${brkB}</div></div>`;
-  }else body=`<div class="sb">${h}</div><div class="lact">${brkB}</div>`;
+      `<div class="lp on" id="lp-l-${k}" role="tabpanel" aria-labelledby="lm-l-${k}" data-m="learn"><div class="sb">${h}</div><div class="lact"><button type="button" class="btn" data-m="try">Try ${nx_} question${nx_===1?"":"s"}</button></div></div>`+
+      `<div class="lp" id="lp-t-${k}" role="tabpanel" aria-labelledby="lm-t-${k}" data-m="try"><div class="sb">${B.ex(s.ex)}</div><div class="lact"><button type="button" class="btn ghost" data-m="learn">Back to the lesson</button></div></div>`;
+  }else body=`<div class="sb">${h}</div>`;
   const eyb=`<p class="eyb"><span class="num">${n}</span>${w?`<span aria-hidden="true">/</span><span class="w ${w[0]}">${w[1]}</span>`:""}</p>`;
   const tp=!next&&TRY?TRY:null;
   const nx=next?`<div class="nxt"><a href="#s-${i+2}" data-j="s-${i+2}">Next: ${esc(next.t)}${I_NEXT}</a></div>`:tp?`<div class="nxt"><a href="#${tp}" data-p="${tp}">Next: ${esc(lab(tp))}${cnt(tp)?` (${cnt(tp)})`:""}${I_NEXT}</a></div>`:"";
@@ -2032,13 +1989,12 @@ function buildOutline(sec){
     });
   }
   list.forEach((s,i)=>{col.appendChild(section(s,i,list[i+1]));JUMP.push({id:"s-"+(i+1),n:String(i+1).padStart(2,"0"),t:s.t,w:s.w||1})});
-  /* study modes inside each lesson, plus the break buttons */
+  /* study modes inside each lesson */
   col.querySelectorAll(".les").forEach(L=>{
     const ts=[...L.querySelectorAll(".lm")];
     const set=(m,focus)=>{ts.forEach(b=>{const on=b.dataset.m===m;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1});L.querySelectorAll(".lp").forEach(p=>p.classList.toggle("on",p.dataset.m===m));if(focus)L.querySelector(`.lm[data-m="${m}"]`)?.focus({preventScroll:true})};
     L.addEventListener("click",e=>{
       const b=e.target.closest("button[data-m]"); if(b&&L.contains(b)){const fromTab=b.classList.contains("lm");set(b.dataset.m,!fromTab);if(!fromTab){const r=L.getBoundingClientRect();if(r.top<bar.offsetHeight)L.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"})}return}
-      if(e.target.closest("[data-brk]"))startBreak(e.target.closest("[data-brk]"));
     });
     L.querySelector(".lmodes")?.addEventListener("keydown",e=>{const i=ts.indexOf(document.activeElement);if(i<0)return;const k={ArrowRight:1,ArrowLeft:-1}[e.key];let j=null;if(k)j=(i+k+ts.length)%ts.length;else if(e.key==="Home")j=0;else if(e.key==="End")j=ts.length-1;if(j===null)return;e.preventDefault();set(ts[j].dataset.m,true)});
   });
@@ -2191,7 +2147,7 @@ function buildCards(sec){
   nav.querySelector('[data-a="next"]').addEventListener("click",()=>go(1));
   nav.querySelector('[data-a="prev"]').addEventListener("click",()=>go(-1));
   nav.querySelector('[data-a="shuf"]').addEventListener("click",()=>{for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]]}i=0;draw()});
-  addEventListener("keydown",e=>{if(e.defaultPrevented||!sec.classList.contains("on")||deck.hidden||e.target.tagName==="INPUT"||e.target.closest?.("[role=tab]")||OPEN||document.body.classList.contains("gaming"))return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+  addEventListener("keydown",e=>{if(e.defaultPrevented||!sec.classList.contains("on")||deck.hidden||e.target.tagName==="INPUT"||e.target.closest?.("[role=tab]")||OPEN)return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
   let x0=null; fc.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); fc.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(dx<-40)go(1);else if(dx>40)go(-1)},{passive:true});
   draw();
   sec.appendChild(shead("All cards",`${cs.length}`));
@@ -2473,102 +2429,6 @@ addEventListener("popstate",()=>route(true));
   }
   $("#printb").addEventListener("click",()=>{closeMenu(false);print()});
 })();
-
-/* ═══ one-minute break: optional, starts only on a click or tap, hard stop at 60 seconds, early exit any time.
-   The guide behind it is inert while it runs and nothing about it changes: the open section, lesson, study mode, answers,
-   flashcard position, search and scroll are exactly where they were. No score, no saving, nothing sent. ═══ */
-const GAME=(function(){
-  const LIMIT=60000, cv=$("#game"), cx=cv.getContext&&cv.getContext("2d"), brk=$("#brk");
-  const W=560,H=360,GROUND=292,PX=84,PS=30;
-  let on=false, deadline=0, raf=0, tick=0, stopT=0, last=0, spawn=1.2, py=0, vy=0, obs=[], flash=0, mark=null, lastFocus=null;
-  const COL={bg:"#1E1C1A",grid:"#2A2724",line:"#5A524A",me:"#F4EFE7",foot:"#A79E92",ob:"#C9707A",txt:"#8E857A",hit:"#F6D7B0"};
-  const rr=(x,y,w,h,r)=>{cx.beginPath();if(cx.roundRect)cx.roundRect(x,y,w,h,r);else cx.rect(x,y,w,h)};
-  function draw(){
-    if(!cx)return;
-    cx.fillStyle=COL.bg;cx.fillRect(0,0,W,H);cx.strokeStyle=COL.grid;cx.lineWidth=1;
-    for(let x=0;x<W;x+=40){cx.beginPath();cx.moveTo(x+.5,0);cx.lineTo(x+.5,H);cx.stroke()}
-    for(let y=12;y<H;y+=40){cx.beginPath();cx.moveTo(0,y+.5);cx.lineTo(W,y+.5);cx.stroke()}
-    cx.strokeStyle=COL.line;cx.lineWidth=2;cx.beginPath();cx.moveTo(0,GROUND);cx.lineTo(W,GROUND);cx.stroke();
-    if(on){cx.fillStyle=flash>0?COL.hit:COL.me;rr(PX,GROUND-PS-py,PS,PS,7);cx.fill();
-    cx.fillStyle=COL.foot;cx.fillRect(PX+5,GROUND-py-4,20,4)}
-    cx.fillStyle=COL.ob;for(const o of obs){rr(o.x,GROUND-o.h,o.w,o.h,3);cx.fill()}
-    cx.fillStyle=COL.txt;cx.font='600 13px "Source Sans 3", system-ui, sans-serif';cx.fillText("A SHORT BREAK",20,335);
-  }
-  const fmtT=ms=>{const s=Math.ceil(ms/1000);return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`};
-  function clock(){
-    if(!on)return;
-    const ms=Math.max(0,deadline-Date.now());
-    $("#timer").textContent=fmtT(ms); $("#timer").setAttribute("aria-label",`${Math.ceil(ms/1000)} seconds left`);
-    $("#tfill").style.width=(ms/LIMIT*100)+"%";
-    if(ms<=0)end(false);
-  }
-  function frame(t){
-    if(!on)return;
-    const dt=Math.min((t-last)/1000,.032); last=t; spawn-=dt; flash=Math.max(0,flash-dt);
-    if(spawn<=0){obs.push({x:W+20,w:24+Math.random()*14,h:31+Math.random()*20});spawn=1.25+Math.random()*.5}
-    if(py>0||vy>0){py+=vy*dt;vy-=1300*dt;if(py<0){py=0;vy=0}}
-    for(const o of obs)o.x-=200*dt; obs=obs.filter(o=>o.x+o.w>0);
-    for(const o of obs){if(o.x<PX+PS-4&&o.x+o.w>PX+4&&py<o.h-4){obs=obs.filter(z=>z!==o);flash=.25;$("#gstate").textContent="Keep hopping"}}
-    draw(); if(Date.now()>=deadline){end(false);return}
-    raf=requestAnimationFrame(frame);
-  }
-  function jump(){if(on&&py<=0){vy=520;py=.5}}
-  /* everything except the break panel goes inert while it runs */
-  const others=()=>[$("#bar"),$("#ghead"),$("#study"),$("#pdfs"),$("#foot"),$("#score"),$(".skipl")].filter(Boolean);
-  function start(from){
-    if(on)return;
-    closeMenu(false);
-    const study=$("#study"), ae=document.activeElement;
-    const inStudy=ae&&study.contains(ae);
-    /* the exact spot to come back to: scroll position and the control that had focus */
-    mark={x:scrollX,y:scrollY,focus:inStudy?ae:(lastFocus&&lastFocus.isConnected?lastFocus:null),from:from||null};
-    on=true; deadline=Date.now()+LIMIT; obs=[]; py=0; vy=0; spawn=1.1; flash=0;
-    brk.open=true; document.body.classList.add("gaming");
-    others().forEach(n=>n.inert=true);
-    $("#gov").hidden=true; $("#gstart").hidden=true; $("#gctl2").hidden=false;
-    $("#gstate").textContent="Break in progress"; $("#bnote").textContent="Your place in the guide is saved.";
-    $("#gsay").textContent="One-minute break started. Press Space to jump. Escape returns to the guide.";
-    const r=brk.getBoundingClientRect(); if(r.top<0||r.bottom>innerHeight)brk.scrollIntoView({behavior:"auto",block:"center"});
-    $("#gjump").focus({preventScroll:true});
-    last=performance.now(); clock(); raf=requestAnimationFrame(frame);
-    tick=setInterval(clock,100); stopT=setTimeout(()=>end(false),LIMIT+50);
-  }
-  function end(early){
-    if(!on)return;
-    on=false; cancelAnimationFrame(raf); clearInterval(tick); clearTimeout(stopT);
-    document.body.classList.remove("gaming"); others().forEach(n=>n.inert=false);
-    $("#gctl2").hidden=true; $("#gstart").hidden=false; $("#gov").hidden=false;
-    $("#gov").innerHTML='<span class="gname">Back to<br>your spot.</span><span class="ghint">Right where you left off.</span>';
-    $("#gstate").textContent=early?"Back early":"One minute is up";
-    $("#timer").textContent=early?fmtT(Math.max(0,deadline-Date.now())):"0:00"; $("#timer").setAttribute("aria-label",early?"break ended":"break finished");
-    if(!early)$("#tfill").style.width="0%";
-    $("#bnote").textContent="Another break is always your choice.";
-    $("#gsay").textContent=early?"Back in the guide, at your saved spot.":"One minute is up. Back in the guide, at your saved spot.";
-    draw();
-    const m=mark; mark=null;
-    const f=m&&m.focus&&m.focus.isConnected?m.focus:(m&&m.from&&m.from.isConnected?m.from:$("#gstart"));
-    f.focus({preventScroll:true});
-    scrollTo({left:m?m.x:0,top:m?m.y:0,behavior:"auto"});
-    const les=f.closest&&f.closest(".les,.pane"); if(les&&!REDUCED){les.classList.remove("returned");void les.offsetWidth;les.classList.add("returned")}
-  }
-  $("#gstart").addEventListener("click",()=>start(null));
-  $("#gjump").addEventListener("click",jump);
-  $("#gback").addEventListener("click",()=>end(true));
-  cv.addEventListener("pointerdown",e=>{if(on){e.preventDefault();jump()}});
-  /* while it runs: Space jumps, Escape returns; other shortcuts of the page stay quiet */
-  addEventListener("keydown",e=>{
-    if(!on)return;
-    if(e.key==="Escape"){e.preventDefault();e.stopImmediatePropagation();end(true);return}
-    if(e.code==="Space"||e.key===" "){if(document.activeElement===$("#gback"))return;e.preventDefault();e.stopImmediatePropagation();if(!e.repeat)jump();return}
-    if(e.key!=="Tab"&&e.key!=="Enter")e.stopImmediatePropagation();
-  },true);
-  document.addEventListener("visibilitychange",clock);
-  $("#study").addEventListener("focusin",e=>{if(!on)lastFocus=e.target});
-  if(matchMedia("(max-width:1079px)").matches)brk.open=false;
-  draw();
-  return {start,end,get on(){return on}};
-})();
-function startBreak(btn){GAME.start(btn)}
 
 /* theme (shared with the homepage via localStorage "theme") */
 const seg=$(".seg"), thumb=$(".seg .thumb"), segBtns=[...seg.querySelectorAll("button")];

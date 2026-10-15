@@ -49,7 +49,7 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
   pages: variable woff2, latin and greek subsets, self-hosted, SIL Open Font
   License 1.1 with the license files beside them (`fonts/OFL-*.txt`,
   `fonts/README.md`). Figtree, Bricolage Grotesque and the others stay for the
-  pages that keep their own layouts (cram sheets, jeopardy, 404). The CSP
+  pages that keep their own layouts (cram sheets, 404). The CSP
   allows `font-src 'self'` only; never link Google Fonts.
 - Individual guides: one `.html` file per guide at the repo root
   (`psych-unit-0.html`, `precalc-vectors.html`, …). Practice tests ship as
@@ -130,7 +130,7 @@ ahead of earlier-dated entries; it still drops off after its date.
 ## Design system: editorial revision (October 7, 2026)
 
 - Approved from a working demo (topic tiles, Learn / Try it, grouped downloads,
-  an optional one-minute break) and rolled out to every template guide, with
+  an optional one-minute break, removed October 15, 2026) and rolled out to every template guide, with
   type and color changed to a clean editorial style. It replaced revision 3
   (blue and navy, Figtree), whose layout rules it otherwise keeps.
 - Type: Source Serif 4 for headings and titles (weight about 620, tracking
@@ -312,7 +312,7 @@ screens (1080px and up: desktop and iPad landscape) a study column and a
   eight), then **one lesson card at a time** (the open tile's lesson; lesson 1
   at first). Search shows every matching lesson; print prints every lesson.
   Each lesson with `ex` has two **study modes**, Learn (the lesson, ending
-  with "Try n questions" and "One-minute break") and Try it (its "on the test"
+  with "Try n questions") and Try it (its "on the test"
   examples, ending with "Back to the lesson"), as tabs with arrow keys. The
   "Next:" link opens the next lesson; the last leads to the first practice
   section. "More to keep in mind", quick facts (`topTable`) and the
@@ -322,16 +322,10 @@ screens (1080px and up: desktop and iPad landscape) a study column and a
 - **Flashcards**: think first, Show answer, then Review again or Got it; the
   end of a round offers "Review marked cards (n)" or the full deck. Back,
   next, shuffle, arrow keys and swipes still work. In memory only.
-- **One-minute break** (side column on wide screens, where it stays in view;
-  collapsed below the study column elsewhere): optional, starts only from its
-  button or a lesson's "One-minute break" button, shows a 1:00 countdown and a
-  timer bar, stops hard at 60 seconds (a wall-clock deadline plus a backstop
-  timer, checked again when the tab returns), and can be left early with
-  "Back to studying" or Escape. While it runs the rest of the page is inert;
-  on exit the scroll position and focus return exactly where they were, and
-  nothing else (section, lesson, mode, answers, flashcard position, search)
-  has moved. No score, no leaderboard, no accounts, no storage, no network.
-  Space or a tap jumps.
+- **No games.** The one-minute break game (and the Chapter 3 jeopardy page)
+  were removed on October 15, 2026 and are kept only in git history. Don't add
+  games to guides or the site; practice stays as questions, problems,
+  flashcards and PDFs.
 Other sections drop their own title line (the Sections row names them).
 Practice, problems, formulas and cram lay out in two columns where there is
 room; the practice score is a floating pill with retry-missed (first-try
@@ -353,7 +347,7 @@ pass (practice right/wrong, first-try score, retry missed, reveals, search,
 Show answers, Topics jumps, deep links, every section tab, back and forward,
 keyboard (tabs with arrow keys, menus with Escape), Print, the downloads (200,
 a real PDF, in the side card or the Downloads menu), topic tiles, study modes,
-the one-minute break (60-second stop, early exit, exact return), 390px, iPad
+390px, iPad
 portrait and landscape, both themes).
 
 Header fields: `id` (class token: apush psych phys pre sem biz mor lang span
@@ -419,10 +413,10 @@ The first guides (August) were hand-built "glass" pages; in September they were
 re-themed onto the kinari tokens, then moved onto the first template. On
 September 29, 2026 all eighteen guides were rebuilt on template v2 from their
 own content (same sections, weights, practice, cards and problems; prose cut,
-visuals and examples added). `precalc-quizzes.html` is a print sheet,
-`morality-ch3-jeopardy.html` a game, and the two cram pages
-(`bus-unit-1-cram`, `morality-ch1-2-cram`) are print-style sheets; those four
-stay on their own layouts.
+visuals and examples added). `precalc-quizzes.html` is a print sheet and the
+two cram pages (`bus-unit-1-cram`, `morality-ch1-2-cram`) are print-style
+sheets; those three stay on their own layouts. The Chapter 3 jeopardy game was
+removed on October 15, 2026 (no games on the site); it is in git history.
 
 ## Offline copies (October 13, 2026)
 
