@@ -27,7 +27,7 @@ const FEATURES=[
   {classId:"bus",   title:"LPs 1-5 to 1-10 study guide", url:"/bus-unit-1-5-1-10", test:"2026-10-01", end:"2026-10-02", note:"High Exam #2: information management, operations and gross profit, business models, competition, trends, ownership types. Practice tests A and B in the exam’s own layout."},
   {classId:"pre",   title:"Polar unit test study guide", url:"/precalc-polar", test:"2026-10-01", note:"The whole unit: complex numbers, trig form, the theorems, polar equations and graphs. 25 problems, 2 with a calculator."},
   {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."},
-  {classId:"pre",   title:"Parametric equations quiz study guide", url:"/precalc-parametrics", test:"2026-10-15", note:"4 questions, 30 minutes total: 3 without a calculator, 1 with. Eliminating the parameter, graphs and direction, trig curves, two parametrizations, projectiles."}
+  {classId:"pre",   title:"Parametric equations quiz study guide", url:"/precalc-parametrics", test:"2026-10-15", note:"4 questions, 30 minutes total: 3 without a calculator, 1 with. Four practice question types: eliminate t, trig curves, two parametrizations, projectiles."}
 ];
 
 /* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
@@ -52,8 +52,10 @@ const CLASSES=[
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
      {t:"Parametric equations", url:"/precalc-parametrics", added:"2026-10-13", extras:[
-        {kind:"pdf", t:"Practice quiz (PDF)", url:"/precalc-parametrics-practice.pdf"},
-        {kind:"pdf", t:"Practice quiz answer key (PDF)", url:"/precalc-parametrics-practice-key.pdf"}]},
+        {kind:"pdf", t:"Practice test A (PDF)", url:"/precalc-parametrics-test-a.pdf"},
+        {kind:"pdf", t:"Practice test B (PDF)", url:"/precalc-parametrics-test-b.pdf"},
+        {kind:"pdf", t:"Practice test C (PDF)", url:"/precalc-parametrics-test-c.pdf"},
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametrics-cram.pdf"}]},
      {t:"Polar unit test", url:"/precalc-polar", added:"2026-09-29", extras:[
         {kind:"pdf", t:"Practice test A (PDF)", url:"/precalc-polar-practice-a.pdf"},
         {kind:"pdf", t:"Practice test B (PDF)", url:"/precalc-polar-practice-b.pdf"},
