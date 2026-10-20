@@ -28,7 +28,8 @@ const FEATURES=[
   {classId:"pre",   title:"Polar unit test study guide", url:"/precalc-polar", test:"2026-10-01", note:"The whole unit: complex numbers, trig form, the theorems, polar equations and graphs. 25 problems, 2 with a calculator."},
   {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."},
   {classId:"pre",   title:"Parametric equations quiz study guide", url:"/precalc-parametrics", test:"2026-10-15", note:"4 questions, 30 minutes total: 3 without a calculator, 1 with. Four practice question types: eliminate t, trig curves, two parametrizations, projectiles."},
-  {classId:"sem",   title:"End-of-course exam Part A guide", url:"/seminar-eoc-part-a", test:"2026-10-19", note:"A short workflow for all three questions, a fictional practice passage with full model answers, keywords and original templates."}
+  {classId:"sem",   title:"End-of-course exam Part A guide", url:"/seminar-eoc-part-a", test:"2026-10-19", note:"A short workflow for all three questions, a fictional practice passage with full model answers, keywords and original templates."},
+  {classId:"pre",   title:"Parametric & sequences test study guide", url:"/precalc-parametric-sequences", test:"2026-10-21", end:"2026-10-23", note:"Wednesday no calculator: 5 parametric curves + 1 sequence. Friday calculator: 7 sequences and series + 1 projectile. 43 points."}
 ];
 
 /* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
@@ -52,6 +53,9 @@ const CLASSES=[
      {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"Practice quiz A (PDF)", url:"/morality-ch3-practice-a.pdf"}]},
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
+     {t:"Parametric & sequences test", url:"/precalc-parametric-sequences", added:"2026-10-19", extras:[
+        {kind:"pdf", t:"Practice test (PDF)", url:"/precalc-parametric-sequences-practice.pdf"},
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram.pdf"}]},
      {t:"Parametric equations", url:"/precalc-parametrics", added:"2026-10-13", extras:[
         {kind:"pdf", t:"Practice test A (PDF)", url:"/precalc-parametrics-test-a.pdf"},
         {kind:"pdf", t:"Practice test B (PDF)", url:"/precalc-parametrics-test-b.pdf"},
