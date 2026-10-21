@@ -122,6 +122,7 @@ const CLASSES=[
      {t:"Introductory dynamics", url:"/physics-intro-dynamics", added:"2026-10-20", extras:[
         {kind:"cram", t:"Cram sheet (PDF)", url:"/physics-intro-dynamics-cram.pdf"},
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-intro-dynamics-version-1.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 3", s:"3", url:"/physics-intro-dynamics-version-3.pdf"},
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 4", s:"4", url:"/physics-intro-dynamics-version-4.pdf"},
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 5", s:"5", url:"/physics-intro-dynamics-version-5.pdf"},
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 6", s:"6", url:"/physics-intro-dynamics-version-6.pdf"}]},
