@@ -60,7 +60,9 @@ const CLASSES=[
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day2-a.pdf"},
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day2-b.pdf"},
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version C", s:"C", url:"/precalc-parametric-sequences-day2-c.pdf"},
-        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram.pdf"}]},
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram.pdf"},
+        {kind:"pdf", t:"Review, worked (PDF)", url:"/precalc-parametric-sequences-review-worked.pdf"},
+        {kind:"pdf", t:"Review notes (PDF)", url:"/precalc-parametric-sequences-review-notes.pdf"}]},
      {t:"Parametric equations", url:"/precalc-parametrics", added:"2026-10-13", extras:[
         {kind:"pdf", t:"Practice test A (PDF)", url:"/precalc-parametrics-test-a.pdf"},
         {kind:"pdf", t:"Practice test B (PDF)", url:"/precalc-parametrics-test-b.pdf"},
