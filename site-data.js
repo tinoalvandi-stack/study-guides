@@ -31,6 +31,7 @@ const FEATURES=[
   {classId:"sem",   title:"End-of-course exam Part A guide", url:"/seminar-eoc-part-a", test:"2026-10-19", note:"A short workflow for all three questions, a fictional practice passage with full model answers, keywords and original templates."},
   {classId:"phys",  title:"Introductory dynamics study guide", url:"/physics-intro-dynamics", test:"2026-10-21", end:"2026-10-22", note:"50 minutes: a free-body diagram, two net-force problems, linearize a data set. Forces at angles is not on it."},
   {classId:"pre",   title:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", test:"2026-10-21", note:"no calculator: 5 parametric curves + 1 sequence question (first five terms or recursive), 16 points"},
+  {classId:"apush", title:"Congress quiz study guide", url:"/apush-congress-quiz", test:"2026-10-22", note:"House and Senate terms, elections, age and citizenship; which house is proportional; checks and balances, including the Supreme Court's."},
   {classId:"pre",   title:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", test:"2026-10-23", note:"calculator: nth term, finding sums, Binomial Theorem + 1 projectile, 27 points"},
 ];
 
@@ -100,6 +101,8 @@ const CLASSES=[
      {t:"Vectors + dot product", url:"/precalc-vectors", added:"2026-08-30", extras:[
         {kind:"pdf", t:"Quizzes A–C + memorize sheet (PDF)", url:"/precalc-quizzes.pdf"}]}]},
   {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY", units:[
+     {t:"Congress quiz", url:"/apush-congress-quiz", added:"2026-10-21",
+      extras:[{kind:"cram", t:"Cram sheet (PDF)", url:"/apush-congress-quiz-cram.pdf"}]},
      {t:"Unit 2 LEQ", url:"/apush-unit-2-leq", added:"2026-10-06",
       extras:[{kind:"cram", t:"Cram sheet (PDF)", url:"/apush-unit-2-leq-cram.pdf"},
               {kind:"pdf", t:"Practice LEQ prompts (PDF)", url:"/apush-unit-2-leq-practice.pdf"}]},
