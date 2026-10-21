@@ -285,7 +285,7 @@ bold on one card above the Sections row: a lettered series ("Practice test A
 (PDF)", "Practice test B (PDF)") is one row, "Practice tests · PDF" with A and B
 buttons; versions of one test (same `g`) are one row of numbered buttons
 ("Practice test, 6 versions"); a lone file is one row with an Open button. The
-full list still sits in Downloads. Hidden in print. On phones the Key ideas box
+full list still sits in Downloads. Each `g` group of versions gets its own row (October 21, 2026: two groups no longer merge into one row), and "Version A" style letters render as short buttons like numbers do. Hidden in print. On phones the Key ideas box
 still starts inside the 390×844 opening (checked on every guide with practice).
 
 Layout: the page is up to 1280px wide. The header is a compact title, one

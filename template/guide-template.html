@@ -1019,7 +1019,7 @@ if(DLS.length){
       if(!run.length||!PX.test(p.g))continue;
       const gm=LET.exec(bare(p.g));
       if(gm)items.push({f:fam(p.g),base:gm[1],short:gm[2],label:bare(p.g),url:run[0].url,aria:p.g+", "+run[0].t,pdf:isPdf(run[0].t)||isPdf(p.g)});
-      else run.forEach(x=>{const v=/^version\s+(\d+)$/i.exec(bare(x.t));items.push({f:fam(p.g),base:bare(p.g),short:v?v[1]:"",label:v?bare(p.g)+", "+x.t:bare(x.t),url:x.url,aria:p.g+", "+x.t,pdf:isPdf(p.g)||isPdf(x.t),ver:!!v})});
+      else run.forEach(x=>{const v=/^version\s+(\d+|[A-Z])$/i.exec(bare(x.t));items.push({f:fam(p.g),grp:p.g,base:bare(p.g),short:v?v[1]:"",label:v?bare(p.g)+", "+x.t:bare(x.t),url:x.url,aria:p.g+", "+x.t,pdf:isPdf(p.g)||isPdf(x.t),ver:!!v})});
       continue}
     i++;
     if(!PX.test(p.t)||SKIP.test(p.t))continue;
@@ -1027,7 +1027,7 @@ if(DLS.length){
     items.push({f:fam(p.t),base:m?m[1]:"",short:m?m[2]:"",label:bare(p.t),url:p.url,aria:p.t,pdf:isPdf(p.t)});
   }
   if(!items.length)return;
-  const rows=[];items.forEach(it=>{let r=rows.find(x=>x.f===it.f);if(!r){r={f:it.f,its:[]};rows.push(r)}r.its.push(it)});
+  const rows=[];items.forEach(it=>{let r=rows.find(x=>x.f===it.f&&x.grp===it.grp);if(!r){r={f:it.f,grp:it.grp,its:[]};rows.push(r)}r.its.push(it)});
   const PL={test:"tests",quiz:"quizzes",exam:"exams"};
   const tag=its=>its.every(x=>x.pdf)?"<small>PDF</small>":"";
   const href=x=>esc(safeUrl(x.url));

@@ -54,7 +54,12 @@ const CLASSES=[
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
      {t:"Parametric & sequences test", url:"/precalc-parametric-sequences", added:"2026-10-19", extras:[
-        {kind:"pdf", t:"Practice test (PDF)", url:"/precalc-parametric-sequences-practice.pdf"},
+        {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day1-a.pdf"},
+        {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day1-b.pdf"},
+        {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version C", s:"C", url:"/precalc-parametric-sequences-day1-c.pdf"},
+        {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day2-a.pdf"},
+        {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day2-b.pdf"},
+        {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version C", s:"C", url:"/precalc-parametric-sequences-day2-c.pdf"},
         {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram.pdf"}]},
      {t:"Parametric equations", url:"/precalc-parametrics", added:"2026-10-13", extras:[
         {kind:"pdf", t:"Practice test A (PDF)", url:"/precalc-parametrics-test-a.pdf"},
