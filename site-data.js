@@ -30,7 +30,7 @@ const FEATURES=[
   {classId:"pre",   title:"Parametric equations quiz study guide", url:"/precalc-parametrics", test:"2026-10-15", note:"4 questions, 30 minutes total: 3 without a calculator, 1 with. Four practice question types: eliminate t, trig curves, two parametrizations, projectiles."},
   {classId:"sem",   title:"End-of-course exam Part A guide", url:"/seminar-eoc-part-a", test:"2026-10-19", note:"A short workflow for all three questions, a fictional practice passage with full model answers, keywords and original templates."},
   {classId:"phys",  title:"Introductory dynamics study guide", url:"/physics-intro-dynamics", test:"2026-10-21", end:"2026-10-22", note:"50 minutes: a free-body diagram, two net-force problems, linearize a data set. Forces at angles is not on it."},
-  {classId:"pre",   title:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", test:"2026-10-21", note:"no calculator: 5 parametric curves + 1 sequence question (terms, recursive or Σ notation), 16 points"},
+  {classId:"pre",   title:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", test:"2026-10-21", note:"no calculator: 5 parametric curves + 1 sequence question (first five terms or recursive), 16 points"},
   {classId:"pre",   title:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", test:"2026-10-23", note:"calculator: nth term, finding sums, Binomial Theorem + 1 projectile, 27 points"},
 ];
 
@@ -59,7 +59,6 @@ const CLASSES=[
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day1-a.pdf"},
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day1-b.pdf"},
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version C", s:"C", url:"/precalc-parametric-sequences-day1-c.pdf"},
-        {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version D", s:"D", url:"/precalc-parametric-sequences-day1-d.pdf"},
         {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram-day1.pdf"},
         {kind:"pdf", t:"Review, worked (PDF)", url:"/precalc-parametric-sequences-review-worked.pdf"},
         {kind:"pdf", t:"Review notes (PDF)", url:"/precalc-parametric-sequences-review-notes.pdf"}]},
