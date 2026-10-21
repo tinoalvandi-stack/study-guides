@@ -121,7 +121,8 @@ const CLASSES=[
   {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS", units:[
      {t:"Introductory dynamics", url:"/physics-intro-dynamics", added:"2026-10-20", extras:[
         {kind:"cram", t:"Cram sheet (PDF)", url:"/physics-intro-dynamics-cram.pdf"},
-        {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-intro-dynamics-version-1.pdf"}]},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-intro-dynamics-version-1.pdf"},
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 4", s:"4", url:"/physics-intro-dynamics-version-4.pdf"}]},
      {t:"Advanced kinematics", url:"/physics-advanced-kinematics", added:"2026-09-27", extras:[
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-advanced-kinematics-version-1.pdf"},
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 2", s:"2", url:"/physics-advanced-kinematics-version-2.pdf"},
