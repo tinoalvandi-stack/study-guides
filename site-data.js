@@ -120,6 +120,7 @@ const CLASSES=[
         {kind:"cram", t:"Cram sheet (PDF)", url:"/lang-ra-tips-cram.pdf"}]}]},
   {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS", units:[
      {t:"Introductory dynamics", url:"/physics-intro-dynamics", added:"2026-10-20", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/physics-intro-dynamics-cram.pdf"},
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-intro-dynamics-version-1.pdf"}]},
      {t:"Advanced kinematics", url:"/physics-advanced-kinematics", added:"2026-09-27", extras:[
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-advanced-kinematics-version-1.pdf"},
