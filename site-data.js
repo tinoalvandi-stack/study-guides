@@ -29,7 +29,8 @@ const FEATURES=[
   {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."},
   {classId:"pre",   title:"Parametric equations quiz study guide", url:"/precalc-parametrics", test:"2026-10-15", note:"4 questions, 30 minutes total: 3 without a calculator, 1 with. Four practice question types: eliminate t, trig curves, two parametrizations, projectiles."},
   {classId:"sem",   title:"End-of-course exam Part A guide", url:"/seminar-eoc-part-a", test:"2026-10-19", note:"A short workflow for all three questions, a fictional practice passage with full model answers, keywords and original templates."},
-  {classId:"pre",   title:"Parametric & sequences test study guide", url:"/precalc-parametric-sequences", test:"2026-10-21", end:"2026-10-23", note:"Wednesday no calculator: 5 parametric curves + 1 sequence. Friday calculator: 7 sequences and series + 1 projectile. 43 points."}
+  {classId:"pre",   title:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", test:"2026-10-21", note:"no calculator: 5 parametric curves + 1 nth-term question, 16 points"},
+  {classId:"pre",   title:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", test:"2026-10-23", note:"calculator: 7 sequences and series questions + 1 projectile, 27 points"},
 ];
 
 /* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
@@ -53,14 +54,18 @@ const CLASSES=[
      {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"Practice quiz A (PDF)", url:"/morality-ch3-practice-a.pdf"}]},
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
-     {t:"Parametric & sequences test", url:"/precalc-parametric-sequences", added:"2026-10-19", extras:[
+     {t:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", added:"2026-10-19", extras:[
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day1-a.pdf"},
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day1-b.pdf"},
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version C", s:"C", url:"/precalc-parametric-sequences-day1-c.pdf"},
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram-day1.pdf"},
+        {kind:"pdf", t:"Review, worked (PDF)", url:"/precalc-parametric-sequences-review-worked.pdf"},
+        {kind:"pdf", t:"Review notes (PDF)", url:"/precalc-parametric-sequences-review-notes.pdf"}]},
+     {t:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", added:"2026-10-19", extras:[
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day2-a.pdf"},
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day2-b.pdf"},
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version C", s:"C", url:"/precalc-parametric-sequences-day2-c.pdf"},
-        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram.pdf"},
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram-day2.pdf"},
         {kind:"pdf", t:"Review, worked (PDF)", url:"/precalc-parametric-sequences-review-worked.pdf"},
         {kind:"pdf", t:"Review notes (PDF)", url:"/precalc-parametric-sequences-review-notes.pdf"}]},
      {t:"Parametric equations", url:"/precalc-parametrics", added:"2026-10-13", extras:[
