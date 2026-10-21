@@ -29,6 +29,7 @@ const FEATURES=[
   {classId:"apush", title:"Unit 2/B study guide", url:"/apush-unit-2b", test:"2026-10-02", note:"15 multiple choice + 1 SAQ, 25 minutes. Lexington and Concord through the Treaty of Paris (1783); Saratoga, the Second Continental Congress and the Declaration first."},
   {classId:"pre",   title:"Parametric equations quiz study guide", url:"/precalc-parametrics", test:"2026-10-15", note:"4 questions, 30 minutes total: 3 without a calculator, 1 with. Four practice question types: eliminate t, trig curves, two parametrizations, projectiles."},
   {classId:"sem",   title:"End-of-course exam Part A guide", url:"/seminar-eoc-part-a", test:"2026-10-19", note:"A short workflow for all three questions, a fictional practice passage with full model answers, keywords and original templates."},
+  {classId:"phys",  title:"Introductory dynamics study guide", url:"/physics-intro-dynamics", test:"2026-10-21", end:"2026-10-22", note:"50 minutes: a free-body diagram, two net-force problems, linearize a data set. Forces at angles is not on it."},
   {classId:"pre",   title:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", test:"2026-10-21", note:"no calculator: 5 parametric curves + 1 sequence question (terms, recursive or Σ notation), 16 points"},
   {classId:"pre",   title:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", test:"2026-10-23", note:"calculator: nth term, finding sums, Binomial Theorem + 1 projectile, 27 points"},
 ];
@@ -118,6 +119,8 @@ const CLASSES=[
      {t:"Rhetorical analysis: priority devices & full reference", url:"/lang-ra-tips#s-6", added:"2026-10-08", extras:[
         {kind:"cram", t:"Cram sheet (PDF)", url:"/lang-ra-tips-cram.pdf"}]}]},
   {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS", units:[
+     {t:"Introductory dynamics", url:"/physics-intro-dynamics", added:"2026-10-20", extras:[
+        {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-intro-dynamics-version-1.pdf"}]},
      {t:"Advanced kinematics", url:"/physics-advanced-kinematics", added:"2026-09-27", extras:[
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 1", s:"1", url:"/physics-advanced-kinematics-version-1.pdf"},
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 2", s:"2", url:"/physics-advanced-kinematics-version-2.pdf"},
