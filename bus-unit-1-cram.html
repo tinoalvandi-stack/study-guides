@@ -70,7 +70,8 @@ thead th{font-style:italic;border-bottom:1px solid #111;padding-bottom:2px;font-
 
 .upd{display:inline-block;margin-top:5px;font-size:12px;opacity:.75}
 footer{font-size:12.5px;color:var(--ink3);text-transform:lowercase;padding:6px 0 30px;text-align:center}
-@media (max-width:620px){.grid{grid-template-columns:1fr}}
+/* phones: cards may shrink to the paper, and a table wider than its card scrolls inside it. Screen only, so print is unchanged. */
+@media screen and (max-width:620px){.grid{grid-template-columns:minmax(0,1fr)}.card{min-width:0;overflow-x:auto}}
 @media print{
   @page{size:letter;margin:.55in .7in}
   html,body{background:#fff!important;color:#000!important;padding:0!important;margin:0!important}

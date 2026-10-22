@@ -394,6 +394,7 @@ node tools/sync-guide-engine.mjs
 node tools/sync-guides.mjs
 node tools/sync-guide-engine.mjs --check
 node tools/sync-guides.mjs --check
+node --test tools/test-*.mjs
 ```
 
 The engine sync splices the template around each guide's exact `GUIDE` and

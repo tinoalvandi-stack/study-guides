@@ -80,13 +80,40 @@ class Element {
     for (const handler of this.events.get(type) || []) handler(event);
     return event;
   }
-  scrollIntoView(options) { this.scrollRequests.push(options); }
+  // A small scroll model for the selection-clearance checks. Only the sticky
+  // bar and boxes placed by layout() have a position; every other node reports
+  // an empty rectangle.
+  get scrollModel() { let node = this; while (node.parent) node = node.parent; return node.model || null; }
+  getBoundingClientRect() {
+    const view = this.scrollModel;
+    if (view && this.sticky) return { top: 0, bottom: view.bar, height: view.bar };
+    if (!view || !this.box) return { top: 0, bottom: 0, height: 0 };
+    const top = this.box.top - view.scrollY;
+    return { top, bottom: top + this.box.height, height: this.box.height };
+  }
+  scrollIntoView(options) {
+    this.scrollRequests.push(options);
+    const view = this.scrollModel;
+    if (!view || !this.box || options?.block !== "nearest") return;
+    // CSSOM View "nearest" alignment; scroll-margin counts only when the
+    // simulated engine honors it in scrollIntoView.
+    const margin = side => view.honorsScrollMargin ? parseFloat(this.style[side]) || 0 : 0;
+    const a = this.box.top - margin("scrollMarginTop"), b = this.box.top + this.box.height + margin("scrollMarginBottom");
+    const top = view.scrollY, bottom = top + view.height, size = b - a;
+    if (a < top && b > bottom) return;
+    if ((a < top && size < view.height) || (b > bottom && size > view.height)) view.scrollTo(a);
+    else if ((a < top && size > view.height) || (b > bottom && size < view.height)) view.scrollTo(b - view.height);
+  }
   focus() { this.focused = true; }
   blur() { this.focused = false; }
 }
 
-function searchPage() {
+function searchPage({ bar = 77, viewport = 900, honorsScrollMargin = true } = {}) {
   const body = new Element("body");
+  const view = body.model = { bar, height: viewport, scrollY: 0, docHeight: viewport, honorsScrollMargin,
+    outline: { width: 2, offset: 2 }, scrollBys: [],
+    scrollTo(y) { this.scrollY = Math.max(0, Math.min(y, this.docHeight - this.height)); } };
+  const stickyBar = new Element("header"); stickyBar.className = "bar"; stickyBar.sticky = true; body.append(stickyBar);
   const ids = new Set(["find", "findw", "hint", "searchSelection", "top", "inlinelist", "empty", "tophd", "otherhd", "inlinen", "findclr"]);
   // Take IDs and accessibility attributes from the real homepage, not a
   // hand-written substitute that would hide a missing status region.
@@ -109,7 +136,12 @@ function searchPage() {
       createTextNode: text => { const node = new Element("#text"); node.textContent = text; return node; } },
     window: { open: (...args) => opened.push(args) },
     localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
-    matchMedia: () => ({ matches: false }), Date: FixedDate
+    matchMedia: () => ({ matches: false }), Date: FixedDate,
+    getComputedStyle: node => node.classList.contains("sel")
+      ? { outlineStyle: "solid", outlineWidth: `${view.outline.width}px`, outlineOffset: `${view.outline.offset}px` }
+      : { outlineStyle: "none", outlineWidth: "0px", outlineOffset: "0px" },
+    scrollBy: (x, y) => { view.scrollBys.push(y); view.scrollTo(view.scrollY + y); },
+    get innerHeight() { return view.height; }
   });
   vm.runInContext([
     data, topics,
@@ -119,8 +151,14 @@ function searchPage() {
     "globalThis.searchState = () => ({ hits: LAST, selected: SEL });"
   ].join("\n"), context, { filename: "actual-homepage-search.js" });
   return {
-    get, body, opened,
+    get, body, opened, view,
     state: () => context.searchState(),
+    // Place the top match and the list rows on a page taller than the window.
+    layout({ top = 380, topHeight = 190, first = 600, rowHeight = 80, footer = 700 } = {}) {
+      const rows = this.rows();
+      rows.forEach((row, i) => { row.box = i ? { top: first + (i - 1) * rowHeight, height: rowHeight - 6 } : { top, height: topHeight }; });
+      const last = rows.at(-1).box; view.docHeight = last.top + last.height + footer;
+    },
     rows: () => [...get("top").querySelectorAll(".topm"), ...get("inlinelist").querySelectorAll(".unit")],
     input(query) { get("find").value = query; get("find").dispatch("input"); },
     key(key) { return get("find").dispatch("keydown", { key }); },
@@ -143,12 +181,13 @@ test("search selection has an atomic polite status region in the actual homepage
 });
 
 for (const query of ["unit", "practice"]) {
-  test(`all 17 ranked ${JSON.stringify(query)} results are rendered and match the displayed count`, () => {
+  test(`all ranked ${JSON.stringify(query)} results are rendered and match the displayed count`, () => {
     const page = searchPage(); page.input(query);
-    assert.equal(page.state().hits.length, 17, "The real catalogue supplies the regression case");
-    assert.equal(page.get("inlinen").textContent, "17 guides");
-    assert.equal(page.rows().length, 17, "No ranked result may be absent from the rendered list");
-    assert.equal(new Set(page.rows().map(row => row.href)).size, 17);
+    const total = page.state().hits.length;
+    assert(total > 8, "The real catalogue supplies more than eight results");
+    assert.equal(page.get("inlinen").textContent, `${total} guides`);
+    assert.equal(page.rows().length, total, "No ranked result may be absent from the rendered list");
+    assert.equal(new Set(page.rows().map(row => row.href)).size, total);
     assert.equal(page.body.classList.contains("searching"), true);
     assert.equal(page.get("hint").hidden, true);
   });
@@ -156,8 +195,9 @@ for (const query of ["unit", "practice"]) {
 
 test("arrows reach results beyond eight, mark only that row, announce it, and request visibility", () => {
   const page = searchPage(); page.input("unit");
-  for (let presses = 1; presses <= 17; presses++) {
-    const event = page.key("ArrowDown"), position = presses % 17;
+  const total = page.state().hits.length;
+  for (let presses = 1; presses <= total; presses++) {
+    const event = page.key("ArrowDown"), position = presses % total;
     assert.equal(event.defaultPrevented, true);
     const rows = page.rows(), selected = rows.filter(row => row.classList.contains("sel"));
     assert.equal(selected.length, 1, `ArrowDown ${presses}: selected result must be rendered`);
@@ -168,13 +208,13 @@ test("arrows reach results beyond eight, mark only that row, announce it, and re
     assert.equal(request.block, "nearest");
     assert.equal(request.behavior, "auto");
     const announcement = page.get("searchSelection")?.textContent || "";
-    assert(announcement.startsWith(`Result ${position + 1} of 17: `));
+    assert(announcement.startsWith(`Result ${position + 1} of ${total}: `));
     assert(announcement.includes(page.state().hits[position].it.u.t));
     assert(announcement.endsWith("Press Enter to open."));
   }
   page.key("ArrowUp");
-  assert.equal(page.rows()[16].getAttribute("aria-current"), "true", "ArrowUp wraps to the last rendered result");
-  assert.match(page.get("searchSelection").textContent, /^Result 17 of 17:/);
+  assert.equal(page.rows()[total - 1].getAttribute("aria-current"), "true", "ArrowUp wraps to the last rendered result");
+  assert(page.get("searchSelection").textContent.startsWith(`Result ${total} of ${total}:`));
 });
 
 test("Enter after eight ArrowDown presses opens the ninth visible result", () => {
@@ -183,7 +223,7 @@ test("Enter after eight ArrowDown presses opens the ninth visible result", () =>
   const selected = page.rows().find(row => row.classList.contains("sel"));
   assert(selected, "The ninth result must be visible before opening it");
   assert.equal(selected.href, "/bus-unit-1");
-  assert.equal(page.get("searchSelection").textContent, "Result 9 of 17: Business Principles, Unit 1. Press Enter to open.");
+  assert.equal(page.get("searchSelection").textContent, `Result 9 of ${page.state().hits.length}: Business Principles, Unit 1. Press Enter to open.`);
   assert.equal(page.enter().defaultPrevented, true, "Search submission should not navigate the form");
   assert.deepEqual(page.opened, [["/bus-unit-1", "_blank", "noopener"]]);
 });
@@ -207,5 +247,53 @@ for (const method of ["clear button", "Escape"]) {
     assert.equal(page.state().selected, 0, "A fresh search starts at its first result");
     assert.equal(page.rows().some(row => row.classList.contains("sel") || row.getAttribute("aria-current")), false);
     page.enter(); assert.deepEqual(page.opened, [["/apush-unit-2-leq", "_blank", "noopener"]]);
+  });
+}
+
+// Selection clearance (F1). The bar height and the selection outline are read
+// from the page on every move; 77px and 85.5px are the bar heights measured at
+// 320px and 1440px wide. Engines that honor and that ignore scroll-margin in
+// scrollIntoView are both modeled.
+function assertClear(page, label) {
+  const row = page.rows().find(r => r.classList.contains("sel"));
+  assert(row, `${label}: a result is selected`);
+  const rect = row.getBoundingClientRect(), ring = page.view.outline.width + page.view.outline.offset;
+  assert(rect.top - ring >= page.view.bar, `${label}: outline top at ${rect.top - ring}px is under the ${page.view.bar}px bar`);
+  assert(rect.bottom + ring <= page.view.height, `${label}: outline bottom at ${rect.bottom + ring}px is past the ${page.view.height}px window`);
+  const request = row.scrollRequests.at(-1);
+  assert.equal(request?.block, "nearest");
+  assert.equal(request?.behavior, "auto");
+}
+const engines = [[true, "scroll-margin honored"], [false, "scroll-margin ignored"]];
+
+for (const bar of [77, 85.5]) {
+  for (const [honorsScrollMargin, engine] of engines) {
+    test(`every ArrowUp and ArrowDown, both wraps included, keeps the selection clear of a ${bar}px bar (${engine})`, () => {
+      const page = searchPage({ bar, honorsScrollMargin }); page.input("unit"); page.layout();
+      const n = page.state().hits.length;
+      assert(n > 8, "The catalogue makes a list taller than the window");
+      for (let press = 1; press <= n + 1; press++) { page.key("ArrowUp"); assertClear(page, `ArrowUp ${press}`); }
+      assert.equal(page.state().selected, n - 1, "ArrowUp wrapped from the top match to the last result");
+      for (let press = 1; press <= n + 1; press++) { page.key("ArrowDown"); assertClear(page, `ArrowDown ${press}`); }
+      assert.equal(page.state().selected, 0, "ArrowDown wrapped from the last result to the top match");
+    });
+  }
+}
+
+for (const [honorsScrollMargin, engine] of engines) {
+  test(`a selection already clear of the bar does not move the page (${engine})`, () => {
+    const page = searchPage({ honorsScrollMargin }); page.input("unit"); page.layout();
+    page.key("ArrowDown"); assertClear(page, "second result");
+    assert.equal(page.view.scrollY, 0);
+    assert.deepEqual(page.view.scrollBys, []);
+  });
+
+  test(`clearance follows the bar and the window as they change size (${engine})`, () => {
+    const page = searchPage({ bar: 77, honorsScrollMargin }); page.input("unit"); page.layout();
+    for (let press = 0; press < 6; press++) page.key("ArrowUp");
+    page.view.bar = 132; // the bar wraps to two lines or grows with text zoom
+    for (let press = 1; press <= 6; press++) { page.key("ArrowUp"); assertClear(page, `taller bar, ArrowUp ${press}`); }
+    page.view.height = 568; // a shorter window, such as a phone turned sideways
+    for (let press = 1; press <= 8; press++) { page.key("ArrowDown"); assertClear(page, `shorter window, ArrowDown ${press}`); }
   });
 }

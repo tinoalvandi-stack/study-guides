@@ -4266,7 +4266,8 @@ function buildPractice(sec){
   ragain.addEventListener("click",startRetry);
   rbar.querySelector('[data-r="all"]').addEventListener("click",endRetry);
   rbar.querySelector('[data-r="over"]').addEventListener("click",()=>$("#reset").click());
-  $("#reset").addEventListener("click",()=>{if(hold())return;SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
+  /* Start over also turns Show answers off through its own button, so class, label and aria-pressed agree */
+  $("#reset").addEventListener("click",()=>{if(hold())return;if($("#root").classList.contains("showall"))$("#showall").click();SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
 }
 
 /* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
@@ -4410,6 +4411,9 @@ function placeMenu(m,t){
   const inBar=t.closest(".bar"), top=Math.round(inBar?bar.getBoundingClientRect().bottom+6:r.bottom+6);
   m.style.left=Math.round(left)+"px"; m.style.top=top+"px"; m.style.maxHeight=Math.max(200,Math.min(560,innerHeight-top-12))+"px";
 }
+/* Where focus enters a menu: the current entry while it is visible, else the first visible entry.
+   Search can hide the current lesson, and focusing a hidden entry leaves focus on the launcher. */
+function menuFocusTarget(m){const items=visibleF(m),cur=m.querySelector('.mi[aria-current="true"]');return items.includes(cur)?cur:items[0]}
 function openMenu(id,t,kbd){
   closeMenu(false);
   const m=document.getElementById(id); if(!m)return;
@@ -4417,7 +4421,7 @@ function openMenu(id,t,kbd){
   document.querySelectorAll(`[data-menu="${id}"]`).forEach(b=>b.setAttribute("aria-expanded",String(b===t)));
   OPEN=m; OPENBY=t;
   /* from the keyboard, focus moves into the menu; from a pointer it stays put (Tab or the arrow keys still enter it) */
-  if(kbd){const f=m.querySelector('.mi[aria-current="true"]')||visibleF(m)[0]; if(f)f.focus({preventScroll:true})}
+  if(kbd){const f=menuFocusTarget(m); if(f)f.focus({preventScroll:true})}
 }
 function closeMenu(ret){
   if(!OPEN)return;
@@ -4435,7 +4439,7 @@ document.addEventListener("keydown",e=>{
   if(!OPEN)return;
   if(e.key==="Escape"){e.preventDefault();closeMenu(true);return}
   const items=visibleF(OPEN), i=items.indexOf(document.activeElement);
-  if(i<0&&document.activeElement===OPENBY&&(e.key==="ArrowDown"||(e.key==="Tab"&&!e.shiftKey))){e.preventDefault();(OPEN.querySelector('.mi[aria-current="true"]')||items[0])?.focus({preventScroll:true});return}
+  if(i<0&&document.activeElement===OPENBY&&(e.key==="ArrowDown"||(e.key==="Tab"&&!e.shiftKey))){e.preventDefault();menuFocusTarget(OPEN)?.focus({preventScroll:true});return}
   if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();const n=items.length;if(!n)return;items[(i+(e.key==="ArrowDown"?1:-1)+n)%n].focus({preventScroll:true});return}
   if(e.key==="Home"||e.key==="End"){e.preventDefault();(e.key==="Home"?items[0]:items[items.length-1])?.focus({preventScroll:true});return}
   if(e.key==="Tab"){

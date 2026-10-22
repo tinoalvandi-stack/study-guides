@@ -285,6 +285,17 @@ if(!COURSE){
   }
   const find=$("#find"), findw=$("#findw"), hint=$("#hint");
   let SEL=0, LAST=[];
+  /* Keep the keyboard selection, outline included, clear of the sticky bar and the window's bottom edge.
+     The bar is measured on every move, so a resized or rewrapped bar is never stale. */
+  function keepSelClear(r){
+    const cs=getComputedStyle(r), pad=8+(cs.outlineStyle==="none"?0:Math.max(0,(parseFloat(cs.outlineWidth)||0)+(parseFloat(cs.outlineOffset)||0)));
+    const bar=$(".bar"), top=Math.max(0,bar?bar.getBoundingClientRect().bottom:0)+pad, bottom=innerHeight-pad;
+    r.style.scrollMarginTop=top+"px"; r.style.scrollMarginBottom=pad+"px";
+    r.scrollIntoView({block:"nearest",behavior:"auto"});
+    /* where scrollIntoView ignores scroll-margin, apply the same clearance directly */
+    const b=r.getBoundingClientRect();
+    if(b.top<top)scrollBy(0,b.top-top); else if(b.bottom>bottom)scrollBy(0,Math.min(b.bottom-bottom,b.top-top));
+  }
   function topCard(h){
     const c=h.it.c,u=h.it.u,pick=h.pick;
     const a=el("a","topm"); a.href=(pick||u).url; a.target="_blank"; a.rel="noopener noreferrer";
@@ -338,7 +349,7 @@ if(!COURSE){
     if(!LAST.length)return;
     if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();SEL=(SEL+(e.key==="ArrowDown"?1:-1)+LAST.length)%LAST.length;
       const rows=[$("#top .topm"),...$("#inlinelist").querySelectorAll(".unit")];rows.forEach((r,i)=>{if(!r)return;r.classList.toggle("sel",i===SEL);if(i===SEL)r.setAttribute("aria-current","true");else r.removeAttribute("aria-current")});
-      if(rows[SEL])rows[SEL].scrollIntoView({block:"nearest",behavior:"auto"});
+      if(rows[SEL])keepSelClear(rows[SEL]);
       const hit=LAST[SEL];$("#searchSelection").textContent="Result "+(SEL+1)+" of "+LAST.length+": "+hit.it.c.name+", "+hit.it.u.t+(hit.les?", lesson "+hit.les.n+", "+hit.les.raw:"")+". Press Enter to open.";}
   });
   document.addEventListener("click",e=>{const b=e.target.closest(".eg"); if(!b)return; find.value=b.dataset.q; runSearch(); find.focus()});

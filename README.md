@@ -64,6 +64,7 @@ site. Do not restore public Spanish listings or delete its files during a sync.
    node tools/sync-guides.mjs
    node tools/sync-guide-engine.mjs --check
    node tools/sync-guides.mjs --check
+node --test tools/test-*.mjs
    ```
 
 5. Follow the content, baseline-preservation, browser interaction, mobile,
