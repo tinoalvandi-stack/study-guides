@@ -31,7 +31,7 @@ const FEATURES=[
   {classId:"sem",   title:"End-of-course exam Part A guide", url:"/seminar-eoc-part-a", test:"2026-10-19", note:"A short workflow for all three questions, a fictional practice passage with full model answers, keywords and original templates."},
   {classId:"phys",  title:"Introductory dynamics study guide", url:"/physics-intro-dynamics", test:"2026-10-21", end:"2026-10-22", note:"50 minutes, four problems: recoil, thrust and buoyancy, a free-body diagram on a slope, drag linearization."},
   {classId:"pre",   title:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", test:"2026-10-21", note:"no calculator: 5 parametric curves + 1 sequence question (first five terms or recursive), 16 points"},
-  {classId:"apush", title:"Congress quiz study guide", url:"/apush-congress-quiz", test:"2026-10-22", note:"Terms of office, age and citizenship requirements, how each house is elected, which house is proportional, and the checks and balances chart, with the Supreme Court and treaty checks."},
+  {classId:"apush", title:"Congress quiz study guide", url:"/apush-congress-quiz", test:"2026-10-22", note:"Multiple choice on terms of office, age and citizenship requirements, how each house is elected, which house is proportional, and the checks and balances chart, with the Supreme Court and treaty checks."},
   {classId:"pre",   title:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", test:"2026-10-23", note:"calculator: nth term, finding sums, Binomial Theorem + 1 projectile, 27 points"},
 ];
 
