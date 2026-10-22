@@ -2,6 +2,9 @@
    No libraries, no tracking beyond the anonymous Vercel page-view script, nothing leaves the browser
    except the optional feedback form. */
 "use strict";
+/* Public listing policy: preserve archived source data, omit the former Spanish course. */
+const PUBLIC_CLASSES = CLASSES.filter(c => c.id !== "span");
+const PUBLIC_FEATURES = FEATURES.filter(f => f.classId !== "span");
 const $=s=>document.querySelector(s);
 const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e};
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
@@ -25,9 +28,9 @@ function glyphSvg(name,color,size){
   return '<svg class="glyph" viewBox="0 0 26 26" width="'+size+'" height="'+size+'" aria-hidden="true" style="color:'+color+'">'+
    '<g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'+(G[name]||G.flag)+'</g></svg>';
 }
-const byId=id=>CLASSES.find(c=>c.id===id);
+const byId=id=>PUBLIC_CLASSES.find(c=>c.id===id);
 const isNew=d=>d&&(new Date(TODAY)-new Date(d))/864e5<=7;
-const live=()=>FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>(b.pin?1:0)-(a.pin?1:0)||a.test.localeCompare(b.test));
+const live=()=>PUBLIC_FEATURES.filter(f=>(f.end||f.test)>=TODAY).sort((a,b)=>(b.pin?1:0)-(a.pin?1:0)||a.test.localeCompare(b.test));
 const md=s=>{const x=new Date(s+"T12:00:00");return (x.getMonth()+1)+"/"+x.getDate()};
 const due=f=>f.test<TODAY&&f.end?f.end:f.test;
 const when=f=>{const d=new Date(f.test+"T12:00:00"),now=new Date(TODAY+"T12:00:00");const days=Math.round((d-now)/864e5);
@@ -37,8 +40,7 @@ const when=f=>{const d=new Date(f.test+"T12:00:00"),now=new Date(TODAY+"T12:00:0
 let artSerial=0;
 function art(id){
   const n="art"+(++artSerial);
-  const P={pre:["#1e514d","#123632","#bce3b0","#f5b792"],apush:["#b76045","#72392e","#f8d7ae","#e99b70"],psych:["#66628b","#35364f","#d6c4fa","#f4bcad"],phys:["#356f85","#193c50","#b5e8df","#efc26e"],bus:["#c59342","#8b572b","#ffe5aa","#f5bc75"],mor:["#81586b","#493948","#edbbca","#e9bd86"],lang:["#7a879b","#414e66","#e4e9f0","#edbd9f"],sem:["#779283","#3c594b","#e1e8ba","#edc699"],span:["#a2534b","#5c2826","#f6d8c9","#eaa684"]};
-  const [a,b,c,d]=P[id]||P.sem;
+  const [a,b,c,d]=["var(--surface2)","var(--paper)","var(--accent)","var(--ink2)"];
   const defs=`<defs><linearGradient id="${n}bg" x2="1" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient><linearGradient id="${n}pt" x2=".8" y2="1"><stop stop-color="${c}"/><stop offset="1" stop-color="${d}"/></linearGradient><filter id="${n}sh" x="-50%" y="-50%" width="200%" height="210%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#14211c" flood-opacity=".24"/></filter></defs>`;
   const bg=`<rect width="480" height="300" fill="url(#${n}bg)"/><circle cx="415" cy="20" r="190" fill="${c}" opacity=".06"/><circle cx="30" cy="305" r="170" fill="${d}" opacity=".05"/>`;
   const grid='<path d="M0 60H480M0 100H480M0 140H480M0 180H480M0 220H480M0 260H480M40 0V300M80 0V300M120 0V300M160 0V300M200 0V300M240 0V300M280 0V300M320 0V300M360 0V300M400 0V300M440 0V300" stroke="white" stroke-opacity=".07" fill="none"/>';
@@ -64,11 +66,11 @@ function setTheme(mode){
   const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
   if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
-  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
+  try{localStorage.setItem("theme",mode)}catch(e){}
 }
 segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
 (function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
-  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  const mode=saved==="light"||saved==="auto"?saved:"dark";
   if(mode!=="auto")document.documentElement.dataset.theme=mode;
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
 })();
@@ -205,7 +207,7 @@ if(!COURSE){
   /* class catalog: classes with guides first, then the ones still to come */
   (function(){
     const L=live();
-    const list=[...CLASSES.filter(c=>c.units.length),...CLASSES.filter(c=>!c.units.length)];
+    const list=[...PUBLIC_CLASSES.filter(c=>c.units.length),...PUBLIC_CLASSES.filter(c=>!c.units.length)];
     list.forEach((c,i)=>{
       const a=el("a","ccard rise"+(c.units.length?"":" empty")); a.href=c.page; a.style.setProperty("--i",i);
       const nx=L.find(f=>f.classId===c.id);
@@ -219,7 +221,7 @@ if(!COURSE){
       a.setAttribute("aria-label",c.name+", "+classCounts(c)+(c.warn?". "+c.warn:""));
       $("#catalog").append(a);
     });
-    $("#cty").textContent=CLASSES.length+" classes · "+CLASSES.reduce((n,c)=>n+c.units.length,0)+" guides";
+    $("#cty").textContent=PUBLIC_CLASSES.length+" classes · "+PUBLIC_CLASSES.reduce((n,c)=>n+c.units.length,0)+" guides";
     /* "2 of 6 studied" from this browser's ticks; refreshed when the page comes back from a class page */
     const drawStudied=()=>{const S=studied();document.querySelectorAll("#catalog .ccard").forEach(a=>{const c=byId(a.dataset.cls),d=a.querySelector(".cdone");
       const n=c?c.units.filter(u=>S.has(u.url)).length:0;d.hidden=!n;d.textContent=n?n+" of "+c.units.length+" studied":""})};
@@ -236,7 +238,7 @@ if(!COURSE){
   const norm=x=>String(x).toLowerCase().replace(/[’']/g,"").replace(/[–—]/g,"-").replace(/[^a-z0-9/&\s-]/g," ")
     .replace(/(\d)\s*\/\s*([a-z])\b/g,"$1$2").replace(/\bu\s?(\d)/g,"unit $1").replace(/\bunit(\d)/g,"unit $1").replace(/\bch(?:apters?)?\.?\s?(\d)/g,"ch $1").replace(/\s+/g," ").trim();
   const INDEX=[];
-  CLASSES.forEach(c=>c.units.forEach(u=>INDEX.push({c:c,u:u,title:norm(u.t),cls:norm(c.name),abbr:norm(c.abbr||""),al:ALIAS[c.id]||[],
+  PUBLIC_CLASSES.forEach(c=>c.units.forEach(u=>INDEX.push({c:c,u:u,title:norm(u.t),cls:norm(c.name),abbr:norm(c.abbr||""),al:ALIAS[c.id]||[],
     ex:(u.extras||[]).map(x=>({x:x,t:norm(x.t)})),added:u.added||"",
     tp:topicsOf(u).map((l,i)=>({n:i+1,raw:l[0],title:norm(l[0]).split(" "),tok:norm(l.join(" ")).split(" ")}))})));
   const STOP=new Set(["the","and","of","for","to","in","on","with","what","how","why","is","are","a","an","vs"]);
@@ -255,7 +257,7 @@ if(!COURSE){
     const words=q.split(" ");
     const recent=store.get("recent",[]).map(r=>r.u);
     const lv=live().map(f=>f.url);
-    const classOnly=CLASSES.find(c=>norm(c.name)===q||norm(c.abbr||"")===q||(ALIAS[c.id]||[]).includes(q));
+    const classOnly=PUBLIC_CLASSES.find(c=>norm(c.name)===q||norm(c.abbr||"")===q||(ALIAS[c.id]||[]).includes(q));
     let kind=null; for(const k in KINDW)if(KINDW[k].some(w=>q===w||q.includes(w)))kind=k;
     const hits=[];
     INDEX.forEach(it=>{
@@ -312,12 +314,12 @@ if(!COURSE){
     const top=$("#top"), box=$("#inlinelist"), empty=$("#empty");
     top.innerHTML=""; box.innerHTML=""; empty.innerHTML="";
     $("#tophd").hidden=!r.hits.length; $("#otherhd").hidden=r.hits.length<2; box.hidden=r.hits.length<2;
-    $("#tophd h3").textContent=r.hits.length&&r.hits[0].s<30&&!r.hits[0].les?"closest match":"top match";
+    $("#tophd h2, #tophd h3").textContent=r.hits.length&&r.hits[0].s<30&&!r.hits[0].les?"closest match":"top match";
     if(!r.hits.length){
       const d=el("div","nores");
       const p=el("p"); p.append("no guide found for “"+raw+"”."); d.append(p);
       const sug=el("div","sugs");
-      CLASSES.filter(c=>c.units.length).forEach(c=>{const b=el("button","eg",(c.abbr||c.name).toLowerCase());b.type="button";b.dataset.q=(c.abbr||c.name).toLowerCase();sug.append(b)});
+      PUBLIC_CLASSES.filter(c=>c.units.length).forEach(c=>{const b=el("button","eg",(c.abbr||c.name).toLowerCase());b.type="button";b.dataset.q=(c.abbr||c.name).toLowerCase();sug.append(b)});
       d.append(el("span","sl","try a class:"),sug);
       const req=el("button","reqg","can’t find it? request a guide"); req.type="button"; req.addEventListener("click",()=>{if(window.openFeedback)window.openFeedback("rq")});
       d.append(req); empty.append(d); $("#inlinen").textContent=""; return;
@@ -453,7 +455,7 @@ if(!COURSE){
     const rq=$("#rqform"), rqsend=$("#rqsend"), rqodds=$("#rqodds"), wantEl=$("#rqwant"), cls=rq.cls;
     const WANTS=["cram sheet","summary of my notes","practice questions","full guide"];
     let want=new Set(), rbusy=false;
-    CLASSES.forEach(c=>{const o=el("option",null,c.name);o.value=c.name;cls.append(o)});
+    PUBLIC_CLASSES.forEach(c=>{const o=el("option",null,c.name);o.value=c.name;cls.append(o)});
     const oth=el("option",null,"a class i'm not in"); oth.value="other"; cls.append(oth);
     WANTS.forEach(w=>{
       const b=el("button","pick",w); b.type="button"; b.setAttribute("aria-pressed","false");
@@ -556,3 +558,29 @@ if("serviceWorker" in navigator&&isSecureContext)addEventListener("load",()=>nav
 /* ═══ bar shadow on scroll ═══ */
 (function(){const bar=$("#bar");if(!bar)return;let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};
   addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
+
+/* Approved text-built book for the class index. */
+(() => {
+  const ns='http://www.w3.org/2000/svg';
+  const home=document.getElementById('homeart');
+  if (home) {
+    const words=['HISTORY  LANGUAGE  PHYSICS  ','IDEAS  QUESTIONS  CONNECTIONS  ','SEMINAR  MORALITY  BUSINESS  ','READ  THINK  UNDERSTAND  ','PSYCHOLOGY  MATHEMATICS  '];
+    const svg=document.createElementNS(ns,'svg');
+    svg.setAttribute('viewBox','0 0 540 360'); svg.setAttribute('class','typebook');
+    svg.setAttribute('aria-hidden','true');
+    const defs=document.createElementNS(ns,'defs'); svg.append(defs);
+    for(let i=0;i<22;i++) {
+      const y=72+i*8.8;
+      const path=document.createElementNS(ns,'path'); path.id='book-line-'+i;
+      path.setAttribute('d',`M 20 ${y+18} Q 145 ${y-48} 266 ${y+32} Q 390 ${y-48} 520 ${y+18}`);
+      defs.append(path);
+      const text=document.createElementNS(ns,'text');
+      text.setAttribute('opacity',String(.36+(i%6)*.095));
+      const tp=document.createElementNS(ns,'textPath'); tp.setAttribute('href','#'+path.id);
+      tp.textContent=(words[i%words.length]).repeat(4); text.append(tp); svg.append(text);
+    }
+    const caption=document.createElementNS(ns,'text'); caption.setAttribute('x','270'); caption.setAttribute('y','338');
+    caption.setAttribute('text-anchor','middle'); caption.setAttribute('class','caption'); caption.textContent='NOTES · PRACTICE · WORKED EXAMPLES'; svg.append(caption);
+    home.replaceChildren(svg);
+  }
+})();
