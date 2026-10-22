@@ -263,7 +263,8 @@ a.cname{border-radius:6px}
 .nores{margin:0 0 16px;padding:16px 18px;border:1px dashed var(--line2);border-radius:var(--r-card);color:var(--ink2);font-size:var(--t15)}
 .nores p{margin:0}
 .nores div{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.sx{display:none !important}
+/* Search filters only affect the screen; print keeps each item's native layout. */
+@media screen{.sx{display:none !important}}
 mark.hit{background:color-mix(in srgb,#E2B04A 42%,transparent);color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .pane{display:none;container-type:inline-size}
 .pane.on{display:block;animation:rise .38s var(--spring) both}
@@ -2501,24 +2502,30 @@ function buildFormulas(sec){
 /* flashcards: think first, flip, then "Review again" or "Got it". Marked cards form a short review round.
    Back, next and shuffle still move freely; arrow keys and swipes too. In memory for this visit only. */
 function buildCards(sec){
-  const cs=GUIDE.cards||[]; const all=cs.map((_,k)=>k); let order=all.slice(), i=0, marked=new Set(), done=0, round=1;
+  const cs=GUIDE.cards||[]; const all=cs.map((_,k)=>k); let order=all.slice(), i=0, marked=new Set(), round=1;
+  const checked=new Set(); // card identities rated in this round, independent of navigation or shuffle
   const dk=el("div","dk");
-  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; fc.setAttribute("aria-label","flashcard, press to flip"); deck.appendChild(fc); dk.appendChild(deck);
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; fc.setAttribute("aria-describedby","flashcard-help"); deck.appendChild(fc); dk.appendChild(deck);
+  const help=el("p","vh"); help.id="flashcard-help"; deck.appendChild(help);
+  const announcement=el("p","vh"); announcement.setAttribute("role","status"); announcement.setAttribute("aria-live","polite"); announcement.setAttribute("aria-atomic","true"); deck.appendChild(announcement);
   const st=el("div","dstudy",`<button type="button" class="btn" data-a="flip">Show answer</button><button type="button" class="btn ghost" data-a="again" hidden>Review again</button><button type="button" class="btn" data-a="got" hidden>Got it</button><span class="mk" aria-live="polite"></span>`); dk.appendChild(st);
   const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn ghost" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
   const fin=el("div","ddone"); fin.hidden=true; fin.tabIndex=-1; dk.appendChild(fin);
   sec.appendChild(dk);
   const cnt=nav.querySelector(".cnt"), mk=st.querySelector(".mk"), bF=st.querySelector('[data-a="flip"]'), bA=st.querySelector('[data-a="again"]'), bG=st.querySelector('[data-a="got"]');
-  const sync=()=>{const f=fc.classList.contains("flip");bF.hidden=f;bA.hidden=!f;bG.hidden=!f;bF.textContent="Show answer";mk.textContent=marked.size?`${marked.size} marked to review`:""};
-  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${order.length}${round>1?` · review round ${round}`:""}`;sync()};
+  const sync=()=>{const f=fc.classList.contains("flip");bF.hidden=f;bA.hidden=!f;bG.hidden=!f;bF.textContent="Show answer";mk.textContent=marked.size?`${marked.size} marked to review`:"";
+    fc.querySelector(".f").setAttribute("aria-hidden",String(f));fc.querySelector(".b").setAttribute("aria-hidden",String(!f));
+    const text=fc.querySelector(f?".b .face-value":".f .face-value").textContent, face=f?"Answer":"Term", position=`Card ${i+1} of ${order.length}${round>1?`, review round ${round}`:""}`;
+    fc.setAttribute("aria-label",`${face}: ${text}`);help.textContent=`${position}. Press to show the ${f?"term":"answer"}.`;announcement.textContent=`${position}. ${face}: ${text}`;};
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span class="face-value">${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span class="face-value">${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${order.length}${round>1?` · review round ${round}`:""}`;sync()};
   const flip=()=>{fc.classList.toggle("flip");sync()};
   const go=d=>{i=(i+d+order.length)%order.length;draw()};
   const showDeck=on=>{deck.hidden=!on;st.hidden=!on;nav.hidden=!on;fin.hidden=on};
   const finish=()=>{const n=marked.size;
     fin.innerHTML=`<p class="eyb">${round>1?`review round ${round} finished`:"deck finished"}</p><h4>${n?`${n} card${n===1?"":"s"} to review again`:`All ${order.length} cards checked`}</h4><p>${n?"Go through just the cards you marked.":"Try one of them in a sentence of your own, or run the full deck again."}</p><div class="row2">${n?`<button type="button" class="btn" data-a="rev">Review marked cards (${n})</button>`:""}<button type="button" class="btn${n?" ghost":""}" data-a="full">Full deck again</button></div>`;
     showDeck(false); fin.focus({preventScroll:true});};
-  const mark=again=>{const k=order[i];if(again)marked.add(k);else marked.delete(k);done++;if(i>=order.length-1)finish();else{i++;draw();fc.focus({preventScroll:true})}};
-  fin.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.a==="rev"){order=[...marked].sort((a,b)=>a-b);round++}else{order=all.slice();round=1}marked=new Set();i=0;done=0;showDeck(true);draw();fc.focus({preventScroll:true})});
+  const mark=again=>{const k=order[i];if(again)marked.add(k);else marked.delete(k);checked.add(k);if(checked.size===order.length)finish();else{do{i=(i+1)%order.length}while(checked.has(order[i]));draw();fc.focus({preventScroll:true})}};
+  fin.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.a==="rev"){order=[...marked].sort((a,b)=>a-b);round++}else{order=all.slice();round=1}marked=new Set();checked.clear();i=0;showDeck(true);draw();fc.focus({preventScroll:true})});
   fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
   bF.addEventListener("click",()=>{flip();bG.focus({preventScroll:true})});
   bA.addEventListener("click",()=>mark(true)); bG.addEventListener("click",()=>mark(false));
@@ -2725,7 +2732,7 @@ function show(id,user){
 }
 /* deep links: #practice opens a pane; #s-3 opens the guide at that lesson */
 function route(instant){
-  const want=decodeURIComponent(location.hash.slice(1));
+  let want="";try{want=decodeURIComponent(location.hash.slice(1))}catch(e){} // malformed hashes fall back to the first pane
   if(PANES.includes(want)){if(CUR!==want)show(want,false);return}
   const t=want&&document.getElementById(want);
   if(t&&t.closest(".pane")){show(t.closest(".pane").id.slice(2),false);requestAnimationFrame(()=>requestAnimationFrame(()=>goTo(want,instant)));return}

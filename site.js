@@ -308,6 +308,7 @@ if(!COURSE){
   }
   function runSearch(){
     const raw=find.value.trim();
+    $("#searchSelection").textContent="";
     findw.classList.toggle("has",!!raw); document.body.classList.toggle("searching",!!raw); hint.hidden=!!raw;
     if(!raw){LAST=[];return}
     const r=rank(raw); LAST=r.hits; SEL=0;
@@ -326,7 +327,7 @@ if(!COURSE){
     }
     $("#inlinen").textContent=r.hits.length+(r.hits.length===1?" guide":" guides");
     top.append(topCard(r.hits[0]));
-    r.hits.slice(1,8).forEach(h=>box.append(guideLink(h.it.c,h.it.u,h.les?{glyph:true,cls:true,compact:true,href:baseUrl(h.it.u.url)+"#s-"+h.les.n,meta:"lesson "+h.les.n+" · "+h.les.raw}:{glyph:true,cls:true,compact:true})));
+    r.hits.slice(1).forEach(h=>box.append(guideLink(h.it.c,h.it.u,h.les?{glyph:true,cls:true,compact:true,href:baseUrl(h.it.u.url)+"#s-"+h.les.n,meta:"lesson "+h.les.n+" · "+h.les.raw}:{glyph:true,cls:true,compact:true})));
   }
   function openTop(){const h=LAST[SEL]; if(!h)return; recordOpen(h.it.c,h.it.u); window.open(h.pick?h.pick.url:h.les?baseUrl(h.it.u.url)+"#s-"+h.les.n:h.it.u.url,"_blank","noopener")}
   find.addEventListener("input",runSearch);
@@ -336,7 +337,9 @@ if(!COURSE){
     if(e.key==="Escape"){find.value="";runSearch();find.blur();return}
     if(!LAST.length)return;
     if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();SEL=(SEL+(e.key==="ArrowDown"?1:-1)+LAST.length)%LAST.length;
-      const rows=[$("#top .topm"),...$("#inlinelist").querySelectorAll(".unit")];rows.forEach((r,i)=>r&&r.classList.toggle("sel",i===SEL));}
+      const rows=[$("#top .topm"),...$("#inlinelist").querySelectorAll(".unit")];rows.forEach((r,i)=>{if(!r)return;r.classList.toggle("sel",i===SEL);if(i===SEL)r.setAttribute("aria-current","true");else r.removeAttribute("aria-current")});
+      if(rows[SEL])rows[SEL].scrollIntoView({block:"nearest",behavior:"auto"});
+      const hit=LAST[SEL];$("#searchSelection").textContent="Result "+(SEL+1)+" of "+LAST.length+": "+hit.it.c.name+", "+hit.it.u.t+(hit.les?", lesson "+hit.les.n+", "+hit.les.raw:"")+". Press Enter to open.";}
   });
   document.addEventListener("click",e=>{const b=e.target.closest(".eg"); if(!b)return; find.value=b.dataset.q; runSearch(); find.focus()});
   const focusFind=()=>{find.scrollIntoView({block:"center",behavior:REDUCED?"auto":"smooth"});find.focus({preventScroll:true})};

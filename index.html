@@ -50,6 +50,7 @@ try{const t=localStorage.getItem("theme");if(t!=="auto")document.documentElement
       <h2 class="search-label"><label for="find">Find a guide</label></h2>
       <form class="find" id="findw" role="search" autocomplete="off"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.7"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg><input id="find" type="search" placeholder="class, unit, or topic" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="search guides" aria-controls="inline"><span class="kbd">⌘K</span><button type="button" class="clr" id="findclr" aria-label="clear search"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"/></svg></button></form>
       <p class="hint" id="hint">try <button type="button" class="eg" data-q="psych unit 0">psych unit 0</button> or <button type="button" class="eg" data-q="vectors">vectors</button></p>
+      <p id="searchSelection" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
       <a class="browse" id="browse" href="#classes">browse classes <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="home-art" id="homeart" aria-hidden="true"></div>
@@ -60,7 +61,7 @@ try{const t=localStorage.getItem("theme");if(t!=="auto")document.documentElement
   </section>
   </div>
 
-  <section id="inline" aria-live="polite">
+  <section id="inline" aria-label="Search results" aria-live="polite">
     <div class="sh" id="tophd"><h2>top match</h2><span class="shx" id="inlinen"></span></div>
     <div id="top"></div>
     <div class="sh" id="otherhd"><h2>other matches</h2></div>

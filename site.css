@@ -105,6 +105,8 @@ body.searching #inline{display:block}
 .eyebrow{display:block;font-size:var(--t12);font-weight:700;letter-spacing:.02em}
 .topm .tt{font-family:var(--display);font-size:24px;font-weight:620;letter-spacing:-.012em;line-height:1.12;text-wrap:balance}
 .topm.sel,.unit.sel{border-color:var(--accent)}
+.searching #inline .sel{outline:2px solid var(--accent);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .tles{display:flex;align-items:baseline;gap:8px;font-size:var(--t15);font-weight:600;color:var(--ink)}
 .tles .tln{flex:none;font-size:var(--t12);font-weight:700;letter-spacing:.04em;color:var(--accent);text-transform:uppercase}
 .go{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;align-self:flex-start;padding:10px 16px;border-radius:var(--r-btn);background:var(--btn);color:var(--on-btn);font-size:var(--t15);font-weight:650;text-transform:lowercase}
