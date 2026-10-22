@@ -1041,9 +1041,9 @@ const GUIDE = {
  "pdfsNote": "One page: the House and Senate rules, how each office is filled, the checks chart and the traps.",
  "panes": [
   "outline",
+  "problems",
   "practice",
-  "cram",
-  "problems"
+  "cram"
  ],
  "labels": {
   "problems": "Recall questions"
@@ -1056,6 +1056,137 @@ const GUIDE = {
   "President: 4-year term, chosen by the Electoral College. Federal judges: nominated by the president, approved by the Senate, serve for life."
  ],
  "outline": [
+  {
+   "w": 3,
+   "t": "Find it in the Constitution",
+   "d": "where each answer is in the Constitution, and how to write it",
+   "p": [
+    "Free response, with the Constitution provided: the points come from finding the right clause and explaining it."
+   ],
+   "steps": [
+    "Answer in the first sentence with the exact rule or number.",
+    "Cite the Article and Section, for example (Article I, Section 3).",
+    "Explain how it works and what it does: the cause, then the effect."
+   ],
+   "watch": [
+    "Not in the Constitution: judicial review (Marbury v. Madison, 1803), the 435 House seats (set by law) and the Virginia Plan.",
+    "The original text of Article I, Section 3 still says state legislatures choose senators; the Seventeenth Amendment (1913) changed it.",
+    "Use the Constitution's own words: **advice and consent**, two-thirds of the senators present, equally divided."
+   ],
+   "table": {
+    "h": "Where to look",
+    "cols": [
+     "Question",
+     "Article, Section",
+     "Answer"
+    ],
+    "rows": [
+     [
+      "House term and election",
+      "I, 2",
+      "2 years; elected directly by the people"
+     ],
+     [
+      "House age and citizenship",
+      "I, 2",
+      "25; citizen 7 years; lives in the state"
+     ],
+     [
+      "House seats",
+      "I, 2",
+      "By population, counted every 10 years"
+     ],
+     [
+      "Senate term",
+      "I, 3",
+      "6 years; one-third elected every 2 years"
+     ],
+     [
+      "Senate age and citizenship",
+      "I, 3",
+      "30; citizen 9 years; lives in the state"
+     ],
+     [
+      "Senate seats",
+      "I, 3",
+      "Two per state, equal"
+     ],
+     [
+      "Who chooses senators",
+      "I, 3; Seventeenth Amendment",
+      "State legislatures, then the voters from 1913"
+     ],
+     [
+      "Vice president's vote",
+      "I, 3",
+      "Only when the Senate is equally divided"
+     ],
+     [
+      "Veto and override",
+      "I, 7",
+      "Override takes two-thirds of each house"
+     ],
+     [
+      "Lower federal courts",
+      "I, 8; III, 1",
+      "Congress creates them"
+     ],
+     [
+      "Treaties",
+      "II, 2",
+      "President makes them; two-thirds of the senators present consent"
+     ],
+     [
+      "Judges and officers",
+      "II, 2; III, 1",
+      "President nominates, Senate consents; judges serve during good behaviour"
+     ],
+     [
+      "Pardons",
+      "II, 2",
+      "Granted by the president"
+     ],
+     [
+      "Recommending laws",
+      "II, 3",
+      "The president recommends measures to Congress"
+     ],
+     [
+      "Impeachment",
+      "I, 2 and 3; II, 4",
+      "House charges, Senate tries, two-thirds of senators present convict"
+     ],
+     [
+      "President",
+      "II, 1",
+      "4 years; age 35; natural-born; Electoral College"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Explain one way the Senate checks the president.",
+     "a": "Through advice and consent (Article II, Section 2): the president nominates judges and makes treaties, but nominees need Senate approval and a treaty needs two-thirds of the senators present.",
+     "why": "So the president cannot seat a justice or commit the country to a treaty without the Senate."
+    },
+    {
+     "q": "Compare how members of the House and the Senate are chosen.",
+     "a": "House members have always been elected directly by the people every two years (Article I, Section 2). Senators were chosen by state legislatures for six-year terms (Article I, Section 3) until the Seventeenth Amendment (1913) let the people elect them.",
+     "why": "A comparison needs both houses and the change."
+    },
+    {
+     "q": "How did the Constitution's plan for representation differ from the Virginia Plan?",
+     "a": "The Virginia Plan based both houses on population. The Constitution made only the House proportional (Article I, Section 2) and gave every state two senators (Article I, Section 3).",
+     "why": "That split, the Great Compromise, protected small states in the Senate."
+    }
+   ],
+   "terms": [
+    "advice and consent",
+    "equally divided",
+    "Seventeenth Amendment",
+    "judicial review"
+   ]
+  },
   {
    "w": 3,
    "t": "Terms, age and citizenship",
@@ -1109,26 +1240,14 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "A candidate is 27 years old and has been a citizen for 8 years. Which house can this person run for?",
-     "opts": [
-      "Both the House and the Senate",
-      "The House of Representatives only",
-      "The Senate only",
-      "Neither house"
-     ],
-     "a": 1,
-     "why": "The House needs 25 and 7 years; the Senate needs 30 and 9, so this candidate misses the Senate on both counts."
+     "q": "A candidate is 27 and has been a citizen for 8 years. Which house can they run for?",
+     "a": "Only the House, which needs age 25 and 7 years as a citizen.",
+     "why": "The Senate needs age 30 and 9 years as a citizen, so this candidate misses on both counts."
     },
     {
-     "q": "A senator elected in 2026 will next face election in",
-     "opts": [
-      "2028",
-      "2030",
-      "2032",
-      "2034"
-     ],
-     "a": 2,
-     "why": "Senate terms are six years. 2028 would be a House term."
+     "q": "How long is a senator's term, and why is part of the Senate up every two years?",
+     "a": "6 years. The first senators were split into three classes with 2-, 4- and 6-year terms, so one-third of the Senate is elected every 2 years.",
+     "why": "The whole House is up every 2 years; only a third of the Senate is."
     }
    ],
    "terms": [
@@ -1171,26 +1290,14 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "Before the Seventeenth Amendment (1913), senators were chosen by",
-     "opts": [
-      "the voters of each state",
-      "the state legislatures",
-      "the Electoral College",
-      "the House of Representatives"
-     ],
-     "a": 1,
-     "why": "Voters have elected senators directly only since 1913. The Electoral College picks the president."
+     "q": "Before 1913, how did someone become a senator, and what changed it?",
+     "a": "State legislatures chose senators until the Seventeenth Amendment (1913) gave the choice to the voters.",
+     "why": "The House was always elected directly by the people."
     },
     {
-     "q": "Under the original Constitution, the people voted directly for",
-     "opts": [
-      "members of the House of Representatives",
-      "senators",
-      "the president",
-      "federal judges"
-     ],
-     "a": 0,
-     "why": "Senators came from state legislatures, the president from the Electoral College, and judges were appointed."
+     "q": "Which office did the people elect directly under the original Constitution?",
+     "a": "Only the House of Representatives.",
+     "why": "State legislatures chose senators, the Electoral College chose the president, and judges were appointed."
     }
    ],
    "terms": [
@@ -1257,48 +1364,19 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "Which house of Congress uses equal representation?",
-     "opts": [
-      "The House of Representatives",
-      "The Senate",
-      "Both houses",
-      "Neither house"
-     ],
-     "a": 1,
-     "why": "Two senators per state, whatever its population; the House goes by population."
+     "q": "Which house of Congress uses population proportional representation, and which uses equal representation?",
+     "a": "The House of Representatives is proportional to population; the Senate is equal, two senators per state.",
+     "why": "Calling both houses proportional describes the Virginia Plan, not the Constitution."
     },
     {
-     "q": "Together, the House and the Senate have how many voting members?",
-     "opts": [
-      "435",
-      "100",
-      "535",
-      "50"
-     ],
-     "a": 2,
-     "why": "435 in the House plus 100 in the Senate."
+     "q": "How many members are in the House of Representatives? In the Senate?",
+     "a": "435 voting members in the House; 100 in the Senate (two from each of the 50 states).",
+     "why": "The House number is fixed by law; the Senate number comes from two per state."
     },
     {
-     "q": "A state has 300,000 free people and 100,000 enslaved people. Under the Three-Fifths Compromise, its population for House seats was",
-     "opts": [
-      "400,000",
-      "180,000",
-      "300,000",
-      "360,000"
-     ],
-     "a": 3,
-     "why": "300,000 free people plus three-fifths of 100,000 (60,000). Taking three-fifths of the free population is the trap."
-    },
-    {
-     "q": "A student writes that the Constitution bases both houses of Congress on population. That description actually fits",
-     "opts": [
-      "the Virginia Plan",
-      "the New Jersey Plan",
-      "the Great Compromise",
-      "the Articles of Confederation"
-     ],
-     "a": 0,
-     "why": "The New Jersey Plan wanted equal votes, and the Great Compromise made only the House proportional."
+     "q": "A state has 300,000 free people and 100,000 enslaved people. What population counts toward its House seats under the Three-Fifths Compromise?",
+     "a": "360,000: 300,000 free people plus three-fifths of 100,000 (60,000).",
+     "why": "The same count set the state's share of direct federal taxes."
     }
    ],
    "terms": [
@@ -1357,37 +1435,19 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "Which two checks does the judiciary have over the executive?",
-     "opts": [
-      "Reviewing legislative acts and interpreting laws",
-      "Reviewing executive acts and issuing injunctions",
-      "Granting pardons and nominating judges",
-      "Impeaching officials and creating courts"
-     ],
-     "a": 1,
-     "why": "Reviewing legislative acts is its check on Congress; the other pairs belong to other branches."
+     "q": "On the chart, which two checks does the judiciary have over the executive?",
+     "a": "Review executive acts and issue injunctions.",
+     "why": "Reviewing legislative acts is its check on Congress."
     },
     {
-     "q": "Which of the following is NOT one of the legislature's checks on the executive?",
-     "opts": [
-      "Confirming executive appointments",
-      "Overriding an executive veto",
-      "Rejecting foreign treaties",
-      "Granting pardons"
-     ],
-     "a": 3,
-     "why": "Granting pardons is the executive's check on the judiciary."
+     "q": "Name the legislature's three checks on the executive.",
+     "a": "Confirm executive appointments (the Senate), override an executive veto, and reject foreign treaties.",
+     "why": "Impeaching and creating or eliminating courts sit in the judicial row, though the House can impeach a president too."
     },
     {
-     "q": "What can the executive do to check the judiciary?",
-     "opts": [
-      "Grant pardons and nominate judges",
-      "Create or eliminate courts",
-      "Review legislative acts",
-      "Issue injunctions"
-     ],
-     "a": 0,
-     "why": "Creating courts is the legislature's check; reviewing acts and issuing injunctions are the judiciary's."
+     "q": "What can the executive do to the judiciary?",
+     "a": "Grant pardons and nominate judges.",
+     "why": "Vetoing and recommending legislation are its checks on Congress."
     }
    ],
    "terms": [
@@ -1429,26 +1489,14 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "Which of the following is a check on the Supreme Court?",
-     "opts": [
-      "Justices are elected every six years",
-      "The Court must send its rulings to the president for approval",
-      "The Senate must approve the president's nominees",
-      "The House can veto a Court ruling"
-     ],
-     "a": 2,
-     "why": "Senate approval is the check. Justices aren't elected, and no branch can veto a ruling."
+     "q": "Name two checks on the Supreme Court and one check the Court has on Congress.",
+     "a": "On the Court: the Senate approves justices, Congress can create or eliminate courts and set the number of justices, Congress can impeach and remove a justice, and an amendment can undo a ruling. On Congress: judicial review, striking down an unconstitutional law.",
+     "why": "Nominating justices is the president's check, not Congress's."
     },
     {
-     "q": "Judicial review was established by",
-     "opts": [
-      "Article III of the Constitution",
-      "Marbury v. Madison (1803)",
-      "the Judiciary Act of 1789",
-      "the Bill of Rights"
-     ],
-     "a": 1,
-     "why": "The Constitution never spells out judicial review; the Judiciary Act set up the federal courts."
+     "q": "Where does the Supreme Court's power to strike down a law come from?",
+     "a": "Marbury v. Madison (1803), the first time the Court struck down an act of Congress.",
+     "why": "The Constitution never spells out judicial review."
     }
    ],
    "terms": [
@@ -1480,26 +1528,14 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "A TV drama shows the vice president breaking a tie to approve a treaty. The scene is inaccurate because",
-     "opts": [
-      "the vice president has no vote in the Senate at all",
-      "a treaty needs two-thirds of the senators present, and a tie-breaker can never reach two-thirds",
-      "treaties are approved by the House, not the Senate",
-      "only the president may vote on treaties"
-     ],
-     "a": 1,
-     "why": "The vice president does vote to break ties, but only on simple-majority votes."
+     "q": "A TV drama shows the vice president breaking a tie to pass a treaty. What's wrong with the scene?",
+     "a": "Treaties need two-thirds of the senators present. A tie is only half, so a tie-breaking vote can never pass one.",
+     "why": "The vice president's tie-breaker only works on simple-majority votes."
     },
     {
-     "q": "All 100 senators are present, and a treaty receives 60 votes. The treaty",
-     "opts": [
-      "passes, because a majority voted for it",
-      "passes if the vice president agrees",
-      "fails, because it needs 67 votes",
-      "goes to the House for a final vote"
-     ],
-     "a": 2,
-     "why": "Two-thirds of 100 senators present is 67."
+     "q": "All 100 senators are present and a treaty gets 60 votes. Does it pass?",
+     "a": "No. Two-thirds of 100 is 67 votes, so 60 falls short.",
+     "why": "A majority is enough to approve a judge, not to consent to a treaty."
     }
    ],
    "terms": [
@@ -1552,26 +1588,14 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "The House impeaches a president, but only 60 of 100 senators vote to convict. The president",
-     "opts": [
-      "is removed from office",
-      "stays in office",
-      "is removed only if the Supreme Court agrees",
-      "faces a second House vote"
-     ],
-     "a": 1,
-     "why": "Conviction needs two-thirds of the senators present (67 of 100)."
+     "q": "The House impeaches a president, and the Senate votes 60 to 40 to convict with all 100 senators present. What happens?",
+     "a": "The president stays in office. Conviction needs two-thirds of the senators present (67 of 100).",
+     "why": "Impeachment by the House alone removes no one."
     },
     {
-     "q": "Congress sends the president a bill and then adjourns before 10 days (Sundays excepted) pass. If the president does not sign it, the bill",
-     "opts": [
-      "becomes law without a signature",
-      "goes to the Supreme Court",
-      "dies, which is a pocket veto",
-      "is automatically passed again"
-     ],
-     "a": 2,
-     "why": "While Congress is in session, an unsigned bill becomes law after 10 days."
+     "q": "Congress sends the president a bill, then adjourns before 10 days (Sundays excepted) pass. The president never signs it. What happened?",
+     "a": "A pocket veto: the bill dies, and Congress has to pass it again.",
+     "why": "If Congress were still in session, the bill would have become law after the 10 days."
     }
    ],
    "terms": [
@@ -1804,7 +1828,7 @@ const GUIDE = {
   }
  ],
  "abbr": {},
- "meta": "Multiple choice",
+ "meta": "Free response, Constitution provided",
  "practice": [
   {
    "q": "Under the Constitution, members of the House of Representatives serve terms of",
