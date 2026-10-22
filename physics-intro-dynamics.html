@@ -861,7 +861,7 @@ const GUIDE = {
  "title": "Introductory dynamics study guide",
  "test": "2026-10-21",
  "end": "2026-10-22",
- "meta": "50 min · 4 problems, 25% each",
+ "meta": "50 min · 4 problems",
  "sub": "Recoil, thrust and buoyancy, a free-body diagram on a slope, and drag linearization.",
  "pdfs": [
   {
@@ -899,7 +899,7 @@ const GUIDE = {
    "url": "/physics-intro-dynamics-version-6.pdf"
   }
  ],
- "pdfsNote": "Every version has the same four problem types with new situations and numbers, in a different order. 25 points each, 50 minutes, worked key and points guide at the end.",
+ "pdfsNote": "Every version has the same four problem types with new situations and numbers, in a different order. 50 points, 50 minutes, worked key and points guide at the end.",
  "updated": "oct 21, 2026",
  "panes": [
   "outline",
@@ -911,7 +911,7 @@ const GUIDE = {
   "formulas": "Equations"
  },
  "top": [
-  "Four problem types, 25% each: **recoil**, thrust and **buoyancy**, a **free-body diagram** on a slope, and a **drag linearization**.",
+  "Four problem types: **recoil**, thrust and **buoyancy**, a **free-body diagram** on a slope, and a **drag linearization**.",
   "Every numerical problem: diagram first, then a = Fnet/m with the real forces and their signs, solve in letters, then plug in numbers with units.",
   "Recoil: the two objects push on each other with equal forces, but the accelerations are not equal: a = F/m for each.",
   "Slope diagram: exactly four forces. Fg straight down, FN perpendicular out of the slope, Ff and FD both uphill in still air. No angle needed.",
@@ -989,13 +989,13 @@ const GUIDE = {
    "t": "Thrust and buoyancy",
    "d": "Find the buoyant force from Fb + Ft − mg = ma, with up as positive.",
    "p": [
-    "An object has lifted off the bottom of a fluid, water or air. It pushes fluid down, so the fluid pushes it up: **thrust** Ft, given in the problem. The surrounding fluid also pushes up: the **buoyant force** Fb, which you solve for. With fluid drag negligible, those are the only forces besides gravity."
+    "Something that normally rests on the bottom of a fluid (water or air) lifts off and **hovers**. It pushes fluid down, so the fluid pushes it up: **thrust** Ft, given in the problem. The surrounding fluid also pushes up: the **buoyant force** Fb, which you solve for. Hovering means it is not moving, so a = 0."
    ],
    "steps": [
     "Draw the diagram: Fg down, Ft up, Fb up. No normal force; it is off the bottom.",
-    "Find the acceleration from the motion data, with its sign. Up is +.",
+    "Hovering: a = 0. (If a problem says it speeds up or slows down instead, find a with its sign. Up is +.)",
     "a = Fnet/m → Fb + Ft − mg = ma.",
-    "Solve in letters: Fb = m(g + a) − Ft.",
+    "Solve in letters: Fb = m(g + a) − Ft, which is Fb = mg − Ft when it hovers.",
     "Plug in with units in every parenthesis (grams to kg first)."
    ],
    "fig": {
@@ -1010,6 +1010,11 @@ const GUIDE = {
      "Acceleration"
     ],
     "rows": [
+     [
+      "hovering, or rising at a constant speed",
+      "no change in velocity",
+      "a = 0"
+     ],
      [
       "a stated",
       "nothing to find",
@@ -1029,11 +1034,6 @@ const GUIDE = {
       "speeds v₀ and v, rise Δy",
       "#3",
       "a = (v² − v₀²)/(2Δy)"
-     ],
-     [
-      "rising at a constant speed",
-      "no change in velocity",
-      "a = 0"
      ]
     ]
    },
@@ -1044,9 +1044,9 @@ const GUIDE = {
    ],
    "ex": [
     {
-     "q": "A 2.00 kg diving robot has thrust 12.0 N and accelerates up at 0.40 m/s². Find Fb.",
-     "a": "8.4 N",
-     "why": "Fb = m(g + a) − Ft = (2.00 kg)(10.2 m/s²) − 12.0 N = 20.4 N − 12.0 N."
+     "q": "A 50-gram squid hovers by generating 0.10 N of upward thrust. Find the buoyant force.",
+     "a": "0.39 N",
+     "why": "Hovering, so a = 0: Fb = mg − Ft = (0.050 kg)(9.8 m/s²) − 0.10 N = 0.49 N − 0.10 N."
     },
     {
      "q": "Still moving up, a robot's speed drops from 0.60 m/s to 0.10 m/s in 2.0 s. What is a?",
@@ -1259,7 +1259,7 @@ const GUIDE = {
    ],
    [
     "Thrust and buoyancy",
-    "fluid drag negligible; the acceleration, or data that gives it, is stated"
+    "fluid drag negligible; hovering means a = 0"
    ],
    [
     "Slope diagram",
@@ -1274,7 +1274,7 @@ const GUIDE = {
  "cram": [
   {
    "h": "The four problem types",
-   "d": "50 minutes, 25% each",
+   "d": "50 minutes, 50 points",
    "items": [
     {
      "n": "Recoil",
@@ -1282,7 +1282,7 @@ const GUIDE = {
     },
     {
      "n": "Buoyancy",
-     "t": "thrust given, solve for the buoyant force"
+     "t": "hovering (a = 0), thrust given, solve for the buoyant force"
     },
     {
      "n": "Slope diagram",
@@ -1320,7 +1320,7 @@ const GUIDE = {
     },
     {
      "n": "Equation",
-     "t": "Fb + Ft − mg = ma → Fb = m(g + a) − Ft"
+     "t": "Fb + Ft − mg = ma; hovering: Fb = mg − Ft"
     },
     {
      "n": "Sign of a",
@@ -1435,30 +1435,30 @@ const GUIDE = {
    "ans": "0.154 m/s², backward"
   },
   {
-   "q": "**Buoyancy, acceleration given.** A 2.00 kg diving robot has lifted off a pool floor. Its thrust is 12.0 N and it accelerates upward at 0.40 m/s². Water drag is negligible. Find the buoyant force.",
+   "q": "**Buoyancy, hovering.** A 2.00 kg diving robot normally rests on a pool floor. It can hover by generating 12.0 N of upward thrust. What is the magnitude of the buoyant force on it?",
    "steps": [
     [
      "Diagram: Fg down; Ft, Fb up; no FN",
      "Off the bottom."
     ],
     [
-     "a = Fnet/m → Fb + Ft − mg = ma",
-     "Up is +."
+     "Hovering: a = 0",
+     "Not moving."
     ],
     [
-     "Fb = m(g + a) − Ft",
-     "Letters first."
+     "a = Fnet/m → Fb + Ft − mg = ma → Fb = mg − Ft",
+     "Up is +; letters first."
     ],
     [
-     "Fb = (2.00 kg)(9.8 m/s² + 0.40 m/s²) − 12.0 N",
+     "Fb = (2.00 kg)(9.8 m/s²) − 12.0 N",
      "Units in every parenthesis."
     ],
     [
-     "Fb = 20.4 N − 12.0 N = 8.4 N",
+     "Fb = 19.6 N − 12.0 N = 7.6 N",
      "Tenths place, from the subtraction."
     ]
    ],
-   "ans": "Fb = 8.4 N"
+   "ans": "Fb = 7.6 N"
   },
   {
    "q": "**Buoyancy, slowing while rising.** A 0.600 kg helium drone rises off a gym floor with thrust 1.50 N. Its speed drops from 0.80 m/s to 0.30 m/s in 2.0 s. Air drag is negligible. Find the buoyant force.",
@@ -1552,7 +1552,7 @@ const GUIDE = {
   {
    "n": "thrust and buoyancy",
    "f": "Fb + Ft − mg = ma → Fb = m(g + a) − Ft",
-   "note": "up is +, fluid drag negligible"
+   "note": "up is +; hovering means a = 0, so Fb = mg − Ft"
   },
   {
    "n": "no displacement",
