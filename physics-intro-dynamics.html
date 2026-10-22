@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- page meta: written per guide from GUIDE by tools/sync-guides.mjs (node tools/sync-guides.mjs). Not engine; do not hand-edit. -->
 <title>Introductory dynamics study guide · AP Physics 1 · Valentino guides</title>
-<meta name="description" content="Recoil, thrust and buoyancy, a free-body diagram on a slope, and drag linearization.">
+<meta name="description" content="Forces, free-body diagrams, Newton's three laws and linearizing data.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Valentino guides">
 <meta property="og:title" content="Introductory dynamics study guide · AP Physics 1">
-<meta property="og:description" content="Recoil, thrust and buoyancy, a free-body diagram on a slope, and drag linearization.">
+<meta property="og:description" content="Forces, free-body diagrams, Newton's three laws and linearizing data.">
 <meta property="og:url" content="https://valentinoguides.com/physics-intro-dynamics">
 <meta property="og:image" content="https://valentinoguides.com/og/physics.png?v=1">
 <meta property="og:image:width" content="1200">
@@ -18,16 +18,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- /page meta -->
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3efe6">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101719">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F8F5EF">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171615">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg?v=5" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
 <link rel="preload" href="/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
-<script>try{const t=localStorage.getItem("theme");if(t!=="auto")document.documentElement.dataset.theme=t==="light"?"light":"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 <style>
-/* ═══ valentino guides · guide template v4, editorial revision (warm paper, restrained blue; flat topic index, study modes; oct 22 2026) ═══
+/* ═══ valentino guides · guide template v4, editorial revision (charcoal, warm white, oxblood; topic tiles, study modes; oct 7 2026; break game removed oct 15 2026) ═══
    Same tokens and type as the homepage (site.css). Edit the GUIDE object below the machinery; leave the CSS alone.
    Fonts: Source Serif 4 (headings) and Source Sans 3 (body and interface), self-hosted, SIL Open Font License 1.1 (fonts/OFL-*.txt). */
 @font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url(/fonts/source-serif-4-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -263,8 +262,7 @@ a.cname{border-radius:6px}
 .nores{margin:0 0 16px;padding:16px 18px;border:1px dashed var(--line2);border-radius:var(--r-card);color:var(--ink2);font-size:var(--t15)}
 .nores p{margin:0}
 .nores div{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-/* Search filters only affect the screen; print keeps each item's native layout. */
-@media screen{.sx{display:none !important}}
+.sx{display:none !important}
 mark.hit{background:color-mix(in srgb,#E2B04A 42%,transparent);color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .pane{display:none;container-type:inline-size}
 .pane.on{display:block;animation:rise .38s var(--spring) both}
@@ -761,177 +759,9 @@ footer .upd{display:block;margin-top:6px}
   .exs{break-inside:auto}
   @page{margin:.6in}
 }
-/* Approved editorial design: warm paper, restrained blue, flat topic index. */
-:root,
-:root[data-theme="light"] {
-  color-scheme:light;
-  --paper:#f3efe6; --surface:#faf7ef; --surface2:#e7e5df; --tint:#e4eaf0;
-  --ink:#212526; --body:#292d2e; --ink2:#4c5559; --ink3:#586267;
-  --line:#ccd0cd; --line2:#939d9e; --accent:#34596e; --on-accent:#fff;
-  --btn:#263e4a; --on-btn:#f8f4eb; --hi:#34596e; --amber:#34596e;
-  --on-amber:#fff; --amber-bg:#e4eaf0; --good:#386142; --bad:#a13b33;
-  --c-apush:var(--accent); --c-psych:var(--accent); --c-phys:var(--accent);
-  --c-pre:var(--accent); --c-sem:var(--accent); --c-biz:var(--accent);
-  --c-mor:var(--accent); --c-lang:var(--accent); --c-span:var(--accent);
-  --c-apwh:var(--accent); --c-csp:var(--accent);
-  --sh1:none; --sh2:none; --r-card:3px; --r-btn:3px; --r-chip:3px;
-  --maxw:1280px; --gut:clamp(22px,4vw,56px);
-  --t16:17px; --t17:18px; --w-d:480; --ls-d:-.02em;
-  --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
-}
-:root[data-theme="dark"] {
-  color-scheme:dark;
-  --paper:#101719; --surface:#161f22; --surface2:#1e2a2e; --tint:#1b2b33;
-  --ink:#f0eadc; --body:#e4e0d6; --ink2:#b9c2c3; --ink3:#9faeb2;
-  --line:#344247; --line2:#63777e; --accent:#a0bed0; --on-accent:#101719;
-  --btn:#d9e3e4; --on-btn:#172125; --hi:#a0bed0; --amber:#a0bed0;
-  --on-amber:#101719; --amber-bg:#1b2b33; --good:#acd4b2; --bad:#efaaa2;
-}
-@media(prefers-color-scheme:dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme:dark;
-    --paper:#101719; --surface:#161f22; --surface2:#1e2a2e; --tint:#1b2b33;
-    --ink:#f0eadc; --body:#e4e0d6; --ink2:#b9c2c3; --ink3:#9faeb2;
-    --line:#344247; --line2:#63777e; --accent:#a0bed0; --on-accent:#101719;
-    --btn:#d9e3e4; --on-btn:#172125; --hi:#a0bed0; --amber:#a0bed0;
-    --on-amber:#101719; --amber-bg:#1b2b33; --good:#acd4b2; --bad:#efaaa2;
-  }
-}
-html { scrollbar-color:var(--line2) var(--paper); }
-body { background:var(--paper); font-size:17px; }
-::selection { background:var(--accent); color:var(--on-accent); }
-input,textarea { caret-color:var(--accent); }
-a { text-underline-offset:5px; }
-:focus-visible { outline:2px solid var(--accent); outline-offset:5px; border-radius:2px; }
-.bar { background:var(--paper); backdrop-filter:none; -webkit-backdrop-filter:none; border-bottom:1px solid var(--line); padding:max(18px,env(safe-area-inset-top)) 0 18px; }
-.bar.stuck { box-shadow:none; }
-.brand b,.bar h1 { font-size:23px; font-weight:500; }
-.brand small { font:10px/1.8 var(--mono); letter-spacing:.1em; color:var(--ink3); }
-.brand svg { width:29px; height:29px; }
-.seg,.sbtn { border-radius:3px; background:transparent; }
-.seg button { min-height:36px; border-radius:2px; }
-.seg .thumb { border-radius:2px; }
-.sbtn { min-height:42px; }
-.rise,.rv,.pane.on,.lp.on { opacity:1; transform:none; animation:none; }
-.sh { margin:48px 0 18px; gap:16px; }
-.sh h3 { font-family:var(--display); font-size:26px; font-weight:450; text-transform:none; }
-.shx { font:11px/1.7 var(--mono); text-transform:uppercase; letter-spacing:.045em; }
-.sh::after { display:none; }
-/* Guide: clear reading hierarchy, with a compact index and quiet tools. */
-.guide-page main { padding-top:48px; }
-.guide-page .ghead { grid-template-columns:minmax(0,1fr) 180px; gap:36px; padding-bottom:36px; border-bottom:1px solid var(--line2); margin-bottom:28px; }
-.guide-page h2.title { font-size:clamp(36px,4.8vw,60px); font-weight:450; max-width:18ch; line-height:1.07; }
-.guide-page .crow { margin-top:18px; font-size:14px; }
-.guide-page .sub { font-size:18px; line-height:1.6; max-width:65ch; margin-top:12px; }
-.guide-page .gcov { width:180px; height:150px; border:0; border-radius:0; box-shadow:none; }
-.guide-page .gcov svg { position:static; width:100%; height:100%; }
-.guide-page .gbody { gap:48px; grid-template-columns:minmax(0,1fr) 260px; }
-.guide-page .gside { margin-top:0; }
-.guide-page .dl { padding:0 0 20px 24px; border:0; border-left:1px solid var(--line); border-radius:0; background:none; box-shadow:none; }
-.guide-page .dlh h3 { font-size:23px; font-weight:450; }
-.guide-page .dgl { font:11px/1.5 var(--mono); letter-spacing:.05em; margin:20px 2px 10px; }
-.guide-page .dchip,.guide-page .dli { border-radius:3px; }
-.guide-page .ptest { margin:0; padding:0 0 18px; border:0; border-bottom:1px solid var(--line); border-radius:0; background:none; box-shadow:none; }
-.guide-page .ptr { gap:12px; }
-.guide-page .ptl { font-size:17px; font-weight:600; }
-.guide-page .ptc { margin-left:0; }
-.guide-page .gctl { margin-top:24px; }
-.guide-page .segs,.guide-page .sg,.guide-page .mbtn,.guide-page .srch { border-radius:3px; box-shadow:none; }
-.guide-page .sg,.guide-page .mbtn { min-height:44px; }
-.guide-page .secl { font:11px/1.5 var(--mono); }
-.guide-page .focus { padding:22px 0; margin-top:20px; border:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); border-radius:0; background:none; box-shadow:none; }
-.guide-page .focus::before { display:none; }
-.guide-page .focus h3 { font-size:25px; font-weight:450; margin-bottom:16px; }
-.guide-page .tops { gap:10px; }
-.guide-page .tops .tp,.guide-page .tops .tm { line-height:1.6; padding-left:30px; }
-.guide-page .tops .tp::before,.guide-page .tops .tm::before { font:12px/24px var(--mono); background:none; color:var(--accent); width:18px; }
-.guide-page .topics { margin-top:32px; }
-.guide-page .tgrid { display:block; border-top:1px solid var(--line); }
-.guide-page .tile { display:grid; grid-template-columns:95px 1fr; gap:5px 20px; width:100%; min-height:0; padding:17px 8px; border:0; border-bottom:1px solid var(--line); border-radius:0; background:none; box-shadow:none; }
-.guide-page .tile .tt1 { grid-column:1; grid-row:1 / span 2; flex-wrap:wrap; gap:2px 8px; font:10px/1.7 var(--mono); align-content:start; padding-top:3px; }
-.guide-page .tile .th { grid-column:2; font-size:21px; font-weight:500; }
-.guide-page .tile .td { grid-column:2; font-size:15px; margin:0; }
-.guide-page .tile .tow { display:none; }
-.guide-page .tile[aria-pressed="true"] { background:var(--surface2); border-color:var(--line2); box-shadow:none; }
-.guide-page .ol.one > .les { padding:28px 0; border:0; border-bottom:1px solid var(--line); border-radius:0; background:none; box-shadow:none; margin-top:20px; }
-.guide-page .sec h3 { font-size:34px; font-weight:450; }
-.guide-page .eyb { font:10px/1.6 var(--mono); margin-bottom:10px; }
-.guide-page .sb p,.guide-page .pts li { font-size:18px; line-height:1.7; }
-.guide-page .sb .main.solo { max-width:70ch; }
-.guide-page .lmodes { padding:0; border:0; border-bottom:1px solid var(--line); border-radius:0; background:none; gap:8px; }
-.guide-page .lm { border-radius:0; min-height:44px; }
-.guide-page .lm[aria-selected="true"] { background:none; color:var(--accent); box-shadow:inset 0 -2px var(--accent); outline:0; }
-.guide-page .watch,.guide-page .ex,.guide-page .fig { border-radius:3px; box-shadow:none; }
-@media(hover:hover) {
-  .guide-page .tile:hover { transform:none; box-shadow:none; background:var(--surface2); }
-  .mbtn:hover,.sbtn:hover,.dchip:hover { background:var(--surface2); }
-}
-@media(max-width:760px) {
-  .bar { padding:max(12px,env(safe-area-inset-top)) 0 12px; }
-  .brand b,.bar h1 { font-size:19px; }
-  .sh { margin-top:36px; }
-  .guide-page main { padding-top:32px; }
-  .guide-page .ghead { display:block; margin-bottom:20px; padding-bottom:24px; }
-  .guide-page .ghead .gtxt { display:block; }
-  .guide-page .gcov { display:none; }
-  .guide-page .sub { font-size:17px; }
-  .guide-page .crow { font-size:13px; }
-  .guide-page .tile { grid-template-columns:66px minmax(0,1fr); gap:5px 12px; }
-  .guide-page .tile .th { font-size:19px; }
-  .guide-page .tile .td { display:block; font-size:14px; }
-  .guide-page .tile .tw { display:none; }
-  .guide-page .focus { padding:20px 0; }
-  .guide-page .sec h3 { font-size:29px; }
-  .guide-page .sb p,.guide-page .pts li { font-size:18px; }
-  .seg button { min-width:44px; min-height:44px; }
-}
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after { animation:none !important; scroll-behavior:auto !important; transition:none !important; }
-}
-@media print {
-  :root,:root[data-theme] { --paper:#fff; --surface:#fff; --surface2:#f5f5f5; --ink:#111; --body:#111; --ink2:#333; --ink3:#444; --accent:#234857; --line:#ccc; --line2:#aaa; }
-}
-:root,:root:not([data-theme="light"]),:root[data-theme="light"],:root[data-theme="dark"] {
-  --c-apush:var(--accent); --c-psych:var(--accent); --c-phys:var(--accent);
-  --c-pre:var(--accent); --c-sem:var(--accent); --c-biz:var(--accent);
-  --c-mor:var(--accent); --c-lang:var(--accent); --c-span:var(--accent);
-  --c-apwh:var(--accent); --c-csp:var(--accent);
-  --sh1:none; --sh2:none;
-}
-.guide-page .ghead { padding-bottom:26px; margin-bottom:24px; }
-.guide-page h2.title { font-size:clamp(34px,4vw,48px); max-width:26ch; }
-.guide-page .crow { margin-top:14px; }
-.guide-page .sub { margin-top:10px; }
-.guide-page .gcov { height:120px; }
-.guide-page .gctl { margin-top:20px; }
-.guide-page .segs { background:none; border:0; border-bottom:1px solid var(--line); padding:0; }
-.guide-page .sg[aria-selected="true"] { background:var(--surface2); }
-/* Stable selected theme: no layout-sensitive sliding thumb. */
-.seg[aria-label="theme"] .thumb { display:none; }
-.seg[aria-label="theme"] button[aria-pressed="true"] { background:var(--btn); color:var(--on-btn); }
-.seg[aria-label="theme"] button { transition:background .15s,color .15s; }
-@media(max-width:760px) {
-  .guide-page .ghead { padding-bottom:24px; }
-}
-@media print {
-  :root,:root:not([data-theme="light"]),:root[data-theme="dark"],:root[data-theme="light"] { color-scheme:light; --paper:#fff; --surface:#fff; --surface2:#eee; --tint:#f5f5f5; --body:#111; --ink:#111; --ink2:#333; --ink3:#444; --accent:#234857; --btn:#111; --on-btn:#fff; --line:#bbb; --line2:#888; }
-  .guide-page main { padding-top:0; }
-  .guide-page h2.title { font-size:30px; }
-  .guide-page .ghead { display:block; margin:0 0 16px; padding-bottom:14px; }
-  .guide-page .sb p,.guide-page .pts li { font-size:12pt; line-height:1.5; }
-  .guide-page .focus { margin-top:0; }
-}
-
-.guide-page .lm:focus-visible,.guide-page .lm[aria-selected="true"]:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
-@media print {
-  :root,:root:not([data-theme="light"]),:root[data-theme="dark"],:root[data-theme="light"] { --amber-bg:#fff; --amber:#234857; --hi:#234857; --good:#275a36; --bad:#94392f; --on-accent:#fff; --on-amber:#fff; }
-}
-
-.seg[aria-label="theme"] { padding:3px; }
-@media(pointer:coarse) { .seg button { min-width:44px; min-height:44px; } }
 </style>
 </head>
-<body class="guide-page">
+<body>
 <a class="skipl" href="#main">skip to the guide</a>
 <div id="prog" aria-hidden="true"><i></i></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1031,8 +861,8 @@ const GUIDE = {
  "title": "Introductory dynamics study guide",
  "test": "2026-10-21",
  "end": "2026-10-22",
- "meta": "50 min · 4 problems",
- "sub": "Recoil, thrust and buoyancy, a free-body diagram on a slope, and drag linearization.",
+ "meta": "50 min · 4 parts, 25% each",
+ "sub": "Forces, free-body diagrams, Newton's three laws and linearizing data.",
  "pdfs": [
   {
    "t": "Cram sheet (PDF)",
@@ -1069,8 +899,8 @@ const GUIDE = {
    "url": "/physics-intro-dynamics-version-6.pdf"
   }
  ],
- "pdfsNote": "Every version has the same four problem types with new situations and numbers, in a different order. 50 points, 50 minutes, worked key and points guide at the end.",
- "updated": "oct 21, 2026",
+ "pdfsNote": "In the test's format: free-body diagrams, two net-force problems, a linearization graph. 25 points each, 50 minutes, worked key and partial-credit guide at the end of each version.",
+ "updated": "oct 20, 2026",
  "panes": [
   "outline",
   "cram",
@@ -1081,623 +911,845 @@ const GUIDE = {
   "formulas": "Equations"
  },
  "top": [
-  "Four problem types: **recoil**, thrust and **buoyancy**, a **free-body diagram** on a slope, and a **drag linearization**.",
-  "Every numerical problem: diagram first, then a = Fnet/m with the real forces and their signs, solve in letters, then plug in numbers with units.",
-  "Recoil: the two objects push on each other with equal forces, but the accelerations are not equal: a = F/m for each.",
-  "Slope diagram: exactly four forces. Fg straight down, FN perpendicular out of the slope, Ff and FD both uphill in still air. No angle needed.",
-  "Drag: plot FD (N) against v² (m²/s²). The slope is K, in N·s²/m², which is the same as kg/m."
+  "Four parts, 25% each: a **free-body diagram**, two net-force problems, and **linearizing** a data set. Forces at angles (components, inclines) is not on this test.",
+  "Every problem: a = Fnet/m first, then write Fnet as the real forces with signs (FN − Fg), swap Fg = mg, solve in letters, plug in last.",
+  "Free-body diagram: a dot, one arrow per force acting **on** the object, original forces only. No components, no net-force arrow.",
+  "Linearize: rearrange into y = mx + b so the slope holds what you want; take the slope from two far-apart points on your line.",
+  "Net force points the way the object **accelerates**, not the way it moves. Third-law pairs act on different objects, so they never cancel."
  ],
  "outline": [
   {
    "w": 3,
-   "t": "Recoil",
-   "d": "Find the launcher's acceleration: kinematics, then the second law, the third law, the second law again.",
+   "t": "Free-body diagrams",
+   "d": "a quarter of the test, and both problems start with one",
    "p": [
-    "A launcher (or a person) on wheels or ice pushes a ball horizontally. The ball and the launcher push on each other with forces of equal size in opposite directions, but the launcher's mass is much larger, so its acceleration is much smaller. **Recoil** is the launcher's backward motion."
+    "A **free-body diagram** is a dot with one arrow for every force acting on the object, each starting at the dot and pointing away. Draw the original forces only: never components, never the net force.",
+    "Arrow lengths carry the physics. No acceleration means the arrows balance; when they don't, the longer side points the way the object accelerates."
    ],
    "steps": [
-    "Convert units first: g to kg, cm to m, ms to s, km/h to m/s (divide by 3.6).",
-    "Ball's acceleration from kinematics, using a matching pair of values: v² = 2aΔx (speed and distance) or v = at (speed and time), from rest.",
-    "Second law on the ball: F = m(ball) · a(ball).",
-    "Third law: the ball pushes back on the launcher with the same F, opposite direction.",
-    "Second law on the launcher, horizontal only: a(launcher) = F/M, backward. The vertical forces (Fg, FN and the ball pressing down) balance and stay out of it."
+    "Pick the object. Only forces on it go on its diagram.",
+    "Gravity, Fg, straight down. Always, even on a slope.",
+    "Each surface it touches: a **normal force** (FN) perpendicular to the surface, plus **friction** (Ff) along the surface if it slides.",
+    "Each rope pulling it: **tension** (FT) along the rope, away from the object.",
+    "Air, only when it is not negligible: **drag** (FD) opposite the motion; **lift** (FL) and **thrust** (Fth) when the problem has them.",
+    "Check the lengths: balanced if a = 0, longer toward the acceleration."
    ],
    "fig": {
-    "svg": "<svg viewBox='0 0 400 290' role='img' aria-label='Two free-body diagrams while the ball is being launched. Left, the ball: a long arrow to the right, the force of the launcher on the ball, plus small balanced vertical arrows. Right, the launcher: an equally long arrow to the left, the force of the ball on the launcher; vertically, the normal force up balances gravity plus the ball pressing down. Equal forces, very different masses, so the ball gets a large acceleration and the launcher a small one.'><text class='tb mid' x='90' y='22'>Ball (small m)</text><text class='tb mid' x='296' y='22'>Launcher (big M)</text><path class='lc' d='M86.0 150.0L160.0 150.0' marker-end='url(#ahc)'/><path class='lc' d='M80.0 144.0L80.0 124.0' marker-end='url(#ahc)'/><path class='lc' d='M80.0 156.0L80.0 176.0' marker-end='url(#ahc)'/><path class='lc' d='M290.0 150.0L216.0 150.0' marker-end='url(#ahc)'/><path class='lc' d='M296.0 144.0L296.0 78.0' marker-end='url(#ahc)'/><path class='lc' d='M289.0 156.0L289.0 210.0' marker-end='url(#ahc)'/><path class='lc' d='M303.0 156.0L303.0 168.0' marker-end='url(#ahc)'/><circle class='fi' cx='80' cy='150' r='5'/><circle class='fi' cx='296' cy='150' r='5'/><text class='mid' x='124' y='138'>F</text><text class='mid' x='252' y='138'>F</text><text x='88' y='128'>F<tspan baseline-shift='sub' font-size='11'>N</tspan></text><text x='88' y='180'>F<tspan baseline-shift='sub' font-size='11'>g</tspan></text><text x='304' y='82'>F<tspan baseline-shift='sub' font-size='11'>N</tspan></text><text class='end' x='283' y='214'>F<tspan baseline-shift='sub' font-size='11'>g</tspan></text><text class='tm' x='311' y='172'>ball presses</text><text class='tm' x='311' y='188'>down</text><text class='tm mid' x='90' y='250'>a(ball) = F/m: large</text><text class='tm mid' x='296' y='250'>a(launcher) = F/M: small</text><text class='tc mid' x='200' y='278'>same F, opposite directions (third law)</text></svg>",
-    "cap": "Equal and opposite forces; unequal accelerations because the masses differ."
+    "svg": "<svg viewBox='0 0 400 270' role='img' aria-label='Three free-body diagrams. Left, an object at rest: normal force up and gravity down, equal lengths. Middle, a person in an elevator speeding up while going up: normal force up, longer than gravity down. Right, a puck sliding right and slowing down: normal force up and gravity down equal, friction to the left, nothing to the right; a dashed arrow shows the motion to the right.'><text class='tb mid' x='67' y='18'>At rest</text><text class='tb mid' x='200' y='18'>Speeding up,</text><text class='tb mid' x='200' y='35'>going up</text><text class='tb mid' x='333' y='18'>Sliding right,</text><text class='tb mid' x='333' y='35'>slowing</text><path class='lc' d='M67 138V82' marker-end='url(#ahc)'/><path class='lc' d='M67 148V204' marker-end='url(#ahc)'/><circle class='fi' cx='67' cy='143' r='4.5'/><text x='77' y='90'>F<tspan baseline-shift='sub' font-size='11'>N</tspan></text><text x='77' y='210'>F<tspan baseline-shift='sub' font-size='11'>g</tspan></text><path class='lc' d='M200 138V58' marker-end='url(#ahc)'/><path class='lc' d='M200 148V196' marker-end='url(#ahc)'/><circle class='fi' cx='200' cy='143' r='4.5'/><text x='210' y='66'>F<tspan baseline-shift='sub' font-size='11'>N</tspan></text><text x='210' y='202'>F<tspan baseline-shift='sub' font-size='11'>g</tspan></text><path class='lc' d='M333 138V92' marker-end='url(#ahc)'/><path class='lc' d='M333 148V194' marker-end='url(#ahc)'/><path class='lc' d='M328 143H286' marker-end='url(#ahc)'/><circle class='fi' cx='333' cy='143' r='4.5'/><text x='343' y='100'>F<tspan baseline-shift='sub' font-size='11'>N</tspan></text><text x='343' y='200'>F<tspan baseline-shift='sub' font-size='11'>g</tspan></text><text class='mid' x='290' y='133'>F<tspan baseline-shift='sub' font-size='11'>f</tspan></text><path class='ln dash' d='M346 60H390' marker-end='url(#ah)'/><text class='tm' x='352' y='77'>v</text><text class='tm mid' x='67' y='240'>balanced</text><text class='tm mid' x='200' y='240'>up arrow longer</text><text class='tm mid' x='333' y='240'>friction only</text><text class='tm mid' x='67' y='258'>a = 0</text><text class='tm mid' x='200' y='258'>a up</text><text class='tm mid' x='333' y='258'>a left</text></svg>",
+    "cap": "Three motions: the arrow lengths, not the direction of motion, show the acceleration."
    },
    "table": {
-    "h": "Frames: use values measured from the same place",
+    "h": "Which way each force points",
     "cols": [
-     "What the problem gives",
-     "What to do"
+     "force",
+     "symbol",
+     "direction",
+     "draw it when"
     ],
     "rows": [
      [
-      "exit speed and the ball's distance, both relative to the ground",
-      "a(ball) = v²/(2Δx)"
+      "Gravity (weight)",
+      "Fg = mg",
+      "straight down",
+      "always"
      ],
      [
-      "exit speed relative to the ground and the push time",
-      "a(ball) = v/t"
-     ],
-     [
-      "launch length, with the problem saying to treat it as the ball's ground distance",
-      "fine as a stated approximation: the launcher barely moves"
-     ],
-     [
-      "exit speed relative to the launcher and the launch length",
-      "a(rel) = v²/(2L) = a(ball) + a(launcher); with m·a(ball) = M·a(launcher), a(ball) = a(rel)·M/(M + m)"
-     ]
-    ]
-   },
-   "watch": [
-    "Equal forces do not mean equal accelerations.",
-    "A launch length measured on the launcher is not the ball's distance relative to the ground if the launcher moves back.",
-    "A speed relative to the launcher is not the ball's speed relative to the ground. Do not mix frames.",
-    "Weight, normal force and the ball pressing down are vertical; they do not go in the horizontal equation."
-   ],
-   "ex": [
-    {
-     "q": "A 0.400 kg ball leaves a 20.0 kg launcher cart at 12.0 m/s after moving 0.600 m relative to the ground. Find the cart's acceleration.",
-     "a": "2.40 m/s², backward",
-     "why": "a(ball) = v²/(2Δx) = 120. m/s²; F = (0.400 kg)(120. m/s²) = 48.0 N; a(cart) = F/M = 2.40 m/s²."
-    },
-    {
-     "q": "Ball 2.0 kg, launcher 400 kg. Which feels the larger force? Which has the larger acceleration?",
-     "a": "Same force; the ball has the larger acceleration (200 times the launcher's).",
-     "why": "Third law gives equal forces; a = F/m divides that force by very different masses."
-    }
-   ],
-   "terms": [
-    "recoil",
-    "Newton's third law"
-   ]
-  },
-  {
-   "w": 3,
-   "t": "Thrust and buoyancy",
-   "d": "Find the buoyant force from Fb + Ft − mg = ma, with up as positive.",
-   "p": [
-    "Something that normally rests on the bottom of a fluid (water or air) lifts off and **hovers**. It pushes fluid down, so the fluid pushes it up: **thrust** Ft, given in the problem. The surrounding fluid also pushes up: the **buoyant force** Fb, which you solve for. Hovering means it is not moving, so a = 0."
-   ],
-   "steps": [
-    "Draw the diagram: Fg down, Ft up, Fb up. No normal force; it is off the bottom.",
-    "Hovering: a = 0. (If a problem says it speeds up or slows down instead, find a with its sign. Up is +.)",
-    "a = Fnet/m → Fb + Ft − mg = ma.",
-    "Solve in letters: Fb = m(g + a) − Ft, which is Fb = mg − Ft when it hovers.",
-    "Plug in with units in every parenthesis (grams to kg first)."
-   ],
-   "fig": {
-    "svg": "<svg viewBox='0 0 400 280' role='img' aria-label='Free-body diagram of an object that has lifted off the bottom of a fluid. Gravity points down. Thrust and buoyancy both point up, as two separate arrows side by side. There is no normal force.'><path class='lc' d='M200.0 146.0L200.0 240.0' marker-end='url(#ahc)'/><path class='lc' d='M191.0 134.0L191.0 72.0' marker-end='url(#ahc)'/><path class='lc' d='M209.0 134.0L209.0 92.0' marker-end='url(#ahc)'/><circle class='fi' cx='200' cy='140' r='5'/><text class='end' x='183' y='78'>F<tspan baseline-shift='sub' font-size='11'>t</tspan> thrust</text><text x='217' y='98'>F<tspan baseline-shift='sub' font-size='11'>b</tspan> buoyancy</text><text x='210' y='236'>F<tspan baseline-shift='sub' font-size='11'>g</tspan></text><text class='tb' x='14' y='22'>Off the bottom</text><text class='tm' x='14' y='40'>no normal force: not touching the bottom</text><text class='tc' x='14' y='270'>Up is +:  F<tspan baseline-shift='sub' font-size='11'>b</tspan> + F<tspan baseline-shift='sub' font-size='11'>t</tspan> − mg = ma</text></svg>",
-    "cap": "Thrust and buoyancy are separate upward forces; draw both."
-   },
-   "table": {
-    "h": "Getting a from the motion data (up is +)",
-    "cols": [
-     "Given",
-     "Use",
-     "Acceleration"
-    ],
-    "rows": [
-     [
-      "hovering, or rising at a constant speed",
-      "no change in velocity",
-      "a = 0"
-     ],
-     [
-      "a stated",
-      "nothing to find",
-      "keep its sign"
-     ],
-     [
-      "from rest: rises Δy in time t",
-      "#2",
-      "a = 2Δy/t²"
-     ],
-     [
-      "speeds v₀ and v, time t",
-      "#1",
-      "a = (v − v₀)/t"
-     ],
-     [
-      "speeds v₀ and v, rise Δy",
-      "#3",
-      "a = (v² − v₀²)/(2Δy)"
-     ]
-    ]
-   },
-   "watch": [
-    "Moving up does not mean a = 0, and it does not mean a is up. Rising while slowing down means a is negative.",
-    "Keep the thrust in the equation. Dropping it makes the buoyant force too big.",
-    "No normal force once it has left the bottom."
-   ],
-   "ex": [
-    {
-     "q": "A 50-gram squid hovers by generating 0.10 N of upward thrust. Find the buoyant force.",
-     "a": "0.39 N",
-     "why": "Hovering, so a = 0: Fb = mg − Ft = (0.050 kg)(9.8 m/s²) − 0.10 N = 0.49 N − 0.10 N."
-    },
-    {
-     "q": "Still moving up, a robot's speed drops from 0.60 m/s to 0.10 m/s in 2.0 s. What is a?",
-     "a": "−0.25 m/s² (down)",
-     "why": "a = (v − v₀)/t = (0.10 m/s − 0.60 m/s)/(2.0 s). Slowing while moving up means a points down."
-    }
-   ],
-   "terms": [
-    "thrust",
-    "buoyant force"
-   ]
-  },
-  {
-   "w": 3,
-   "t": "Free-body diagram on a slope",
-   "d": "Drawing only: every force on something sliding downhill, with friction and drag. No angle is needed.",
-   "p": [
-    "Something slides down a slope. Friction from the surface and drag from the air are not negligible, so the diagram has exactly four forces. Each is one arrow from the dot, drawn as the force itself, never split into components. No angle is needed: the directions come from the slope in the picture."
-   ],
-   "steps": [
-    "Draw the dot. Gravity **Fg** goes straight down, vertical, no matter how steep the slope.",
-    "**Normal force** FN: perpendicular to the slope, pointing out of the surface. It tilts away from vertical toward the downhill side.",
-    "**Kinetic friction** Ff: along the slope, uphill, opposite the sliding.",
-    "**Drag** FD: opposite the motion through the air. In still air the object moves downhill through the air, so drag also points uphill, as its own arrow beside Ff.",
-    "Label all four. Count them: four. No arrow down the slope, no components."
-   ],
-   "fig": {
-    "svg": "<svg viewBox='0 0 400 300' role='img' aria-label='Free-body diagram of an object sliding downhill to the right on a slope in still air. A dot with four arrows: gravity straight down; the normal force perpendicular to the slope, tilted right of vertical; friction and drag both pointing up the slope, drawn as two separate parallel arrows. A dashed line under the dot shows the slope surface, and a dashed arrow shows the motion down the slope.'><path class='lg dash' d='M54.1 112.6L344.1 247.8'/><text class='tm' x='340' y='266' text-anchor='end'>slope surface</text><path class='lc' d='M190.0 146.0L190.0 240.0' marker-end='url(#ahc)'/><path class='lc' d='M192.5 134.6L228.9 56.6' marker-end='url(#ahc)'/><path class='lc' d='M186.7 132.9L121.4 102.5' marker-end='url(#ahc)'/><path class='lc' d='M182.4 142.0L140.8 122.6' marker-end='url(#ahc)'/><circle class='fi' cx='190' cy='140' r='6'/><text x='200' y='236'>F<tspan baseline-shift='sub' font-size='11'>g</tspan></text><text x='237' y='61'>F<tspan baseline-shift='sub' font-size='11'>N</tspan></text><text class='end' x='113' y='99'>F<tspan baseline-shift='sub' font-size='11'>f</tspan></text><text class='end' x='133' y='139'>F<tspan baseline-shift='sub' font-size='11'>D</tspan></text><path class='ln dash' d='M260 70L314.4 95.4' marker-end='url(#ah)'/><text class='tm' x='260' y='60'>v (downhill)</text><text class='tb' x='14' y='22'>Sliding downhill</text><text class='tm' x='14' y='40'>still air: drag points uphill too</text></svg>",
-    "cap": "Sliding downhill to the right. Mirror it for something sliding to the left."
-   },
-   "table": {
-    "h": "The four forces",
-    "cols": [
-     "Force",
-     "Exerted by",
-     "Direction"
-    ],
-    "rows": [
-     [
-      "Fg",
-      "Earth",
-      "straight down"
-     ],
-     [
+      "Normal",
       "FN",
-      "the surface",
-      "perpendicular to the slope, outward"
+      "perpendicular to the surface, pushing away",
+      "the object touches a surface"
      ],
      [
+      "Friction",
       "Ff",
-      "the surface",
-      "uphill, along the slope"
+      "along the surface, opposite the sliding",
+      "a rough surface"
      ],
      [
+      "Tension",
+      "FT",
+      "along the rope, away from the object",
+      "a rope or string pulls"
+     ],
+     [
+      "Drag (air resistance)",
       "FD",
-      "the air",
-      "opposite the motion through the air: uphill in still air"
+      "opposite the motion",
+      "the problem says not negligible"
+     ],
+     [
+      "Lift",
+      "FL",
+      "perpendicular to the air flow (up for a wing)",
+      "wings or a fluid flowing past"
+     ],
+     [
+      "Thrust",
+      "Fth",
+      "forward, the way the engine pushes",
+      "rockets, jets, engines"
      ]
     ]
    },
-   "watch": [
-    "Gravity is vertical, not perpendicular to the slope.",
-    "The components of Fg along and across the slope are not new forces; never draw them as extra arrows.",
-    "Drag is the air resistance. It is not a fifth force on top of it.",
-    "No arrow pointing down the slope: moving downhill does not need a force that way."
-   ],
    "ex": [
     {
-     "q": "A sled slides downhill to the left in still air. Which way do Ff and FD point?",
-     "a": "Both up the slope, up and to the right.",
-     "why": "Both oppose the motion: friction opposes the sliding, drag opposes the motion through still air."
+     "q": "A sled is pulled across snow by a horizontal rope at constant velocity. How do the tension and friction arrows compare?",
+     "a": "Equal lengths: FT = Ff (and FN = Fg).",
+     "why": "Constant velocity means a = 0, so the forces balance. Tension longer than friction would mean the sled is speeding up."
     },
     {
-     "q": "Which way does FN tilt for something sliding downhill to the right?",
-     "a": "Right of vertical, perpendicular to the slope.",
-     "why": "FN points out of the surface, so it leans toward the downhill side."
-    },
-    {
-     "q": "The object speeds up. Does any arrow change direction?",
-     "a": "No.",
-     "why": "Speeding up, slowing down or constant speed changes the lengths, not the directions."
+     "q": "A person stands in a cave and pushes straight up on the ceiling. Which forces go on the person's diagram?",
+     "a": "Fg down, FN from the floor up, FN from the ceiling down: two normal forces, labeled separately.",
+     "why": "The person's push on the ceiling acts on the ceiling, so it goes on the ceiling's diagram, not the person's."
     }
+   ],
+   "watch": [
+    "A force the object exerts on something else goes on the other object's diagram, not this one.",
+    "Moving right does not need a force to the right. A sliding object that is slowing has friction backward and nothing forward.",
+    "Keep the picture's angles: on a slope, Fg still points straight down and FN is perpendicular to the slope."
    ],
    "terms": [
     "free-body diagram",
     "normal force",
-    "kinetic friction",
-    "drag"
+    "friction",
+    "tension",
+    "drag",
+    "lift",
+    "thrust"
    ]
   },
   {
    "w": 3,
-   "t": "Drag linearization",
-   "d": "Plot FD against v², read the slope from the best-fit line, report K with units.",
+   "t": "Net-force problems",
+   "d": "two problems, half the test; every one starts from a = Fnet/m",
    "p": [
-    "The drag model is FD = Kv². Plotting FD against v itself gives a curve. Match it to y = mx + b instead: FD = K · (v²) + 0, so the graph of FD against v² is a straight line whose slope is K."
+    "Every problem runs the same chain: sketch, free-body diagram, a positive direction, then **a = Fnet/m**. Replace Fnet with the actual forces and their signs before any number goes in.",
+    "If the acceleration is not given, get it from kinematics: a = Δv/t, or v² = v₀² + 2aΔx when time is missing. A jump has **two stages**, so it gets two pictures."
    ],
    "steps": [
-    "Axes: vertical FD (N), horizontal v² (m²/s²).",
-    "Transform the data: square every speed, units included.",
-    "Plot, with a scale that uses more than half the grid; draw one best-fit line with a ruler, not forced through any point.",
-    "Pick two well-separated points on the line (not data points) and compute slope = (y₂ − y₁)/(x₂ − x₁).",
-    "Report K = slope with units: N ÷ (m²/s²) = N·s²/m² = kg/m."
+    "Sketch it and list the givens (v₀ = 0, v, t, Δx, m).",
+    "Draw the free-body diagram. Pick + (up, or the way it moves).",
+    "Write a = Fnet/m.",
+    "Replace Fnet with the forces: FN − Fg, FT − Ff, Fth − Fg, FD − Fg.",
+    "Swap Fg = mg and solve in letters.",
+    "Plug in once, units inside every parenthesis; box it with the givens' sig figs.",
+    "Asked for the force on the other object? Finish with Newton's third law."
    ],
    "fig": {
-    "svg": "<svg viewBox='0 0 400 292' role='img' aria-label='Graph of drag force in newtons against speed squared in meters squared per second squared. Five data points rise in a straight pattern. A best-fit line runs from near the origin to about 40 newtons at 200. Two points read off the line, at 20 and 180, form a dashed rise-over-run triangle. The slope is K.'><path class='ln' d='M56 245H392M56 245V20'/><text class='tm mid' x='56' y='263'>0</text><text class='tm mid' x='139' y='263'>50</text><text class='tm mid' x='222' y='263'>100</text><text class='tm mid' x='305' y='263'>150</text><text class='tm mid' x='388' y='263'>200</text><text class='tm end' x='49' y='249'>0</text><text class='tm end' x='49' y='194'>10</text><text class='tm end' x='49' y='139'>20</text><text class='tm end' x='49' y='84'>30</text><text class='tm end' x='49' y='29'>40</text><path class='lc' d='M56 244.4L388.0 24.4'/><circle class='fi' cx='97.5' cy='216.4' r='4.2'/><circle class='fi' cx='162.2' cy='175.7' r='4.2'/><circle class='fi' cx='222.0' cy='133.3' r='4.2'/><circle class='fi' cx='295.0' cy='88.2' r='4.2'/><circle class='fi' cx='381.4' cy='28.3' r='4.2'/><path class='la dash' d='M89.2 222.4H354.8V46.4'/><rect class='fn' x='84.2' y='217.4' width='10' height='10' style='stroke:var(--accent);stroke-width:1.6'/><rect class='fn' x='349.8' y='41.4' width='10' height='10' style='stroke:var(--accent);stroke-width:1.6'/><text class='ta mid' x='222' y='242'>run</text><text class='ta' x='363' y='134'>rise</text><text class='tc' x='73' y='64'>slope = K</text><text class='tm mid' x='224' y='286'>v² (m²/s²)</text><text class='tm mid' x='13' y='133' transform='rotate(-90 13 133)'>FD (N)</text></svg>",
-    "cap": "Points read off the line at 20 and 180 m²/s²: slope = (36.1 N − 4.1 N)/(160 m²/s²) = 0.200 N·s²/m²."
+    "svg": "<svg viewBox='0 0 400 285' role='img' aria-label='A jump in two stages. Stage 1, pushing on the ground: a free-body diagram with the normal force up, longer than gravity down; the jumper starts at v0 equals 0 and leaves at v1 after the push time t, so a1 equals v1 over t, and FN minus mg equals m a1. Stage 2, in the air: a dashed path rises a height h to the top, where v equals 0; the acceleration is minus g, so v1 equals the square root of 2 g h.'><text class='tb' x='6' y='18'>1 · Pushing</text><text class='tb' x='214' y='18'>2 · In the air</text><path class='ln dash' d='M202 30V272'/><path class='lc' d='M40 136V58' marker-end='url(#ahc)'/><path class='lc' d='M40 146V188' marker-end='url(#ahc)'/><circle class='fi' cx='40' cy='141' r='4.5'/><text x='50' y='66'>F<tspan baseline-shift='sub' font-size='11'>N</tspan></text><text x='50' y='194'>F<tspan baseline-shift='sub' font-size='11'>g</tspan></text><text class='tm' x='86' y='84'>v₀ = 0</text><text class='tm' x='86' y='104'>leaves at v₁</text><text class='tm' x='86' y='122'>after time t</text><text x='86' y='152'>a₁ = v₁ / t</text><text x='86' y='178'>F<tspan baseline-shift='sub' font-size='11'>N</tspan> − mg = ma₁</text><text class='tm' x='6' y='236'>up arrow longer:</text><text class='tm' x='6' y='254'>it speeds up</text><path class='ln' d='M214 236H394'/><path class='la dash' d='M262 228V70' marker-end='url(#aha)'/><circle class='fsa' cx='262' cy='60' r='7'/><text class='tm' x='276' y='64'>top: v = 0</text><path class='ln' d='M350 228V60M344 228H356M344 60H356'/><text x='360' y='150'>h</text><text x='276' y='150'>a = −g</text><text x='214' y='268'>v₁ = √(2gh)</text></svg>",
+    "cap": "Two accelerations, two pictures: the push gives a₁ = v₁/t, the flight gives v₁ = √(2gh)."
    },
    "table": {
-    "h": "Match FD = Kv² to y = mx + b",
+    "h": "Setups to recognize (up or forward is +)",
     "cols": [
-     "y (vertical)",
-     "x (horizontal)",
-     "slope",
-     "intercept"
+     "situation",
+     "write",
+     "solved"
     ],
     "rows": [
      [
-      "FD (N)",
-      "v² (m²/s²)",
-      "K",
-      "0"
+      "Elevator, or pushing off the floor",
+      "FN − mg = ma",
+      "FN = m(g + a)"
+     ],
+     [
+      "Rocket going up",
+      "Fth − mg = ma",
+      "a = Fth/m − g"
+     ],
+     [
+      "Falling with drag",
+      "FD − mg = ma",
+      "a = FD/m − g"
+     ],
+     [
+      "Pulled with friction",
+      "FT − Ff = ma",
+      "a = (FT − Ff)/m"
+     ],
+     [
+      "Sliding to a stop",
+      "−Ff = ma",
+      "Ff = −ma (a is negative)"
+     ],
+     [
+      "Rocket after burning fuel",
+      "Fth − mg = ma, with m = M − fuel burned",
+      "fuel = M − Fth/(g + a)"
      ]
     ]
    },
+   "ex": [
+    {
+     "q": "A 52 kg student rides an elevator that accelerates upward at 2.0 m/s². What force does the floor exert on the student?",
+     "a": "6.1 × 10² N, upward",
+     "why": "FN − mg = ma, so FN = m(g + a) = (52 kg)(11.8 m/s²) = 614 N. The tempting 510 N is just the weight."
+    },
+    {
+     "q": "A frog leaves the ground at 3.3 m/s after pushing for 0.060 s. What is its acceleration while pushing?",
+     "a": "55 m/s², upward",
+     "why": "a = Δv/Δt = (3.3 m/s − 0)/(0.060 s). Use the push time, never the time in the air."
+    },
+    {
+     "q": "A rocket's thrust stays the same while it burns fuel. What happens to its acceleration?",
+     "a": "It increases.",
+     "why": "a = Fth/m − g with a shrinking current mass. Using the launch-pad mass later gives an acceleration that is too small."
+    }
+   ],
    "watch": [
-    "v² is speed squared, in m²/s². It is not an acceleration.",
-    "Slope from points on your line, far apart, not from two data points.",
-    "K comes from the data; no fixed value to memorize."
+    "Two accelerations, two pictures: on the ground (pushing) and in the air (a = −g). Never mix the push time with the air time.",
+    "Rocket problems use the current mass: the original mass minus the fuel burned so far.",
+    "Convert before plugging in: grams to kg, ms to s, megagrams (Mg) to kg (1 Mg = 1000 kg)."
+   ],
+   "terms": [
+    "a = Fnet/m",
+    "two stages",
+    "current mass"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Linearizing data",
+   "d": "a quarter of the test: pick the axes, graph, slope, answer",
+   "p": [
+    "**Linearization** turns a curve into a straight line so the **slope** holds the quantity you want. Rearrange the physics equation until it matches y = mx + b, then plot the new columns."
+   ],
+   "steps": [
+    "Start from the equation: a = Fnet/m, x = ½at², or v² = 2aΔx.",
+    "Match it to y = mx + b: name the vertical variable, the horizontal variable, the slope and the intercept.",
+    "Fill the blank columns (1/m, t², v²). Cross out a blank column you won't plot.",
+    "Label both axes: quantity (units). Scale so the data fill more than half the grid; an axis need not start at 0.",
+    "Draw one straight line with a ruler through the middle of the points, some above and some below. Never force it through the origin.",
+    "Take the slope from two far-apart points on your line, not data points, with units. Then solve for the quantity."
+   ],
+   "fig": {
+    "svg": "<svg viewBox='0 0 400 292' role='img' aria-label='Graph of acceleration in meters per second squared against inverse mass in inverse kilograms. Six data points rise in a straight pattern. A best-fit line runs from the origin to about 1.5 at an inverse mass of 5. Two points read off the line, at 1.0 and 4.5 inverse kilograms, form a dashed rise-over-run triangle. The slope is the net force.'><path class='ln' d='M52 245H392M52 245V20'/><text class='tm mid' x='52' y='263'>0</text><text class='tm mid' x='120' y='263'>1</text><text class='tm mid' x='187' y='263'>2</text><text class='tm mid' x='255' y='263'>3</text><text class='tm mid' x='322' y='263'>4</text><text class='tm mid' x='390' y='263'>5</text><text class='tm end' x='45' y='249'>0.0</text><text class='tm end' x='45' y='194'>0.4</text><text class='tm end' x='45' y='139'>0.8</text><text class='tm end' x='45' y='84'>1.2</text><text class='tm end' x='45' y='29'>1.6</text><path class='lc' d='M52 245.0L390.0 38.8'/><circle class='fi' cx='148.7' cy='184.5' r='4.2'/><circle class='fi' cx='164.9' cy='177.6' r='4.2'/><circle class='fi' cx='187.2' cy='161.1' r='4.2'/><circle class='fi' cx='221.0' cy='143.2' r='4.2'/><circle class='fi' cx='277.1' cy='106.1' r='4.2'/><circle class='fi' cx='390.0' cy='40.1' r='4.2'/><path class='la dash' d='M119.6 203.8H356.2V59.4'/><rect class='fn' x='114.6' y='198.8' width='10' height='10' style='stroke:var(--accent);stroke-width:1.6'/><rect class='fn' x='351.2' y='54.4' width='10' height='10' style='stroke:var(--accent);stroke-width:1.6'/><text class='ta mid' x='238' y='224'>run</text><text class='ta' x='364' y='132'>rise</text><text class='tc' x='89' y='91'>slope = F<tspan baseline-shift='sub' font-size='11'>net</tspan></text><text class='tm mid' x='222' y='286'>1/m (kg⁻¹)</text><text class='tm mid' x='13' y='133' transform='rotate(-90 13 133)'>a (m/s²)</text></svg>",
+    "cap": "Same net force, different masses: a against 1/m is a line whose slope is the net force (here about 0.30 N)."
+   },
+   "table": {
+    "h": "Common linearizations",
+    "cols": [
+     "experiment",
+     "plot (vertical vs. horizontal)",
+     "slope",
+     "so"
+    ],
+    "rows": [
+     [
+      "Same net force, change the mass",
+      "a vs. 1/m",
+      "Fnet",
+      "Fnet = slope"
+     ],
+     [
+      "Same mass, change the force",
+      "a vs. Fnet (already a line)",
+      "1/m",
+      "m = 1/slope"
+     ],
+     [
+      "From rest, position and time",
+      "x vs. t²",
+      "½a",
+      "a = 2 × slope"
+     ],
+     [
+      "From rest, speed and position",
+      "v² vs. x",
+      "2a",
+      "a = slope/2"
+     ],
+     [
+      "Same force and distance, change the mass",
+      "v² vs. 1/m",
+      "2FΔx",
+      "F = slope/(2Δx)"
+     ],
+     [
+      "Spheres, volume and diameter",
+      "V vs. d³",
+      "π/6",
+      "π = 6 × slope"
+     ]
+    ]
+   },
+   "ex": [
+    {
+     "q": "Same force, different masses, measured a. What do you plot to get a line, and what is the slope?",
+     "a": "a on the vertical axis vs. 1/m on the horizontal axis; slope = Fnet.",
+     "why": "a = Fnet(1/m) matches y = mx. The tempting a vs. m is a curve."
+    },
+    {
+     "q": "A cart starts from rest. Your x vs. t² line has a slope of 0.35 m/s². What is the acceleration?",
+     "a": "0.70 m/s²",
+     "why": "x = ½at², so slope = ½a and a = 2 × slope. The tempting 0.35 m/s² forgets the ½."
+    }
+   ],
+   "watch": [
+    "Never use data points for the slope unless they sit exactly on your line.",
+    "Slope units come from the axes: vertical units over horizontal units (m/s² ÷ kg⁻¹ = kg·m/s² = N).",
+    "Points close together give a sloppy slope; pick two that are far apart."
+   ],
+   "terms": [
+    "linearization",
+    "slope",
+    "best-fit line"
+   ]
+  },
+  {
+   "w": 3,
+   "t": "Where points go",
+   "d": "the same few slips cost points on every part",
+   "rows": [
+    [
+     "Components on the diagram",
+     "The answer-sheet diagram shows original forces only. Components go on scratch work."
+    ],
+    [
+     "A net-force arrow",
+     "Fnet is never its own arrow on a free-body diagram."
+    ],
+    [
+     "Numbers first",
+     "Solve in letters, then plug in. Substitute an expression (a = √(2gh)/t), not a rounded number."
+    ],
+    [
+     "Missing units",
+     "Every number in every parenthesis carries its units, and so does the boxed answer."
+    ],
+    [
+     "Sig figs",
+     "Round to the significant figures of the givens. Decimals, not fractions."
+    ],
+    [
+     "The wrong mass",
+     "Grams to kg first; a rocket uses its current mass."
+    ],
+    [
+     "Net force along the velocity",
+     "Net force follows the acceleration. Slowing down means the net force points backward."
+    ],
+    [
+     "A third-law pair on one diagram",
+     "The two forces in a pair act on different objects."
+    ],
+    [
+     "Slope from data points",
+     "Read two far-apart points off your own line."
+    ]
    ],
    "ex": [
     {
-     "q": "Two points on the best-fit line: (40 m²/s², 9.2 N) and (360 m²/s², 82.8 N). Find K.",
-     "a": "0.230 N·s²/m² (0.230 kg/m)",
-     "why": "slope = (82.8 N − 9.2 N)/(360 m²/s² − 40 m²/s²) = 73.6 N / 320 m²/s²."
+     "q": "An answer reads: FN = 62 × 11.2 = 694.4. What costs points?",
+     "a": "No units, no algebra first, and too many digits. Write FN = m(g + a), then (62 kg)(11.2 m/s²) = 6.9 × 10² N.",
+     "why": "Units go inside every parenthesis, and the answer matches the two significant figures of 62 kg."
     },
     {
-     "q": "Why are N·s²/m² and kg/m the same unit?",
-     "a": "1 N = 1 kg·m/s², so N·s²/m² = kg·m·s²/(s²·m²) = kg/m.",
-     "why": "Replace N with kg·m/s² and cancel."
+     "q": "A diagram for a box on a ramp shows Fg plus two dashed arrows along and across the ramp. Full credit?",
+     "a": "No. Draw Fg alone; its components belong on scratch work.",
+     "why": "The free-body diagram is graded on the real forces, each starting on the dot."
     }
    ],
-   "terms": [
-    "linearize",
-    "best-fit line",
-    "slope"
+   "watch": [
+    "Cross out work you do not want graded."
    ]
   },
   {
    "w": 2,
-   "t": "Toolkit: laws, kinematics, units",
-   "d": "Only what the four problem types use.",
-   "rows": [
-    [
-     "Second law",
-     "a = ΣF/m = Fnet/m; a and Fnet point the same way"
+   "t": "Newton's third law",
+   "d": "conceptual pairs, and the last step of many problems",
+   "p": [
+    "If A pushes on B, B pushes back on A with a force of the **same magnitude** in the **opposite direction**: F(A on B) = −F(B on A). The two forces act on **different objects**, so they never cancel on one free-body diagram."
+   ],
+   "pts": [
+    "A pair is always the same type of force: contact with contact, gravity with gravity.",
+    "Earth pulls a 0.18 kg ball down with 1.8 N; the ball pulls Earth up with 1.8 N. Earth barely moves because its mass is huge.",
+    "Walking: your foot pushes the ground back, and the ground pushes you forward. That forward push moves you.",
+    "Bat and ball, frog and ground, rocket and exhaust: equal forces, unequal accelerations, because a = F/m."
+   ],
+   "table": {
+    "h": "Pairs",
+    "cols": [
+     "force",
+     "its partner"
     ],
-    [
-     "Third law",
-     "F(A on B) = −F(B on A): same size, opposite direction, different objects"
-    ],
-    [
-     "Weight",
-     "Fg = mg, with g = 9.8 m/s² (9.8 N/kg)"
-    ],
-    [
-     "#1",
-     "v = v₀ + at: no displacement"
-    ],
-    [
-     "#2",
-     "Δx = v₀t + ½at²: no final velocity"
-    ],
-    [
-     "#3",
-     "v² = v₀² + 2aΔx: no time"
-    ],
-    [
-     "Conversions",
-     "1000 g = 1 kg · 100 cm = 1 m · 1000 ms = 1 s · km/h ÷ 3.6 = m/s"
-    ],
-    [
-     "Sig figs",
-     "multiply and divide: fewest significant figures; add and subtract: fewest decimal places"
+    "rows": [
+     [
+      "ground on frog, up",
+      "frog on ground, down"
+     ],
+     [
+      "Earth on ball, down (Fg)",
+      "ball on Earth, up"
+     ],
+     [
+      "wall on swimmer's feet, away from the wall",
+      "feet on wall, into the wall"
+     ],
+     [
+      "exhaust on rocket, up (Fth)",
+      "rocket on exhaust, down"
+     ],
+     [
+      "scale on you, up (the reading)",
+      "you on scale, down"
+     ]
     ]
+   },
+   "ex": [
+    {
+     "q": "A 1.2 kg bat hits a 0.15 kg ball. Which force is bigger, bat on ball or ball on bat?",
+     "a": "Neither: they are equal.",
+     "why": "A third-law pair. The ball's acceleration is bigger because its mass is smaller, not because the force is."
+    },
+    {
+     "q": "Two skaters at rest push off each other. The 45 kg skater moves away at 3.2 m/s. How fast does the 60 kg skater move?",
+     "a": "2.4 m/s",
+     "why": "Equal forces for the same time, so speed scales with 1/m: (3.2 m/s)(45/60). Equal speeds is the tempting wrong answer."
+    }
+   ],
+   "watch": [
+    "FN and Fg on a book resting on a table are not a third-law pair: same object, different types of force.",
+    "Equal forces do not mean equal accelerations; the smaller mass accelerates more."
+   ],
+   "terms": [
+    "third-law pair"
+   ]
+  },
+  {
+   "w": 2,
+   "t": "Newton's laws, net force and equilibrium",
+   "d": "what the net force tells you, and what it doesn't",
+   "p": [
+    "**Newton's first law**: motion changes only when forces are unbalanced; **inertia** is the tendency to resist that change. **Newton's second law**: a = Fnet/m. Mass is a positive scalar, so the net force and the acceleration always point the same way.",
+    "**Equilibrium** means a = 0, not v = 0: **static equilibrium** at rest, **dynamic equilibrium** at constant velocity. A balanced diagram tells you the acceleration, not whether or which way the object moves."
+   ],
+   "table": {
+    "h": "Skydiver, 85 kg (Fg = 833 N), down is negative",
+    "cols": [
+     "drag",
+     "net force",
+     "acceleration",
+     "speed"
+    ],
+    "rows": [
+     [
+      "0 N (just jumped)",
+      "−833 N",
+      "−9.8 m/s²",
+      "increasing fastest"
+     ],
+     [
+      "350 N",
+      "−483 N",
+      "−5.7 m/s²",
+      "still increasing"
+     ],
+     [
+      "700 N",
+      "−133 N",
+      "−1.6 m/s²",
+      "still increasing"
+     ],
+     [
+      "833 N (terminal velocity)",
+      "0",
+      "0",
+      "constant"
+     ]
+    ]
+   },
+   "tiles": [
+    {
+     "h": "Force doubled",
+     "t": "a doubles",
+     "k": "a = F/m"
+    },
+    {
+     "h": "Mass doubled",
+     "t": "a halves",
+     "k": "a = F/m"
+    },
+    {
+     "h": "Both doubled",
+     "t": "a stays the same",
+     "k": "a = F/m"
+    },
+    {
+     "h": "Force doubled, mass halved",
+     "t": "a is 4 times as big",
+     "k": "a = F/m"
+    }
    ],
    "ex": [
     {
-     "q": "Convert 72.0 km/h to m/s.",
-     "a": "20.0 m/s",
-     "why": "72.0 km/h × (1000 m / 1 km) × (1 h / 3600 s) = 72.0 ÷ 3.6."
+     "q": "A constant force gives a cart 6.0 m/s². What is its acceleration if the force is doubled and the mass is halved?",
+     "a": "24 m/s²",
+     "why": "2F/(½m) = 4F/m. The tempting 12 m/s² only doubles."
+    },
+    {
+     "q": "An 85 kg skydiver feels 600 N of drag. Is she speeding up or slowing down, and how fast is the change?",
+     "a": "Speeding up, at 2.7 m/s² downward.",
+     "why": "Drag is less than her 833 N weight, so the 233 N net force still points down with the motion. A smaller acceleration is not slowing down."
+    }
+   ],
+   "watch": [
+    "Decreasing acceleration is not slowing down: the skydiver speeds up until drag equals weight.",
+    "An object can move with no net force (constant velocity) and can have a net force while momentarily at rest."
+   ],
+   "terms": [
+    "Newton's first law",
+    "inertia",
+    "Newton's second law",
+    "equilibrium",
+    "terminal velocity"
+   ]
+  },
+  {
+   "w": 1,
+   "t": "Forces, units and g",
+   "d": "definitions the problems lean on",
+   "pts": [
+    "A **force** is an interaction that could change an object's velocity. It is a vector.",
+    "**Contact forces** need touch (normal, friction, tension, drag); gravity is a non-contact force.",
+    "**Weight** is the force of gravity on an object, Fg = mg. **Mass** is how much matter, in kg. Weight is a vector; mass is not.",
+    "1 N = 1 kg·m/s². 1 lb ≈ 4.45 N. 1 dyne = 1 g·cm/s² = 10⁻⁵ N.",
+    "g is the **gravitational field** strength near Earth: 9.8 N/kg, the same as 9.8 m/s². N/kg fits standing still; m/s² fits free fall.",
+    "Negligible means ignore it. Not negligible means draw it."
+   ],
+   "ex": [
+    {
+     "q": "What is the weight of a 180 g softball?",
+     "a": "1.8 N, downward",
+     "why": "Convert to 0.18 kg first. 180 × 9.8 = 1764 is the grams trap."
+    },
+    {
+     "q": "About how many newtons is a 12 lb bowling ball?",
+     "a": "About 53 N",
+     "why": "12 × 4.45 N = 53.4 N."
     }
    ],
    "terms": [
-    "net force",
-    "equilibrium"
+    "force",
+    "contact forces",
+    "weight",
+    "mass",
+    "gravitational field"
    ]
   }
  ],
- "topTable": {
-  "h": "Practice assumptions (each version states its own)",
-  "cols": [
-   "Problem type",
-   "What practice versions assume"
-  ],
-  "rows": [
-   [
-    "Recoil",
-    "the ball starts from rest, constant acceleration during the launch, the launcher rolls or slides freely; each version says whether speeds and distances are relative to the ground or the launcher"
-   ],
-   [
-    "Thrust and buoyancy",
-    "fluid drag negligible; hovering means a = 0"
-   ],
-   [
-    "Slope diagram",
-    "still air, so drag points uphill"
-   ],
-   [
-    "Drag",
-    "data made up for practice; K comes from each data set"
-   ]
-  ]
- },
  "cram": [
   {
-   "h": "The four problem types",
-   "d": "50 minutes, 50 points",
+   "h": "The test",
+   "d": "50 minutes, four parts, 25% each",
    "items": [
     {
-     "n": "Recoil",
-     "t": "solve for the launcher's acceleration"
+     "n": "Free-body diagram",
+     "t": "a dot, original forces only, labeled, lengths that balance or don't"
     },
     {
-     "n": "Buoyancy",
-     "t": "hovering (a = 0), thrust given, solve for the buoyant force"
+     "n": "Two problems",
+     "t": "diagram, a = Fnet/m, forces with signs, letters first, units, sig figs"
     },
     {
-     "n": "Slope diagram",
-     "t": "free-body diagram only, four forces"
+     "n": "Linearize data",
+     "t": "axes from y = mx + b, a ruler line, slope from points on your line"
     },
     {
-     "n": "Drag",
-     "t": "linearize, graph, K from the slope"
+     "n": "Not on it",
+     "t": "forces at angles: components and inclines"
     }
    ]
   },
   {
-   "h": "Recoil",
-   "items": [
-    {
-     "n": "Chain",
-     "t": "a(ball) from kinematics → F = m·a(ball) → same F on the launcher → a(launcher) = F/M"
-    },
-    {
-     "n": "Frames",
-     "t": "ground speed with ground distance; launcher-frame speed with the launch length"
-    },
-    {
-     "n": "Vertical",
-     "t": "FN balances Fg plus the ball pressing down; none of them enter"
-    }
-   ]
-  },
-  {
-   "h": "Thrust and buoyancy",
-   "items": [
-    {
-     "n": "Diagram",
-     "t": "Fg down; Ft and Fb up; no FN"
-    },
-    {
-     "n": "Equation",
-     "t": "Fb + Ft − mg = ma; hovering: Fb = mg − Ft"
-    },
-    {
-     "n": "Sign of a",
-     "t": "slowing while rising: a is negative"
-    }
-   ]
-  },
-  {
-   "h": "Slope diagram",
+   "h": "Free-body diagrams",
    "items": [
     {
      "n": "Fg",
-     "t": "straight down, always"
+     "t": "straight down, always, even on a slope"
     },
     {
-     "n": "FN",
-     "t": "perpendicular to the slope, out of the surface"
+     "n": "FN, Ff",
+     "t": "perpendicular to the surface; along it, opposite the sliding"
     },
     {
-     "n": "Ff, FD",
-     "t": "both uphill in still air, two separate arrows"
+     "n": "FT, FD, FL, Fth",
+     "t": "along the rope; opposite the motion; across the air flow; forward"
     },
     {
-     "n": "Never",
-     "t": "components as extra arrows, a fifth force, a downhill force"
+     "n": "Lengths",
+     "t": "a = 0: balanced; otherwise longer toward the acceleration"
     }
    ]
   },
   {
-   "h": "Drag",
+   "h": "Problems",
    "items": [
     {
-     "n": "Axes",
-     "t": "FD (N) vertical, v² (m²/s²) horizontal"
+     "n": "Chain",
+     "t": "a = Fnet/m, forces with signs, Fg = mg, solve, then plug in"
+    },
+    {
+     "n": "Normal force",
+     "t": "FN = m(g + a): more than mg when accelerating up"
+    },
+    {
+     "n": "Jump",
+     "t": "air: v₁ = √(2gh); ground: a₁ = v₁/t; then FN = m(g + a₁)"
+    },
+    {
+     "n": "Rocket",
+     "t": "a = Fth/m − g with the current mass; fuel = M − Fth/(g + a)"
+    },
+    {
+     "n": "Third law last",
+     "t": "force on the floor = force of the floor on you, opposite direction"
+    }
+   ]
+  },
+  {
+   "h": "Linearizing",
+   "items": [
+    {
+     "n": "a vs. 1/m",
+     "t": "slope = Fnet"
+    },
+    {
+     "n": "x vs. t²",
+     "t": "slope = ½a, so a = 2 × slope"
+    },
+    {
+     "n": "v² vs. x",
+     "t": "slope = 2a"
     },
     {
      "n": "Slope",
-     "t": "two far-apart points on the line = K"
+     "t": "two far-apart points on your line, with units"
+    }
+   ]
+  },
+  {
+   "h": "Traps",
+   "items": [
+    {
+     "n": "Net force",
+     "t": "follows the acceleration, not the velocity"
+    },
+    {
+     "n": "Third-law pairs",
+     "t": "act on different objects, never cancel"
     },
     {
      "n": "Units",
-     "t": "N·s²/m² = kg/m"
+     "t": "grams to kg, ms to s, units on every number"
     }
    ]
   }
  ],
  "problems": [
   {
-   "q": "**Recoil, ground values.** A 0.400 kg ball leaves a 20.0 kg launcher cart at 12.0 m/s relative to the ground. Treat the 0.600 m launch tube as the ball's distance relative to the ground (the cart moves about 1 cm). Find the cart's acceleration.",
+   "q": "**Skydiver.** An 85 kg skydiver feels 350 N of air resistance on the way down. Find the net force and the acceleration. Down is negative.",
    "steps": [
     [
-     "v² = v₀² + 2aΔx → a(ball) = v²/(2Δx) = (12.0 m/s)²/(2(0.600 m)) = 120. m/s²",
-     "#3: no time given."
+     "Fg = mg = (85 kg)(9.8 m/s²) = 833 N",
+     "Weight first."
     ],
     [
-     "F = m·a(ball) = (0.400 kg)(120. m/s²) = 48.0 N",
-     "Second law on the ball."
+     "Fnet = FD − Fg = 350 N − 833 N = −483 N",
+     "Drag up (+), gravity down (−)."
     ],
     [
-     "F(ball on cart) = 48.0 N, backward",
+     "a = Fnet/m = (−483 N)/(85 kg)",
+     "Newton's second law."
+    ],
+    [
+     "a = −5.7 m/s²",
+     "Down, smaller than g: still speeding up."
+    ]
+   ],
+   "ans": "Fnet = 483 N down, a = 5.7 m/s² down"
+  },
+  {
+   "q": "**Frog.** A 22 g frog pushes on the ground for 60 ms and leaves straight up at 3.7 m/s. How hard did it push on the ground?",
+   "steps": [
+    [
+     "Up is +, v₀ = 0, m = 0.022 kg, t = 0.060 s",
+     "Convert grams and milliseconds first."
+    ],
+    [
+     "Fnet = ma → FN − Fg = ma → FN − mg = ma",
+     "Ground pushes up, gravity pulls down."
+    ],
+    [
+     "FN = m(g + a) = m(g + Δv/t)",
+     "Solve in letters; a from the speed change."
+    ],
+    [
+     "FN = (0.022 kg)(9.8 m/s² + (3.7 m/s)/(0.060 s))",
+     "Units inside every parenthesis."
+    ],
+    [
+     "FN = (0.022 kg)(71.5 m/s²) = 1.6 N",
+     "Two significant figures."
+    ],
+    [
+     "F(frog on ground) = FN = 1.6 N, down",
+     "Third law: the question asks for the frog's push."
+    ]
+   ],
+   "ans": "1.6 N, downward on the ground"
+  },
+  {
+   "q": "**Jump, two stages.** A 62 kg basketball player pushes on the floor for 0.25 s and rises 0.55 m after leaving it. Find the force on the floor.",
+   "steps": [
+    [
+     "In the air: 0 = v₁² + 2(−g)h → v₁ = √(2gh)",
+     "#3, since the air time is not given."
+    ],
+    [
+     "On the floor: a₁ = (v₁ − 0)/t = √(2gh)/t",
+     "The push time, not the air time."
+    ],
+    [
+     "FN − mg = ma₁ → FN = m(g + √(2gh)/t)",
+     "Newton's second law; substitute the expression."
+    ],
+    [
+     "v₁ = √(2(9.8 m/s²)(0.55 m)) = 3.28 m/s; a₁ = (3.28 m/s)/(0.25 s) = 13.1 m/s²",
+     "Numbers last."
+    ],
+    [
+     "FN = (62 kg)(9.8 m/s² + 13.1 m/s²) = 1.4 × 10³ N",
+     "Two significant figures."
+    ],
+    [
+     "Force on the floor = 1.4 × 10³ N, down",
      "Third law."
-    ],
-    [
-     "a(cart) = F/M = (48.0 N)/(20.0 kg) = 2.40 m/s², backward",
-     "Second law on the cart; the vertical forces balance."
     ]
    ],
-   "ans": "2.40 m/s², backward"
+   "ans": "1.4 × 10³ N, downward on the floor"
   },
   {
-   "q": "**Recoil, conversions.** A 500. g ball leaves a 25.0 kg launcher at 72.0 km/h relative to the ground, 40.0 ms after it starts moving. Find the launcher's acceleration.",
+   "q": "**Rocket at its last fuel.** A rocket's mass without fuel is 1420 Mg. Its engine pushes with 22.2 × 10⁶ N straight up. What is its acceleration as it burns its last fuel?",
    "steps": [
     [
-     "m = 0.500 kg; v = 72.0 ÷ 3.6 = 20.0 m/s; t = 0.0400 s",
-     "Convert first."
+     "m = 1420 Mg = 1.42 × 10⁶ kg",
+     "1 Mg = 1000 kg; at the last fuel only the dry mass is left."
     ],
     [
-     "v = v₀ + at → a(ball) = v/t = (20.0 m/s)/(0.0400 s) = 5.00 × 10² m/s²",
-     "#1: no distance given."
+     "a = Fnet/m = (Fth − mg)/m = Fth/m − g",
+     "Thrust up, gravity down."
     ],
     [
-     "F = (0.500 kg)(5.00 × 10² m/s²) = 2.50 × 10² N",
-     "Second law on the ball, then the third law."
+     "a = (22.2 × 10⁶ N)/(1.42 × 10⁶ kg) − 9.8 m/s²",
+     "Plug in once."
     ],
     [
-     "a(launcher) = (2.50 × 10² N)/(25.0 kg) = 10.0 m/s², backward",
-     "Same force, much bigger mass."
+     "a = 15.6 m/s² − 9.8 m/s² = 5.8 m/s²",
+     "Up."
     ]
    ],
-   "ans": "10.0 m/s², backward"
+   "ans": "5.8 m/s², upward"
   },
   {
-   "q": "**Recoil, speeds relative to the thrower.** A 50.0 kg skater on smooth ice pushes a 2.00 kg ball through 0.500 m relative to her body; it leaves at 2.00 m/s relative to her. Find her acceleration.",
+   "q": "**Fuel burned (current mass).** A rocket's mass at liftoff is 2.00 × 10⁴ kg and its thrust stays 2.94 × 10⁵ N. Later its acceleration is 11.2 m/s² up. How much fuel has burned?",
    "steps": [
     [
-     "a(rel) = v²/(2L) = (2.00 m/s)²/(2(0.500 m)) = 4.00 m/s²",
-     "Both values are relative to the skater."
+     "m = M − m(fuel)",
+     "The current mass, not the launch mass."
     ],
     [
-     "a(rel) = a(ball) + a(skater) and m·a(ball) = M·a(skater)",
-     "Opposite directions; equal forces."
+     "Fth − mg = ma → m(g + a) = Fth → m = Fth/(g + a)",
+     "Solve in letters."
     ],
     [
-     "a(ball) = a(rel)·M/(M + m) = (4.00 m/s²)(50.0 kg)/(52.0 kg) = 3.85 m/s²",
-     "Letters first."
+     "m(fuel) = M − Fth/(g + a)",
+     "Swap in the current mass."
     ],
     [
-     "F = (2.00 kg)(3.846 m/s²) = 7.69 N; a(skater) = (7.69 N)/(50.0 kg) = 0.154 m/s², backward",
-     "Check: 3.846 + 0.154 = 4.00."
+     "m(fuel) = 2.00 × 10⁴ kg − (2.94 × 10⁵ N)/(9.8 m/s² + 11.2 m/s²)",
+     "Plug in."
+    ],
+    [
+     "= 2.00 × 10⁴ kg − 1.40 × 10⁴ kg = 6.0 × 10³ kg",
+     "Subtract last."
     ]
    ],
-   "ans": "0.154 m/s², backward"
+   "ans": "6.0 × 10³ kg of fuel"
   },
   {
-   "q": "**Buoyancy, hovering.** A 2.00 kg diving robot normally rests on a pool floor. It can hover by generating 12.0 N of upward thrust. What is the magnitude of the buoyant force on it?",
+   "q": "**Skater, friction.** A 48 kg skater glides from 4.0 m/s to 3.4 m/s in 6.0 s. What is the friction force on her skates?",
    "steps": [
     [
-     "Diagram: Fg down; Ft, Fb up; no FN",
-     "Off the bottom."
+     "a = (v − v₀)/t = (3.4 m/s − 4.0 m/s)/(6.0 s) = −0.10 m/s²",
+     "Slowing: a is negative."
     ],
     [
-     "Hovering: a = 0",
-     "Not moving."
+     "a = Fnet/m → −Ff = ma → Ff = −ma",
+     "Friction is the only horizontal force."
     ],
     [
-     "a = Fnet/m → Fb + Ft − mg = ma → Fb = mg − Ft",
-     "Up is +; letters first."
-    ],
-    [
-     "Fb = (2.00 kg)(9.8 m/s²) − 12.0 N",
-     "Units in every parenthesis."
-    ],
-    [
-     "Fb = 19.6 N − 12.0 N = 7.6 N",
-     "Tenths place, from the subtraction."
+     "Ff = −(48 kg)(−0.10 m/s²) = 4.8 N",
+     "Backward."
     ]
    ],
-   "ans": "Fb = 7.6 N"
+   "ans": "4.8 N"
   },
   {
-   "q": "**Buoyancy, slowing while rising.** A 0.600 kg helium drone rises off a gym floor with thrust 1.50 N. Its speed drops from 0.80 m/s to 0.30 m/s in 2.0 s. Air drag is negligible. Find the buoyant force.",
+   "q": "**Elevator.** A 55 kg person stands on a scale in an elevator accelerating downward at 1.5 m/s². What does the scale read?",
    "steps": [
     [
-     "a = (v − v₀)/t = (0.30 m/s − 0.80 m/s)/(2.0 s) = −0.25 m/s²",
-     "#1; negative, because it slows while moving up."
+     "Up is +, so a = −1.5 m/s²",
+     "Signs first."
     ],
     [
-     "Fb + Ft − mg = ma → Fb = m(g + a) − Ft",
-     "Up is +."
+     "FN − mg = ma → FN = m(g + a)",
+     "The scale reads FN."
     ],
     [
-     "Fb = (0.600 kg)(9.8 m/s² − 0.25 m/s²) − 1.50 N",
-     "Keep the sign of a."
+     "FN = (55 kg)(9.8 m/s² + (−1.5 m/s²)) = (55 kg)(8.3 m/s²)",
+     "Units inside every parenthesis."
     ],
     [
-     "Fb = 5.73 N − 1.50 N = 4.23 N",
-     "Units carried."
+     "FN = 4.6 × 10² N",
+     "Less than the 539 N weight: accelerating down."
     ]
    ],
-   "ans": "Fb = 4.23 N"
+   "ans": "4.6 × 10² N"
   },
   {
-   "q": "**Slope diagram (drawing).** A sled slides downhill to the left in still air; friction and drag are not negligible. No angle is given. Describe each arrow on the free-body diagram.",
+   "q": "**Linearize.** Same net force, different masses. Two points on the best-fit line of a vs. 1/m are (1.0 kg⁻¹, 0.30 m/s²) and (4.5 kg⁻¹, 1.35 m/s²). Find the net force.",
    "steps": [
     [
-     "Fg: straight down",
-     "Gravity is always vertical."
-    ],
-    [
-     "FN: perpendicular to the slope, out of the snow, leaning left of vertical",
-     "The sled moves left, so the slope rises to the right and its outward normal leans left."
-    ],
-    [
-     "Ff: up the slope, up and to the right",
-     "Opposite the sliding."
-    ],
-    [
-     "FD: up the slope, beside Ff",
-     "Still air: opposite the motion."
-    ]
-   ],
-   "ans": "Four arrows: Fg, FN, Ff, FD"
-  },
-  {
-   "q": "**Drag linearization.** Two points on the best-fit line of FD against v² are (20 m²/s², 4.1 N) and (180 m²/s², 36.1 N). Find K.",
-   "steps": [
-    [
-     "FD = K(v²) + 0, so slope = K",
+     "a = Fnet(1/m) + 0, so slope = Fnet",
      "Match y = mx + b."
     ],
     [
-     "slope = (36.1 N − 4.1 N)/(180 m²/s² − 20 m²/s²)",
+     "slope = (1.35 m/s² − 0.30 m/s²)/(4.5 kg⁻¹ − 1.0 kg⁻¹)",
      "Two far-apart points on the line."
     ],
     [
-     "= 32.0 N / 160 m²/s² = 0.200 N·s²/m²",
-     "Units from the axes."
+     "= (1.05 m/s²)/(3.5 kg⁻¹) = 0.30 kg·m/s²",
+     "Units come from the axes."
+    ],
+    [
+     "Fnet = 0.30 N",
+     "kg·m/s² = N."
     ]
    ],
-   "ans": "K = 0.200 N·s²/m² = 0.200 kg/m"
+   "ans": "Fnet = 0.30 N"
   }
  ],
  "formulas": [
   {
    "n": "Newton's second law",
    "f": "a = ΣF/m = Fnet/m",
-   "note": "on the equation sheet; a and Fnet point the same way"
+   "note": "on the equation sheet; Fnet and a point the same way"
+  },
+  {
+   "n": "weight",
+   "f": "Fg = mg",
+   "note": "g = 9.8 N/kg = 9.8 m/s²"
   },
   {
    "n": "Newton's third law",
@@ -1705,24 +1757,8 @@ const GUIDE = {
    "note": "same size, opposite direction, different objects"
   },
   {
-   "n": "weight",
-   "f": "Fg = mg",
-   "note": "g = 9.8 m/s² = 9.8 N/kg"
-  },
-  {
-   "n": "recoil",
-   "f": "F = m·a(ball); a(launcher) = F/M",
-   "note": "same F on both, opposite directions"
-  },
-  {
-   "n": "relative acceleration",
-   "f": "a(rel) = a(ball) + a(launcher)",
-   "note": "only when the speed is measured relative to the launcher"
-  },
-  {
-   "n": "thrust and buoyancy",
-   "f": "Fb + Ft − mg = ma → Fb = m(g + a) − Ft",
-   "note": "up is +; hovering means a = 0, so Fb = mg − Ft"
+   "n": "acceleration",
+   "f": "a = Δv/Δt = (v − v₀)/t"
   },
   {
    "n": "no displacement",
@@ -1740,9 +1776,14 @@ const GUIDE = {
    "note": "on the equation sheet"
   },
   {
-   "n": "drag model",
-   "f": "FD = Kv²",
-   "note": "graph FD against v²; slope = K"
+   "n": "equilibrium",
+   "f": "ΣF = 0, so a = 0",
+   "note": "static: at rest; dynamic: constant velocity"
+  },
+  {
+   "n": "straight line",
+   "f": "y = mx + b",
+   "note": "match the physics equation to it"
   },
   {
    "n": "slope",
@@ -1751,20 +1792,20 @@ const GUIDE = {
   },
   {
    "n": "units",
-   "f": "N·s²/m² = kg/m",
-   "note": "1 N = 1 kg·m/s²; km/h ÷ 3.6 = m/s"
+   "f": "1 N = 1 kg·m/s²",
+   "note": "1 lb ≈ 4.45 N; 1 dyne = 10⁻⁵ N"
   }
  ],
  "abbr": {
   "FN": "normal force",
   "Fg": "force of gravity (weight)",
-  "Ff": "kinetic friction",
+  "Ff": "friction",
+  "FT": "tension",
   "FD": "drag (air resistance)",
-  "Ft": "thrust",
-  "Fb": "buoyant force",
+  "FL": "lift",
+  "Fth": "thrust",
   "Fnet": "net force, also written ΣF",
-  "m, M": "mass of the ball, mass of the launcher",
-  "a(rel)": "the ball's acceleration relative to the launcher"
+  "Mg": "megagram, 1000 kg"
  }
 };
 
@@ -1803,21 +1844,22 @@ const CLASSPAGE={apush:"/apush",psych:"/psych",phys:"/physics",pre:"/precalc",bi
 const SHORT={apush:"APUSH",psych:"AP Psych",phys:"AP Physics 1",pre:"Precalc",biz:"Business",mor:"Morality",lang:"AP Lang",sem:"AP Seminar",span:"AP Spanish",apwh:"AP World",csp:"AP CSP"};
 function coverArt(gid){
   const id=gid==="biz"?"bus":gid;
-  if(id==="phys")return '<svg viewBox="0 0 180 150" fill="none" aria-hidden="true" focusable="false"><g stroke="var(--accent)" stroke-width=".75">'+Array.from({length:13},(_,i)=>'<ellipse cx="90" cy="75" rx="'+(24+i*4)+'" ry="'+(9+i*3)+'" transform="rotate('+(i*5-30)+' 90 75)" opacity="'+(.25+i*.04)+'"/>').join('')+'</g><circle cx="90" cy="75" r="3" fill="var(--ink)"/></svg>';
-  if(!["pre","apush","psych","bus","mor","lang","sem"].includes(id))return "";
-  const [a,b,c,d]=["var(--surface2)","var(--paper)","var(--accent)","var(--ink2)"], n="gc";
-  const defs=`<defs><linearGradient id="${n}bg" x2="1" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient><linearGradient id="${n}pt" x2=".8" y2="1"><stop stop-color="${c}"/><stop offset="1" stop-color="${d}"/></linearGradient></defs>`;
+  const P={pre:["#1e514d","#123632","#bce3b0","#f5b792"],apush:["#b76045","#72392e","#f8d7ae","#e99b70"],psych:["#66628b","#35364f","#d6c4fa","#f4bcad"],phys:["#356f85","#193c50","#b5e8df","#efc26e"],bus:["#c59342","#8b572b","#ffe5aa","#f5bc75"],mor:["#81586b","#493948","#edbbca","#e9bd86"],lang:["#7a879b","#414e66","#e4e9f0","#edbd9f"],sem:["#779283","#3c594b","#e1e8ba","#edc699"]};
+  if(!P[id])return "";
+  const [a,b,c,d]=P[id], n="gc";
+  const defs=`<defs><linearGradient id="${n}bg" x2="1" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient><linearGradient id="${n}pt" x2=".8" y2="1"><stop stop-color="${c}"/><stop offset="1" stop-color="${d}"/></linearGradient><filter id="${n}sh" x="-50%" y="-50%" width="200%" height="210%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#14211c" flood-opacity=".24"/></filter></defs>`;
   const bg=`<rect width="480" height="300" fill="url(#${n}bg)"/><circle cx="415" cy="20" r="190" fill="${c}" opacity=".06"/><circle cx="30" cy="305" r="170" fill="${d}" opacity=".05"/>`;
-  const grid='<path d="M0 60H480M0 100H480M0 140H480M0 180H480M0 220H480M0 260H480M40 0V300M80 0V300M120 0V300M160 0V300M200 0V300M240 0V300M280 0V300M320 0V300M360 0V300M400 0V300M440 0V300" stroke="var(--accent)" stroke-opacity=".07" fill="none"/>';
+  const grid='<path d="M0 60H480M0 100H480M0 140H480M0 180H480M0 220H480M0 260H480M40 0V300M80 0V300M120 0V300M160 0V300M200 0V300M240 0V300M280 0V300M320 0V300M360 0V300M400 0V300M440 0V300" stroke="white" stroke-opacity=".07" fill="none"/>';
   let s="";
   if(id==="pre"){const pts=[];for(let t=0;t<=Math.PI*2+.01;t+=.008){const r=106*Math.cos(3*t);pts.push(`${(252+r*Math.cos(t)).toFixed(1)},${(154+r*Math.sin(t)).toFixed(1)}`)}
-    s=grid+`<g stroke="${c}" fill="none" opacity=".25"><circle cx="252" cy="154" r="115"/><circle cx="252" cy="154" r="74"/><path d="M85 154H401M252 22V288M158 61L346 247M155 247L346 60"/></g><polygon points="${pts.join(" ")}" fill="url(#${n}pt)" stroke="${c}" stroke-width="1.5"/><circle cx="252" cy="154" r="5" fill="${b}"/><g transform="translate(38 213) rotate(-7)"><rect width="143" height="47" rx="9" fill="var(--accent)"/><text x="17" y="30" fill="${b}" font-size="19">r = a cos 3θ</text></g><text x="357" y="66" fill="${c}" font-size="13">90°</text>`}
-  if(id==="apush")s=`<circle cx="313" cy="122" r="105" fill="${d}" opacity=".25"/><g transform="translate(75 67) rotate(-9 130 100)"><rect width="263" height="189" rx="8" fill="var(--accent)"/><path d="M23 146H241M36 157H228M55 133V74M91 133V74M127 133V74M163 133V74M199 133V74M39 68H218L129 23Z" fill="none" stroke="${b}" stroke-width="3"/><path d="M25 175H178" stroke="${a}" stroke-width="2"/></g><g transform="translate(316 194)"><circle r="40" fill="${d}"/><circle r="31" stroke="${b}" fill="none" opacity=".6"/><path d="M-16 0H16M0-16V16" stroke="${b}"/><circle r="8" fill="${b}"/></g><path d="M345 64L382 68M343 77L388 82M341 90L374 94" stroke="${c}" opacity=".7" stroke-width="2"/>`;
-  if(id==="psych")s=`<g opacity=".14" fill="none" stroke="${c}"><circle cx="240" cy="155" r="113"/><circle cx="240" cy="155" r="92"/><path d="M52 155H427M240 20V287"/></g><path d="M238 72C197 33 153 67 159 102C113 114 116 174 158 180C146 222 200 252 238 217C273 249 320 222 315 183C358 158 341 103 309 102C315 56 271 38 238 72Z" fill="url(#${n}pt)"/><g fill="none" stroke="${b}" stroke-width="2.4"><path d="M238 76V214M181 97C213 83 229 119 205 137M284 94C260 91 251 115 263 130C288 126 304 151 288 168M164 150C187 136 203 163 192 178M209 204C194 186 222 158 237 166M265 199C253 181 265 172 280 180"/></g><g stroke="${d}" stroke-width="1.5"><path d="M143 114L87 85M328 149L398 134M281 223L339 265M159 190L102 237"/></g><g fill="${d}"><circle cx="87" cy="85" r="8"/><circle cx="398" cy="134" r="12"/><circle cx="339" cy="265" r="7"/><circle cx="102" cy="237" r="10"/></g>`;
-  if(id==="bus")s=`<g stroke="${c}" stroke-opacity=".2" fill="none"><path d="M46 201L253 280 434 187M46 161L253 240 434 147M46 121L253 200 434 107"/></g>`+[[102,166,50],[183,125,91],[267,69,147]].map(([x,y,h])=>`<g><path d="M${x} ${y}l48-20 35 15-48 21Z" fill="var(--accent)"/><path d="M${x} ${y}l35 16v${h}l-35-16Z" fill="${d}"/><path d="M${x+35} ${y+16}l48-21v${h}l-48 21Z" fill="${c}"/></g>`).join("")+`<path d="M98 122L205 70 322 32M310 32H322V44" stroke="${c}" stroke-width="2" fill="none"/>`;
-  if(id==="mor")s=`<path d="M127 280V124a113 113 0 0 1 226 0V280Z" fill="${c}" opacity=".15"/><path d="M152 280V127a88 88 0 0 1 176 0V280Z" fill="${c}" opacity=".12"/><path d="M177 280V130a63 63 0 0 1 126 0V280Z" fill="${d}" opacity=".19"/><g stroke="${c}" stroke-width="3" fill="none"><path d="M240 66V235M188 239H292M151 116H329M169 119L135 179H203ZM311 119L277 179H345Z"/><path d="M135 179Q169 217 203 179M277 179Q311 217 345 179" fill="${d}" stroke="${d}"/></g><circle cx="240" cy="115" r="9" fill="${c}"/>`;
-  if(id==="lang")s=`<g transform="translate(108 51) rotate(-10 123 95)"><rect x="12" y="13" width="249" height="199" rx="8" fill="${d}"/><rect width="249" height="199" rx="8" fill="var(--accent)"/><path d="M28 37H161" stroke="${b}" stroke-width="8"/><path d="M28 66H215M28 82H204M28 98H221M28 130H205M28 146H221M28 162H185" stroke="${b}" opacity=".65" stroke-width="2"/><path d="M24 97H155M106 147H221" stroke="${a}" stroke-width="11" opacity=".22"/><path d="M25 179Q86 158 142 179" stroke="${a}" fill="none" stroke-width="2"/></g><g transform="translate(338 95) rotate(28)"><rect width="12" height="133" rx="3" fill="${b}"/><rect width="12" height="30" rx="3" fill="${d}"/><path d="M0 133L6 151 12 133Z" fill="${c}"/></g>`;
-  if(id==="sem")s=`<g stroke="${c}" stroke-opacity=".4" stroke-width="1.5" fill="none"><path d="M91 198L167 89 319 104 376 221 223 228Z M167 89L223 228M319 104L91 198"/></g><g><path d="M90 74h159a17 17 0 0 1 17 17v79a17 17 0 0 1-17 17h-93l-37 29v-29H90a17 17 0 0 1-17-17V91a17 17 0 0 1 17-17Z" fill="${c}"/><path d="M243 127h139a14 14 0 0 1 14 14v64a14 14 0 0 1-14 14h-17v23l-33-23h-89a14 14 0 0 1-14-14v-64a14 14 0 0 1 14-14Z" fill="${d}"/></g><path d="M105 110H223M105 126H208M105 142H180M260 158H364M260 175H349M260 192H309" stroke="${b}" stroke-opacity=".6" stroke-width="3"/>`;
+    s=grid+`<g stroke="${c}" fill="none" opacity=".25"><circle cx="252" cy="154" r="115"/><circle cx="252" cy="154" r="74"/><path d="M85 154H401M252 22V288M158 61L346 247M155 247L346 60"/></g><polygon points="${pts.join(" ")}" fill="url(#${n}pt)" stroke="${c}" stroke-width="1.5" filter="url(#${n}sh)"/><circle cx="252" cy="154" r="5" fill="${b}"/><g transform="translate(38 213) rotate(-7)" filter="url(#${n}sh)"><rect width="143" height="47" rx="9" fill="#f4e7cb"/><text x="17" y="30" fill="${b}" font-size="19">r = a cos 3θ</text></g><text x="357" y="66" fill="${c}" font-size="13">90°</text>`}
+  if(id==="apush")s=`<circle cx="313" cy="122" r="105" fill="${d}" opacity=".25"/><g transform="translate(75 67) rotate(-9 130 100)" filter="url(#${n}sh)"><rect width="263" height="189" rx="8" fill="#f6dfba"/><path d="M23 146H241M36 157H228M55 133V74M91 133V74M127 133V74M163 133V74M199 133V74M39 68H218L129 23Z" fill="none" stroke="${b}" stroke-width="3"/><path d="M25 175H178" stroke="${a}" stroke-width="2"/></g><g transform="translate(316 194)"><circle r="40" fill="${d}"/><circle r="31" stroke="${b}" fill="none" opacity=".6"/><path d="M-16 0H16M0-16V16" stroke="${b}"/><circle r="8" fill="${b}"/></g><path d="M345 64L382 68M343 77L388 82M341 90L374 94" stroke="${c}" opacity=".7" stroke-width="2"/>`;
+  if(id==="psych")s=`<g opacity=".14" fill="none" stroke="${c}"><circle cx="240" cy="155" r="113"/><circle cx="240" cy="155" r="92"/><path d="M52 155H427M240 20V287"/></g><path d="M238 72C197 33 153 67 159 102C113 114 116 174 158 180C146 222 200 252 238 217C273 249 320 222 315 183C358 158 341 103 309 102C315 56 271 38 238 72Z" fill="url(#${n}pt)" filter="url(#${n}sh)"/><g fill="none" stroke="${b}" stroke-width="2.4"><path d="M238 76V214M181 97C213 83 229 119 205 137M284 94C260 91 251 115 263 130C288 126 304 151 288 168M164 150C187 136 203 163 192 178M209 204C194 186 222 158 237 166M265 199C253 181 265 172 280 180"/></g><g stroke="${d}" stroke-width="1.5"><path d="M143 114L87 85M328 149L398 134M281 223L339 265M159 190L102 237"/></g><g fill="${d}"><circle cx="87" cy="85" r="8"/><circle cx="398" cy="134" r="12"/><circle cx="339" cy="265" r="7"/><circle cx="102" cy="237" r="10"/></g>`;
+  if(id==="phys")s=grid+`<path d="M55 244H424M70 263V55" stroke="${c}" opacity=".5"/><path d="M82 222Q243 -66 406 214" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="5 7"/><path d="M236 92H294M286 86L294 92 286 98" fill="none" stroke="${d}" stroke-width="2"/>`+[[82,222,9],[126,156,13],[183,109,18],[242,92,24],[303,112,31],[355,155,36],[406,214,42]].map(([x,y,r],i)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${n}pt)" opacity="${(.25+i*.12).toFixed(2)}" filter="url(#${n}sh)"/><circle cx="${x-r*.25}" cy="${y-r*.3}" r="${r*.24}" fill="white" opacity="${(.06+i*.016).toFixed(3)}"/>`).join("");
+  if(id==="bus")s=`<g stroke="${c}" stroke-opacity=".2" fill="none"><path d="M46 201L253 280 434 187M46 161L253 240 434 147M46 121L253 200 434 107"/></g>`+[[102,166,50],[183,125,91],[267,69,147]].map(([x,y,h])=>`<g filter="url(#${n}sh)"><path d="M${x} ${y}l48-20 35 15-48 21Z" fill="#ffe7b4"/><path d="M${x} ${y}l35 16v${h}l-35-16Z" fill="${d}"/><path d="M${x+35} ${y+16}l48-21v${h}l-48 21Z" fill="${c}"/></g>`).join("")+`<path d="M98 122L205 70 322 32M310 32H322V44" stroke="${c}" stroke-width="2" fill="none"/>`;
+  if(id==="mor")s=`<path d="M127 280V124a113 113 0 0 1 226 0V280Z" fill="${c}" opacity=".15"/><path d="M152 280V127a88 88 0 0 1 176 0V280Z" fill="${c}" opacity=".12"/><path d="M177 280V130a63 63 0 0 1 126 0V280Z" fill="${d}" opacity=".19"/><g stroke="${c}" stroke-width="3" fill="none" filter="url(#${n}sh)"><path d="M240 66V235M188 239H292M151 116H329M169 119L135 179H203ZM311 119L277 179H345Z"/><path d="M135 179Q169 217 203 179M277 179Q311 217 345 179" fill="${d}" stroke="${d}"/></g><circle cx="240" cy="115" r="9" fill="${c}"/>`;
+  if(id==="lang")s=`<g transform="translate(108 51) rotate(-10 123 95)" filter="url(#${n}sh)"><rect x="12" y="13" width="249" height="199" rx="8" fill="${d}"/><rect width="249" height="199" rx="8" fill="#f4ead8"/><path d="M28 37H161" stroke="${b}" stroke-width="8"/><path d="M28 66H215M28 82H204M28 98H221M28 130H205M28 146H221M28 162H185" stroke="${b}" opacity=".65" stroke-width="2"/><path d="M24 97H155M106 147H221" stroke="${a}" stroke-width="11" opacity=".22"/><path d="M25 179Q86 158 142 179" stroke="${a}" fill="none" stroke-width="2"/></g><g transform="translate(338 95) rotate(28)"><rect width="12" height="133" rx="3" fill="${b}"/><rect width="12" height="30" rx="3" fill="${d}"/><path d="M0 133L6 151 12 133Z" fill="${c}"/></g>`;
+  if(id==="sem")s=`<g stroke="${c}" stroke-opacity=".4" stroke-width="1.5" fill="none"><path d="M91 198L167 89 319 104 376 221 223 228Z M167 89L223 228M319 104L91 198"/></g><g filter="url(#${n}sh)"><path d="M90 74h159a17 17 0 0 1 17 17v79a17 17 0 0 1-17 17h-93l-37 29v-29H90a17 17 0 0 1-17-17V91a17 17 0 0 1 17-17Z" fill="${c}"/><path d="M243 127h139a14 14 0 0 1 14 14v64a14 14 0 0 1-14 14h-17v23l-33-23h-89a14 14 0 0 1-14-14v-64a14 14 0 0 1 14-14Z" fill="${d}"/></g><path d="M105 110H223M105 126H208M105 142H180M260 158H364M260 175H349M260 192H309" stroke="${b}" stroke-opacity=".6" stroke-width="3"/>`;
   return `<svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" focusable="false" xmlns="http://www.w3.org/2000/svg">${defs}${bg}${s}</svg>`;
 }
 /* section names say where they lead; GUIDE.labels overrides one (e.g. problems:"SAQ practice") */
@@ -2136,8 +2178,7 @@ function buildPractice(sec){
   ragain.addEventListener("click",startRetry);
   rbar.querySelector('[data-r="all"]').addEventListener("click",endRetry);
   rbar.querySelector('[data-r="over"]').addEventListener("click",()=>$("#reset").click());
-  /* Start over also turns Show answers off through its own button, so class, label and aria-pressed agree */
-  $("#reset").addEventListener("click",()=>{if(hold())return;if($("#root").classList.contains("showall"))$("#showall").click();SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
+  $("#reset").addEventListener("click",()=>{if(hold())return;SCORE.done=0;SCORE.right=0;$("#scn").textContent=0;FIRST.clear();MISSED.clear();RT=null;ROUND=0;rsay.textContent="";g.querySelectorAll(".q").forEach(c=>{c.classList.remove("rx");clearCard(c)});scoreVis();rsync();RESEARCH();sec.scrollIntoView({behavior:REDUCED?"auto":"smooth"});g.focus({preventScroll:true})});
 }
 
 /* problems: steps are strings (numbered) or [work, why] pairs (line by line) */
@@ -2164,30 +2205,24 @@ function buildFormulas(sec){
 /* flashcards: think first, flip, then "Review again" or "Got it". Marked cards form a short review round.
    Back, next and shuffle still move freely; arrow keys and swipes too. In memory for this visit only. */
 function buildCards(sec){
-  const cs=GUIDE.cards||[]; const all=cs.map((_,k)=>k); let order=all.slice(), i=0, marked=new Set(), round=1;
-  const checked=new Set(); // card identities rated in this round, independent of navigation or shuffle
+  const cs=GUIDE.cards||[]; const all=cs.map((_,k)=>k); let order=all.slice(), i=0, marked=new Set(), done=0, round=1;
   const dk=el("div","dk");
-  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; fc.setAttribute("aria-describedby","flashcard-help"); deck.appendChild(fc); dk.appendChild(deck);
-  const help=el("p","vh"); help.id="flashcard-help"; deck.appendChild(help);
-  const announcement=el("p","vh"); announcement.setAttribute("role","status"); announcement.setAttribute("aria-live","polite"); announcement.setAttribute("aria-atomic","true"); deck.appendChild(announcement);
+  const deck=el("div","deck"); const fc=el("div","fc"); fc.setAttribute("role","button"); fc.tabIndex=0; fc.setAttribute("aria-label","flashcard, press to flip"); deck.appendChild(fc); dk.appendChild(deck);
   const st=el("div","dstudy",`<button type="button" class="btn" data-a="flip">Show answer</button><button type="button" class="btn ghost" data-a="again" hidden>Review again</button><button type="button" class="btn" data-a="got" hidden>Got it</button><span class="mk" aria-live="polite"></span>`); dk.appendChild(st);
   const nav=el("div","dnav",`<button type="button" class="btn ghost" data-a="prev">back</button><button type="button" class="btn ghost" data-a="next">next</button><button type="button" class="btn ghost" data-a="shuf">shuffle</button><span class="cnt"></span>`); dk.appendChild(nav);
   const fin=el("div","ddone"); fin.hidden=true; fin.tabIndex=-1; dk.appendChild(fin);
   sec.appendChild(dk);
   const cnt=nav.querySelector(".cnt"), mk=st.querySelector(".mk"), bF=st.querySelector('[data-a="flip"]'), bA=st.querySelector('[data-a="again"]'), bG=st.querySelector('[data-a="got"]');
-  const sync=()=>{const f=fc.classList.contains("flip");bF.hidden=f;bA.hidden=!f;bG.hidden=!f;bF.textContent="Show answer";mk.textContent=marked.size?`${marked.size} marked to review`:"";
-    fc.querySelector(".f").setAttribute("aria-hidden",String(f));fc.querySelector(".b").setAttribute("aria-hidden",String(!f));
-    const text=fc.querySelector(f?".b .face-value":".f .face-value").textContent, face=f?"Answer":"Term", position=`Card ${i+1} of ${order.length}${round>1?`, review round ${round}`:""}`;
-    fc.setAttribute("aria-label",`${face}: ${text}`);help.textContent=`${position}. Press to show the ${f?"term":"answer"}.`;announcement.textContent=`${position}. ${face}: ${text}`;};
-  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span class="face-value">${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span class="face-value">${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${order.length}${round>1?` · review round ${round}`:""}`;sync()};
+  const sync=()=>{const f=fc.classList.contains("flip");bF.hidden=f;bA.hidden=!f;bG.hidden=!f;bF.textContent="Show answer";mk.textContent=marked.size?`${marked.size} marked to review`:""};
+  const draw=()=>{const c=cs[order[i]];fc.classList.remove("flip");fc.innerHTML=`<div class="f"><span class="tag">term</span><span>${plain(c.f)}</span></div><div class="b"><span class="tag">${esc(GUIDE.cls)}</span><span>${plain(c.b)}</span></div>`;cnt.textContent=`${i+1} of ${order.length}${round>1?` · review round ${round}`:""}`;sync()};
   const flip=()=>{fc.classList.toggle("flip");sync()};
   const go=d=>{i=(i+d+order.length)%order.length;draw()};
   const showDeck=on=>{deck.hidden=!on;st.hidden=!on;nav.hidden=!on;fin.hidden=on};
   const finish=()=>{const n=marked.size;
     fin.innerHTML=`<p class="eyb">${round>1?`review round ${round} finished`:"deck finished"}</p><h4>${n?`${n} card${n===1?"":"s"} to review again`:`All ${order.length} cards checked`}</h4><p>${n?"Go through just the cards you marked.":"Try one of them in a sentence of your own, or run the full deck again."}</p><div class="row2">${n?`<button type="button" class="btn" data-a="rev">Review marked cards (${n})</button>`:""}<button type="button" class="btn${n?" ghost":""}" data-a="full">Full deck again</button></div>`;
     showDeck(false); fin.focus({preventScroll:true});};
-  const mark=again=>{const k=order[i];if(again)marked.add(k);else marked.delete(k);checked.add(k);if(checked.size===order.length)finish();else{do{i=(i+1)%order.length}while(checked.has(order[i]));draw();fc.focus({preventScroll:true})}};
-  fin.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.a==="rev"){order=[...marked].sort((a,b)=>a-b);round++}else{order=all.slice();round=1}marked=new Set();checked.clear();i=0;showDeck(true);draw();fc.focus({preventScroll:true})});
+  const mark=again=>{const k=order[i];if(again)marked.add(k);else marked.delete(k);done++;if(i>=order.length-1)finish();else{i++;draw();fc.focus({preventScroll:true})}};
+  fin.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.a==="rev"){order=[...marked].sort((a,b)=>a-b);round++}else{order=all.slice();round=1}marked=new Set();i=0;done=0;showDeck(true);draw();fc.focus({preventScroll:true})});
   fc.addEventListener("click",flip); fc.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}});
   bF.addEventListener("click",()=>{flip();bG.focus({preventScroll:true})});
   bA.addEventListener("click",()=>mark(true)); bG.addEventListener("click",()=>mark(false));
@@ -2281,9 +2316,6 @@ function placeMenu(m,t){
   const inBar=t.closest(".bar"), top=Math.round(inBar?bar.getBoundingClientRect().bottom+6:r.bottom+6);
   m.style.left=Math.round(left)+"px"; m.style.top=top+"px"; m.style.maxHeight=Math.max(200,Math.min(560,innerHeight-top-12))+"px";
 }
-/* Where focus enters a menu: the current entry while it is visible, else the first visible entry.
-   Search can hide the current lesson, and focusing a hidden entry leaves focus on the launcher. */
-function menuFocusTarget(m){const items=visibleF(m),cur=m.querySelector('.mi[aria-current="true"]');return items.includes(cur)?cur:items[0]}
 function openMenu(id,t,kbd){
   closeMenu(false);
   const m=document.getElementById(id); if(!m)return;
@@ -2291,7 +2323,7 @@ function openMenu(id,t,kbd){
   document.querySelectorAll(`[data-menu="${id}"]`).forEach(b=>b.setAttribute("aria-expanded",String(b===t)));
   OPEN=m; OPENBY=t;
   /* from the keyboard, focus moves into the menu; from a pointer it stays put (Tab or the arrow keys still enter it) */
-  if(kbd){const f=menuFocusTarget(m); if(f)f.focus({preventScroll:true})}
+  if(kbd){const f=m.querySelector('.mi[aria-current="true"]')||visibleF(m)[0]; if(f)f.focus({preventScroll:true})}
 }
 function closeMenu(ret){
   if(!OPEN)return;
@@ -2309,7 +2341,7 @@ document.addEventListener("keydown",e=>{
   if(!OPEN)return;
   if(e.key==="Escape"){e.preventDefault();closeMenu(true);return}
   const items=visibleF(OPEN), i=items.indexOf(document.activeElement);
-  if(i<0&&document.activeElement===OPENBY&&(e.key==="ArrowDown"||(e.key==="Tab"&&!e.shiftKey))){e.preventDefault();menuFocusTarget(OPEN)?.focus({preventScroll:true});return}
+  if(i<0&&document.activeElement===OPENBY&&(e.key==="ArrowDown"||(e.key==="Tab"&&!e.shiftKey))){e.preventDefault();(OPEN.querySelector('.mi[aria-current="true"]')||items[0])?.focus({preventScroll:true});return}
   if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();const n=items.length;if(!n)return;items[(i+(e.key==="ArrowDown"?1:-1)+n)%n].focus({preventScroll:true});return}
   if(e.key==="Home"||e.key==="End"){e.preventDefault();(e.key==="Home"?items[0]:items[items.length-1])?.focus({preventScroll:true});return}
   if(e.key==="Tab"){
@@ -2397,7 +2429,7 @@ function show(id,user){
 }
 /* deep links: #practice opens a pane; #s-3 opens the guide at that lesson */
 function route(instant){
-  let want="";try{want=decodeURIComponent(location.hash.slice(1))}catch(e){} // malformed hashes fall back to the first pane
+  const want=decodeURIComponent(location.hash.slice(1));
   if(PANES.includes(want)){if(CUR!==want)show(want,false);return}
   const t=want&&document.getElementById(want);
   if(t&&t.closest(".pane")){show(t.closest(".pane").id.slice(2),false);requestAnimationFrame(()=>requestAnimationFrame(()=>goTo(want,instant)));return}
@@ -2487,12 +2519,12 @@ function setTheme(mode){
   const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
   if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
-  try{localStorage.setItem("theme",mode)}catch(e){}
+  try{mode==="auto"?localStorage.removeItem("theme"):localStorage.setItem("theme",mode)}catch(e){}
 }
 segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
 (function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
-  const mode=saved==="light"||saved==="dark"||saved==="auto"?saved:"dark";
-  if(mode!=="auto")document.documentElement.dataset.theme=mode;else delete document.documentElement.dataset.theme;
+  const mode=saved==="light"||saved==="dark"?saved:"auto";
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;
   segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
 })();
 requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
