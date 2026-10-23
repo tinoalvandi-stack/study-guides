@@ -67,6 +67,7 @@ const CLASSES=[
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day2-a.pdf"},
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day2-b.pdf"},
         {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version C", s:"C", url:"/precalc-parametric-sequences-day2-c.pdf"},
+        {kind:"pdf", g:"Day 2 practice test (PDF)", t:"Version D", s:"D", url:"/precalc-parametric-sequences-day2-d.pdf"},
         {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-parametric-sequences-cram-day2.pdf"},
         {kind:"pdf", t:"Review, worked (PDF)", url:"/precalc-parametric-sequences-review-worked.pdf"},
         {kind:"pdf", t:"Review notes (PDF)", url:"/precalc-parametric-sequences-review-notes.pdf"}]},
