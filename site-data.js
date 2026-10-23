@@ -33,6 +33,7 @@ const FEATURES=[
   {classId:"pre",   title:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", test:"2026-10-21", note:"no calculator: 5 parametric curves + 1 sequence question (first five terms or recursive), 16 points"},
   {classId:"apush", title:"Congress quiz study guide", url:"/apush-congress-quiz", test:"2026-10-22", note:"Free response with the Constitution provided: terms of office, age and citizenship requirements, how each house is elected, which house is proportional, and the checks and balances chart, with the Supreme Court and treaty checks."},
   {classId:"pre",   title:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", test:"2026-10-23", note:"calculator: nth term, finding sums, Binomial Theorem + 1 projectile, 27 points"},
+  {classId:"bus",   title:"High exam #3 study guide", url:"/bus-unit-2", test:"2026-10-27", end:"2026-10-28", note:"Unit 2: supply and demand, elasticity, GDP, trade-offs, goods and services. Practice tests A and B in the High exam #2 layout."},
 ];
 
 /* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
@@ -48,6 +49,10 @@ const CLASSES=[
      {t:"End-of-course exam Part A", url:"/seminar-eoc-part-a", added:"2026-10-12", extras:[
         {kind:"cram", t:"Cram sheet (PDF)", url:"/seminar-eoc-part-a-cram.pdf"}]}]},
   {id:"bus", page:"/business", c:"var(--c-biz)", glyph:"chart", name:"Business Principles", abbr:"Business", short:"BUSINESS", units:[
+     {t:"Unit 2", url:"/bus-unit-2", added:"2026-10-23", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/bus-unit-2-cram.pdf"},
+        {kind:"pdf", t:"Practice test A (PDF)", url:"/bus-unit-2-practice-a.pdf"},
+        {kind:"pdf", t:"Practice test B (PDF)", url:"/bus-unit-2-practice-b.pdf"}]},
      {t:"LPs 1-5 to 1-10", url:"/bus-unit-1-5-1-10", added:"2026-09-24", extras:[
         {kind:"pdf", t:"Practice test A (PDF)", url:"/bus-unit-1-5-1-10-practice-a.pdf"},
         {kind:"pdf", t:"Practice test B (PDF)", url:"/bus-unit-1-5-1-10-practice-b.pdf"}]},

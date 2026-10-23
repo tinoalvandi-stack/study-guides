@@ -222,10 +222,10 @@ test("Enter after eight ArrowDown presses opens the ninth visible result", () =>
   for (let n = 0; n < 8; n++) page.key("ArrowDown");
   const selected = page.rows().find(row => row.classList.contains("sel"));
   assert(selected, "The ninth result must be visible before opening it");
-  assert.equal(selected.href, "/bus-unit-1");
-  assert.equal(page.get("searchSelection").textContent, `Result 9 of ${page.state().hits.length}: Business Principles, Unit 1. Press Enter to open.`);
+  assert.equal(selected.href, "/apush-unit-1b");
+  assert.equal(page.get("searchSelection").textContent, `Result 9 of ${page.state().hits.length}: AP US History, Unit 1/B. Press Enter to open.`);
   assert.equal(page.enter().defaultPrevented, true, "Search submission should not navigate the form");
-  assert.deepEqual(page.opened, [["/bus-unit-1", "_blank", "noopener"]]);
+  assert.deepEqual(page.opened, [["/apush-unit-1b", "_blank", "noopener"]]);
 });
 
 for (const method of ["clear button", "Escape"]) {
@@ -246,7 +246,7 @@ for (const method of ["clear button", "Escape"]) {
     page.input("unit");
     assert.equal(page.state().selected, 0, "A fresh search starts at its first result");
     assert.equal(page.rows().some(row => row.classList.contains("sel") || row.getAttribute("aria-current")), false);
-    page.enter(); assert.deepEqual(page.opened, [["/apush-unit-2-leq", "_blank", "noopener"]]);
+    page.enter(); assert.deepEqual(page.opened, [["/bus-unit-2", "_blank", "noopener"]]);
   });
 }
 
