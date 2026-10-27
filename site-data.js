@@ -34,6 +34,7 @@ const FEATURES=[
   {classId:"apush", title:"Congress quiz study guide", url:"/apush-congress-quiz", test:"2026-10-22", note:"Free response with the Constitution provided: terms of office, age and citizenship requirements, how each house is elected, which house is proportional, and the checks and balances chart, with the Supreme Court and treaty checks."},
   {classId:"pre",   title:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", test:"2026-10-23", note:"calculator: nth term, finding sums, Binomial Theorem + 1 projectile, 27 points"},
   {classId:"bus",   title:"High exam #3 study guide", url:"/bus-unit-2", test:"2026-10-27", end:"2026-10-28", note:"Unit 2: supply and demand, elasticity, GDP, trade-offs, goods and services. Practice tests A and B in the High exam #2 layout."},
+  {classId:"mor",   title:"Ch 4 & 5 study guide", url:"/morality-ch4-5", test:"2026-11-02", end:"2026-11-03", note:"Jesus as Moral Guide and Conscience Formation: 50 questions (multiple choice, true/false, matching) plus one essay. Practice tests A and B."},
 ];
 
 /* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
@@ -58,6 +59,10 @@ const CLASSES=[
         {kind:"pdf", t:"Practice test B (PDF)", url:"/bus-unit-1-5-1-10-practice-b.pdf"}]},
      {t:"Unit 1", url:"/bus-unit-1", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/bus-unit-1-cram"}]}]},
   {id:"mor", page:"/morality", c:"var(--c-mor)", glyph:"cross", name:"Catholic Morality and Social Justice", abbr:"Morality", short:"MORALITY", units:[
+     {t:"Ch 4 & 5", url:"/morality-ch4-5", added:"2026-10-27", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/morality-ch4-5-cram.pdf"},
+        {kind:"pdf", t:"Practice test A (PDF)", url:"/morality-ch4-5-practice-a.pdf"},
+        {kind:"pdf", t:"Practice test B (PDF)", url:"/morality-ch4-5-practice-b.pdf"}]},
      {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"Practice quiz A (PDF)", url:"/morality-ch3-practice-a.pdf"}]},
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
