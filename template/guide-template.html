@@ -1623,7 +1623,8 @@ function buildPrompts(sec){
       `<div class="pl">context</div><ul class="bul">${(p.ctx||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
       `<div class="pl">thesis</div><div class="ans">${esc(p.thesis)}</div>`+
       (p.body||[]).map((bd,j)=>`<div class="pl">body ${j+1} · ${esc(bd.h)}</div><ul class="bul">${bd.ev.map(x=>`<li>${fmt(x)}</li>`).join("")}</ul><div class="so"><span class="cl">what this evidence shows</span>${fmt(bd.so)}</div>`).join("")+
-      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`;
+      `<div class="pl">conclusion</div><ul class="bul">${(p.concl||[]).map(x=>`<li>${fmt(x)}</li>`).join("")}</ul>`+
+      (p.sample?`<div class="pl">sample answer</div><div class="ans">${fmt(p.sample)}</div>`:"");
     const body=el("div","body",`<div><div class="in">${inner}</div></div>`);
     row.addEventListener("click",()=>{const on=!body.classList.contains("on");body.classList.toggle("on",on);row.setAttribute("aria-expanded",String(on))});
     g.appendChild(row); g.appendChild(body); sec.appendChild(g);

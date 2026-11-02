@@ -601,7 +601,7 @@ with a check button), `problems` (`q`, `steps[]`, `ans`; math and physics steps
 are `[work, why]` pairs), `formulas` (`n`, `f` plain text, `note`), `cards`
 (`f`, `b`; the pane also lists every card), `timeline` (`y`, `t`, `d`),
 `checklist` (`t`, `d`), `cram` (`{h, d, items:[{n, y, t}]}`), `tables`
-(`{h, d, cols[], rows[[]]}`), and for essay guides `prompts` and `leq`.
+(`{h, d, cols[], rows[[]]}`), and for essay guides `prompts` and `leq`. On the v5 template a prompt may carry `sample`, a full model answer shown after its plan.
 
 Markup: `**term**` only. The engine bolds a term once per section and renders
 any legacy `==x==` or `!!x!!` as plain text.

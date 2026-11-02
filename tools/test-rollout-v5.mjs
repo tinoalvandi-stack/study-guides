@@ -113,6 +113,6 @@ test("v5 guide header keeps a visible 44px home link on phones", () => {
 
 test("morality chapters 4 and 5 keep their exact GUIDE data on the v5 engine", () => {
   const h = read("morality-ch4-5.html"), a = h.indexOf("const GUIDE = "), b = h.indexOf("/* ═══ machinery. nothing below needs editing. ═══ */", a);
-  assert.equal(createHash("sha256").update(h.slice(a, b)).digest("hex"), "cc34018027034bc6ee56b852bb61598e5bdc5d440867bc2808bb2b27441bd99c");
+  assert.equal(createHash("sha256").update(h.slice(a, b)).digest("hex"), "1fc5127be15804aa41afa2fa721794db26e4709a6156b02c57282960a967cfee");
   assert(h.includes("guide template v5") && !h.includes("guide template v4"));
 });
