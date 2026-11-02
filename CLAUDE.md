@@ -32,14 +32,38 @@ engine.
   class and its newest guide. It is decorative (the drawing is `aria-hidden`,
   never needed to navigate), has no animation loop, and its "pause motion"
   button stays exposed; `prefers-reduced-motion` keeps it still and removes the
-  button. Pause is remembered in `localStorage.motion`. Up next and recently
-  opened follow as plain rows. Feedback and request a guide open from the
-  footer.
+  button. Pause is remembered in `localStorage.motion`. Recently opened
+  follows as plain rows. Feedback and request a guide open from the footer.
+- Up next calendar (approved November 1, 2026): a compact Monday to Sunday
+  week strip in the homepage sidebar, above the paper stack on screens 900px
+  and wider, and first on the page on narrower screens (the stack is omitted
+  there). It replaces the homepage's old up-next list; class pages keep their
+  up-next rows. Markup: `<div class="side">` holds `#cal` and then
+  `#homeart` (stack-only, because `makeStack` replaces its contents), and it
+  comes before `.lead` (search, classes, results) in the DOM so phones,
+  keyboards and screen readers meet the calendar first, as shown. Wide screens
+  place `.lead` in column 1 and `.side` in column 2 with explicit grid
+  placement; never reorder the opening with CSS `order` or
+  `display:contents`. Events come only from `PUBLIC_FEATURES` entries whose class is
+  public and whose `url` is one of that class's listed guides; `test`..`end`
+  is inclusive. "Today" is the America/Los_Angeles civil day and all date math
+  is on UTC civil days, so the viewer's zone and DST never shift a date. The
+  default week is the current one, unless nothing in it is still ahead and the
+  next week has a test (Sunday November 1 opens on November 2 to 8); an empty
+  week says so. Arrows change the week and clear the day, a day filters the
+  agenda (press again to clear), the range label shows the whole week again,
+  and left/right/Home/End move between days with one tab stop. A new Pacific
+  day or the page coming back moves "today" and the default week, but never a
+  week the reader browsed to or a day the reader selected. Focus survives that
+  re-render: a focused day returns to its day, a focused agenda link to the
+  same guide's new link, or to the range label if that guide left the view. Agenda links call `recordOpen`. The helpers and
+  controller sit between the `/* ═══ up next calendar` markers in `site.js`
+  and are tested in `tools/test-calendar.mjs`.
 - Class pages: breadcrumb, lowercase class name and counts, quiet up-next rows,
   numbered guide rows (chips, studied, share), and the same paper stack
   following the hovered or focused guide on wide screens.
-- Asset versions: `site.css?v=9`, `site-data.js?v=7`, `site-topics.js?v=2`,
-  `site.js?v=8` on `index.html` and the eight class pages. Bump them together
+- Asset versions: `site.css?v=10`, `site-data.js?v=7`, `site-topics.js?v=2`,
+  `site.js?v=9` on `index.html` and the eight class pages. Bump them together
   when those files change. `spanish.html` is a retained legacy shell and was
   left byte-for-byte unchanged in this rollout.
 
@@ -109,6 +133,7 @@ node tools/sync-guides.mjs --check
 node --test tools/test-*.mjs
 ```
 
+`tools/test-calendar.mjs` covers the up-next calendar's dates and controls.
 `tools/test-rollout-v5.mjs` covers public listings and the `<noscript>` list,
 shell guides and their anchors, private or remote references in every public
 page, unconfirmed dates kept out of up next, the theme storage contract,
@@ -261,12 +286,16 @@ Add to the `FEATURES` array in `site-data.js`, in test-date order:
   test: "2026-09-04", note: "the test covers sections 6.1 to 6.3 and the unit circle" }
 ```
 
-"Up next" shows every publicly listed test that has not passed, each as a
-compact row with a title and date, soonest first. Spanish is filtered out.
+The homepage up-next calendar places every entry on its days (past weeks keep
+their entries), and each class page lists the tests that have not passed as
+compact rows with a title and date, soonest first. Spanish is filtered out.
+Only add a date that is directly confirmed; an entry with `unconfirmed: true`
+stays out of the calendar, and an entry whose `url` is not a listed guide of
+its class is ignored there.
 `note` (optional) is one line on what the test covers. `end` (optional) is the
 last day of a multi-day test. Expired entries drop off on their own; leave them
 in the array.
-`pin: true` (optional) puts that entry first in "up next" while it is live,
+`pin: true` (optional) puts that entry first in the class page's up-next rows while it is live,
 ahead of earlier-dated entries; it still drops off after its date.
 
 ## Design system: approved editorial revision (October 22, 2026)
@@ -343,7 +372,8 @@ ahead of earlier-dated entries; it still drops off after its date.
 - `/` or ⌘K focus the field.
 - "Recently opened", the theme choice and the studied ticks live in the viewer's
   localStorage. Nothing leaves the browser.
-- Up next uses compact rows with the class, date, title, and optional note.
+- Up next on class pages uses compact rows with the class, date, title, and
+  optional note (the homepage uses the calendar described above).
   Countdown rings remain in generated markup for compatibility but are hidden
   by the approved homepage and class-page styles.
 - Share on every unit uses the native share sheet, or copies the link. On class

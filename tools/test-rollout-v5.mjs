@@ -58,7 +58,7 @@ test("only the directly confirmed test date is featured", () => {
 test("home and the eight class pages share the new shell and asset versions", () => {
   for (const f of ["index", ...CLASS_PAGES]) {
     const h = read(f + ".html");
-    for (const s of ['id="thm"', 'class="bin"', "/site.css?v=9", "/site-data.js?v=7", "/site-topics.js?v=2", "/site.js?v=8"]) assert(h.includes(s), `${f}: ${s}`);
+    for (const s of ['id="thm"', 'class="bin"', "/site.css?v=10", "/site-data.js?v=7", "/site-topics.js?v=2", "/site.js?v=9"]) assert(h.includes(s), `${f}: ${s}`);
     assert(!h.includes('class="seg" role="group" aria-label="theme"'), `${f}: old theme switch removed`);
   }
   for (const f of CLASS_PAGES) assert(read(f + ".html").includes(`data-course="`), `${f}: class shell`);

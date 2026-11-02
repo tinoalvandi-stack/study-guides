@@ -212,13 +212,122 @@ function classCounts(c){
   return g?g+(g===1?" study guide":" study guides")+(p?" · "+p+(p===1?" practice PDF":" practice PDFs"):""):"no guides yet";
 }
 
+/* ═══ up next calendar: civil-date helpers (pure; tests in tools/test-calendar.mjs) ═══
+   Dates are civil days as "YYYY-MM-DD". "Today" is the America/Los_Angeles calendar day, whatever the viewer's own time zone;
+   all arithmetic runs on UTC midnights, so DST changes and the viewer's offset never shift a day. Events come only from the
+   public FEATURES entries of public classes (Spanish excluded), each pointing at a listed guide; test..end is inclusive.
+   An entry may carry unconfirmed:true to stay out of the calendar until its date is confirmed. */
+const CAL_TZ="America/Los_Angeles";
+const DOW=["mon","tue","wed","thu","fri","sat","sun"], DOW_LONG=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+const MON=["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
+      MON_LONG=["january","february","march","april","may","june","july","august","september","october","november","december"];
+function civilToday(now,tz){
+  const p={}; new Intl.DateTimeFormat("en-US",{timeZone:tz||CAL_TZ,year:"numeric",month:"2-digit",day:"2-digit"})
+    .formatToParts(now||new Date()).forEach(x=>{p[x.type]=x.value});
+  return p.year+"-"+p.month+"-"+p.day;
+}
+const dayMs=k=>Date.UTC(+k.slice(0,4),+k.slice(5,7)-1,+k.slice(8,10));
+const validDay=k=>typeof k==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(k)&&new Date(dayMs(k)).toISOString().slice(0,10)===k;
+const addDays=(k,n)=>new Date(dayMs(k)+n*864e5).toISOString().slice(0,10);
+const dowOf=k=>(new Date(dayMs(k)).getUTCDay()+6)%7;
+const mondayOf=k=>addDays(k,-dowOf(k));
+const dnum=k=>+k.slice(8,10), mon=k=>MON[+k.slice(5,7)-1];
+function calEvents(features,classes){
+  return features.map(f=>{
+    if(!f||f.unconfirmed||!validDay(f.test))return null;
+    const c=classes.find(x=>x.id===f.classId);
+    if(!c||!c.units.some(u=>baseUrl(u.url)===baseUrl(f.url)))return null;
+    const end=validDay(f.end)&&f.end>=f.test?f.end:f.test;
+    return {c:c,f:f,start:f.test,end:end,url:f.url,t:f.title,sub:String(f.title).replace(/\s+study guide$/i,"").replace(/\s+guide$/i,"")};
+  }).filter(Boolean).sort((a,b)=>a.start.localeCompare(b.start)||a.end.localeCompare(b.end));
+}
+const onDay=(e,k)=>e.start<=k&&k<=e.end;
+const inWeek=(e,ws)=>e.start<=addDays(ws,6)&&e.end>=ws;
+/* the current Monday–Sunday week, unless nothing in it is still ahead and the next week has a test */
+function defaultWeek(today,evs){
+  const cur=mondayOf(today), nxt=addDays(cur,7);
+  if(evs.some(e=>inWeek(e,cur)&&e.end>=today))return cur;
+  return evs.some(e=>inWeek(e,nxt))?nxt:cur;
+}
+function weekLabel(ws){const we=addDays(ws,6);return mon(ws)+" "+dnum(ws)+"–"+(mon(we)!==mon(ws)?mon(we)+" ":"")+dnum(we)}
+function rangeLabel(e){return DOW[dowOf(e.start)]+" "+dnum(e.start)+(e.end!==e.start?"–"+(mon(e.end)!==mon(e.start)?mon(e.end)+" ":"")+dnum(e.end):"")}
+const longDay=k=>DOW_LONG[dowOf(k)]+", "+MON_LONG[+k.slice(5,7)-1]+" "+dnum(k);
+/* end of calendar helpers */
+
+/* ═══ up next calendar: one week strip and its agenda (approved November 1 2026). Arrows change the week and clear the
+   day; a day filters the agenda (again to clear); the range label shows the whole week. Left/right/Home/End move between
+   days with one tab stop. The default week follows Pacific "today" on a day change or when the page comes back, unless
+   the reader has browsed to another week. All text goes in with textContent. ═══ */
+function makeCalendar(root,evs,now){
+  const prev=root.querySelector("#calprev"), next=root.querySelector("#calnext"), lab=root.querySelector("#callabel"),
+        days=root.querySelector("#caldays"), agenda=root.querySelector("#calagenda");
+  let today=civilToday(now()), ws=defaultWeek(today,evs), sel=null, browsed=false;
+  const btns=()=>[...days.children];
+  function render(focusKey){
+    const we=addDays(ws,6);
+    lab.textContent=weekLabel(ws);
+    lab.setAttribute("aria-label","show every test, "+longDay(ws)+" to "+longDay(we));
+    const stop=sel||(today>=ws&&today<=we?today:ws);
+    days.replaceChildren();
+    for(let i=0;i<7;i++){
+      const key=addDays(ws,i), n=evs.filter(e=>onDay(e,key)).length;
+      const b=el("button","day"+(n?" has":"")+(key===today?" today":"")); b.type="button"; b.dataset.date=key;
+      b.setAttribute("aria-pressed",String(sel===key)); b.tabIndex=key===stop?0:-1;
+      if(key===today)b.setAttribute("aria-current","date");
+      b.setAttribute("aria-label",longDay(key)+(key===today?", today":"")+", "+(n?n+(n===1?" test":" tests"):"no tests listed"));
+      const dot=el("span","dot"); dot.setAttribute("aria-hidden","true");
+      b.append(el("span","dow",DOW[i]),el("span","date",String(dnum(key))),dot);
+      b.addEventListener("click",()=>{sel=sel===key?null:key;render(key)});
+      b.addEventListener("keydown",e=>{
+        const k={ArrowRight:1,ArrowLeft:-1}[e.key], all=btns(); let j=null;
+        if(k)j=(i+k+7)%7; else if(e.key==="Home")j=0; else if(e.key==="End")j=6;
+        if(j===null)return; e.preventDefault(); all.forEach((x,m)=>{x.tabIndex=m===j?0:-1}); all[j].focus();
+      });
+      days.append(b);
+    }
+    const list=sel?evs.filter(e=>onDay(e,sel)):evs.filter(e=>inWeek(e,ws));
+    agenda.replaceChildren();
+    list.forEach(e=>{
+      const a=el("a","evt"); a.href=e.url; a.target="_blank"; a.rel="noopener noreferrer";
+      const t=el("time",null,rangeLabel(e)); t.setAttribute("datetime",e.start);
+      const tx=el("span","etx"); tx.append(el("b",null,e.c.name),el("small",null,e.sub));
+      const ar=el("span","earr","→"); ar.setAttribute("aria-hidden","true");
+      a.append(t,tx,ar); a.addEventListener("click",()=>recordOpen(e.c,{url:e.url,t:e.t}));
+      agenda.append(a);
+    });
+    if(!list.length)agenda.append(el("p","cnone",sel?"no tests listed for this day.":"no tests listed for this week."));
+    if(focusKey){const f=btns().find(b=>b.dataset.date===focusKey)||btns().find(b=>b.tabIndex===0);if(f)f.focus()}
+  }
+  const go=n=>{ws=addDays(ws,7*n);sel=null;browsed=ws!==defaultWeek(today,evs);render()};
+  prev.addEventListener("click",()=>go(-1)); next.addEventListener("click",()=>go(1));
+  lab.addEventListener("click",()=>{sel=null;render()});
+  /* a new Pacific day, or the page coming back: move today, and the default week unless the reader browsed to a week
+     or picked a day. Focus survives the re-render: a focused day returns to that day (or the week's tab stop), a focused
+     agenda link to the same guide's new link, or to the range label when that guide has left the view. */
+  function refresh(){
+    const t=civilToday(now()); if(t===today)return false;
+    today=t;
+    if(!browsed&&!sel)ws=defaultWeek(today,evs);
+    const a=document.activeElement, day=btns().find(b=>b===a), link=a&&a.parentNode===agenda&&a.className==="evt"?a.getAttribute("href"):null;
+    render(day?day.dataset.date:null);
+    if(link){const n=[...agenda.children].find(x=>x.className==="evt"&&x.getAttribute("href")===link);(n||lab).focus()}
+    return true;
+  }
+  render();
+  return {refresh:refresh,state:()=>({today:today,ws:ws,sel:sel,browsed:browsed})};
+}
+/* end of calendar controller */
+
 /* ═══ homepage ═══ */
 if(!COURSE){
-  /* up next */
+  /* up next: the week calendar beside the class index (replaces the old list on this page; class pages keep their rows) */
   (function(){
-    const L=live(); if(!L.length)return;
-    $("#upnext").hidden=false; $("#upn").textContent=L.length+(L.length===1?" test":" tests");
-    L.forEach(f=>{const a=nextCard(f);if(a)$("#feat").append(a)});
+    const root=$("#cal"); if(!root)return;
+    root.hidden=false;
+    const cal=makeCalendar(root,calEvents(PUBLIC_FEATURES,PUBLIC_CLASSES),()=>new Date());
+    const check=()=>{if(document.visibilityState!=="hidden")cal.refresh()};
+    addEventListener("pageshow",check); addEventListener("focus",check); document.addEventListener("visibilitychange",check);
+    setInterval(check,60000);
   })();
   /* recent */
   window.drawRecent=function(){

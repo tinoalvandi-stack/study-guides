@@ -10,7 +10,8 @@ visitor counts; the optional feedback form submits to Google Forms.
 Current design (approved November 1, 2026): calm light `#f3f4f0 / #202421 /
 #195bdb` and charcoal `#252824 / #edf0e8 / #b4cbff`, Arial/Helvetica, a
 numbered class index with search first, and a decorative CSS 3D paper stack on
-wide screens. New guides use the v5 template; older guides keep the frozen v4
+wide screens, with a Monday to Sunday up-next calendar above it (first on
+phones) built from the public `FEATURES` dates. New guides use the v5 template; older guides keep the frozen v4
 engine byte-for-byte. See "Current design and templates" in `CLAUDE.md`. The
 October 22 notes below describe the v4 guides.
 

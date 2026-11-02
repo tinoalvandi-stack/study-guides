@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://valentinoguides.com/og-image.png?v=4">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Valentino guides","alternateName":["Valentino Guides","valentinoguides.com"],"url":"https://valentinoguides.com/"}</script>
-<link rel="stylesheet" href="/site.css?v=9">
+<link rel="stylesheet" href="/site.css?v=10">
 <script>/* Apply the saved appearance before the first paint. */
 try{const t=localStorage.getItem("theme");if(t!=="auto")document.documentElement.dataset.theme=t==="light"?"light":"dark";}catch(e){document.documentElement.dataset.theme="dark";}</script>
 </head>
@@ -39,6 +39,14 @@ try{const t=localStorage.getItem("theme");if(t!=="auto")document.documentElement
 <main class="wrap" id="main" tabindex="-1">
   <h1 class="sr-only">valentino guides: free study guides by class</h1>
   <div class="opening">
+    <div class="side">
+      <section class="cal" id="cal" aria-labelledby="calh" hidden>
+        <div class="caltop"><h2 id="calh">up next</h2><div class="calnav"><button type="button" class="calarr" id="calprev" aria-label="previous week"><span aria-hidden="true">‹</span></button><button type="button" class="callab" id="callabel"></button><button type="button" class="calarr" id="calnext" aria-label="next week"><span aria-hidden="true">›</span></button></div></div>
+        <div class="caldays" id="caldays" role="group" aria-label="days of the week"></div>
+        <div class="agenda" id="calagenda" aria-live="polite"></div>
+      </section>
+      <div class="home-art" id="homeart"></div>
+    </div>
     <div class="lead">
       <form class="find" id="findw" role="search" autocomplete="off"><label class="sr-only" for="find">find a guide</label><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.7"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg><input id="find" type="search" placeholder="class, unit, or topic" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="search classes and guide topics" aria-controls="inline"><span class="kbd" aria-hidden="true">/</span><button type="button" class="clr" id="findclr" aria-label="clear search"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"/></svg></button></form>
       <p class="hint" id="hint">try <button type="button" class="eg" data-q="psych unit 0">psych unit 0</button> or <button type="button" class="eg" data-q="vectors">vectors</button></p>
@@ -56,13 +64,7 @@ try{const t=localStorage.getItem("theme");if(t!=="auto")document.documentElement
         <div id="empty"></div>
       </section>
     </div>
-    <div class="home-art" id="homeart"></div>
   </div>
-
-  <section id="upnext" hidden>
-    <div class="sh"><h2>up next</h2><span class="shx" id="upn"></span></div>
-    <div class="feat" id="feat"></div>
-  </section>
 
   <section id="recent" hidden>
     <div class="sh"><h2>recently opened</h2><button type="button" class="rx" id="recentclr" aria-label="clear recently opened"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"/></svg></button></div>
@@ -152,7 +154,7 @@ try{const t=localStorage.getItem("theme");if(t!=="auto")document.documentElement
 
 <script src="/site-data.js?v=7"></script>
 <script src="/site-topics.js?v=2"></script>
-<script src="/site.js?v=8"></script>
+<script src="/site.js?v=9"></script>
 <noscript>
   <h2>every guide</h2>
   <p>course resources: <a href="/seminar">AP Seminar</a>, <a href="/business">Business Principles</a>, <a href="/morality">Catholic Morality and Social Justice</a>, <a href="/precalc">Honors Precalculus BC</a>, <a href="/apush">AP US History</a>, <a href="/psych">AP Psychology</a>, <a href="/lang">AP English Language and Composition</a>, <a href="/physics">AP Physics 1</a></p>

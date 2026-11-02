@@ -292,6 +292,60 @@ footer a,footer .flink{color:var(--ink);text-decoration:underline;text-decoratio
 /* ═══ offline page (offline.html keeps its own small layout on these tokens) ═══ */
 .off .btn,.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:3px;background:var(--ink);color:var(--bg);font-size:14px;text-transform:lowercase}
 
+/* ═══ up next calendar (approved November 1 2026): a compact week strip above the paper stack on wide screens,
+   first on phones with the stack omitted. Small, lowercase, no boxes; day buttons and arrows keep 44px targets. ═══ */
+/* DOM order is calendar, then search and classes, so phones and assistive tech meet them in the order shown;
+   wide screens place the index left and the calendar-and-stack column right explicitly (no CSS order). */
+.side{min-width:0;padding-top:58px}
+@media (min-width:900px){.opening > .lead{grid-column:1;grid-row:1}.opening > .side{grid-column:2;grid-row:1}}
+.cal{padding:0 0 14px;border-bottom:1px solid var(--line)}
+.caltop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}
+.cal h2{margin:0;font-size:15px;font-weight:400;text-transform:lowercase}
+.calnav{display:flex;align-items:center;gap:2px}
+.calarr,.callab{display:inline-grid;place-items:center;min-height:44px;color:var(--muted);text-transform:lowercase}
+.calarr{width:44px;font-size:23px;line-height:1}
+.callab{min-width:85px;padding:0 6px;font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+@media (hover:hover){.calarr:hover,.callab:hover{color:var(--blue)}}
+.caldays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.day{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:0;min-height:67px;padding:8px 0 7px;border:1px solid transparent;border-radius:8px;color:var(--ink);text-transform:lowercase;transition:background .2s}
+.day .dow{font-size:10px;color:var(--muted)}
+.day .date{font-size:20px;letter-spacing:-.7px;font-variant-numeric:tabular-nums}
+.day .dot{width:4px;height:4px;border-radius:50%;background:transparent}
+.day.has .dot{background:var(--blue)}
+.day.today{border-color:var(--line)}
+.day.today .date{font-weight:700}
+.day.today .dow{color:var(--ink)}
+@media (hover:hover){.day:hover{background:var(--soft)}}
+.day[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--bg)}
+.day[aria-pressed="true"] .dow{color:inherit;opacity:.8}
+.day[aria-pressed="true"] .dot{background:currentColor}
+.day:focus-visible{outline-offset:2px}
+.agenda{margin-top:14px}
+.evt{display:grid;grid-template-columns:62px minmax(0,1fr) 20px;align-items:center;gap:12px;min-height:44px;padding:14px 0;border-top:1px solid var(--line)}
+.evt time{font:11px/1.5 var(--mono);color:var(--muted);text-transform:lowercase}
+.evt b{display:block;font-size:15px;font-weight:400;letter-spacing:-.2px;text-transform:lowercase;overflow-wrap:anywhere}
+.evt small{display:block;margin-top:5px;font-size:12px;color:var(--muted);text-transform:lowercase;overflow-wrap:anywhere}
+.evt .earr{font-size:18px;color:var(--muted)}
+@media (hover:hover){.evt:hover b{color:var(--blue)}}
+.cnone{margin:0;padding:14px 0 4px;font-size:12px;color:var(--muted);text-transform:lowercase}
+.side .home-art{position:relative;top:auto;min-height:410px;margin-top:24px}
+.side .stack{width:250px;height:320px}
+.side .paper{padding:19px}
+.side .ptitle{margin-top:20px;font-size:30px}
+.side .ptitle.long{font-size:25px}
+.side .pdiag{height:110px}
+.side .pfoot{left:19px;right:19px;bottom:18px}
+.side .orbit{width:310px;height:310px}
+.side .motion{right:6px;bottom:6px}
+body.searching .cal{display:none!important}
+@media (max-width:899px){
+  .side{padding-top:0}
+  .cal{margin-top:30px}
+  .lead{padding-top:28px}
+}
+@media (max-width:760px){.cal{margin-top:24px}.evt{padding:12px 0}.cal h2{font-size:14px}}
+@media print{.cal{display:none!important}}
+
 /* ═══ responsive ═══ */
 @media (max-width:899px){
   .opening,.cgrid{grid-template-columns:1fr;gap:0}
