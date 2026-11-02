@@ -7,6 +7,13 @@ visitor counts; the optional feedback form submits to Google Forms.
 
 ## Design and public listings
 
+Current design (approved November 1, 2026): calm light `#f3f4f0 / #202421 /
+#195bdb` and charcoal `#252824 / #edf0e8 / #b4cbff`, Arial/Helvetica, a
+numbered class index with search first, and a decorative CSS 3D paper stack on
+wide screens. New guides use the v5 template; older guides keep the frozen v4
+engine byte-for-byte. See "Current design and templates" in `CLAUDE.md`. The
+October 22 notes below describe the v4 guides.
+
 The approved October 22, 2026 design uses near-black, ivory, and muted blue:
 dark `#101719 / #f0eadc / #a0bed0`, light `#f3efe6 / #212526 / #34596e`.
 Source Serif 4 headings, Source Sans 3 body text, flat class/topic rows, fine

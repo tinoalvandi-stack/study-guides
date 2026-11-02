@@ -36,45 +36,71 @@ const due=f=>f.test<TODAY&&f.end?f.end:f.test;
 const when=f=>{const d=new Date(f.test+"T12:00:00"),now=new Date(TODAY+"T12:00:00");const days=Math.round((d-now)/864e5);
   return days<=0?"today":days===1?"tomorrow":"in "+days+" days"};
 
-/* ═══ class covers: original layered illustrations, one per class (approved design demo, revision 2) ═══ */
-let artSerial=0;
-function art(id){
-  const n="art"+(++artSerial);
-  const [a,b,c,d]=["var(--surface2)","var(--paper)","var(--accent)","var(--ink2)"];
-  const defs=`<defs><linearGradient id="${n}bg" x2="1" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient><linearGradient id="${n}pt" x2=".8" y2="1"><stop stop-color="${c}"/><stop offset="1" stop-color="${d}"/></linearGradient><filter id="${n}sh" x="-50%" y="-50%" width="200%" height="210%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#14211c" flood-opacity=".24"/></filter></defs>`;
-  const bg=`<rect width="480" height="300" fill="url(#${n}bg)"/><circle cx="415" cy="20" r="190" fill="${c}" opacity=".06"/><circle cx="30" cy="305" r="170" fill="${d}" opacity=".05"/>`;
-  const grid='<path d="M0 60H480M0 100H480M0 140H480M0 180H480M0 220H480M0 260H480M40 0V300M80 0V300M120 0V300M160 0V300M200 0V300M240 0V300M280 0V300M320 0V300M360 0V300M400 0V300M440 0V300" stroke="white" stroke-opacity=".07" fill="none"/>';
-  let s="";
-  if(id==="pre"){const pts=[];for(let t=0;t<=Math.PI*2+.01;t+=.008){const r=106*Math.cos(3*t);pts.push(`${(252+r*Math.cos(t)).toFixed(1)},${(154+r*Math.sin(t)).toFixed(1)}`)}
-    s=grid+`<g stroke="${c}" fill="none" opacity=".25"><circle cx="252" cy="154" r="115"/><circle cx="252" cy="154" r="74"/><path d="M85 154H401M252 22V288M158 61L346 247M155 247L346 60"/></g><polygon points="${pts.join(" ")}" fill="url(#${n}pt)" stroke="${c}" stroke-width="1.5" filter="url(#${n}sh)"/><circle cx="252" cy="154" r="5" fill="${b}"/><g transform="translate(38 213) rotate(-7)" filter="url(#${n}sh)"><rect width="143" height="47" rx="9" fill="#f4e7cb"/><text x="17" y="30" fill="${b}" font-size="19">r = a cos 3θ</text></g><text x="357" y="66" fill="${c}" font-size="13">90°</text>`}
-  if(id==="apush")s=`<circle cx="313" cy="122" r="105" fill="${d}" opacity=".25"/><g transform="translate(75 67) rotate(-9 130 100)" filter="url(#${n}sh)"><rect width="263" height="189" rx="8" fill="#f6dfba"/><path d="M23 146H241M36 157H228M55 133V74M91 133V74M127 133V74M163 133V74M199 133V74M39 68H218L129 23Z" fill="none" stroke="${b}" stroke-width="3"/><path d="M25 175H178" stroke="${a}" stroke-width="2"/></g><g transform="translate(316 194)"><circle r="40" fill="${d}"/><circle r="31" stroke="${b}" fill="none" opacity=".6"/><path d="M-16 0H16M0-16V16" stroke="${b}"/><circle r="8" fill="${b}"/></g><path d="M345 64L382 68M343 77L388 82M341 90L374 94" stroke="${c}" opacity=".7" stroke-width="2"/>`;
-  if(id==="psych")s=`<g opacity=".14" fill="none" stroke="${c}"><circle cx="240" cy="155" r="113"/><circle cx="240" cy="155" r="92"/><path d="M52 155H427M240 20V287"/></g><path d="M238 72C197 33 153 67 159 102C113 114 116 174 158 180C146 222 200 252 238 217C273 249 320 222 315 183C358 158 341 103 309 102C315 56 271 38 238 72Z" fill="url(#${n}pt)" filter="url(#${n}sh)"/><g fill="none" stroke="${b}" stroke-width="2.4"><path d="M238 76V214M181 97C213 83 229 119 205 137M284 94C260 91 251 115 263 130C288 126 304 151 288 168M164 150C187 136 203 163 192 178M209 204C194 186 222 158 237 166M265 199C253 181 265 172 280 180"/></g><g stroke="${d}" stroke-width="1.5"><path d="M143 114L87 85M328 149L398 134M281 223L339 265M159 190L102 237"/></g><g fill="${d}"><circle cx="87" cy="85" r="8"/><circle cx="398" cy="134" r="12"/><circle cx="339" cy="265" r="7"/><circle cx="102" cy="237" r="10"/></g>`;
-  if(id==="phys")s=grid+`<path d="M55 244H424M70 263V55" stroke="${c}" opacity=".5"/><path d="M82 222Q243 -66 406 214" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="5 7"/><path d="M236 92H294M286 86L294 92 286 98" fill="none" stroke="${d}" stroke-width="2"/>`+[[82,222,9],[126,156,13],[183,109,18],[242,92,24],[303,112,31],[355,155,36],[406,214,42]].map(([x,y,r],i)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${n}pt)" opacity="${(.25+i*.12).toFixed(2)}" filter="url(#${n}sh)"/><circle cx="${x-r*.25}" cy="${y-r*.3}" r="${r*.24}" fill="white" opacity="${(.06+i*.016).toFixed(3)}"/>`).join("");
-  if(id==="bus")s=`<g stroke="${c}" stroke-opacity=".2" fill="none"><path d="M46 201L253 280 434 187M46 161L253 240 434 147M46 121L253 200 434 107"/></g>`+[[102,166,50],[183,125,91],[267,69,147]].map(([x,y,h])=>`<g filter="url(#${n}sh)"><path d="M${x} ${y}l48-20 35 15-48 21Z" fill="#ffe7b4"/><path d="M${x} ${y}l35 16v${h}l-35-16Z" fill="${d}"/><path d="M${x+35} ${y+16}l48-21v${h}l-48 21Z" fill="${c}"/></g>`).join("")+`<path d="M98 122L205 70 322 32M310 32H322V44" stroke="${c}" stroke-width="2" fill="none"/>`;
-  if(id==="mor")s=`<path d="M127 280V124a113 113 0 0 1 226 0V280Z" fill="${c}" opacity=".15"/><path d="M152 280V127a88 88 0 0 1 176 0V280Z" fill="${c}" opacity=".12"/><path d="M177 280V130a63 63 0 0 1 126 0V280Z" fill="${d}" opacity=".19"/><g stroke="${c}" stroke-width="3" fill="none" filter="url(#${n}sh)"><path d="M240 66V235M188 239H292M151 116H329M169 119L135 179H203ZM311 119L277 179H345Z"/><path d="M135 179Q169 217 203 179M277 179Q311 217 345 179" fill="${d}" stroke="${d}"/></g><circle cx="240" cy="115" r="9" fill="${c}"/>`;
-  if(id==="lang")s=`<g transform="translate(108 51) rotate(-10 123 95)" filter="url(#${n}sh)"><rect x="12" y="13" width="249" height="199" rx="8" fill="${d}"/><rect width="249" height="199" rx="8" fill="#f4ead8"/><path d="M28 37H161" stroke="${b}" stroke-width="8"/><path d="M28 66H215M28 82H204M28 98H221M28 130H205M28 146H221M28 162H185" stroke="${b}" opacity=".65" stroke-width="2"/><path d="M24 97H155M106 147H221" stroke="${a}" stroke-width="11" opacity=".22"/><path d="M25 179Q86 158 142 179" stroke="${a}" fill="none" stroke-width="2"/></g><g transform="translate(338 95) rotate(28)"><rect width="12" height="133" rx="3" fill="${b}"/><rect width="12" height="30" rx="3" fill="${d}"/><path d="M0 133L6 151 12 133Z" fill="${c}"/></g>`;
-  if(id==="sem")s=`<g stroke="${c}" stroke-opacity=".4" stroke-width="1.5" fill="none"><path d="M91 198L167 89 319 104 376 221 223 228Z M167 89L223 228M319 104L91 198"/></g><g filter="url(#${n}sh)"><path d="M90 74h159a17 17 0 0 1 17 17v79a17 17 0 0 1-17 17h-93l-37 29v-29H90a17 17 0 0 1-17-17V91a17 17 0 0 1 17-17Z" fill="${c}"/><path d="M243 127h139a14 14 0 0 1 14 14v64a14 14 0 0 1-14 14h-17v23l-33-23h-89a14 14 0 0 1-14-14v-64a14 14 0 0 1 14-14Z" fill="${d}"/></g><path d="M105 110H223M105 126H208M105 142H180M260 158H364M260 175H349M260 192H309" stroke="${b}" stroke-opacity=".6" stroke-width="3"/>`;
-  if(id==="span")s=`<g filter="url(#${n}sh)"><path d="M98 66h188a20 20 0 0 1 20 20v94a20 20 0 0 1-20 20H172l-46 34v-34H98a20 20 0 0 1-20-20V86a20 20 0 0 1 20-20Z" fill="url(#${n}pt)"/><path d="M290 148h92a16 16 0 0 1 16 16v54a16 16 0 0 1-16 16h-10v26l-32-26h-50a16 16 0 0 1-16-16v-54a16 16 0 0 1 16-16Z" fill="${c}"/></g><text x="192" y="164" text-anchor="middle" fill="${b}" font-size="96" font-weight="700" font-family="Figtree,system-ui,sans-serif">ñ</text><text x="336" y="207" text-anchor="middle" fill="${a}" font-size="38" font-weight="700" font-family="Figtree,system-ui,sans-serif">¿qué?</text>`;
-  return `<svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">${defs}${bg}${s}</svg>`;
+/* ═══ class covers: the paper stack. One original line drawing per class on a pale sheet that shows the selected class
+   and its newest guide (approved minimal revision, November 1 2026). The drawing is aria-hidden and never needed to navigate; only the pause button is exposed.
+   CSS transitions, no animation loop: nothing runs while idle. "pause motion" and prefers-reduced-motion keep it still. ═══ */
+const DIAG={
+ sem:'<path d="M30 30h165v70H75l-30 25v-25H30zM85 70h150v70h-30l20 25-50-25H85"/>',
+ bus:'<path d="M40 155V20m0 135h200M55 137 205 38M55 40l150 95"/>',
+ mor:'<circle cx="135" cy="90" r="62"/><path d="m94 89 27 27 55-58"/>',
+ pre:'<path d="M20 90h230M135 10v160M35 140C80 140 75 28 130 28s50 120 100 120"/>',
+ apush:'<path d="m40 62 95-40 95 40H40m5 92h180M65 76v64m47-64v64m47-64v64m47-64v64"/>',
+ psych:'<circle cx="135" cy="88" r="64"/><path d="M135 25v127M88 43c50 7 25 70 47 73m49-73c-50 7-25 70-47 73M80 88h110"/>',
+ lang:'<path d="M35 35c40-12 70-12 100 3 30-15 60-15 100-3v115c-40-12-70-12-100 3-30-15-60-15-100-3zM135 38v115M53 60h60m-60 20h60m42-20h60m-60 20h60"/>',
+ phys:'<path d="M24 149H252M55 160V10" opacity=".25"/><rect x="103" y="65" width="64" height="57"/><path d="M135 65V12m-6 8 6-8 6 8M167 94h75m-8-6 8 6-8 6M135 122v47m-6-8 6 8 6-8M103 94H36m8-6-8 6 8 6"/></g><g fill="#195bdb" stroke="none" font-family="Arial,Helvetica,sans-serif" font-size="12"><text x="144" y="24">N</text><text x="219" y="82">F</text><text x="144" y="164">mg</text><text x="39" y="82">f</text>'
+};
+const MOTION_OFF=()=>REDUCED||store.get("motion","")==="paused";
+function makeStack(host){
+  if(!host)return {show(){}};
+  host.removeAttribute("aria-hidden");
+  host.innerHTML='<div class="orbit" aria-hidden="true"></div><div class="stack" aria-hidden="true"><div class="paper"><div class="plabel">valentino guides</div></div>'+
+    '<div class="paper"><div class="plabel">practice / cram sheet</div></div><div class="paper"><div class="plabel"><span class="pc"></span><span class="pn"></span></div>'+
+    '<div class="ptitle"></div><svg class="pdiag" viewBox="0 0 270 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"></svg>'+
+    '<div class="pfoot"><span>study guide</span><span>→</span></div></div></div>';
+  const stack=host.querySelector(".stack"), mb=el("button","motion"); mb.type="button";
+  if(!REDUCED)host.append(mb);
+  let paused=MOTION_OFF(), raf=0, fanT=0, cur="";
+  const paint=()=>{host.classList.toggle("still",paused);mb.textContent=paused?"resume motion":"pause motion";mb.setAttribute("aria-pressed",String(paused))};
+  mb.addEventListener("click",()=>{paused=!paused;store.set("motion",paused?"paused":"");stack.style.transform="";paint()});
+  paint();
+  host.addEventListener("pointermove",e=>{if(paused||e.pointerType!=="mouse"||raf)return;raf=requestAnimationFrame(()=>{raf=0;
+    const b=host.getBoundingClientRect(),px=(e.clientX-b.left)/b.width-.5,py=(e.clientY-b.top)/b.height-.5;
+    stack.style.transform=`rotateX(${(12-py*9).toFixed(2)}deg) rotateY(${(-23+px*12).toFixed(2)}deg) rotateZ(9deg)`})});
+  host.addEventListener("pointerleave",()=>{stack.style.transform=""});
+  return {show(c,title,num){
+    const key=c.id+"|"+title+"|"+num; if(key===cur)return; cur=key;
+    host.querySelector(".pc").textContent=c.name.toLowerCase();
+    host.querySelector(".pn").textContent=num;
+    const t=host.querySelector(".ptitle"); t.textContent=title.toLowerCase(); t.classList.toggle("long",title.length>26);
+    host.querySelector(".pdiag").innerHTML='<g stroke="#195bdb" stroke-width="'+(c.id==="phys"?1.7:2)+'">'+(DIAG[c.id]||DIAG.sem)+'</g>';
+    if(!paused){stack.classList.add("fan");clearTimeout(fanT);fanT=setTimeout(()=>stack.classList.remove("fan"),450)}
+  }};
 }
-const cover=(c,extra)=>`<div class="cover" data-c="${c.id}"><span class="cover-code">${esc(c.short||c.name)}</span>${art(c.id)}${extra||""}</div>`;
 
-/* ═══ theme ═══ */
-const seg=$(".seg"), thumb=seg&&seg.querySelector(".thumb"), segBtns=seg?[...seg.querySelectorAll("button")]:[];
-function moveThumb(){if(!seg)return;const on=seg.querySelector('button[aria-pressed="true"]')||segBtns[0];thumb.style.left=on.offsetLeft+"px";thumb.style.width=on.offsetWidth+"px"}
+/* ═══ theme: one compact button cycling auto → light → dark. localStorage "theme" keeps "auto", "light" or "dark";
+   auto removes the override and follows the system. New visitors (nothing saved) start dark, as before. ═══ */
+const THEMES=["auto","light","dark"], thm=$("#thm");
+const TICON={
+ auto:'<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 2a7 7 0 0 1 0 14z" fill="currentColor"/></svg>',
+ light:'<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="3.4"/><path d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2M3.7 3.7l1.4 1.4M12.9 12.9l1.4 1.4M3.7 14.3l1.4-1.4M12.9 5.1l1.4-1.4"/></svg>',
+ dark:'<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 11.4A6.5 6.5 0 0 1 6.6 3.4a6.5 6.5 0 1 0 8 8z"/></svg>'};
+function paintTheme(mode){
+  if(!thm)return; const next=THEMES[(THEMES.indexOf(mode)+1)%THEMES.length];
+  thm.innerHTML=TICON[mode]; thm.dataset.mode=mode; thm.title="theme: "+mode;
+  thm.setAttribute("aria-label","theme: "+mode+". switch to "+next);
+}
 function setTheme(mode){
   const apply=()=>{if(mode==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=mode};
   if(document.startViewTransition&&!REDUCED)document.startViewTransition(apply);else apply();
-  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));moveThumb();
+  paintTheme(mode);
   try{localStorage.setItem("theme",mode)}catch(e){}
 }
-segBtns.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.set)));
 (function(){let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
   const mode=saved==="light"||saved==="auto"?saved:"dark";
-  if(mode!=="auto")document.documentElement.dataset.theme=mode;
-  segBtns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.set===mode)));
+  if(mode!=="auto")document.documentElement.dataset.theme=mode;else delete document.documentElement.dataset.theme;
+  paintTheme(mode);
+  if(thm)thm.addEventListener("click",()=>setTheme(THEMES[(THEMES.indexOf(thm.dataset.mode||mode)+1)%THEMES.length]));
 })();
-requestAnimationFrame(moveThumb);addEventListener("resize",moveThumb);
 
 /* ═══ toast, share, recent ═══ */
 let toastT=0;
@@ -204,31 +230,36 @@ if(!COURSE){
   };
   $("#recentclr").addEventListener("click",()=>{store.set("recent",[]);drawRecent();toast("cleared")});
   drawRecent(); addEventListener("pageshow",drawRecent);
-  /* class catalog: classes with guides first, then the ones still to come */
+  /* class index: numbered rows, classes with guides first, then the ones still to come. Each row names the newest real guide,
+     quietly adds the next test date, "2 of 6 studied" and any class notice, and sets the paper stack on hover or keyboard focus. */
   (function(){
-    const L=live();
+    const L=live(), stack=makeStack($("#homeart"));
     const list=[...PUBLIC_CLASSES.filter(c=>c.units.length),...PUBLIC_CLASSES.filter(c=>!c.units.length)];
+    const rows=[];
+    const fill=(a,c)=>{
+      const S=studied(), box=a.querySelector(".latest"), nx=L.find(f=>f.classId===c.id), done=c.units.filter(u=>S.has(u.url)).length;
+      box.textContent=c.units.length?c.units[0].t:"no guides yet";
+      if(nx){box.append(" · ");box.append(el("span","q","test "+md(due(nx))))}
+      if(done){box.append(" · ");box.append(el("span","ok",done+" of "+c.units.length+" studied"))}
+      if(c.warn)box.append(el("span","uwarn",c.warn));
+    };
+    const pick=(a,c,n)=>{rows.forEach(r=>r.classList.toggle("on",r===a));stack.show(c,c.units.length?c.units[0].t:"soon",n)};
     list.forEach((c,i)=>{
-      const a=el("a","ccard rise"+(c.units.length?"":" empty")); a.href=c.page; a.style.setProperty("--i",i);
-      const nx=L.find(f=>f.classId===c.id);
-      a.innerHTML=cover(c,'<span class="cover-arrow">'+ICON.arrow+'</span>')+
-        '<span class="cbody"><span class="ctitle"></span><span class="cmeta"></span><span class="cdone" hidden></span>'+(nx?'<span class="cnext"></span>':'')+(c.warn?'<span class="cwarn"></span>':'')+'</span>';
-      a.dataset.cls=c.id;
-      a.querySelector(".ctitle").textContent=c.name;
-      a.querySelector(".cmeta").textContent=classCounts(c);
-      if(c.warn)a.querySelector(".cwarn").textContent=c.warn;
-      if(nx)a.querySelector(".cnext").textContent="test "+when(nx)+" · "+md(due(nx));
-      a.setAttribute("aria-label",c.name+", "+classCounts(c)+(c.warn?". "+c.warn:""));
-      $("#catalog").append(a);
+      const n=String(i+1).padStart(2,"0"), a=el("a","crow"); a.href=c.page; a.dataset.cls=c.id;
+      a.innerHTML='<span class="num" aria-hidden="true"></span><span class="cname"></span><span class="latest"></span><span class="go" aria-hidden="true">→</span>';
+      a.querySelector(".num").textContent=n; a.querySelector(".cname").textContent=c.name;
+      fill(a,c);
+      a.addEventListener("pointerenter",()=>pick(a,c,n)); a.addEventListener("focusin",()=>pick(a,c,n));
+      rows.push(a); $("#catalog").append(a);
     });
     $("#cty").textContent=PUBLIC_CLASSES.length+" classes · "+PUBLIC_CLASSES.reduce((n,c)=>n+c.units.length,0)+" guides";
-    /* "2 of 6 studied" from this browser's ticks; refreshed when the page comes back from a class page */
-    const drawStudied=()=>{const S=studied();document.querySelectorAll("#catalog .ccard").forEach(a=>{const c=byId(a.dataset.cls),d=a.querySelector(".cdone");
-      const n=c?c.units.filter(u=>S.has(u.url)).length:0;d.hidden=!n;d.textContent=n?n+" of "+c.units.length+" studied":""})};
-    drawStudied(); addEventListener("pageshow",drawStudied);
+    /* start on the class with the soonest test, else the first row */
+    const first=L.length?list.findIndex(c=>c.id===L[0].classId):0, s=Math.max(0,first);
+    if(list[s]){stack.show(list[s],list[s].units.length?list[s].units[0].t:"soon",String(s+1).padStart(2,"0"))}
+    $("#catalog").addEventListener("pointerleave",()=>rows.forEach(r=>r.classList.remove("on")));
+    /* studied ticks change on class pages; refresh when this page comes back */
+    addEventListener("pageshow",()=>rows.forEach(a=>fill(a,byId(a.dataset.cls))));
   })();
-  /* decorative covers beside the heading (desktop only) */
-  (function(){const h=$("#homeart");if(!h)return;h.innerHTML='<div class="note b">'+cover(byId("apush"))+'</div><div class="note f">'+cover(byId("pre"))+'</div>'})();
   /* fast find */
   const ALIAS={apush:["apush","ush","history","us history","american history","hist"],phys:["physics","phys","kinematics","science"],
     psych:["psych","psychology"],bus:["business","bus","biz","principles"],mor:["morality","religion","theology","catholic","church","social justice"],
@@ -440,6 +471,7 @@ if(!COURSE){
     });
     addEventListener("resize",fThumb);
     pill.onclick=()=>open(); window.openFeedback=t=>open(t);
+    document.querySelectorAll("[data-fb]").forEach(b=>b.addEventListener("click",()=>open(b.dataset.fb)));
     $("#fbclose").onclick=()=>close();
     const q=new URLSearchParams(location.search);
     if(location.hash==="#request"||q.has("request"))setTimeout(()=>open("rq"),900);
@@ -515,11 +547,12 @@ if(!COURSE){
   })();
 }
 
-/* ═══ class welcome page ═══ */
+/* ═══ class welcome page: heading and counts, quiet up-next rows, every guide as a numbered row (chips, studied, share),
+   and the paper stack beside the list on wide screens, following the hovered or focused guide ═══ */
 if(COURSE){
   const c=byId(COURSE);
   const main=$("#main");
-  if(!c){main.innerHTML='<p class="lost">this class is not on the site. <a href="/">see all classes</a></p>'}
+  if(!c){main.insertAdjacentHTML("beforeend",'<p class="lost">this class is not on the site. <a href="/">see all classes</a></p>')}
   else{
     document.documentElement.style.setProperty("--k",c.c);
     const L=live().filter(f=>f.classId===c.id);
@@ -527,41 +560,37 @@ if(COURSE){
           cram=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="cram").length,0),
           quiz=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="quiz").length,0),
           audio=c.units.reduce((k,u)=>k+(u.extras||[]).filter(x=>x.kind==="audio").length,0);
-    const facts=[n?n+(n===1?" study guide":" study guides"):"",cram?cram+(cram===1?" cram sheet":" cram sheets"):"",pdfs?pdfs+" practice "+(pdfs===1?"PDF":"PDFs"):"",quiz?quiz+(quiz===1?" quiz":" quizzes"):"",audio?audio+(audio===1?" audio page":" audio pages"):""].filter(Boolean);
-    const hero=el("section","chero");
-    hero.dataset.c=c.id;
-    hero.innerHTML=`<div class="ccopy"><h1></h1>`+
-      (facts.length?`<ul class="facts">${facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`:"")+
-      `<div class="cta"></div></div>`+cover(c);
-    hero.querySelector("h1").textContent=c.name;
-    if(c.warn)hero.querySelector("h1").after(el("p","cwarn hw",c.warn));
-    const cta=hero.querySelector(".cta");
-    if(n){const first=L[0]||null;
-      const b=el("a","btn"); b.href=first?first.url:c.units[0].url; b.target="_blank"; b.rel="noopener noreferrer";
-      b.innerHTML=esc(first?"open "+first.title.replace(/ study guide$/i,"")+" · test "+md(due(first)):"open the newest guide")+ICON.arrow;
-      b.addEventListener("click",()=>recordOpen(c,first?{url:first.url,t:first.title}:c.units[0]));
-      cta.append(b);
+    const facts=[n?n+(n===1?" study guide":" study guides"):"",cram?cram+(cram===1?" cram sheet":" cram sheets"):"",pdfs?pdfs+" practice "+(pdfs===1?"pdf":"pdfs"):"",quiz?quiz+(quiz===1?" quiz":" quizzes"):"",audio?audio+(audio===1?" audio page":" audio pages"):""].filter(Boolean);
+    const grid=el("div","cgrid"), col=el("div","ccol"), art=el("div","cart");
+    const head=el("header","chead"); head.append(el("h1",null,c.name));
+    if(facts.length)head.append(el("p","cfacts",facts.join(" · ")));
+    if(c.warn)head.append(el("p","cwarn",c.warn));
+    col.append(head);
+    if(L.length){
+      const nx=el("section","cnext"); nx.setAttribute("aria-label","up next");
+      L.forEach(f=>{const a=nextCard(f);if(a)nx.append(a)});
+      col.append(nx);
     }
-    main.append(hero);
     if(!n){
       const e=el("section","emptyc");
-      e.innerHTML='<h2>no guides here yet</h2><p>there are no '+esc(c.name)+' guides on the site so far. when one is made it shows up on this page first. in the meantime, the other classes are one tap away.</p><div class="cta"><a class="btn" href="/#classes">see all classes'+ICON.arrow+'</a><a class="btn ghost" href="/?request">request a guide</a></div>';
-      main.append(e);
+      e.innerHTML='<h2>no guides here yet</h2><p></p><a href="/#classes">see all classes</a><a href="/?request">request a guide</a>';
+      e.querySelector("p").textContent="There are no "+c.name+" guides on the site so far. When one is made, it shows up here first.";
+      col.append(e);
     }else{
-      const grid=el("div","cgrid2");
-      const side=el("aside","cside");
-      if(L.length){
-        side.innerHTML='<div class="sh"><h3>up next</h3></div>';
-        L.forEach(f=>{const a=nextCard(f);if(a)side.append(a)});
-      }
-      const list=el("section","units");
-      list.innerHTML='<div class="sh"><h3>study guides</h3></div>';
-      const grp=el("div","group");
-      c.units.forEach((u,i)=>{const lv=L.find(f=>f.url===u.url);grp.append(guideLink(c,u,{num:n-i,topics:true,check:true,meta:lv?"test "+when(lv)+" · "+md(due(lv)):(u.added?"added "+md(u.added):"")}))});
-      list.append(grp);
-      grid.append(list,side);
-      main.append(grid);
+      const list=el("section","units"); list.setAttribute("aria-labelledby","uh");
+      list.innerHTML='<div class="sh"><h2 id="uh">study guides</h2><span class="shx"></span></div>';
+      list.querySelector(".shx").textContent=String(n).padStart(2,"0");
+      const grp=el("div","group"), stack=makeStack(art);
+      c.units.forEach((u,i)=>{const lv=L.find(f=>f.url===u.url), num=String(n-i).padStart(2,"0");
+        const row=guideLink(c,u,{num:n-i,topics:true,check:true,meta:lv?"test "+when(lv)+" · "+md(due(lv)):(u.added?"added "+md(u.added):"")});
+        const show=()=>stack.show(c,u.t,num);
+        row.addEventListener("pointerenter",show); row.addEventListener("focusin",show);
+        grp.append(row)});
+      list.append(grp); col.append(list);
+      const lead=L.length?c.units.find(u=>u.url===L[0].url)||c.units[0]:c.units[0];
+      stack.show(c,lead.t,String(n-c.units.indexOf(lead)).padStart(2,"0"));
     }
+    grid.append(col,art); main.append(grid);
   }
   const sb=$("#searchOpen"); if(sb)sb.addEventListener("click",()=>{location.href="/#find"});
 }
@@ -572,29 +601,3 @@ if("serviceWorker" in navigator&&isSecureContext)addEventListener("load",()=>nav
 /* ═══ bar shadow on scroll ═══ */
 (function(){const bar=$("#bar");if(!bar)return;let raf=0;const tick=()=>{raf=0;bar.classList.toggle("stuck",scrollY>6)};
   addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick()})();
-
-/* Approved text-built book for the class index. */
-(() => {
-  const ns='http://www.w3.org/2000/svg';
-  const home=document.getElementById('homeart');
-  if (home) {
-    const words=['HISTORY  LANGUAGE  PHYSICS  ','IDEAS  QUESTIONS  CONNECTIONS  ','SEMINAR  MORALITY  BUSINESS  ','READ  THINK  UNDERSTAND  ','PSYCHOLOGY  MATHEMATICS  '];
-    const svg=document.createElementNS(ns,'svg');
-    svg.setAttribute('viewBox','0 0 540 360'); svg.setAttribute('class','typebook');
-    svg.setAttribute('aria-hidden','true');
-    const defs=document.createElementNS(ns,'defs'); svg.append(defs);
-    for(let i=0;i<22;i++) {
-      const y=72+i*8.8;
-      const path=document.createElementNS(ns,'path'); path.id='book-line-'+i;
-      path.setAttribute('d',`M 20 ${y+18} Q 145 ${y-48} 266 ${y+32} Q 390 ${y-48} 520 ${y+18}`);
-      defs.append(path);
-      const text=document.createElementNS(ns,'text');
-      text.setAttribute('opacity',String(.36+(i%6)*.095));
-      const tp=document.createElementNS(ns,'textPath'); tp.setAttribute('href','#'+path.id);
-      tp.textContent=(words[i%words.length]).repeat(4); text.append(tp); svg.append(text);
-    }
-    const caption=document.createElementNS(ns,'text'); caption.setAttribute('x','270'); caption.setAttribute('y','338');
-    caption.setAttribute('text-anchor','middle'); caption.setAttribute('class','caption'); caption.textContent='NOTES · PRACTICE · WORKED EXAMPLES'; svg.append(caption);
-    home.replaceChildren(svg);
-  }
-})();

@@ -35,6 +35,7 @@ const FEATURES=[
   {classId:"pre",   title:"Parametric & sequences test, Day 2", url:"/precalc-parametric-sequences-day-2", test:"2026-10-23", note:"calculator: nth term, finding sums, Binomial Theorem + 1 projectile, 27 points"},
   {classId:"bus",   title:"High exam #3 study guide", url:"/bus-unit-2", test:"2026-10-27", end:"2026-10-28", note:"Unit 2: supply and demand, elasticity, GDP, trade-offs, goods and services. Practice tests A and B in the High exam #2 layout."},
   {classId:"mor",   title:"Ch 4 & 5 study guide", url:"/morality-ch4-5", test:"2026-11-02", end:"2026-11-03", note:"Jesus as Moral Guide and Conscience Formation: 50 questions (multiple choice, true/false, matching) plus one essay. Practice tests A and B."},
+  {classId:"apush", title:"Unit 3/A study guide", url:"/apush-unit-3a", test:"2026-11-06", note:"Multiple choice on 1789 to 1800: Hamilton's plan, the first parties, foreign policy under Washington and Adams, and the crisis of 1798. Unit 3/B is not confirmed."},
 ];
 
 /* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
@@ -66,6 +67,7 @@ const CLASSES=[
      {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"Practice quiz A (PDF)", url:"/morality-ch3-practice-a.pdf"}]},
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
+     {t:"Limits 1.1–1.2", url:"/precalc-limits-1-1-1-2", added:"2026-11-01"},
      {t:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", added:"2026-10-19", extras:[
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day1-a.pdf"},
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day1-b.pdf"},
@@ -111,6 +113,7 @@ const CLASSES=[
      {t:"Vectors + dot product", url:"/precalc-vectors", added:"2026-08-30", extras:[
         {kind:"pdf", t:"Quizzes A–C + memorize sheet (PDF)", url:"/precalc-quizzes.pdf"}]}]},
   {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY", units:[
+     {t:"Unit 3/A", url:"/apush-unit-3a", added:"2026-11-01"},
      {t:"Congress quiz", url:"/apush-congress-quiz", added:"2026-10-21",
       extras:[{kind:"cram", t:"Cram sheet (PDF)", url:"/apush-congress-quiz-cram.pdf"}]},
      {t:"Unit 2 LEQ", url:"/apush-unit-2-leq", added:"2026-10-06",
@@ -123,6 +126,7 @@ const CLASSES=[
      {t:"Unit 1/B", url:"/apush-unit-1b", added:"2026-09-07"},
      {t:"Unit 1/A", url:"/apush-unit-1a", added:"2026-08-29"}]},
   {id:"psych", page:"/psych", c:"var(--c-psych)", glyph:"head", name:"AP Psychology", abbr:"Psych", short:"PSYCHOLOGY", units:[
+     {t:"Unit 2.7–2.8", url:"/psych-unit-2-7-2-8", added:"2026-11-01"},
      {t:"Unit 1 exam", url:"/psych-unit-1", added:"2026-09-25"},
      {t:"Unit 1.4–1.6", url:"/psych-unit-1-4-1-6", added:"2026-09-23"},
      {t:"Unit 1.1–1.3", url:"/psych-unit-1-1-1-3", added:"2026-09-15"},

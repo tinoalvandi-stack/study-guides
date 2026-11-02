@@ -217,15 +217,16 @@ test("arrows reach results beyond eight, mark only that row, announce it, and re
   assert(page.get("searchSelection").textContent.startsWith(`Result ${total} of ${total}:`));
 });
 
+// Ranking snapshot updated November 1, 2026 for the three new guides (Unit 3/A, Unit 2.7–2.8, Limits 1.1–1.2).
 test("Enter after eight ArrowDown presses opens the ninth visible result", () => {
   const page = searchPage(); page.input("unit");
   for (let n = 0; n < 8; n++) page.key("ArrowDown");
   const selected = page.rows().find(row => row.classList.contains("sel"));
   assert(selected, "The ninth result must be visible before opening it");
-  assert.equal(selected.href, "/apush-unit-1b");
-  assert.equal(page.get("searchSelection").textContent, `Result 9 of ${page.state().hits.length}: AP US History, Unit 1/B. Press Enter to open.`);
+  assert.equal(selected.href, "/psych-unit-1-1-1-3");
+  assert.equal(page.get("searchSelection").textContent, `Result 9 of ${page.state().hits.length}: AP Psychology, Unit 1.1–1.3. Press Enter to open.`);
   assert.equal(page.enter().defaultPrevented, true, "Search submission should not navigate the form");
-  assert.deepEqual(page.opened, [["/apush-unit-1b", "_blank", "noopener"]]);
+  assert.deepEqual(page.opened, [["/psych-unit-1-1-1-3", "_blank", "noopener"]]);
 });
 
 for (const method of ["clear button", "Escape"]) {
@@ -246,7 +247,7 @@ for (const method of ["clear button", "Escape"]) {
     page.input("unit");
     assert.equal(page.state().selected, 0, "A fresh search starts at its first result");
     assert.equal(page.rows().some(row => row.classList.contains("sel") || row.getAttribute("aria-current")), false);
-    page.enter(); assert.deepEqual(page.opened, [["/bus-unit-2", "_blank", "noopener"]]);
+    page.enter(); assert.deepEqual(page.opened, [["/apush-unit-3a", "_blank", "noopener"]]);
   });
 }
 

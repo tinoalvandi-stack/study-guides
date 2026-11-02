@@ -6,6 +6,116 @@ third-party scripts. Vercel serves the files as-is and redeploys on push to
 
 Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 
+## Current design and templates (approved November 1, 2026)
+
+This section supersedes the October 22 design notes further down wherever they
+disagree. The older notes stay because the older guides still run on that
+engine.
+
+- Look: calm light `#f3f4f0 / #202421 / muted #6b716c / rules #cbd0c8 / blue
+  #195bdb / selected row #e5eaff` and charcoal `#252824 / #edf0e8 / #afb7aa /
+  #4a5147 / #b4cbff / #34466a`. Arial/Helvetica throughout, system monospace
+  for row numbers and small labels. No hero headline, eyebrow text, count
+  badges or card grids. The paper stack stays pale in both themes.
+- Lowercase applies to interface and display labels only (wordmark, class and
+  guide names in rows, chips, buttons, section labels). Never put
+  `text-transform` on `html` or `body`, and never rewrite course data, lesson
+  titles, terms, formulas, quotations or answers. `tools/test-rollout-v5.mjs`
+  checks this.
+- Header: lowercase "valentino guides" wordmark with a blue dot, and one round
+  theme button (`#thm` on site pages, `.thm` in v5 guides, `#vg-thm` in shell
+  guides) that cycles auto, light, dark. `localStorage.theme` still stores
+  `"auto"`, `"light"` or `"dark"`; nothing saved means dark.
+- Homepage: search first, then the numbered class index (newest real guide,
+  next test date, studied count and class notice, all quiet). On screens 900px
+  and wider a CSS 3D paper stack beside the index shows the hovered or focused
+  class and its newest guide. It is decorative (the drawing is `aria-hidden`,
+  never needed to navigate), has no animation loop, and its "pause motion"
+  button stays exposed; `prefers-reduced-motion` keeps it still and removes the
+  button. Pause is remembered in `localStorage.motion`. Up next and recently
+  opened follow as plain rows. Feedback and request a guide open from the
+  footer.
+- Class pages: breadcrumb, lowercase class name and counts, quiet up-next rows,
+  numbered guide rows (chips, studied, share), and the same paper stack
+  following the hovered or focused guide on wide screens.
+- Asset versions: `site.css?v=9`, `site-data.js?v=7`, `site-topics.js?v=2`,
+  `site.js?v=8` on `index.html` and the eight class pages. Bump them together
+  when those files change. `spanish.html` is a retained legacy shell and was
+  left byte-for-byte unchanged in this rollout.
+
+### Which engine a guide runs on
+
+| Marker in the file | Engine | Used by |
+|---|---|---|
+| `guide template v5` | `template/guide-template.html` (canonical) | every new template guide; `morality-ch4-5` |
+| `guide template v4` | `template/guide-template-v4.html` (frozen October 22 copy) | the 29 older template guides, byte-for-byte |
+| pinned in `tools/sync-guide-engine.mjs` | its own legacy engine | `physics-intro-dynamics.html` (hash-pinned, never rewritten) |
+| `guide shell v5` | `template/guide-shell-v5.html` (head and foot chunks) | standalone guides imported with their own layout: `psych-unit-2-7-2-8`, `apush-unit-3a`, `precalc-limits-1-1-1-2` |
+
+- New guides use the v5 template: copy `template/guide-template.html`, edit
+  only `GUIDE`, save at the root. The v5 engine is the v4 engine with the new
+  palettes, Arial, the wordmark-and-dot header (a compact "vg" under 440px),
+  the round theme button and lowercase interface labels. Its CSS layer comes
+  last in the style block on purpose.
+- Do not move older guides to v5 as a side effect. To move one on purpose:
+  `node tools/sync-guide-engine.mjs --to-v5 <file>.html` (keeps `GUIDE` and
+  page meta byte for byte; refuses pinned files and anything outside the
+  repository root).
+- A file with a `GUIDE` block and no known marker is an error, not something
+  to skip.
+
+### Standalone guides on the v5 shell
+
+Use this only when converting a finished guide into `GUIDE` would risk losing
+math, figures or content (MathJax SVG, custom interactive practice). Keep the
+guide's own layout and academic content, and add:
+
+1. `<!doctype html>`, an empty `<!-- page meta -->` / `<!-- /page meta -->`
+   pair in place of `<title>`, and no remote fonts or scripts (the CSP blocks
+   them).
+2. `<script type="application/json" id="guide-meta">` with `id`, `cls`,
+   `page` (the class page), `title`, `sub`, optional `test` (only for a
+   directly confirmed date) and `outline` (`t`, `d`, `terms`), one entry per
+   topic section.
+3. `<style id="vg-skin">` mapping the guide's own color and font tokens onto
+   the approved palettes (`:root:root` selectors so they win), plus print,
+   and lowercasing the guide's own interface chrome (nav links, kickers,
+   badges, buttons) by class. Headings, terms, names, formulas and content
+   keep their case.
+4. The head and foot chunks copied exactly from `template/guide-shell-v5.html`,
+   and an empty `<!-- guide shell v5 header -->` /
+   `<!-- /guide shell v5 header -->` pair right after `<body>`.
+5. `<span id="s-1" aria-hidden="true"></span>`, `s-2` … before each topic
+   section, in outline order. The shell script opens the tab or `details` that
+   holds a deep-linked section.
+
+`node tools/sync-guides.mjs` then writes the page meta and the header
+(wordmark, breadcrumb, print, theme) from `guide-meta`, and adds the topics to
+`site-topics.js`. `node tools/sync-guide-engine.mjs --check` keeps the head
+and foot chunks identical to the canonical shell.
+
+Public output rules for imported guides: no private class links (Classroom,
+Docs, Drive, recordings), no source maps or "what I read" lists, no workflow
+notes, no teacher or student names, no personal schedules. Public academic
+citations may stay. Dates that are not directly confirmed say "date not
+confirmed" and stay out of `FEATURES`. Keep provenance in a private QA report
+outside the repository.
+
+### Checks before every commit that touches a guide or the shell
+
+```sh
+node tools/sync-guide-engine.mjs --check
+node tools/sync-guides.mjs --check
+node --test tools/test-*.mjs
+```
+
+`tools/test-rollout-v5.mjs` covers public listings and the `<noscript>` list,
+shell guides and their anchors, private or remote references in every public
+page, unconfirmed dates kept out of up next, the theme storage contract,
+lowercase scope, the stack's accessible pause control, and the morality
+`GUIDE` hash. `tools/test-site-search.mjs` holds a ranking snapshot; update its
+expected rows when new guides change the order, and say so in the commit.
+
 ## Layout
 
 - `index.html`: the homepage shell: header, search field, up next, recently
@@ -48,10 +158,13 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 - `tools/sync-guides.mjs`: fills each guide's page meta block and writes
   `site-topics.js` (see "Adding a guide"). Node, no dependencies. Listed in
   `.vercelignore`.
-- `tools/sync-guide-engine.mjs`: rebuilds every root template-v4 guide from
-  the canonical template while preserving its `GUIDE` block, page meta, and
-  Spanish translation protection. `--check` reports engine drift without
-  writing. Node, no dependencies; excluded from deployment with `tools/`.
+- `tools/sync-guide-engine.mjs`: checks and rebuilds each template guide
+  against its own engine version (v5 canonical, frozen v4, pinned legacy
+  physics) while preserving its `GUIDE` block, page meta, and Spanish
+  translation protection, and keeps shell guides' head and foot chunks equal to
+  `template/guide-shell-v5.html`. `--check` reports drift without writing;
+  `--to-v5 <file>` moves one guide to v5. Node, no dependencies; excluded from
+  deployment with `tools/`.
 - `fonts/`: Source Serif 4 (headings) and Source Sans 3 (body and interface)
   are the faces of the homepage, class pages, guides and the Spanish audio
   pages: variable woff2, latin and greek subsets, self-hosted, SIL Open Font
@@ -62,8 +175,10 @@ Repo: `tinoalvandi-stack/study-guides` · Live: https://valentinoguides.com
 - Individual guides: one `.html` file per guide at the repo root
   (`psych-unit-0.html`, `precalc-vectors.html`, …). Practice tests ship as
   `.pdf` beside them.
-- `template/guide-template.html`: the guide template on the current design
-  system (same tokens, type and components as the homepage). Copy it, edit
+- `template/guide-template.html`: the v5 guide template on the current design
+  system (same tokens, type and components as the homepage). The frozen v4
+  copy (`template/guide-template-v4.html`) and the standalone-guide shell
+  (`template/guide-shell-v5.html`) sit beside it. Copy it, edit
   the `GUIDE` object, save as `<class>-<topic>.html` at the root. Listed in
   `.vercelignore`, so it is in the repo but not on the site. The installed
   Claude skill **Valentino Guides Template** is the authoring how-to; keep its
