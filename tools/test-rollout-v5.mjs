@@ -17,7 +17,7 @@ const CLASS_PAGES = ["seminar", "business", "morality", "precalc", "apush", "psy
 const SHELLS = html.filter(f => read(f).includes("<!-- guide shell v5 head:"));
 
 test("three new guides are standalone shell guides with guide-meta and sequential topic anchors", () => {
-  assert.deepEqual(SHELLS.sort(), ["apush-unit-3a.html", "precalc-limits-1-1-1-2.html", "psych-unit-2-7-2-8.html"]);
+  assert.deepEqual(SHELLS.sort(), ["precalc-limits-1-1-1-2.html", "psych-unit-2-7-2-8.html"]);   // apush-unit-3a moved to the v5 template (Nov 3)
   for (const f of SHELLS) {
     const h = read(f), meta = JSON.parse(h.match(/<script type="application\/json" id="guide-meta">([\s\S]*?)<\/script>/)[1]);
     const ids = [...h.matchAll(/\sid="s-(\d+)"/g)].map(m => +m[1]);

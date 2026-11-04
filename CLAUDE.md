@@ -74,7 +74,7 @@ engine.
 | `guide template v5` | `template/guide-template.html` (canonical) | every new template guide; `morality-ch4-5` |
 | `guide template v4` | `template/guide-template-v4.html` (frozen October 22 copy) | the 29 older template guides, byte-for-byte |
 | pinned in `tools/sync-guide-engine.mjs` | its own legacy engine | `physics-intro-dynamics.html` (hash-pinned, never rewritten) |
-| `guide shell v5` | `template/guide-shell-v5.html` (head and foot chunks) | standalone guides imported with their own layout: `psych-unit-2-7-2-8`, `apush-unit-3a`, `precalc-limits-1-1-1-2` |
+| `guide shell v5` | `template/guide-shell-v5.html` (head and foot chunks) | standalone guides imported with their own layout: `psych-unit-2-7-2-8`, `precalc-limits-1-1-1-2` (`apush-unit-3a` moved to the v5 template on November 3, 2026) |
 
 - New guides use the v5 template: copy `template/guide-template.html`, edit
   only `GUIDE`, save at the root. The v5 engine is the v4 engine with the new
