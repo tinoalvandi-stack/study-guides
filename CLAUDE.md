@@ -62,8 +62,8 @@ engine.
 - Class pages: breadcrumb, lowercase class name and counts, quiet up-next rows,
   numbered guide rows (chips, studied, share), and the same paper stack
   following the hovered or focused guide on wide screens.
-- Asset versions: `site.css?v=10`, `site-data.js?v=7`, `site-topics.js?v=2`,
-  `site.js?v=9` on `index.html` and the eight class pages. Bump them together
+- Asset versions: `site.css?v=11`, `site-data.js?v=8`, `site-topics.js?v=3`,
+  `site.js?v=10` on `index.html` and the nine class pages. Bump them together
   when those files change. `spanish.html` is a retained legacy shell and was
   left byte-for-byte unchanged in this rollout.
 
@@ -147,8 +147,9 @@ expected rows when new guides change the order, and say so in the commit.
   opened, the class catalog, the feedback card, and the hand-maintained
   `<noscript>` list of publicly listed guides (Spanish is excluded).
 - `site-data.js`: the site's data: `FEATURES` (upcoming tests) and `CLASSES`
-  (the eight Bishop Gorman classes plus UC Scout AP Spanish, each with its
-  welcome-page URL and units). This is the file to edit when a guide is added.
+  (the nine Bishop Gorman classes plus UC Scout AP Spanish, each with its
+  welcome-page URL and units; AP Chemistry is a classmate's class, added
+  November 3, 2026). This is the file to edit when a guide is added.
   Spanish data stays here for compatibility; `PUBLIC_CLASSES` and
   `PUBLIC_FEATURES` in `site.js` exclude it from public discovery.
 - `site-topics.js`: generated, never hand-edited. Every guide's lesson titles,
@@ -159,8 +160,9 @@ expected rows when new guides change the order, and say so in the commit.
 - `site.css`: styles for the homepage and the class welcome pages. Its tokens
   match the guide template's; change both together.
 - Class welcome pages, one per class: `apush.html`, `physics.html`,
-  `psych.html`, `business.html`, `morality.html`, `precalc.html`, `lang.html`,
-  `seminar.html`, `spanish.html` (served at `/apush`, `/physics`, …). Each is a thin shell with
+  `chemistry.html`, `psych.html`, `business.html`, `morality.html`,
+  `precalc.html`, `lang.html`, `seminar.html`, `spanish.html` (served at
+  `/apush`, `/physics`, …). Each is a thin shell with
   `<body data-course="<id>">`; everything on it comes from `CLASSES`, so a new
   publicly listed guide shows up there without touching the page.
   `spanish.html` is a retained legacy shell, not an active class listing
@@ -172,7 +174,9 @@ expected rows when new guides change the order, and say so in the commit.
   (`og/apush.png`, `og/precalc.png`, …): one card per class, used by that class
   page and every guide in the class. All are 1200×630 and retain the prior
   class-cover artwork; these PNG assets were not regenerated in the October
-  22 page-style rollout (renderer in `_staging/og/render.html`, untracked). Their URLs are absolute and carry `?v=`; bump it when a card
+  22 page-style rollout (renderer in `_staging/og/render.html`, untracked).
+  `og/chemistry.png` (November 3, 2026) was rendered to match them from the
+  template's chem cover drawing. Their URLs are absolute and carry `?v=`; bump it when a card
   changes (`OG_V` in `tools/sync-guides.mjs` for the class cards).
 - `apple-touch-icon.png`, `favicon.svg`: home screen and tab icons on the
   prior revision's artwork, retained through the October 22 redesign. The "v"
@@ -395,7 +399,7 @@ ahead of earlier-dated entries; it still drops off after its date.
   feedback tabs, close button and stars (`(max-width:719px),(pointer:coarse)`); mouse screens keep
   the compact sizes. Below 440px (guides) and 360px (homepage, class pages) the wordmark text is
   visually hidden so the controls fit; the mark still links home and keeps its label.
-- The catalog shows the eight public classes as flat text rows, classes with
+- The catalog shows the nine public classes as flat text rows, classes with
   guides first and those still waiting for one last; each opens its class
   page (compact class heading, counts, subject cover, upcoming tests, and every
   unit with its extras). Class counts name practice PDFs ("5 study
@@ -557,8 +561,8 @@ a real PDF, in the side column or the Downloads menu), topic rows, study modes,
 390px, iPad portrait and landscape, both themes, saved light/auto behavior,
 keyboard focus, reduced motion, and print).
 
-Header fields: `id` (class token: apush psych phys pre sem biz mor lang span
-apwh csp), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`, `pdfs`
+Header fields: `id` (class token: apush psych phys chem pre sem biz mor lang
+span apwh csp; chem is v5 only), `cls`, `title`, `test` (+ optional `end`), `meta`, `sub`, `pdfs`
 (`{t, url}` practice PDFs, `t` exactly as the file calls itself ending "(PDF)";
 `{g, t, url}` for versions of one test; optional `pdfsNote`, one line on
 format, points and the key), `updated`, `panes` (Sections order; a section

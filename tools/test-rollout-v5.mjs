@@ -13,7 +13,7 @@ const read = f => readFileSync(new URL(f, ROOT), "utf8");
 const html = readdirSync(ROOT).filter(f => f.endsWith(".html"));
 const data = vm.runInNewContext(read("site-data.js") + ";({CLASSES,FEATURES})");
 const PUBLIC = data.CLASSES.filter(c => c.id !== "span");
-const CLASS_PAGES = ["seminar", "business", "morality", "precalc", "apush", "psych", "lang", "physics"];
+const CLASS_PAGES = ["seminar", "business", "morality", "precalc", "apush", "psych", "lang", "physics", "chemistry"];
 const SHELLS = html.filter(f => read(f).includes("<!-- guide shell v5 head:"));
 
 test("three new guides are standalone shell guides with guide-meta and sequential topic anchors", () => {
@@ -55,10 +55,10 @@ test("only the directly confirmed test date is featured", () => {
   assert.match(read("precalc-limits-1-1-1-2.html"), /Date not confirmed/);
 });
 
-test("home and the eight class pages share the new shell and asset versions", () => {
+test("home and the nine class pages share the new shell and asset versions", () => {
   for (const f of ["index", ...CLASS_PAGES]) {
     const h = read(f + ".html");
-    for (const s of ['id="thm"', 'class="bin"', "/site.css?v=10", "/site-data.js?v=7", "/site-topics.js?v=2", "/site.js?v=9"]) assert(h.includes(s), `${f}: ${s}`);
+    for (const s of ['id="thm"', 'class="bin"', "/site.css?v=11", "/site-data.js?v=8", "/site-topics.js?v=3", "/site.js?v=10"]) assert(h.includes(s), `${f}: ${s}`);
     assert(!h.includes('class="seg" role="group" aria-label="theme"'), `${f}: old theme switch removed`);
   }
   for (const f of CLASS_PAGES) assert(read(f + ".html").includes(`data-course="`), `${f}: class shell`);

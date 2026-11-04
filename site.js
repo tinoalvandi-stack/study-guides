@@ -47,6 +47,7 @@ const DIAG={
  apush:'<path d="m40 62 95-40 95 40H40m5 92h180M65 76v64m47-64v64m47-64v64m47-64v64"/>',
  psych:'<circle cx="135" cy="88" r="64"/><path d="M135 25v127M88 43c50 7 25 70 47 73m49-73c-50 7-25 70-47 73M80 88h110"/>',
  lang:'<path d="M35 35c40-12 70-12 100 3 30-15 60-15 100-3v115c-40-12-70-12-100 3-30-15-60-15-100-3zM135 38v115M53 60h60m-60 20h60m42-20h60m-60 20h60"/>',
+ chem:'<path d="M116 18h38M122 18v46L76 146a9 9 0 0 0 8 13h102a9 9 0 0 0 8-13L148 64V18M91.7 118h86.6"/><circle cx="118" cy="138" r="6"/><circle cx="148" cy="132" r="4"/><circle cx="136" cy="100" r="3"/>',
  phys:'<path d="M24 149H252M55 160V10" opacity=".25"/><rect x="103" y="65" width="64" height="57"/><path d="M135 65V12m-6 8 6-8 6 8M167 94h75m-8-6 8 6-8 6M135 122v47m-6-8 6 8 6-8M103 94H36m8-6-8 6 8 6"/></g><g fill="#195bdb" stroke="none" font-family="Arial,Helvetica,sans-serif" font-size="12"><text x="144" y="24">N</text><text x="219" y="82">F</text><text x="144" y="164">mg</text><text x="39" y="82">f</text>'
 };
 const MOTION_OFF=()=>REDUCED||store.get("motion","")==="paused";
@@ -371,6 +372,7 @@ if(!COURSE){
   })();
   /* fast find */
   const ALIAS={apush:["apush","ush","history","us history","american history","hist"],phys:["physics","phys","kinematics","science"],
+    chem:["chemistry","chem","ap chem","apchem","science"],
     psych:["psych","psychology"],bus:["business","bus","biz","principles"],mor:["morality","religion","theology","catholic","church","social justice"],
     pre:["precalc","precal","pre calc","math","precalculus","trig","vectors","calc","trigonometry","polar"],lang:["lang","english"],sem:["seminar","sem"],
     span:["spanish","span","ap spanish","espanol","uc scout","ucscout","scout"]};

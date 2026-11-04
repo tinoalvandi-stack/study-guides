@@ -16,7 +16,7 @@ const SITE = "https://valentinoguides.com";
 const MARK = /guide template v[45]\b/;
 const SHELL = "<!-- guide shell v5 head";
 const MACH = "/* ═══ machinery. nothing below needs editing. ═══ */";
-const OG = { apush: "apush", psych: "psych", phys: "physics", pre: "precalc", biz: "business", mor: "morality", lang: "lang", sem: "seminar", span: "spanish" };
+const OG = { apush: "apush", psych: "psych", phys: "physics", chem: "chemistry", pre: "precalc", biz: "business", mor: "morality", lang: "lang", sem: "seminar", span: "spanish" };
 const OG_V = "1"; // bump when the og/*.png cards change
 const CHECK = process.argv.includes("--check");
 

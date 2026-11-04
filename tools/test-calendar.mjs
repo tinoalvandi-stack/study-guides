@@ -147,7 +147,7 @@ test("controller: Nov 1 Pacific opens on Nov 2–8 with dots, today marking and 
   assert(p.days().every(b => b.getAttribute("aria-current") === null), "Nov 1 is not in this week");
   assert.equal(p.days().filter(b => b.tabIndex === 0).length, 1, "one tab stop");
   assert.match(p.day("2026-11-02").getAttribute("aria-label"), /^monday, november 2, 1 test$/);
-  assert.deepEqual(p.rows().map(r => r.href), ["/morality-ch4-5", "/apush-unit-3a", "/apush-unit-3a"]);
+  assert.deepEqual(p.rows().map(r => r.href), ["/morality-ch4-5", "/apush-unit-3a", "/chem-ch6-7", "/apush-unit-3a"]);
   assert.equal(p.rows()[0].children[0].textContent, "mon 2–3");
   assert.equal(p.rows()[0].children[0].getAttribute("datetime"), "2026-11-02");
   p.setNow("2026-11-02T08:05:00Z"); assert.equal(p.cal.refresh(), true);   // midnight in Los Angeles
@@ -165,9 +165,9 @@ test("controller: a day filters, a second press clears, the range label resets, 
   p.day("2026-11-05").fire("click");
   assert.deepEqual(p.rows(), []); assert.equal(p.empty(), "no tests listed for this day.");
   p.day("2026-11-05").fire("click");
-  assert.equal(p.cal.state().sel, null); assert.equal(p.rows().length, 3);
+  assert.equal(p.cal.state().sel, null); assert.equal(p.rows().length, 4);
   p.day("2026-11-06").fire("click"); p.q("callabel").fire("click");
-  assert.equal(p.cal.state().sel, null); assert.equal(p.rows().length, 3);
+  assert.equal(p.cal.state().sel, null); assert.equal(p.rows().length, 4);
   assert(p.days().every(b => b.getAttribute("aria-pressed") === "false"));
 });
 
@@ -226,8 +226,8 @@ test("homepage markup: calendar in the sidebar, #homeart left for the stack only
   assert.match(h, /<\/section>\s*<div class="home-art" id="homeart"><\/div>\s*<\/div>/);
   assert(h.includes('id="calagenda" aria-live="polite"') && h.includes('aria-label="previous week"') && h.includes('aria-label="next week"'));
   assert(!h.includes('id="upnext"'));
-  for (const f of ["index", "seminar", "business", "morality", "precalc", "apush", "psych", "lang", "physics"]) {
-    const x = read(f + ".html"); assert(x.includes("/site.css?v=10") && x.includes("/site.js?v=9"), f);
+  for (const f of ["index", "seminar", "business", "morality", "precalc", "apush", "psych", "lang", "physics", "chemistry"]) {
+    const x = read(f + ".html"); assert(x.includes("/site.css?v=11") && x.includes("/site.js?v=10"), f);
   }
   assert(read("spanish.html").includes("/site.css?v=7"), "legacy Spanish shell untouched");
   assert(read("sw.js").includes('const V = "vg-offline-1"'), "offline cache name untouched");

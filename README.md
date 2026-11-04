@@ -22,7 +22,7 @@ rules, compact controls, and 18px guide prose keep the pages readable.
 New visitors start in dark mode; saved `light`, `dark`, and `auto` choices are
 respected. Auto follows the system theme and is stored explicitly as `"auto"`.
 
-Public discovery lists the eight Bishop Gorman classes. UC Scout AP Spanish
+Public discovery lists the nine Bishop Gorman classes. UC Scout AP Spanish
 remains in source data and existing guide/PDF/audio files, but is excluded from
 catalogs, search, suggestions, recents, counts, requests, upcoming tests, and
 the homepage's no-JavaScript list. Its direct material URLs remain available;
@@ -37,8 +37,9 @@ site. Do not restore public Spanish listings or delete its files during a sync.
   data. Public filtering lives in `site.js`.
 - `site-topics.js`: generated lesson topics for search and class pages.
 - `site.js` / `site.css`: homepage and class-page behavior and styles.
-- `apush.html`, `physics.html`, `psych.html`, `business.html`, `morality.html`,
-  `precalc.html`, `lang.html`, `seminar.html`: public class-page shells.
+- `apush.html`, `physics.html`, `chemistry.html`, `psych.html`, `business.html`,
+  `morality.html`, `precalc.html`, `lang.html`, `seminar.html`: public class-page
+  shells.
   `spanish.html` is a retained legacy shell.
 - `template/guide-template.html`: canonical standalone guide engine. Copy it
   and edit only the `GUIDE` object for a new guide. The installed Claude skill

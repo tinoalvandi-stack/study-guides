@@ -1,4 +1,4 @@
-/* valentino guides · site data (shared by the homepage and the eight class welcome pages).
+/* valentino guides · site data (shared by the homepage and the nine class welcome pages).
    Adding a guide: add a unit to its class in CLASSES (newest first), add the same link to the
    <noscript> list in index.html, and add an entry to FEATURES when a test is coming. */
 "use strict";
@@ -36,10 +36,11 @@ const FEATURES=[
   {classId:"bus",   title:"High exam #3 study guide", url:"/bus-unit-2", test:"2026-10-27", end:"2026-10-28", note:"Unit 2: supply and demand, elasticity, GDP, trade-offs, goods and services. Practice tests A and B in the High exam #2 layout."},
   {classId:"mor",   title:"Ch 4 & 5 study guide", url:"/morality-ch4-5", test:"2026-11-02", end:"2026-11-03", note:"Jesus as Moral Guide and Conscience Formation: 50 questions (multiple choice, true/false, matching) plus one essay. Practice tests A and B."},
   {classId:"apush", title:"Unit 3/A study guide (Blue days)", url:"/apush-unit-3a", test:"2026-11-04", note:"20 multiple choice on 1781 to 1800: the Articles, the Northwest Ordinances, the Constitution, Hamilton's plan, the first parties, foreign policy, the crisis of 1798 and the Election of 1800."},
+  {classId:"chem",  title:"Ch 6 & 7 study guide", url:"/chem-ch6-7", test:"2026-11-04", note:"40 multiple choice + 2 free response (calculator). Light and photons, the Bohr model, quantum numbers, electron configurations, Zeff and periodic trends. Periodic table given, constants are not."},
   {classId:"apush", title:"Unit 3/A study guide (Orange days)", url:"/apush-unit-3a", test:"2026-11-06", note:"20 multiple choice on 1781 to 1800: the Articles, the Northwest Ordinances, the Constitution, Hamilton's plan, the first parties, foreign policy, the crisis of 1798 and the Election of 1800."},
 ];
 
-/* CLASSES: the eight Bishop Gorman classes this year plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
+/* CLASSES: the nine Bishop Gorman classes (AP Chemistry, a classmate's class, added November 3, 2026) plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
    warn (optional): a notice shown on the class card, its welcome page and search rows; AP Spanish needs it because it is not a Bishop Gorman course.
    kind "audio" marks a listening page.
    A unit is the guide plus optional extras (kind: "cram" | "pdf" | "quiz"), labelled exactly as in the guide, e.g. "Practice test A (PDF)".
@@ -155,6 +156,10 @@ const CLASSES=[
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 5", s:"5", url:"/physics-advanced-kinematics-version-5.pdf"},
         {kind:"pdf", g:"Practice test (PDF)", t:"Version 6", s:"6", url:"/physics-advanced-kinematics-version-6.pdf"}]},
      {t:"Intro kinematics", url:"/physics-intro-kinematics", added:"2026-09-01"}]},
+  {id:"chem", page:"/chemistry", c:"var(--c-chem)", glyph:"flask", name:"AP Chemistry", abbr:"AP Chem", short:"CHEMISTRY", units:[
+     {t:"Ch 6 & 7", url:"/chem-ch6-7", added:"2026-11-03", extras:[
+        {kind:"pdf", t:"Practice test A (PDF)", url:"/chem-ch6-7-practice-a.pdf"},
+        {kind:"pdf", t:"Practice test B (PDF)", url:"/chem-ch6-7-practice-b.pdf"}]}]},
   {id:"span", page:"/spanish", c:"var(--c-span)", glyph:"speech", name:"AP Spanish Language and Culture (UC Scout)", abbr:"AP Spanish", short:"SPANISH · UC SCOUT",
    warn:"For UC Scout AP Spanish. This is not aligned to Bishop Gorman’s Spanish curriculum.", units:[
      {t:"UC Scout Semester 1 midterm", url:"/spanish-ucscout-s1-midterm", added:"2026-10-04", extras:[
@@ -179,5 +184,6 @@ const G={
  bubbles:'<path d="M4.6 8.2a2 2 0 0 1 2-2h8.6a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2h-4l-3.4 2.7v-2.7h-1.2a2 2 0 0 1-2-2z"/><path d="M19.2 10.6h.4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.6v2.4l-2.9-2.4"/>',
  chart:'<path d="M5 5v16h16"/><rect x="8.4" y="13" width="3" height="5.2" rx=".8"/><rect x="13.4" y="9.6" width="3" height="8.6" rx=".8"/><rect x="18.4" y="6.4" width="3" height="11.8" rx=".8"/>',
  cross:'<path d="M13 4.6v17"/><path d="M7.4 10.2h11.2"/>',
+ flask:'<path d="M10.4 4.6h5.2"/><path d="M11.4 4.6v6.2L5.6 19.4a1.4 1.4 0 0 0 1.2 2.1h12.4a1.4 1.4 0 0 0 1.2-2.1L14.6 10.8V4.6"/><path d="M7.9 16h10.2"/>',
  speech:'<path d="M4.5 8a2.2 2.2 0 0 1 2.2-2.2h12.6A2.2 2.2 0 0 1 21.5 8v7.3a2.2 2.2 0 0 1-2.2 2.2h-7.4L7 21.6v-4.1H6.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M11 9.4c.4-.9 1.3-1.4 2.2-1.2 1 .2 1.6 1.1 1.4 2-.2.8-1 1-1.4 1.7"/><path d="M13 14.1h.01"/>'
 };
