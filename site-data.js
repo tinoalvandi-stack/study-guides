@@ -37,6 +37,7 @@ const FEATURES=[
   {classId:"mor",   title:"Ch 4 & 5 study guide", url:"/morality-ch4-5", test:"2026-11-02", end:"2026-11-03", note:"Jesus as Moral Guide and Conscience Formation: 50 questions (multiple choice, true/false, matching) plus one essay. Practice tests A and B."},
   {classId:"apush", title:"Unit 3/A study guide (Blue days)", url:"/apush-unit-3a", test:"2026-11-04", note:"20 multiple choice on 1781 to 1800: the Articles, the Northwest Ordinances, the Constitution, Hamilton's plan, the first parties, foreign policy, the crisis of 1798 and the Election of 1800."},
   {classId:"chem",  title:"Ch 6 & 7 study guide", url:"/chem-ch6-7", test:"2026-11-04", note:"40 multiple choice + 2 free response (calculator). Light and photons, the Bohr model, quantum numbers, electron configurations, Zeff and periodic trends. Periodic table given, constants are not."},
+  {classId:"pre",   title:"Limits quiz 1.1–1.2 study guide", url:"/precalc-limits-1-1-1-2", test:"2026-11-04", note:"Non-calculator quiz: limits from graphs and tables, limit properties, factoring, conjugates and the LCD, the difference quotient. Practice quizzes A and B with worked keys."},
   {classId:"apush", title:"Unit 3/A study guide (Orange days)", url:"/apush-unit-3a", test:"2026-11-06", note:"20 multiple choice on 1781 to 1800: the Articles, the Northwest Ordinances, the Constitution, Hamilton's plan, the first parties, foreign policy, the crisis of 1798 and the Election of 1800."},
 ];
 
@@ -69,7 +70,10 @@ const CLASSES=[
      {t:"Ch 3", url:"/morality-ch3", added:"2026-09-24", extras:[{kind:"pdf", t:"Practice quiz A (PDF)", url:"/morality-ch3-practice-a.pdf"}]},
      {t:"Ch 1–2", url:"/morality-ch1-2", added:"2026-09-01", extras:[{kind:"cram", t:"Cram sheet", url:"/morality-ch1-2-cram"}]}]},
   {id:"pre", page:"/precalc", c:"var(--c-pre)", glyph:"curve", name:"Honors Precalculus BC", abbr:"Precalc", short:"PRECALCULUS", units:[
-     {t:"Limits 1.1–1.2", url:"/precalc-limits-1-1-1-2", added:"2026-11-01"},
+     {t:"Limits 1.1–1.2", url:"/precalc-limits-1-1-1-2", added:"2026-11-01", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/precalc-limits-1-1-1-2-cram.pdf"},
+        {kind:"pdf", t:"Practice quiz A (PDF)", url:"/precalc-limits-1-1-1-2-practice-a.pdf"},
+        {kind:"pdf", t:"Practice quiz B (PDF)", url:"/precalc-limits-1-1-1-2-practice-b.pdf"}]},
      {t:"Parametric & sequences test, Day 1", url:"/precalc-parametric-sequences", added:"2026-10-19", extras:[
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version A", s:"A", url:"/precalc-parametric-sequences-day1-a.pdf"},
         {kind:"pdf", g:"Day 1 practice test (PDF)", t:"Version B", s:"B", url:"/precalc-parametric-sequences-day1-b.pdf"},
