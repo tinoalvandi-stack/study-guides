@@ -143,11 +143,11 @@ test("controller: Nov 1 Pacific opens on Nov 2–8 with dots, today marking and 
   const p = page("2026-11-02T07:30:00Z");                          // 11:30 p.m. Sunday Nov 1 in Los Angeles
   assert.equal(p.q("callabel").textContent, "nov 2–8");
   assert.equal(p.days().length, 7);
-  assert.deepEqual(p.days().map(b => b.className.includes("has")), [true, true, false, false, true, false, false]);
+  assert.deepEqual(p.days().map(b => b.className.includes("has")), [true, true, true, false, true, false, false]);
   assert(p.days().every(b => b.getAttribute("aria-current") === null), "Nov 1 is not in this week");
   assert.equal(p.days().filter(b => b.tabIndex === 0).length, 1, "one tab stop");
   assert.match(p.day("2026-11-02").getAttribute("aria-label"), /^monday, november 2, 1 test$/);
-  assert.deepEqual(p.rows().map(r => r.href), ["/morality-ch4-5", "/apush-unit-3a"]);
+  assert.deepEqual(p.rows().map(r => r.href), ["/morality-ch4-5", "/apush-unit-3a", "/apush-unit-3a"]);
   assert.equal(p.rows()[0].children[0].textContent, "mon 2–3");
   assert.equal(p.rows()[0].children[0].getAttribute("datetime"), "2026-11-02");
   p.setNow("2026-11-02T08:05:00Z"); assert.equal(p.cal.refresh(), true);   // midnight in Los Angeles
@@ -162,12 +162,12 @@ test("controller: a day filters, a second press clears, the range label resets, 
   assert.equal(p.day("2026-11-03").getAttribute("aria-pressed"), "true");
   assert.equal(p.doc.activeElement, p.day("2026-11-03"), "focus returns to the re-rendered day");
   assert.deepEqual(p.rows().map(r => r.href), ["/morality-ch4-5"]);
-  p.day("2026-11-04").fire("click");
+  p.day("2026-11-05").fire("click");
   assert.deepEqual(p.rows(), []); assert.equal(p.empty(), "no tests listed for this day.");
-  p.day("2026-11-04").fire("click");
-  assert.equal(p.cal.state().sel, null); assert.equal(p.rows().length, 2);
+  p.day("2026-11-05").fire("click");
+  assert.equal(p.cal.state().sel, null); assert.equal(p.rows().length, 3);
   p.day("2026-11-06").fire("click"); p.q("callabel").fire("click");
-  assert.equal(p.cal.state().sel, null); assert.equal(p.rows().length, 2);
+  assert.equal(p.cal.state().sel, null); assert.equal(p.rows().length, 3);
   assert(p.days().every(b => b.getAttribute("aria-pressed") === "false"));
 });
 
