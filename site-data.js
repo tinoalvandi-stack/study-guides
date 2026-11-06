@@ -39,6 +39,7 @@ const FEATURES=[
   {classId:"chem",  title:"Ch 6 & 7 study guide", url:"/chem-ch6-7", test:"2026-11-04", note:"40 multiple choice + 2 free response (calculator). Light and photons, the Bohr model, quantum numbers, electron configurations, Zeff and periodic trends. Periodic table given, constants are not."},
   {classId:"pre",   title:"Limits quiz 1.1–1.2 study guide", url:"/precalc-limits-1-1-1-2", test:"2026-11-04", note:"11 questions, 20 minutes, no calculator: limits from graphs and tables, limit properties, factoring, conjugates and the LCD, the difference quotient. Four practice quizzes with worked keys."},
   {classId:"apush", title:"Unit 3/A study guide (Orange days)", url:"/apush-unit-3a", test:"2026-11-06", note:"20 multiple choice on 1781 to 1800: the Articles, the Northwest Ordinances, the Constitution, Hamilton's plan, the first parties, foreign policy, the crisis of 1798 and the Election of 1800."},
+  {classId:"lang",  title:"Rhetorical analysis essay study guide", url:"/lang-ra-tips", test:"2026-11-06", note:"In-class timed write, 40 minutes, 30 points: blurb, multifaceted purpose, thesis, body paragraphs by purpose, and the strategies worth naming. Quick version at /lang-ra-quick."},
 ];
 
 /* CLASSES: the nine Bishop Gorman classes (AP Chemistry, a classmate's class, added November 3, 2026) plus UC Scout AP Spanish, each with its welcome page (page) and its units, newest first.
@@ -143,7 +144,9 @@ const CLASSES=[
      {t:"Unit 1.1–1.3", url:"/psych-unit-1-1-1-3", added:"2026-09-15"},
      {t:"Unit 0", url:"/psych-unit-0", added:"2026-09-01"}]},
   {id:"lang", page:"/lang", c:"var(--c-lang)", glyph:"nib", name:"AP English Language and Composition", abbr:"AP Lang", short:"ENGLISH LANGUAGE", units:[
-     {t:"Rhetorical analysis: priority devices & full reference", url:"/lang-ra-tips#s-6", added:"2026-10-08", extras:[
+     {t:"Rhetorical analysis essay: full guide", url:"/lang-ra-tips", added:"2026-11-05", extras:[
+        {kind:"cram", t:"Cram sheet (PDF)", url:"/lang-ra-tips-cram.pdf"}]},
+     {t:"Rhetorical analysis: quick study", url:"/lang-ra-quick", added:"2026-11-05", extras:[
         {kind:"cram", t:"Cram sheet (PDF)", url:"/lang-ra-tips-cram.pdf"}]}]},
   {id:"phys", page:"/physics", c:"var(--c-phys)", glyph:"atom", name:"AP Physics 1", abbr:"Physics", short:"PHYSICS", units:[
      {t:"Introductory dynamics", url:"/physics-intro-dynamics", added:"2026-10-20", extras:[
