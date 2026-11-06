@@ -122,6 +122,10 @@ const CLASSES=[
      {t:"Vectors + dot product", url:"/precalc-vectors", added:"2026-08-30", extras:[
         {kind:"pdf", t:"Quizzes A–C + memorize sheet (PDF)", url:"/precalc-quizzes.pdf"}]}]},
   {id:"apush", page:"/apush", c:"var(--c-apush)", glyph:"flag", name:"AP US History", abbr:"APUSH", short:"US HISTORY", units:[
+     {t:"Unit 3/B", url:"/apush-unit-3b", added:"2026-11-06",
+      extras:[{kind:"cram", t:"Cram sheet (PDF)", url:"/apush-unit-3b-cram.pdf"},
+              {kind:"pdf", t:"Practice test A (PDF)", url:"/apush-unit-3b-practice-a.pdf"},
+              {kind:"pdf", t:"Practice test B (PDF)", url:"/apush-unit-3b-practice-b.pdf"}]},
      {t:"Unit 3/A", url:"/apush-unit-3a", added:"2026-11-01",
       extras:[{kind:"cram", t:"Cram sheet (PDF)", url:"/apush-unit-3a-cram.pdf"},
               {kind:"pdf", t:"Practice test A (PDF)", url:"/apush-unit-3a-practice-a.pdf"},

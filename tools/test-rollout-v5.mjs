@@ -43,7 +43,7 @@ test("every public guide resolves to a file, is in its class data and in the no-
     assert(noscript.includes(`href="${u.url}"`), `${u.url} is in the <noscript> list`);
   }
   assert(!/spanish/i.test(noscript), "Spanish stays out of public discovery");
-  for (const u of ["/apush-unit-3a", "/psych-unit-2-7-2-8", "/precalc-limits-1-1-1-2"])
+  for (const u of ["/apush-unit-3b", "/psych-unit-2-7-2-8", "/precalc-limits-1-1-1-2"])
     assert(PUBLIC.some(c => c.units[0].url === u), `${u} is the newest unit of its class`);
 });
 
